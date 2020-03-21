@@ -1,17 +1,8 @@
-<h1 align="center">
-<br>
-  <img src="https://raw.githubusercontent.com/lgmorand/aks-checklist/master/src/img/banners/logo-aks-checklist.png" alt="aks-checklist" width="170">
-  <br>
-    <br>
-  The Azure Kubernetes Service Checklist
-  <br>
-</h1>
+# The Azure Kubernetes Service Checklist
 
-<h4 align="center">The AKS Checklist is a (tentatively) exhaustive list of all elements you need to think of when preparing a cluster for production.</h4>
+![AKS Checklist](https://github.com/lgmorand/aks-checklist/blob/master/src/img/banners/logo-aks-checklist.png)
 
-
-It is based on all common best practices agreed around Kubernetes or documented [here](https://docs.microsoft.com/en-us/azure/aks/best-practices).
-
+The AKS Checklist is a (tentatively) exhaustive list of all elements you need to think of when preparing a cluster for production. It is based on all common best practices agreed around Kubernetes or documented [here](https://docs.microsoft.com/en-us/azure/aks/best-practices).
 
 ## Author
 

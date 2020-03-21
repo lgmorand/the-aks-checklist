@@ -30,8 +30,6 @@ import imageminWebp from 'imagemin-webp';
 import browserSync from 'browser-sync';
 
 import eslint from 'gulp-eslint';
-import mocha from 'gulp-mocha';
-import istanbul from 'gulp-istanbul';
 
 import changed from 'gulp-changed';
 import cached from 'gulp-cached';
@@ -255,31 +253,6 @@ gulp.task('compress-webp', () => {
     .pipe(gulp.dest(dirs.dest + '/img/'));
 });
 
-// ========================================
-// TDD
-// ========================================
-
-gulp.task('coverage', function() {
-  return gulp.src(dirs.src + '/scripts/**/*.js')
-    .pipe(istanbul({
-        includeUntested: true,
-    }))
-    .pipe(istanbul.hookRequire());
-});
-
-gulp.task('report', function() {
-  gulp.src(dirs.src + '/scripts/**/*.js', { read: false })
-    .pipe(istanbul.writeReports());
-});
-
-gulp.task('mocha', function() {
-  return gulp.src('test/**/*.test.js', { read: false })
-    .pipe(mocha({
-      reporter: 'spec',
-      compilers: 'js:babel-core/register',
-      require: ['jsdom-global'],
-    }));
-});
 
 // ========================================
 // SERVER
@@ -337,9 +310,6 @@ gulp.task('clean-tmp', () => {
   return del(['!./dist/index.html', './dist/index-*.html'], {force: true});
 });
 
-gulp.task('clean-coverage', () => {
-  return del(['./coverage']);
-});
 
 gulp.task('json-rebuild', () => {
   return gulp.src(`./data/${argv.l}/items/*.json`)
@@ -424,7 +394,7 @@ gulp.task('build', done => {
 });
 
 gulp.task('test', done => {
-  runSequence('clean-coverage', 'coverage', 'mocha', 'report', done);
+  runSequence('mocha', 'report', done);
 });
 
 gulp.task('default', ['browser-sync', 'watch']);

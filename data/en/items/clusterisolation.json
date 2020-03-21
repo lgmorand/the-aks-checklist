@@ -22,5 +22,42 @@
         }
       ],
       "tags": ["all"]
-    } 
+    },
+    {
+      "title": "IP Range authorization",
+      "priority": "High",
+      "description": "The API server is the central way to interact with and manage a cluster. To improve cluster security and minimize attacks, the API server should only be accessible from a limited set of IP address ranges.By using a private cluster, you can ensure that network traffic between your API server and your node pools remains on the private network only. Because the api server has a private address, it means that to access it for administration or for deployment, you need to set up private connection, like using a 'jumpbox' (i.e.: Azure Bastion)",
+      "documentation": [
+        {
+          "title": "Secure access to the API server using authorized IP address ranges",
+          "url": "https://docs.microsoft.com/en-us/azure/aks/api-server-authorized-ip-ranges"
+        }
+      ],
+      "tags": ["all", "security"]
+    },
+    {
+      "title": "AAD Integration",
+      "priority": "High",
+      "description": "Azure Kubernetes Service (AKS) can be configured to use Azure Active Directory (Azure AD) for user authentication. In this configuration, you can sign in to an AKS cluster by using your Azure AD authentication token.",
+      "documentation": [
+        {
+          "title": "Integrate Azure Active Directory with Azure Kubernetes Service",
+          "url": "https://docs.microsoft.com/en-us/azure/aks/azure-ad-integration"
+        }
+      ],
+      "tags": ["all", "security"]
+    },
+    {
+      "title": "Private cluster",
+      "priority": "High",
+      "description": "In a private cluster, the control plane or API server has internal IP addresses and is not exposed to Internet",
+      "detail": "By using a private cluster, you can ensure that network traffic between your API server and your node pools remains on the private network only. Because the api server has a private address, it means that to access it for administration or for deployment, you need to set up private connection, like using a 'jumpbox' (i.e.: Azure Bastion)",
+      "documentation": [
+        {
+          "title": "Create a private cluster",
+          "url": "https://docs.microsoft.com/en-us/azure/aks/private-clusters"
+        }
+      ],
+      "tags": ["all", "security"]
+    }
 ]
