@@ -1,0 +1,57 @@
+extends base/layout
+
+//- Block main
+block main
+
+  include components/s-section-top
+
+  //- List each section (the order is linked to the order of the c-nav)
+  //- _items is in the JSON injected in the view with gulp-data (called _project.json)
+  .s-main__section.s-main__checklist
+
+    if _items !== undefined
+
+      +checklist-section({
+        dataSection: _items.clusterisolation,
+        sectionTitle: "Cluster Isolation"
+      })
+
+      +checklist-section({
+        dataSection: _items.disasterrecovery,
+        sectionTitle: "Disaster Recovery"
+      })
+
+      +checklist-section({
+        dataSection: _items.security,
+        sectionTitle: "Security"
+      })
+
+      +checklist-section({
+        dataSection: _items.storage,
+        sectionTitle: "Storage"
+      })
+
+
+      +checklist-section({
+        dataSection: _items.network,
+        sectionTitle: "Network"
+      })
+
+      +checklist-section({
+        dataSection: _items.operations,
+        sectionTitle: "Cluster Maintenance"
+      })
+
+      +checklist-section({
+        dataSection: _items.multitenancy,
+        sectionTitle: "Multi Tenancy"
+      })
+
+      +checklist-section({
+        dataSection: _items.container,
+        sectionTitle: "Image management"
+      })
+
+
+
+  include components/s-section-bottom

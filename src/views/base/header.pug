@@ -1,0 +1,11 @@
+header.s-header
+
+  include ../components/c-corner
+
+  .s-header__banner
+    .text-center
+      picture
+        source(srcset="/img/logos/logo-aks-checklist.png" type="image/jpeg")
+        img.img-logo(src="/img/logos/logo-aks-checklist.png" alt="AKS Checklist Logo" width="100" height="100")
+      h1.font-weight-bold= translation.SITE_NAME
+      p.sub-heading= translation.SITE_TAGLINE

@@ -1,0 +1,14 @@
+[
+    {
+        "title": "Enable geo-replication for container images",
+        "priority": "Medium",
+        "description": "Use logical isolation to separate teams and projects. Try to minimize the number of physical AKS clusters you deploy to isolate teams or applications",
+        "documentation": [
+          {
+            "title": "Enable geo-replication for container images",
+            "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-cluster-isolation#logically-isolate-clusters"
+          }
+        ],
+        "tags": ["all"]
+      }
+]

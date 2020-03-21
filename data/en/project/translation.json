@@ -1,0 +1,41 @@
+{
+  "SITE_NAME": "The Azure Kubernetes Service Checklist",
+  "INDEX_TITLE": "✨ Be ready for production ✨",
+  "URL_WEBSITE": "https://aka.ms/aks-checklist",
+  "SITE_TAGLINE": "The AKS Checklist - the best way to ensure your cluster is production ready!",
+  "SITE_DESCRIPTION": "The best way to ensure your cluster is production ready!",
+  "SITE_LANGUAGE": "en",
+  "SITE_DIRECTION": "ltr",
+  "URL_GITHUB_ROOT": "http://github.com/lgmorand/aks-checklist",
+  "URL_GITHUB_REPO": "http://github.com/lgmorand/aks-checklist",
+  "HIGH_CHECKED": "✓ high priority",
+  "MEDIUM_CHECKED": "✓ medium priority",
+  "LOW_CHECKED": "✓ low priority",
+  "PERCENTAGE_CHECKED": "items are ✓",
+  "SECTION_DOCUMENTATION": "Documentation",
+  "SECTION_TOOL": "Tools",
+  "SECTION_VIDEO": "Videos",
+  "SECTION_TAG": "Filter by tags",
+  "alert": {
+    "JAVASCRIPT_DESACTIVATE": "Your JavaScript seems to be desactivated. Please enable your JavaScript to use all functionnalities of the AKS Checklist."
+  },
+  "form": {
+    "LABEL_PROJECT_NAME": "Project Name",
+    "TITLE_PROJECT_NAME": "Type the name of your project",
+    "LABEL_PAGE_TITLE": "Page title or URL",
+    "TITLE_PAGE_TITLE": "Type the name of your page or URL",
+    "LABEL_DEVELOPER_NAME": "Developer's name or team",
+    "TITLE_DEVELOPER_NAME": "Type your name or the name of your team",
+    "LABEL_SEARCH": "Search",
+    "BUTTON_START_NEW": "Start new checklist",
+    "BUTTON_GENERATE_PRINT": "Generate report"
+  },
+  "social": {
+    "TWEET": "Tweet",
+    "TWITTER_MSG": "Check the ✨ AKS Checklist ✨, the best way to ensure your cluster is production ready 📑!",
+    "TWITTER_VIA": "lgmorand",
+    "TWITTER_HASHTAGS": "AKS Checklist #Kubernetes #security #AKS #Azure",
+    "STAR": "Star",
+    "GITHUB_STAR_MSG": "Star lgmorand/AKS-Checklist on GitHub"
+  }
+}

@@ -1,0 +1,23 @@
+[
+    {
+      "title": "Secure the container image",
+      "priority": "High",
+      "description": "Scan your container images to ensure there are no malware in it",
+      "documentation": [
+        {
+          "title": "Azure Security Center : scanning feature (Qualys)",
+          "url": "https://docs.microsoft.com/fr-fr/azure/security-center/azure-container-registry-integration"
+        },
+        {
+          "title": "Twistlock",
+          "url": "https://www.twistlock.com/"
+        },
+        {
+          "title": "Aqua",
+          "url": "https://www.aquasec.com/"
+        }
+      ],
+      "tags": ["all", "html", "best practices"]
+    }
+  ]
+  
