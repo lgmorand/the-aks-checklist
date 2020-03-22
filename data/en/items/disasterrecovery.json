@@ -10,5 +10,24 @@
           }
         ],
         "tags": ["all"]
+      },
+      {
+        "title": "Ensure you can perform a whitespace deployment",
+        "priority": "High",
+        "description": "A whitespace (greenfield) deployment is the exercice to delete everything and to redeploy the whole platform in a automated way.",
+        "details":"In case of emergency, compromission or datacenter failure, it's mandatory for you to be able to restore/create a new environment properly configured in a fully automated way",
+        "tags": ["all", "security"]
+      },
+      {
+        "title": "Use availability zones",
+        "priority": "High",
+        "description": "An Azure Kubernetes Service (AKS) cluster distributes resources such as the nodes and storage across logical sections of the underlying Azure compute infrastructure. This deployment model makes sure that the nodes run across separate update and fault domains in a single Azure datacenter.",
+        "documentation": [
+          {
+            "title": "Create an AKS cluster across availability zones",
+            "url": "https://docs.microsoft.com/en-us/azure/aks/availability-zones#create-an-aks-cluster-across-availability-zones"
+          }
+        ],
+        "tags": ["all", "resiliency"]
       }
 ]

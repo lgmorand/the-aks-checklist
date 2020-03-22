@@ -7,7 +7,7 @@
       "documentation": [
         {
           "title": "Kubenet vs CNI",
-          "url": "https://docs.microsoft.com/bs-cyrl-ba/azure/aks/operator-best-practices-network#choose-the-appropriate-network-model"
+          "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-network#choose-the-appropriate-network-model"
         }
       ],
       "tags": ["all", "network", "traffic"]
@@ -31,7 +31,7 @@
       "documentation": [
         {
           "title": "Secure traffic with a web application firewall (WAF)",
-          "url": "https://docs.microsoft.com/bs-cyrl-ba/azure/aks/operator-best-practices-network#secure-traffic-with-a-web-application-firewall-waf"
+          "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-network#secure-traffic-with-a-web-application-firewall-waf"
         }
       ],
       "tags": ["all", "network", "traffic"]
@@ -44,9 +44,33 @@
       "documentation": [
         {
           "title": "Control traffic flow with network policies",
-          "url": "https://docs.microsoft.com/bs-cyrl-ba/azure/aks/operator-best-practices-network#control-traffic-flow-with-network-policies"
+          "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-network#control-traffic-flow-with-network-policies"
         }
       ],
       "tags": ["all", "network", "traffic"]
+    },
+    {
+      "title": "Configure default network policies in each namespace",
+      "priority": "Medium",
+      "description": "Start by creating a deny all policy in each namespace and then add specific policies.",
+      "documentation": [
+        {
+          "title": "Reciptes of best default network policies",
+          "url": "https://github.com/ahmetb/kubernetes-network-policy-recipes"
+        }
+      ],
+      "tags": ["all", "network", "traffic"]
+    },
+    {
+      "title": "Prevent data-leaking with egress lockdown",
+      "priority": "Medium",
+      "description": "Use Azure Firewall to secure and control all egress traffic going outside of the cluster.",
+      "documentation": [
+        {
+          "title": "Egress traffic requirements",
+          "url": "https://docs.microsoft.com/en-us/azure/aks/limit-egress-traffic"
+        }
+      ],
+      "tags": ["all", "network", "security"]
     }
 ]
