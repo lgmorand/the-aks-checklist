@@ -7,7 +7,9 @@
         {
           "title": "Azure Security Center : scanning feature (Qualys)",
           "url": "https://docs.microsoft.com/fr-fr/azure/security-center/azure-container-registry-integration"
-        },
+        }
+      ],
+      "tools":[
         {
           "title": "Twistlock",
           "url": "https://www.twistlock.com/"
@@ -15,6 +17,26 @@
         {
           "title": "Aqua",
           "url": "https://www.aquasec.com/"
+        }
+      ],
+      "tags": ["all", "html", "best practices"]
+    },
+    {
+      "title": "Allow deploying containers only from known registries",
+      "priority": "Medium",
+      "description": "One of the most common custom policies that you might want to consider is to restrict the images that can be deployed in your cluster. But it can also be addressed with a proper egress lockdown or using an admission controller",
+      "documentation": [
+        {
+          "title": "Use the Azure Policy : Ensure only allowed container images in AKS",
+          "url": "https://docs.microsoft.com/en-us/azure/governance/policy/concepts/rego-for-aks#built-in-policies"
+        },
+        {
+          "title":"Using ImagePolicyWebhook",
+          "url":"https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#imagepolicywebhook"
+        },
+        {
+          "title":"Using egress lockdown and authorizing only the URL of your registry",
+          "url":"https://docs.microsoft.com/en-us/azure/aks/limit-egress-traffic"
         }
       ],
       "tags": ["all", "html", "best practices"]

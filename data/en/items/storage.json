@@ -47,6 +47,19 @@
             "url": "https://docs.microsoft.com/bs-cyrl-ba/azure/aks/operator-best-practices-storage#secure-and-back-up-your-data"
           }
         ],
-        "tags": ["all", "storage"]
+        "tags": ["all", "storage", "resiliency"]
+      },
+      {
+        "title": "Make your storage resilient",
+        "priority": "High",
+        "description": "Where possible, don't store service state inside the container. Instead, use an Azure platform as a service (PaaS) that supports multiregion replication.",
+        "detail": "Service state refers to the in-memory or on-disk data that a service requires to function. State includes the data structures and member variables that the service reads and writes. Depending on how the service is architected, the state might also include files or other resources that are stored on the disk. For example, the state might include the files a database uses to store data and transaction logs.",
+        "documentation": [
+          {
+            "title": "Remove service state from inside containers",
+            "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-multi-region#remove-service-state-from-inside-containers"
+          }
+        ],
+        "tags": ["all", "storage", "resiliency"]
       }
 ]
