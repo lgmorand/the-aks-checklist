@@ -38,7 +38,7 @@
         "documentation": [
           {
             "title": "Securely connect to nodes through a bastion host",
-            "url": "https://docs.microsoft.com/bs-cyrl-ba/azure/aks/operator-best-practices-network#securely-connect-to-nodes-through-a-bastion-host"
+            "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-network#securely-connect-to-nodes-through-a-bastion-host"
           }
         ],
         "tags": ["all", "operation", "security"]

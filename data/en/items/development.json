@@ -41,5 +41,35 @@
     "priority": "Medium",
     "description": "Ensure that your application always configure proper replicas to ensure resiliency.",
     "tags": ["all", "development"]
+  },
+  {
+    "title": "Apply tags to all resources",
+    "priority": "Medium",
+    "description": "Ensure that your components are tagged, it could be business, security or technical tags and these tags will help to assess or apply relevant policies.",
+    "tags": ["all", "development"]
+  },
+  {
+    "title": "Implement autoscaling of your applications",
+    "priority": "Low",
+    "description": "The Horizontal Pod Autoscaler automatically scales the number of pods based on observed CPU utilization",
+    "documentation": [
+      {
+        "title": "Horizontal Pod Autoscaler",
+        "url": "https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/"
+      }
+    ],
+    "tags": ["all", "resiliency"]
+  },
+  {
+    "title": "Store your secrets in Azure Keyvault",
+    "priority": "Medium",
+    "description": "Secrets are not encrypted in etcd, prefer to store your secrets in a proper HSM like Azure Keyvault. You can then inject secrets using flexvolume.",
+    "documentation": [
+      {
+        "title": "Keyvault and flex volumes",
+        "url": "https://github.com/Azure/kubernetes-keyvault-flexvol"
+      }
+    ],
+    "tags": ["all", "security"]
   }
 ]

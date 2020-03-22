@@ -31,7 +31,7 @@
         "documentation": [
           {
             "title": "Dynamically provision volumes",
-            "url": "https://docs.microsoft.com/bs-cyrl-ba/azure/aks/operator-best-practices-storage#dynamically-provision-volumes"
+            "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-storage#dynamically-provision-volumes"
           }
         ],
         "tags": ["all", "storage"]
@@ -44,7 +44,7 @@
         "documentation": [
           {
             "title": "Secure and back up your data",
-            "url": "https://docs.microsoft.com/bs-cyrl-ba/azure/aks/operator-best-practices-storage#secure-and-back-up-your-data"
+            "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-storage#secure-and-back-up-your-data"
           }
         ],
         "tags": ["all", "storage", "resiliency"]

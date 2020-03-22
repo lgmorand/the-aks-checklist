@@ -41,5 +41,17 @@
       }
     ],
     "tags": ["all", "resiliency"]
+  },
+  {
+    "title": "Set up cluster auto-scaling",
+    "priority": "Low",
+    "description": "To maintain the availability of applications and garanty available resources, set up cluster auto-scaling",
+    "documentation": [
+      {
+        "title": "Use AKS cluster auto-scale",
+        "url": "https://docs.microsoft.com/en-us/azure/aks/cluster-autoscaler"
+      }
+    ],
+    "tags": ["all", "resiliency"]
   }
 ]
