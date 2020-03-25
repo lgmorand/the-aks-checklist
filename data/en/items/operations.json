@@ -60,7 +60,7 @@
             "url": "https://github.com/azure/kube-advisor"
           }
         ],
-        "tags": ["all", "operation", "security"]
+        "tags": ["all", "operation"]
     },
     {
       "title": "Provision a log aggregation tool",
@@ -72,7 +72,7 @@
           "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-cluster-security#regularly-update-to-the-latest-version-of-kubernetes"
         }
       ],
-      "tags": ["all", "operation", "security"]
+      "tags": ["all", "operation"]
   }
 ]
 

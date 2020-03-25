@@ -59,5 +59,31 @@
         }
       ],
       "tags": ["all", "security"]
+    },
+    {
+      "title": "Enable cluster autoscaling",
+      "priority": "Medium",
+      "description": "To keep up with application demands in Azure Kubernetes Service (AKS), you may need to adjust the number of nodes that run your workloads. The cluster autoscaler component can watch for pods in your cluster that can't be scheduled because of resource constraints.",
+      "details":"You can enable autoscaling module per node pool but only create one mutual autoscale profile",
+      "documentation": [
+        {
+          "title": "AKS Autoscaler",
+          "url": "https://docs.microsoft.com/en-us/azure/aks/cluster-autoscaler"
+        }
+      ],
+      "tags": ["all", "resources"]
+    },
+    {
+      "title": "Implement resources quotas",
+      "priority": "Medium",
+      "description": "When several users or teams share a cluster with a fixed number of nodes, there is a concern that one team could use more than its fair share of resources.",
+      "details":"A resource quota, defined by a ResourceQuota object, provides constraints that limit aggregate resource consumption per namespace. It can limit the quantity of objects that can be created in a namespace by type, as well as the total amount of compute resources that may be consumed by resources in that project.",
+      "documentation": [
+        {
+          "title": "Resources quotas",
+          "url": "https://kubernetes.io/docs/concepts/policy/resource-quotas/"
+        }
+      ],
+      "tags": ["all", "resources"]
     }
-]
+] 

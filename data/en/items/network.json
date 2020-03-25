@@ -10,7 +10,7 @@
           "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-network#choose-the-appropriate-network-model"
         }
       ],
-      "tags": ["all", "network", "traffic"]
+      "tags": ["all", "network"]
     },
     {
       "title": "Distribute ingress traffic",
@@ -22,7 +22,7 @@
           "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-network#distribute-ingress-traffic"
         }
       ],
-      "tags": ["all", "network", "traffic"]
+      "tags": ["all", "network"]
     },
     {
       "title": "Secure your exposed applications with a web application firewall (WAF)",
@@ -34,7 +34,7 @@
           "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-network#secure-traffic-with-a-web-application-firewall-waf"
         }
       ],
-      "tags": ["all", "network", "traffic"]
+      "tags": ["all", "network"]
     },
     {
       "title": "Control traffic flow with network policies",
@@ -47,7 +47,7 @@
           "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-network#control-traffic-flow-with-network-policies"
         }
       ],
-      "tags": ["all", "network", "traffic"]
+      "tags": ["all", "network"]
     },
     {
       "title": "Configure default network policies in each namespace",
@@ -59,7 +59,7 @@
           "url": "https://github.com/ahmetb/kubernetes-network-policy-recipes"
         }
       ],
-      "tags": ["all", "network", "traffic"]
+      "tags": ["all", "network"]
     },
     {
       "title": "Prevent data-leaking with egress lockdown",

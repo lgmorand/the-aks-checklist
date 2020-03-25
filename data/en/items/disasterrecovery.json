@@ -16,7 +16,7 @@
         "priority": "High",
         "description": "A whitespace (greenfield) deployment is the exercice to delete everything and to redeploy the whole platform in a automated way.",
         "details":"In case of emergency, compromission or datacenter failure, it's mandatory for you to be able to restore/create a new environment properly configured in a fully automated way",
-        "tags": ["all", "security"]
+        "tags": ["all"]
       },
       {
         "title": "Use availability zones",

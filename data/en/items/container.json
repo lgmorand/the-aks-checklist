@@ -19,7 +19,7 @@
           "url": "https://www.aquasec.com/"
         }
       ],
-      "tags": ["all", "html", "best practices"]
+      "tags": ["all"]
     },
     {
       "title": "Allow deploying containers only from known registries",
@@ -39,7 +39,7 @@
           "url":"https://docs.microsoft.com/en-us/azure/aks/limit-egress-traffic"
         }
       ],
-      "tags": ["all", "html", "best practices"]
+      "tags": ["all"]
     }
   ]
   

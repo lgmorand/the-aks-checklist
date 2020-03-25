@@ -71,5 +71,29 @@
       }
     ],
     "tags": ["all", "security"]
+  },
+  {
+    "title": "Use Kubernetes namespaces to properly isolate your Kubernetes resources",
+    "priority": "Medium",
+    "description": "Namespaces give you the ability to create logical partitions and enforce separation of your resources as well as limit the scope of user permissions. Don't forget not to use the Default namespace",
+    "documentation": [
+      {
+        "title": "Namespaces",
+        "url": "https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/"
+      }
+    ],
+    "tags": ["all", "security"]
+  },
+  {
+    "title": "Set up requests and limits on your containers",
+    "priority": "High",
+    "description": "When Containers have resource requests specified, the scheduler can make better decisions about which nodes to place Pods on. And when Containers have their limits specified, contention for resources on a node can be handled in a specified manner.",
+    "documentation": [
+      {
+        "title": "Managing Compute Resources for Containers",
+        "url": "https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/"
+      }
+    ],
+    "tags": ["all", "resources"]
   }
 ]
