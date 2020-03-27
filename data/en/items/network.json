@@ -18,7 +18,7 @@
       "description": "To distribute HTTP or HTTPS traffic to your applications, use ingress resources and controllers. Ingress controllers provide additional features over a regular Azure load balancer, and can be managed as native Kubernetes resources.",
       "documentation": [
         {
-          "title": "Secure access to the API server using authorized IP address ranges",
+          "title": "Distribute ingress traffic",
           "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-network#distribute-ingress-traffic"
         }
       ],
