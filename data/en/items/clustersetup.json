@@ -74,19 +74,6 @@
       "tags": ["all", "resources"]
     },
     {
-      "title": "Implement resources quotas",
-      "priority": "Medium",
-      "description": "When several users or teams share a cluster with a fixed number of nodes, there is a concern that one team could use more than its fair share of resources.",
-      "details":"A resource quota, defined by a ResourceQuota object, provides constraints that limit aggregate resource consumption per namespace. It can limit the quantity of objects that can be created in a namespace by type, as well as the total amount of compute resources that may be consumed by resources in that project.",
-      "documentation": [
-        {
-          "title": "Resources quotas",
-          "url": "https://kubernetes.io/docs/concepts/policy/resource-quotas/"
-        }
-      ],
-      "tags": ["all", "resources"]
-    },
-    {
       "title": "Refresh container when base image is updated",
       "priority": "Medium",
       "description": "As you use base images for application images, use automation to build new images when the base image is updated. As those base images typically include security fixes, update any downstream application container images.",
