@@ -2,7 +2,7 @@
   {
     "title": "Implement a proper Liveness probe",
     "priority": "High",
-    "description": "Many applications running for long periods of time eventually transition to broken states, and cannot recover except by being restarted. Kubernetes provides liveness probes to detect and remedy such situations. The probe is here to tell kubernetes to restart your pod when it is not responding anymore",
+    "description": "Many applications running for long periods of time eventually transition to broken states, and cannot recover except by being restarted. Kubernetes provides liveness probes to detect and remedy such situations. The probe is here to tell Kubernetes to restart your pod when it is not responding anymore",
     "documentation": [
       {
         "title": "Configure Liveness, Readiness probes",
@@ -15,7 +15,7 @@
     "title": "Implement a proper Readiness probe",
     "priority": "Medium",
     "description": "Understand the needs of your application to pick the right storage. Use high performance, SSD-backed storage for production workloads. Plan for network-based storage when there is a need for multiple concurrent connections.",
-    "detail":"Sometimes, applications are temporarily unable to serve traffic. For example, an application might need to load large data or configuration files during startup, or depend on external services after startup. In such cases, you don’t want to kill the application, but you don’t want to send it requests either. Kubernetes provides readiness probes to detect and mitigate these situations. A pod with containers reporting that they are not ready does not receive traffic through Kubernetes Services.",
+    "detail": "Sometimes, applications are temporarily unable to serve traffic. For example, an application might need to load large data or configuration files during startup, or depend on external services after startup. In such cases, you don’t want to kill the application, but you don’t want to send it requests either. Kubernetes provides readiness probes to detect and mitigate these situations. A pod with containers reporting that they are not ready does not receive traffic through Kubernetes Services.",
     "documentation": [
       {
         "title": "Configure Liveness, Readiness probes",
@@ -25,7 +25,7 @@
     "tags": ["all", "development"]
   },
   {
-    "title": "Implement a proper prestop probe",
+    "title": "Implement a proper prestop hook",
     "priority": "Low",
     "description": "This hook is called immediately before a container is terminated due to an API request or management event such as liveness probe failure, preemption, resource contention and others. It can be used when you have critical process you want to finish or save when your pod is destroyed for any reason",
     "documentation": [
@@ -63,11 +63,24 @@
   {
     "title": "Store your secrets in Azure Keyvault",
     "priority": "Medium",
-    "description": "Secrets are not encrypted in etcd, prefer to store your secrets in a proper HSM like Azure Keyvault. You can then inject secrets using flexvolume.",
+    "description": "Secrets are not encrypted in etcd, prefer to store your secrets in a proper HSM like Azure KeyVault. You can then inject secrets using FlexVolume.",
     "documentation": [
       {
         "title": "Keyvault and flex volumes",
         "url": "https://github.com/Azure/kubernetes-keyvault-flexvol"
+      }
+    ],
+    "tags": ["all", "security"]
+  },
+  {
+    "title": "Implement Pod Identity",
+    "priority": "Medium",
+    "description": "Don't use fixed credentials within pods or container images, as they are at risk of exposure or abuse. Instead, use pod identities to automatically request access using a central Azure AD identity solution",
+    "detail": "When pods need access to other Azure services, such as Cosmos DB, Key Vault, or Blob Storage, the pod needs access credentials. These access credentials could be defined with the container image or injected as a Kubernetes secret, but need to be manually created and assigned. Often, the credentials are reused across pods, and aren't regularly rotated. Managed identities for Azure resources (currently implemented as an associated AKS open source project) let you automatically request access to services through Azure AD. You don't manually define credentials for pods, instead they request an access token in real time, and can use it to access only their assigned services.",
+    "documentation": [
+      {
+        "title": "Use pod identity",
+        "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-identity#use-pod-identities"
       }
     ],
     "tags": ["all", "security"]

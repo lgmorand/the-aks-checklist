@@ -26,7 +26,7 @@
     {
       "title": "IP Range authorization",
       "priority": "High",
-      "description": "The API server is the central way to interact with and manage a cluster. To improve cluster security and minimize attacks, the API server should only be accessible from a limited set of IP address ranges.By using a private cluster, you can ensure that network traffic between your API server and your node pools remains on the private network only. Because the api server has a private address, it means that to access it for administration or for deployment, you need to set up private connection, like using a 'jumpbox' (i.e.: Azure Bastion)",
+      "description": "The API server is the central way to interact with and manage a cluster. To improve cluster security and minimize attacks, the API server should only be accessible from a limited set of IP address ranges.By using a private cluster, you can ensure that network traffic between your API server and your node pools remains on the private network only. Because the API server has a private address, it means that to access it for administration or for deployment, you need to set up a private connection, like using a 'jumpbox' (i.e.: Azure Bastion)",
       "documentation": [
         {
           "title": "Secure access to the API server using authorized IP address ranges",
@@ -51,7 +51,7 @@
       "title": "Private cluster",
       "priority": "High",
       "description": "In a private cluster, the control plane or API server has internal IP addresses and is not exposed to Internet",
-      "detail": "By using a private cluster, you can ensure that network traffic between your API server and your node pools remains on the private network only. Because the api server has a private address, it means that to access it for administration or for deployment, you need to set up private connection, like using a 'jumpbox' (i.e.: Azure Bastion)",
+      "detail": "By using a private cluster, you can ensure that network traffic between your API server and your node pools remains on the private network only. Because the API server has a private address, it means that to access it for administration or for deployment, you need to set up private connection, like using a 'jumpbox' (i.e.: Azure Bastion)",
       "documentation": [
         {
           "title": "Create a private cluster",
@@ -82,6 +82,22 @@
         {
           "title": "Resources quotas",
           "url": "https://kubernetes.io/docs/concepts/policy/resource-quotas/"
+        }
+      ],
+      "tags": ["all", "resources"]
+    },
+    {
+      "title": "Refresh container when base image is updated",
+      "priority": "Medium",
+      "description": "As you use base images for application images, use automation to build new images when the base image is updated. As those base images typically include security fixes, update any downstream application container images.",
+      "documentation": [
+        {
+          "title": "Automatically build new images on base image update",
+          "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-container-image-management#automatically-build-new-images-on-base-image-update"
+        },
+        {
+          "title": "Azure DevOps - Trigger pipeline from Docker image update",
+          "url": "https://dev.to/larryclaman/trigger-azure-devops-build-pipeline-from-docker-image-update-5d3i"
         }
       ],
       "tags": ["all", "resources"]
