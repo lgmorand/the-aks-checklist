@@ -8,6 +8,10 @@
       {
         "title": "Enforce resource quotas",
         "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-scheduler#enforce-resource-quotas"
+      },
+      {
+        "title": "Resources quotas",
+        "url": "https://kubernetes.io/docs/concepts/policy/resource-quotas/"
       }
     ],
     "tags": ["all", "resiliency"]

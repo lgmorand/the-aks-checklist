@@ -74,14 +74,17 @@
       "tags": ["all", "resources"]
     },
     {
-      "title": "Implement resources quotas",
+      "title": "Refresh container when base image is updated",
       "priority": "Medium",
-      "description": "When several users or teams share a cluster with a fixed number of nodes, there is a concern that one team could use more than its fair share of resources.",
-      "details":"A resource quota, defined by a ResourceQuota object, provides constraints that limit aggregate resource consumption per namespace. It can limit the quantity of objects that can be created in a namespace by type, as well as the total amount of compute resources that may be consumed by resources in that project.",
+      "description": "As you use base images for application images, use automation to build new images when the base image is updated. As those base images typically include security fixes, update any downstream application container images.",
       "documentation": [
         {
-          "title": "Resources quotas",
-          "url": "https://kubernetes.io/docs/concepts/policy/resource-quotas/"
+          "title": "Automatically build new images on base image update",
+          "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-container-image-management#automatically-build-new-images-on-base-image-update"
+        },
+        {
+          "title": "Azure DevOps - Trigger pipeline from Docker image update",
+          "url": "https://dev.to/larryclaman/trigger-azure-devops-build-pipeline-from-docker-image-update-5d3i"
         }
       ],
       "tags": ["all", "resources"]
