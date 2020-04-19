@@ -11,6 +11,19 @@
   }
 }
 
+.sub-heading2 {
+  margin: 5px 15px;
+  font-family: Montserrat, sans-serif;
+  color: hsla(0, 0%, 100%, .6);
+  font-size: 1rem;
+  line-height: 1.5;
+
+  @include mq('handheld-and-up') {
+    font-size: 1.5rem;
+    margin: 15px;
+  }
+}
+
 .s-header {
   grid-row: 1;
   grid-column-start: 2;
