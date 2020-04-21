@@ -1,4 +1,4 @@
-name: Node.js CI
+name:  Validation Build (deploy on staging)
 
 on:
   push:
