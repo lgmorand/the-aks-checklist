@@ -10,7 +10,7 @@ The AKS Checklist is a (tentatively) exhaustive list of all elements you need to
 
 ## Thanks
 
-The source code itself is a modified version of the Front-End Checklist which was created by [David Dias](https://github.com/thedaviddias)
+The source code itself is a modified version of the [Front-End Checklist](https://github.com/thedaviddias/Front-End-Checklist) which was created by [David Dias](https://github.com/thedaviddias)
 
 ## License
 
