@@ -1,0 +1,78 @@
+[
+    {
+        "title": "Maintain cluster up to date",
+        "priority": "Medium",
+        "description": "To stay current on new features and bug fixes, regularly upgrade to the Kubernetes version in your AKS cluster. Support for kubernetes is current and N-2 versions only",
+        "documentation": [
+          {
+            "title": "Regularly update to the latest version of Kubernetes",
+            "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-cluster-security#regularly-update-to-the-latest-version-of-kubernetes"
+          }
+        ],
+        "tags": ["all", "operation", "security"]
+    },
+    {
+        "title": "Reboot the nodes to patch them",
+        "priority": "Medium",
+        "description": "AKS automatically downloads and installs security fixes on each Linux nodes, but does not automatically reboot if necessary. Use Kured to watch for pending reboots, then safely cordon and drain the node to allow the node to reboot",
+        "detail": "",
+        "documentation": [
+          {
+            "title": "Process Linux node updates and reboots using Kured",
+            "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-cluster-security#process-linux-node-updates-and-reboots-using-kured"
+          }
+        ],
+        "tools":[
+          {
+            "title": "Kured (KUbernetes REboot Daemon)",
+            "url": "https://github.com/weaveworks/kured"
+          }
+        ],
+        "tags": ["all", "operation", "security"]
+    },
+    {
+        "title": "Securely connect to nodes through a bastion host",
+        "priority": "Medium",
+        "description": "Don't expose remote connectivity to your AKS nodes. Create a bastion host, or jump box, in a management virtual network. Use the bastion host to securely route traffic into your AKS cluster to remote management tasks.",
+        "detail": "",
+        "documentation": [
+          {
+            "title": "Securely connect to nodes through a bastion host",
+            "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-network#securely-connect-to-nodes-through-a-bastion-host"
+          }
+        ],
+        "tags": ["all", "operation", "security"]
+    },
+    {
+        "title": "Regularly check for cluster issues ",
+        "priority": "Medium",
+        "description": "Regularly run the latest version of kube-advisor open source tool to detect issues in your cluster. If you apply resource quotas on an existing AKS cluster, run kube-advisor first to find pods that don't have resource requests and limits defined.",
+        "details": "The kube-advisor tool can report on resource request and limits missing in PodSpecs for Windows applications as well as Linux applications, but the kube-advisor tool itself must be scheduled on a Linux pod.",
+        "documentation": [
+          {
+            "title": "Regularly check for cluster issues with kube-advisor",
+            "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-scheduler#regularly-check-for-cluster-issues-with-kube-advisor"
+          }
+        ],
+        "tools":[
+          {
+            "title": "Kube-advisor",
+            "url": "https://github.com/azure/kube-advisor"
+          }
+        ],
+        "tags": ["all", "operation"]
+    },
+    {
+      "title": "Provision a log aggregation tool",
+      "priority": "High",
+      "description": "To stay current on new features and bug fixes, regularly upgrade to the Kubernetes version in your AKS cluster. Support for kubernetes is current and N-2 versions only",
+      "documentation": [
+        {
+          "title": "Regularly update to the latest version of Kubernetes",
+          "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-cluster-security#regularly-update-to-the-latest-version-of-kubernetes"
+        }
+      ],
+      "tags": ["all", "operation"]
+  }
+]
+
