@@ -116,7 +116,7 @@ gulp.task('pug-rebuild', ['compile-pug'], () => {
 
 gulp.task('minify-html', () => {
   langs.forEach(lang => {
-    return gulp.src(`./dist/index-en.html`)
+    return gulp.src(`./dist/en.html`)
       .pipe(htmlmin({
         collapseWhitespace: true,
         removeComments: true,
@@ -131,7 +131,7 @@ gulp.task('minify-html', () => {
 
 gulp.task('compile-all-pug', () => {
   langs.forEach(lang => {
-    return gulp.src(`${dirs.src}/views/index-${lang}.pug`)
+    return gulp.src(`${dirs.src}/views/${lang}.pug`)
       .pipe(data(() => {
         return require(`./data/${lang}/_project.json`);
       }))
