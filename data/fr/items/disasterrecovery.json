@@ -1,9 +1,8 @@
 [
       {
-        "title": "Ensure you can perform a whitespace deployment",
+        "title": "Assurez-vous de pouvoir faire un déploiement à blanc",
         "priority": "High",
-        "description": "A whitespace (greenfield) deployment is the exercise to delete everything and to redeploy the whole platform in an automated way.",
-        "details": "In case of an emergency, a security flaw or datacenter failure, it's mandatory for you to be able to restore/create a new environment properly configured in a fully automated way",
+        "description": "Un déploiement à blanc est l'exercice de tout supprimer et de recréer tout d'un coup de manière automatisée et de s'assurer que la plateforme (cluster+ application) est dans un état fonctionnel.",
         "tags": ["all", "devops"]
       },
       {
