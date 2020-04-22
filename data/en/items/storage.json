@@ -6,7 +6,7 @@
     "documentation": [
       {
         "title": "Choose the right storage type",
-        "url": "https://docs.microsoft.com/bs-cyrl-ba/azure/aks/operator-best-practices-storage#choose-the-appropriate-storage-type"
+        "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-storage#choose-the-appropriate-storage-type"
       }
     ],
     "tags": ["all", "storage"]
@@ -19,7 +19,7 @@
         "documentation": [
           {
             "title": "Size the nodes for storage needs",
-            "url": "https://docs.microsoft.com/bs-cyrl-ba/azure/aks/operator-best-practices-storage#size-the-nodes-for-storage-needs"
+            "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-storage#size-the-nodes-for-storage-needs"
           }
         ],
         "tags": ["all", "storage"]
