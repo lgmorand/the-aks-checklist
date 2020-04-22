@@ -5,4 +5,4 @@ nav.c-nav
       li.c-nav__item
         a.c-button.js-scroll(href=`#section-${item}`)
           span.c-nav__status(id=`js-nav-${item}`, data-notation="0")
-          span= item
+          span= item.split('-').join(' ')

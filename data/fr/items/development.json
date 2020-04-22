@@ -1,0 +1,111 @@
+[
+  {
+    "title": "Implémentez une sonde Live",
+    "priority": "High",
+    "description": "De nombreuses applications exécutées pendant de longues périodes finissent par passer à des états défectueux et ne peuvent pas récupérer, sauf en étant redémarrées. Kubernetes fournit des sondes de vivacité pour détecter et remédier à de telles situations. La sonde est là pour dire à Kubernetes de redémarrer votre pod quand il ne répond plus",
+    "documentation": [
+      {
+        "title": "Configure Liveness, Readiness probes",
+        "url": "https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/"
+      }
+    ],
+    "tags": ["all", "development"]
+  },
+  {
+    "title": "Implémentez une sonde Ready",
+    "priority": "Medium",
+    "description": "Parfois, les applications sont temporairement incapables de gérer le trafic. Par exemple, une application peut avoir besoin de charger de gros fichiers de données ou de configuration lors du démarrage, ou dépendre de services externes après le démarrage. Dans de tels cas, vous ne voulez pas tuer l'application, mais vous ne voulez pas non plus lui envoyer de demandes. Kubernetes fournit des sondes de préparation pour détecter et atténuer ces situations. Un module contenant des conteneurs signalant qu'ils ne sont pas prêts ne reçoit pas de trafic via les services Kubernetes.",
+    "documentation": [
+      {
+        "title": "Configure Liveness, Readiness probes",
+        "url": "https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/"
+      }
+    ],
+    "tags": ["all", "development"]
+  },
+  {
+    "title": "Implémentez un hook prestop",
+    "priority": "Low",
+    "description": "Ce hook est appelé immédiatement lorsqu'un container est arrêté dû à une requête API ou un évênement de contrôle (échec d'une sonde), préemption, limitation de resource ou autre. Cela peut être utilisé lorsque vous avez des processus critiques que vous voulez voir terminer ou sauvegarder leur travail",
+    "documentation": [
+      {
+        "title": "Hooks de cycle de vie de container",
+        "url": "https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/"
+      }
+    ],
+    "tags": ["all", "development"]
+  },
+  {
+    "title": "Appliquez plusieurs réplicas à vos déploiements",
+    "priority": "Medium",
+    "description": "Assurez que chacun de vos composants a plusieurs réplicas pour assurer sa résilience.",
+    "tags": ["all", "development"]
+  },
+  {
+    "title": "Appliquez des tags à toutes vos ressources",
+    "priority": "Medium",
+    "description": "Assurez-vous que vos composants sont taggués, cela peut être lié au business, à la sécurité ou technique, et ces tags serviront pour appliquer des politiques ou des contrôles.",
+    "tags": ["all", "development"]
+  },
+  {
+    "title": "Implémentez l'autoscaling sur vos applications",
+    "priority": "Low",
+    "description": "Le module d'autoscaling horizontal (HPA -Horizontal Pod Autoscaler) augmente et réduit automatiquement le nombre des pods en se basant sur la consommation CPU et mémoire de votre application",
+    "documentation": [
+      {
+        "title": "Horizontal Pod Autoscaler",
+        "url": "https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/"
+      }
+    ],
+    "tags": ["all", "resiliency"]
+  },
+  {
+    "title": "Stockez vos secrets dans Azure KeyVault",
+    "priority": "Medium",
+    "description": "Les secrets ne sont pas chiffrés dans la base etcd, prefer to store your secrets in a proper HSM like Azure KeyVault. You can then inject secrets using FlexVolume.",
+    "documentation": [
+      {
+        "title": "Keyvault and flex volumes",
+        "url": "https://github.com/Azure/kubernetes-keyvault-flexvol"
+      }
+    ],
+    "tags": ["all", "security"]
+  },
+  {
+    "title": "Implémentez Pod Identity",
+    "priority": "Medium",
+    "description": "N'utilisez pas d'informations d'identification fixes dans les pods ou les images de conteneurs, car ils risquent d'être exposés ou abusés. Utilisez plutôt des identités de pod pour demander automatiquement l'accès à l'aide d'une solution d'identité Azure AD centrale",
+    "detail": "Lorsque les pods ont besoin d'accéder à d'autres services Azure, tels que Cosmos DB, Key Vault ou Blob Storage, le pod a besoin d'informations d'identification d'accès. Ces informations d'identification d'accès peuvent être définies avec l'image du conteneur ou injectées en tant que secret Kubernetes, mais doivent être créées et attribuées manuellement. Souvent, les informations d'identification sont réutilisées sur plusieurs pods et ne sont pas régulièrement tournées. Les identités gérées pour les ressources Azure (actuellement implémentées en tant que projet open source AKS associé) vous permettent de demander automatiquement l'accès aux services via Azure AD. Vous ne définissez pas manuellement les informations d'identification pour les pods, ils demandent plutôt un jeton d'accès en temps réel et peuvent l'utiliser pour accéder uniquement aux services qui leur sont attribués.",
+    "documentation": [
+      {
+        "title": "Utilisez pod identity",
+        "url": "https://docs.microsoft.com/fr-fr/azure/aks/operator-best-practices-identity#use-pod-identities"
+      }
+    ],
+    "tags": ["all", "security"]
+  },
+  {
+    "title": "Utilisez les espaces de noms de Kubernetes pour isoler vos ressources",
+    "priority": "Medium",
+    "description": "Les espaces de noms vous permettent de créer des partitions logiques et d'appliquer la séparation de vos ressources, ainsi que de limiter la portée des autorisations utilisateur. N'oubliez pas de ne pas utiliser l'espace de noms par défaut",
+    "documentation": [
+      {
+        "title": "Namespaces",
+        "url": "https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/"
+      }
+    ],
+    "tags": ["all", "security"]
+  },
+  {
+    "title": "Définissez des demandes et limites (de ressources) sur vos containers",
+    "priority": "High",
+    "description": "Lorsque les containeurs ont des requêtes de ressources définies, le scheduler peut prendre des décisions optimisisés quant au noeud sur lesquels les déployer. Lorsque les containeurs ont des limites, Kuernetes peut alors contrôler les ressources allouées.",
+    "documentation": [
+      {
+        "title": "Managing Compute Resources for Containers",
+        "url": "https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/"
+      }
+    ],
+    "tags": ["all", "resources"]
+  }
+]

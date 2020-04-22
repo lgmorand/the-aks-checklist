@@ -1,7 +1,7 @@
-name:  Validation Build (deploy on staging)
+name: Build and deploy on prod
 
 on:
-  push:
+  pull_request:
     branches:
       - master
 
@@ -43,19 +43,6 @@ jobs:
         # Your Azure Subscription ID
         AZURE_SUBSCRIPTION_ID: "${{secrets.SUBSCRIPTION_ID}}"
         # Your Azure Storage Account Name
-        AZURE_STORAGE_ACCOUNT_NAME: "stoakschecklist"
+        AZURE_STORAGE_ACCOUNT_NAME: "stoakscheckliststaging"
         # The index document that you specify when you enable static website hosting, appears when users open the site and dont specify a specific file.
         AZURE_INDEX_DOCUMENT_NAME:  "index.html"
-
-    - name: Azure service principal login
-      uses: azure/login@v1
-      with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
-
-    - name: Purge CDN
-      run:
-        az cdn endpoint purge -n ${{ secrets.AZURE_CDN_ENDPOINT }} --profile-name ${{ secrets.AZURE_CDN_PROFILE_NAME }} --content-paths "/*" --resource-group ${{ secrets.AZURE_RESOURCE_GROUP }} --no-wait
-        
-    - name: Azure service principal logout
-      run: |
-        az logout

@@ -1,0 +1,78 @@
+[
+    {
+        "title": "Gardez la version de kubernetes à jour",
+        "priority": "Medium",
+        "description": "Pour rester informé des nouvelles fonctionnalités et correctifs de bogues, effectuez des mises à jour régulières vers la version Kubernetes dans votre cluster AKS.",
+        "documentation": [
+          {
+            "title": "Effectuer des mises à jour régulières vers la dernière version de Kubernetes",
+            "url": "https://docs.microsoft.com/fr-fr/azure/aks/operator-best-practices-cluster-security#regularly-update-to-the-latest-version-of-kubernetes"
+          }
+        ],
+        "tags": ["all", "operation", "security"]
+    },
+    {
+        "title": "Redémarrer les noeuds les noeuds lorsqu'un patch requiert un reboot",
+        "priority": "Medium",
+        "description": "AKS télécharge et installe automatiquement les correctifs de sécurité sur chacun des nœuds Linux, mais ne les redémarre pas automatiquement si nécessaire. Utilisez kured pour surveiller les redémarrages en attente, puis fermez et videz le nœud en toute sécurité pour qu’il puisse redémarrer, appliquer les mises à jour et être aussi sûr que possible à l’égard du système d’exploitation. Pour les nœuds Windows Server (actuellement en préversion dans AKS), effectuez régulièrement une opération de mise à niveau AKS pour isoler et drainer de façon sécurisée les pods et déployer les nœuds mis à jour.",
+        "detail": "",
+        "documentation": [
+          {
+            "title": "Traiter les mises à jour et les redémarrages de nœuds Linux avec kured",
+            "url": "https://docs.microsoft.com/fr-fr/azure/aks/operator-best-practices-cluster-security#process-linux-node-updates-and-reboots-using-kured"
+          }
+        ],
+        "tools":[
+          {
+            "title": "Kured (KUbernetes REboot Daemon)",
+            "url": "https://github.com/weaveworks/kured"
+          }
+        ],
+        "tags": ["all", "operation", "security"]
+    },
+    {
+        "title": "Se connecter en toute sécurité aux nœuds à travers un hôte bastion",
+        "priority": "Medium",
+        "description": "N’exposez pas de connectivité à distance sur vos nœuds AKS. Créez un hôte bastion, ou une jumpbox, dans un réseau virtuel de gestion. Utilisez l’hôte bastion pour acheminer le trafic en toute sécurité dans votre cluster AKS aux tâches de gestion à distance.",
+        "detail": "",
+        "documentation": [
+          {
+            "title": "Se connecter en toute sécurité aux nœuds à travers un hôte bastion",
+            "url": "https://docs.microsoft.com/fr-fr/azure/aks/operator-best-practices-network#securely-connect-to-nodes-through-a-bastion-host"
+          }
+        ],
+        "tags": ["all", "operation", "security"]
+    },
+    {
+        "title": "Rechercher régulièrement les problèmes liés au cluster",
+        "priority": "Medium",
+        "description": "Exécutez régulièrement la dernière version de l’outil open source kube-advisor pour détecter les problèmes dans votre cluster. Si vous appliquez des quotas de ressources sur un cluster AKS existant, exécutez d’abord kube-advisor pour rechercher les pods dont les demandes et limites de ressources ne sont pas définies.",
+        "details": "L’outil kube-advisor est un projet open source AKS associé qui analyse un cluster Kubernetes et signale les problèmes trouvés. Une vérification utile consiste à identifier les pods dépourvus de demandes et de limites de ressources.",
+        "documentation": [
+          {
+            "title": "Rechercher régulièrement les problèmes liés au cluster avec kube-advisor",
+            "url": "https://docs.microsoft.com/fr-fr/azure/aks/operator-best-practices-scheduler#regularly-check-for-cluster-issues-with-kube-advisor"
+          }
+        ],
+        "tools":[
+          {
+            "title": "Kube-advisor",
+            "url": "https://github.com/azure/kube-advisor"
+          }
+        ],
+        "tags": ["all", "operation"]
+    },
+    {
+      "title": "Monitorez votre cluster",
+      "priority": "High",
+      "description": "Surveillez votre cluster, à l'aide d'outils pour vous assurez la bonne santé de vos clusters, noeuds et pods",
+      "documentation": [
+        {
+          "title": "Azure Monitor pour AKS",
+          "url": "https://docs.microsoft.com/fr-fr/azure/azure-monitor/insights/container-insights-analyze"
+        }
+      ],
+      "tags": ["all", "operation"]
+  }
+]
+

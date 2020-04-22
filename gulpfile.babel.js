@@ -116,7 +116,7 @@ gulp.task('pug-rebuild', ['compile-pug'], () => {
 
 gulp.task('minify-html', () => {
   langs.forEach(lang => {
-    return gulp.src(`./dist/index-en.html`)
+    return gulp.src(`./dist/en.html`)
       .pipe(htmlmin({
         collapseWhitespace: true,
         removeComments: true,
@@ -131,7 +131,7 @@ gulp.task('minify-html', () => {
 
 gulp.task('compile-all-pug', () => {
   langs.forEach(lang => {
-    return gulp.src(`${dirs.src}/views/index-${lang}.pug`)
+    return gulp.src(`${dirs.src}/views/${lang}.pug`)
       .pipe(data(() => {
         return require(`./data/${lang}/_project.json`);
       }))
@@ -278,36 +278,13 @@ gulp.task('browser-reload', () => {
 // MISC
 // ========================================
 
-gulp.task('cdn', () => {
-  langs.forEach(lang => {
-    return gulp.src(`./dist/index-${lang}.html`)
-      .pipe(cdnizer({
-        defaultCDNBase: '//everywhere-8a59.kxcdn.com',
-        allowRev: true,
-        files: [
-          '/scripts/app.bundle.js',
-          '/styles/main.min.css',
-          '/favicon-32x32.png',
-          '/favicon-16x16.png',
-          '/apple-touch-icon.png',
-          '/browserconfig.xml',
-          '/service-worker.js',
-          '/safari-pinned-tab.svg',
-          '/manifest.json',
-          '/img/social/facebook-banner.jpg',
-          '/img/logos/logo-aks-checklist.png',,
-        ]
-      }))
-      .pipe(gulp.dest(dirs.dest));
-    })
-});
 
 gulp.task('clean-dist', () => {
   return del(['./dist'], {force: true});
 });
 
 gulp.task('clean-tmp', () => {
-  return del(['!./dist/index.html', './dist/index-*.html'], {force: true});
+  return del(['!./dist/index.html', './dist/*.html'], {force: true});
 });
 
 

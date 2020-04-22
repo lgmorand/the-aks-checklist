@@ -1,0 +1,96 @@
+[
+   {
+      "title": "Isoler logiquement des clusters",
+      "priority": "Medium",
+      "description": "utilisez une isolation logique pour séparer les équipes et les projets. Essayez de réduire le nombre de clusters AKS physiques que vous déployez pour isoler les équipes ou les applications.",
+      "documentation": [
+        {
+          "title": "Isoler logiquement des clusters",
+          "url": "https://docs.microsoft.com/fr-fr/azure/aks/operator-best-practices-cluster-isolation#logically-isolate-clusters"
+        }
+      ],
+      "tags": ["all"]
+    },
+    {
+      "title": "Isoler physiquement des clusters",
+      "priority": "High",
+      "description": "Réduisez l’utilisation de l’isolation physique pour chaque équipe ou déploiement d’application. ",
+      "documentation": [
+        {
+          "title": "Isoler physiquement des clusters",
+          "url": "https://docs.microsoft.com/fr-fr/azure/aks/operator-best-practices-cluster-isolation#physically-isolate-clusters"
+        }
+      ],
+      "tags": ["all"]
+    },
+    {
+      "title": "Limitation d'adresses IP",
+      "priority": "High",
+      "description": "L'API server est le point central pour interagir avec votre cluster. Pour améliorer la sécurité du cluster et minimiser les attaques, l'API serveur doit seulement être accessible depuis une liste limitée d'adresses IP. ",
+      "documentation": [
+        {
+          "title": "Créer un cluster AKS dont les plages d’adresses IP autorisées du serveur d’API sont activées",
+          "url": "https://docs.microsoft.com/fr-fr/azure/aks/api-server-authorized-ip-ranges"
+        }
+      ],
+      "tags": ["all", "security"]
+    },
+    {
+      "title": "Intégration AAD",
+      "priority": "High",
+      "description": "Azure Kubernetes Service (AKS) can be configured to use Azure Active Directory (Azure AD) for user authentication. In this configuration, you can sign in to an AKS cluster by using your Azure AD authentication token.",
+      "documentation": [
+        {
+          "title": "Integrate Azure Active Directory with Azure Kubernetes Service",
+          "url": "https://docs.microsoft.com/fr-fr/azure/aks/azure-ad-integration"
+        },
+        {
+          "title": "AAD Integration V2",
+          "url": "https://docs.microsoft.com/fr-fr/azure/aks/azure-ad-v2"
+        }
+      ],
+      "tags": ["all", "security"]
+    },
+    {
+      "title": "Cluster privé",
+      "priority": "High",
+      "description": "Dans un cluster privé, le plan de contrôle ou le serveur d’API a des adresses IP internes et n'est pas exposé sur Internet",
+      "detail": "En utilisant un cluster privé, vous pouvez garantir que le trafic réseau entre votre serveur d’API et vos pools de nœuds reste uniquement sur le réseau privé.",
+      "documentation": [
+        {
+          "title": "Créer un cluster privé",
+          "url": "https://docs.microsoft.com/en-us/azure/aks/private-clusters"
+        }
+      ],
+      "tags": ["all", "security"]
+    },
+    {
+      "title": "Activer le cluster autoscaling",
+      "priority": "Medium",
+      "description": "Pour faire face à l’évolution des demandes applicatives, par exemple entre les journées de travail et les soirées ou pendant les week-ends, les clusters ont souvent besoin d’être mis à l’échelle automatiquement. e programme de mise à l’échelle automatique de cluster surveille les pods qui ne peuvent pas être planifiés sur les nœuds en raison de contraintes de ressources",
+      "details": "Vous pouvez activer le module d'autoscaling par pool de noeufs, mais seulement créer un profile mutuel",
+      "documentation": [
+        {
+          "title": "AKS Autoscaler",
+          "url": "https://docs.microsoft.com/en-us/azure/aks/cluster-autoscaler"
+        }
+      ],
+      "tags": ["all", "resources"]
+    },
+    {
+      "title": "Rafraichir les containers lorsque leur image de base est mise à jour",
+      "priority": "Medium",
+      "description": "Comme vous utilisez des images de base pour les images de l’application, utilisez l’automatisation pour générer de nouvelles images lorsque l’image de base est mise à jour. Comme ces images de base incluent généralement des correctifs de sécurité, mettez à jour les images de conteneur d’application en aval.",
+      "documentation": [
+        {
+          "title": "Générer automatiquement les nouvelles images sur la mise à jour de l’image de base",
+          "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-container-image-management#automatically-build-new-images-on-base-image-update"
+        },
+        {
+          "title": "Azure DevOps - Déclencher un workflow l'un d'un update d'une image Docker",
+          "url": "https://dev.to/larryclaman/trigger-azure-devops-build-pipeline-from-docker-image-update-5d3i"
+        }
+      ],
+      "tags": ["all", "resources"]
+    }
+] 

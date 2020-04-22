@@ -65,11 +65,11 @@
     {
       "title": "Provision a log aggregation tool",
       "priority": "High",
-      "description": "To stay current on new features and bug fixes, regularly upgrade to the Kubernetes version in your AKS cluster. Support for kubernetes is current and N-2 versions only",
+      "description": "Ensure that you are always aware of what happens in your cluster. Monitor the health of the cluster (nodes, server) but alors the pods",
       "documentation": [
         {
-          "title": "Regularly update to the latest version of Kubernetes",
-          "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-cluster-security#regularly-update-to-the-latest-version-of-kubernetes"
+          "title": "Azure Monitor pour AKS",
+          "url": "https://docs.microsoft.com/en-us/azure/azure-monitor/insights/container-insights-analyze"
         }
       ],
       "tags": ["all", "operation"]

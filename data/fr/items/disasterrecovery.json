@@ -1,0 +1,60 @@
+[
+      {
+        "title": "Assurez-vous de pouvoir faire un déploiement à blanc",
+        "priority": "High",
+        "description": "Un déploiement à blanc est l'exercice de tout supprimer et de recréer tout d'un coup de manière automatisée et de s'assurer que la plateforme (cluster+ application) est dans un état fonctionnel.",
+        "tags": ["all", "devops"]
+      },
+      {
+        "title": "Utilisez les zones de disponibilité",
+        "priority": "High",
+        "description": "Les clusters AKS déployés à l'aide de zones de disponibilité peuvent répartir les nœuds sur plusieurs zones au sein d'une même région. Par exemple, un cluster dans la région  USA Est 2  peut créer des nœuds dans les trois zones de disponibilité de USA Est 2. Cette distribution des ressources du cluster AKS améliore la disponibilité du cluster car elles résistent aux défaillances d'une zone spécifique.",
+        "documentation": [
+          {
+            "title": "Créer un cluster AKS sur plusieurs zones de disponibilité",
+            "url": "https://docs.microsoft.com/fr-fr/azure/aks/availability-zones#create-an-aks-cluster-across-availability-zones"
+          }
+        ],
+        "tags": ["all", "resiliency"]
+      },
+      {
+        "title": "Planifier le déploiement multirégion",
+        "priority": "Medium",
+        "description": "Quand vous déployez plusieurs clusters AKS, choisissez des régions où AKS est disponible et utilisez des régions appairées.",
+        "documentation": [
+          {
+            "title": "Planifier le déploiement multirégion",
+            "url": "https://docs.microsoft.com/fr-fr/azure/aks/operator-best-practices-multi-region#plan-for-multiregion-deployment"
+          }
+        ],
+        "tags": ["all", "resiliency"]
+      },
+      {
+        "title": "Utiliser Azure Traffic Manager pour router le trafic",
+        "priority": "Low",
+        "description": "Azure Traffic Manager peut diriger les clients vers leur cluster AKS et leur instance d’application les plus proches. Pour optimiser les performances et la redondance, faites transiter l’ensemble du trafic d’application par Traffic Manager avant qu’il parvienne à votre cluster AKS.",
+        "documentation": [
+          {
+            "title": "Utiliser Azure Traffic Manager pour router le trafic",
+            "url": "https://docs.microsoft.com/fr-fr/azure/aks/operator-best-practices-multi-region#use-azure-traffic-manager-to-route-traffic"
+          }
+        ],
+        "tags": ["all", "resiliency","network"]
+      },
+      {
+        "title": "Créer un plan de migration de stockage",
+        "priority": "Low",
+        "description": "Vos applications peuvent utiliser Stockage Azure pour leurs données. Parce que vos applications sont réparties sur plusieurs clusters AKS de différentes régions, le stockage doit rester synchronisé.",
+        "documentation": [
+          {
+            "title": "Créer un plan de migration de stockage",
+            "url": "https://docs.microsoft.com/fr-fr/azure/aks/operator-best-practices-multi-region#create-a-storage-migration-plan"
+          },
+          {
+            "title": "Backup, restore and migrate Kubernetes resources including state to another AKS cluster with Velero",
+            "url": "https://pumpingco.de/blog/backup-and-restore-a-kubernetes-cluster-with-state-using-velero/"
+          }
+        ],
+        "tags": ["all", "resiliency","storage"]
+      }
+]

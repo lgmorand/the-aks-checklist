@@ -6,14 +6,14 @@ mixin checklist-section(options)
   - filter = 'all';
 
   //- Push each section title to build navigation bar
-  - listSections.push(sectionTitle.toLowerCase().replace(' ','-'))
+  - listSections.push(sectionTitle.toLowerCase().split(' ').join('-'))
 
   //- Add a 0 in the array everytime the mixin is called
   - listSectionId.push(sectionId++)
 
 
   //- Section
-  section.s-checklist.js-section(class="s-checklist__" + sectionTitle.toLowerCase().replace(' ','-'), data-section=sectionTitle.toLowerCase().replace(' ','-'), data-section-id=`${listSectionId.length-1}`, id="section-" + sectionTitle.toLowerCase().replace(' ','-'))
+  section.s-checklist.js-section(class="s-checklist__" + sectionTitle.toLowerCase().split(' ').join('-'), data-section=sectionTitle.toLowerCase().split(' ').join('-'), data-section-id=`${listSectionId.length-1}`, id="section-" + sectionTitle.toLowerCase().split(' ').join('-'))
     .s-checklist__inner
       .s-checklist__header
 

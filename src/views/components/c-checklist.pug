@@ -1,9 +1,9 @@
 .c-checklist
 
   //- Grab introduction based on the name of the section
-  if introductions[0][sectionTitle.toLowerCase().replace(' ','-')]
+  if introductions[0][sectionTitle.toLowerCase().split(' ').join('-')]
 
-    each el in introductions[0][sectionTitle.toLowerCase().replace(' ','-')]
+    each el in introductions[0][sectionTitle.toLowerCase().split(' ').join('-')]
 
       p.c-checklist__intro= el
 

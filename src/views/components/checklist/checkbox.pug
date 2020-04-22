@@ -1,4 +1,4 @@
 .c-checklist__column.c-checklist__checkbox
-  input.checkbox(type="checkbox" name=`c-checklist__item-${sectionTitle.toLowerCase().replace('','-')}-${i}` id=`c-checklist__item-${sectionTitle.toLowerCase().replace(' ','-')}-${i}`)
+  input.checkbox(type="checkbox" name=`c-checklist__item-${sectionTitle.toLowerCase().split(' ').join('-')}-${i}` id=`c-checklist__item-${sectionTitle.toLowerCase().split(' ').join('-')}-${i}`)
   +svg-icon.icon.icon-checkbox(data-icon-name='check')
   +svg-icon.icon.icon-checked(data-icon-name='check')
