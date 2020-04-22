@@ -2,7 +2,7 @@
     {
       "title": "Secure the container image",
       "priority": "High",
-      "description": "Scan your container images to ensure there are no malware in it",
+      "description": "Scan your container images to ensure there are no vulnérability in it",
       "documentation": [
         {
           "title": "Azure Security Center : scanning feature (Qualys)",
@@ -31,12 +31,12 @@
           "url": "https://docs.microsoft.com/en-us/azure/governance/policy/concepts/rego-for-aks#built-in-policies"
         },
         {
-          "title":"Using ImagePolicyWebhook",
-          "url":"https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#imagepolicywebhook"
+          "title": "Using ImagePolicyWebhook",
+          "url": "https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#imagepolicywebhook"
         },
         {
-          "title":"Using egress lockdown and authorizing only the URL of your registry",
-          "url":"https://docs.microsoft.com/en-us/azure/aks/limit-egress-traffic"
+          "title": "Using egress lockdown and authorizing only the URL of your registry",
+          "url": "https://docs.microsoft.com/en-us/azure/aks/limit-egress-traffic"
         }
       ],
       "tags": ["all"]

@@ -3,7 +3,7 @@
       "title": "Choose the appropriate network model",
       "priority": "Medium",
       "description": "For integration with existing virtual networks or on-premises networks, use Azure CNI networking in AKS. This network model also allows greater separation of resources and controls in an enterprise environment but be aware of the impact on the network topology/IP ranges",
-      "detail":"While Kubenet is the default kubernetes network plugin, the Container Networking Interface (CNI) is a vendor-neutral protocol that lets the container runtime make requests to a network provider. The Azure CNI assigns IP addresses to pods and nodes, and provides IP address management (IPAM) features as you connect to existing Azure virtual networks. Each node and pod resource receives an IP address in the Azure virtual network, and no additional routing is needed to communicate with other resources or services.",
+      "detail": "While Kubenet is the default Kubernetes network plugin, the Container Networking Interface (CNI) is a vendor-neutral protocol that lets the container runtime make requests to a network provider. The Azure CNI assigns IP addresses to pods and nodes, and provides IP address management (IPAM) features as you connect to existing Azure virtual networks. Each node and pod resource receives an IP address in the Azure virtual network, and no additional routing is needed to communicate with other resources or services.",
       "documentation": [
         {
           "title": "Kubenet vs CNI",
@@ -40,7 +40,7 @@
       "title": "Control traffic flow with network policies",
       "priority": "Medium",
       "description": "Use network policies to allow or deny traffic to pods. By default, all traffic is allowed between pods within a cluster. For improved security, define rules that limit pod communication.",
-      "detail":"Network policy is a Kubernetes feature that lets you control the traffic flow between pods. You can choose to allow or deny traffic based on settings such as assigned labels, namespace, or traffic port. The use of network policies gives a cloud-native way to control the flow of traffic. As pods are dynamically created in an AKS cluster, the required network policies can be automatically applied. Don't use Azure network security groups to control pod-to-pod traffic, use network policies.",
+      "detail": "Network policy is a Kubernetes feature that lets you control the traffic flow between pods. You can choose to allow or deny traffic based on settings such as assigned labels, namespace, or traffic port. The use of network policies gives a cloud-native way to control the flow of traffic. As pods are dynamically created in an AKS cluster, the required network policies can be automatically applied. Don't use Azure network security groups to control pod-to-pod traffic, use network policies.",
       "documentation": [
         {
           "title": "Control traffic flow with network policies",
@@ -55,7 +55,7 @@
       "description": "Start by creating a deny all policy in each namespace and then add specific policies.",
       "documentation": [
         {
-          "title": "Reciptes of best default network policies",
+          "title": "Recipes of best default network policies",
           "url": "https://github.com/ahmetb/kubernetes-network-policy-recipes"
         }
       ],

@@ -1,70 +1,74 @@
 [
    {
-      "title": "Logically isolate cluster",
+      "title": "Isoler logiquement des clusters",
       "priority": "Medium",
-      "description": "Use logical isolation to separate teams and projects. Try to minimize the number of physical AKS clusters you deploy to isolate teams or applications",
+      "description": "utilisez une isolation logique pour séparer les équipes et les projets. Essayez de réduire le nombre de clusters AKS physiques que vous déployez pour isoler les équipes ou les applications.",
       "documentation": [
         {
-          "title": "Isolating cluster",
-          "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-cluster-isolation#logically-isolate-clusters"
+          "title": "Isoler logiquement des clusters",
+          "url": "https://docs.microsoft.com/fr-fr/azure/aks/operator-best-practices-cluster-isolation#logically-isolate-clusters"
         }
       ],
       "tags": ["all"]
     },
     {
-      "title": "Physically isolate cluster",
+      "title": "Isoler physiquement des clusters",
       "priority": "High",
-      "description": "Minimize the use of physical isolation for each separate team or application deployment",
+      "description": "Réduisez l’utilisation de l’isolation physique pour chaque équipe ou déploiement d’application. ",
       "documentation": [
         {
-          "title": "Isolating cluster",
-          "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-cluster-isolation#physically-isolate-clusters"
+          "title": "Isoler physiquement des clusters",
+          "url": "https://docs.microsoft.com/fr-fr/azure/aks/operator-best-practices-cluster-isolation#physically-isolate-clusters"
         }
       ],
       "tags": ["all"]
     },
     {
-      "title": "IP Range authorization",
+      "title": "Limitation d'adresses IP",
       "priority": "High",
-      "description": "The API server is the central way to interact with and manage a cluster. To improve cluster security and minimize attacks, the API server should only be accessible from a limited set of IP address ranges.By using a private cluster, you can ensure that network traffic between your API server and your node pools remains on the private network only. Because the API server has a private address, it means that to access it for administration or for deployment, you need to set up a private connection, like using a 'jumpbox' (i.e.: Azure Bastion)",
+      "description": "L'API server est le point central pour interagir avec votre cluster. Pour améliorer la sécurité du cluster et minimiser les attaques, l'API serveur doit seulement être accessible depuis une liste limitée d'adresses IP. ",
       "documentation": [
         {
-          "title": "Secure access to the API server using authorized IP address ranges",
-          "url": "https://docs.microsoft.com/en-us/azure/aks/api-server-authorized-ip-ranges"
+          "title": "Créer un cluster AKS dont les plages d’adresses IP autorisées du serveur d’API sont activées",
+          "url": "https://docs.microsoft.com/fr-fr/azure/aks/api-server-authorized-ip-ranges"
         }
       ],
       "tags": ["all", "security"]
     },
     {
-      "title": "AAD Integration",
+      "title": "Intégration AAD",
       "priority": "High",
       "description": "Azure Kubernetes Service (AKS) can be configured to use Azure Active Directory (Azure AD) for user authentication. In this configuration, you can sign in to an AKS cluster by using your Azure AD authentication token.",
       "documentation": [
         {
           "title": "Integrate Azure Active Directory with Azure Kubernetes Service",
-          "url": "https://docs.microsoft.com/en-us/azure/aks/azure-ad-integration"
+          "url": "https://docs.microsoft.com/fr-fr/azure/aks/azure-ad-integration"
+        },
+        {
+          "title": "AAD Integration V2",
+          "url": "https://docs.microsoft.com/fr-fr/azure/aks/azure-ad-v2"
         }
       ],
       "tags": ["all", "security"]
     },
     {
-      "title": "Private cluster",
+      "title": "Cluster privé",
       "priority": "High",
-      "description": "In a private cluster, the control plane or API server has internal IP addresses and is not exposed to Internet",
-      "detail": "By using a private cluster, you can ensure that network traffic between your API server and your node pools remains on the private network only. Because the API server has a private address, it means that to access it for administration or for deployment, you need to set up private connection, like using a 'jumpbox' (i.e.: Azure Bastion)",
+      "description": "Dans un cluster privé, le plan de contrôle ou le serveur d’API a des adresses IP internes et n'est pas exposé sur Internet",
+      "detail": "En utilisant un cluster privé, vous pouvez garantir que le trafic réseau entre votre serveur d’API et vos pools de nœuds reste uniquement sur le réseau privé.",
       "documentation": [
         {
-          "title": "Create a private cluster",
+          "title": "Créer un cluster privé",
           "url": "https://docs.microsoft.com/en-us/azure/aks/private-clusters"
         }
       ],
       "tags": ["all", "security"]
     },
     {
-      "title": "Enable cluster autoscaling",
+      "title": "Activer le cluster autoscaling",
       "priority": "Medium",
-      "description": "To keep up with application demands in Azure Kubernetes Service (AKS), you may need to adjust the number of nodes that run your workloads. The cluster autoscaler component can watch for pods in your cluster that can't be scheduled because of resource constraints.",
-      "details":"You can enable autoscaling module per node pool but only create one mutual autoscale profile",
+      "description": "Pour faire face à l’évolution des demandes applicatives, par exemple entre les journées de travail et les soirées ou pendant les week-ends, les clusters ont souvent besoin d’être mis à l’échelle automatiquement. e programme de mise à l’échelle automatique de cluster surveille les pods qui ne peuvent pas être planifiés sur les nœuds en raison de contraintes de ressources",
+      "details": "Vous pouvez activer le module d'autoscaling par pool de noeufs, mais seulement créer un profile mutuel",
       "documentation": [
         {
           "title": "AKS Autoscaler",
@@ -74,16 +78,16 @@
       "tags": ["all", "resources"]
     },
     {
-      "title": "Refresh container when base image is updated",
+      "title": "Rafraichir les containers lorsque leur image de base est mise à jour",
       "priority": "Medium",
-      "description": "As you use base images for application images, use automation to build new images when the base image is updated. As those base images typically include security fixes, update any downstream application container images.",
+      "description": "Comme vous utilisez des images de base pour les images de l’application, utilisez l’automatisation pour générer de nouvelles images lorsque l’image de base est mise à jour. Comme ces images de base incluent généralement des correctifs de sécurité, mettez à jour les images de conteneur d’application en aval.",
       "documentation": [
         {
-          "title": "Automatically build new images on base image update",
+          "title": "Générer automatiquement les nouvelles images sur la mise à jour de l’image de base",
           "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-container-image-management#automatically-build-new-images-on-base-image-update"
         },
         {
-          "title": "Azure DevOps - Trigger pipeline from Docker image update",
+          "title": "Azure DevOps - Déclencher un workflow l'un d'un update d'une image Docker",
           "url": "https://dev.to/larryclaman/trigger-azure-devops-build-pipeline-from-docker-image-update-5d3i"
         }
       ],

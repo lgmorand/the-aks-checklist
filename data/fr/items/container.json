@@ -1,42 +1,42 @@
 [
+  {
+    "title": "Securisez l'image du container",
+    "priority": "High",
+    "description": "Scannez vos images de containers pour s'assurer qu'aucune vulnérabilité s'y trouve",
+    "documentation": [
+      {
+        "title": "Intégration d’Azure Container Registry avec Security Center",
+        "url": "https://docs.microsoft.com/en-us/azure/security-center/azure-container-registry-integration"
+      }
+    ],
+    "tools":[
+      {
+        "title": "Twistlock",
+        "url": "https://www.twistlock.com/"
+      },
+      {
+        "title": "Aqua",
+        "url": "https://www.aquasec.com/"
+      }
+    ],
+    "tags": ["all"]
+  },
     {
-      "title": "Secure the container image",
-      "priority": "High",
-      "description": "Scan your container images to ensure there are no malware in it",
-      "documentation": [
-        {
-          "title": "Azure Security Center : scanning feature (Qualys)",
-          "url": "https://docs.microsoft.com/en-us/azure/security-center/azure-container-registry-integration"
-        }
-      ],
-      "tools":[
-        {
-          "title": "Twistlock",
-          "url": "https://www.twistlock.com/"
-        },
-        {
-          "title": "Aqua",
-          "url": "https://www.aquasec.com/"
-        }
-      ],
-      "tags": ["all"]
-    },
-    {
-      "title": "Allow deploying containers only from known registries",
+      "title": "N'autorisez le déploiement de containers que depuis des registres définis",
       "priority": "Medium",
-      "description": "One of the most common custom policies that you might want to consider is to restrict the images that can be deployed in your cluster. But it can also be addressed with a proper egress lockdown or using an admission controller",
+      "description": "Protégez votre cluster en n'autorisant que les images venant de votre propre cluster. Vous pouvez le faire avec un control des flux sortants ou en utilisant Azure Policy, ou bien encore un admission controller",
       "documentation": [
         {
-          "title": "Use the Azure Policy : Ensure only allowed container images in AKS",
-          "url": "https://docs.microsoft.com/en-us/azure/governance/policy/concepts/rego-for-aks#built-in-policies"
+          "title": "Utilisez Azure Policy : Ensure only allowed container images in AKS",
+          "url": "https://docs.microsoft.com/fr-fr/azure/governance/policy/concepts/rego-for-aks#built-in-policies"
         },
         {
-          "title":"Using ImagePolicyWebhook",
-          "url":"https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#imagepolicywebhook"
+          "title": "Utilisez ImagePolicyWebhook",
+          "url": "https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#imagepolicywebhook"
         },
         {
-          "title":"Using egress lockdown and authorizing only the URL of your registry",
-          "url":"https://docs.microsoft.com/en-us/azure/aks/limit-egress-traffic"
+          "title": "Utilisez un contrôle des flux sortants (egress lockdownà et n'autorisez que l'URL de votre registre",
+          "url": "https://docs.microsoft.com/fr-fr/azure/aks/limit-egress-traffic"
         }
       ],
       "tags": ["all"]

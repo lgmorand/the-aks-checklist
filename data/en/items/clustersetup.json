@@ -26,7 +26,7 @@
     {
       "title": "IP Range authorization",
       "priority": "High",
-      "description": "The API server is the central way to interact with and manage a cluster. To improve cluster security and minimize attacks, the API server should only be accessible from a limited set of IP address ranges.By using a private cluster, you can ensure that network traffic between your API server and your node pools remains on the private network only. Because the API server has a private address, it means that to access it for administration or for deployment, you need to set up a private connection, like using a 'jumpbox' (i.e.: Azure Bastion)",
+      "description": "The API server is the central way to interact with your cluster. To improve cluster security and minimize attacks, the API server should only be accessible from a limited set of IP address ranges.By using a private cluster, you can ensure that network traffic between your API server and your node pools remains on the private network only. Because the API server has a private address, it means that to access it for administration or for deployment, you need to set up a private connection, like using a 'jumpbox' (i.e.: Azure Bastion)",
       "documentation": [
         {
           "title": "Secure access to the API server using authorized IP address ranges",
@@ -43,6 +43,10 @@
         {
           "title": "Integrate Azure Active Directory with Azure Kubernetes Service",
           "url": "https://docs.microsoft.com/en-us/azure/aks/azure-ad-integration"
+        },
+        {
+          "title": "AAD Integration V2",
+          "url": "https://docs.microsoft.com/en-us/azure/aks/azure-ad-v2"
         }
       ],
       "tags": ["all", "security"]
@@ -64,7 +68,7 @@
       "title": "Enable cluster autoscaling",
       "priority": "Medium",
       "description": "To keep up with application demands in Azure Kubernetes Service (AKS), you may need to adjust the number of nodes that run your workloads. The cluster autoscaler component can watch for pods in your cluster that can't be scheduled because of resource constraints.",
-      "details":"You can enable autoscaling module per node pool but only create one mutual autoscale profile",
+      "details": "You can enable autoscaling module per node pool but only create one mutual autoscale profile",
       "documentation": [
         {
           "title": "AKS Autoscaler",
