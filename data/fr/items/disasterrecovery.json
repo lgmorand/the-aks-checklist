@@ -1,67 +1,55 @@
 [
-    {
-        "title": "Enable geo-replication for container images",
-        "priority": "Medium",
-        "description": "Use logical isolation to separate teams and projects. Try to minimize the number of physical AKS clusters you deploy to isolate teams or applications",
-        "documentation": [
-          {
-            "title": "Enable geo-replication for container images",
-            "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-cluster-isolation#logically-isolate-clusters"
-          }
-        ],
-        "tags": ["all", "resiliency"]
-      },
       {
         "title": "Ensure you can perform a whitespace deployment",
         "priority": "High",
         "description": "A whitespace (greenfield) deployment is the exercise to delete everything and to redeploy the whole platform in an automated way.",
         "details": "In case of an emergency, a security flaw or datacenter failure, it's mandatory for you to be able to restore/create a new environment properly configured in a fully automated way",
-        "tags": ["all","devops"]
+        "tags": ["all", "devops"]
       },
       {
-        "title": "Use availability zones",
+        "title": "Utilisez les zones de disponibilité",
         "priority": "High",
-        "description": "An Azure Kubernetes Service (AKS) cluster distributes resources such as the nodes and storage across logical sections of the underlying Azure compute infrastructure. This deployment model makes sure that the nodes run across separate update and fault domains in a single Azure datacenter.",
+        "description": "Les clusters AKS déployés à l'aide de zones de disponibilité peuvent répartir les nœuds sur plusieurs zones au sein d'une même région. Par exemple, un cluster dans la région  USA Est 2  peut créer des nœuds dans les trois zones de disponibilité de USA Est 2. Cette distribution des ressources du cluster AKS améliore la disponibilité du cluster car elles résistent aux défaillances d'une zone spécifique.",
         "documentation": [
           {
-            "title": "Create an AKS cluster across availability zones",
-            "url": "https://docs.microsoft.com/en-us/azure/aks/availability-zones#create-an-aks-cluster-across-availability-zones"
+            "title": "Créer un cluster AKS sur plusieurs zones de disponibilité",
+            "url": "https://docs.microsoft.com/fr-fr/azure/aks/availability-zones#create-an-aks-cluster-across-availability-zones"
           }
         ],
         "tags": ["all", "resiliency"]
       },
       {
-        "title": "Plan for multiregion deployment",
+        "title": "Planifier le déploiement multirégion",
         "priority": "Medium",
-        "description": "When you deploy multiple AKS clusters, choose regions where AKS is available, and use paired regions.",
+        "description": "Quand vous déployez plusieurs clusters AKS, choisissez des régions où AKS est disponible et utilisez des régions appairées.",
         "documentation": [
           {
-            "title": "Plan for multiregion deployment",
-            "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-multi-region#plan-for-multiregion-deployment"
+            "title": "Planifier le déploiement multirégion",
+            "url": "https://docs.microsoft.com/fr-fr/azure/aks/operator-best-practices-multi-region#plan-for-multiregion-deployment"
           }
         ],
         "tags": ["all", "resiliency"]
       },
       {
-        "title": "Use Azure Traffic Manager to route traffic",
+        "title": "Utiliser Azure Traffic Manager pour router le trafic",
         "priority": "Low",
-        "description": "Azure Traffic Manager can direct customers to their closest AKS cluster and application instance. For the best performance and redundancy, direct all application traffic through Traffic Manager before it goes to your AKS cluster.",
+        "description": "Azure Traffic Manager peut diriger les clients vers leur cluster AKS et leur instance d’application les plus proches. Pour optimiser les performances et la redondance, faites transiter l’ensemble du trafic d’application par Traffic Manager avant qu’il parvienne à votre cluster AKS.",
         "documentation": [
           {
-            "title": "Traffic Manager and AKS",
-            "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-multi-region#use-azure-traffic-manager-to-route-traffic"
+            "title": "Utiliser Azure Traffic Manager pour router le trafic",
+            "url": "https://docs.microsoft.com/fr-fr/azure/aks/operator-best-practices-multi-region#use-azure-traffic-manager-to-route-traffic"
           }
         ],
         "tags": ["all", "resiliency","network"]
       },
       {
-        "title": "Create a storage migration plan",
+        "title": "Créer un plan de migration de stockage",
         "priority": "Low",
-        "description": "Your applications might use Azure Storage for their data. Because your applications are spread across multiple AKS clusters in different regions, you need to keep the storage synchronized",
+        "description": "Vos applications peuvent utiliser Stockage Azure pour leurs données. Parce que vos applications sont réparties sur plusieurs clusters AKS de différentes régions, le stockage doit rester synchronisé.",
         "documentation": [
           {
-            "title": "Create a storage migration plan",
-            "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-multi-region#create-a-storage-migration-plan"
+            "title": "Créer un plan de migration de stockage",
+            "url": "https://docs.microsoft.com/fr-fr/azure/aks/operator-best-practices-multi-region#create-a-storage-migration-plan"
           },
           {
             "title": "Backup, restore and migrate Kubernetes resources including state to another AKS cluster with Velero",

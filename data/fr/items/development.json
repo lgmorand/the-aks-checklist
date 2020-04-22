@@ -2,7 +2,7 @@
   {
     "title": "Implémentez une sonde Live",
     "priority": "High",
-    "description": "Many applications running for long periods of time eventually transition to broken states, and cannot recover except by being restarted. Kubernetes provides liveness probes to detect and remedy such situations. The probe is here to tell Kubernetes to restart your pod when it is not responding anymore",
+    "description": "De nombreuses applications exécutées pendant de longues périodes finissent par passer à des états défectueux et ne peuvent pas récupérer, sauf en étant redémarrées. Kubernetes fournit des sondes de vivacité pour détecter et remédier à de telles situations. La sonde est là pour dire à Kubernetes de redémarrer votre pod quand il ne répond plus",
     "documentation": [
       {
         "title": "Configure Liveness, Readiness probes",
@@ -14,8 +14,7 @@
   {
     "title": "Implémentez une sonde Ready",
     "priority": "Medium",
-    "description": "Understand the needs of your application to pick the right storage. Use high performance, SSD-backed storage for production workloads. Plan for network-based storage when there is a need for multiple concurrent connections.",
-    "detail": "Sometimes, applications are temporarily unable to serve traffic. For example, an application might need to load large data or configuration files during startup, or depend on external services after startup. In such cases, you don’t want to kill the application, but you don’t want to send it requests either. Kubernetes provides readiness probes to detect and mitigate these situations. A pod with containers reporting that they are not ready does not receive traffic through Kubernetes Services.",
+    "description": "Parfois, les applications sont temporairement incapables de gérer le trafic. Par exemple, une application peut avoir besoin de charger de gros fichiers de données ou de configuration lors du démarrage, ou dépendre de services externes après le démarrage. Dans de tels cas, vous ne voulez pas tuer l'application, mais vous ne voulez pas non plus lui envoyer de demandes. Kubernetes fournit des sondes de préparation pour détecter et atténuer ces situations. Un module contenant des conteneurs signalant qu'ils ne sont pas prêts ne reçoit pas de trafic via les services Kubernetes.",
     "documentation": [
       {
         "title": "Configure Liveness, Readiness probes",
@@ -49,9 +48,9 @@
     "tags": ["all", "development"]
   },
   {
-    "title": "Implement autoscaling of your applications",
+    "title": "Implémentez l'autoscaling sur vos applications",
     "priority": "Low",
-    "description": "The Horizontal Pod Autoscaler automatically scales the number of pods based on observed CPU utilization",
+    "description": "Le module d'autoscaling horizontal (HPA -Horizontal Pod Autoscaler) augmente et réduit automatiquement le nombre des pods en se basant sur la consommation CPU et mémoire de votre application",
     "documentation": [
       {
         "title": "Horizontal Pod Autoscaler",
@@ -61,9 +60,9 @@
     "tags": ["all", "resiliency"]
   },
   {
-    "title": "Store your secrets in Azure Keyvault",
+    "title": "Stockez vos secrets dans Azure KeyVault",
     "priority": "Medium",
-    "description": "Secrets are not encrypted in etcd, prefer to store your secrets in a proper HSM like Azure KeyVault. You can then inject secrets using FlexVolume.",
+    "description": "Les secrets ne sont pas chiffrés dans la base etcd, prefer to store your secrets in a proper HSM like Azure KeyVault. You can then inject secrets using FlexVolume.",
     "documentation": [
       {
         "title": "Keyvault and flex volumes",
@@ -73,22 +72,22 @@
     "tags": ["all", "security"]
   },
   {
-    "title": "Implement Pod Identity",
+    "title": "Implémentez Pod Identity",
     "priority": "Medium",
-    "description": "Don't use fixed credentials within pods or container images, as they are at risk of exposure or abuse. Instead, use pod identities to automatically request access using a central Azure AD identity solution",
-    "detail": "When pods need access to other Azure services, such as Cosmos DB, Key Vault, or Blob Storage, the pod needs access credentials. These access credentials could be defined with the container image or injected as a Kubernetes secret, but need to be manually created and assigned. Often, the credentials are reused across pods, and aren't regularly rotated. Managed identities for Azure resources (currently implemented as an associated AKS open source project) let you automatically request access to services through Azure AD. You don't manually define credentials for pods, instead they request an access token in real time, and can use it to access only their assigned services.",
+    "description": "N'utilisez pas d'informations d'identification fixes dans les pods ou les images de conteneurs, car ils risquent d'être exposés ou abusés. Utilisez plutôt des identités de pod pour demander automatiquement l'accès à l'aide d'une solution d'identité Azure AD centrale",
+    "detail": "Lorsque les pods ont besoin d'accéder à d'autres services Azure, tels que Cosmos DB, Key Vault ou Blob Storage, le pod a besoin d'informations d'identification d'accès. Ces informations d'identification d'accès peuvent être définies avec l'image du conteneur ou injectées en tant que secret Kubernetes, mais doivent être créées et attribuées manuellement. Souvent, les informations d'identification sont réutilisées sur plusieurs pods et ne sont pas régulièrement tournées. Les identités gérées pour les ressources Azure (actuellement implémentées en tant que projet open source AKS associé) vous permettent de demander automatiquement l'accès aux services via Azure AD. Vous ne définissez pas manuellement les informations d'identification pour les pods, ils demandent plutôt un jeton d'accès en temps réel et peuvent l'utiliser pour accéder uniquement aux services qui leur sont attribués.",
     "documentation": [
       {
-        "title": "Use pod identity",
-        "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-identity#use-pod-identities"
+        "title": "Utilisez pod identity",
+        "url": "https://docs.microsoft.com/fr-fr/azure/aks/operator-best-practices-identity#use-pod-identities"
       }
     ],
     "tags": ["all", "security"]
   },
   {
-    "title": "Use Kubernetes namespaces to properly isolate your Kubernetes resources",
+    "title": "Utilisez les espaces de noms de Kubernetes pour isoler vos ressources",
     "priority": "Medium",
-    "description": "Namespaces give you the ability to create logical partitions and enforce separation of your resources as well as limit the scope of user permissions. Don't forget not to use the Default namespace",
+    "description": "Les espaces de noms vous permettent de créer des partitions logiques et d'appliquer la séparation de vos ressources, ainsi que de limiter la portée des autorisations utilisateur. N'oubliez pas de ne pas utiliser l'espace de noms par défaut",
     "documentation": [
       {
         "title": "Namespaces",
@@ -98,9 +97,9 @@
     "tags": ["all", "security"]
   },
   {
-    "title": "Set up requests and limits on your containers",
+    "title": "Définissez des demandes et limites (de ressources) sur vos containers",
     "priority": "High",
-    "description": "When Containers have resource requests specified, the scheduler can make better decisions about which nodes to place Pods on. And when Containers have their limits specified, contention for resources on a node can be handled in a specified manner.",
+    "description": "Lorsque les containeurs ont des requêtes de ressources définies, le scheduler peut prendre des décisions optimisisés quant au noeud sur lesquels les déployer. Lorsque les containeurs ont des limites, Kuernetes peut alors contrôler les ressources allouées.",
     "documentation": [
       {
         "title": "Managing Compute Resources for Containers",

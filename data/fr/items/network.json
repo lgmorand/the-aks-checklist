@@ -1,74 +1,74 @@
 [
     {
-      "title": "Choose the appropriate network model",
+      "title": "Choisir le modèle réseau adapté",
       "priority": "Medium",
-      "description": "For integration with existing virtual networks or on-premises networks, use Azure CNI networking in AKS. This network model also allows greater separation of resources and controls in an enterprise environment but be aware of the impact on the network topology/IP ranges",
-      "detail": "While Kubenet is the default Kubernetes network plugin, the Container Networking Interface (CNI) is a vendor-neutral protocol that lets the container runtime make requests to a network provider. The Azure CNI assigns IP addresses to pods and nodes, and provides IP address management (IPAM) features as you connect to existing Azure virtual networks. Each node and pod resource receives an IP address in the Azure virtual network, and no additional routing is needed to communicate with other resources or services.",
+      "description": " Pour une intégration avec des réseaux virtuels existants ou des réseaux locaux, utilisez la mise en réseau Azure CNI dans AKS. Ce modèle réseau offre également une meilleure séparation des ressources et plus de contrôle dans un environnement d’entreprise",
+      "detail": "L’interface Azure CNI est un protocole indépendant du fournisseur qui permet au runtime du conteneur d’adresser des demandes à un fournisseur de réseau. Elle affecte des adresses IP aux pods et aux nœuds et offre des fonctionnalités de Gestion des adresses IP (IPAM) pour la connexion à des réseaux virtuels Azure existants. Chaque ressource de type nœud ou pod reçoit une adresse IP dans le réseau virtuel Azure, sans qu’aucun routage supplémentaire soit nécessaire pour communiquer avec d’autres ressources ou services.",
       "documentation": [
         {
           "title": "Kubenet vs CNI",
-          "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-network#choose-the-appropriate-network-model"
+          "url": "https://docs.microsoft.com/fr-fr/azure/aks/operator-best-practices-network#choose-the-appropriate-network-model"
         }
       ],
       "tags": ["all", "network"]
     },
     {
-      "title": "Distribute ingress traffic",
+      "title": "Distribuer le trafic d’entrée",
       "priority": "Medium",
-      "description": "To distribute HTTP or HTTPS traffic to your applications, use ingress resources and controllers. Ingress controllers provide additional features over a regular Azure load balancer, and can be managed as native Kubernetes resources.",
+      "description": "Pour répartir le trafic HTTP ou HTTPS sur vos applications, utilisez des contrôleurs et des ressources d’entrée. Les contrôleurs d’entrée offrent des fonctionnalités supplémentaires par rapport à un équilibreur de charge Azure standard. Ils peuvent être gérés comme des ressources Kubernetes natives.",
       "documentation": [
         {
-          "title": "Distribute ingress traffic",
-          "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-network#distribute-ingress-traffic"
+          "title": "Distribuer le trafic d’entrée",
+          "url": "https://docs.microsoft.com/fr-fr/azure/aks/operator-best-practices-network#distribute-ingress-traffic"
         }
       ],
       "tags": ["all", "network"]
     },
     {
-      "title": "Secure your exposed applications with a web application firewall (WAF)",
+      "title": "Sécuriser le trafic avec un pare-feu d’applications web (WAF)",
       "priority": "Medium",
-      "description": "If you plan to host exposed applications, to scan incoming traffic for potential attacks, use a web application firewall (WAF) such as Barracuda WAF for Azure or Azure Application Gateway. These more advanced network resources can also route traffic beyond just HTTP and HTTPS connections or basic SSL termination.",
+      "description": "Pour analyser le risque d’attaques dans le trafic, utilisez un pare-feu d’applications web (WAF) comme Barracuda pour Azure ou Azure Application Gateway. Ces ressources réseau plus avancées peuvent également acheminer le trafic au-delà des connexions HTTP et HTTPS et de l’arrêt SSL de base.",
       "documentation": [
         {
-          "title": "Secure traffic with a web application firewall (WAF)",
-          "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-network#secure-traffic-with-a-web-application-firewall-waf"
+          "title": "Sécuriser le trafic avec un pare-feu d’applications web (WAF)",
+          "url": "https://docs.microsoft.com/fr-fr/azure/aks/operator-best-practices-network#secure-traffic-with-a-web-application-firewall-waf"
         }
       ],
       "tags": ["all", "network"]
     },
     {
-      "title": "Control traffic flow with network policies",
+      "title": "Contrôler le flux de trafic avec des stratégies réseau",
       "priority": "Medium",
-      "description": "Use network policies to allow or deny traffic to pods. By default, all traffic is allowed between pods within a cluster. For improved security, define rules that limit pod communication.",
-      "detail":"Network policy is a Kubernetes feature that lets you control the traffic flow between pods. You can choose to allow or deny traffic based on settings such as assigned labels, namespace, or traffic port. The use of network policies gives a cloud-native way to control the flow of traffic. As pods are dynamically created in an AKS cluster, the required network policies can be automatically applied. Don't use Azure network security groups to control pod-to-pod traffic, use network policies.",
+      "description": "Utilisez des stratégies réseau pour autoriser ou refuser le trafic vers les pods. Par défaut, tout le trafic est autorisé entre les pods au sein d’un cluster. Pour une sécurité accrue, définissez des règles qui limitent la communication des pods.",
+      "detail": "Network policy is a Kubernetes feature that lets you control the traffic flow between pods. You can choose to allow or deny traffic based on settings such as assigned labels, namespace, or traffic port. The use of network policies gives a cloud-native way to control the flow of traffic. As pods are dynamically created in an AKS cluster, the required network policies can be automatically applied. Don't use Azure network security groups to control pod-to-pod traffic, use network policies.",
       "documentation": [
         {
-          "title": "Control traffic flow with network policies",
-          "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-network#control-traffic-flow-with-network-policies"
+          "title": "Contrôler le flux de trafic avec des stratégies réseau",
+          "url": "https://docs.microsoft.com/fr-fr/azure/aks/operator-best-practices-network#control-traffic-flow-with-network-policies"
         }
       ],
       "tags": ["all", "network"]
     },
     {
-      "title": "Configure default network policies in each namespace",
+      "title": "Configurez des ^politiques réseau par défaut dans chaque espace de nom",
       "priority": "Medium",
-      "description": "Start by creating a deny all policy in each namespace and then add specific policies.",
+      "description": "Commencez par créer des politiques réseau 'Deny All' dans chaque espace de nom, puis ajoutez les politiques réseau spécifiques dont ont besoin vos applications.",
       "documentation": [
         {
-          "title": "Recipes of best default network policies",
+          "title": "Recettes des meilleurs politiques réseau par défaut",
           "url": "https://github.com/ahmetb/kubernetes-network-policy-recipes"
         }
       ],
       "tags": ["all", "network"]
     },
     {
-      "title": "Prevent data-leaking with egress lockdown",
+      "title": "Protégez-vous du data-leaking avec l'egress lockdown",
       "priority": "Medium",
-      "description": "Use Azure Firewall to secure and control all egress traffic going outside of the cluster.",
+      "description": "Uitlisez Azure Firewall pour sécuriser et contrôler tout le traffic sortant de votre cluster.",
       "documentation": [
         {
-          "title": "Egress traffic requirements",
-          "url": "https://docs.microsoft.com/en-us/azure/aks/limit-egress-traffic"
+          "title": "Contrôler le trafic de sortie pour les nœuds de cluster dans Azure Kubernetes Service",
+          "url": "https://docs.microsoft.com/fr-fr/azure/aks/limit-egress-traffic"
         }
       ],
       "tags": ["all", "network", "security"]

@@ -22,9 +22,10 @@ Be aware that we want to keep a list an exhaustive as possible but also a list w
 There are up to four steps:
 
 - copy the folder **/data/en** and translate all information
+- in the localized files, modify the URL to target your langage (i.e: docs.microsoft.com/**YOURLANG**/link)
 - copy the file **src/views/en.html** and translate it
 - ensure that a flag is existing for your language (**/src/img/flags**)
-- in the localized files, modify the URL to target your langage (i.e: docs.microsoft.com/**YOURLANG**/link)
+- add a link for your lang in the header (**src/view/base/header.pug**)
 
 ## Thanks
 
