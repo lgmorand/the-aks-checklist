@@ -1,4 +1,4 @@
-name:  Validation Build (deploy on staging)
+name:  Build and deploy on prod
 
 on:
   push:

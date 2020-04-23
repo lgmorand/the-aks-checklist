@@ -1,4 +1,4 @@
-name: Build and deploy on prod
+name: Validation Build (deploy on staging)
 
 on:
   pull_request:
