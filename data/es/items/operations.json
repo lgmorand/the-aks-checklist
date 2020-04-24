@@ -1,0 +1,77 @@
+[
+    {
+        "title": "Actualización regular a la versión más reciente de Kubernetes",
+        "priority": "Medium",
+        "description": "Para mantenerse al día de las nuevas características y correcciones de errores, actualice regularmente la versión de Kubernetes en el clúster de AKS.",
+        "documentation": [
+          {
+            "title": "Actualización regular a la versión más reciente de Kubernetes",
+            "url": "https://docs.microsoft.com/es-es/azure/aks/operator-best-practices-cluster-security#regularly-update-to-the-latest-version-of-kubernetes"
+          }
+        ],
+        "tags": ["all", "operation", "security"]
+    },
+    {
+        "title": "Proceso de las actualizaciones y reinicios de nodos Linux con kured",
+        "priority": "Medium",
+        "description": "AKS descarga e instala automáticamente correcciones de seguridad en cada uno de los nodos Linux, pero no se reinicia automáticamente si es necesario. Use kured para prestar atención a los reinicios pendientes, luego acordone y drene el nodo de forma segura para permitir que se reinicie, se apliquen las actualizaciones y esté lo más seguro posible con respecto al sistema operativo. Para los nodos de Windows Server (actualmente en versión preliminar de AKS), realice periódicamente una operación de actualización de AKS para acordonar y drenar los pods de forma segura, e implemente los nodos actualizados.",
+        "detail": "",
+        "documentation": [
+          {
+            "title": "Proceso de las actualizaciones y reinicios de nodos Linux con kured",
+            "url": "https://docs.microsoft.com/es-es/azure/aks/operator-best-practices-cluster-security#process-linux-node-updates-and-reboots-using-kured"
+          }
+        ],
+        "tools":[
+          {
+            "title": "Kured (KUbernetes REboot Daemon)",
+            "url": "https://github.com/weaveworks/kured"
+          }
+        ],
+        "tags": ["all", "operation", "security"]
+    },
+    {
+        "title": "Conexión segura a los nodos mediante una pasarela de aplicaciones",
+        "priority": "Medium",
+        "description": "No exponga la conectividad remota a los nodos de AKS. Cree una pasarela de aplicaciones, o host jump, en una red virtual de administración. Utilice la pasarela de aplicaciones para enrutar el tráfico de forma segura en el clúster de AKS para las tareas de administración remota.",
+        "detail": "",
+        "documentation": [
+          {
+            "title": "Conexión segura a los nodos mediante una pasarela de aplicaciones",
+            "url": "https://docs.microsoft.com/es-es/azure/aks/operator-best-practices-network#securely-connect-to-nodes-through-a-bastion-host"
+          }
+        ],
+        "tags": ["all", "operation", "security"]
+    },
+    {
+        "title": "Revisión regular de problemas en el clúster",
+        "priority": "Medium",
+        "description": "Ejecute de forma periódica la versión más reciente de la herramienta de código abierto kube-advisor para detectar problemas en el clúster. Si aplica cuotas de recursos en un clúster de AKS existente, en primer lugar, ejecute kube-advisor para buscar los pods que no tienen definidos los límites y las solicitudes de recursos.",
+        "documentation": [
+          {
+            "title": "Comprobación de forma periódica de problemas de clúster con kube-advisor",
+            "url": "https://docs.microsoft.com/es-es/azure/aks/operator-best-practices-scheduler#regularly-check-for-cluster-issues-with-kube-advisor"
+          }
+        ],
+        "tools":[
+          {
+            "title": "Kube-advisor",
+            "url": "https://github.com/azure/kube-advisor"
+          }
+        ],
+        "tags": ["all", "operation"]
+    },
+    {
+      "title": "Provisione una herramienta de agregación de logs",
+      "priority": "High",
+      "description": "Asegurese de siempre estar al tanto de lo que está sucediendo en el clúster. Monitoree la salud del clúster (nodos, servidor) y también los pods.",
+      "documentation": [
+        {
+          "title": "Supervisión del rendimiento del clúster de Kubernetes con Azure Monitor para contenedores",
+          "url": "https://docs.microsoft.com/es-es/azure/azure-monitor/insights/container-insights-analyze"
+        }
+      ],
+      "tags": ["all", "operation"]
+  }
+]
+

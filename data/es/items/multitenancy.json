@@ -1,0 +1,28 @@
+[
+      {
+        "title": "Replicación geográfica en Azure Container Registry",
+        "priority": "Medium",
+        "description": "Las empresas que quieran tener una presencia local o una copia de seguridad activa, pueden optar por ejecutar servicios desde varias regiones de Azure. ",
+        "details": "Como procedimiento recomendado, si coloca un registro de contenedor en cada región donde se ejecuten imágenes, podrá realizar operaciones cercanas a la red y habilitar transferencias de capa de imagen rápidamente y de forma fiable. La replicación geográfica permite que un registro de contenedor de Azure funcione como un registro único que atienda a varias regiones con varios registros regionales maestros.",
+        "documentation": [
+          {
+            "title": "Configuración de la replicación geográfica",
+            "url": "https://docs.microsoft.com/es-es/azure/container-registry/container-registry-geo-replication"
+          }
+        ],
+        "tags": ["all", "resiliency"]
+      },
+      {
+        "title": "Use el Azure Traffic Manager para dirigir tráfico",
+        "priority": "Medium",
+        "description": "Azure Traffic Manager puede dirigir a los clientes a la instancia de la aplicación y los clústeres de AKS más próxima. Para conseguir los máximos niveles de rendimiento y redundancia, dirija todo el tráfico de la aplicación con Traffic Manager antes de que pase al clúster de AKS.",
+        "details": "Si tiene varios clústeres de AKS en distintas regiones, use Traffic Manager para controlar cómo fluye el tráfico a las aplicaciones que se ejecutan en cada clúster. Azure Traffic Manager es un equilibrador de carga de tráfico basado en DNS que puede distribuir el tráfico de red entre regiones. Use Traffic Manager para enrutar a los usuarios en función del tiempo de respuesta del clúster o de la ubicación geográfica.",
+        "documentation": [
+          {
+            "title": "Uso de Azure Traffic Manager para enrutar el tráfico",
+            "url": "https://docs.microsoft.com/es-es/azure/aks/operator-best-practices-multi-region#use-azure-traffic-manager-to-route-traffic"
+          }
+        ],
+        "tags": ["all","networking", "resiliency"]
+      }
+]

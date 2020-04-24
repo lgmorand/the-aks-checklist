@@ -65,7 +65,7 @@
     {
       "title": "Provision a log aggregation tool",
       "priority": "High",
-      "description": "Ensure that you are always aware of what happens in your cluster. Monitor the health of the cluster (nodes, server) but alors the pods",
+      "description": "Ensure that you are always aware of what happens in your cluster. Monitor the health of the cluster (nodes, server) but also the pods",
       "documentation": [
         {
           "title": "Azure Monitor pour AKS",

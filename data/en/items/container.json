@@ -2,7 +2,7 @@
     {
       "title": "Secure the container image",
       "priority": "High",
-      "description": "Scan your container images to ensure there are no vulnérability in it",
+      "description": "Scan your container images to ensure there are no vulnerabilities in it",
       "documentation": [
         {
           "title": "Azure Security Center : scanning feature (Qualys)",

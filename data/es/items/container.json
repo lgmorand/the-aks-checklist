@@ -1,0 +1,44 @@
+[
+  {
+    "title": "Asegurar las imágenes de los contenedores",
+    "priority": "High",
+    "description": "Escanea tus imágenes de contenedores para asegurar que no tenga vulnerabilidades en ellas.",
+    "documentation": [
+      {
+        "title": "Integración de Azure Container Registry con Security Center(Qualys)",
+        "url": "https://docs.microsoft.com/es-es/azure/security-center/azure-container-registry-integration"
+      }
+    ],
+    "tools":[
+      {
+        "title": "Twistlock",
+        "url": "https://www.twistlock.com/"
+      },
+      {
+        "title": "Aqua",
+        "url": "https://www.aquasec.com/"
+      }
+    ],
+    "tags": ["all"]
+  },
+  {
+    "title": "Permitir el despliegue de contenedores solamente de registros conocidos",
+    "priority": "Medium",
+    "description": "Una de las políticas mas comunes que debería considerar es restringir que imágenes de contenedores pueden ser desplegadas en el clúster. También puede ser resuelto restringiendo de manera adecuada el egreso de tráfico usando un controlador de admisión.",
+    "documentation": [
+      {
+        "title": "Integración Azure Policy: Asegurar solamente imágenes permitidas en AKS",
+        "url": "https://docs.microsoft.com/es-es/azure/governance/policy/concepts/rego-for-aks#built-in-policies"
+      },
+      {
+        "title": "Usando ImagePolicyWebhook",
+        "url": "https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#imagepolicywebhook"
+      },
+      {
+        "title": "Usando el control de egreso y autorizando solamente la URL de nuestro registro",
+        "url": "https://docs.microsoft.com/es-es/azure/aks/limit-egress-traffic"
+      }
+    ],
+    "tags": ["all"]
+  }
+]
