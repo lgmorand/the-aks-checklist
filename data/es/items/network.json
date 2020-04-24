@@ -1,0 +1,75 @@
+[
+    {
+      "title": "Elección del modelo de red adecuado",
+      "priority": "Medium",
+      "description": "Para la integración con redes virtuales existentes o redes locales, use las redes de Azure CNI en AKS. Este modelo de red también permite mayor separación de los recursos y los controles en un entorno empresarial.",
+      "detail": "Las redes virtuales proporcionan conectividad básica para que los nodos de AKS y los clientes accedan a las aplicaciones. Hay dos maneras diferentes de implementar los clústeres de AKS en redes virtuales: Kubenet y Azure CNI",
+      "documentation": [
+        {
+          "title": "Kubenet vs Azure CNI",
+          "url": "https://docs.microsoft.com/es-es/azure/aks/operator-best-practices-network#choose-the-appropriate-network-model"
+        }
+      ],
+      "tags": ["all", "networking"]
+    },
+    {
+      "title": "Distribución del tráfico de entrada(Ingress Controller)",
+      "priority": "Medium",
+      "description": "Para distribuir el tráfico HTTP o HTTPS a las aplicaciones, use los recursos y los controladores de entrada. Los controladores de entrada proporcionan características adicionales a las de un equilibrador de carga de Azure común y se pueden administrar como recursos nativos de Kubernetes.",
+      "documentation": [
+        {
+          "title": "Distribución del tráfico de entrada",
+          "url": "https://docs.microsoft.com/es-es/azure/aks/operator-best-practices-network#distribute-ingress-traffic"
+        }
+      ],
+      "tags": ["all", "networking"]
+    },
+    {
+      "title": "Aseugre sus aplicaciones con firewall de aplicación (WAF)",
+      "priority": "Medium",
+      "description": "Para analizar el tráfico entrante en busca de posibles ataques, use un firewall de aplicaciones web (WAF) como Barracuda WAF para Azure o Azure Application Gateway. Estos recursos de red más avanzados también pueden enrutar el tráfico más allá de las conexiones HTTP y HTTPS sencillas o la terminación SSL básica.",
+      "documentation": [
+        {
+          "title": "Protección del tráfico con un firewall de aplicaciones web (WAF)",
+          "url": "https://docs.microsoft.com/es-es/azure/aks/operator-best-practices-network#secure-traffic-with-a-web-application-firewall-waf"
+        }
+      ],
+      "tags": ["all", "networking"]
+    },
+    {
+      "title": "Control del flujo de tráfico con directivas de red",
+      "priority": "Medium",
+      "description": "use directivas de red para permitir o denegar el tráfico a los pods. De forma predeterminada, se permite todo el tráfico entre los pods dentro de un clúster. Para mejorar la seguridad, defina reglas que limiten la comunicación del pod. La directiva de red es una característica de Kubernetes que permite controlar el flujo de tráfico entre pods. Puede permitir o denegar el tráfico según la configuración como etiquetas asignadas, espacio de nombres o puerto de tráfico. El uso de directivas de red proporciona una manera nativa en la nube para controlar el flujo de tráfico. Como los pods se crean dinámicamente en un clúster de AKS, se pueden aplicar automáticamente las directivas de red necesarias. No use grupos de seguridad de red de Azure para controlar el tráfico de pod a pod, use las directivas de red.",
+      "documentation": [
+        {
+          "title": "Control del flujo de tráfico con directivas de red",
+          "url": "https://docs.microsoft.com/es-es/azure/aks/operator-best-practices-network#control-traffic-flow-with-network-policies"
+        }
+      ],
+      "tags": ["all", "networking"]
+    },
+    {
+      "title": "Configure políticas de red por defecto en cada namespace",
+      "priority": "Medium",
+      "description": "Empiece por la política de denegar todo en cada namespace y luego agregue políticas específicas. ",
+      "documentation": [
+        {
+          "title": "Recetas de las mejores políticas de red por defecto",
+          "url": "https://github.com/ahmetb/kubernetes-network-policy-recipes"
+        }
+      ],
+      "tags": ["all", "networking"]
+    },
+    {
+      "title": "Prevenga la perdida de datos controlando el egreso de tráfico",
+      "priority": "Medium",
+      "description": "De forma predeterminada, los clústeres de AKS tienen acceso de salida a Internet ilimitado. Este nivel de acceso a la red permite que los nodos y servicios que ejecuta accedan a recursos externos según sea necesario. Si desea restringir el tráfico de salida, es necesario el acceso a un número limitado de puertos y direcciones para mantener las tareas de mantenimiento del clúster en buen estado. De manera predeterminada, el clúster se configura para que solo use las imágenes de contenedor del sistema base de Microsoft Container Registry (MCR) o Azure Container Registry (ACR). Configure las reglas de seguridad y de firewall que prefiera para permitir estos puertos y direcciones necesarios.",
+      "documentation": [
+        {
+          "title": "Control del tráfico de salida de los nodos de clúster en Azure Kubernetes Service (AKS)",
+          "url": "https://docs.microsoft.com/es-es/azure/aks/limit-egress-traffic"
+        }
+      ],
+      "tags": ["all", "networking", "security"]
+    }
+]
