@@ -17,7 +17,7 @@ The AKS Checklist is a (tentatively) exhaustive list of all elements you need to
 
 ## How to contribute
 
-Just do a pull request ** on the staging branch** ;-)
+Just do a pull request **on the staging branch** ;-)
 Be aware that we want to keep a list an exhaustive as possible but also a list which met common usage. Depending on your context, you may have custom best practices which may just apply in your case.
 
 ## How to add a translation

@@ -4,7 +4,7 @@
   "URL_WEBSITE": "https://aka.ms/aks-checklist",
   "SITE_TAGLINE": "The AKS Checklist - le meilleur moyen de vous assurer que votre cluster est production-ready!",
   "SITE_DESCRIPTION": "Le meilleur moyen de vous assurer que votre cluster est production-ready!",
-  "SITE_VERSION":"Dernière mise à jour: 18 April 2020",
+  "SITE_VERSION":"Dernière mise à jour: ",
   "SITE_LANGUAGE": "fr",
   "SITE_DIRECTION": "ltr",
   "URL_GITHUB_ROOT": "http://github.com/lgmorand/aks-checklist",
@@ -21,15 +21,15 @@
     "JAVASCRIPT_DESACTIVATE": "Your JavaScript seems to be deactivated. Please enable your JavaScript to use all features of the AKS Checklist."
   },
   "form": {
-    "LABEL_PROJECT_NAME": "Project Name",
-    "TITLE_PROJECT_NAME": "Type the name of your project",
-    "LABEL_PAGE_TITLE": "Page title or URL",
-    "TITLE_PAGE_TITLE": "Type the name of your page or URL",
-    "LABEL_DEVELOPER_NAME": "Developer's name or team",
-    "TITLE_DEVELOPER_NAME": "Type your name or the name of your team",
-    "LABEL_SEARCH": "Search",
-    "BUTTON_START_NEW": "Start new checklist",
-    "BUTTON_GENERATE_PRINT": "Generate report"
+    "LABEL_PROJECT_NAME": "Nom du projet",
+    "TITLE_PROJECT_NAME": "Tapez le nom de votre projet",
+    "LABEL_PAGE_TITLE": "Titre de page",
+    "TITLE_PAGE_TITLE": "Tapez le nom de votre page",
+    "LABEL_DEVELOPER_NAME": "Nom de l'équipe",
+    "TITLE_DEVELOPER_NAME": "Nom de votre équipe",
+    "LABEL_SEARCH": "Recherche",
+    "BUTTON_START_NEW": "Démarrer une nouvelle liste",
+    "BUTTON_GENERATE_PRINT": "Génerer rapport"
   },
   "social": {
     "TWEET": "Tweet",
