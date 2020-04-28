@@ -78,6 +78,27 @@
       "tags": ["all", "resources"]
     },
     {
+      "title": "Taille des noeuds",
+      "priority": "Medium",
+      "description": "quel type de nœuds de travail dois-je utiliser et combien d'entre eux est une question critique qui nécessite l'analyse des applications déployées sur votre cluster afin d'en tirer le meilleur parti",
+      "details": "Vous devrez sûrement choisir entre gestion simplifiée mais fort risque d'impact, ou risque minimisé et moindre optimisation des ressources",
+      "documentation": [
+        {
+          "title": "Choosing a worker node size",
+          "url": "https://learnk8s.io/kubernetes-node-size"
+        },
+        {
+          "title": "Choisir le bon type de stockage",
+          "url": "https://docs.microsoft.com/fr-fr/azure/aks/operator-best-practices-storage#choose-the-appropriate-storage-type"
+        },
+        {
+          "title": "How to size Kubernetes clusters",
+          "url": "https://events19.linuxfoundation.cn/wp-content/uploads/2017/11/BoF_-Not-One-Size-Fits-All-How-to-Size-Kubernetes-Clusters_Guang-Ya-Liu-_-Sahdev-Zala.pdf"
+        }
+      ],
+      "tags": ["all", "resources"]
+    },
+    {
       "title": "Rafraichir les containers lorsque leur image de base est mise à jour",
       "priority": "Medium",
       "description": "Comme vous utilisez des images de base pour les images de l’application, utilisez l’automatisation pour générer de nouvelles images lorsque l’image de base est mise à jour. Comme ces images de base incluent généralement des correctifs de sécurité, mettez à jour les images de conteneur d’application en aval.",
