@@ -13,6 +13,19 @@
       "tags": ["all", "network"]
     },
     {
+      "title": "Plan IP addressing carefully",
+      "priority": "Medium",
+      "description": "The size of your virtual network and its subnet must accommodate the number of pods you plan to run and the number of nodes for the cluster.",
+      "detail": "As an example, using CNI, you need one IP for each node + one spare for a new node in case of cluster upgrade, and you need an IP for each pod which can represent hundred of IP addresses",
+      "documentation": [
+        {
+          "title": "Plan IP addressing for your cluster",
+          "url": "https://docs.microsoft.com/en-us/azure/aks/configure-azure-cni#plan-ip-addressing-for-your-cluster"
+        }
+      ],
+      "tags": ["all", "network"]
+    },
+    {
       "title": "Distribute ingress traffic",
       "priority": "Medium",
       "description": "To distribute HTTP or HTTPS traffic to your applications, use ingress resources and controllers. Ingress controllers provide additional features over a regular Azure load balancer, and can be managed as native Kubernetes resources.",
