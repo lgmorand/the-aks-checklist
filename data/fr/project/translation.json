@@ -17,6 +17,8 @@
   "SECTION_TOOL": "Outils",
   "SECTION_VIDEO": "Videos",
   "SECTION_TAG": "Filter by tags",
+  "SHOW_DETAILS": "Voir détails",
+  "HIDE_DETAILS": "Cacher détails",
   "alert": {
     "JAVASCRIPT_DESACTIVATE": "Your JavaScript seems to be deactivated. Please enable your JavaScript to use all features of the AKS Checklist."
   },
