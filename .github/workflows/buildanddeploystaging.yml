@@ -1,9 +1,9 @@
-name: Validation Build (deploy on staging)
+name: Build and deploy on staging
 
 on:
-  pull_request:
+  push:
     branches:
-      - master
+      - staging
 
 jobs:
   build:

@@ -4,7 +4,7 @@
   "URL_WEBSITE": "https://aka.ms/aks-checklist",
   "SITE_TAGLINE": "Checklist de AKS - ¡La mejor manera de asegurar que tu cluster este listo para producción!",
   "SITE_DESCRIPTION": "¡La mejor manera de asegurar que tu cluster este listo para producción!",
-  "SITE_VERSION":"Última actualización: 18 de abril del 2020",
+  "SITE_VERSION":"Última actualización: ",
   "SITE_LANGUAGE": "es",
   "SITE_DIRECTION": "ltr",
   "URL_GITHUB_ROOT": "http://github.com/lgmorand/aks-checklist",
