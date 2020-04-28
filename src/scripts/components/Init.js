@@ -108,7 +108,7 @@ class Init {
       delay: [1000, 200],
     }); 
 
-    instanceTippy.show();
+    document.querySelector('.js-expand-all')._tippy.show();
     
   }
 
