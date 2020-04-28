@@ -8,7 +8,7 @@
   speak: none;
   backface-visibility: hidden;
   opacity: 1;
-  
+
   @include mq('handheld-and-up') {
     width: 15px;
     height: 15px;
