@@ -13,6 +13,19 @@
       "tags": ["all", "network"]
     },
     {
+      "title": "Plan IP addressing carefully",
+      "priority": "Medium",
+      "description": "La taille de votre réseau virtuel et de son sous-réseau doit être suffisante pour prendre en charge le nombre de pods que vous envisagez d’exécuter, ainsi que le nombre de nœuds du cluster.",
+      "detail": "Par exemple, dans un mode CNI, vous devez avoir une IP pour chaque noeud, une IP de plus en cas de mise à jour d'un noeud, mais également une IP pour chaque pod, ce qui peut vite atteindre plusieurs centaines d'IP",
+      "documentation": [
+        {
+          "title": "Plan IP addressing for your cluster",
+          "url": "Planifier l’adressage IP pour votre cluster"
+        }
+      ],
+      "tags": ["all", "network"]
+    },
+    {
       "title": "Distribuer le trafic d’entrée",
       "priority": "Medium",
       "description": "Pour répartir le trafic HTTP ou HTTPS sur vos applications, utilisez des contrôleurs et des ressources d’entrée. Les contrôleurs d’entrée offrent des fonctionnalités supplémentaires par rapport à un équilibreur de charge Azure standard. Ils peuvent être gérés comme des ressources Kubernetes natives.",
