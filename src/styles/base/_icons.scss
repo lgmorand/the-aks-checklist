@@ -8,7 +8,6 @@
   speak: none;
   backface-visibility: hidden;
   opacity: 1;
-
   @include mq('handheld-and-up') {
     width: 15px;
     height: 15px;
@@ -20,7 +19,7 @@
 }
 
 .icon2 {
-  fill: #215b7d
+  fill: #215b7d;
 }
 
 button,
