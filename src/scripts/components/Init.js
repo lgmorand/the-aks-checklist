@@ -32,6 +32,8 @@ class Init {
     this.reportInit();
     this.uiInit();
     this.AnalyticsInit();
+    
+    setTimeout(() => { setTippy() }, 2000);
 
     return instance;
   }
@@ -93,10 +95,18 @@ class Init {
     // Collapse on loading each item (except which present into localStorage)
     sections.forEach(section => {
       new Dropdown().collapseAllDropdown({section});
-    });
+    });    
+  }
 
-    const instance = tippy('.js-expand-all'); //enable tooltip
-    instance.show();
+  setTippy()
+  {
+    //enable tooltip
+    instanceTippy = tippy('.js-expand-all', {
+      duration: 2000,
+      arrow: false,
+      delay: [1000, 200],
+    }); 
+    instanceTippy.show();
   }
 
   /**
