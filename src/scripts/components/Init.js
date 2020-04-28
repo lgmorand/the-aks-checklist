@@ -100,13 +100,16 @@ class Init {
 
   setTippy()
   {
-    setTimeout(() => {  instanceTippy = tippy('.js-expand-all', {
+    
+    //enable tooltip
+    const instanceTippy = tippy('.js-expand-all', {
       duration: 2000,
       arrow: false,
       delay: [1000, 200],
     }); 
-    instanceTippy.show(); }, 2000);
 
+    setTimeout(function(){ instanceTippy.show(); }, 2000);
+    
   }
 
   /**
