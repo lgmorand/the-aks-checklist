@@ -90,10 +90,13 @@ class Init {
     // Enable each dropdown buttons
     new Dropdown().enableDropdown(document.querySelectorAll('.js-dropdown'));
 
-    // // Collapse on loading each item (except which present into localStorage)
-    // sections.forEach(section => {
-    //   new Dropdown().collapseAllDropdown({section});
-    // });
+    // Collapse on loading each item (except which present into localStorage)
+    sections.forEach(section => {
+      new Dropdown().collapseAllDropdown({section});
+    });
+
+    const instance = tippy('.js-expand-all'); //enable tooltip
+    instance.show();
   }
 
   /**
