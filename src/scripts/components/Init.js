@@ -32,8 +32,8 @@ class Init {
     this.reportInit();
     this.uiInit();
     this.AnalyticsInit();
+    this.setTippy();
     
-    setTimeout(() => { setTippy() }, 2000);
 
     return instance;
   }
@@ -100,13 +100,13 @@ class Init {
 
   setTippy()
   {
-    //enable tooltip
-    instanceTippy = tippy('.js-expand-all', {
+    setTimeout(() => {  instanceTippy = tippy('.js-expand-all', {
       duration: 2000,
       arrow: false,
       delay: [1000, 200],
     }); 
-    instanceTippy.show();
+    instanceTippy.show(); }, 2000);
+
   }
 
   /**
