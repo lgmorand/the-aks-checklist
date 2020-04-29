@@ -108,9 +108,10 @@ class Init {
       delay: [100, 1000],
     }); 
 
-    document.querySelector('.js-expand-all')._tippy.show();
+    const instanceTippy = document.querySelector('.js-expand-all');
+    instanceTippy._tippy.show();
 
-    setTimeout(()=>{ document.querySelector('.js-expand-all')._tippy.show(); document.querySelector('.js-expand-all')._tippy.disable(); }, 4000);
+    setTimeout(()=>{ instanceTippy._tippy.show(); instanceTippy._tippy.disable(); }, 4000);
     
   }
 
