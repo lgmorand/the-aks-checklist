@@ -1,6 +1,6 @@
 [
     {
-      "title": "Secure the container image",
+      "title": "Scan the container image against vulnerabilities",
       "priority": "High",
       "description": "Scan your container images to ensure there are no vulnerabilities in it",
       "documentation": [

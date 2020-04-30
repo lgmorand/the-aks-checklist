@@ -78,6 +78,27 @@
       "tags": ["all", "resources"]
     },
     {
+      "title": "Sizing of the nodes",
+      "priority": "Medium",
+      "description": "what type of worker nodes should I use, and how many of them is a critical question which requires the analysis of the workloads deployed on your cluster to get the best values of it",
+      "details": "Choosing on one hand between easy management and big blast radius, and on the other end to focus on high replication, low impact but worse resources optimization ",
+      "documentation": [
+        {
+          "title": "Choosing a worker node size",
+          "url": "https://learnk8s.io/kubernetes-node-size"
+        },
+        {
+          "title": "Choose the right storage type",
+          "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-storage#choose-the-appropriate-storage-type"
+        },
+        {
+          "title": "How to size Kubernetes clusters",
+          "url": "https://events19.linuxfoundation.cn/wp-content/uploads/2017/11/BoF_-Not-One-Size-Fits-All-How-to-Size-Kubernetes-Clusters_Guang-Ya-Liu-_-Sahdev-Zala.pdf"
+        }
+      ],
+      "tags": ["all", "resources"]
+    },
+    {
       "title": "Refresh container when base image is updated",
       "priority": "Medium",
       "description": "As you use base images for application images, use automation to build new images when the base image is updated. As those base images typically include security fixes, update any downstream application container images.",

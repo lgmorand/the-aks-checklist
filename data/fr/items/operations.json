@@ -14,7 +14,7 @@
     {
         "title": "Redémarrer les noeuds les noeuds lorsqu'un patch requiert un reboot",
         "priority": "Medium",
-        "description": "AKS télécharge et installe automatiquement les correctifs de sécurité sur chacun des nœuds Linux, mais ne les redémarre pas automatiquement si nécessaire. Utilisez kured pour surveiller les redémarrages en attente, puis fermez et videz le nœud en toute sécurité pour qu’il puisse redémarrer, appliquer les mises à jour et être aussi sûr que possible à l’égard du système d’exploitation. Pour les nœuds Windows Server (actuellement en préversion dans AKS), effectuez régulièrement une opération de mise à niveau AKS pour isoler et drainer de façon sécurisée les pods et déployer les nœuds mis à jour.",
+        "description": "AKS télécharge et installe automatiquement les correctifs de sécurité sur chacun des nœuds Linux, mais ne les redémarre pas automatiquement si nécessaire. Utilisez kured pour surveiller les redémarrages en attente, puis fermez et videz le nœud en toute sécurité pour qu’il puisse redémarrer, appliquer les mises à jour et être aussi sûr que possible à l’égard du système d’exploitation. Pour les nœuds Windows Server (actuellement en préversion dans AKS), effectuez régulièrement une opération de mise à niveau AKS pour isoler et drainer de façon sécurisée les pods et déployer les nœuds mis à jour. Ne fonctionne pas avec les noeuds Windows que vous devez patcher vous-même",
         "detail": "",
         "documentation": [
           {

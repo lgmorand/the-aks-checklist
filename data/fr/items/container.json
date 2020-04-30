@@ -1,6 +1,6 @@
 [
   {
-    "title": "Securisez l'image du container",
+    "title": "Scannez l'image du container contre les vulnérabilities",
     "priority": "High",
     "description": "Scannez vos images de containers pour s'assurer qu'aucune vulnérabilité s'y trouve",
     "documentation": [
