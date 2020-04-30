@@ -21,7 +21,7 @@ else
     echo  "#   Localization checker      #"
     echo  "###############################"
 
-    echo "Installing required tools: jq"
+    echo "Installing required tools: jq for parsing JSON"
     sudo apt-get install jq > /dev/null
 
     echo -e "Comparing \e[96m'$source'\e[0m to \e[96m'$target'\e[0m"
@@ -34,24 +34,36 @@ else
 
     if [[ "$sourceFileNumber" != "$targetFileNumber" ]]
     then
-        echo -e "\e[91mFolders $source ($sourceFileNumber) and $target ($targetFileNumber) do not have the same number of files\e[0m"
+        echo -e "\e[91mFolders '$source' ($sourceFileNumber) and '$target' ($targetFileNumber) do not have the same number of files\e[0m"
+
+        for f in $sourceFolder/*
+        do
+            FILENAME=`basename ${f}`;
+
+            targetFile="$targetFolder/$FILENAME"
+            if [ ! -f "$targetFile" ]; then
+                echo -e "$targetFile does \e[91mnot\e[0m exist"
+            fi
+        done
     else
         echo -e "\e[92mSame number of files between '$source' and '$target' \e[0m"
+
+        for f in $sourceFolder/*
+        do
+            FILENAME=`basename ${f}`;
+            echo -e "comparing \e[96m$f\e[0m to \e[96m$targetFolder/$FILENAME\e[0m"
+            sourceCount="$(jq '. | length' $f)"
+            targetCount="$(jq '. | length' $targetFolder/$FILENAME)"
+            
+            if [[ "$sourceCount" != "$targetCount" ]]
+            then
+                echo -e "\e[91mFiles $f($sourceCount) and $target ($targetCount) do not have the same number of elements\e[0m"
+            else
+                echo -e "\e[92mSame number of files between '$source' and '$target' \e[0m"
+            fi
+
+        done
     fi
     
-    for f in $sourceFolder/*
-    do
-        FILENAME=`basename ${f}`;
-        echo -e "comparing \e[96m$f\e[0m to \e[96m$targetFolder/$FILENAME\e[0m"
-        sourceCount="$(jq '. | length' $f)"
-        targetCount="$(jq '. | length' $targetFolder/$FILENAME)"
-        
-        if [[ "$sourceCount" != "$targetCount" ]]
-        then
-            echo -e "\e[91mFiles $f($sourceCount) and $target ($targetCount) do not have the same number of elements\e[0m"
-        else
-            echo -e "\e[92mSame number of files between '$source' and '$target' \e[0m"
-        fi
-
-    done
+    
 fi
