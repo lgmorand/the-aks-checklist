@@ -1,0 +1,94 @@
+[
+  {
+    "title": "Mapper l'image de base sur l'OS du noeud hôte",
+    "priority": "High",
+    "description": "Windows a des règles de compatibilité strictes, où la version du système d'exploitation hôte doit correspondre à la version du système d'exploitation de l'image de base du conteneur. Seuls les conteneurs Windows avec un système d'exploitation de conteneur de Windows Server 2019 sont pris en charge.",
+    "documentation": [
+      {
+        "title": "Windows container version compatibility",
+        "url": "https://docs.microsoft.com/en-us/virtualization/windowscontainers/deploy-containers/version-compatibility?tabs=windows-server-2019%2Cwindows-10-1909"
+      },
+      {
+        "title": "Limitations of Windows containers",
+        "url": "https://kubernetes.io/docs/setup/production-environment/windows/intro-windows-in-kubernetes/#supported-functionality-and-limitations"
+      }
+    ],
+    "tags": ["all", "windows"]
+  },
+  {
+    "title": "Preparez votre application à une extinction brutale",
+    "priority": "Medium",
+    "description": "TerminationGracePeriod n'est pas implémentée Windows containers",
+    "documentation": [
+      {
+        "title": "Understand pod lifecycle",
+        "url": "https://cloud.google.com/blog/products/gcp/kubernetes-best-practices-terminating-with-grace"
+      },
+      {
+        "title": "Limitations of Windows containers",
+        "url": "https://kubernetes.io/docs/setup/production-environment/windows/intro-windows-in-kubernetes/#supported-functionality-and-limitations"
+      }
+    ],
+    "tags": ["all", "windows"]
+  },
+  {
+    "title": "N'utilisez pas de conteneurs privilégiés",
+    "priority": "Medium",
+    "description": "Windows containers ne supportent pas l'élévation de privilèges",
+    "documentation": [
+      {
+        "title": "Limitations of Windows containers",
+        "url": "https://kubernetes.io/docs/setup/production-environment/windows/intro-windows-in-kubernetes/#supported-functionality-and-limitations"
+      }
+    ],
+    "tags": ["all", "windows"]
+  },
+  {
+    "title": "Surveillez l'utilisation de la mémoire",
+    "priority": "Medium",
+    "description": "Il n'y a aucune action d'expulsion OOM prise par le kubelet. Windows traite toujours toutes les allocations de mémoire en mode utilisateur comme virtuelles et les fichiers d'échange sont obligatoires. Si la mémoire est surapprovisionnée et que toute la mémoire physique est épuisée, la pagination peut ralentir les performances.",
+    "documentation": [
+      {
+        "title": "Limitations of Windows containers",
+        "url": "https://kubernetes.io/docs/setup/production-environment/windows/intro-windows-in-kubernetes/#supported-functionality-and-limitations"
+      }
+    ],
+    "tags": ["all", "windows"]
+  },
+  {
+    "title": "Implémenter le mode réseau CNI",
+    "priority": "High",
+    "description": "es clusters AKS avec des pools de nœuds Windows doivent utiliser le modèle de réseau Azure CNI (avancé). La mise en réseau Kubenet (par défaut) n'est pas prise en charge. ",
+    "documentation": [
+      {
+        "title": "What network plug-ins are supported?",
+        "url": "https://docs.microsoft.com/en-us/azure/aks/windows-node-limitations#what-network-plug-ins-are-supported"
+      }
+    ],
+    "tags": ["all", "windows"]
+  },
+  {
+    "title": "Patchez vos nœuds vous-même",
+    "priority": "High",
+    "description": "Les nœuds Windows Server dans AKS doivent être mis à niveau pour obtenir les derniers correctifs et mises à jour de correctifs. Les mises à jour Windows ne sont pas activées sur les nœuds dans AKS. AKS publie de nouvelles images de pool de nœuds dès que les correctifs sont disponibles, il est de la responsabilité des clients de mettre à niveau les pools de nœuds pour rester à jour sur les correctifs et les correctifs. ",
+    "documentation": [
+      {
+        "title": "How do patch my Windows nodes? ",
+        "url": "https://docs.microsoft.com/en-us/azure/aks/windows-node-limitations#how-do-patch-my-windows-nodes"
+      }
+    ],
+    "tags": ["all", "windows"]
+  },
+  {
+    "title": "Sécurisez le trafic de vos conteneurs",
+    "priority": "High",
+    "description": "Les stratégies réseau ne sont actuellement pas prises en charge, assurez-vous que les applications conteneurisées ont une couche de protection comme l'authentification ",
+    "documentation": [
+      {
+        "title": "Limitations of Windows containers",
+        "url": "https://kubernetes.io/docs/setup/production-environment/windows/intro-windows-in-kubernetes/#supported-functionality-and-limitations"
+      }
+    ],
+    "tags": ["all", "windows"]
+  }
+]

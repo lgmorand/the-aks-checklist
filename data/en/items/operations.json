@@ -14,7 +14,7 @@
     {
         "title": "Reboot the nodes to patch them",
         "priority": "Medium",
-        "description": "AKS automatically downloads and installs security fixes on each Linux nodes, but does not automatically reboot if necessary. Use Kured to watch for pending reboots, then safely cordon and drain the node to allow the node to reboot",
+        "description": "AKS automatically downloads and installs security fixes on each Linux nodes, but does not automatically reboot if necessary. Use Kured to watch for pending reboots, then safely cordon and drain the node to allow the node to reboot. It does not work for Windows Nodes which have to be patched manually",
         "detail": "",
         "documentation": [
           {
@@ -28,7 +28,7 @@
             "url": "https://github.com/weaveworks/kured"
           }
         ],
-        "tags": ["all", "operation", "security"]
+        "tags": ["all", "operation", "security", "windows"]
     },
     {
         "title": "Securely connect to nodes through a bastion host",
