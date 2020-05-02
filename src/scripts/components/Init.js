@@ -32,6 +32,8 @@ class Init {
     this.reportInit();
     this.uiInit();
     this.AnalyticsInit();
+    this.setTippy();
+    
 
     return instance;
   }
@@ -93,7 +95,24 @@ class Init {
     // Collapse on loading each item (except which present into localStorage)
     sections.forEach(section => {
       new Dropdown().collapseAllDropdown({section});
-    });
+    });    
+  }
+
+  setTippy()
+  {
+    
+    //enable tooltip
+    tippy('.js-expand-all', {
+      duration: 2000,
+      arrow: false,
+      delay: [100, 1000],
+    }); 
+
+    const instanceTippy = document.querySelector('.js-expand-all');
+    instanceTippy._tippy.show();
+
+    setTimeout(()=>{ instanceTippy._tippy.show(); instanceTippy._tippy.disable(); }, 4000);
+    
   }
 
   /**
