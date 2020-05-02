@@ -98,20 +98,20 @@ class Init {
     });    
   }
 
+  // forces a tooltip to show the buttons
   setTippy()
   {
-    
     //enable tooltip
     tippy('.js-expand-all', {
       duration: 2000,
       arrow: false,
-      delay: [100, 1000],
+      delay: [1000, 1000],
     }); 
 
     const instanceTippy = document.querySelector('.js-expand-all');
     instanceTippy._tippy.show();
 
-    setTimeout(()=>{ instanceTippy._tippy.show(); instanceTippy._tippy.disable(); }, 4000);
+    setTimeout(()=>{ instanceTippy._tippy.hide(); }, 5000); // hide the tooltip after 5secs
     
   }
 
