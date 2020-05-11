@@ -60,6 +60,16 @@
           "url": "https://docs.microsoft.com/fr-fr/azure/aks/operator-best-practices-network#control-traffic-flow-with-network-policies"
         }
       ],
+      "tools":[
+        {
+          "title": "Calico",
+          "url": "https://docs.projectcalico.org/reference/resources/networkpolicy"
+        },
+        {
+          "title": "Cillium",
+          "url": "https://cilium.io/"
+        }
+      ],
       "tags": ["all", "network"]
     },
     {

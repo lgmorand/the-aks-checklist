@@ -67,18 +67,6 @@
         "tags": ["all", "operation"]
     },
     {
-      "title": "Monitorez votre cluster",
-      "priority": "High",
-      "description": "Surveillez votre cluster, à l'aide d'outils pour vous assurez la bonne santé de vos clusters, noeuds et pods",
-      "documentation": [
-        {
-          "title": "Azure Monitor pour AKS",
-          "url": "https://docs.microsoft.com/fr-fr/azure/azure-monitor/insights/container-insights-analyze"
-        }
-      ],
-      "tags": ["all", "operation"]
-    },
-    {
       "title": "Surveillez la sécurit de votre cluster avec Azure Security Center",
       "priority": "Medium",
       "description": "Security Center apporte les avantages d'une sécurité à vos clusters AKS, en utilisant les données capturées par le noeud master.",
@@ -86,6 +74,18 @@
         {
           "title": "Azure Kubernetes Services integration with Security Center",
           "url": "https://docs.microsoft.com/en-us/azure/security-center/azure-kubernetes-service-integration"
+        }
+      ],
+      "tags": ["all", "operation"]
+    },
+    {
+      "title": "Monitorez votre cluster",
+      "priority": "High",
+      "description": "Surveillez votre cluster, à l'aide d'outils pour vous assurez la bonne santé de vos clusters, noeuds et pods",
+      "documentation": [
+        {
+          "title": "Azure Monitor pour AKS",
+          "url": "https://docs.microsoft.com/fr-fr/azure/azure-monitor/insights/container-insights-analyze"
         }
       ],
       "tags": ["all", "operation"]

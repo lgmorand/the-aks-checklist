@@ -67,18 +67,6 @@
         "tags": ["all", "operation"]
     },
     {
-      "title": "Provision a log aggregation tool",
-      "priority": "High",
-      "description": "Ensure that you are always aware of what happens in your cluster. Monitor the health of the cluster (nodes, server) but also the pods",
-      "documentation": [
-        {
-          "title": "Azure Monitor pour AKS",
-          "url": "https://docs.microsoft.com/en-us/azure/azure-monitor/insights/container-insights-analyze"
-        }
-      ],
-      "tags": ["all", "operation"]
-    },
-    {
       "title": "Monitor the security of your cluster with Azure Security Center",
       "priority": "Medium",
       "description": "Security Center brings security benefits to your AKS clusters using data already gathered by the AKS master node.",
@@ -86,6 +74,30 @@
         {
           "title": "Azure Kubernetes Services integration with Security Center",
           "url": "https://docs.microsoft.com/en-us/azure/security-center/azure-kubernetes-service-integration"
+        }
+      ],
+      "tags": ["all", "operation"]
+    },
+    {
+      "title": "Provision a log aggregation tool",
+      "priority": "High",
+      "description": "Ensure that you are always aware of what happens in your cluster. Monitor the health of the cluster (nodes, server) but also the pods",
+      "documentation": [
+        {
+          "title": "Azure Monitor for AKS",
+          "url": "https://docs.microsoft.com/en-us/azure/azure-monitor/insights/container-insights-analyze"
+        }
+      ],
+      "tags": ["all", "operation"]
+    },
+    {
+      "title": "Control the compliance with Azure Policies",
+      "priority": "Medium",
+      "description": "Azure Policy integrates with the Azure Kubernetes Service (AKS) to apply at-scale enforcements and safeguards on your clusters in a centralized, consistent manner.",
+      "documentation": [
+        {
+          "title": "Azure Policies for AKS",
+          "url": "https://docs.microsoft.com/en-us/azure/governance/policy/concepts/rego-for-aks"
         }
       ],
       "tags": ["all", "operation"]
