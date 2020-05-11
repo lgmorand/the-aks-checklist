@@ -50,6 +50,18 @@
       "tags": ["all", "network"]
     },
     {
+      "title": "Don't expose your load-balancer on Internet if not necessary",
+      "priority": "Medium",
+      "description": "There is almost no reason to directly expose the ingress entry point to Internet but by default AKS create a public one. Tell him to create an internal one only.",
+      "documentation": [
+        {
+          "title": "Create an ingress controller to an internal virtual network",
+          "url": "https://docs.microsoft.com/en-us/azure/aks/ingress-internal-ip"
+        }
+      ],
+      "tags": ["all", "network", "security"]
+    },
+    {
       "title": "Control traffic flow with network policies",
       "priority": "Medium",
       "description": "Use network policies to allow or deny traffic to pods. By default, all traffic is allowed between pods within a cluster. For improved security, define rules that limit pod communication.",
