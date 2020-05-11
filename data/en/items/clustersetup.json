@@ -114,4 +114,14 @@
       ],
       "tags": ["all", "resources"]
     }
+    ,
+    {
+      "title": "Check if you need the Kubernetes dashboard",
+      "priority": "Medium",
+      "description": "By default Kubernetes deploys and exposed the default dashboard. If you don't plan to use it to pilot your cluster, you should disable it.",
+      "details": "It can be done with the following CLI: az aks disable-addons --addons kube-dashboard --resource-group YOUR_RG --name CLUSTE_NAME",
+      "documentation": [
+      ],
+      "tags": ["all", "security"]
+    }
 ] 

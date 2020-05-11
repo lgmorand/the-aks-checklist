@@ -19,7 +19,7 @@
           "url": "https://www.aquasec.com/"
         }
       ],
-      "tags": ["all"]
+      "tags": ["all", "security"]
     },
     {
       "title": "Allow deploying containers only from known registries",

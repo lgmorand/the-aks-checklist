@@ -58,6 +58,10 @@
           {
             "title": "Kube-advisor",
             "url": "https://github.com/azure/kube-advisor"
+          },
+          {
+            "title": "Kube-advisor by Alcide.io",
+            "url": "https://www.alcide.io/kubernetes-advisor"
           }
         ],
         "tags": ["all", "operation"]
@@ -73,6 +77,18 @@
         }
       ],
       "tags": ["all", "operation"]
-  }
+    },
+    {
+      "title": "Monitor the security of your cluster with Azure Security Center",
+      "priority": "Medium",
+      "description": "Security Center brings security benefits to your AKS clusters using data already gathered by the AKS master node.",
+      "documentation": [
+        {
+          "title": "Azure Kubernetes Services integration with Security Center",
+          "url": "https://docs.microsoft.com/en-us/azure/security-center/azure-kubernetes-service-integration"
+        }
+      ],
+      "tags": ["all", "operation"]
+    }
 ]
 
