@@ -12,6 +12,16 @@ block main
     if _items !== undefined
 
       +checklist-section({
+        dataSection: _items.development,
+        sectionTitle: "Développement"
+      })
+
+      +checklist-section({
+        dataSection: _items.container,
+        sectionTitle: "Gestion des images"
+      })
+
+      +checklist-section({
         dataSection: _items.clustersetup,
         sectionTitle: "Mise en place du cluster"
       })
@@ -32,35 +42,24 @@ block main
       })
 
       +checklist-section({
-        dataSection: _items.operations,
-        sectionTitle: " Maintenance"
+        dataSection: _items.resourcemanagement,
+        sectionTitle: "Gestion des ressources"
       })
 
       +checklist-section({
         dataSection: _items.multitenancy,
         sectionTitle: "Multi tenant"
       })
-
-      +checklist-section({
-        dataSection: _items.resourcemanagement,
-        sectionTitle: "Gestion des ressources"
-      })
-
-      +checklist-section({
-        dataSection: _items.container,
-        sectionTitle: "Gestion des images"
-      })
-
-      +checklist-section({
-        dataSection: _items.development,
-        sectionTitle: "Développement"
-      })
-
+    
       +checklist-section({
         dataSection: _items.windows,
         sectionTitle: "Windows"
       })
 
+      +checklist-section({
+        dataSection: _items.operations,
+        sectionTitle: " Maintenance"
+      })
 
 
   include components/s-section-bottom

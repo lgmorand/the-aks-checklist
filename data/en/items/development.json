@@ -65,7 +65,7 @@
     "description": "Secrets are not encrypted in etcd, prefer to store your secrets in a proper HSM like Azure KeyVault. You can then inject secrets using FlexVolume.",
     "documentation": [
       {
-        "title": "Azure Key Vault Provider for Secret Store CSI Driver)",
+        "title": "Azure Key Vault Provider for Secret Store CSI Driver",
         "url": "https://github.com/Azure/secrets-store-csi-driver-provider-azure"
       },
       {
@@ -111,5 +111,17 @@
       }
     ],
     "tags": ["all", "resources"]
+  },
+  {
+    "title": "Specify the security context of your pod/container",
+    "priority": "Medium",
+    "description": "A security context defines privilege and access control settings for a Pod or Container. Control the capabilities and the rights your container can have",
+    "documentation": [
+      {
+        "title": "Configure a Security Context for a Pod or Container",
+        "url": "https://kubernetes.io/docs/tasks/configure-pod-container/security-context/"
+      }
+    ],
+    "tags": ["all", "resources", "security"]
   }
 ]

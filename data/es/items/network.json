@@ -13,7 +13,7 @@
       "tags": ["all", "networking"]
     },
     {
-      "title": "Distribución del tráfico de entrada(Ingress Controller)",
+      "title": "Distribución del tráfico de entrada (Ingress Controller)",
       "priority": "Medium",
       "description": "Para distribuir el tráfico HTTP o HTTPS a las aplicaciones, use los recursos y los controladores de entrada. Los controladores de entrada proporcionan características adicionales a las de un equilibrador de carga de Azure común y se pueden administrar como recursos nativos de Kubernetes.",
       "documentation": [
@@ -44,6 +44,16 @@
         {
           "title": "Control del flujo de tráfico con directivas de red",
           "url": "https://docs.microsoft.com/es-es/azure/aks/operator-best-practices-network#control-traffic-flow-with-network-policies"
+        }
+      ],
+      "tools":[
+        {
+          "title": "Calico",
+          "url": "https://docs.projectcalico.org/reference/resources/networkpolicy"
+        },
+        {
+          "title": "Cillium",
+          "url": "https://cilium.io/"
         }
       ],
       "tags": ["all", "networking"]
