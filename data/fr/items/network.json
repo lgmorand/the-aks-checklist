@@ -50,6 +50,18 @@
       "tags": ["all", "network"]
     },
     {
+      "title": "N'exposez pas votre loadbalancer sur Internet si non nécessaireDon't expose your load-balancer on Internet if not necessary",
+      "priority": "Medium",
+      "description": "Il n'a que peu de raison d'exposer directement le point d'entrée de votre ingress controller directement sur Internet. Dites à AKS de créer un point d'entrée interne.",
+      "documentation": [
+        {
+          "title": "Créer un contrôleur d’entrée pour un réseau virtuel interne",
+          "url": "https://docs.microsoft.com/fr-fr/azure/aks/ingress-internal-ip"
+        }
+      ],
+      "tags": ["all", "network", "security"]
+    },,
+    {
       "title": "Contrôler le flux de trafic avec des stratégies réseau",
       "priority": "Medium",
       "description": "Utilisez des stratégies réseau pour autoriser ou refuser le trafic vers les pods. Par défaut, tout le trafic est autorisé entre les pods au sein d’un cluster. Pour une sécurité accrue, définissez des règles qui limitent la communication des pods.",
@@ -58,6 +70,16 @@
         {
           "title": "Contrôler le flux de trafic avec des stratégies réseau",
           "url": "https://docs.microsoft.com/fr-fr/azure/aks/operator-best-practices-network#control-traffic-flow-with-network-policies"
+        }
+      ],
+      "tools":[
+        {
+          "title": "Calico",
+          "url": "https://docs.projectcalico.org/reference/resources/networkpolicy"
+        },
+        {
+          "title": "Cillium",
+          "url": "https://cilium.io/"
         }
       ],
       "tags": ["all", "network"]

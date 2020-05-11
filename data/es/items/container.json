@@ -19,7 +19,7 @@
         "url": "https://www.aquasec.com/"
       }
     ],
-    "tags": ["all"]
+    "tags": ["all", "security"]
   },
   {
     "title": "Permitir el despliegue de contenedores solamente de registros conocidos",

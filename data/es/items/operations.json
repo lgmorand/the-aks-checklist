@@ -57,6 +57,10 @@
           {
             "title": "Kube-advisor",
             "url": "https://github.com/azure/kube-advisor"
+          },
+          {
+            "title": "Kube-advisor by Alcide.io",
+            "url": "https://www.alcide.io/kubernetes-advisor"
           }
         ],
         "tags": ["all", "operation"]

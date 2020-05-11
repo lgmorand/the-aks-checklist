@@ -12,6 +12,16 @@ block main
     if _items !== undefined
 
       +checklist-section({
+        dataSection: _items.development,
+        sectionTitle: "Desarrollo"
+      })
+
+      +checklist-section({
+        dataSection: _items.container,
+        sectionTitle: "Administración de imagenes"
+      })
+
+      +checklist-section({
         dataSection: _items.clustersetup,
         sectionTitle: "Preparación Cluster"
       })
@@ -32,8 +42,8 @@ block main
       })
 
       +checklist-section({
-        dataSection: _items.operations,
-        sectionTitle: "Mantenimiento de clúster"
+        dataSection: _items.resourcemanagement,
+        sectionTitle: "Administración de Recursos"
       })
 
       +checklist-section({
@@ -42,20 +52,10 @@ block main
       })
 
       +checklist-section({
-        dataSection: _items.resourcemanagement,
-        sectionTitle: "Administración de Recursos"
+        dataSection: _items.operations,
+        sectionTitle: "Mantenimiento de clúster"
       })
 
-      +checklist-section({
-        dataSection: _items.container,
-        sectionTitle: "Administración de imagenes"
-      })
-
-      +checklist-section({
-        dataSection: _items.development,
-        sectionTitle: "Desarrollo"
-      })
-
-
+      
 
   include components/s-section-bottom

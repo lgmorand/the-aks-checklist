@@ -1,6 +1,6 @@
 # Tooling for localization
 
-This small script is made to help to see if a difference exists between the different langages, like a missing best practice
+This small script is made to help to see if a difference exists between the different languages, like a missing best practice
 
 ## How to run it ?
 

@@ -19,7 +19,7 @@
         "url": "https://www.aquasec.com/"
       }
     ],
-    "tags": ["all"]
+    "tags": ["all", "security"]
   },
     {
       "title": "N'autorisez le déploiement de containers que depuis des registres définis",
