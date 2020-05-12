@@ -15,7 +15,6 @@
         "title": "Reboot the nodes to patch them",
         "priority": "Medium",
         "description": "AKS automatically downloads and installs security fixes on each Linux nodes, but does not automatically reboot if necessary. Use Kured to watch for pending reboots, then safely cordon and drain the node to allow the node to reboot. It does not work for Windows Nodes which have to be patched manually",
-        "detail": "",
         "documentation": [
           {
             "title": "Process Linux node updates and reboots using Kured",
@@ -34,7 +33,6 @@
         "title": "Securely connect to nodes through a bastion host",
         "priority": "Medium",
         "description": "Don't expose remote connectivity to your AKS nodes. Create a bastion host, or jump box, in a management virtual network. Use the bastion host to securely route traffic into your AKS cluster to remote management tasks.",
-        "detail": "",
         "documentation": [
           {
             "title": "Securely connect to nodes through a bastion host",
@@ -86,6 +84,49 @@
         {
           "title": "Azure Monitor for AKS",
           "url": "https://docs.microsoft.com/en-us/azure/azure-monitor/insights/container-insights-analyze"
+        }
+      ],
+      "tools":[
+        {
+          "title": "Elastic Cloud",
+          "url": "https://www.elastic.co/elastic-cloud-kubernetes"
+        },
+        {
+          "title": "Datadog",
+          "url": "https://www.datadoghq.com/"
+        }
+      ],
+      "tags": ["all", "operation"]
+    },
+    {
+      "title": "Collect metrics",
+      "priority": "High",
+      "description": "If default integration can collect telemetry data and basic metrics (CPU/Memory), they don't collect custom metrics and more detailed information. It's often necessary to install a 3rd party software (prometheus is recommend within Kubernetes) and they store these metrics to exploit them.",
+      "details": "Typically, to use Prometheus, you need to set up and manage a Prometheus server with a store. By integrating with Azure Monitor, a Prometheus server is not required. You just need to expose the Prometheus metrics endpoint through your exporters or pods (application), and the containerized agent for Azure Monitor for containers can scrape the metrics for you.",
+      "documentation": [
+        {
+          "title": "Configure scraping of Prometheus metrics",
+          "url": "https://docs.microsoft.com/en-us/azure/azure-monitor/insights/container-insights-prometheus-integration"
+        },
+        {
+          "title": "Deploying ELK",
+          "url": "https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-quickstart.html"
+        }
+      ],
+      "tags": ["all", "operation"]
+    },
+    {
+      "title": "Configure distributed tracing",
+      "priority": "Low",
+      "description": "Distributed tracing, also called distributed request tracing, is a method used to profile and monitor applications, especially those built using a microservices architecture. Distributed tracing helps pinpoint where failures occur and what causes poor performance.",
+      "documentation": [
+        {
+          "title": "Solution for onboarding Kubernetes/AKS workloads onto Application Insights monitoring.",
+          "url": "https://github.com/microsoft/Application-Insights-K8s-Codeless-Attach"
+        },
+        {
+          "title": "Zero instrumentation application monitoring for Kubernetes hosted applications (deprecated)",
+          "url": "https://docs.microsoft.com/en-us/azure/azure-monitor/app/kubernetes"
         }
       ],
       "tags": ["all", "operation"]
