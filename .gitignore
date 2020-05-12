@@ -8,6 +8,7 @@ test/e2e/reports
 selenium-debug.log
 dist/
 .tmp/
+data/tooling/result.txt
 
 # Editor directories and files
 .idea

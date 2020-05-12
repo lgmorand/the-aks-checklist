@@ -1,40 +1,41 @@
-source=${source:-en}
-target=${target:-}
+#!/bin/bash
 
-while [ $# -gt 0 ]; do
+logfile="result.txt"
+rm -f $logfile
 
-   if [[ $1 == *"--"* ]]; then
-        param="${1/--/}"
-        declare $param="$2"
-        # echo $1 $2 // Optional to see the parameter:value result
-   fi
+echo  ""
+echo  "###############################" 2>&1 | tee -a $logfile
+echo  "#   Localization checker      #" 2>&1 | tee -a $logfile
+echo  "###############################" 2>&1 | tee -a $logfile
 
-  shift
-done
+echo "Installing required tools: jq for parsing JSON"
+sudo apt-get install jq > /dev/null
 
-if [[ "$target" == "" ]]
-then 
-    echo -e "\e[91mparameter --target is missing\e[0m"
-else
-    echo  ""
-    echo  "###############################"
-    echo  "#   Localization checker      #"
-    echo  "###############################"
 
-    echo "Installing required tools: jq for parsing JSON"
-    sudo apt-get install jq > /dev/null
+CompareLang "en" "fr"
+CompareLang "en" "es"
 
-    echo -e "Comparing \e[96m'$source'\e[0m to \e[96m'$target'\e[0m"
+echo ""
+echo -e "\e[92mComparison done. Open $logfile \e[0m"  
+
+function CompareLang()
+(
+   local source=$1
+   local target=$2
+   
     echo ""
-    
-    sourceFolder=../$source/items
-    targetFolder=../$target/items
+    echo -e "Comparing '$source' to '$target'"  2>&1 | tee -a $logfile
+    echo "-----------------------"
+    echo ""
+
+    sourceFolder="../$source/items"
+    targetFolder="../$target/items"
     sourceFileNumber="$(ls $sourceFolder | wc -l)"
     targetFileNumber="$(ls $targetFolder | wc -l)"
 
-    if [[ "$sourceFileNumber" != "$targetFileNumber" ]]
+    if [ "$sourceFileNumber" != "$targetFileNumber" ]
     then
-        echo -e "\e[91mFolders '$source' ($sourceFileNumber) and '$target' ($targetFileNumber) do not have the same number of files\e[0m"
+        echo -e "Folders '$source' and '$target' do not have the same number of files"  2>&1 | tee -a $logfile
 
         for f in $sourceFolder/*
         do
@@ -42,28 +43,28 @@ else
 
             targetFile="$targetFolder/$FILENAME"
             if [ ! -f "$targetFile" ]; then
-                echo -e "$targetFile does \e[91mnot\e[0m exist"
+                echo -e "$targetFile does not exist"  2>&1 | tee -a $logfile
             fi
         done
     else
-        echo -e "\e[92mSame number of files between '$source' and '$target' \e[0m"
-
+        echo -e "Same number of files between '$source' and '$target'"  2>&1 | tee -a $logfile
         for f in $sourceFolder/*
         do
             FILENAME=`basename ${f}`;
-            echo -e "comparing \e[96m$f\e[0m to \e[96m$targetFolder/$FILENAME\e[0m"
+            echo -e "comparing $f to $targetFolder/$FILENAME"  2>&1 | tee -a $logfile
             sourceCount="$(jq '. | length' $f)"
             targetCount="$(jq '. | length' $targetFolder/$FILENAME)"
             
             if [[ "$sourceCount" != "$targetCount" ]]
             then
-                echo -e "\e[91mFiles $f($sourceCount) and $target ($targetCount) do not have the same number of elements\e[0m"
-            else
-                echo -e "\e[92mSame number of files between '$source' and '$target' \e[0m"
+                echo -e "Files $f($sourceCount) and $target ($targetCount) do not have the same number of elements"  2>&1 | tee -a $logfile
             fi
 
         done
     fi
-    
-    
-fi
+
+
+
+)
+
+

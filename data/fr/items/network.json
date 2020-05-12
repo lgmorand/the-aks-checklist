@@ -60,7 +60,7 @@
         }
       ],
       "tags": ["all", "network", "security"]
-    },,
+    },
     {
       "title": "Contrôler le flux de trafic avec des stratégies réseau",
       "priority": "Medium",
