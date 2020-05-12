@@ -88,6 +88,16 @@
           "url": "https://docs.microsoft.com/fr-fr/azure/azure-monitor/insights/container-insights-analyze"
         }
       ],
+      "tools":[
+        {
+          "title": "Elastic Cloud",
+          "url": "https://www.elastic.co/elastic-cloud-kubernetes"
+        },
+        {
+          "title": "Datadog",
+          "url": "https://www.datadoghq.com/"
+        }
+      ],
       "tags": ["all", "operation"]
     }
 ]
