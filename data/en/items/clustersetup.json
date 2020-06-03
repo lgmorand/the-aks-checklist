@@ -123,5 +123,18 @@
       "documentation": [
       ],
       "tags": ["all", "security"]
+    },
+    {
+      "title": "Use AKS and ACR integration without password",
+      "priority": "Medium",
+      "description": "AKS can authenticate to ACR without using any password, but by using either Service Principal or Managed Identity.",
+      "details": "For AKS to download/pull images from Azure Container Registry (ACR), it needs the ACR credentials including the password. To avoid saving the password in the cluster, you can simply activate the ACR integration on new or existing AKS cluster using SPN or Managed Identity",
+      "documentation": [
+        {
+          "title": "Authenticate with Azure Container Registry from AKS",
+          "url": "https://docs.microsoft.com/en-us/azure/aks/cluster-container-registry-integration"
+        }
+      ],
+      "tags": ["all", "security"]
     }
 ] 
