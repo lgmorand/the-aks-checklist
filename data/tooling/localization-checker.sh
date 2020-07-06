@@ -8,6 +8,9 @@ echo  "###############################" 2>&1 | tee -a $logfile
 echo  "#   Localization checker      #" 2>&1 | tee -a $logfile
 echo  "###############################" 2>&1 | tee -a $logfile
 
+
+echo "if this script triggers unknown command error, reencode it with LF instead of CRLF"
+
 echo "Installing required tools: jq for parsing JSON"
 sudo apt-get install jq -y > /dev/null
 
