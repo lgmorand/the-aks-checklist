@@ -56,5 +56,18 @@
           }
         ],
         "tags": ["all", "resiliency","storage"]
+      },
+      {
+        "title": "Guaranty SLA for the control plane",
+        "priority": "Low",
+        "description": "Uptime SLA est une option qui permet d'avoir un SLA appliqué à la partie API server de votre cluster. Il fournit un SLA de 99,95% à la place du SLO de 99,5% fournit par défaut et est donc pertinent pour vos clusters de production",
+        "details": "Les clients ayant besoin d'un SLA pour répondre aux exigences de conformité ou qui ont besoin d'étendre un SLA à leurs utilisateurs finaux doivent activer cette fonctionnalité. Les clients avec des charges de travail critiques qui bénéficieront d'un SLA de disponibilité plus élevé peuvent également en bénéficier. L'utilisation de la fonctionnalité SLA de disponibilité avec les zones de disponibilité permet une disponibilité plus élevée pour la disponibilité du serveur API Kubernetes.",
+        "documentation": [
+          {
+            "title": "Azure Kubernetes Service (AKS) Uptime SLA",
+            "url": "https://docs.microsoft.com/en-us/azure/aks/uptime-sla"
+          }
+        ],
+        "tags": ["all", "resiliency"]
       }
 ]
