@@ -60,16 +60,16 @@
     "tags": ["all", "resiliency"]
   },
   {
-    "title": "Almacenar sus secretos en Azure Keyvault",
+    "title": "Almacenar sus secretos en Azure Key Vault",
     "priority": "Medium",
-    "description": "Los secretos no están encriptados en etcd, prefiera almacenar los secretos en servicios de HSM como Azure Keyvault. Podrá inyectar estos secretos a través del uso de FlexVolume.",
+    "description": "Los secretos no están encriptados en etcd, prefiera almacenar los secretos en servicios de HSM como Azure Key Vault. Podrá inyectar estos secretos a través del uso de FlexVolume.",
     "documentation": [
       {
         "title": "Azure Key Vault Provider for Secret Store CSI Driver",
         "url": "https://github.com/Azure/secrets-store-csi-driver-provider-azure"
       },
       {
-        "title": "Keyvault and flex volumes (Deprecated)",
+        "title": "Key Vault and flex volumes (Deprecated)",
         "url": "https://github.com/Azure/kubernetes-keyvault-flexvol"
       }
     ],
