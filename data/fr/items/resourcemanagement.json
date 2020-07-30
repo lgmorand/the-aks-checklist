@@ -14,7 +14,7 @@
         "url": "https://kubernetes.io/docs/concepts/policy/resource-quotas/"
       }
     ],
-    "tags": ["all", "resiliency"]
+    "tags": ["all", "resiliency", "resource management"]
   },
   {
     "title": "Définissez les limites et requêtes pour tous les containers",
@@ -26,7 +26,7 @@
         "url": "https://kubernetes.io/docs/tasks/configure-pod-container/assign-memory-resource/"
       }
     ],
-    "tags": ["all", "resiliency"]
+    "tags": ["all", "resiliency", "resource management"]
   },
   {
     "title": "Utilisez les pod disruption budgets",
@@ -42,7 +42,7 @@
         "url":"https://kubernetes.io/docs/tasks/run-application/configure-pdb/"
       }
     ],
-    "tags": ["all", "resiliency"]
+    "tags": ["all", "resiliency", "resource management"]
   },
   {
     "title": "Mettez en place l'auto-scaling sur le cluster",
@@ -54,6 +54,6 @@
         "url": "https://docs.microsoft.com/fr-fr/azure/aks/cluster-autoscaler"
       }
     ],
-    "tags": ["all", "resiliency"]
+    "tags": ["all", "resiliency", "resource management"]
   }
 ]

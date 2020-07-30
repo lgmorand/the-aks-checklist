@@ -62,11 +62,17 @@
   {
     "title": "Implement autoscaling of your applications",
     "priority": "Low",
-    "description": "The Horizontal Pod Autoscaler automatically scales the number of pods based on observed CPU utilization",
+    "description": "Automatically scale your application to the number of pods required to handle the current load. This can be achieved by using Horizontal Pod Autoscaler for CPU & Memory or by using KEDA for scaling based on other sources",
     "documentation": [
       {
         "title": "Horizontal Pod Autoscaler",
         "url": "https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/"
+      }
+    ],
+    "tools":[
+      {
+        "title": "Kubernetes Event-driven Autoscaling (KEDA)",
+        "url": "https://keda.sh/"
       }
     ],
     "tags": ["all", "resiliency"]
