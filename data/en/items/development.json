@@ -14,7 +14,7 @@
   {
     "title": "Implement a proper Startup probe",
     "priority": "Medium",
-    "description": "Protect slow starting containers with startup probes. Startup prob allow to delay the initial check by liveness which could cause deadlock or wrong result",
+    "description": "Protect slow starting containers with startup probes. Startup probe allow to delay the initial check by liveness which could cause deadlock or wrong result",
     "documentation": [
       {
         "title": "Configure Liveness, Readiness and Startup Probes",
