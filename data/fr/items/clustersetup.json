@@ -117,7 +117,7 @@
     {
       "title": "Désactivez le Kubernetes dashboard",
       "priority": "Medium",
-      "description": "Par défaut, Kubernetes déploie un dashboard et l'expose, pouvant être une faille de sécurité. Si vous ne prévoyez pas de l'utiliser pour piloter votre cluster, vous devriez le désactiver.",
+      "description": "Par défaut, Kubernetes (si < v. 1.18) déploie un dashboard et l'expose, pouvant être une faille de sécurité. Si vous ne prévoyez pas de l'utiliser pour piloter votre cluster, vous devriez le désactiver.",
       "details": "Vous pouvez le désactiver avec la commande CLI suivante: az aks disable-addons --addons kube-dashboard --resource-group RG_NAME --name CLUSTER_NAME",
       "tags": ["all", "security"]
     },
