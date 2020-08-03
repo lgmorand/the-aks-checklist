@@ -41,12 +41,12 @@
       "description": "Azure Kubernetes Service (AKS) can be configured to use Azure Active Directory (Azure AD) for user authentication. In this configuration, you can sign in to an AKS cluster by using your Azure AD authentication token.",
       "documentation": [
         {
-          "title": "Integrate Azure Active Directory with Azure Kubernetes Service",
-          "url": "https://docs.microsoft.com/en-us/azure/aks/azure-ad-integration"
+          "title": "AAD Integration V2",
+          "url": "https://docs.microsoft.com/fr-fr/azure/aks/azure-ad-v2"
         },
         {
-          "title": "AAD Integration V2",
-          "url": "https://docs.microsoft.com/en-us/azure/aks/azure-ad-v2"
+          "title": "Integrate Azure Active Directory with Azure Kubernetes Service",
+          "url": "https://docs.microsoft.com/fr-fr/azure/aks/azure-ad-integration"
         }
       ],
       "tags": ["all", "security"]
@@ -113,13 +113,12 @@
         }
       ],
       "tags": ["all", "resources"]
-    }
-    ,
+    },
     {
       "title": "Check if you need the Kubernetes dashboard",
       "priority": "Medium",
       "description": "By default Kubernetes deploys and exposed the default dashboard. If you don't plan to use it to pilot your cluster, you should disable it.",
-      "details": "It can be done with the following CLI: az aks disable-addons --addons kube-dashboard --resource-group YOUR_RG --name CLUSTE_NAME",
+      "details": "It can be done with the following CLI: az aks disable-addons --addons kube-dashboard --resource-group RG_NAME --name CLUSTER_NAME",
       "documentation": [
       ],
       "tags": ["all", "security"]
@@ -133,6 +132,19 @@
         {
           "title": "Authenticate with Azure Container Registry from AKS",
           "url": "https://docs.microsoft.com/en-us/azure/aks/cluster-container-registry-integration"
+        }
+      ],
+      "tags": ["all", "security"]
+    },
+    {
+      "title": "Use placement proximity group to improve performance",
+      "priority": "Low",
+      "description": "When deploying your application in Azure, spreading Virtual Machine (VM) instances across regions or availability zones creates network latency, which may impact the overall performance of your application. A proximity placement group is a logical grouping used to make sure Azure compute resources are physically located close to each other",
+      "details": "Be careful, by using PPG on a nodepool, you reduce the average SLA of your application since they don't rely on availability zones anymore",
+      "documentation": [
+        {
+          "title": "Reduce latency with proximity placement groups",
+          "url": "https://docs.microsoft.com/en-us/azure/aks/reduce-latency-ppg"
         }
       ],
       "tags": ["all", "security"]

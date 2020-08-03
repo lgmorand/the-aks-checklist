@@ -41,12 +41,12 @@
       "description": "Azure Kubernetes Service (AKS) can be configured to use Azure Active Directory (Azure AD) for user authentication. In this configuration, you can sign in to an AKS cluster by using your Azure AD authentication token.",
       "documentation": [
         {
-          "title": "Integrate Azure Active Directory with Azure Kubernetes Service",
-          "url": "https://docs.microsoft.com/fr-fr/azure/aks/azure-ad-integration"
-        },
-        {
           "title": "AAD Integration V2",
           "url": "https://docs.microsoft.com/fr-fr/azure/aks/azure-ad-v2"
+        },
+        {
+          "title": "Integrate Azure Active Directory with Azure Kubernetes Service",
+          "url": "https://docs.microsoft.com/fr-fr/azure/aks/azure-ad-integration"
         }
       ],
       "tags": ["all", "security"]
@@ -105,7 +105,7 @@
       "documentation": [
         {
           "title": "Générer automatiquement les nouvelles images sur la mise à jour de l’image de base",
-          "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-container-image-management#automatically-build-new-images-on-base-image-update"
+          "url": "https://docs.microsoft.com/fr-fr/azure/aks/operator-best-practices-container-image-management#automatically-build-new-images-on-base-image-update"
         },
         {
           "title": "Azure DevOps - Déclencher un workflow l'un d'un update d'une image Docker",
@@ -113,5 +113,37 @@
         }
       ],
       "tags": ["all", "resources"]
+    },
+    {
+      "title": "Désactivez le Kubernetes dashboard",
+      "priority": "Medium",
+      "description": "Par défaut, Kubernetes déploie un dashboard et l'expose, pouvant être une faille de sécurité. Si vous ne prévoyez pas de l'utiliser pour piloter votre cluster, vous devriez le désactiver.",
+      "details": "Vous pouvez le désactiver avec la commande CLI suivante: az aks disable-addons --addons kube-dashboard --resource-group RG_NAME --name CLUSTER_NAME",
+      "tags": ["all", "security"]
+    },
+    {
+      "title": "Utilisez l'integration entre AKS et ACR sans utiliser de mot de passe",
+      "priority": "Medium",
+      "description": "AKS peut s'authentifier sur l'ACR sans utiliser un mot de passe, soit en utilisant un Service Principal ou une Managed Identity.",
+      "documentation": [
+        {
+          "title": "Authenticate with Azure Container Registry from AKS",
+          "url": "https://docs.microsoft.com/fr-fr/azure/aks/cluster-container-registry-integration"
+        }
+      ],
+      "tags": ["all", "security"]
+    },
+    {
+      "title": "Utilisez les groupes de placement de proximité pour améliorer les performances",
+      "priority": "Low",
+      "description": "When deploying your application in Azure, spreading Virtual Machine (VM) instances across regions or availability zones creates network latency, which may impact the overall performance of your application. A proximity placement group is a logical grouping used to make sure Azure compute resources are physically located close to each other",
+      "details": "Attention, en utilisant les PPG sur un nodepool, vous réduisez le SLA des applications déployées sur ce nodepool qui ne tire par profit des zones de disponibilité",
+      "documentation": [
+        {
+          "title": "Reduce latency with proximity placement groups",
+          "url": "https://docs.microsoft.com/fr-fr/azure/aks/reduce-latency-ppg"
+        }
+      ],
+      "tags": ["all", "security"]
     }
 ] 

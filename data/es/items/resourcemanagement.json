@@ -14,7 +14,7 @@
         "url": "https://kubernetes.io/docs/concepts/policy/resource-quotas/"
       }
     ],
-    "tags": ["all", "resiliency"]
+    "tags": ["all", "resiliency", "resource management"]
   },
   {
     "title": "Defina limites de memoria y cpu para sus contenedores",
@@ -27,7 +27,7 @@
         "url": "https://kubernetes.io/docs/tasks/configure-pod-container/assign-memory-resource/"
       }
     ],
-    "tags": ["all", "resiliency"]
+    "tags": ["all", "resiliency", "resource management"]
   },
   {
     "title": "Configure presupuestos de interrupciones de pods",
@@ -44,7 +44,7 @@
         "url":"https://kubernetes.io/docs/tasks/run-application/configure-pdb/"
       }
     ],
-    "tags": ["all", "resiliency"]
+    "tags": ["all", "resiliency", "resource management"]
   },
   {
     "title": "Habilitar autoescalado en el clúster",
@@ -56,6 +56,6 @@
         "url": "https://docs.microsoft.com/es-es/azure/aks/cluster-autoscaler"
       }
     ],
-    "tags": ["all", "resiliency"]
+    "tags": ["all", "resiliency", "resource management"]
   }
 ]

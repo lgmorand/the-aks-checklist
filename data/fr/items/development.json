@@ -12,6 +12,18 @@
     "tags": ["all", "development"]
   },
   {
+    "title": "Implémentez une sonde de démarrage",
+    "priority": "Medium",
+    "description": "Protégez les conteneurs à démarrage lent avec des sondes de démarrage. Le problème de démarrage permet de retarder la vérification initiale par la vivacité, ce qui pourrait entraîner un blocage ou un mauvais résultat",
+    "documentation": [
+      {
+        "title": "Configure Liveness, Readiness and Startup Probes",
+        "url": "https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/"
+      }
+    ],
+    "tags": ["all", "development"]
+  },
+  {
     "title": "Implémentez une sonde Ready",
     "priority": "Medium",
     "description": "Parfois, les applications sont temporairement incapables de gérer le trafic. Par exemple, une application peut avoir besoin de charger de gros fichiers de données ou de configuration lors du démarrage, ou dépendre de services externes après le démarrage. Dans de tels cas, vous ne voulez pas tuer l'application, mais vous ne voulez pas non plus lui envoyer de demandes. Kubernetes fournit des sondes de préparation pour détecter et atténuer ces situations. Un module contenant des conteneurs signalant qu'ils ne sont pas prêts ne reçoit pas de trafic via les services Kubernetes.",
@@ -60,16 +72,16 @@
     "tags": ["all", "resiliency"]
   },
   {
-    "title": "Stockez vos secrets dans Azure KeyVault",
+    "title": "Stockez vos secrets dans Azure Key Vault",
     "priority": "Medium",
-    "description": "Les secrets ne sont pas chiffrés dans la base etcd, prefer to store your secrets in a proper HSM like Azure KeyVault. You can then inject secrets using FlexVolume.",
+    "description": "Les secrets ne sont pas chiffrés dans la base etcd, prefer to store your secrets in a proper HSM like Azure Key Vault. You can then inject secrets using FlexVolume.",
     "documentation": [
       {
         "title": "Azure Key Vault Provider for Secret Store CSI Driver)",
         "url": "https://github.com/Azure/secrets-store-csi-driver-provider-azure"
       },
       {
-        "title": "Keyvault and flex volumes (Deprecated)",
+        "title": "Key Vault and flex volumes (Deprecated)",
         "url": "https://github.com/Azure/kubernetes-keyvault-flexvol"
       }
     ],
@@ -111,5 +123,17 @@
       }
     ],
     "tags": ["all", "resources"]
+  },
+  {
+    "title": "Spécifiez le contexte de sécurité de votre pod / conteneur",
+    "priority": "Medium",
+    "description": "Un contexte de sécurité définit les paramètres de privilège et de contrôle d'accès pour un pod ou un conteneur. Contrôlez les capacités et les droits que votre conteneur peut avoir",
+    "documentation": [
+      {
+        "title": "Configure a Security Context for a Pod or Container",
+        "url": "https://kubernetes.io/docs/tasks/configure-pod-container/security-context/"
+      }
+    ],
+    "tags": ["all", "resources", "security"]
   }
 ]

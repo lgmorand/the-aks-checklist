@@ -1,6 +1,6 @@
 # The Azure Kubernetes Service Checklist
 
-![Build and deploy on prod](https://github.com/lgmorand/aks-checklist/workflows/Build%20and%20deploy%20on%20prod/badge.svg)
+![Build and deploy on prod](https://github.com/lgmorand/aks-checklist/workflows/Build%20and%20deploy%20on%20prod/badge.svg) ![Last commit](https://img.shields.io/github/last-commit/lgmorand/aks-checklist.svg) ![License](https://img.shields.io/github/license/lgmorand/aks-checklist.svg)
 
 Deployed version can be found here: [www.the-aks-checklist.com](https://www.the-aks-checklist.com)
 ![AKS Checklist](https://raw.githubusercontent.com/lgmorand/aks-checklist/master/src/img/social/facebook-banner.jpg)
@@ -17,9 +17,9 @@ The AKS Checklist is a (tentatively) exhaustive list of all elements you need to
 
 ## How to contribute
 
-Fork the repo, add the best practices in the items.json file (at least in english which will remain the single source of trust) and then do a pull request **on the staging branch** ;-)
+Fork the repo, add the best practices in the items.json file (at least in English which will remain the single source of trust) and then do a pull request **on the staging branch** ;-)
 
-Be aware that we want to keep a list an exhaustive as possible but also a list which met **common usage**. Depending on your context, you may have custom best practices which may apply only to your case.
+Be aware that we want to keep a list an exhaustive as possible but also a list that met **common usage**. Depending on your context, you may have custom best practices which may apply only to your case.
 
 ## How to add a translation
 

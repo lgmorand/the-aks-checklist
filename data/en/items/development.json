@@ -5,7 +5,19 @@
     "description": "Many applications running for long periods of time eventually transition to broken states, and cannot recover except by being restarted. Kubernetes provides liveness probes to detect and remedy such situations. The probe is here to tell Kubernetes to restart your pod when it is not responding anymore",
     "documentation": [
       {
-        "title": "Configure Liveness, Readiness probes",
+        "title": "Configure Liveness, Readiness and Startup Probes",
+        "url": "https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/"
+      }
+    ],
+    "tags": ["all", "development"]
+  },
+  {
+    "title": "Implement a proper Startup probe",
+    "priority": "Medium",
+    "description": "Protect slow starting containers with startup probes. Startup probe allow to delay the initial check by liveness which could cause deadlock or wrong result",
+    "documentation": [
+      {
+        "title": "Configure Liveness, Readiness and Startup Probes",
         "url": "https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/"
       }
     ],
@@ -17,7 +29,7 @@
     "description": "Sometimes, applications are temporarily unable to serve traffic. For example, an application might need to load large data or configuration files during startup, or depend on external services after startup. In such cases, you don’t want to kill the application, but you don’t want to send it requests either. Kubernetes provides readiness probes to detect and mitigate these situations. A pod with containers reporting that they are not ready does not receive traffic through Kubernetes Services.",
     "documentation": [
       {
-        "title": "Configure Liveness, Readiness probes",
+        "title": "Configure Liveness, Readiness and Startup Probes",
         "url": "https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/"
       }
     ],
@@ -50,26 +62,32 @@
   {
     "title": "Implement autoscaling of your applications",
     "priority": "Low",
-    "description": "The Horizontal Pod Autoscaler automatically scales the number of pods based on observed CPU utilization",
+    "description": "Automatically scale your application to the number of pods required to handle the current load. This can be achieved by using Horizontal Pod Autoscaler for CPU & Memory or by using KEDA for scaling based on other sources",
     "documentation": [
       {
         "title": "Horizontal Pod Autoscaler",
         "url": "https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/"
       }
     ],
+    "tools":[
+      {
+        "title": "Kubernetes Event-driven Autoscaling (KEDA)",
+        "url": "https://keda.sh/"
+      }
+    ],
     "tags": ["all", "resiliency"]
   },
   {
-    "title": "Store your secrets in Azure KeyVault",
+    "title": "Store your secrets in Azure Key Vault",
     "priority": "Medium",
-    "description": "Secrets are not encrypted in etcd, prefer to store your secrets in a proper HSM like Azure KeyVault. You can then inject secrets using CSI provider or continue to use FlexVolume if kubernetes < 1.16.",
+    "description": "Secrets are not encrypted in etcd, prefer to store your secrets in a proper HSM like Azure Key Vault. You can then inject secrets using CSI provider or continue to use FlexVolume if kubernetes < 1.16.",
     "documentation": [
       {
         "title": "Azure Key Vault Provider for Secret Store CSI Driver",
         "url": "https://github.com/Azure/secrets-store-csi-driver-provider-azure"
       },
       {
-        "title": "Keyvault and flex volumes (Deprecated)",
+        "title": "Key Vault and flex volumes (Deprecated)",
         "url": "https://github.com/Azure/kubernetes-keyvault-flexvol"
       }
     ],
