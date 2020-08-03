@@ -117,7 +117,7 @@
     {
       "title": "Check if you need the Kubernetes dashboard",
       "priority": "Medium",
-      "description": "By default Kubernetes deploys and exposed the default dashboard. If you don't plan to use it to pilot your cluster, you should disable it.",
+      "description": "By default Kubernetes in AKS deploys and exposes the default dashboard for clusters running a Kubernetes version less than 1.18. If you don't plan to use it to pilot your cluster, you should disable it.",
       "details": "It can be done with the following CLI: az aks disable-addons --addons kube-dashboard --resource-group RG_NAME --name CLUSTER_NAME",
       "documentation": [
       ],

@@ -14,7 +14,7 @@
         "url": "https://kubernetes.io/docs/concepts/policy/resource-quotas/"
       }
     ],
-    "tags": ["all", "resiliency"]
+    "tags": ["all", "resiliency", "resource management"]
   },
   {
     "title": "Set memory limits and requests for all containers",
@@ -27,7 +27,7 @@
         "url": "https://kubernetes.io/docs/tasks/configure-pod-container/assign-memory-resource/"
       }
     ],
-    "tags": ["all", "resiliency"]
+    "tags": ["all", "resiliency", "resource management"]
   },
   {
     "title": "Configure pod disruption budgets",
@@ -44,7 +44,7 @@
         "url":"https://kubernetes.io/docs/tasks/run-application/configure-pdb/"
       }
     ],
-    "tags": ["all", "resiliency"]
+    "tags": ["all", "resiliency", "resource management"]
   },
   {
     "title": "Set up cluster auto-scaling",
@@ -56,6 +56,18 @@
         "url": "https://docs.microsoft.com/en-us/azure/aks/cluster-autoscaler"
       }
     ],
-    "tags": ["all", "resiliency"]
+    "tags": ["all", "resiliency", "resource management"]
+  },
+  {
+    "title": "Set up application auto-scaling with scale-to-zero",
+    "priority": "Low",
+    "description": "To ensure idle workloads are not wasting cluster resources, application auto-scaling with scale-to-zero",
+    "tools":[
+      {
+        "title": "Kubernetes Event-driven Autoscaling (KEDA)",
+        "url": "https://keda.sh/"
+      }
+    ],
+    "tags": ["all", "resiliency", "resource management"]
   }
 ]
