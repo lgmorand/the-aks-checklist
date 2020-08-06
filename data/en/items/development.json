@@ -1,5 +1,17 @@
 [
   {
+      "title": "Conduct Docker Image Builds using Docker Image Security Best Practices",
+      "priority": "High",
+      "description": "Define a Image build security baseline for your developers to follow.",
+      "documentation": [
+        {
+          "title": "SNYK 10 Docker Image Security Best Practices",
+          "url": "https://snyk.io/blog/10-docker-image-security-best-practices/"
+        },
+      ],
+      "tags": ["all", "security"]
+    },
+  {
     "title": "Implement a proper Liveness probe",
     "priority": "High",
     "description": "Many applications running for long periods of time eventually transition to broken states, and cannot recover except by being restarted. Kubernetes provides liveness probes to detect and remedy such situations. The probe is here to tell Kubernetes to restart your pod when it is not responding anymore",
