@@ -72,21 +72,21 @@
     "tags": ["all", "resiliency"]
   },
   {
-    "title": "Store your secrets in Azure KeyVault",
-    "priority": "Medium",
-    "description": "Secrets are not encrypted in etcd, prefer to store your secrets in a proper HSM like Azure KeyVault. You can then inject secrets using CSI provider or continue to use FlexVolume if kubernetes < 1.16.",
-    "documentation": [
-      {
-        "title": "Azure Key Vault Provider for Secret Store CSI Driver",
-        "url": "https://github.com/Azure/secrets-store-csi-driver-provider-azure"
-      },
-      {
-        "title": "Keyvault and flex volumes (Deprecated)",
-        "url": "https://github.com/Azure/kubernetes-keyvault-flexvol"
-      }
-    ],
-    "tags": ["all", "security"]
-  },
+      "title": "Inject Secrets instead of passwords in Docker Images",
+      "priority": "High",
+      "description": "It is not recommended to inject passwords of any kind in images, instead use Secrets.  You can inject secrets as files or as a variable.",
+      "documentation": [
+        {
+          "title": "CSI Driver",
+          "url": "https://github.com/Azure/secrets-store-csi-driver-provider-azure"
+        },
+        {
+          "title": "AKV2K8S",
+          "url": "https://akv2k8s.io/"
+        },
+      ],
+      "tags": ["all", "security"]
+    },
   {
     "title": "Implement Pod Identity",
     "priority": "Medium",
