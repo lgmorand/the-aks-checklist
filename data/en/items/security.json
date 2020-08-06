@@ -75,22 +75,6 @@
       "tags": ["all", "security"]
     },
     {
-      "title": "Inject Secrets instead of passwords in Docker Images",
-      "priority": "High",
-      "description": "It is not recommended to inject passwords of any kind in images, instead use Secrets.  You can inject secrets as files or as a variable.",
-      "documentation": [
-        {
-          "title": "CSI Driver",
-          "url": "https://github.com/Azure/secrets-store-csi-driver-provider-azure"
-        },
-        {
-          "title": "AKV2K8S",
-          "url": "https://akv2k8s.io/"
-        },
-      ],
-      "tags": ["all", "security"]
-    },
-    {
       "title": "Conduct Docker Image Builds using Docker Image Security Best Practices",
       "priority": "High",
       "description": "Define a Image build security baseline for your developers to follow.",
