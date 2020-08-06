@@ -1,0 +1,49 @@
+{
+      "title": "Quarantine of Docker Images in Docker Registries that have discovered issues",
+      "priority": "High",
+      "description": "Use policy to protect images from drift while in the registry, on both push and pull.",
+      "detail": "On build the image is secured based on the threshold set, but now while in the registry a new issue is discoverd.  You need to ensure that the image can not be deployed until the issue is remediated.",
+      "documentation": [
+        {
+          "title": "ACR Quarantine",
+          "url": "https://github.com/Azure/acr/tree/master/docs/preview/quarantine"
+        }
+      ],
+      "tags": ["all", "security"]
+    },
+    {
+      "title": "Role-Based Access Contol (RBAC) to Docker Registries",
+      "priority": "High",
+      "description": "Use network policies to allow or deny traffic to pods. By default, all traffic is allowed between pods within a cluster. For improved security, define rules that limit pod communication.",
+      "detail": "Network policy is a Kubernetes feature that lets you control the traffic flow between pods. You can choose to allow or deny traffic based on settings such as assigned labels, namespace, or traffic port. The use of network policies gives a cloud-native way to control the flow of traffic. As pods are dynamically created in an AKS cluster, the required network policies can be automatically applied. Don't use Azure network security groups to control pod-to-pod traffic, use network policies.",
+      "documentation": [
+        {
+          "title": "Control traffic flow with network policies",
+          "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-network#control-traffic-flow-with-network-policies"
+        }
+      ],
+      "tools":[
+        {
+          "title": "Calico",
+          "url": "https://docs.projectcalico.org/reference/resources/networkpolicy"
+        },
+        {
+          "title": "Cillium",
+          "url": "https://cilium.io/"
+        }
+      ],
+      "tags": ["all", "security"]
+    },
+    {
+      "title": "Network Segmentation of Docker Registries",
+      "priority": "High",
+      "description": "Use policy to protect images from drift while in the registry, on both push and pull.",
+      "detail": "On build the image is secured based on the threshold set, but now while in the registry a new issue is discoverd.  You need to ensure that the image can not be deployed until the issue is remediated.",
+      "documentation": [
+        {
+          "title": "ACR Quarantine",
+          "url": "https://github.com/Azure/acr/tree/master/docs/preview/quarantine"
+        }
+      ],
+      "tags": ["all", "network", "security"]
+    },
