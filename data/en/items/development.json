@@ -101,7 +101,7 @@
   {
     "title": "Implement a proper Startup probe",
     "priority": "Medium",
-    "description": "Protect slow starting containers with startup probes. Startup prob allow to delay the initial check by liveness which could cause deadlock or wrong result",
+    "description": "Protect slow starting containers with startup probes. Startup probe allow to delay the initial check by liveness which could cause deadlock or wrong result",
     "documentation": [
       {
         "title": "Configure Liveness, Readiness and Startup Probes",
@@ -149,30 +149,40 @@
   {
     "title": "Implement autoscaling of your applications",
     "priority": "Low",
-    "description": "The Horizontal Pod Autoscaler automatically scales the number of pods based on observed CPU utilization",
+    "description": "Automatically scale your application to the number of pods required to handle the current load. This can be achieved by using Horizontal Pod Autoscaler for CPU & Memory or by using KEDA for scaling based on other sources",
     "documentation": [
       {
         "title": "Horizontal Pod Autoscaler",
         "url": "https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/"
       }
     ],
+    "tools":[
+      {
+        "title": "Kubernetes Event-driven Autoscaling (KEDA)",
+        "url": "https://keda.sh/"
+      }
+    ],
     "tags": ["all", "resiliency"]
   },
   {
-      "title": "Inject Secrets instead of passwords in Docker Images",
-      "priority": "High",
-      "description": "It is not recommended to inject passwords of any kind in images, instead use Secrets.  You can inject secrets as files or as a variable.",
-      "documentation": [
-        {
-          "title": "CSI Driver",
-          "url": "https://github.com/Azure/secrets-store-csi-driver-provider-azure"
-        },
-        {
-          "title": "AKV2K8S",
-          "url": "https://akv2k8s.io/"
-        },
-      ],
-      "tags": ["all", "security"]
+    "title": "Store your secrets in Azure Key Vault, don't inject passwords in Docker Images",
+    "priority": "High",
+    "description": "Secrets are not encrypted in etcd, prefer to store your secrets in a proper HSM like Azure Key Vault. You can then inject secrets using CSI provider or continue to use FlexVolume if kubernetes < 1.16.",
+    "documentation": [
+      {
+        "title": "Azure Key Vault Provider for Secret Store CSI Driver",
+        "url": "https://github.com/Azure/secrets-store-csi-driver-provider-azure"
+      },
+      {
+        "title": "AKV2K8S",
+        "url": "https://akv2k8s.io/"
+      },
+      {
+        "title": "Key Vault and flex volumes (Deprecated)",
+        "url": "https://github.com/Azure/kubernetes-keyvault-flexvol"
+      }
+    ],
+    "tags": ["all", "security"]
   },
   {
     "title": "Implement Pod Identity",
