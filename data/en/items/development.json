@@ -7,7 +7,7 @@
         {
           "title": "SNYK 10 Docker Image Security Best Practices",
           "url": "https://snyk.io/blog/10-docker-image-security-best-practices/"
-        },
+        }
       ],
       "tags": ["all", "security"]
   },
@@ -15,7 +15,7 @@
       "title": "Static Analysis of Docker Images on Build",
       "priority": "High",
       "description": "Introduction of DevSecOps into the environment to promote a proactive security model that starts to shift the responsibility left",
-      "detail": "Ensure static analysis on build is taking place as a starting point"
+      "detail": "Ensure static analysis on build is taking place as a starting point",
       "documentation": [
         {
           "title": "Palo Alto CI/CD Integration (twistcli)",
@@ -44,7 +44,7 @@
       "title": "Threshold enforcement of Docker Image Builds that contain vulnerabilities",
       "priority": "Medium",
       "description": "Restrict builds with identified issues.",
-      "detail": "Use a tool that allows for the restriction of builds with enough granularity to not break development.  All Critical CVE's are not the same,  so being able to restrict builds based on Critical or High vulnerabilities with a Vendor fix, but allowing builds to continue if that Critical vulnerability is "Open"",
+      "detail": "Use a tool that allows for the restriction of builds with enough granularity to not break development.  All Critical CVE's are not the same,  so being able to restrict builds based on Critical or High vulnerabilities with a Vendor fix, but allowing builds to continue if that Critical vulnerability is 'Open'",
       "documentation": [
         {
           "title": "Prisma Threshold enforcement",
@@ -65,7 +65,7 @@
       "title": "Compliance enforcement of Docker Image Builds",
       "priority": "High",
       "description": "Being able to assess and restrict the Compliance state of an image on build.",
-      "detail": "Identifing an image running as "root" before it get deployed, or opening up port 80 or 22"
+      "detail": "Identifying an image running as 'root' before it get deployed, or opening up port 80 or 22",
       "documentation": [
         {
           "title": "Azure Built-In Policy",
