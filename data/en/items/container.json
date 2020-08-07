@@ -47,12 +47,6 @@
       "description": "Scan your container images to ensure there are no vulnerabilities in it",
       "documentation": [
         {
-          "title": "Azure Security Center : scanning feature (Qualys)",
-          "url": "https://docs.microsoft.com/en-us/azure/security-center/azure-container-registry-integration"
-        }
-      ],
-      "tools":[
-        {
           "title": "Prisma Runtime defense",
           "url": "https://docs.paloaltonetworks.com/prisma/prisma-cloud/prisma-cloud-admin-compute/runtime_defense.html"
         },
