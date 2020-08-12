@@ -44,7 +44,7 @@
     {
       "title": "Runtime Security of Applications",
       "priority": "High",
-      "description": "Scan your container images to ensure there are no vulnerabilities in it",
+      "description": "Integrate Runtime Security for your pods.  To complete the defense in depth structure, ensure Runtime protection is in place to protect from process, network, storage and system call attacks.",
       "documentation": [
         {
           "title": "Prisma Runtime defense",
