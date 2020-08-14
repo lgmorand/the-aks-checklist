@@ -44,9 +44,7 @@ body {
   margin: 0;
 }
 
-
-.titulo-alerta
-{
+.titulo-alerta {
   color: #424242;
   font-size: 18px;
   text-align: left;
@@ -56,9 +54,9 @@ body {
 .aviso {
   width: 400px;
   padding: 15px;
-  background-color: #fff;
+  background-color: white;
   color: black;
-  border-right: 4px solid #4A8333;
+  border-right: 4px solid #4a8333;
   font-family: 'open sans', sans-serif;
   font-style: italic;
   font-size: 14px;
@@ -67,8 +65,7 @@ body {
   position: fixed;
  }
 
-.imagen-aviso
-{
+.imagen-aviso {
   width: 30%;
   display: block; 
   margin-left: auto;
@@ -81,7 +78,7 @@ body {
 }
 
 .boton-cerrar {
-  background: #4A8333;
+  background: #4a8333;
   padding: 4px;
   margin-left: 15px;
   color: white;
