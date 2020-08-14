@@ -57,15 +57,14 @@ body {
   width: 400px;
   padding: 15px;
   background-color: #fff;
-  color: #000;
+  color: black;
   border-right: 4px solid #4A8333;
   font-family: 'open sans', sans-serif;
   font-style: italic;
   font-size: 14px;
   text-align: center;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-   position: fixed;
-   
+  position: fixed;
  }
 
 .imagen-aviso
@@ -74,7 +73,6 @@ body {
   display: block; 
   margin-left: auto;
   margin-right: auto;
-  
 }
 
 .boton-cerrar:hover {
@@ -82,12 +80,11 @@ body {
   padding: 10px;
 }
 
-
 .boton-cerrar {
   background: #4A8333;
   padding: 4px;
   margin-left: 15px;
-  color: #fff;
+  color: white;
   font-weight: bold;
   float: right;
   font-size: 20px;
