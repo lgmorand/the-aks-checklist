@@ -11,35 +11,104 @@
     ],
     "tools":[
       {
-        "title": "Twistlock",
+        "title": "Prisma (ex Twistlock)",
         "url": "https://www.twistlock.com/"
       },
       {
         "title": "Aqua",
         "url": "https://www.aquasec.com/"
+      },
+      {
+        "title": "Anchore",
+        "url": "https://anchore.com/"
+      },
+      {
+        "title": "Clair",
+        "url": "https://github.com/quay/clair"
       }
     ],
     "tags": ["all", "security"]
   },
-    {
-      "title": "N'autorisez le déploiement de containers que depuis des registres définis",
-      "priority": "Medium",
-      "description": "Protégez votre cluster en n'autorisant que les images venant de votre propre cluster. Vous pouvez le faire avec un control des flux sortants ou en utilisant Azure Policy, ou bien encore un admission controller",
-      "documentation": [
-        {
-          "title": "Utilisez Azure Policy : Ensure only allowed container images in AKS",
-          "url": "https://docs.microsoft.com/fr-fr/azure/governance/policy/concepts/rego-for-aks#built-in-policies"
-        },
-        {
-          "title": "Utilisez ImagePolicyWebhook",
-          "url": "https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#imagepolicywebhook"
-        },
-        {
-          "title": "Utilisez un contrôle des flux sortants (egress lockdownà et n'autorisez que l'URL de votre registre",
-          "url": "https://docs.microsoft.com/fr-fr/azure/aks/limit-egress-traffic"
-        }
-      ],
-      "tags": ["all"]
-    }
-  ]
+  {
+    "title": "N'autorisez le déploiement de containers que depuis des registres définis",
+    "priority": "Medium",
+    "description": "Protégez votre cluster en n'autorisant que les images venant de votre propre cluster. Vous pouvez le faire avec un control des flux sortants ou en utilisant Azure Policy, ou bien encore un admission controller",
+    "documentation": [
+      {
+        "title": "Utilisez Azure Policy : Ensure only allowed container images in AKS",
+        "url": "https://docs.microsoft.com/fr-fr/azure/governance/policy/concepts/rego-for-aks#built-in-policies"
+      },
+      {
+        "title": "Utilisez ImagePolicyWebhook",
+        "url": "https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#imagepolicywebhook"
+      },
+      {
+        "title": "Utilisez un contrôle des flux sortants (egress lockdownà et n'autorisez que l'URL de votre registre",
+        "url": "https://docs.microsoft.com/fr-fr/azure/aks/limit-egress-traffic"
+      }
+    ],
+    "tags": ["all"]
+  },
+  {
+    "title": "Runtime Security of Applications",
+    "priority": "High",
+    "description": "Assurez-vous que la protection au runtime de vos pods est en place pour se protéger des attaques de processus, de réseau, de stockage et d'appel système.",
+    "tools":[
+      {
+        "title": "Prisma Runtime defense",
+        "url": "https://docs.paloaltonetworks.com/prisma/prisma-cloud/prisma-cloud-admin-compute/runtime_defense.html"
+      },
+      {
+        "title": "Aqua Runtime Policies Overview",
+        "url": "https://docs.aquasec.com/docs/runtime-policies-overview"
+      },
+      {
+        "title": "StackRox Threat Detection",
+        "url": "https://www.stackrox.com/use-cases/threat-detection/"
+      },
+      {
+        "title": "Falco",
+        "url": "https://falco.org"
+      }
+    ],
+    "tags": ["all", "security"]
+  },
+  {
+    "title": "Mettez en quarantaine, les images Docker qui contiennent des vulnérabilités",
+    "priority": "High",
+    "description": "Utilisez une politique pour protéger les images de la dérive dans le registre, à la fois en mode push et pull.",
+    "detail": "Lors de la génération, l'image est sécurisée en fonction du seuil défini, mais maintenant, dans le registre, un nouveau problème est découvert. Vous devez vous assurer que l'image ne peut pas être déployée tant que le problème n'est pas résolu.",
+    "documentation": [
+      {
+        "title": "ACR Quarantine",
+        "url": "https://github.com/Azure/acr/tree/master/docs/preview/quarantine"
+      }
+    ],
+    "tags": ["all", "security"]
+  },
+  {
+    "title": "Role-Based Access Contol (RBAC) sur vos registres Docker ",
+    "priority": "High",
+    "description": "Le service Azure Container Registry prend en charge un ensemble de rôles Azure intégrés qui fournissent différents niveaux d'autorisations à un registre de conteneurs Azure. Utilisez le contrôle d'accès basé sur les rôles Azure (RBAC) pour attribuer des autorisations spécifiques aux utilisateurs, aux principaux de service ou à d'autres identités qui doivent interagir avec un registre.",
+    "documentation": [
+      {
+        "title": "Azure Container Registry roles and permissions",
+        "url": "https://docs.microsoft.com/en-us/azure/container-registry/container-registry-roles"
+      }
+    ],
+    "tags": ["all", "security"]
+  },
+  {
+    "title": "Network Segmentation des registres Docker",
+    "priority": "High",
+    "description": "Limitez l'accès à un registre en attribuant des adresses IP privées de réseau virtuel aux points de terminaison du registre et en utilisant Azure Private Link. Le trafic réseau entre les clients sur le réseau virtuel et les points de terminaison privés du registre traverse le réseau virtuel et une liaison privée sur le réseau principal de Microsoft, éliminant ainsi l'exposition de l'Internet public. Private Link permet également l'accès au registre privé à partir d'un site local via l'appairage privé Azure ExpressRoute ou une passerelle VPN.",
+    "documentation": [
+      {
+        "title": "Azure Container Registry Private Link",
+        "url": "https://docs.microsoft.com/en-us/azure/container-registry/container-registry-private-link"
+      }
+    ],
+    "tags": ["all", "network", "security"]
+  }
+]
   

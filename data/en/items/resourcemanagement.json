@@ -57,17 +57,5 @@
       }
     ],
     "tags": ["all", "resiliency", "resource management"]
-  },
-  {
-    "title": "Set up application auto-scaling with scale-to-zero",
-    "priority": "Low",
-    "description": "To ensure idle workloads are not wasting cluster resources, application auto-scaling with scale-to-zero",
-    "tools":[
-      {
-        "title": "Kubernetes Event-driven Autoscaling (KEDA)",
-        "url": "https://keda.sh/"
-      }
-    ],
-    "tags": ["all", "resiliency", "resource management"]
   }
 ]
