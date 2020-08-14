@@ -22,6 +22,7 @@
   "alert": {
     "JAVASCRIPT_DESACTIVATE": "Your JavaScript seems to be deactivated. Please enable your JavaScript to use all features of the AKS Checklist."
   },
+  "WARNING_MESSAGE": "Cette checklist contient un grand nombre de bonnes pratiques et certaines d'entre elles peuvent ne pas être pertinentes dans votre contexte et la note peut donc être incorrecte dans votre cas. Veuillez les choisir et les appliquer judicieusement",
   "form": {
     "LABEL_PROJECT_NAME": "Nom du projet",
     "TITLE_PROJECT_NAME": "Tapez le nom de votre projet",
