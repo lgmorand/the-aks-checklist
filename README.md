@@ -13,7 +13,7 @@ The AKS Checklist is a (tentatively) exhaustive list of all elements you need to
 
 ## Contributors
 
-**[Fernando Mejía feranto](https://github.com/feranto)**
+**[Fernando Mejía](https://github.com/feranto)**
 
 **[Michael Withrow](https://github.com/miwithro)**
 
