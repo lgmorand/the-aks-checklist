@@ -73,7 +73,7 @@
   },
   {
     "title": "Stockez vos secrets dans Azure Key Vault",
-    "priority": "Medium",
+    "priority": "High",
     "description": "Les secrets ne sont pas chiffrés dans la base etcd, prefer to store your secrets in a proper HSM like Azure Key Vault. You can then inject secrets using FlexVolume.",
     "documentation": [
       {
