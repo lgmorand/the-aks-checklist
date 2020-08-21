@@ -109,6 +109,19 @@
       }
     ],
     "tags": ["all", "network", "security"]
+  },
+  {
+    "title": "Préferez les images distroless ",
+    "priority": "Medium",
+    "description": "Lorsque vous construisez votre image, essayez d'utiliser des versions distroless (allégées) afin de minimiser les risques avec des outils préinstallés mais non utilisés. Par exemple, préferez base-debian10 à debian10",
+    "details": "Les images 'distroless' sont des versions simples des images de base. Ils ont le strict minimum nécessaire pour exécuter un binaire.Le shell et les autres utilitaires de développement ont été supprimés de sorte que si / quand un attaquant prend le contrôle de votre conteneur, il ne peut rien faire",
+    "documentation": [
+      {
+        "title": "Google distroless images",
+        "url": "https://github.com/GoogleContainerTools/distroless"
+      }
+    ],
+    "tags": ["all", "security"]
   }
 ]
   
