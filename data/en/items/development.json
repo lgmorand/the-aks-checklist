@@ -141,7 +141,8 @@
   {
     "title": "Specify the security context of your pod/container",
     "priority": "Medium",
-    "description": "A security context defines privilege and access control settings for a Pod or Container. Control the capabilities and the rights your container can have",
+    "description": "A security context defines privilege and access control settings for a Pod or Container. Control the capabilities and the rights your container can have. If you don't specify the security context, the pod get the 'default' one which may have more rights that it should",
+    "details": "You should also disable mounting credentials by default (automountServiceAccountToken)",
     "documentation": [
       {
         "title": "Configure a Security Context for a Pod or Container",
