@@ -106,6 +106,10 @@
       {
         "title": "Use pod identity",
         "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-identity#use-pod-identities"
+      },
+      {
+        "title": "Do not use Pod Identity with kubenet !",
+        "url": "https://azure.github.io/aad-pod-identity/docs/configure/aad_pod_identity_on_kubenet/"
       }
     ],
     "tags": ["all", "security"]
