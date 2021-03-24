@@ -1,6 +1,7 @@
 name:  Build and deploy on prod
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - master
