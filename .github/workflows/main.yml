@@ -19,8 +19,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         
-    - name: Cache node modules
-      uses: actions/cache@v2
+    - uses: actions/cache@v2
       with:
         path: '**/node_modules'
         key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
@@ -28,17 +27,6 @@ jobs:
     - run: npm install
 
     - run: gulp build
-
-    - name: Get current time
-      uses: srfrnk/current-time@master
-      id: current-time
-      with:
-        format: DD-MM-YYYY
-
-    - uses: cschleiden/replace-tokens@v1
-      name: inject date
-      with:
-        files: '["**/*.html"]'
       env:
         BUILD_DATE: "${{ steps.current-time.outputs.formattedTime }}"
  
