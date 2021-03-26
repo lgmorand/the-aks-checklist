@@ -1,9 +1,7 @@
-name: Validarere tion Build 
+name: Caching
 
 on:
-  pull_request:
-    branches:
-      - staging
+  workflow_dispatch:
 
 jobs:
   build:
