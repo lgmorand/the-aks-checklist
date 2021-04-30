@@ -1,0 +1,57 @@
+name: Generate offline version
+
+on:
+  push:
+    paths:
+    - '**/data/en/**'
+    
+ 
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Create offline folder
+        run: |
+           mkdir ./offline
+           mkdir ./offline/markdown
+           mkdir ./offline/output
+       
+      - name: Transform data to markdown
+        run: . ./.github/scripts/generate-markdown.sh
+        
+      - name: prepare files to include
+        run: |
+          ls *.md >> _includes.txt
+          cat _includes.txt
+        working-directory: ./offline/markdown
+      
+      - run: sudo apt-get update
+        name: Apt-get update
+      
+      - name: install pandoc
+        run: sudo apt-get install --assume-yes pandoc 
+        
+      - name: install pdflatex
+        run: |
+          sudo apt-get install texlive-latex-base
+          sudo apt-get install texlive-fonts-recommended
+          sudo apt-get install texlive-latex-extra
+          sudo apt-get install texlive-xetex
+          
+      - name: Build TXT result
+        run: pandoc -s $(cat _includes.txt) --toc -o ../output/result.txt
+        working-directory: ./offline/markdown
+      
+      - name: Build Word version
+        run: pandoc -s result.txt -o 'AKS Checklist.docx'
+        working-directory: ./offline/output
+      
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: Offline resources
+          path: ./offline/output
