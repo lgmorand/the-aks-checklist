@@ -125,8 +125,8 @@ class Storage {
 
         document.getElementById(checkObj[0].id).checked = true;
 
-        new Utils().visibityEl(el, '.c-tags', 'flex');
-        new Utils().visibityEl(el, '.js-dropdown', 'flex');
+        new Utils().visibityEl(el, '.c-tags', 'hide');
+        new Utils().visibityEl(el, '.js-dropdown', 'hide');
       }
     });
   }
