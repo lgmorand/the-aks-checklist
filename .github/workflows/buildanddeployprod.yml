@@ -69,7 +69,7 @@ jobs:
         AZURE_INDEX_DOCUMENT_NAME:  "index.html"
 
     - name: AZ Login
-      run: az login --service-principal -u ${{ secrets.AZ_LOGIN }} -p ${{ secrets.AZ_PASSWORD }} --tenant ${{ secrets.AZ_TENANT }}
+      run: az login --service-principal -u ${{ secrets.AZ_LOGIN }} -p ${{ secrets.AZ_PASSWORD }} -t ${{ secrets.AZ_TENANT }}
 
     - name: Purge CDN
       run:
