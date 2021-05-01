@@ -14,8 +14,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       
-      - name: Create ouput folder
-        run: mkdir ./ouput
+      - name: Create output folder
+        run: mkdir ./output
       
       - run: sudo apt-get update
         name: Apt-get update
