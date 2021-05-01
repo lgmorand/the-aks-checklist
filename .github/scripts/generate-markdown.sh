@@ -1,6 +1,31 @@
 #!/bin/bash
 
-# Loop on each file present in /data/en
-# For each file, create a corresponding markdown file
-# Create a title based on file named (for the moment)
-# Create content based 
+echo "Generating offline version"
+echo ''
+
+cd ./data/en/items
+
+for entry in *.json
+do
+  echo -e "\e[4mPROCESSING ${entry^^}\e[0m"
+ 
+  # creating file
+  echo -ne "Creating ${entry%.json}.md"
+  currentMdFile="../../../markdown/${entry%.json}.md";
+  touch $currentMdFile
+  echo -e " \e[0;32mOK\e[0m";
+  
+  # Inserting title
+  echo -ne "Inserting title"
+  echo "# ${entry%.json}" >> $currentMdFile
+  echo -e " \e[0;32mOK\e[0m";
+
+  # Inserting items
+  echo -ne "Inserting items"
+  echo "# ${entry%.json}" >> $currentMdFile
+  echo -e " \e[0;32mOK\e[0m";
+
+  echo ''
+done
+
+cd ../../..

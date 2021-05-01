@@ -17,8 +17,7 @@ jobs:
       - name: Create offline folder
         run: |
            mkdir ./offline
-           mkdir ./offline/markdown
-           mkdir ./offline/output
+           sudo apt install jq
        
       - name: Transform data to markdown
         run: . ./.github/scripts/generate-markdown.sh
@@ -27,7 +26,7 @@ jobs:
         run: |
           ls *.md >> _includes.txt
           cat _includes.txt
-        working-directory: ./offline/markdown
+        working-directory: ./markdown
       
       - run: sudo apt-get update
         name: Apt-get update
@@ -44,14 +43,14 @@ jobs:
           
       - name: Build TXT result
         run: pandoc -s $(cat _includes.txt) --toc -o ../output/result.txt
-        working-directory: ./offline/markdown
+        working-directory: ./markdown
       
       - name: Build Word version
         run: pandoc -s result.txt -o 'AKS Checklist.docx'
-        working-directory: ./offline/output
+        working-directory: ./output
       
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v2
         with:
           name: Offline resources
-          path: ./offline/output
+          path: ./output
