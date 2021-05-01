@@ -27,7 +27,7 @@ do
 
     # subtitle
     title=`echo $item | jq -r '.title'`
-    echo "# $title" >> $currentMdFile
+    echo "## $title" >> $currentMdFile
     echo "" >> $currentMdFile
 
     # description
@@ -43,11 +43,14 @@ do
     echo "" >> $currentMdFile
 
     # documentation
-    echo $item | jq -r -c '.documentation[]' | while read documentation; do
-        # echo $documentation
-        docText=`echo $documentation | jq -r '.title'`
-        url=`echo $documentation | jq -r '.url'`
-        echo "- [$docText]($url)" >> $currentMdFile
+    echo $item | jq -r -c '.documentation[]?' | while read documentation; do
+        #echo $documentation
+        if [ -n "$documentation" ] && [ "$documentation" != "null" ]
+        then
+          docText=`echo $documentation | jq -r '.title'`
+          url=`echo $documentation | jq -r '.url'`
+          echo "- [$docText]($url)" >> $currentMdFile
+        fi
     done
 
     echo "" >> $currentMdFile
