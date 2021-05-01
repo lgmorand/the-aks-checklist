@@ -14,10 +14,14 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       
-      - name: Create offline folder
-        run: |
-           mkdir ./offline
-           sudo apt install jq
+      - name: Create ouput folder
+        run: mkdir ./ouput
+      
+      - run: sudo apt-get update
+        name: Apt-get update
+
+      - name: Install jq
+        run: sudo apt install jq
        
       - name: Transform data to markdown
         run: . ./.github/scripts/generate-markdown.sh
@@ -27,9 +31,6 @@ jobs:
           ls *.md >> _includes.txt
           cat _includes.txt
         working-directory: ./markdown
-      
-      - run: sudo apt-get update
-        name: Apt-get update
       
       - name: install pandoc
         run: sudo apt-get install --assume-yes pandoc 
