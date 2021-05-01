@@ -93,9 +93,9 @@ class Init {
     new Dropdown().enableDropdown(document.querySelectorAll('.js-dropdown'));
 
     // Collapse on loading each item (except which present into localStorage)
-    sections.forEach(section => {
-      new Dropdown().collapseAllDropdown({section});
-    });    
+    //sections.forEach(section => {
+    //  new Dropdown().allDropdown({section});
+    //});    
   }
 
   // forces a tooltip to show the buttons
