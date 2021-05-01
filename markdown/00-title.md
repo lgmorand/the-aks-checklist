@@ -2,7 +2,7 @@
 title:
 - The AKS Checklist
 author:
-- www.the-aks-checklist.com
+- The AKS Checklist
 date:
 - \today
 papersize:
@@ -10,7 +10,7 @@ papersize:
 fontsize:
 - 12pt
 footer-content:
-- #{BUILD_DATE}#
+- [www.the-aks-checklist.com](www.the-aks-checklist.com)
 geometry:
 - margin=1in
 fontfamily:
