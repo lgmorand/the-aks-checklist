@@ -68,10 +68,8 @@ jobs:
         # The index document that you specify when you enable static website hosting, appears when users open the site and dont specify a specific file.
         AZURE_INDEX_DOCUMENT_NAME:  "index.html"
 
-    - name: Azure service principal login
-      uses: azure/login@v1
-      with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
+    - name: AZ Login
+      run: az login --service-principal -u ${{ secrets.AZ_LOGIN }} -p ${{ secrets.AZ_PASSWORD }} --tenant ${{ secrets.AZ_TENANT }}
 
     - name: Purge CDN
       run:
