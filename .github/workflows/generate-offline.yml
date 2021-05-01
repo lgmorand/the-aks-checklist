@@ -14,8 +14,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       
-      - name: Create ouput folder
-        run: mkdir ./ouput
+      - name: Create output folder
+        run: mkdir ./output
       
       - run: sudo apt-get update
         name: Apt-get update
@@ -43,7 +43,7 @@ jobs:
           sudo apt-get install texlive-xetex
           
       - name: Build TXT result
-        run: pandoc -s $(cat _includes.txt) --toc -o ../output/result.txt
+        run: pandoc -V documentclass=memoir -s $(cat _includes.txt) --toc -o ../output/result.txt
         working-directory: ./markdown
       
       - name: Build Word version
