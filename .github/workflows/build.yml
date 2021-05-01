@@ -16,10 +16,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
+        
     - run: npm install
 
     - run: gulp build
@@ -30,8 +32,8 @@ jobs:
       with:
         format: DD-MM-YYYY
 
-    - uses: cschleiden/replace-tokens@v1
-      name: inject date
+    - name: inject date
+      uses: cschleiden/replace-tokens@v1
       with:
         files: '["**/*.html"]'
       env:
