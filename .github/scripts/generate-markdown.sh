@@ -48,9 +48,34 @@ do
         #echo $documentation
         if [ -n "$documentation" ] && [ "$documentation" != "null" ]
         then
+          if [ -z "$docTitleSet" ] 
+          then
+              echo "**Documentation**" >> $currentMdFile
+              echo "" >> $currentMdFile
+              docTitleSet="done"
+          fi
+
           docText=`echo $documentation | jq -r '.title'`
           url=`echo $documentation | jq -r '.url'`
           echo "- [$docText]($url)" >> $currentMdFile
+        fi
+    done
+
+    # tools
+    echo $item | jq -r -c '.tools[]?' | while read tool; do
+        #echo $tools
+        if [ -n "$tool" ] && [ "$tool" != "null" ]
+        then
+          if [ -z "$toolsTitleSet" ] 
+          then
+              echo "**Tools**" >> $currentMdFile
+              echo "" >> $currentMdFile
+              toolsTitleSet="done"
+          fi 
+          
+          toolText=`echo $tool | jq -r '.title'`
+          toolUrl=`echo $tool | jq -r '.url'`
+          echo "- [$toolText]($toolUrl)" >> $currentMdFile
         fi
     done
 
