@@ -68,6 +68,7 @@ do
         then
           if [ -z "$toolsTitleSet" ] 
           then
+              echo "" >> $currentMdFile
               echo "**Tools**" >> $currentMdFile
               echo "" >> $currentMdFile
               toolsTitleSet="done"
