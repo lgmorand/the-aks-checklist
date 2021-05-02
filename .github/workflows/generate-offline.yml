@@ -59,8 +59,11 @@ jobs:
         run: pandoc -s result.txt -o 'AKS Checklist.docx'
         working-directory: ./output
       
+
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v2
         with:
           name: Offline resources
-          path: ./output
+          path: |
+            ./output/AKS Checklist.pdf
+            ./output/AKS Checklist.docx
