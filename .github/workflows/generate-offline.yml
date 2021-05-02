@@ -45,7 +45,16 @@ jobs:
       - name: Build TXT result
         run: pandoc -V documentclass=memoir -s $(cat _includes.txt) --toc -o ../output/result.txt
         working-directory: ./markdown
+
+      - name: Copy assets
+        run: |
+          cp assets/* ../output
+        working-directory: ./markdown
       
+      - name: Build PDF version
+        run: pandoc -s result.txt -o 'AKS Checklist.pdf' --from markdown --template eisvogel.latex
+        working-directory: ./output
+
       - name: Build Word version
         run: pandoc -s result.txt -o 'AKS Checklist.docx'
         working-directory: ./output

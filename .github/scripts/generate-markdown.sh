@@ -17,7 +17,8 @@ do
   
   # Inserting title
   echo -ne "Inserting title"
-  echo "# ${entry%.json}" >> $currentMdFile
+  title=${entry%.json}
+  echo "# ${title^}" >> $currentMdFile
   echo "" >> $currentMdFile
   echo -e " \e[0;32mOK\e[0m";
 

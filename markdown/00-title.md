@@ -2,7 +2,7 @@
 title:
 - The AKS Checklist
 author:
-- The AKS Checklist
+- www.the-aks-checklist.com
 date:
 - \today
 papersize:
@@ -10,20 +10,18 @@ papersize:
 fontsize:
 - 12pt
 footer-content:
-- [www.the-aks-checklist.com](www.the-aks-checklist.com)
+- www.the-aks-checklist.com
 geometry:
 - margin=1in
 fontfamily:
 - charter
 header-includes:
-- \usepackage{indentfirst}
-- \setlength\parindent{24pt}
+page-background: "background5.pdf"
+titlepage: true
+titlepage-color: "1b82af"
+titlepage-text-color: "FFFFFF"
+titlepage-rule-color: "FFFFFF"
+titlepage-rule-height: 2
+colorlinks: true
 ---
 
-\thispagestyle{empty}
-\clearpage
-\tableofcontents
-\pagenumbering{roman}
-\clearpage
-\pagenumbering{arabic}
-\setcounter{page}{1}
