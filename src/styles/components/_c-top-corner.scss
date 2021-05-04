@@ -1,11 +1,11 @@
 .corner-ribbon {
-  width: 200px;
+  width: 300px;
   background: #e44333;
   position: absolute;
-  top: 25px;
-  left: -50px;
+  top: 35px;
+  left: -70px;
   text-align: center;
-  line-height: 50px;
+  line-height: 80px;
   letter-spacing: 1px;
   color: #f0f0f0;
   transform: rotate(-45deg);
@@ -24,5 +24,10 @@
     left: -50px;
     transform: rotate(-45deg);
     -webkit-transform: rotate(-45deg);
+  }
+
+  a {
+    color: #f0f0f0 !important;
+    font-size: medium
   }
 }
