@@ -18,7 +18,7 @@ do
   # Inserting title
   echo -ne "Inserting title"
   title=${entry%.json}
-  echo "# ${title^}" >> $currentMdFile
+  echo "# ${title//_/ }" | sed -r 's/\<./\U&/g' >> $currentMdFile
   echo "" >> $currentMdFile
   echo -e " \e[0;32mOK\e[0m";
 
