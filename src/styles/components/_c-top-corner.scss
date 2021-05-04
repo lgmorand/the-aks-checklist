@@ -1,4 +1,4 @@
-.corner-ribbon{
+.corner-ribbon {
     width: 200px;
     background: #e43;
     position: absolute;
@@ -12,24 +12,21 @@
     -webkit-transform: rotate(-45deg);
 
     .red {
-        background: #e43;
+      background: #e43;
     }
 
-    .sticky{
+    .sticky {
         position: fixed;
-      }
+    }
       
-      .shadow{
-        box-shadow: 0 0 3px rgba(0,0,0,.3);
-      }
+    .shadow {
+      box-shadow: 0 0 3px rgba(0,0,0,.3);
+    }
       
-      .top-left{
-        top: 25px;
-        left: -50px;
-        transform: rotate(-45deg);
-        -webkit-transform: rotate(-45deg);
-      }
-     
-  }
-  
-  
+    .top-left {
+      top: 25px;
+      left: -50px;
+      transform: rotate(-45deg);
+      -webkit-transform: rotate(-45deg);
+    } 
+}
