@@ -52,18 +52,24 @@ jobs:
         working-directory: ./markdown
       
       - name: Build PDF version
-        run: pandoc -s result.txt -o 'AKS Checklist.pdf' --from markdown --template eisvogel.latex
+        run: pandoc -s result.txt -o 'AKS-Checklist.pdf' --from markdown --template eisvogel.latex
         working-directory: ./output
 
       - name: Build Word version
-        run: pandoc -s result.txt -o 'AKS Checklist.docx'
+        run: pandoc -s result.txt -o 'AKS-Checklist.docx'
         working-directory: ./output
       
+      - name: Azure Blob Storage Upload
+        uses: bacongobbler/azure-blob-storage-upload@v1.1.1
+        with:
+          connection_string: ${{ secrets.BLOB_CONNECTION_STRING }}
+          container_name: $web
+          source_dir:  ./output
 
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v2
         with:
           name: Offline resources
           path: |
-            ./output/AKS Checklist.pdf
-            ./output/AKS Checklist.docx
+            ./output/AKS-Checklist.pdf
+            ./output/AKS-Checklist.docx
