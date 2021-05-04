@@ -64,8 +64,9 @@ jobs:
         with:
           connection_string: ${{ secrets.BLOB_CONNECTION_STRING }}
           container_name: $web
+          source_dir: './output'
           extra_args: "--destination-path docs"
-          source_dir:  ./output
+          sync: false
 
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v2
