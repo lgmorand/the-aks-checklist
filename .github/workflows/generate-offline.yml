@@ -7,13 +7,6 @@ on:
     
  
   workflow_dispatch:
-    inputs:
-      injectDRM: 
-        required: true
-        default: false
-      DRMName:
-        required: false
-        default: ''
 
 jobs:
   build:
