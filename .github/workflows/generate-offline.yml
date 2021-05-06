@@ -4,6 +4,8 @@ on:
   push:
     paths:
     - '**/data/en/**'
+    branches:
+    - master
     
  
   workflow_dispatch:
