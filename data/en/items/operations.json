@@ -110,7 +110,7 @@
       "documentation": [
         {
           "title": "Enable and review Kubernetes master node logs",
-          "url": "https://docs.microsoft.com/en-us/azure/aks/view-master-logs"
+          "url": "https://docs.microsoft.com/en-us/azure/aks/view-control-plane-logs"
         }
       ],
       "tags": ["all", "operation", "security"]
@@ -164,6 +164,90 @@
           "url": "https://github.com/open-policy-agent/gatekeeper"
         }
       ],
+      "tags": ["all", "operation"]
+    },
+    {
+      "title": "Read The Definitive Guide to Securing Kubernetes",
+      "priority": "High",
+      "description": "This whitepaper provides an overview of key aspects and best practices of K8s security",
+      "documentation": [
+        {
+          "title": "The Definitive Guide to Securing Kubernetes",
+          "url": "https://info.aquasec.com/securing_kubernetes"
+        }
+      ],
+      "tools":[
+        {
+          "title": "Gatekeeper",
+          "url": "https://github.com/open-policy-agent/gatekeeper"
+        }
+      ],
+      "tags": ["all", "operation"]
+    },
+    {
+      "title": "Enable Azure Defender for Kubernetes",
+      "priority": "High",
+      "description": "Azure Defender for Kubernetes provides protections for your Kubernetes clusters wherever they're running (AKS and on-premesis)",
+      "documentation": [
+        {
+          "title": "Introduction to Azure Defender for Kubernetes",
+          "url": "https://docs.microsoft.com/en-us/azure/security-center/defender-for-kubernetes-introduction"
+        }
+      ],
+      "tags": ["all", "operation"]
+    },
+    {
+      "title": "Use Azure Key Vault",
+      "priority": "High",
+      "description": "Use Azure Key Vault to store Secrets and Certificates",
+      "documentation": [
+        {
+          "title": "Tutorial: Configure and run the Azure Key Vault provider for the Secrets Store CSI driver on Kubernetes",
+          "url": "https://docs.microsoft.com/en-us/azure/key-vault/general/key-vault-integrate-kubernetes"
+        }
+      ],
+      "tags": ["all", "operation"]
+    },
+    {
+      "title": "Use GitOps",
+      "priority": "High",
+      "description": "GitOps works by using Git as a single source of truth for declarative infrastructure and applications",
+      "documentation": [
+        {
+          "title": "Guide To GitOps",
+          "url": "https://www.weave.works/technologies/gitops"
+        }
+      ],
+      "tags": ["all", "operation"]
+    },
+    {
+      "title": "Make your life easier with K8S Tools",
+      "priority": "Medium",
+      "description": "The Kubernetes ecosystem is strengthened by many tools that make operating it easier.  Here's a few",
+      "tools": [
+        {
+          "title": "Helm",
+          "url": "https://helm.sh"
+        },
+        {
+          "title": "kubectl aliases",
+          "url": "https://github.com/ahmetb/kubectl-aliases"
+        },
+        {
+          "title": "kubectx",
+          "url": "https://github.com/ahmetb/kubectx"
+        },
+        {
+          "title": "k9s",
+          "url": "https://k9scli.io/"
+        }
+      ],
+      "tags": ["all", "operation"]
+    },
+    {
+      "title": "Don't use the default namespace",
+      "priority": "Medium",
+      "description": "It's recommended to keep all applications in a namespace other than default",
       "tags": ["all", "operation"]
     }
 ]
