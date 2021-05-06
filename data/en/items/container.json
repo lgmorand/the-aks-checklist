@@ -7,6 +7,10 @@
         {
           "title": "Azure Security Center : scanning feature (Qualys)",
           "url": "https://docs.microsoft.com/en-us/azure/security-center/azure-container-registry-integration"
+        },
+        {
+          "title": "Introduction to Azure Defender for container registries",
+          "url": "https://docs.microsoft.com/en-us/azure/security-center/defender-for-container-registries-introduction"
         }
       ],
       "tools":[
