@@ -170,6 +170,10 @@
     "detail": "Ensure static analysis on build is taking place as a starting point",
     "documentation": [
       {
+        "title": "Introduction to Azure Defender for container registries",
+        "url": "https://docs.microsoft.com/en-us/azure/security-center/defender-for-container-registries-introduction"
+      },
+      {
         "title": "Palo Alto CI/CD Integration (twistcli)",
         "url": "https://docs.paloaltonetworks.com/prisma/prisma-cloud/prisma-cloud-admin-compute/tools/twistcli_scan_images"
       },
