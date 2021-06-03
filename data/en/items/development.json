@@ -152,13 +152,43 @@
     "tags": ["all", "resources", "security"]
   },
   {
-    "title": "Conduct Docker Image Builds using Docker Image Security Best Practices",
+    "title": "Ensure your manifests respect good practices",
+    "priority": "Medium",
+    "description": "Best practices inside the cluster start with the configuration of your manifests. Ensure that they respect good practices",
+    "tools": [
+      {
+        "title": "kube-score",
+        "url": "https://kube-score.com/"
+      },
+      {
+        "title": "Checkov",
+        "url": "https://www.checkov.io/"
+      }
+      {
+        "title": "kubelinter",
+        "url": "https://github.com/stackrox/kube-linter"
+      }
+    ],
+    "tags": ["all", "resources", "security"]
+  },
+  {
+    "title": "Conduct Dockerfile scanning to ensure Docker Image Security Best Practices",
     "priority": "High",
-    "description": "Define a Image build security baseline for your developers to follow.",
+    "description": "Define a Image build security baseline for your developers to follow. You should also use scanning tools to detect Dockerfile issue",
     "documentation": [
       {
         "title": "SNYK 10 Docker Image Security Best Practices",
         "url": "https://snyk.io/blog/10-docker-image-security-best-practices/"
+      }
+    ],
+    "tools": [
+      {
+        "title": "Dockle",
+        "url": "https://github.com/goodwithtech/dockle#features"
+      },
+      {
+        "title": "Hadolint",
+        "url": "https://github.com/hadolint/hadolint"
       }
     ],
     "tags": ["all", "security"]
@@ -236,7 +266,7 @@
         "url": "https://docs.aquasec.com/docs/image-assurance-policies-basic-info"
       },
       {
-        "title": "StackRox Compliacne",
+        "title": "StackRox Compliance",
         "url": "https://www.stackrox.com/use-cases/compliance/"
       }
     ],
