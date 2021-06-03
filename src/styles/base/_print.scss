@@ -92,10 +92,6 @@
   .corner-ribbon {
     display: none;
   }
-  
-  .sub-heading {
-    display: none;
-  }
 
   .sub-heading2 {
     display: none;
@@ -140,6 +136,7 @@
   .sub-heading {
     font-size: 9pt !important;
     margin: 0 !important;
+    display: none;
   }
 
   .c-checklist__item::before {
