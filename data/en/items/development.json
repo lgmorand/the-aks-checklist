@@ -179,6 +179,10 @@
       {
         "title": "SNYK 10 Docker Image Security Best Practices",
         "url": "https://snyk.io/blog/10-docker-image-security-best-practices/"
+      },
+      {
+        "title": "21 Best Practises in 2021 for Dockerfile"
+        "url": "https://dev.to/chrisedrego/21-best-practise-in-2021-for-dockerfile-1dji"
       }
     ],
     "tools": [

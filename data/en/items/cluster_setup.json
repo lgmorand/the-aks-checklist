@@ -78,6 +78,26 @@
       "tags": ["all", "operation"]
     },
     {
+      "title": "Configure your cluster for regulated industries",
+      "priority": "Medium",
+      "description": "Prefer fewer, larger clusters over of many, smaller clusters",
+      "tags": ["all", "security", "operation"],
+      "documentation": [
+        {
+          "title": "Use FIPS-enabled node pool (preview)",
+          "url": "https://docs.microsoft.com/en-us/azure/aks/use-multiple-node-pools#add-a-fips-enabled-node-pool-preview"
+        },
+        {
+          "title": "AKS CIS benchmark",
+          "url": "https://www.cisecurity.org/cis-benchmarks/"
+        },
+        {
+          "title" : "AKS architecture reference for PCI-DSS 3.2.1"
+          "url": "https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/containers/aks-pci/aks-pci-intro"
+        }
+      ]
+    },
+    {
       "title": "Set Upgrade Channel",
       "priority": "Medium",
       "description": "In addition to manually upgrading a cluster, you can set an auto-upgrade channel on your cluster",
@@ -125,7 +145,7 @@
           "url": "https://docs.microsoft.com/en-us/azure/aks/cluster-autoscaler"
         }
       ],
-      "tags": ["all", "resources"]
+      "tags": ["all", "resources", "FinOps"]
     },
     {
       "title": "Sizing of the nodes",
@@ -167,7 +187,7 @@
     {
       "title": "Check if you need the Kubernetes dashboard",
       "priority": "Medium",
-      "description": "By default Kubernetes in AKS deploys and exposes the default dashboard for clusters running a Kubernetes version less than 1.18. If you don't plan to use it to pilot your cluster, you should disable it.",
+      "description": "By default Kubernetes in AKS deploys and exposes the default dashboard for clusters running a Kubernetes version less than 1.18 (disabled by default with AKS >= 1.19). If you don't plan to use it to pilot your cluster, you should disable it.",
       "details": "It can be done with the following CLI: az aks disable-addons --addons kube-dashboard --resource-group RG_NAME --name CLUSTER_NAME",
       "documentation": [
       ],
@@ -195,6 +215,18 @@
         {
           "title": "Reduce latency with proximity placement groups",
           "url": "https://docs.microsoft.com/en-us/azure/aks/reduce-latency-ppg"
+        }
+      ],
+      "tags": ["all", "security"]
+    },
+    {
+      "title": "Encrypt ETCD at rest with your own key",
+      "priority": "Low",
+      "description": "By default, ETCD is encrypted at rest with keys managed by Microsoft. It is possible to encrypt the database using your own key using a KMS plugin and store the key in Azure Key Vault.",
+      "documentation": [
+        {
+          "title": "Kubernetes KMS",
+          "url": "https://github.com/Azure/kubernetes-kms"
         }
       ],
       "tags": ["all", "security"]
