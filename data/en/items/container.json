@@ -11,6 +11,10 @@
         {
           "title": "Introduction to Azure Defender for container registries",
           "url": "https://docs.microsoft.com/en-us/azure/security-center/defender-for-container-registries-introduction"
+        },
+        {
+          "title":"Identify vulnerable container images in your CI/CD workflows",
+          "url": "https://docs.microsoft.com/en-us/azure/security-center/defender-for-container-registries-cicd"
         }
       ],
       "tools":[

@@ -107,5 +107,17 @@
         }
       ],
       "tags": ["all", "network", "security"]
+    },
+    {
+      "title": "Don't expose your container registry on Internet",
+      "priority": "Low",
+      "description": "Use Azure Firewall to secure and control all egress traffic going outside of the cluster.",
+      "documentation": [
+        {
+          "title": "Private Container Registry",
+          "url": "https://docs.microsoft.com/en-us/azure/aks/limit-egress-traffic"
+        }
+      ],
+      "tags": ["all", "network", "security"]
     }
 ]

@@ -43,6 +43,10 @@
         {
           "title": "AKS-managed Azure Active Directory integration",
           "url": "https://docs.microsoft.com/en-us/azure/aks/managed-aad"
+        },
+        {
+          "title": "Disable local accounts",
+          "url": "https://docs.microsoft.com/en-us/azure/aks/managed-aad#disable-local-accounts-preview"
         }
       ],
       "tags": ["all", "security"]
@@ -78,6 +82,26 @@
       "tags": ["all", "operation"]
     },
     {
+      "title": "Configure your cluster for regulated industries",
+      "priority": "Medium",
+      "description": "Prefer fewer, larger clusters over of many, smaller clusters",
+      "tags": ["all", "security", "operation"],
+      "documentation": [
+        {
+          "title": "Use FIPS-enabled node pool (preview)",
+          "url": "https://docs.microsoft.com/en-us/azure/aks/use-multiple-node-pools#add-a-fips-enabled-node-pool-preview"
+        },
+        {
+          "title": "AKS CIS benchmark",
+          "url": "https://www.cisecurity.org/cis-benchmarks/"
+        },
+        {
+          "title" : "AKS architecture reference for PCI-DSS 3.2.1",
+          "url" : "https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/containers/aks-pci/aks-pci-intro"
+        }
+      ]
+    },
+    {
       "title": "Set Upgrade Channel",
       "priority": "Medium",
       "description": "In addition to manually upgrading a cluster, you can set an auto-upgrade channel on your cluster",
@@ -110,6 +134,10 @@
         {
           "title": "Create a private cluster",
           "url": "https://docs.microsoft.com/en-us/azure/aks/private-clusters"
+        },
+        {
+          "title":"Use azure CLI to run command on a private cluster",
+          "url": "https://docs.microsoft.com/en-us/azure/aks/private-clusters#options-for-connecting-to-the-private-cluster"
         }
       ],
       "tags": ["all", "security"]
@@ -125,7 +153,7 @@
           "url": "https://docs.microsoft.com/en-us/azure/aks/cluster-autoscaler"
         }
       ],
-      "tags": ["all", "resources"]
+      "tags": ["all", "resources", "FinOps"]
     },
     {
       "title": "Sizing of the nodes",
@@ -140,10 +168,6 @@
         {
           "title": "Choose the right storage type",
           "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-storage#choose-the-appropriate-storage-type"
-        },
-        {
-          "title": "How to size Kubernetes clusters",
-          "url": "https://events19.linuxfoundation.cn/wp-content/uploads/2017/11/BoF_-Not-One-Size-Fits-All-How-to-Size-Kubernetes-Clusters_Guang-Ya-Liu-_-Sahdev-Zala.pdf"
         }
       ],
       "tags": ["all", "resources"]
@@ -167,7 +191,7 @@
     {
       "title": "Check if you need the Kubernetes dashboard",
       "priority": "Medium",
-      "description": "By default Kubernetes in AKS deploys and exposes the default dashboard for clusters running a Kubernetes version less than 1.18. If you don't plan to use it to pilot your cluster, you should disable it.",
+      "description": "Starting with Kubernetes version 1.19, AKS will no longer allow the managed Kubernetes dashboard add-on to be installed for security reasons, and the add-on is scheduled to be deprecated. Ensure the Kubernetes dashboard is not installed on the cluster.",
       "details": "It can be done with the following CLI: az aks disable-addons --addons kube-dashboard --resource-group RG_NAME --name CLUSTER_NAME",
       "documentation": [
       ],
@@ -195,6 +219,18 @@
         {
           "title": "Reduce latency with proximity placement groups",
           "url": "https://docs.microsoft.com/en-us/azure/aks/reduce-latency-ppg"
+        }
+      ],
+      "tags": ["all", "security"]
+    },
+    {
+      "title": "Encrypt ETCD at rest with your own key",
+      "priority": "Low",
+      "description": "By default, ETCD is encrypted at rest with keys managed by Microsoft. It is possible to encrypt the database using your own key using a KMS plugin and store the key in Azure Key Vault.",
+      "documentation": [
+        {
+          "title": "Kubernetes KMS",
+          "url": "https://github.com/Azure/kubernetes-kms"
         }
       ],
       "tags": ["all", "security"]
