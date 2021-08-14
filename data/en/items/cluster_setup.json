@@ -43,6 +43,10 @@
         {
           "title": "AKS-managed Azure Active Directory integration",
           "url": "https://docs.microsoft.com/en-us/azure/aks/managed-aad"
+        },
+        {
+          "title": "Disable local accounts",
+          "url": "https://docs.microsoft.com/en-us/azure/aks/managed-aad#disable-local-accounts-preview"
         }
       ],
       "tags": ["all", "security"]
