@@ -50,7 +50,7 @@
   {
     "title": "Run more than one replica for your Deployment",
     "priority": "Medium",
-    "description": "Ensure that your application always configure proper replicas to ensure resiliency.",
+    "description": "Ensure that your application always configure proper replicas to ensure resiliency in the event of a pod crashing or being evicted.",
     "tags": ["all", "development"]
   },
   {
@@ -163,7 +163,7 @@
       {
         "title": "Checkov",
         "url": "https://www.checkov.io/"
-      }
+      },
       {
         "title": "kubelinter",
         "url": "https://github.com/stackrox/kube-linter"
@@ -181,7 +181,7 @@
         "url": "https://snyk.io/blog/10-docker-image-security-best-practices/"
       },
       {
-        "title": "21 Best Practises in 2021 for Dockerfile"
+        "title": "21 Best Practises in 2021 for Dockerfile",
         "url": "https://dev.to/chrisedrego/21-best-practise-in-2021-for-dockerfile-1dji"
       }
     ],
@@ -275,5 +275,16 @@
       }
     ],
     "tags": ["all", "security"]
-}
+  },
+  {
+    "title": "Use Azure Migrate to quick containerize your applications",
+    "priority": "Low",
+    "description": "The App Containerization tool offers a point-and-containerize approach to repackage applications as containers with minimal to no code changes by using the running state of the application. The tool currently supports containerizing ASP.NET applications and Java web applications running on Apache Tomcat.",
+    "documentation":[
+      {
+        "title:":"Accelerate application modernization with Azure Migrate: App Containerization",
+        "url": "https://aka.ms/AppContainerizationtoAKS"
+      }
+    ]
+  }
 ]

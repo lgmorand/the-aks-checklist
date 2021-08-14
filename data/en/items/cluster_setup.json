@@ -92,8 +92,8 @@
           "url": "https://www.cisecurity.org/cis-benchmarks/"
         },
         {
-          "title" : "AKS architecture reference for PCI-DSS 3.2.1"
-          "url": "https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/containers/aks-pci/aks-pci-intro"
+          "title" : "AKS architecture reference for PCI-DSS 3.2.1",
+          "url" : "https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/containers/aks-pci/aks-pci-intro"
         }
       ]
     },
@@ -130,6 +130,10 @@
         {
           "title": "Create a private cluster",
           "url": "https://docs.microsoft.com/en-us/azure/aks/private-clusters"
+        },
+        {
+          "title":"Use azure CLI to run command on a private cluster",
+          "url": "https://docs.microsoft.com/en-us/azure/aks/private-clusters#options-for-connecting-to-the-private-cluster"
         }
       ],
       "tags": ["all", "security"]
@@ -160,10 +164,6 @@
         {
           "title": "Choose the right storage type",
           "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-storage#choose-the-appropriate-storage-type"
-        },
-        {
-          "title": "How to size Kubernetes clusters",
-          "url": "https://events19.linuxfoundation.cn/wp-content/uploads/2017/11/BoF_-Not-One-Size-Fits-All-How-to-Size-Kubernetes-Clusters_Guang-Ya-Liu-_-Sahdev-Zala.pdf"
         }
       ],
       "tags": ["all", "resources"]
@@ -187,7 +187,7 @@
     {
       "title": "Check if you need the Kubernetes dashboard",
       "priority": "Medium",
-      "description": "By default Kubernetes in AKS deploys and exposes the default dashboard for clusters running a Kubernetes version less than 1.18 (disabled by default with AKS >= 1.19). If you don't plan to use it to pilot your cluster, you should disable it.",
+      "description": "Starting with Kubernetes version 1.19, AKS will no longer allow the managed Kubernetes dashboard add-on to be installed for security reasons, and the add-on is scheduled to be deprecated. Ensure the Kubernetes dashboard is not installed on the cluster.",
       "details": "It can be done with the following CLI: az aks disable-addons --addons kube-dashboard --resource-group RG_NAME --name CLUSTER_NAME",
       "documentation": [
       ],

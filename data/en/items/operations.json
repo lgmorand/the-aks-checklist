@@ -22,8 +22,12 @@
             "url": "https://docs.microsoft.com/en-us/azure/aks/node-image-upgrade"
           },
           {
-            "title": "Process Linux node updates and reboots using Kured",
+            "title": "Process Linux node updates and reboots using Kured (not recommended because it can behave incorrectly in some cluster configurations like autoscaling)",
             "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-cluster-security#process-linux-node-updates-and-reboots-using-kured"
+          },
+          {
+            "title": "Use Event Grid to know when an upgrade is available",
+            "url": "https://docs.microsoft.com/en-us/azure/aks/quickstart-event-grid"
           }
         ],
         "tools":[
