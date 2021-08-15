@@ -285,6 +285,7 @@
         "title:":"Accelerate application modernization with Azure Migrate: App Containerization",
         "url": "https://aka.ms/AppContainerizationtoAKS"
       }
-    ]
+    ],
+    "tags": ["all", "development"] 
   }
 ]
