@@ -286,6 +286,6 @@
         "url": "https://aka.ms/AppContainerizationtoAKS"
       }
     ],
-    "tags": ["all", "development"]
+    "tags": ["all", "development"] 
   }
 ]
