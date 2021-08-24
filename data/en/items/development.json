@@ -105,10 +105,10 @@
     "documentation": [
       {
         "title": "Use pod identity",
-        "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-identity#use-pod-identities"
+        "url": "https://docs.microsoft.com/en-us/azure/aks/use-azure-ad-pod-identity"
       },
       {
-        "title": "Do not use Pod Identity with kubenet !",
+        "title": "Do not use Pod Identity v1 with kubenet !",
         "url": "https://azure.github.io/aad-pod-identity/docs/configure/aad_pod_identity_on_kubenet/"
       }
     ],
@@ -155,6 +155,16 @@
     "title": "Ensure your manifests respect good practices",
     "priority": "Medium",
     "description": "Best practices inside the cluster start with the configuration of your manifests. Ensure that they respect good practices",
+    "documentation":[
+      {
+        "title": "Kubernetes YAML: Enforcing best practices and security policies",
+        "url": "https://thechief.io/c/editorial/kubernetes-yaml-enforcing-best-practices-and-security-policies-cicd-and-gitops-pipelines/"
+      },
+      {
+        "title": "13 Best Practices for Using Helm",
+        "url": "https://betterprogramming.pub/13-best-practices-for-using-helm-f4fc68545a2c"
+      }
+    ],
     "tools": [
       {
         "title": "kube-score",
@@ -284,6 +294,18 @@
       {
         "title:":"Accelerate application modernization with Azure Migrate: App Containerization",
         "url": "https://aka.ms/AppContainerizationtoAKS"
+      }
+    ],
+    "tags": ["all", "development"] 
+  },
+  {
+    "title": "Apply the right deployment type to your application",
+    "priority": "Low",
+    "description": "There are a variety of techniques to deploy new applications to production so choosing the right strategy is an important decision that needs to be made to leverage the impact of change on the consumer.",
+    "documentation":[
+      {
+        "title:":"Kubernetes Deployment Strategies",
+        "url": "https://blog.container-solutions.com/deployment-strategies"
       }
     ],
     "tags": ["all", "development"] 

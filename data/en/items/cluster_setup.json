@@ -138,6 +138,10 @@
         {
           "title":"Use azure CLI to run command on a private cluster",
           "url": "https://docs.microsoft.com/en-us/azure/aks/private-clusters#options-for-connecting-to-the-private-cluster"
+        },
+        {
+          "title": "Use public DNS with a private cluster",
+          "url": "https://docs.microsoft.com/en-us/azure/aks/private-clusters#create-a-private-aks-cluster-with-a-public-dns-address"
         }
       ],
       "tags": ["all", "security"]

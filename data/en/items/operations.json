@@ -7,6 +7,10 @@
           {
             "title": "Regularly update to the latest version of Kubernetes",
             "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-cluster-security#regularly-update-to-the-latest-version-of-kubernetes"
+          },
+          {
+            "title": "Use the auto-upgrade feature",
+            "url": "https://docs.microsoft.com/fr-fr/azure/aks/upgrade-cluster#set-auto-upgrade-channel"
           }
         ],
         "tags": ["all", "operation", "security"]
@@ -55,6 +59,10 @@
         "priority": "Medium",
         "description": "Regularly run the latest version of cluster scanning open source tool to detect issues in your cluster. For instance, if you apply resource quotas on an existing AKS cluster, run kubestriker first to find pods that don't have resource requests and limits defined.",
         "tools":[
+          {
+            "title": "AKS Periscope",
+            "url": "https://github.com/Azure/aks-periscope"
+          },
           {
             "title": "kubestriker",
             "url": "https://www.kubestriker.io/"
@@ -207,7 +215,7 @@
           "url": "https://docs.microsoft.com/en-us/azure/key-vault/general/key-vault-integrate-kubernetes"
         }
       ],
-      "tags": ["all", "operation"]
+      "tags": ["all", "operation", "security"]
     },
     {
       "title": "Use GitOps",
