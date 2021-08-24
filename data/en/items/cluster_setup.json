@@ -150,7 +150,7 @@
       "title": "Enable cluster autoscaling",
       "priority": "Medium",
       "description": "To keep up with application demands in Azure Kubernetes Service (AKS), you may need to adjust the number of nodes that run your workloads. The cluster autoscaler component can watch for pods in your cluster that can't be scheduled because of resource constraints.",
-      "details": "You can enable autoscaling module per node pool but only create one mutual autoscale profile",
+      "detail": "You can enable autoscaling module per node pool but only create one mutual autoscale profile",
       "documentation": [
         {
           "title": "AKS Autoscaler",
@@ -163,7 +163,7 @@
       "title": "Sizing of the nodes",
       "priority": "Medium",
       "description": "what type of worker nodes should I use, and how many of them is a critical question which requires the analysis of the workloads deployed on your cluster to get the best values of it",
-      "details": "Choosing on one hand between easy management and big blast radius, and on the other end to focus on high replication, low impact but worse resources optimization ",
+      "detail": "Choosing on one hand between easy management and big blast radius, and on the other end to focus on high replication, low impact but worse resources optimization ",
       "documentation": [
         {
           "title": "Choosing a worker node size",
@@ -196,7 +196,7 @@
       "title": "Check if you need the Kubernetes dashboard",
       "priority": "Medium",
       "description": "Starting with Kubernetes version 1.19, AKS will no longer allow the managed Kubernetes dashboard add-on to be installed for security reasons, and the add-on is scheduled to be deprecated. Ensure the Kubernetes dashboard is not installed on the cluster.",
-      "details": "It can be done with the following CLI: az aks disable-addons --addons kube-dashboard --resource-group RG_NAME --name CLUSTER_NAME",
+      "detail": "It can be done with the following CLI: az aks disable-addons --addons kube-dashboard --resource-group RG_NAME --name CLUSTER_NAME",
       "documentation": [
       ],
       "tags": ["all", "security"]
@@ -205,7 +205,7 @@
       "title": "Use AKS and ACR integration without password",
       "priority": "Medium",
       "description": "AKS can authenticate to ACR without using any password, but by using either Service Principal or Managed Identity.",
-      "details": "For AKS to download/pull images from Azure Container Registry (ACR), it needs the ACR credentials including the password. To avoid saving the password in the cluster, you can simply activate the ACR integration on new or existing AKS cluster using SPN or Managed Identity",
+      "detail": "For AKS to download/pull images from Azure Container Registry (ACR), it needs the ACR credentials including the password. To avoid saving the password in the cluster, you can simply activate the ACR integration on new or existing AKS cluster using SPN or Managed Identity",
       "documentation": [
         {
           "title": "Authenticate with Azure Container Registry from AKS",
@@ -218,7 +218,7 @@
       "title": "Use placement proximity group to improve performance",
       "priority": "Low",
       "description": "When deploying your application in Azure, spreading Virtual Machine (VM) instances across regions or availability zones creates network latency, which may impact the overall performance of your application. A proximity placement group is a logical grouping used to make sure Azure compute resources are physically located close to each other",
-      "details": "Be careful, by using PPG on a nodepool, you reduce the average SLA of your application since they don't rely on availability zones anymore",
+      "detail": "Be careful, by using PPG on a nodepool, you reduce the average SLA of your application since they don't rely on availability zones anymore",
       "documentation": [
         {
           "title": "Reduce latency with proximity placement groups",
@@ -238,5 +238,31 @@
         }
       ],
       "tags": ["all", "security"]
+    },
+    {
+      "title": "Enable traffic management",
+      "priority": "Medium",
+      "description": "Azure Traffic Manager can direct customers to their closest AKS cluster and application instance. For the best performance and redundancy, direct all application traffic through Traffic Manager before it goes to your AKS cluster.",
+      "detail": "If you have multiple AKS clusters in different regions, use Traffic Manager to control how traffic flows to the applications that run in each cluster. Azure Traffic Manager is a DNS-based traffic load balancer that can distribute network traffic across regions. Use Traffic Manager to route users based on cluster response time or based on geography. It can be used to improve app availability with automatic failover",
+      "documentation": [
+        {
+          "title": "Use Azure Traffic Manager to route traffic",
+          "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-multi-region#use-azure-traffic-manager-to-route-traffic"
+        }
+      ],
+      "tags": ["all", "network", "resiliency", "multi-tenancy"]
+    },
+    {
+      "title": "Enable geo-replication for container images",
+      "priority": "Medium",
+      "description": "Companies that want a local presence, or a hot backup, choose to run services from multiple Azure regions.",
+      "detail": "As a best practice, placing a container registry in each region where images are run allows network-close operations, enabling fast, reliable image layer transfers. Geo-replication enables an Azure container registry to function as a single registry, serving multiple regions with multi-master regional registries.",
+      "documentation": [
+        {
+          "title": "Enable geo-replication for container images",
+          "url": "https://docs.microsoft.com/en-us/azure/container-registry/container-registry-geo-replication"
+        }
+      ],
+      "tags": ["all", "resiliency"]
     }
 ] 

@@ -142,7 +142,7 @@
     "title": "Specify the security context of your pod/container",
     "priority": "Medium",
     "description": "A security context defines privilege and access control settings for a Pod or Container. Control the capabilities and the rights your container can have. If you don't specify the security context, the pod get the 'default' one which may have more rights that it should",
-    "details": "You should also disable mounting credentials by default (automountServiceAccountToken)",
+    "detail": "You should also disable mounting credentials by default (automountServiceAccountToken)",
     "documentation": [
       {
         "title": "Configure a Security Context for a Pod or Container",
@@ -309,5 +309,24 @@
       }
     ],
     "tags": ["all", "development"] 
+  },
+  {
+    "title": "Don't use naked pods",
+    "priority": "Low",
+    "description": "If this attributes is not properly define kubernetes downloads the container image for each new instance of the containers.",
+    "details": "If imagePullPolicy is omitted and either the image tag is :latest or it is omitted: imagePullPolicy is automatically set to Always. Prefer to set explicitly IfNotPresent",
+    "tags": ["all", "development", "resiliency"] 
+  },
+  {
+    "title": "Control the usage of imagePullPolicy",
+    "priority": "Low",
+    "description": "Naked pods are pods not linked to a Replicaset or a Deployment. Naked Pods will not be rescheduled in the event of a node failure.",
+    "documentation":[
+      {
+        "title":"Updating images",
+        "url": "https://kubernetes.io/docs/concepts/containers/images/#updating-images"
+      }
+    ],
+    "tags": ["all", "development", "resiliency"] 
   }
 ]

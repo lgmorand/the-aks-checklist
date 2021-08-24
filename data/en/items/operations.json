@@ -19,7 +19,7 @@
         "title": "Keep nodes up to date and patched",
         "priority": "High",
         "description": "AKS supports upgrading the images on a node so you're up to date with the newest OS and runtime updates. AKS provides one new image per week with the latest updates, so it's beneficial to upgrade your node's images regularly for the latest features, including Linux or Windows patches",
-        "details": "Using automation and this method will ensure that all your nodes are consistently up to date with last features/fixes/patchs, without having to upgrade the kubernetes version. An alternative could be to use Kured to reboot nodes with pending reboots but it will only patch the Operating System, not the AKS layer",
+        "detail": "Using automation and this method will ensure that all your nodes are consistently up to date with last features/fixes/patchs, without having to upgrade the kubernetes version. An alternative could be to use Kured to reboot nodes with pending reboots but it will only patch the Operating System, not the AKS layer",
         "documentation": [
           {
             "title": "Azure Kubernetes Service (AKS) node image upgrades",
@@ -128,7 +128,7 @@
       "title": "Collect metrics",
       "priority": "High",
       "description": "If default integration can collect telemetry data and basic metrics (CPU/Memory), they don't collect custom metrics and more detailed information. It's often necessary to install a 3rd party software (prometheus is recommend within Kubernetes) and they store these metrics to exploit them.",
-      "details": "Typically, to use Prometheus, you need to set up and manage a Prometheus server with a store. By integrating with Azure Monitor, a Prometheus server is not required. You just need to expose the Prometheus metrics endpoint through your exporters or pods (application), and the containerized agent for Azure Monitor for containers can scrape the metrics for you.",
+      "detail": "Typically, to use Prometheus, you need to set up and manage a Prometheus server with a store. By integrating with Azure Monitor, a Prometheus server is not required. You just need to expose the Prometheus metrics endpoint through your exporters or pods (application), and the containerized agent for Azure Monitor for containers can scrape the metrics for you.",
       "documentation": [
         {
           "title": "Configure scraping of Prometheus metrics",

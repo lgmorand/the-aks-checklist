@@ -3,7 +3,7 @@
     "title": "Enforce resource quotas",
     "priority": "Low",
     "description": "Plan and apply resource quotas at the namespace level. If pods don't define resource requests and limits, reject the deployment. Monitor resource usage and adjust quotas as needed.",
-    "details": "Resource requests and limits are placed in the pod specification. These limits are used by the Kubernetes scheduler at deployment time to find an available node in the cluster. But developers can forget them and thus impact other applications by over-consuming resources of the cluster",
+    "detail": "Resource requests and limits are placed in the pod specification. These limits are used by the Kubernetes scheduler at deployment time to find an available node in the cluster. But developers can forget them and thus impact other applications by over-consuming resources of the cluster",
     "documentation": [
       {
         "title": "Enforce resource quotas",
@@ -14,26 +14,26 @@
         "url": "https://kubernetes.io/docs/concepts/policy/resource-quotas/"
       }
     ],
-    "tags": ["all", "resiliency", "resource management"]
+    "tags": ["all", "resiliency", "resource management", "multi-tenancy"]
   },
   {
     "title": "Set memory limits and requests for all containers",
     "priority": "Medium",
     "description": "Set CPU and memory limits and requests to all the containers. It prevents memory leaks and CPU over-usage and protects the whole platform",
-    "details": " When you specify limits for CPU and memory, each takes a different action when it reaches the specified limit. With CPU limits, the container is throttled from using more than its specified limit. With memory limits, the pod is restarted if it reaches its limit. The pod might be restarted on the same host or a different host within the cluster.",
+    "detail": " When you specify limits for CPU and memory, each takes a different action when it reaches the specified limit. With CPU limits, the container is throttled from using more than its specified limit. With memory limits, the pod is restarted if it reaches its limit. The pod might be restarted on the same host or a different host within the cluster.",
     "documentation": [
       {
         "title": "Assign Memory Resources to container",
         "url": "https://kubernetes.io/docs/tasks/configure-pod-container/assign-memory-resource/"
       }
     ],
-    "tags": ["all", "resiliency", "resource management"]
+    "tags": ["all", "resiliency", "resource management", "multi-tenancy"]
   },
   {
     "title": "Configure pod disruption budgets",
     "priority": "Low",
     "description": "To maintain the availability of applications, define Pod Disruption Budgets (PDBs) to make sure that a minimum number of pods are available in the cluster.",
-    "details": "At some point in time, Kubernetes might need to evict pods from a host. There are two types of evictions: voluntary and involuntary disruptions. Involuntary disruptions can be caused by hardware failure, network partitions, kernel panics, or a node being out of resources. Voluntary evictions can be caused by performing maintenance on the cluster, the Cluster Autoscaler deallocating nodes, or updating pod templates. To minimize the impact to your application, you can set a PodDisruptionBudget to ensure uptime of the application when pods need to be evicted. A PodDisruptionBudget allows you to set a policy on the minimum available and maximum unavailable pods during voluntary eviction events. An example of a voluntary eviction would be when draining a node to perform maintenance on the node.",
+    "detail": "At some point in time, Kubernetes might need to evict pods from a host. There are two types of evictions: voluntary and involuntary disruptions. Involuntary disruptions can be caused by hardware failure, network partitions, kernel panics, or a node being out of resources. Voluntary evictions can be caused by performing maintenance on the cluster, the Cluster Autoscaler deallocating nodes, or updating pod templates. To minimize the impact to your application, you can set a PodDisruptionBudget to ensure uptime of the application when pods need to be evicted. A PodDisruptionBudget allows you to set a policy on the minimum available and maximum unavailable pods during voluntary eviction events. An example of a voluntary eviction would be when draining a node to perform maintenance on the node.",
     "documentation": [
       {
         "title": "Plan for availability using pod disruption budgets",

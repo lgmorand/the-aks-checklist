@@ -82,7 +82,7 @@
           "url": "https://cilium.io/"
         }
       ],
-      "tags": ["all", "network"]
+      "tags": ["all", "network", "multi-tenancy", "security"]
     },
     {
       "title": "Configure default network policies in each namespace",

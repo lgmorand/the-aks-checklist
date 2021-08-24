@@ -3,7 +3,7 @@
         "title": "Ensure you can perform a whitespace deployment",
         "priority": "High",
         "description": "A whitespace (greenfield) deployment is the exercise to delete everything and to redeploy the whole platform in an automated way.",
-        "details": "In case of an emergency, a security flaw or datacenter failure, it's mandatory for you to be able to restore/create a new environment properly configured in a fully automated way",
+        "detail": "In case of an emergency, a security flaw or datacenter failure, it's mandatory for you to be able to restore/create a new environment properly configured in a fully automated way",
         "tags": ["all","devops"]
       },
       {
@@ -62,7 +62,7 @@
         "title": "Guaranty SLA for the control plane",
         "priority": "Low",
         "description": "Uptime SLA is an optional feature to enable a financially backed, higher SLA for a cluster. It provides you a 99,95% SLA instead of the 99,5% SLO and is relevant for your production clusters",
-        "details": "Customers needing an SLA to meet compliance requirements or require extending an SLA to their end users should enable this feature. Customers with critical workloads that will benefit from a higher uptime SLA may also benefit. Using the Uptime SLA feature with Availability Zones enables a higher availability for the uptime of the Kubernetes API server.",
+        "detail": "Customers needing an SLA to meet compliance requirements or require extending an SLA to their end users should enable this feature. Customers with critical workloads that will benefit from a higher uptime SLA may also benefit. Using the Uptime SLA feature with Availability Zones enables a higher availability for the uptime of the Kubernetes API server.",
         "documentation": [
           {
             "title": "Azure Kubernetes Service (AKS) Uptime SLA",

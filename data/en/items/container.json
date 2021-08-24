@@ -122,7 +122,7 @@
       "title": "Prefer distroless images",
       "priority": "Medium",
       "description": "When building a docker image, try to use the distroless version of the base OS image, to reduce the risk of vulnerabilities with preinstalled but unused tools. From example, use base-debian10 instead of debian10",
-      "details": "'Distroless' images are bare-bones versions of common base images. They have the bare-minimum needed to execute a binary.The shell and other developer utilities have been removed so that if/when an attacker gains control of your container, they can’t do much of anything",
+      "detail": "'Distroless' images are bare-bones versions of common base images. They have the bare-minimum needed to execute a binary.The shell and other developer utilities have been removed so that if/when an attacker gains control of your container, they can’t do much of anything",
       "documentation": [
         {
           "title": "Google distroless images",
