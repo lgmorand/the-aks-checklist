@@ -134,6 +134,10 @@
       {
         "title": "Managing Compute Resources for Containers",
         "url": "https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/"
+      },
+      {
+        "title": "Take benefit of the Quality of Service",
+        "url": "https://kubernetes.io/docs/tasks/configure-pod-container/quality-service-pod/"
       }
     ],
     "tags": ["all", "resources"]
@@ -211,7 +215,6 @@
     "title": "Static Analysis of Docker Images on Build",
     "priority": "High",
     "description": "Introduction of DevSecOps into the environment to promote a proactive security model that starts to shift the responsibility left",
-    "detail": "Ensure static analysis on build is taking place as a starting point",
     "documentation": [
       {
         "title": "Introduction to Azure Defender for container registries",

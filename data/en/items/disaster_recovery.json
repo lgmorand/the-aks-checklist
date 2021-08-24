@@ -70,5 +70,18 @@
           }
         ],
         "tags": ["all", "resiliency"]
+      },
+      {
+        "title": "Avoid Pods being placed into a single node",
+        "priority": "Low",
+        "description": "Even if you run several copies of your Pods, there are no guarantees that losing a node won't take down your service.",
+        "detail": "Customers needing an SLA to meet compliance requirements or require extending an SLA to their end users should enable this feature. Customers with critical workloads that will benefit from a higher uptime SLA may also benefit. Using the Uptime SLA feature with Availability Zones enables a higher availability for the uptime of the Kubernetes API server.",
+        "documentation": [
+        {
+          "title": "Inter-pod affinity and anti-affinity",
+          "url": "https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#inter-pod-affinity-and-anti-affinity"
+        }
+        ],
+        "tags": ["all", "resiliency"]
       }
 ]

@@ -17,6 +17,18 @@
     "tags": ["all", "resiliency", "resource management", "multi-tenancy"]
   },
   {
+    "title": "Namespaces should have LimitRange",
+    "priority": "Low",
+    "description": " A LimitRange is a policy to constrain resource allocations (to Pods or Containers) in a namespace. It's useful to ensure that pods don't forget to declare request limits",
+    "documentation": [
+      {
+        "title": "LimitRange",
+        "url": "https://kubernetes.io/docs/concepts/policy/limit-range/"
+      }
+    ],
+    "tags": ["all", "resiliency", "resource management", "multi-tenancy"]
+  },
+  {
     "title": "Set memory limits and requests for all containers",
     "priority": "Medium",
     "description": "Set CPU and memory limits and requests to all the containers. It prevents memory leaks and CPU over-usage and protects the whole platform",

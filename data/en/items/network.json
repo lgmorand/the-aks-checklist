@@ -52,6 +52,18 @@
     {
       "title": "Don't expose your load-balancer on Internet if not necessary",
       "priority": "Medium",
+      "description": "When a user creates an Ingress manifest, they can use any hostname in it. You may want to control which hostnames are allowed to use, like your company's hostnames.",
+      "documentation": [
+        {
+          "title": "Tutorial: only allow approved domain names as ingress hostnames",
+          "url": "https://www.openpolicyagent.org/docs/latest/kubernetes-tutorial/#4-define-a-policy-and-load-it-into-opa-via-kubernetes"
+        }
+      ],
+      "tags": ["all", "network", "security"]
+    },
+    {
+      "title": "Apply control on ingress hostnames",
+      "priority": "Medium",
       "description": "There is almost no reason to directly expose the ingress entry point to Internet but by default AKS create a public one. Tell him to create an internal one only.",
       "documentation": [
         {
@@ -111,11 +123,11 @@
     {
       "title": "Don't expose your container registry on Internet",
       "priority": "Low",
-      "description": "Use Azure Firewall to secure and control all egress traffic going outside of the cluster.",
+      "description": "When possible, use private link to only allow private network to reach your registry.",
       "documentation": [
         {
-          "title": "Private Container Registry",
-          "url": "https://docs.microsoft.com/en-us/azure/aks/limit-egress-traffic"
+          "title": "Azure Container Registry Private Link",
+          "url": "https://docs.microsoft.com/en-us/azure/container-registry/container-registry-private-link"
         }
       ],
       "tags": ["all", "network", "security"]

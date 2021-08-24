@@ -221,10 +221,15 @@
       "title": "Use GitOps",
       "priority": "High",
       "description": "GitOps works by using Git as a single source of truth for declarative infrastructure and applications",
+      "detail": "On Azure you can for instance use Azure Arc for Kubernetes but also directly GitOps addon for AKS",
       "documentation": [
         {
           "title": "Guide To GitOps",
           "url": "https://www.weave.works/technologies/gitops"
+        },
+        {
+          "title": "What is Azure Arc enabled Kubernetes?",
+          "url": "https://docs.microsoft.com/en-us/azure/azure-arc/kubernetes/overview"
         }
       ],
       "tags": ["all", "operation"]
@@ -258,6 +263,18 @@
       "priority": "Medium",
       "description": "It's recommended to keep all applications in a namespace other than default",
       "tags": ["all", "operation"]
+    },
+    {
+      "title": "Apply different types of labels to all resources",
+      "priority": "Low",
+      "description": "A common set of labels allows tools to work interoperably, describing objects in a common manner that all tools can understand. For instance, resources should have technical, business and security labels. ",
+      "documentation": [
+        {
+          "title": "Recommended labels",
+          "url": "https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels/"
+        }
+      ],
+      "tags": ["all", "network", "multi-tenancy"]
     }
 ]
 
