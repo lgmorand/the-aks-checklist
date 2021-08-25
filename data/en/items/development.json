@@ -295,7 +295,7 @@
     "description": "The App Containerization tool offers a point-and-containerize approach to repackage applications as containers with minimal to no code changes by using the running state of the application. The tool currently supports containerizing ASP.NET applications and Java web applications running on Apache Tomcat.",
     "documentation":[
       {
-        "title:":"Accelerate application modernization with Azure Migrate: App Containerization",
+        "title":"Accelerate application modernization with Azure Migrate: App Containerization",
         "url": "https://aka.ms/AppContainerizationtoAKS"
       }
     ],
@@ -307,7 +307,7 @@
     "description": "There are a variety of techniques to deploy new applications to production so choosing the right strategy is an important decision that needs to be made to leverage the impact of change on the consumer.",
     "documentation":[
       {
-        "title:":"Kubernetes Deployment Strategies",
+        "title":"Kubernetes Deployment Strategies",
         "url": "https://blog.container-solutions.com/deployment-strategies"
       }
     ],
