@@ -221,6 +221,10 @@
         "url": "https://docs.microsoft.com/en-us/azure/security-center/defender-for-container-registries-introduction"
       },
       {
+        "title":"Identify vulnerable container images in your CI/CD workflows",
+        "url": "https://docs.microsoft.com/en-us/azure/security-center/defender-for-container-registries-cicd"
+      },
+      {
         "title": "Palo Alto CI/CD Integration (twistcli)",
         "url": "https://docs.paloaltonetworks.com/prisma/prisma-cloud/prisma-cloud-admin-compute/tools/twistcli_scan_images"
       },
