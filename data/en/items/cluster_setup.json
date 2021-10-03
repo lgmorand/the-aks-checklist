@@ -84,7 +84,7 @@
     {
       "title": "Configure your cluster for regulated industries",
       "priority": "Medium",
-      "description": "Prefer fewer, larger clusters over of many, smaller clusters",
+      "description": "Some industries require certified kubernetes or to implement specific configurations. AKS offers several features to meet this requirements",
       "tags": ["all", "security", "operation"],
       "documentation": [
         {

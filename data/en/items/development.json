@@ -320,14 +320,14 @@
   {
     "title": "Don't use naked pods",
     "priority": "Low",
-    "description": "If this attributes is not properly define kubernetes downloads the container image for each new instance of the containers.",
+    "description": "Naked pods are pods not linked to a Replicaset or a Deployment. Naked Pods will not be rescheduled in the event of a node failure.",
     "details": "If imagePullPolicy is omitted and either the image tag is :latest or it is omitted: imagePullPolicy is automatically set to Always. Prefer to set explicitly IfNotPresent",
     "tags": ["all", "development", "resiliency"] 
   },
   {
     "title": "Control the usage of imagePullPolicy",
     "priority": "Low",
-    "description": "Naked pods are pods not linked to a Replicaset or a Deployment. Naked Pods will not be rescheduled in the event of a node failure.",
+    "description": "If this attributes is not properly define kubernetes downloads the container image for each new instance of the containers.",
     "documentation":[
       {
         "title":"Updating images",
