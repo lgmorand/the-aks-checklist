@@ -61,7 +61,7 @@
   {
     "title": "Set up cluster auto-scaling",
     "priority": "Low",
-    "description": "To maintain the availability of applications and guaranty available resources, set up cluster auto-scaling",
+    "description": "To maintain the availability of applications and guarantee available resources, set up cluster auto-scaling",
     "documentation": [
       {
         "title": "Use AKS cluster auto-scale",
