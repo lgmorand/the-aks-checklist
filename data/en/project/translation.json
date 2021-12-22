@@ -23,7 +23,7 @@
   "alert": {
     "JAVASCRIPT_DESACTIVATE": "Your JavaScript seems to be deactivated. Please enable your JavaScript to use all features of the AKS Checklist."
   },
-  "WARNING_MESSAGE": "This checklist contains a large set of best practices and some of them may not be relevant to your context and thus the rating may be incorrect in your case. Please choose and apply them wisely",
+  "WARNING_MESSAGE": "This checklist contains a large set of best practices and some of them may not be relevant to your context and thus the rating may be incorrect in your case. Please choose and apply them wisely. ",
   "form": {
     "LABEL_PROJECT_NAME": "Project Name",
     "TITLE_PROJECT_NAME": "Type the name of your project",
