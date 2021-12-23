@@ -79,7 +79,13 @@
       "title": "VM Sizing",
       "priority": "Medium",
       "description": "Prefer fewer, larger clusters over of many, smaller clusters",
-      "tags": ["all", "operation"]
+      "tags": ["all", "operation"],
+      "tools": [
+        {
+          "title":"Kubernetes instance calculator",
+          "url": "https://learnk8s.io/kubernetes-instance-calculator"
+        }
+      ]
     },
     {
       "title": "Configure your cluster for regulated industries",
