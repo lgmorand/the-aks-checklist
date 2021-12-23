@@ -69,6 +69,13 @@ a,
   @include link--color($link-error-color);
 }
 
+.blank-link{
+  color: white;
+  &:hover {
+      background-color: transparent;
+      color: green;
+    }
+}
 // a:not( [href*='localhost:3000'] ):not( [href^='#'] ):not( [href^='/'] ):after {
 //   content: " (external)";
 // }
