@@ -3,7 +3,7 @@
   "INDEX_TITLE": "✨ Be ready for production ✨",
   "URL_WEBSITE": "https://aka.ms/aks-checklist",
   "SITE_TAGLINE": "The AKS Checklist - the best way to ensure your cluster is production-ready!",
-  "SITE_DESCRIPTION": "The best way to ensure your cluster is production-ready!",
+  "SITE_DESCRIPTION": "The AKS Checklist is a (tentatively) exhaustive list of all elements you need to think of when preparing a cluster for production. It's based on all common best practices agreed around Kubernetes. It is the best way to ensure your cluster is production-ready!",
   "SITE_VERSION":"Last updated on: ",
   "SITE_LANGUAGE": "en",
   "SITE_DIRECTION": "ltr",
