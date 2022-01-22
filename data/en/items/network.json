@@ -131,5 +131,17 @@
         }
       ],
       "tags": ["all", "network", "security"]
+    },
+    {
+      "title": "Bloc Pod access to VMSS IMDS",
+      "priority": "Medium",
+      "description": "By default, Pods have access to VMSS IMDS and can request access token from the attached Managed Identity. This access should be restriced by using Network Policy.",
+      "documentation": [
+        {
+          "title": "Pods requesting access to get a token",
+          "url": "https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/how-to-use-vm-token#get-a-token-using-curl"
+        }
+      ],
+      "tags": ["all", "network", "security"]
     }
 ]
