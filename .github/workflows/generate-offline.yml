@@ -62,13 +62,14 @@ jobs:
         working-directory: ./output
       
       - name: Azure Blob Storage Upload
-        uses: bacongobbler/azure-blob-storage-upload@v1.2.0
+        uses: bacongobbler/azure-blob-storage-upload@v2.0.0
         with:
           connection_string: ${{ secrets.BLOB_CONNECTION_STRING }}
           container_name: $web
           source_dir: './output'
           extra_args: "--destination-path docs"
-          sync: false
+          sync: 'false'
+          overwrite: 'true'
 
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v2
