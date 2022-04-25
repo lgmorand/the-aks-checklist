@@ -64,6 +64,7 @@ jobs:
       - name: Azure Blob Storage Upload
         uses: bacongobbler/azure-blob-storage-upload@v2.0.0
         with:
+          cli_version: 2.34.1
           connection_string: ${{ secrets.BLOB_CONNECTION_STRING }}
           container_name: $web
           source_dir: './output'
