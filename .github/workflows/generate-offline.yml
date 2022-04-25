@@ -69,7 +69,6 @@ jobs:
           container_name: $web
           source_dir: './output'
           extra_args: "--destination-path docs"
-          sync: 'false'
           overwrite: 'true'
 
       - name: Upload a Build Artifact
