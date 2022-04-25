@@ -60,7 +60,14 @@ jobs:
       - name: Build Word version
         run: pandoc -s result.txt -o 'AKS-Checklist.docx'
         working-directory: ./output
-      
+        
+      - name: Delete useless files
+        run: |
+               rm -f background5.pdf
+               rm -f eisvogel.latex
+               rm -f result.txt
+        working-directory: ./output
+        
       - name: Azure Blob Storage Upload
         uses: bacongobbler/azure-blob-storage-upload@v2.0.0
         with:
