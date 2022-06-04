@@ -282,6 +282,19 @@
           "url": "https://docs.microsoft.com/en-us/azure/aks/custom-node-configuration"
         }
       ],
-      "tags": ["all", "resiliency"]
+      "tags": ["all", "network"]
+    },
+    {
+      "title": "Customize your clusters with extensions",
+      "priority": "Low",
+      "description": "Cluster extensions provides an Azure Resource Manager driven experience for installation and lifecycle management of services like Azure Machine Learning (ML) on an AKS cluster. ",
+      "detail": "This feature enables:Azure Resource Manager-based deployment of extensions, including at-scale deployments across AKS clusters but also lifecycle management of the extension (Update, Delete) from Azure Resource Manager.",
+      "documentation": [
+        {
+          "title": "Customize node configuration for Azure Kubernetes Service (AKS) node pools",
+          "url": "https://docs.microsoft.com/en-gb/azure/aks/cluster-extensions"
+        }
+      ],
+      "tags": ["all"]
     }
 ] 
