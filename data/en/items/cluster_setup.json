@@ -99,7 +99,7 @@
         },
         {
           "title": "AKS CIS benchmark",
-          "url": "https://www.cisecurity.org/cis-benchmarks/"
+          "url": "https://docs.microsoft.com/en-us/compliance/regulatory/offering-CIS-Benchmark"
         },
         {
           "title" : "AKS architecture reference for PCI-DSS 3.2.1",
