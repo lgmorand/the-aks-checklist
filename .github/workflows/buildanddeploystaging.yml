@@ -43,7 +43,7 @@ jobs:
         path: dist
  
     - name: Azure Static Website Deploy
-      uses: feeloor/azure-static-website-deploy@v0.1.1
+      uses: feeloor/azure-static-website-deploy@v0.1.2
       env:
         # The name of the directory you want to upload
         SOURCE_DIR: "./dist"
@@ -59,3 +59,4 @@ jobs:
         AZURE_STORAGE_ACCOUNT_NAME: "stoakscheckliststaging"
         # The index document that you specify when you enable static website hosting, appears when users open the site and dont specify a specific file.
         AZURE_INDEX_DOCUMENT_NAME:  "index.html"
+        FORCE_OVERWRITE: "true"
