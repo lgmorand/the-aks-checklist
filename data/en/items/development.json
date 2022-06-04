@@ -73,6 +73,10 @@
       {
         "title": "Kubernetes Event-driven Autoscaling (KEDA)",
         "url": "https://keda.sh/"
+      },
+      {
+        "title": "KEDA as AKS addon",
+        "url": "https://docs.microsoft.com/en-us/azure/aks/keda-about"
       }
     ],
     "tags": ["all", "resiliency"]
