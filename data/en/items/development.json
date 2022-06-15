@@ -102,18 +102,18 @@
     "tags": ["all", "security"]
   },
   {
-    "title": "Implement Pod Identity",
+    "title": "Implement Azure Workload Identity",
     "priority": "Medium",
-    "description": "Don't use fixed credentials within pods or container images, as they are at risk of exposure or abuse. Instead, use pod identities to automatically request access using a central Azure AD identity solution",
+    "description": "Don't use fixed credentials within pods or container images, as they are at risk of exposure or abuse. Instead, use workload identity federation to access Azure Active Directory (Azure AD) protected resources without needing to manage secrets ",
     "detail": "When pods need access to other Azure services, such as Cosmos DB, Key Vault, or Blob Storage, the pod needs access credentials. These access credentials could be defined with the container image or injected as a Kubernetes secret, but need to be manually created and assigned. Often, the credentials are reused across pods, and aren't regularly rotated. Managed identities for Azure resources (currently implemented as an associated AKS open source project) let you automatically request access to services through Azure AD. You don't manually define credentials for pods, instead they request an access token in real time, and can use it to access only their assigned services.",
     "documentation": [
       {
-        "title": "Use pod identity",
-        "url": "https://docs.microsoft.com/en-us/azure/aks/use-azure-ad-pod-identity"
+        "title": "Use Azure Workload Identity",
+        "url": "https://azure.github.io/azure-workload-identity"
       },
       {
-        "title": "Do not use Pod Identity v1 with kubenet !",
-        "url": "https://azure.github.io/aad-pod-identity/docs/configure/aad_pod_identity_on_kubenet/"
+        "title": "Azure Active Directory Pod Identity is replaced with Azure Workload Identity.",
+        "url": "https://docs.microsoft.com/en-us/azure/aks/use-azure-ad-pod-identity"
       }
     ],
     "tags": ["all", "security"]
