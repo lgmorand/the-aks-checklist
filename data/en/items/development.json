@@ -84,7 +84,7 @@
   {
     "title": "Store your secrets in Azure Key Vault, don't inject passwords in Docker Images",
     "priority": "High",
-    "description": "Secrets are not encrypted in etcd, prefer to store your secrets in a proper HSM like Azure Key Vault. You can then inject secrets using CSI provider or continue to use FlexVolume if kubernetes < 1.16.",
+    "description": "Secrets are not encrypted in etcd, prefer to store your secrets in a proper HSM like Azure Key Vault. You can then inject secrets using CSI provider.",
     "documentation": [
       {
         "title": "Azure Key Vault Provider for Secret Store CSI Driver",
@@ -93,10 +93,6 @@
       {
         "title": "AKV2K8S",
         "url": "https://akv2k8s.io/"
-      },
-      {
-        "title": "Key Vault and flex volumes (Deprecated)",
-        "url": "https://github.com/Azure/kubernetes-keyvault-flexvol"
       }
     ],
     "tags": ["all", "security"]
@@ -206,7 +202,7 @@
     "tools": [
       {
         "title": "Dockle",
-        "url": "https://github.com/goodwithtech/dockle#features"
+        "url": "https://github.com/goodwithtech/dockle"
       },
       {
         "title": "Hadolint",
