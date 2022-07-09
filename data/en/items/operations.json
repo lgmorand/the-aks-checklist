@@ -194,13 +194,13 @@
       "tags": ["all", "operation"]
     },
     {
-      "title": "Enable Azure Defender for Kubernetes",
+      "title": "Enable Microsoft Defender for Kubernetes",
       "priority": "High",
-      "description": "Azure Defender for Kubernetes provides protections for your Kubernetes clusters wherever they're running (AKS and on-premesis)",
+      "description": "Microsoft Defender for Kubernetes provides protections for your Kubernetes clusters wherever they're running (AKS and on-premesis)",
       "documentation": [
         {
-          "title": "Introduction to Azure Defender for Kubernetes",
-          "url": "https://docs.microsoft.com/en-us/azure/security-center/defender-for-kubernetes-introduction"
+          "title": "Introduction to Microsoft Defender for Kubernetes",
+          "url": "https://docs.microsoft.com/en-us/azure/defender-for-cloud/defender-for-containers-introduction"
         }
       ],
       "tags": ["all", "operation"]

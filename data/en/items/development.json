@@ -217,28 +217,16 @@
     "description": "Introduction of DevSecOps into the environment to promote a proactive security model that starts to shift the responsibility left",
     "documentation": [
       {
-        "title": "Introduction to Azure Defender for container registries",
-        "url": "https://docs.microsoft.com/en-us/azure/security-center/defender-for-container-registries-introduction"
-      },
-      {
-        "title":"Identify vulnerable container images in your CI/CD workflows",
-        "url": "https://docs.microsoft.com/en-us/azure/security-center/defender-for-container-registries-cicd"
+        "title": "Introduction to Microsoft Defender for container registries",
+        "url": "https://docs.microsoft.com/en-us/azure/defender-for-cloud/defender-for-containers-introduction"
       },
       {
         "title": "Palo Alto CI/CD Integration (twistcli)",
         "url": "https://docs.paloaltonetworks.com/prisma/prisma-cloud/prisma-cloud-admin-compute/tools/twistcli_scan_images"
       },
       {
-        "title": "Aquasec CI/CD Integration",
-        "url": "https://docs.aquasec.com/docs/image-scanning"
-      },
-      {
         "title": "Qualys CI/CD Integration",
         "url": "https://qualysguard.qg2.apps.qualys.com/cs/help/vuln_scans/docker_images.htm"
-      },
-      {
-        "title": "StackRox CI/CD Integration",
-        "url": "https://www.stackrox.com/use-cases/vulnerability-management/"
       },
       {
         "title": "Clair CI/CD Integration",
@@ -256,14 +244,6 @@
       {
         "title": "Prisma Threshold enforcement",
         "url": "https://docs.paloaltonetworks.com/prisma/prisma-cloud/prisma-cloud-admin-compute/vulnerability_management/vuln_management_rules.html"
-      },
-      {
-        "title": "StackRox Advanced Policy Enforcement",
-        "url": "https://www.stackrox.com/use-cases/vulnerability-management/"
-      },
-      {
-        "title": "AquaSec Proactive Risk Management",
-        "url": "https://docs.aquasec.com/docs/proactive-risk-management"
       }
     ],
     "tags": ["all", "security"]
@@ -281,14 +261,6 @@
       {
         "title": "Prisma Managing Compliance",
         "url": "https://docs.paloaltonetworks.com/prisma/prisma-cloud/prisma-cloud-admin-compute/compliance/manage_compliance.html"
-      },
-      {
-        "title": "Aqua Image Assurance Policies",
-        "url": "https://docs.aquasec.com/docs/image-assurance-policies-basic-info"
-      },
-      {
-        "title": "StackRox Compliance",
-        "url": "https://www.stackrox.com/use-cases/compliance/"
       }
     ],
     "tags": ["all", "security"]
