@@ -61,7 +61,7 @@ jobs:
         # Your Azure Client ID
         AZURE_CLIENT_ID: "${{secrets.CLIENT_ID}}"
         # Your Azure TENANT ID
-        AZURE_TENANT_ID: "${{secrets.TENANT}}"
+        AZURE_TENANT_ID: "${{secrets.AZ_TENANT}}"
         # Your Azure Secret
         AZURE_SECRET: "${{secrets.SECRET_ID}}"
         # Your Azure Subscription ID
