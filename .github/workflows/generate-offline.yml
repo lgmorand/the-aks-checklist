@@ -11,7 +11,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  generateFile:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
