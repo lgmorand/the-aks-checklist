@@ -67,7 +67,7 @@ jobs:
         # Your Azure Subscription ID
         AZURE_SUBSCRIPTION_ID: "${{secrets.SUBSCRIPTION_ID}}"
         # Your Azure Storage Account Name
-        AZURE_STORAGE_ACCOUNT_NAME: "stoakschecklist"
+        AZURE_STORAGE_ACCOUNT_NAME: "stotheakschecklist"
         # The index document that you specify when you enable static website hosting, appears when users open the site and dont specify a specific file.
         AZURE_INDEX_DOCUMENT_NAME:  "index.html"
         FORCE_OVERWRITE: "true"
