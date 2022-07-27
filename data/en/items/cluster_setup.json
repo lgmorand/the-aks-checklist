@@ -239,6 +239,10 @@
       "description": "By default, ETCD is encrypted at rest with keys managed by Microsoft. It is possible to encrypt the database using your own key using a KMS plugin and store the key in Azure Key Vault.",
       "documentation": [
         {
+          "title":"Add KMS etcd encryption to an Azure Kubernetes Service (AKS) cluster (Preview)",
+          "url": "https://docs.microsoft.com/en-us/azure/aks/use-kms-etcd-encryption"
+        },
+        {
           "title": "Kubernetes KMS",
           "url": "https://github.com/Azure/kubernetes-kms"
         }

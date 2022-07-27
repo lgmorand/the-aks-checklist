@@ -10,17 +10,13 @@
         },
         {
           "title":"Identify vulnerable container images in your CI/CD workflows",
-          "url": "https://docs.microsoft.com/en-us/azure/security-center/defender-for-container-registries-cicd"
+          "url": "https://docs.microsoft.com/en-us/azure/defender-for-cloud/defender-for-containers-cicd"
         }
       ],
       "tools":[
         {
           "title": "Prisma (ex Twistlock)",
           "url": "https://www.twistlock.com/"
-        },
-        {
-          "title": "Aqua",
-          "url": "https://www.aquasec.com/"
         },
         {
           "title": "Anchore",
@@ -61,14 +57,6 @@
         {
           "title": "Prisma Runtime defense",
           "url": "https://docs.paloaltonetworks.com/prisma/prisma-cloud/prisma-cloud-admin-compute/runtime_defense.html"
-        },
-        {
-          "title": "Aqua Runtime Policies Overview",
-          "url": "https://docs.aquasec.com/docs/runtime-policies-overview"
-        },
-        {
-          "title": "StackRox Threat Detection",
-          "url": "https://www.stackrox.com/use-cases/threat-detection/"
         },
         {
           "title": "Falco",
