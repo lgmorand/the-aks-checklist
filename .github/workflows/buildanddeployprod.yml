@@ -53,32 +53,12 @@ jobs:
         name: CheckList
         path: dist
  
-    - name: Azure Static Website Deploy
-      uses: feeloor/azure-static-website-deploy@v0.1.2
-      env:
-        # The name of the directory you want to upload
-        SOURCE_DIR: "./dist"
-        # Your Azure Client ID
-        AZURE_CLIENT_ID: "${{secrets.CLIENT_ID}}"
-        # Your Azure TENANT ID
-        AZURE_TENANT_ID: "${{secrets.AZ_TENANT}}"
-        # Your Azure Secret
-        AZURE_SECRET: "${{secrets.SECRET_ID}}"
-        # Your Azure Subscription ID
-        AZURE_SUBSCRIPTION_ID: "${{secrets.SUBSCRIPTION_ID}}"
-        # Your Azure Storage Account Name
-        AZURE_STORAGE_ACCOUNT_NAME: "stotheakschecklist"
-        # The index document that you specify when you enable static website hosting, appears when users open the site and dont specify a specific file.
-        AZURE_INDEX_DOCUMENT_NAME:  "index.html"
-        FORCE_OVERWRITE: "true"
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ap-southeast-1
 
-    - name: AZ Login
-      run: az login --service-principal -u ${{ secrets.CLIENT_ID }} -p ${{ secrets.SECRET_ID }} -t ${{ secrets.AZ_TENANT }}
-
-    - name: Purge CDN
-      run:
-        az cdn endpoint purge -n ${{ secrets.AZURE_CDN_ENDPOINT }} --profile-name ${{ secrets.AZURE_CDN_PROFILE_NAME }} --content-paths "/*" --resource-group ${{ secrets.AZURE_RESOURCE_GROUP }} --no-wait
-        
-    - name: Azure service principal logout
-      run: |
-        az logout
+    - name: Deploy static site to S3 bucket
+      run: aws s3 sync ./dist/ s3://eks-cd-checklist --delete
