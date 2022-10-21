@@ -105,10 +105,10 @@
     "documentation": [
       {
         "title": "Use Azure Workload Identity",
-        "url": "https://azure.github.io/azure-workload-identity"
+        "url": "https://learn.microsoft.com/en-us/azure/aks/workload-identity-overview"
       },
       {
-        "title": "Azure Active Directory Pod Identity is replaced with Azure Workload Identity.",
+        "title": "Azure Active Directory Pod Identity (deprecated)",
         "url": "https://docs.microsoft.com/en-us/azure/aks/use-azure-ad-pod-identity"
       }
     ],

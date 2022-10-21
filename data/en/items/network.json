@@ -16,7 +16,7 @@
         {
           "title":"Azure CNI Overlay",
           "url":"https://learn.microsoft.com/en-us/azure/aks/azure-cni-overlay"
-        }
+        },
         {
           "title": "Bring your own CNI",
           "url": "https://docs.microsoft.com/en-us/azure/aks/use-byo-cni"
