@@ -1,0 +1,149 @@
+[
+  {
+    "title": "Enforce resource quotas",
+    "priority": "Low",
+    "description": "Plan and apply resource quotas at the namespace level. If pods don't define resource requests and limits, reject the deployment. Monitor resource usage and adjust quotas as needed.",
+    "detail": "Resource requests and limits are placed in the pod specification. These limits are used by the Kubernetes scheduler at deployment time to find an available node in the cluster. But developers can forget them and thus impact other applications by over-consuming resources of the cluster",
+    "documentation": [
+      {
+        "title": "Enforce resource quotas",
+        "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-scheduler#enforce-resource-quotas"
+      },
+      {
+        "title": "Resources quotas",
+        "url": "https://kubernetes.io/docs/concepts/policy/resource-quotas/"
+      }
+    ],
+    "tags": [
+      "all",
+      "resiliency",
+      "resource management",
+      "multi-tenancy"
+    ]
+  },
+  {
+    "title": "Namespaces should have LimitRange",
+    "priority": "Low",
+    "description": " A LimitRange is a policy to constrain resource allocations (to Pods or Containers) in a namespace. It's useful to ensure that pods don't forget to declare request limits",
+    "documentation": [
+      {
+        "title": "LimitRange",
+        "url": "https://kubernetes.io/docs/concepts/policy/limit-range/"
+      }
+    ],
+    "tags": [
+      "all",
+      "resiliency",
+      "resource management",
+      "multi-tenancy"
+    ]
+  },
+  {
+    "title": "Set memory limits and requests for all containers",
+    "priority": "Medium",
+    "description": "Set CPU and memory limits and requests to all the containers. It prevents memory leaks and CPU over-usage and protects the whole platform",
+    "detail": " When you specify limits for CPU and memory, each takes a different action when it reaches the specified limit. With CPU limits, the container is throttled from using more than its specified limit. With memory limits, the pod is restarted if it reaches its limit. The pod might be restarted on the same host or a different host within the cluster.",
+    "documentation": [
+      {
+        "title": "Assign Memory Resources to container",
+        "url": "https://kubernetes.io/docs/tasks/configure-pod-container/assign-memory-resource/"
+      }
+    ],
+    "tags": [
+      "all",
+      "resiliency",
+      "resource management",
+      "multi-tenancy"
+    ]
+  },
+  {
+    "title": "Configure pod disruption budgets",
+    "priority": "Low",
+    "description": "To maintain the availability of applications, define Pod Disruption Budgets (PDBs) to make sure that a minimum number of pods are available in the cluster.",
+    "detail": "At some point in time, Kubernetes might need to evict pods from a host. There are two types of evictions: voluntary and involuntary disruptions. Involuntary disruptions can be caused by hardware failure, network partitions, kernel panics, or a node being out of resources. Voluntary evictions can be caused by performing maintenance on the cluster, the Cluster Autoscaler deallocating nodes, or updating pod templates. To minimize the impact to your application, you can set a PodDisruptionBudget to ensure uptime of the application when pods need to be evicted. A PodDisruptionBudget allows you to set a policy on the minimum available and maximum unavailable pods during voluntary eviction events. An example of a voluntary eviction would be when draining a node to perform maintenance on the node.",
+    "documentation": [
+      {
+        "title": "Plan for availability using pod disruption budgets",
+        "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-scheduler#plan-for-availability-using-pod-disruption-budgets"
+      },
+      {
+        "title": "Specifying a Disruption Budget for your Application",
+        "url": "https://kubernetes.io/docs/tasks/run-application/configure-pdb/"
+      }
+    ],
+    "tags": [
+      "all",
+      "resiliency",
+      "resource management"
+    ]
+  },
+  {
+    "title": "Set up cluster auto-scaling",
+    "priority": "Low",
+    "description": "To maintain the availability of applications and guarantee available resources, set up cluster auto-scaling",
+    "documentation": [
+      {
+        "title": "Use AKS cluster auto-scale",
+        "url": "https://docs.microsoft.com/en-us/azure/aks/cluster-autoscaler"
+      }
+    ],
+    "tags": [
+      "all",
+      "resiliency",
+      "resource management"
+    ]
+  },
+  {
+    "title": "Enable cluster autoscaling",
+    "priority": "Medium",
+    "description": "To keep up with application demands in Azure Kubernetes Service (AKS), you may need to adjust the number of nodes that run your workloads. The cluster autoscaler component can watch for pods in your cluster that can't be scheduled because of resource constraints.",
+    "detail": "You can enable autoscaling module per node pool but only create one mutual autoscale profile",
+    "documentation": [
+      {
+        "title": "AKS Autoscaler",
+        "url": "https://docs.microsoft.com/en-us/azure/aks/cluster-autoscaler"
+      }
+    ],
+    "tags": [
+      "all",
+      "resources",
+      "FinOps"
+    ]
+  },
+  {
+    "title": "Sizing of the nodes",
+    "priority": "Medium",
+    "description": "what type of worker nodes should I use, and how many of them is a critical question which requires the analysis of the workloads deployed on your cluster to get the best values of it",
+    "detail": "Choosing on one hand between easy management and big blast radius, and on the other end to focus on high replication, low impact but worse resources optimization ",
+    "documentation": [
+      {
+        "title": "Choosing a worker node size",
+        "url": "https://learnk8s.io/kubernetes-node-size"
+      },
+      {
+        "title": "Choose the right storage type",
+        "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-storage#choose-the-appropriate-storage-type"
+      }
+    ],
+    "tags": [
+      "all",
+      "resources"
+    ]
+  },
+  {
+    "title": "Use placement proximity group to improve performance",
+    "priority": "Low",
+    "description": "When deploying your application in Azure, spreading Virtual Machine (VM) instances across regions or availability zones creates network latency, which may impact the overall performance of your application. A proximity placement group is a logical grouping used to make sure Azure compute resources are physically located close to each other",
+    "detail": "Be careful, by using PPG on a nodepool, you reduce the average SLA of your application since they don't rely on availability zones anymore",
+    "documentation": [
+      {
+        "title": "Reduce latency with proximity placement groups",
+        "url": "https://docs.microsoft.com/en-us/azure/aks/reduce-latency-ppg"
+      }
+    ],
+    "tags": [
+      "all",
+      "security"
+    ]
+  }
+]

@@ -1,0 +1,304 @@
+[
+   {
+      "title": "Logically isolate cluster",
+      "priority": "Medium",
+      "description": "Use logical isolation to separate teams and projects. Try to minimize the number of physical AKS clusters you deploy to isolate teams or applications",
+      "documentation": [
+        {
+          "title": "Isolating cluster",
+          "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-cluster-isolation#logically-isolate-clusters"
+        }
+      ],
+      "tags": ["all"]
+    },
+    {
+      "title": "Physically isolate cluster",
+      "priority": "High",
+      "description": "Minimize the use of physical isolation for each separate team or application deployment",
+      "documentation": [
+        {
+          "title": "Isolating cluster",
+          "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-cluster-isolation#physically-isolate-clusters"
+        }
+      ],
+      "tags": ["all"]
+    },
+    {
+      "title": "IP Range authorization",
+      "priority": "High",
+      "description": "The API server is the central way to interact with your cluster. To improve cluster security and minimize attacks, the API server should only be accessible from a limited set of IP address ranges.By using a private cluster, you can ensure that network traffic between your API server and your node pools remains on the private network only. Because the API server has a private address, it means that to access it for administration or for deployment, you need to set up a private connection, like using a 'jumpbox' (i.e.: Azure Bastion)",
+      "documentation": [
+        {
+          "title": "Secure access to the API server using authorized IP address ranges",
+          "url": "https://docs.microsoft.com/en-us/azure/aks/api-server-authorized-ip-ranges"
+        }
+      ],
+      "tags": ["all", "security"]
+    },
+    {
+      "title": "AAD Integration",
+      "priority": "High",
+      "description": "Azure Kubernetes Service (AKS) can be configured to use Azure Active Directory (Azure AD) for user authentication. In this configuration, you can sign in to an AKS cluster by using your Azure AD authentication token.",
+      "documentation": [
+        {
+          "title": "AKS-managed Azure Active Directory integration",
+          "url": "https://docs.microsoft.com/en-us/azure/aks/managed-aad"
+        },
+        {
+          "title": "Disable local accounts",
+          "url": "https://docs.microsoft.com/en-us/azure/aks/managed-aad#disable-local-accounts-preview"
+        }
+      ],
+      "tags": ["all", "security"]
+    },
+    {
+      "title": "Use System Node Pools",
+      "priority": "Medium",
+      "description": "Manage system node pools in Azure Kubernetes Service (AKS)",
+      "documentation": [
+        {
+          "title": "AKS System Pools",
+          "url": "https://docs.microsoft.com/en-us/azure/aks/use-system-pools"
+        }
+      ],
+      "tags": ["all", "security"]
+    },
+    {
+      "title": "AKS Managed Identity",
+      "priority": "High",
+      "description": "Each AKS cluster needs either a Managed Identity or Service Principal.  We recommend using Managed Identity in AKS",
+      "documentation": [
+        {
+          "title": "Use managed identities in Azure Kubernetes Service",
+          "url": "https://docs.microsoft.com/en-us/azure/aks/use-managed-identity"
+        }
+      ],
+      "tags": ["all", "security"]
+    },
+    {
+      "title": "VM Sizing",
+      "priority": "Medium",
+      "description": "Prefer fewer, larger clusters over of many, smaller clusters",
+      "tags": ["all", "operation"],
+      "tools": [
+        {
+          "title":"Kubernetes instance calculator",
+          "url": "https://learnk8s.io/kubernetes-instance-calculator"
+        }
+      ]
+    },
+    {
+      "title": "Configure your cluster for regulated industries",
+      "priority": "Medium",
+      "description": "Some industries require certified kubernetes or to implement specific configurations. AKS offers several features to meet this requirements",
+      "tags": ["all", "security", "operation"],
+      "documentation": [
+        {
+          "title": "Use FIPS-enabled node pool (preview)",
+          "url": "https://docs.microsoft.com/en-us/azure/aks/use-multiple-node-pools#add-a-fips-enabled-node-pool-preview"
+        },
+        {
+          "title": "AKS CIS benchmark",
+          "url": "https://docs.microsoft.com/en-us/compliance/regulatory/offering-CIS-Benchmark"
+        },
+        {
+          "title" : "AKS architecture reference for PCI-DSS 3.2.1",
+          "url" : "https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/containers/aks-pci/aks-pci-intro"
+        }
+      ]
+    },
+    {
+      "title": "Set Upgrade Channel",
+      "priority": "Medium",
+      "description": "In addition to manually upgrading a cluster, you can set an auto-upgrade channel on your cluster",
+      "documentation": [
+        {
+          "title": "Set AKS auto-upgrade channel",
+          "url": "https://docs.microsoft.com/en-us/azure/aks/upgrade-cluster#set-auto-upgrade-channel"
+        }
+      ],
+      "tags": ["all", "operation"]
+    },
+    {
+      "title": "K8S RBAC + AAD Integration",
+      "priority": "High",
+      "description": "Control access to cluster resources using Kubernetes role-based access control and Azure Active Directory identities in Azure Kubernetes Service",
+      "documentation": [
+        {
+          "title": "Limit cluster access via K8S RBAC for users & workloads",
+          "url": "https://docs.microsoft.com/en-us/azure/aks/azure-ad-rbac"
+        }
+      ],
+      "tags": ["all", "security"]
+    },
+    {
+      "title": "Private cluster",
+      "priority": "High",
+      "description": "In a private cluster, the control plane or API server has internal IP addresses and is not exposed to Internet",
+      "detail": "By using a private cluster, you can ensure that network traffic between your API server and your node pools remains on the private network only. Because the API server has a private address, it means that to access it for administration or for deployment, you need to set up private connection, like using a 'jumpbox' (i.e.: Azure Bastion)",
+      "documentation": [
+        {
+          "title": "Create a private cluster",
+          "url": "https://docs.microsoft.com/en-us/azure/aks/private-clusters"
+        },
+        {
+          "title":"Use azure CLI to run command on a private cluster",
+          "url": "https://docs.microsoft.com/en-us/azure/aks/private-clusters#options-for-connecting-to-the-private-cluster"
+        },
+        {
+          "title": "Use public DNS with a private cluster",
+          "url": "https://docs.microsoft.com/en-us/azure/aks/private-clusters#create-a-private-aks-cluster-with-a-public-dns-address"
+        }
+      ],
+      "tags": ["all", "security"]
+    },
+    {
+      "title": "Enable cluster autoscaling",
+      "priority": "Medium",
+      "description": "To keep up with application demands in Azure Kubernetes Service (AKS), you may need to adjust the number of nodes that run your workloads. The cluster autoscaler component can watch for pods in your cluster that can't be scheduled because of resource constraints.",
+      "detail": "You can enable autoscaling module per node pool but only create one mutual autoscale profile",
+      "documentation": [
+        {
+          "title": "AKS Autoscaler",
+          "url": "https://docs.microsoft.com/en-us/azure/aks/cluster-autoscaler"
+        }
+      ],
+      "tags": ["all", "resources", "FinOps"]
+    },
+    {
+      "title": "Sizing of the nodes",
+      "priority": "Medium",
+      "description": "what type of worker nodes should I use, and how many of them is a critical question which requires the analysis of the workloads deployed on your cluster to get the best values of it",
+      "detail": "Choosing on one hand between easy management and big blast radius, and on the other end to focus on high replication, low impact but worse resources optimization ",
+      "documentation": [
+        {
+          "title": "Choosing a worker node size",
+          "url": "https://learnk8s.io/kubernetes-node-size"
+        },
+        {
+          "title": "Choose the right storage type",
+          "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-storage#choose-the-appropriate-storage-type"
+        }
+      ],
+      "tags": ["all", "resources"]
+    },
+    {
+      "title": "Refresh container when base image is updated",
+      "priority": "Medium",
+      "description": "As you use base images for application images, use automation to build new images when the base image is updated. As those base images typically include security fixes, update any downstream application container images.",
+      "documentation": [
+        {
+          "title": "Automatically build new images on base image update",
+          "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-container-image-management#automatically-build-new-images-on-base-image-update"
+        },
+        {
+          "title": "Azure DevOps - Trigger pipeline from Docker image update",
+          "url": "https://dev.to/larryclaman/trigger-azure-devops-build-pipeline-from-docker-image-update-5d3i"
+        }
+      ],
+      "tags": ["all", "resources"]
+    },
+    {
+      "title": "Check if you need the Kubernetes dashboard",
+      "priority": "Medium",
+      "description": "Starting with Kubernetes version 1.19, AKS will no longer allow the managed Kubernetes dashboard add-on to be installed for security reasons, and the add-on is scheduled to be deprecated. Ensure the Kubernetes dashboard is not installed on the cluster.",
+      "detail": "It can be done with the following CLI: az aks disable-addons --addons kube-dashboard --resource-group RG_NAME --name CLUSTER_NAME",
+      "documentation": [
+      ],
+      "tags": ["all", "security"]
+    },
+    {
+      "title": "Use AKS and ACR integration without password",
+      "priority": "Medium",
+      "description": "AKS can authenticate to ACR without using any password, but by using either Service Principal or Managed Identity.",
+      "detail": "For AKS to download/pull images from Azure Container Registry (ACR), it needs the ACR credentials including the password. To avoid saving the password in the cluster, you can simply activate the ACR integration on new or existing AKS cluster using SPN or Managed Identity",
+      "documentation": [
+        {
+          "title": "Authenticate with Azure Container Registry from AKS",
+          "url": "https://docs.microsoft.com/en-us/azure/aks/cluster-container-registry-integration"
+        }
+      ],
+      "tags": ["all", "security"]
+    },
+    {
+      "title": "Use placement proximity group to improve performance",
+      "priority": "Low",
+      "description": "When deploying your application in Azure, spreading Virtual Machine (VM) instances across regions or availability zones creates network latency, which may impact the overall performance of your application. A proximity placement group is a logical grouping used to make sure Azure compute resources are physically located close to each other",
+      "detail": "Be careful, by using PPG on a nodepool, you reduce the average SLA of your application since they don't rely on availability zones anymore",
+      "documentation": [
+        {
+          "title": "Reduce latency with proximity placement groups",
+          "url": "https://docs.microsoft.com/en-us/azure/aks/reduce-latency-ppg"
+        }
+      ],
+      "tags": ["all", "security"]
+    },
+    {
+      "title": "Encrypt ETCD at rest with your own key",
+      "priority": "Low",
+      "description": "By default, ETCD is encrypted at rest with keys managed by Microsoft. It is possible to encrypt the database using your own key using a KMS plugin and store the key in Azure Key Vault.",
+      "documentation": [
+        {
+          "title":"Add KMS etcd encryption to an Azure Kubernetes Service (AKS) cluster (Preview)",
+          "url": "https://docs.microsoft.com/en-us/azure/aks/use-kms-etcd-encryption"
+        },
+        {
+          "title": "Kubernetes KMS",
+          "url": "https://github.com/Azure/kubernetes-kms"
+        }
+      ],
+      "tags": ["all", "security"]
+    },
+    {
+      "title": "Enable traffic management",
+      "priority": "Medium",
+      "description": "Azure Traffic Manager can direct customers to their closest AKS cluster and application instance. For the best performance and redundancy, direct all application traffic through Traffic Manager before it goes to your AKS cluster.",
+      "detail": "If you have multiple AKS clusters in different regions, use Traffic Manager to control how traffic flows to the applications that run in each cluster. Azure Traffic Manager is a DNS-based traffic load balancer that can distribute network traffic across regions. Use Traffic Manager to route users based on cluster response time or based on geography. It can be used to improve app availability with automatic failover",
+      "documentation": [
+        {
+          "title": "Use Azure Traffic Manager to route traffic",
+          "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-multi-region#use-azure-traffic-manager-to-route-traffic"
+        }
+      ],
+      "tags": ["all", "network", "resiliency", "multi-tenancy"]
+    },
+    {
+      "title": "Enable geo-replication for container images",
+      "priority": "Medium",
+      "description": "Companies that want a local presence, or a hot backup, choose to run services from multiple Azure regions.",
+      "detail": "As a best practice, placing a container registry in each region where images are run allows network-close operations, enabling fast, reliable image layer transfers. Geo-replication enables an Azure container registry to function as a single registry, serving multiple regions with multi-master regional registries.",
+      "documentation": [
+        {
+          "title": "Enable geo-replication for container images",
+          "url": "https://docs.microsoft.com/en-us/azure/container-registry/container-registry-geo-replication"
+        }
+      ],
+      "tags": ["all", "resiliency"]
+    },
+    {
+      "title": "Fine tune your node configuration",
+      "priority": "Low",
+      "description": "Customizing your node configuration allows you to configure or tune your operating system (OS) settings or the kubelet parameters to match the needs of the workloads.",
+      "detail": "When you create an AKS cluster or add a node pool to your cluster, you can customize a subset of commonly used OS and kubelet settings.",
+      "documentation": [
+        {
+          "title": "Customize node configuration for Azure Kubernetes Service (AKS) node pools",
+          "url": "https://docs.microsoft.com/en-us/azure/aks/custom-node-configuration"
+        }
+      ],
+      "tags": ["all", "network"]
+    },
+    {
+      "title": "Customize your clusters with extensions",
+      "priority": "Low",
+      "description": "Cluster extensions provides an Azure Resource Manager driven experience for installation and lifecycle management of services like Azure Machine Learning (ML) on an AKS cluster. ",
+      "detail": "This feature enables:Azure Resource Manager-based deployment of extensions, including at-scale deployments across AKS clusters but also lifecycle management of the extension (Update, Delete) from Azure Resource Manager.",
+      "documentation": [
+        {
+          "title": "Customize node configuration for Azure Kubernetes Service (AKS) node pools",
+          "url": "https://docs.microsoft.com/en-gb/azure/aks/cluster-extensions"
+        }
+      ],
+      "tags": ["all"]
+    }
+] 

@@ -1,0 +1,51 @@
+[
+  {
+    "title": "AAD Integration",
+    "priority": "High",
+    "description": "Azure Kubernetes Service (AKS) can be configured to use Azure Active Directory (Azure AD) for user authentication. In this configuration, you can sign in to an AKS cluster by using your Azure AD authentication token.",
+    "documentation": [
+      {
+        "title": "AKS-managed Azure Active Directory integration",
+        "url": "https://docs.microsoft.com/en-us/azure/aks/managed-aad"
+      },
+      {
+        "title": "Disable local accounts",
+        "url": "https://docs.microsoft.com/en-us/azure/aks/managed-aad#disable-local-accounts-preview"
+      }
+    ],
+    "tags": [
+      "all",
+      "security"
+    ]
+  },
+  {
+    "title": "AKS Managed Identity",
+    "priority": "High",
+    "description": "Each AKS cluster needs either a Managed Identity or Service Principal.  We recommend using Managed Identity in AKS",
+    "documentation": [
+      {
+        "title": "Use managed identities in Azure Kubernetes Service",
+        "url": "https://docs.microsoft.com/en-us/azure/aks/use-managed-identity"
+      }
+    ],
+    "tags": [
+      "all",
+      "security"
+    ]
+  },
+  {
+    "title": "K8S RBAC + AAD Integration",
+    "priority": "High",
+    "description": "Control access to cluster resources using Kubernetes role-based access control and Azure Active Directory identities in Azure Kubernetes Service",
+    "documentation": [
+      {
+        "title": "Limit cluster access via K8S RBAC for users & workloads",
+        "url": "https://docs.microsoft.com/en-us/azure/aks/azure-ad-rbac"
+      }
+    ],
+    "tags": [
+      "all",
+      "security"
+    ]
+  }
+]

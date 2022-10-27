@@ -1,0 +1,283 @@
+[
+  {
+    "title": "Scan the container image against vulnerabilities",
+    "priority": "High",
+    "description": "Scan your container images to ensure there are no vulnerabilities in it",
+    "documentation": [
+      {
+        "title": "Azure Security Center : scanning feature (Qualys)",
+        "url": "https://docs.microsoft.com/en-us/azure/security-center/azure-container-registry-integration"
+      },
+      {
+        "title": "Identify vulnerable container images in your CI/CD workflows",
+        "url": "https://docs.microsoft.com/en-us/azure/defender-for-cloud/defender-for-containers-cicd"
+      }
+    ],
+    "tools": [
+      {
+        "title": "Prisma (ex Twistlock)",
+        "url": "https://www.twistlock.com/"
+      },
+      {
+        "title": "Anchore",
+        "url": "https://anchore.com/"
+      },
+      {
+        "title": "Clair",
+        "url": "https://github.com/quay/clair"
+      }
+    ],
+    "tags": [
+      "all",
+      "security"
+    ]
+  },
+  {
+    "title": "Allow deploying containers only from known registries",
+    "priority": "Medium",
+    "description": "One of the most common custom policies that you might want to consider is to restrict the images that can be deployed in your cluster. But it can also be addressed with a proper egress lockdown or using an admission controller",
+    "documentation": [
+      {
+        "title": "Use the Azure Policy : Ensure only allowed container images in AKS",
+        "url": "https://docs.microsoft.com/en-us/azure/governance/policy/concepts/rego-for-aks#built-in-policies"
+      },
+      {
+        "title": "Using ImagePolicyWebhook",
+        "url": "https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#imagepolicywebhook"
+      },
+      {
+        "title": "Using egress lockdown and authorizing only the URL of your registry",
+        "url": "https://docs.microsoft.com/en-us/azure/aks/limit-egress-traffic"
+      }
+    ],
+    "tags": [
+      "all",
+      "security"
+    ]
+  },
+  {
+    "title": "Runtime Security of Applications",
+    "priority": "High",
+    "description": "Integrate Runtime Security for your pods.  To complete the defense in depth structure, ensure Runtime protection is in place to protect from process, network, storage and system call attacks.",
+    "tools": [
+      {
+        "title": "Prisma Runtime defense",
+        "url": "https://docs.paloaltonetworks.com/prisma/prisma-cloud/prisma-cloud-admin-compute/runtime_defense.html"
+      },
+      {
+        "title": "Falco",
+        "url": "https://falco.org"
+      }
+    ],
+    "tags": [
+      "all",
+      "security"
+    ]
+  },
+  {
+    "title": "Quarantine of Docker Images in Docker Registries that have discovered issues",
+    "priority": "High",
+    "description": "Use policy to protect images from drift while in the registry, on both push and pull.",
+    "detail": "On build, the image is secured based on the threshold set, but now while in the registry a new issue is discovered.  You need to ensure that the image can not be deployed until the issue is remediated.",
+    "documentation": [
+      {
+        "title": "ACR Quarantine",
+        "url": "https://github.com/Azure/acr/tree/master/docs/preview/quarantine"
+      }
+    ],
+    "tags": [
+      "all",
+      "security"
+    ]
+  },
+  {
+    "title": "Role-Based Access Contol (RBAC) to Docker Registries",
+    "priority": "High",
+    "description": "The Azure Container Registry service supports a set of built-in Azure roles that provide different levels of permissions to an Azure container registry. Use Azure role-based access control (RBAC) to assign specific permissions to users, service principals, or other identities that need to interact with a registry.",
+    "documentation": [
+      {
+        "title": "Azure Container Registry roles and permissions",
+        "url": "https://docs.microsoft.com/en-us/azure/container-registry/container-registry-roles"
+      }
+    ],
+    "tags": [
+      "all",
+      "security"
+    ]
+  },
+  {
+    "title": "Network Segmentation of Docker Registries",
+    "priority": "High",
+    "description": "Limit access to a registry by assigning virtual network private IP addresses to the registry endpoints and using Azure Private Link. Network traffic between the clients on the virtual network and the registry's private endpoints traverses the virtual network and a private link on the Microsoft backbone network, eliminating exposure from the public internet. Private Link also enables enables private registry access from on-premises through Azure ExpressRoute private peering or a VPN gateway.",
+    "documentation": [
+      {
+        "title": "Azure Container Registry Private Link",
+        "url": "https://docs.microsoft.com/en-us/azure/container-registry/container-registry-private-link"
+      }
+    ],
+    "tags": [
+      "all",
+      "network",
+      "security"
+    ]
+  },
+  {
+    "title": "Prefer distroless images",
+    "priority": "Medium",
+    "description": "When building a docker image, try to use the distroless version of the base OS image, to reduce the risk of vulnerabilities with preinstalled but unused tools. From example, use base-debian10 instead of debian10",
+    "detail": "'Distroless' images are bare-bones versions of common base images. They have the bare-minimum needed to execute a binary.The shell and other developer utilities have been removed so that if/when an attacker gains control of your container, they canâ€™t do much of anything",
+    "documentation": [
+      {
+        "title": "Google distroless images",
+        "url": "https://github.com/GoogleContainerTools/distroless"
+      }
+    ],
+    "tags": [
+      "all",
+      "security"
+    ]
+  },
+  {
+    "title": "IP Range authorization",
+    "priority": "High",
+    "description": "The API server is the central way to interact with your cluster. To improve cluster security and minimize attacks, the API server should only be accessible from a limited set of IP address ranges.By using a private cluster, you can ensure that network traffic between your API server and your node pools remains on the private network only. Because the API server has a private address, it means that to access it for administration or for deployment, you need to set up a private connection, like using a 'jumpbox' (i.e.: Azure Bastion)",
+    "documentation": [
+      {
+        "title": "Secure access to the API server using authorized IP address ranges",
+        "url": "https://docs.microsoft.com/en-us/azure/aks/api-server-authorized-ip-ranges"
+      }
+    ],
+    "tags": [
+      "all",
+      "security"
+    ]
+  },
+  {
+    "title": "Use System Node Pools",
+    "priority": "Medium",
+    "description": "Manage system node pools in Azure Kubernetes Service (AKS)",
+    "documentation": [
+      {
+        "title": "AKS System Pools",
+        "url": "https://docs.microsoft.com/en-us/azure/aks/use-system-pools"
+      }
+    ],
+    "tags": [
+      "all",
+      "security"
+    ]
+  },
+  {
+    "title": "Configure your cluster for regulated industries",
+    "priority": "Medium",
+    "description": "Some industries require certified kubernetes or to implement specific configurations. AKS offers several features to meet this requirements",
+    "tags": [
+      "all",
+      "security",
+      "operation"
+    ],
+    "documentation": [
+      {
+        "title": "Use FIPS-enabled node pool (preview)",
+        "url": "https://docs.microsoft.com/en-us/azure/aks/use-multiple-node-pools#add-a-fips-enabled-node-pool-preview"
+      },
+      {
+        "title": "AKS CIS benchmark",
+        "url": "https://docs.microsoft.com/en-us/compliance/regulatory/offering-CIS-Benchmark"
+      },
+      {
+        "title": "AKS architecture reference for PCI-DSS 3.2.1",
+        "url": "https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/containers/aks-pci/aks-pci-intro"
+      }
+    ]
+  },
+  {
+    "title": "Private cluster",
+    "priority": "High",
+    "description": "In a private cluster, the control plane or API server has internal IP addresses and is not exposed to Internet",
+    "detail": "By using a private cluster, you can ensure that network traffic between your API server and your node pools remains on the private network only. Because the API server has a private address, it means that to access it for administration or for deployment, you need to set up private connection, like using a 'jumpbox' (i.e.: Azure Bastion)",
+    "documentation": [
+      {
+        "title": "Create a private cluster",
+        "url": "https://docs.microsoft.com/en-us/azure/aks/private-clusters"
+      },
+      {
+        "title": "Use azure CLI to run command on a private cluster",
+        "url": "https://docs.microsoft.com/en-us/azure/aks/private-clusters#options-for-connecting-to-the-private-cluster"
+      },
+      {
+        "title": "Use public DNS with a private cluster",
+        "url": "https://docs.microsoft.com/en-us/azure/aks/private-clusters#create-a-private-aks-cluster-with-a-public-dns-address"
+      }
+    ],
+    "tags": [
+      "all",
+      "security"
+    ]
+  },
+  {
+    "title": "Refresh container when base image is updated",
+    "priority": "Medium",
+    "description": "As you use base images for application images, use automation to build new images when the base image is updated. As those base images typically include security fixes, update any downstream application container images.",
+    "documentation": [
+      {
+        "title": "Automatically build new images on base image update",
+        "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-container-image-management#automatically-build-new-images-on-base-image-update"
+      },
+      {
+        "title": "Azure DevOps - Trigger pipeline from Docker image update",
+        "url": "https://dev.to/larryclaman/trigger-azure-devops-build-pipeline-from-docker-image-update-5d3i"
+      }
+    ],
+    "tags": [
+      "all",
+      "resources"
+    ]
+  },
+  {
+    "title": "Check if you need the Kubernetes dashboard",
+    "priority": "Medium",
+    "description": "Starting with Kubernetes version 1.19, AKS will no longer allow the managed Kubernetes dashboard add-on to be installed for security reasons, and the add-on is scheduled to be deprecated. Ensure the Kubernetes dashboard is not installed on the cluster.",
+    "detail": "It can be done with the following CLI: az aks disable-addons --addons kube-dashboard --resource-group RG_NAME --name CLUSTER_NAME",
+    "documentation": [],
+    "tags": [
+      "all",
+      "security"
+    ]
+  },
+  {
+    "title": "Use AKS and ACR integration without password",
+    "priority": "Medium",
+    "description": "AKS can authenticate to ACR without using any password, but by using either Service Principal or Managed Identity.",
+    "detail": "For AKS to download/pull images from Azure Container Registry (ACR), it needs the ACR credentials including the password. To avoid saving the password in the cluster, you can simply activate the ACR integration on new or existing AKS cluster using SPN or Managed Identity",
+    "documentation": [
+      {
+        "title": "Authenticate with Azure Container Registry from AKS",
+        "url": "https://docs.microsoft.com/en-us/azure/aks/cluster-container-registry-integration"
+      }
+    ],
+    "tags": [
+      "all",
+      "security"
+    ]
+  },
+  {
+    "title": "Encrypt ETCD at rest with your own key",
+    "priority": "Low",
+    "description": "By default, ETCD is encrypted at rest with keys managed by Microsoft. It is possible to encrypt the database using your own key using a KMS plugin and store the key in Azure Key Vault.",
+    "documentation": [
+      {
+        "title": "Add KMS etcd encryption to an Azure Kubernetes Service (AKS) cluster (Preview)",
+        "url": "https://docs.microsoft.com/en-us/azure/aks/use-kms-etcd-encryption"
+      },
+      {
+        "title": "Kubernetes KMS",
+        "url": "https://github.com/Azure/kubernetes-kms"
+      }
+    ],
+    "tags": [
+      "all",
+      "security"
+    ]
+  }
+]

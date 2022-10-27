@@ -1,0 +1,106 @@
+[
+  {
+    "title": "Map the base image to node OS",
+    "priority": "High",
+    "description": "Windows has strict compatibility rules, where the host OS version must match the container base image OS version. Only Windows containers with a container operating system of Windows Server 2019 are supported.",
+    "documentation": [
+      {
+        "title": "Windows container version compatibility",
+        "url": "https://docs.microsoft.com/en-us/virtualization/windowscontainers/deploy-containers/version-compatibility?tabs=windows-server-2019%2Cwindows-10-1909"
+      },
+      {
+        "title": "Limitations of Windows containers",
+        "url": "https://kubernetes.io/docs/setup/production-environment/windows/intro-windows-in-kubernetes/#supported-functionality-and-limitations"
+      }
+    ],
+    "tags": ["all", "windows"]
+  },
+  {
+    "title": "Prepare your application for an abrupt kill",
+    "priority": "Medium",
+    "description": "TerminationGracePeriod is not implemented on Windows containers",
+    "documentation": [
+      {
+        "title": "Understand pod lifecycle",
+        "url": "https://cloud.google.com/blog/products/gcp/kubernetes-best-practices-terminating-with-grace"
+      },
+      {
+        "title": "Limitations of Windows containers",
+        "url": "https://kubernetes.io/docs/setup/production-environment/windows/intro-windows-in-kubernetes/#supported-functionality-and-limitations"
+      }
+    ],
+    "tags": ["all", "windows"]
+  },
+  {
+    "title": "Don't use privileged containers",
+    "priority": "Medium",
+    "description": "Windows containers do not support elevation of privilege",
+    "documentation": [
+      {
+        "title": "Limitations of Windows containers",
+        "url": "https://kubernetes.io/docs/setup/production-environment/windows/intro-windows-in-kubernetes/#supported-functionality-and-limitations"
+      }
+    ],
+    "tags": ["all", "windows"]
+  },
+  {
+    "title": "Watch for memory usage",
+    "priority": "Medium",
+    "description": "There are no OOM eviction actions taken by the kubelet. Windows always treats all user-mode memory allocations as virtual, and pagefiles are mandatory. If memory is over-provisioned and all physical memory is exhausted, then paging can slow down performance.",
+    "documentation": [
+      {
+        "title": "Limitations of Windows containers",
+        "url": "https://kubernetes.io/docs/setup/production-environment/windows/intro-windows-in-kubernetes/#supported-functionality-and-limitations"
+      }
+    ],
+    "tags": ["all", "windows"]
+  },
+  {
+    "title": "Implement CNI network mode",
+    "priority": "High",
+    "description": "AKS clusters with Windows node pools must use the Azure CNI (advanced) networking model. Kubenet (basic) networking is not supported. ",
+    "documentation": [
+      {
+        "title": "What network plug-ins are supported?",
+        "url": "https://docs.microsoft.com/en-us/azure/aks/windows-node-limitations#what-network-plug-ins-are-supported"
+      }
+    ],
+    "tags": ["all", "windows"]
+  },
+  {
+    "title": "Patch your nodes yourself",
+    "priority": "High",
+    "description": "Windows Server nodes in AKS must be upgraded to get the latest patch fixes and updates. Windows Updates are not enabled on nodes in AKS. AKS releases new node pool images as soon as patches are available, it is the customers responsibility to upgrade node pools to stay current on patches and hotfix. ",
+    "documentation": [
+      {
+        "title": "How do patch my Windows nodes? ",
+        "url": "https://docs.microsoft.com/en-us/azure/aks/windows-node-limitations#how-do-patch-my-windows-nodes"
+      }
+    ],
+    "tags": ["all", "windows"]
+  },
+  {
+    "title": "Secure the traffic of your containers",
+    "priority": "High",
+    "description": "Network policies are currently not supported, ensure that the containerized applications have a layer of protection like authentication ",
+    "documentation": [
+      {
+        "title": "Limitations of Windows containers",
+        "url": "https://kubernetes.io/docs/setup/production-environment/windows/intro-windows-in-kubernetes/#supported-functionality-and-limitations"
+      }
+    ],
+    "tags": ["all", "windows"]
+  },
+  {
+    "title": "Enable Group Managed Service Accounts (GMSA) for your Windows Server nodes",
+    "priority": "Medium",
+    "description": "Group Managed Service Accounts (GMSA) is a managed domain account for multiple servers that provides automatic password management, simplified service principal name (SPN) management and the ability to delegate the management to other administrators.",
+    "documentation": [
+      {
+        "title": "Enable Group Managed Service Accounts (GMSA) for your Windows Server nodes",
+        "url": "https://docs.microsoft.com/en-gb/azure/aks/use-group-managed-service-accounts"
+      }
+    ],
+    "tags": ["all", "windows", "security"]
+  }
+]
