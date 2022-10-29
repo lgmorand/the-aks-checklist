@@ -9,7 +9,10 @@
         "url": "https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/"
       }
     ],
-    "tags": ["all", "development"]
+    "tags": [
+      "all",
+      "application"
+    ]
   },
   {
     "title": "Implement a proper Startup probe",
@@ -21,7 +24,10 @@
         "url": "https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/"
       }
     ],
-    "tags": ["all", "development"]
+    "tags": [
+      "all",
+      "application"
+    ]
   },
   {
     "title": "Implement a proper Readiness probe",
@@ -33,7 +39,10 @@
         "url": "https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/"
       }
     ],
-    "tags": ["all", "development"]
+    "tags": [
+      "all",
+      "application"
+    ]
   },
   {
     "title": "Implement a proper prestop hook",
@@ -45,19 +54,40 @@
         "url": "https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/"
       }
     ],
-    "tags": ["all", "development"]
+    "tags": [
+      "all",
+      "application"
+    ]
   },
   {
     "title": "Run more than one replica for your Deployment",
     "priority": "Medium",
     "description": "Ensure that your application always configure proper replicas to ensure resiliency in the event of a pod crashing or being evicted.",
-    "tags": ["all", "development"]
+    "documentation": [
+      {
+        "title": "Pod replicas",
+        "url": "https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/"
+      }
+    ],
+    "tags": [
+      "all",
+      "application"
+    ]
   },
   {
-    "title": "Apply tags to all resources",
+    "title": "Apply tags/labels to all resources",
     "priority": "Medium",
     "description": "Ensure that your components are tagged, it could be business, security or technical tags and these tags will help to assess or apply relevant policies.",
-    "tags": ["all", "development"]
+    "documentation": [
+      {
+        "title": "Recommended Labels",
+        "url": "https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels/"
+      }
+    ],
+    "tags": [
+      "all",
+      "application"
+    ]
   },
   {
     "title": "Implement autoscaling of your applications",
@@ -69,7 +99,7 @@
         "url": "https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/"
       }
     ],
-    "tools":[
+    "tools": [
       {
         "title": "Kubernetes Event-driven Autoscaling (KEDA)",
         "url": "https://keda.sh/"
@@ -79,7 +109,10 @@
         "url": "https://docs.microsoft.com/en-us/azure/aks/keda-about"
       }
     ],
-    "tags": ["all", "resiliency"]
+    "tags": [
+      "all",
+      "resiliency"
+    ]
   },
   {
     "title": "Store your secrets in Azure Key Vault, don't inject passwords in Docker Images",
@@ -95,7 +128,10 @@
         "url": "https://akv2k8s.io/"
       }
     ],
-    "tags": ["all", "security"]
+    "tags": [
+      "all",
+      "security"
+    ]
   },
   {
     "title": "Implement Azure Workload Identity",
@@ -112,7 +148,10 @@
         "url": "https://docs.microsoft.com/en-us/azure/aks/use-azure-ad-pod-identity"
       }
     ],
-    "tags": ["all", "security"]
+    "tags": [
+      "all",
+      "security"
+    ]
   },
   {
     "title": "Use Kubernetes namespaces to properly isolate your Kubernetes resources",
@@ -124,7 +163,10 @@
         "url": "https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/"
       }
     ],
-    "tags": ["all", "security"]
+    "tags": [
+      "all",
+      "security"
+    ]
   },
   {
     "title": "Set up requests and limits on your containers",
@@ -140,7 +182,10 @@
         "url": "https://kubernetes.io/docs/tasks/configure-pod-container/quality-service-pod/"
       }
     ],
-    "tags": ["all", "resources"]
+    "tags": [
+      "all",
+      "resources"
+    ]
   },
   {
     "title": "Specify the security context of your pod/container",
@@ -153,13 +198,17 @@
         "url": "https://kubernetes.io/docs/tasks/configure-pod-container/security-context/"
       }
     ],
-    "tags": ["all", "resources", "security"]
+    "tags": [
+      "all",
+      "resources",
+      "security"
+    ]
   },
   {
     "title": "Ensure your manifests respect good practices",
     "priority": "Medium",
     "description": "Best practices inside the cluster start with the configuration of your manifests. Ensure that they respect good practices",
-    "documentation":[
+    "documentation": [
       {
         "title": "Kubernetes YAML: Enforcing best practices and security policies",
         "url": "https://thechief.io/c/editorial/kubernetes-yaml-enforcing-best-practices-and-security-policies-cicd-and-gitops-pipelines/"
@@ -183,7 +232,11 @@
         "url": "https://github.com/stackrox/kube-linter"
       }
     ],
-    "tags": ["all", "resources", "security"]
+    "tags": [
+      "all",
+      "resources",
+      "security"
+    ]
   },
   {
     "title": "Conduct Dockerfile scanning to ensure Docker Image Security Best Practices",
@@ -209,9 +262,12 @@
         "url": "https://github.com/hadolint/hadolint"
       }
     ],
-    "tags": ["all", "security"]
-},
-{
+    "tags": [
+      "all",
+      "security"
+    ]
+  },
+  {
     "title": "Static Analysis of Docker Images on Build",
     "priority": "High",
     "description": "Introduction of DevSecOps into the environment to promote a proactive security model that starts to shift the responsibility left",
@@ -233,7 +289,10 @@
         "url": "https://github.com/quay/clair"
       }
     ],
-    "tags": ["all", "security"]
+    "tags": [
+      "all",
+      "security"
+    ]
   },
   {
     "title": "Threshold enforcement of Docker Image Builds that contain vulnerabilities",
@@ -246,7 +305,10 @@
         "url": "https://docs.paloaltonetworks.com/prisma/prisma-cloud/prisma-cloud-admin-compute/vulnerability_management/vuln_management_rules.html"
       }
     ],
-    "tags": ["all", "security"]
+    "tags": [
+      "all",
+      "security"
+    ]
   },
   {
     "title": "Compliance enforcement of Docker Image Builds",
@@ -263,49 +325,66 @@
         "url": "https://docs.paloaltonetworks.com/prisma/prisma-cloud/prisma-cloud-admin-compute/compliance/manage_compliance.html"
       }
     ],
-    "tags": ["all", "security"]
+    "tags": [
+      "all",
+      "security"
+    ]
   },
   {
     "title": "Use Azure Migrate to quick containerize your applications",
     "priority": "Low",
     "description": "The App Containerization tool offers a point-and-containerize approach to repackage applications as containers with minimal to no code changes by using the running state of the application. The tool currently supports containerizing ASP.NET applications and Java web applications running on Apache Tomcat.",
-    "documentation":[
+    "documentation": [
       {
-        "title":"Accelerate application modernization with Azure Migrate: App Containerization",
+        "title": "Accelerate application modernization with Azure Migrate: App Containerization",
         "url": "https://aka.ms/AppContainerizationtoAKS"
       }
     ],
-    "tags": ["all", "development"] 
+    "tags": [
+      "all",
+      "application"
+    ]
   },
   {
     "title": "Apply the right deployment type to your application",
     "priority": "Low",
     "description": "There are a variety of techniques to deploy new applications to production so choosing the right strategy is an important decision that needs to be made to leverage the impact of change on the consumer.",
-    "documentation":[
+    "documentation": [
       {
-        "title":"Kubernetes Deployment Strategies",
+        "title": "Kubernetes Deployment Strategies",
         "url": "https://blog.container-solutions.com/deployment-strategies"
       }
     ],
-    "tags": ["all", "development"] 
+    "tags": [
+      "all",
+      "application"
+    ]
   },
   {
     "title": "Don't use naked pods",
     "priority": "Low",
     "description": "Naked pods are pods not linked to a Replicaset or a Deployment. Naked Pods will not be rescheduled in the event of a node failure.",
     "details": "If imagePullPolicy is omitted and either the image tag is :latest or it is omitted: imagePullPolicy is automatically set to Always. Prefer to set explicitly IfNotPresent",
-    "tags": ["all", "development", "resiliency"] 
+    "tags": [
+      "all",
+      "application",
+      "resiliency"
+    ]
   },
   {
     "title": "Control the usage of imagePullPolicy",
     "priority": "Low",
     "description": "If this attributes is not properly define kubernetes downloads the container image for each new instance of the containers.",
-    "documentation":[
+    "documentation": [
       {
-        "title":"Updating images",
+        "title": "Updating images",
         "url": "https://kubernetes.io/docs/concepts/containers/images/#updating-images"
       }
     ],
-    "tags": ["all", "development", "resiliency"] 
+    "tags": [
+      "all",
+      "application",
+      "resiliency"
+    ]
   }
 ]

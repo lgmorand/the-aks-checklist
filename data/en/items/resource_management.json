@@ -14,7 +14,12 @@
         "url": "https://kubernetes.io/docs/concepts/policy/resource-quotas/"
       }
     ],
-    "tags": ["all", "resiliency", "resource management", "multi-tenancy"]
+    "tags": [
+      "all",
+      "resiliency",
+      "resource management",
+      "multi-tenancy"
+    ]
   },
   {
     "title": "Namespaces should have LimitRange",
@@ -26,7 +31,12 @@
         "url": "https://kubernetes.io/docs/concepts/policy/limit-range/"
       }
     ],
-    "tags": ["all", "resiliency", "resource management", "multi-tenancy"]
+    "tags": [
+      "all",
+      "resiliency",
+      "resource management",
+      "multi-tenancy"
+    ]
   },
   {
     "title": "Set memory limits and requests for all containers",
@@ -39,7 +49,12 @@
         "url": "https://kubernetes.io/docs/tasks/configure-pod-container/assign-memory-resource/"
       }
     ],
-    "tags": ["all", "resiliency", "resource management", "multi-tenancy"]
+    "tags": [
+      "all",
+      "resiliency",
+      "resource management",
+      "multi-tenancy"
+    ]
   },
   {
     "title": "Configure pod disruption budgets",
@@ -53,10 +68,14 @@
       },
       {
         "title": "Specifying a Disruption Budget for your Application",
-        "url":"https://kubernetes.io/docs/tasks/run-application/configure-pdb/"
+        "url": "https://kubernetes.io/docs/tasks/run-application/configure-pdb/"
       }
     ],
-    "tags": ["all", "resiliency", "resource management"]
+    "tags": [
+      "all",
+      "resiliency",
+      "resource management"
+    ]
   },
   {
     "title": "Set up cluster auto-scaling",
@@ -68,6 +87,10 @@
         "url": "https://docs.microsoft.com/en-us/azure/aks/cluster-autoscaler"
       }
     ],
-    "tags": ["all", "resiliency", "resource management"]
+    "tags": [
+      "all",
+      "resiliency",
+      "resource management"
+    ]
   }
 ]

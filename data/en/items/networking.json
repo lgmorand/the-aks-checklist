@@ -1,0 +1,203 @@
+[
+  {
+    "title": "Choose the appropriate network model",
+    "priority": "Medium",
+    "description": "For integration with existing virtual networks or on-premises networks, use Azure CNI networking in AKS. This network model also allows greater separation of resources and controls in an enterprise environment but be aware of the impact on the network topology/IP ranges. In the future, you'll be able to use the CNI overlay model which gives more control and takes the benefits of both approachs.",
+    "detail": "While Kubenet is the default Kubernetes network plugin, the Container Networking Interface (CNI) is a vendor-neutral protocol that lets the container runtime make requests to a network provider. The Azure CNI assigns IP addresses to pods and nodes, and provides IP address management (IPAM) features as you connect to existing Azure virtual networks. Each node and pod resource receives an IP address in the Azure virtual network, and no additional routing is needed to communicate with other resources or services.",
+    "documentation": [
+      {
+        "title": "Kubenet vs CNI",
+        "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-network#choose-the-appropriate-network-model"
+      },
+      {
+        "title": "Dynamic IP allocation",
+        "url": "https://docs.microsoft.com/en-us/azure/aks/configure-azure-cni#dynamic-allocation-of-ips-and-enhanced-subnet-support"
+      },
+      {
+        "title": "Azure CNI Overlay",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/azure-cni-overlay"
+      },
+      {
+        "title": "Bring your own CNI",
+        "url": "https://docs.microsoft.com/en-us/azure/aks/use-byo-cni"
+      },
+      {
+        "title": "Add a node pool with a unique subnet",
+        "url": "https://docs.microsoft.com/en-us/azure/aks/use-multiple-node-pools#add-a-node-pool-with-a-unique-subnet"
+      }
+    ],
+    "tags": [
+      "all",
+      "network"
+    ]
+  },
+  {
+    "title": "Plan IP addressing carefully",
+    "priority": "Medium",
+    "description": "The size of your virtual network and its subnet must accommodate the number of pods you plan to run and the number of nodes for the cluster.",
+    "detail": "As an example, using CNI, you need one IP for each node + one spare for a new node in case of cluster upgrade, and you need an IP for each pod which can represent hundred of IP addresses",
+    "documentation": [
+      {
+        "title": "Plan IP addressing for your cluster",
+        "url": "https://docs.microsoft.com/en-us/azure/aks/configure-azure-cni#plan-ip-addressing-for-your-cluster"
+      }
+    ],
+    "tags": [
+      "all",
+      "network"
+    ]
+  },
+  {
+    "title": "Distribute ingress traffic",
+    "priority": "Medium",
+    "description": "To distribute HTTP or HTTPS traffic to your applications, use ingress resources and controllers. Ingress controllers provide additional features over a regular Azure load balancer, and can be managed as native Kubernetes resources.",
+    "documentation": [
+      {
+        "title": "Distribute ingress traffic",
+        "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-network#distribute-ingress-traffic"
+      }
+    ],
+    "tags": [
+      "all",
+      "network"
+    ]
+  },
+  {
+    "title": "Secure your exposed applications with a web application firewall (WAF)",
+    "priority": "Medium",
+    "description": "If you plan to host exposed applications, to scan incoming traffic for potential attacks, use a web application firewall (WAF) such as Barracuda WAF for Azure or Azure Application Gateway. These more advanced network resources can also route traffic beyond just HTTP and HTTPS connections or basic SSL termination.",
+    "documentation": [
+      {
+        "title": "Secure traffic with a web application firewall (WAF)",
+        "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-network#secure-traffic-with-a-web-application-firewall-waf"
+      }
+    ],
+    "tags": [
+      "all",
+      "network"
+    ]
+  },
+  {
+    "title": "Don't expose your load-balancer on Internet if not necessary",
+    "priority": "Medium",
+    "description": "When a user creates an Ingress manifest, they can use any hostname in it. You may want to control which hostnames are allowed to use, like your company's hostnames.",
+    "documentation": [
+      {
+        "title": "Tutorial: only allow approved domain names as ingress hostnames",
+        "url": "https://www.openpolicyagent.org/docs/latest/kubernetes-tutorial/#4-define-a-policy-and-load-it-into-opa-via-kubernetes"
+      }
+    ],
+    "tags": [
+      "all",
+      "network",
+      "security"
+    ]
+  },
+  {
+    "title": "Apply control on ingress hostnames",
+    "priority": "Medium",
+    "description": "There is almost no reason to directly expose the ingress entry point to Internet but by default AKS create a public one. Tell him to create an internal one only.",
+    "documentation": [
+      {
+        "title": "Create an ingress controller to an internal virtual network",
+        "url": "https://docs.microsoft.com/en-us/azure/aks/ingress-internal-ip"
+      }
+    ],
+    "tags": [
+      "all",
+      "network",
+      "security"
+    ]
+  },
+  {
+    "title": "Control traffic flow with network policies",
+    "priority": "Medium",
+    "description": "Use network policies to allow or deny traffic to pods. By default, all traffic is allowed between pods within a cluster. For improved security, define rules that limit pod communication.",
+    "detail": "Network policy is a Kubernetes feature that lets you control the traffic flow between pods. You can choose to allow or deny traffic based on settings such as assigned labels, namespace, or traffic port. The use of network policies gives a cloud-native way to control the flow of traffic. As pods are dynamically created in an AKS cluster, the required network policies can be automatically applied. Don't use Azure network security groups to control pod-to-pod traffic, use network policies.",
+    "documentation": [
+      {
+        "title": "Control traffic flow with network policies",
+        "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-network#control-traffic-flow-with-network-policies"
+      }
+    ],
+    "tools": [
+      {
+        "title": "Calico",
+        "url": "https://docs.projectcalico.org/reference/resources/networkpolicy"
+      },
+      {
+        "title": "Cillium",
+        "url": "https://cilium.io/"
+      }
+    ],
+    "tags": [
+      "all",
+      "network",
+      "multi-tenancy",
+      "security"
+    ]
+  },
+  {
+    "title": "Configure default network policies in each namespace",
+    "priority": "Medium",
+    "description": "Start by creating a deny all policy in each namespace and then add specific policies.",
+    "documentation": [
+      {
+        "title": "Recipes of best default network policies",
+        "url": "https://github.com/ahmetb/kubernetes-network-policy-recipes"
+      }
+    ],
+    "tags": [
+      "all",
+      "network"
+    ]
+  },
+  {
+    "title": "Prevent data-leaking with egress lockdown",
+    "priority": "Medium",
+    "description": "Use Azure Firewall to secure and control all egress traffic going outside of the cluster.",
+    "documentation": [
+      {
+        "title": "Egress traffic requirements",
+        "url": "https://docs.microsoft.com/en-us/azure/aks/limit-egress-traffic"
+      }
+    ],
+    "tags": [
+      "all",
+      "network",
+      "security"
+    ]
+  },
+  {
+    "title": "Don't expose your container registry on Internet",
+    "priority": "Low",
+    "description": "When possible, use private link to only allow private network to reach your registry.",
+    "documentation": [
+      {
+        "title": "Azure Container Registry Private Link",
+        "url": "https://docs.microsoft.com/en-us/azure/container-registry/container-registry-private-link"
+      }
+    ],
+    "tags": [
+      "all",
+      "network",
+      "security"
+    ]
+  },
+  {
+    "title": "Bloc Pod access to VMSS IMDS",
+    "priority": "Medium",
+    "description": "By default, Pods have access to VMSS IMDS and can request access token from the attached Managed Identity. This access should be restriced by using Network Policy.",
+    "documentation": [
+      {
+        "title": "Pods requesting access to get a token",
+        "url": "https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/how-to-use-vm-token#get-a-token-using-curl"
+      }
+    ],
+    "tags": [
+      "all",
+      "network",
+      "security"
+    ]
+  }
+]
