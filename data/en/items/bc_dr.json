@@ -1,12 +1,34 @@
 [
   {
+    "title": "Define non-functional requirements such as SLAs, RTO (Recovery Time Objective) and RPO (Recovery Point Objective)",
+    "priority": "High",
+    "description": "Before going to production, it is very important to decide the target of availability and recovery time you are looking for. This will help you to decide the right backup strategy but also the architecture of your solution.",
+    "documentation": [
+      {
+        "title": "Define the BCDR strategy",
+        "url": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/enterprise-scale/business-continuity-and-disaster-recovery"
+      }
+    ],
+    "tags": [
+      "all",
+      "resiliency"
+    ]
+  },
+  {
     "title": "Ensure you can perform a whitespace deployment",
     "priority": "High",
     "description": "A whitespace (greenfield) deployment is the exercise to delete everything and to redeploy the whole platform in an automated way.",
     "detail": "In case of an emergency, a security flaw or datacenter failure, it's mandatory for you to be able to restore/create a new environment properly configured in a fully automated way",
+    "documentation": [
+      {
+        "title": "Schedule and perform DR tests regularly",
+        "url": "https://docs.microsoft.com/azure/cloud-adoption-framework/ready/enterprise-scale/business-continuity-and-disaster-recovery"
+      }
+    ],
     "tags": [
       "all",
-      "devops"
+      "devops",
+      "resiliency"
     ]
   },
   {
@@ -16,7 +38,7 @@
     "documentation": [
       {
         "title": "Create an AKS cluster across availability zones",
-        "url": "https://docs.microsoft.com/en-us/azure/aks/availability-zones#create-an-aks-cluster-across-availability-zones"
+        "url": "https://docs.microsoft.com/azure/aks/availability-zones"
       }
     ],
     "tags": [
@@ -31,7 +53,7 @@
     "documentation": [
       {
         "title": "Plan for multiregion deployment",
-        "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-multi-region#plan-for-multiregion-deployment"
+        "url": "https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region#plan-for-multiregion-deployment"
       }
     ],
     "tags": [
@@ -40,13 +62,17 @@
     ]
   },
   {
-    "title": "Use Azure Traffic Manager to route traffic",
+    "title": "Use cross-region loadbalancing to route traffic",
     "priority": "Low",
     "description": "Azure Traffic Manager can direct customers to their closest AKS cluster and application instance. For the best performance and redundancy, direct all application traffic through Traffic Manager before it goes to your AKS cluster.",
     "documentation": [
       {
         "title": "Traffic Manager and AKS",
-        "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-multi-region#use-azure-traffic-manager-to-route-traffic"
+        "url": "https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region#use-azure-traffic-manager-to-route-traffic"
+      },
+      {
+        "title": "Cross-region load balancer (Preview)",
+        "url": "https://learn.microsoft.com/en-us/azure/load-balancer/cross-region-overview"
       }
     ],
     "tags": [
@@ -62,7 +88,7 @@
     "documentation": [
       {
         "title": "Create a storage migration plan",
-        "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-multi-region#create-a-storage-migration-plan"
+        "url": "https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region#create-a-storage-migration-plan"
       },
       {
         "title": "Backup, restore and migrate Kubernetes resources including state to another AKS cluster with Velero",
@@ -76,14 +102,14 @@
     ]
   },
   {
-    "title": "Guarantee SLA for the control plane",
-    "priority": "Low",
+    "title": "Use the SLA-backed AKS offering",
+    "priority": "High",
     "description": "Uptime SLA is an optional feature to enable a financially backed, higher SLA for a cluster. It provides you a 99,95% SLA instead of the 99,5% SLO and is relevant for your production clusters",
     "detail": "Customers needing an SLA to meet compliance requirements or require extending an SLA to their end users should enable this feature. Customers with critical workloads that will benefit from a higher uptime SLA may also benefit. Using the Uptime SLA feature with Availability Zones enables a higher availability for the uptime of the Kubernetes API server.",
     "documentation": [
       {
         "title": "Azure Kubernetes Service (AKS) Uptime SLA",
-        "url": "https://docs.microsoft.com/en-us/azure/aks/uptime-sla"
+        "url": "https://docs.microsoft.com/azure/aks/uptime-sla"
       }
     ],
     "tags": [

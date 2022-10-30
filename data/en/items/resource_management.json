@@ -7,7 +7,7 @@
     "documentation": [
       {
         "title": "Enforce resource quotas",
-        "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-scheduler#enforce-resource-quotas"
+        "url": "https://docs.microsoft.com/azure/aks/operator-best-practices-scheduler#enforce-resource-quotas"
       },
       {
         "title": "Resources quotas",
@@ -64,7 +64,7 @@
     "documentation": [
       {
         "title": "Plan for availability using pod disruption budgets",
-        "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-scheduler#plan-for-availability-using-pod-disruption-budgets"
+        "url": "https://docs.microsoft.com/azure/aks/operator-best-practices-scheduler#plan-for-availability-using-pod-disruption-budgets"
       },
       {
         "title": "Specifying a Disruption Budget for your Application",
@@ -84,13 +84,14 @@
     "documentation": [
       {
         "title": "Use AKS cluster auto-scale",
-        "url": "https://docs.microsoft.com/en-us/azure/aks/cluster-autoscaler"
+        "url": "https://docs.microsoft.com/azure/aks/cluster-autoscaler"
       }
     ],
     "tags": [
       "all",
       "resiliency",
-      "resource management"
+      "resource management",
+      "finops"
     ]
   }
 ]

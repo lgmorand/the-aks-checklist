@@ -6,7 +6,7 @@
     "documentation": [
       {
         "title": "Windows container version compatibility",
-        "url": "https://docs.microsoft.com/en-us/virtualization/windowscontainers/deploy-containers/version-compatibility"
+        "url": "https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility"
       },
       {
         "title": "Limitations of Windows containers",
@@ -74,7 +74,7 @@
     "documentation": [
       {
         "title": "What network plug-ins are supported?",
-        "url": "https://docs.microsoft.com/en-us/azure/aks/windows-node-limitations#what-network-plug-ins-are-supported"
+        "url": "https://docs.microsoft.com/azure/aks/windows-node-limitations#what-network-plug-ins-are-supported"
       }
     ],
     "tags": [
@@ -89,7 +89,7 @@
     "documentation": [
       {
         "title": "How do patch my Windows nodes? ",
-        "url": "https://docs.microsoft.com/en-us/azure/aks/windows-node-limitations#how-do-patch-my-windows-nodes"
+        "url": "https://docs.microsoft.com/azure/aks/windows-node-limitations#how-do-patch-my-windows-nodes"
       }
     ],
     "tags": [

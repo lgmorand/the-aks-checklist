@@ -7,23 +7,23 @@
     "documentation": [
       {
         "title": "Kubenet vs CNI",
-        "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-network#choose-the-appropriate-network-model"
+        "url": "https://docs.microsoft.com/azure/aks/operator-best-practices-network#choose-the-appropriate-network-model"
       },
       {
         "title": "Dynamic IP allocation",
-        "url": "https://docs.microsoft.com/en-us/azure/aks/configure-azure-cni#dynamic-allocation-of-ips-and-enhanced-subnet-support"
+        "url": "https://docs.microsoft.com/azure/aks/configure-azure-cni#dynamic-allocation-of-ips-and-enhanced-subnet-support"
       },
       {
         "title": "Azure CNI Overlay",
-        "url": "https://learn.microsoft.com/en-us/azure/aks/azure-cni-overlay"
+        "url": "https://learn.microsoft.com/azure/aks/azure-cni-overlay"
       },
       {
         "title": "Bring your own CNI",
-        "url": "https://docs.microsoft.com/en-us/azure/aks/use-byo-cni"
+        "url": "https://docs.microsoft.com/azure/aks/use-byo-cni"
       },
       {
         "title": "Add a node pool with a unique subnet",
-        "url": "https://docs.microsoft.com/en-us/azure/aks/use-multiple-node-pools#add-a-node-pool-with-a-unique-subnet"
+        "url": "https://docs.microsoft.com/azure/aks/use-multiple-node-pools#add-a-node-pool-with-a-unique-subnet"
       }
     ],
     "tags": [
@@ -39,7 +39,7 @@
     "documentation": [
       {
         "title": "Plan IP addressing for your cluster",
-        "url": "https://docs.microsoft.com/en-us/azure/aks/configure-azure-cni#plan-ip-addressing-for-your-cluster"
+        "url": "https://docs.microsoft.com/azure/aks/configure-azure-cni#plan-ip-addressing-for-your-cluster"
       }
     ],
     "tags": [
@@ -54,7 +54,7 @@
     "documentation": [
       {
         "title": "Distribute ingress traffic",
-        "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-network#distribute-ingress-traffic"
+        "url": "https://docs.microsoft.com/azure/aks/operator-best-practices-network#distribute-ingress-traffic"
       }
     ],
     "tags": [
@@ -69,7 +69,7 @@
     "documentation": [
       {
         "title": "Secure traffic with a web application firewall (WAF)",
-        "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-network#secure-traffic-with-a-web-application-firewall-waf"
+        "url": "https://docs.microsoft.com/azure/aks/operator-best-practices-network#secure-traffic-with-a-web-application-firewall-waf"
       }
     ],
     "tags": [
@@ -78,8 +78,8 @@
     ]
   },
   {
-    "title": "Don't expose your load-balancer on Internet if not necessary",
-    "priority": "Medium",
+    "title": "Apply control on ingress hostnames",
+    "priority": "Low",
     "description": "When a user creates an Ingress manifest, they can use any hostname in it. You may want to control which hostnames are allowed to use, like your company's hostnames.",
     "documentation": [
       {
@@ -94,13 +94,13 @@
     ]
   },
   {
-    "title": "Apply control on ingress hostnames",
-    "priority": "Medium",
+    "title": "Don't expose your load-balancer on Internet if not necessary",
+    "priority": "High",
     "description": "There is almost no reason to directly expose the ingress entry point to Internet but by default AKS create a public one. Tell him to create an internal one only.",
     "documentation": [
       {
         "title": "Create an ingress controller to an internal virtual network",
-        "url": "https://docs.microsoft.com/en-us/azure/aks/ingress-internal-ip"
+        "url": "https://docs.microsoft.com/azure/aks/ingress-internal-ip"
       }
     ],
     "tags": [
@@ -117,7 +117,11 @@
     "documentation": [
       {
         "title": "Control traffic flow with network policies",
-        "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-network#control-traffic-flow-with-network-policies"
+        "url": "https://docs.microsoft.com/azure/aks/operator-best-practices-network#control-traffic-flow-with-network-policies"
+      },
+      {
+        "title": "Secure traffic between pods using network policies",
+        "url": "https://docs.microsoft.com/azure/aks/use-network-policies"
       }
     ],
     "tools": [
@@ -145,11 +149,16 @@
       {
         "title": "Recipes of best default network policies",
         "url": "https://github.com/ahmetb/kubernetes-network-policy-recipes"
+      },
+      {
+        "title": "Callico global network policy",
+        "url": "https://projectcalico.docs.tigera.io/reference/resources/globalnetworkpolicy"
       }
     ],
     "tags": [
       "all",
-      "network"
+      "network",
+      "multi-tenancy"
     ]
   },
   {
@@ -159,7 +168,7 @@
     "documentation": [
       {
         "title": "Egress traffic requirements",
-        "url": "https://docs.microsoft.com/en-us/azure/aks/limit-egress-traffic"
+        "url": "https://docs.microsoft.com/azure/aks/limit-egress-traffic"
       }
     ],
     "tags": [
@@ -175,7 +184,7 @@
     "documentation": [
       {
         "title": "Azure Container Registry Private Link",
-        "url": "https://docs.microsoft.com/en-us/azure/container-registry/container-registry-private-link"
+        "url": "https://docs.microsoft.com/azure/container-registry/container-registry-private-link"
       }
     ],
     "tags": [
@@ -191,7 +200,7 @@
     "documentation": [
       {
         "title": "Pods requesting access to get a token",
-        "url": "https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/how-to-use-vm-token#get-a-token-using-curl"
+        "url": "https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-use-vm-token#get-a-token-using-curl"
       }
     ],
     "tags": [

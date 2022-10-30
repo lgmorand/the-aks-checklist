@@ -5,7 +5,7 @@
 The deployed version can be found here: [www.the-aks-checklist.com](https://www.the-aks-checklist.com)
 ![AKS Checklist](https://raw.githubusercontent.com/lgmorand/aks-checklist/master/src/img/social/facebook-banner.jpg)
 
-The AKS Checklist is a (tentatively) exhaustive list of all elements you need to think of when preparing a cluster for production. It is based on all common best practices agreed around Kubernetes or documented [here](https://docs.microsoft.com/en-us/azure/aks/best-practices).
+The AKS Checklist is a (tentatively) exhaustive list of all elements you need to think of when preparing a cluster for production. It is based on all common best practices agreed around Kubernetes or documented [here](https://docs.microsoft.com/azure/aks/best-practices).
 
 Another good reading in another format is the [AKS baseline reference architecture](https://github.com/mspnp/aks-secure-baseline)
 
@@ -25,7 +25,7 @@ Another good reading in another format is the [AKS baseline reference architectu
 
 Fork the repo, add the best practices in the items.json file (at least in English which will remain the single source of trust) and then do a pull request **on the staging branch** ;-)
 
-Be aware that we want to keep a list as exhaustive as possible but also a list that met **common usage**. Depending on your context, you may have custom best practices which may apply only to your case.
+Be aware that we want to keep a list as exhaustive as possible but also a list that met **common usage**. Depending on your context, you may have custom best practices that may apply only to your case.
 
 ## Thanks
 

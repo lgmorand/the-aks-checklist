@@ -6,11 +6,12 @@
     "documentation": [
       {
         "title": "Isolating cluster",
-        "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-cluster-isolation#logically-isolate-clusters"
+        "url": "https://docs.microsoft.com/azure/aks/operator-best-practices-cluster-isolation#logically-isolate-clusters"
       }
     ],
     "tags": [
-      "all"
+      "all",
+      "multi-tenancy"
     ]
   },
   {
@@ -20,7 +21,7 @@
     "documentation": [
       {
         "title": "Isolating cluster",
-        "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-cluster-isolation#physically-isolate-clusters"
+        "url": "https://docs.microsoft.com/azure/aks/operator-best-practices-cluster-isolation#physically-isolate-clusters"
       }
     ],
     "tags": [
@@ -34,31 +35,33 @@
     "documentation": [
       {
         "title": "Secure access to the API server using authorized IP address ranges",
-        "url": "https://docs.microsoft.com/en-us/azure/aks/api-server-authorized-ip-ranges"
+        "url": "https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges"
       }
     ],
     "tags": [
       "all",
-      "security"
+      "security",
+      "identity"
     ]
   },
   {
-    "title": "AAD Integration",
+    "title": "Integrate authentication with AAD (using the managed integration)",
     "priority": "High",
     "description": "Azure Kubernetes Service (AKS) can be configured to use Azure Active Directory (Azure AD) for user authentication. In this configuration, you can sign in to an AKS cluster by using your Azure AD authentication token.",
     "documentation": [
       {
         "title": "AKS-managed Azure Active Directory integration",
-        "url": "https://docs.microsoft.com/en-us/azure/aks/managed-aad"
+        "url": "https://docs.microsoft.com/azure/aks/managed-aad"
       },
       {
         "title": "Disable local accounts",
-        "url": "https://docs.microsoft.com/en-us/azure/aks/managed-aad#disable-local-accounts-preview"
+        "url": "https://docs.microsoft.com/azure/aks/managed-aad#disable-local-accounts"
       }
     ],
     "tags": [
       "all",
-      "security"
+      "security",
+      "identity"
     ]
   },
   {
@@ -68,27 +71,28 @@
     "documentation": [
       {
         "title": "AKS System Pools",
-        "url": "https://docs.microsoft.com/en-us/azure/aks/use-system-pools"
+        "url": "https://docs.microsoft.com/azure/aks/use-system-pools"
       }
     ],
     "tags": [
       "all",
-      "security"
+      "operation"
     ]
   },
   {
-    "title": "AKS Managed Identity",
+    "title": "Use managed identities instead of Service Principals",
     "priority": "High",
     "description": "Each AKS cluster needs either a Managed Identity or Service Principal.  We recommend using Managed Identity in AKS",
     "documentation": [
       {
         "title": "Use managed identities in Azure Kubernetes Service",
-        "url": "https://docs.microsoft.com/en-us/azure/aks/use-managed-identity"
+        "url": "https://docs.microsoft.com/azure/aks/use-managed-identity"
       }
     ],
     "tags": [
       "all",
-      "security"
+      "security",
+      "identity"
     ]
   },
   {
@@ -117,16 +121,16 @@
     ],
     "documentation": [
       {
-        "title": "Use FIPS-enabled node pool (preview)",
-        "url": "https://docs.microsoft.com/en-us/azure/aks/use-multiple-node-pools#add-a-fips-enabled-node-pool-preview"
+        "title": "Use FIPS-enabled node pool",
+        "url": "https://docs.microsoft.com/azure/aks/use-multiple-node-pools#add-a-fips-enabled-node-pool"
       },
       {
         "title": "AKS CIS benchmark",
-        "url": "https://docs.microsoft.com/en-us/compliance/regulatory/offering-CIS-Benchmark"
+        "url": "https://docs.microsoft.com/compliance/regulatory/offering-CIS-Benchmark"
       },
       {
         "title": "AKS architecture reference for PCI-DSS 3.2.1",
-        "url": "https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/containers/aks-pci/aks-pci-intro"
+        "url": "https://docs.microsoft.com/azure/architecture/reference-architectures/containers/aks-pci/aks-pci-intro"
       }
     ]
   },
@@ -137,7 +141,7 @@
     "documentation": [
       {
         "title": "Set AKS auto-upgrade channel",
-        "url": "https://docs.microsoft.com/en-us/azure/aks/upgrade-cluster#set-auto-upgrade-channel"
+        "url": "https://docs.microsoft.com/azure/aks/upgrade-cluster#set-auto-upgrade-channel"
       }
     ],
     "tags": [
@@ -152,12 +156,13 @@
     "documentation": [
       {
         "title": "Limit cluster access via K8S RBAC for users & workloads",
-        "url": "https://docs.microsoft.com/en-us/azure/aks/azure-ad-rbac"
+        "url": "https://docs.microsoft.com/azure/aks/azure-ad-rbac"
       }
     ],
     "tags": [
       "all",
-      "security"
+      "security",
+      "identity"
     ]
   },
   {
@@ -168,15 +173,15 @@
     "documentation": [
       {
         "title": "Create a private cluster",
-        "url": "https://docs.microsoft.com/en-us/azure/aks/private-clusters"
+        "url": "https://docs.microsoft.com/azure/aks/private-clusters"
       },
       {
         "title": "Use azure CLI to run command on a private cluster",
-        "url": "https://docs.microsoft.com/en-us/azure/aks/private-clusters#options-for-connecting-to-the-private-cluster"
+        "url": "https://docs.microsoft.com/azure/aks/private-clusters#options-for-connecting-to-the-private-cluster"
       },
       {
         "title": "Use public DNS with a private cluster",
-        "url": "https://docs.microsoft.com/en-us/azure/aks/private-clusters#create-a-private-aks-cluster-with-a-public-dns-address"
+        "url": "https://docs.microsoft.com/azure/aks/private-clusters#create-a-private-aks-cluster-with-a-public-dns-address"
       }
     ],
     "tags": [
@@ -192,7 +197,7 @@
     "documentation": [
       {
         "title": "AKS Autoscaler",
-        "url": "https://docs.microsoft.com/en-us/azure/aks/cluster-autoscaler"
+        "url": "https://docs.microsoft.com/azure/aks/cluster-autoscaler"
       }
     ],
     "tags": [
@@ -213,7 +218,7 @@
       },
       {
         "title": "Choose the right storage type",
-        "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-storage#choose-the-appropriate-storage-type"
+        "url": "https://docs.microsoft.com/azure/aks/operator-best-practices-storage#choose-the-appropriate-storage-type"
       }
     ],
     "tags": [
@@ -223,12 +228,12 @@
   },
   {
     "title": "Refresh container when base image is updated",
-    "priority": "Medium",
+    "priority": "Low",
     "description": "As you use base images for application images, use automation to build new images when the base image is updated. As those base images typically include security fixes, update any downstream application container images.",
     "documentation": [
       {
         "title": "Automatically build new images on base image update",
-        "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-container-image-management#automatically-build-new-images-on-base-image-update"
+        "url": "https://docs.microsoft.com/azure/aks/operator-best-practices-container-image-management#automatically-build-new-images-on-base-image-update"
       },
       {
         "title": "Azure DevOps - Trigger pipeline from Docker image update",
@@ -259,12 +264,13 @@
     "documentation": [
       {
         "title": "Authenticate with Azure Container Registry from AKS",
-        "url": "https://docs.microsoft.com/en-us/azure/aks/cluster-container-registry-integration"
+        "url": "https://docs.microsoft.com/azure/aks/cluster-container-registry-integration"
       }
     ],
     "tags": [
       "all",
-      "security"
+      "security",
+      "identity"
     ]
   },
   {
@@ -275,12 +281,12 @@
     "documentation": [
       {
         "title": "Reduce latency with proximity placement groups",
-        "url": "https://docs.microsoft.com/en-us/azure/aks/reduce-latency-ppg"
+        "url": "https://docs.microsoft.com/azure/aks/reduce-latency-ppg"
       }
     ],
     "tags": [
       "all",
-      "security"
+      "operation"
     ]
   },
   {
@@ -289,8 +295,8 @@
     "description": "By default, ETCD is encrypted at rest with keys managed by Microsoft. It is possible to encrypt the database using your own key using a KMS plugin and store the key in Azure Key Vault.",
     "documentation": [
       {
-        "title": "Add KMS etcd encryption to an Azure Kubernetes Service (AKS) cluster (Preview)",
-        "url": "https://docs.microsoft.com/en-us/azure/aks/use-kms-etcd-encryption"
+        "title": "Add KMS etcd encryption to an Azure Kubernetes Service (AKS) cluster",
+        "url": "https://docs.microsoft.com/azure/aks/use-kms-etcd-encryption"
       },
       {
         "title": "Kubernetes KMS",
@@ -310,7 +316,7 @@
     "documentation": [
       {
         "title": "Use Azure Traffic Manager to route traffic",
-        "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-multi-region#use-azure-traffic-manager-to-route-traffic"
+        "url": "https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region#use-azure-traffic-manager-to-route-traffic"
       }
     ],
     "tags": [
@@ -321,22 +327,6 @@
     ]
   },
   {
-    "title": "Enable geo-replication for container images",
-    "priority": "Medium",
-    "description": "Companies that want a local presence, or a hot backup, choose to run services from multiple Azure regions.",
-    "detail": "As a best practice, placing a container registry in each region where images are run allows network-close operations, enabling fast, reliable image layer transfers. Geo-replication enables an Azure container registry to function as a single registry, serving multiple regions with multi-master regional registries.",
-    "documentation": [
-      {
-        "title": "Enable geo-replication for container images",
-        "url": "https://docs.microsoft.com/en-us/azure/container-registry/container-registry-geo-replication"
-      }
-    ],
-    "tags": [
-      "all",
-      "resiliency"
-    ]
-  },
-  {
     "title": "Fine tune your node configuration",
     "priority": "Low",
     "description": "Customizing your node configuration allows you to configure or tune your operating system (OS) settings or the kubelet parameters to match the needs of the workloads.",
@@ -344,7 +334,7 @@
     "documentation": [
       {
         "title": "Customize node configuration for Azure Kubernetes Service (AKS) node pools",
-        "url": "https://docs.microsoft.com/en-us/azure/aks/custom-node-configuration"
+        "url": "https://docs.microsoft.com/azure/aks/custom-node-configuration"
       }
     ],
     "tags": [
@@ -364,7 +354,56 @@
       }
     ],
     "tags": [
-      "all"
+      "all",
+      "operation"
+    ]
+  },
+  {
+    "title": "Burst serverless with Azure Container Instances and Virtual Nodes",
+    "priority": "Low",
+    "description": "To rapidly scale your AKS cluster, you can integrate with Azure Container Instances (ACI)",
+    "detail": "Kubernetes has built-in components to scale the replica and node count. However, if your application needs to rapidly scale, the horizontal pod autoscaler may schedule more pods than can be provided by the existing compute resources in the node pool.",
+    "documentation": [
+      {
+        "title": "Burst to Azure Container Instances",
+        "url": "https://learn.microsoft.com/en-gb/azure/aks/concepts-scale#burst-to-azure-container-instances"
+      }
+    ],
+    "tags": [
+      "all",
+      "operation",
+      "finops"
+    ]
+  },
+  {
+    "title": "Consider spot node pools for non time-sensitive workloads",
+    "priority": "Low",
+    "description": "Using Spot VMs for nodes with your AKS cluster allows you to take advantage of unutilized capacity in Azure at a significant cost savings",
+    "documentation": [
+      {
+        "title": "Add an Azure Spot node pool to an Azure Kubernetes Service (AKS) cluster",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/spot-node-pool"
+      }
+    ],
+    "tags": [
+      "all",
+      "operation",
+      "finops"
+    ]
+  },
+  {
+    "title": "Customize the name of the MC_ resource group",
+    "priority": "Low",
+    "description": "When creating a new AKS cluster, the MC_ resource group is created by default. You can customize the name of the MC_ resource group.",
+    "documentation": [
+      {
+        "title": "Custom resource group name",
+        "url": "https://learn.microsoft.com/en-gb/azure/aks/cluster-configuration#custom-resource-group-name"
+      }
+    ],
+    "tags": [
+      "all",
+      "operation"
     ]
   }
 ]

@@ -6,7 +6,7 @@
     "documentation": [
       {
         "title": "Regularly update to the latest version of Kubernetes",
-        "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-cluster-security#regularly-update-to-the-latest-version-of-kubernetes"
+        "url": "https://docs.microsoft.com/azure/aks/operator-best-practices-cluster-security#regularly-update-to-the-latest-version-of-kubernetes"
       },
       {
         "title": "Use the auto-upgrade feature",
@@ -27,15 +27,15 @@
     "documentation": [
       {
         "title": "Azure Kubernetes Service (AKS) node image upgrades",
-        "url": "https://docs.microsoft.com/en-us/azure/aks/node-image-upgrade"
+        "url": "https://docs.microsoft.com/azure/aks/node-image-upgrade"
       },
       {
         "title": "Process Linux node updates and reboots using Kured (not recommended because it can behave incorrectly in some cluster configurations like autoscaling)",
-        "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-cluster-security#process-linux-node-updates-and-reboots-using-kured"
+        "url": "https://docs.microsoft.com/azure/aks/operator-best-practices-cluster-security#process-linux-node-updates-and-reboots-using-kured"
       },
       {
         "title": "Use Event Grid to know when an upgrade is available",
-        "url": "https://docs.microsoft.com/en-us/azure/aks/quickstart-event-grid"
+        "url": "https://docs.microsoft.com/azure/aks/quickstart-event-grid"
       }
     ],
     "tools": [
@@ -58,7 +58,7 @@
     "documentation": [
       {
         "title": "Securely connect to nodes through a bastion host",
-        "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-network#securely-connect-to-nodes-through-a-bastion-host"
+        "url": "https://docs.microsoft.com/azure/aks/operator-best-practices-network#securely-connect-to-nodes-through-a-bastion-host"
       }
     ],
     "tags": [
@@ -97,7 +97,7 @@
     "documentation": [
       {
         "title": "Azure Kubernetes Services integration with Security Center",
-        "url": "https://docs.microsoft.com/en-us/azure/security-center/azure-kubernetes-service-integration"
+        "url": "https://docs.microsoft.com/azure/security-center/azure-kubernetes-service-integration"
       }
     ],
     "tags": [
@@ -112,11 +112,11 @@
     "documentation": [
       {
         "title": "Azure Monitor for AKS",
-        "url": "https://docs.microsoft.com/en-us/azure/azure-monitor/insights/container-insights-analyze"
+        "url": "https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-analyze"
       },
       {
         "title": "Azure Managed Grafana",
-        "url": "https://azure.microsoft.com/en-us/services/managed-grafana/"
+        "url": "https://azure.microsoft.com/services/managed-grafana/"
       }
     ],
     "tools": [
@@ -141,7 +141,7 @@
     "documentation": [
       {
         "title": "Enable and review Kubernetes master node logs",
-        "url": "https://docs.microsoft.com/en-us/azure/aks/view-control-plane-logs"
+        "url": "https://docs.microsoft.com/azure/aks/view-control-plane-logs"
       }
     ],
     "tags": [
@@ -158,7 +158,7 @@
     "documentation": [
       {
         "title": "Configure scraping of Prometheus metrics",
-        "url": "https://docs.microsoft.com/en-us/azure/azure-monitor/insights/container-insights-prometheus-integration"
+        "url": "https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-prometheus-integration"
       },
       {
         "title": "Deploying ELK",
@@ -181,7 +181,7 @@
       },
       {
         "title": "Zero instrumentation application monitoring for Kubernetes hosted applications (deprecated)",
-        "url": "https://docs.microsoft.com/en-us/azure/azure-monitor/app/kubernetes"
+        "url": "https://docs.microsoft.com/azure/azure-monitor/app/kubernetes"
       }
     ],
     "tags": [
@@ -196,28 +196,7 @@
     "documentation": [
       {
         "title": "Azure Policies for AKS",
-        "url": "https://docs.microsoft.com/en-us/azure/governance/policy/concepts/rego-for-aks"
-      }
-    ],
-    "tools": [
-      {
-        "title": "Gatekeeper",
-        "url": "https://github.com/open-policy-agent/gatekeeper"
-      }
-    ],
-    "tags": [
-      "all",
-      "operation"
-    ]
-  },
-  {
-    "title": "Read The Definitive Guide to Securing Kubernetes",
-    "priority": "High",
-    "description": "This whitepaper provides an overview of key aspects and best practices of K8s security",
-    "documentation": [
-      {
-        "title": "The Definitive Guide to Securing Kubernetes",
-        "url": "https://info.aquasec.com/securing_kubernetes"
+        "url": "https://docs.microsoft.com/azure/governance/policy/concepts/rego-for-aks"
       }
     ],
     "tools": [
@@ -238,7 +217,7 @@
     "documentation": [
       {
         "title": "Introduction to Microsoft Defender for Kubernetes",
-        "url": "https://docs.microsoft.com/en-us/azure/defender-for-cloud/defender-for-containers-introduction"
+        "url": "https://docs.microsoft.com/azure/defender-for-cloud/defender-for-containers-introduction"
       }
     ],
     "tags": [
@@ -253,7 +232,7 @@
     "documentation": [
       {
         "title": "Tutorial: Configure and run the Azure Key Vault provider for the Secrets Store CSI driver on Kubernetes",
-        "url": "https://docs.microsoft.com/en-us/azure/key-vault/general/key-vault-integrate-kubernetes"
+        "url": "https://docs.microsoft.com/azure/key-vault/general/key-vault-integrate-kubernetes"
       }
     ],
     "tags": [
@@ -274,7 +253,7 @@
       },
       {
         "title": "What is Azure Arc enabled Kubernetes?",
-        "url": "https://docs.microsoft.com/en-us/azure/azure-arc/kubernetes/overview"
+        "url": "https://docs.microsoft.com/azure/azure-arc/kubernetes/overview"
       }
     ],
     "tags": [
@@ -287,6 +266,10 @@
     "priority": "Medium",
     "description": "The Kubernetes ecosystem is strengthened by many tools that make operating it easier.  Here's a few",
     "tools": [
+      {
+        "title": "Lens",
+        "url": "https://k8slens.dev/"
+      },
       {
         "title": "Helm",
         "url": "https://helm.sh"

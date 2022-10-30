@@ -6,7 +6,7 @@
     "documentation": [
       {
         "title": "Choose the right storage type",
-        "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-storage#choose-the-appropriate-storage-type"
+        "url": "https://docs.microsoft.com/azure/aks/operator-best-practices-storage#choose-the-appropriate-storage-type"
       }
     ],
     "tags": [
@@ -22,7 +22,7 @@
     "documentation": [
       {
         "title": "Size the nodes for storage needs",
-        "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-storage#size-the-nodes-for-storage-needs"
+        "url": "https://docs.microsoft.com/azure/aks/operator-best-practices-storage#size-the-nodes-for-storage-needs"
       }
     ],
     "tags": [
@@ -37,7 +37,7 @@
     "documentation": [
       {
         "title": "Dynamically provision volumes",
-        "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-storage#dynamically-provision-volumes"
+        "url": "https://docs.microsoft.com/azure/aks/operator-best-practices-storage#dynamically-provision-volumes"
       }
     ],
     "tags": [
@@ -53,7 +53,7 @@
     "documentation": [
       {
         "title": "Secure and back up your data",
-        "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-storage#secure-and-back-up-your-data"
+        "url": "https://docs.microsoft.com/azure/aks/operator-best-practices-storage#secure-and-back-up-your-data"
       }
     ],
     "tags": [
@@ -70,7 +70,7 @@
     "documentation": [
       {
         "title": "Remove service state from inside containers",
-        "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-multi-region#remove-service-state-from-inside-containers"
+        "url": "https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region#remove-service-state-from-inside-containers"
       }
     ],
     "tags": [
