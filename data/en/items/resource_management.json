@@ -45,6 +45,10 @@
     "detail": " When you specify limits for CPU and memory, each takes a different action when it reaches the specified limit. With CPU limits, the container is throttled from using more than its specified limit. With memory limits, the pod is restarted if it reaches its limit. The pod might be restarted on the same host or a different host within the cluster.",
     "documentation": [
       {
+        "title":"Define pod resource requests and limits",
+        "url": "https://learn.microsoft.com/en-gb/azure/aks/developer-best-practices-resource-management#define-pod-resource-requests-and-limits"
+      },
+      {
         "title": "Assign Memory Resources to container",
         "url": "https://kubernetes.io/docs/tasks/configure-pod-container/assign-memory-resource/"
       }

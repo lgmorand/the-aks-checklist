@@ -91,6 +91,22 @@
     ]
   },
   {
+    "title": "Policy blocking the deployment of vulnerable image",
+    "priority": "Medium",
+    "description": "You can now protect your Kubernetes clusters and container workloads from potential threats by restricting deployment of container images with vulnerabilities in their software components.",
+    "tools": [
+      {
+        "title": "Policy blocking the deployment of vulnerable images",
+        "url": "https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/BlockVulnerableImages.json"
+      }
+    ],
+    "tags": [
+      "all",
+      "operation",
+      "security"
+    ]
+  },
+  {
     "title": "Monitor the security of your cluster with Azure Security Center",
     "priority": "Medium",
     "description": "Security Center brings security benefits to your AKS clusters using data already gathered by the AKS master node.",
@@ -242,18 +258,45 @@
     ]
   },
   {
-    "title": "Use GitOps",
+    "title": "Use GitOps to deploy workloads in your cluster", 
     "priority": "High",
     "description": "GitOps works by using Git as a single source of truth for declarative infrastructure and applications",
     "detail": "On Azure you can for instance use Azure Arc for Kubernetes but also directly GitOps addon for AKS",
     "documentation": [
       {
-        "title": "Guide To GitOps",
-        "url": "https://www.weave.works/technologies/gitops"
+        "title": "Use Flux v2 addon for AKS",
+        "url":"https://learn.microsoft.com/en-us/azure/azure-arc/kubernetes/tutorial-use-gitops-flux2"
       },
       {
         "title": "What is Azure Arc enabled Kubernetes?",
         "url": "https://docs.microsoft.com/azure/azure-arc/kubernetes/overview"
+      },
+      {
+        "title": "Guide To GitOps",
+        "url": "https://www.weave.works/technologies/gitops"
+      }
+    ],
+    "tags": [
+      "all",
+      "operation"
+    ]
+  },
+  {
+    "title": "Implement CI/CD to deploy workloads in your cluster", 
+    "priority": "High",
+    "description": "Instead of GitOps (or in addition) you can use CI/CD to deploy workloads/tools in your cluster",
+    "documentation": [
+      {
+        "title": "Automated Deployments for Azure Kubernetes Service (Preview)",
+        "url":"https://learn.microsoft.com/en-gb/azure/aks/automated-deployments"
+      },
+      {
+        "title": "Build and deploy to Azure Kubernetes Service with Azure Pipelines",
+        "url": "https://learn.microsoft.com/en-gb/azure/aks/devops-pipeline?pivots=pipelines-yaml"
+      },
+      {
+        "title": "Tutorial: Deploy from GitHub to Azure Kubernetes Service using Jenkins",
+        "url": "https://learn.microsoft.com/en-gb/azure/developer/jenkins/deploy-from-github-to-aks"
       }
     ],
     "tags": [
@@ -315,6 +358,23 @@
       "all",
       "network",
       "multi-tenancy"
+    ]
+  },
+  {
+    "title": "Remove vulnerable images from your cluster",
+    "priority": "High",
+    "description": "With image cleaner, you can detect and automatically remove all unused and vulnerable images cached on AKS nodes keeping the nodes cleaner and safer.",
+    "detail": "It's common to use pipelines to build and deploy images on Azure Kubernetes Service (AKS) clusters. While great for image creation, this process often doesn't account for the stale images left behind and can lead to image bloat on cluster nodes. These images can present security issues as they may contain vulnerabilities. By cleaning these unreferenced images, you can remove an area of risk in your clusters. When done manually, this process can be time intensive, which ImageCleaner can mitigate via automatic image identification and removal.",
+    "documentation": [
+      {
+        "title": "Use ImageCleaner to clean up stale images on your AKS cluster",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/image-cleaner"
+      }
+    ],
+    "tags": [
+      "all",
+      "operation",
+      "security"
     ]
   }
 ]

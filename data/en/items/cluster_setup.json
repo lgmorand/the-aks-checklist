@@ -80,6 +80,37 @@
     ]
   },
   {
+    "title": "Use Mariner COS as host OS",
+    "priority": "Medium",
+    "description": "Mariner Container-Optimized OS is a first-party operating system for Azure Kubernetes Service (AKS) that is optimized for running Kubernetes workloads. Mariner is a secure, lightweight, and highly performant operating system that is based on the open source project CoreOS Container Linux. Mariner is designed to be a secure, lightweight, and highly performant operating system that is based on the open source project CoreOS Container Linux. Mariner is designed to be a secure, lightweight, and highly performant operating system that is based on the open source project CoreOS Container Linux.",
+    "documentation": [
+      {
+        "title": "Use the Mariner container host on Azure Kubernetes Service",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/use-mariner"
+      }
+    ],
+    "tags": [
+      "all",
+      "operation",
+      "security"
+    ]
+  },
+  {
+    "title": "Use AMD64 nodes when possible",
+    "priority": "Medium",
+    "description": "Benefit from ARM64's better price, compute performance, and lower power utilization in AKS node pools.",
+    "documentation": [
+      {
+        "title": "Add an ARM64 node pool",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/use-multiple-node-pools#add-an-arm64-node-pool"
+      }
+    ],
+    "tags": [
+      "all",
+      "operation"
+    ]
+  },
+  {
     "title": "Use managed identities instead of Service Principals",
     "priority": "High",
     "description": "Each AKS cluster needs either a Managed Identity or Service Principal.  We recommend using Managed Identity in AKS",
@@ -172,8 +203,12 @@
     "detail": "By using a private cluster, you can ensure that network traffic between your API server and your node pools remains on the private network only. Because the API server has a private address, it means that to access it for administration or for deployment, you need to set up private connection, like using a 'jumpbox' (i.e.: Azure Bastion)",
     "documentation": [
       {
-        "title": "Create a private cluster",
+        "title": "Create a private cluster (using private link)",
         "url": "https://docs.microsoft.com/azure/aks/private-clusters"
+      },
+      {
+        "title": "Create an Azure Kubernetes Service cluster with API Server VNet Integration (preview)",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/api-server-vnet-integration"
       },
       {
         "title": "Use azure CLI to run command on a private cluster",
@@ -243,6 +278,26 @@
     "tags": [
       "all",
       "resources"
+    ]
+  },
+  {
+    "title": "Use Azure tags in Azure Kubernetes Service (AKS)",
+    "priority": "Medium",
+    "description": "With Azure Kubernetes Service (AKS), you can set Azure tags on an AKS cluster and its related resources by using Azure Resource Manager, through the Azure CLI.",
+    "documentation": [
+      {
+        "title": "Use Azure tags in Azure Kubernetes Service ",
+        "url": "https://learn.microsoft.com/en-us/Azure/aks/use-tags"
+      },
+      {
+        "title": "Use Azure tags in Azure Kubernetes Service (AKS)",
+        "url": "https://techcommunity.microsoft.com/t5/fasttrack-for-azure/use-azure-tags-in-azure-kubernetes-service-aks/ba-p/3611583"
+      }
+    ],
+    "tags": [
+      "all",
+      "operation",
+      "finops"
     ]
   },
   {
