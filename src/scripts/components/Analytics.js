@@ -19,7 +19,7 @@ class Analytics {
     details.forEach(detail => {
       const links = detail.querySelectorAll('a');
       links.forEach(link => {
-        link.setAttribute('href', link.href + '?ref=akschecklist');
+        link.setAttribute('href', link.href + '?ref=www.the-aks-checklist.com');
       });
     });
   }

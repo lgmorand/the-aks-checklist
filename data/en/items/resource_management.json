@@ -7,14 +7,19 @@
     "documentation": [
       {
         "title": "Enforce resource quotas",
-        "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-scheduler#enforce-resource-quotas"
+        "url": "https://docs.microsoft.com/azure/aks/operator-best-practices-scheduler#enforce-resource-quotas"
       },
       {
         "title": "Resources quotas",
         "url": "https://kubernetes.io/docs/concepts/policy/resource-quotas/"
       }
     ],
-    "tags": ["all", "resiliency", "resource management", "multi-tenancy"]
+    "tags": [
+      "all",
+      "resiliency",
+      "resource management",
+      "multi-tenancy"
+    ]
   },
   {
     "title": "Namespaces should have LimitRange",
@@ -26,7 +31,12 @@
         "url": "https://kubernetes.io/docs/concepts/policy/limit-range/"
       }
     ],
-    "tags": ["all", "resiliency", "resource management", "multi-tenancy"]
+    "tags": [
+      "all",
+      "resiliency",
+      "resource management",
+      "multi-tenancy"
+    ]
   },
   {
     "title": "Set memory limits and requests for all containers",
@@ -35,11 +45,20 @@
     "detail": " When you specify limits for CPU and memory, each takes a different action when it reaches the specified limit. With CPU limits, the container is throttled from using more than its specified limit. With memory limits, the pod is restarted if it reaches its limit. The pod might be restarted on the same host or a different host within the cluster.",
     "documentation": [
       {
+        "title":"Define pod resource requests and limits",
+        "url": "https://learn.microsoft.com/en-gb/azure/aks/developer-best-practices-resource-management#define-pod-resource-requests-and-limits"
+      },
+      {
         "title": "Assign Memory Resources to container",
         "url": "https://kubernetes.io/docs/tasks/configure-pod-container/assign-memory-resource/"
       }
     ],
-    "tags": ["all", "resiliency", "resource management", "multi-tenancy"]
+    "tags": [
+      "all",
+      "resiliency",
+      "resource management",
+      "multi-tenancy"
+    ]
   },
   {
     "title": "Configure pod disruption budgets",
@@ -49,14 +68,18 @@
     "documentation": [
       {
         "title": "Plan for availability using pod disruption budgets",
-        "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-scheduler#plan-for-availability-using-pod-disruption-budgets"
+        "url": "https://docs.microsoft.com/azure/aks/operator-best-practices-scheduler#plan-for-availability-using-pod-disruption-budgets"
       },
       {
         "title": "Specifying a Disruption Budget for your Application",
-        "url":"https://kubernetes.io/docs/tasks/run-application/configure-pdb/"
+        "url": "https://kubernetes.io/docs/tasks/run-application/configure-pdb/"
       }
     ],
-    "tags": ["all", "resiliency", "resource management"]
+    "tags": [
+      "all",
+      "resiliency",
+      "resource management"
+    ]
   },
   {
     "title": "Set up cluster auto-scaling",
@@ -65,9 +88,14 @@
     "documentation": [
       {
         "title": "Use AKS cluster auto-scale",
-        "url": "https://docs.microsoft.com/en-us/azure/aks/cluster-autoscaler"
+        "url": "https://docs.microsoft.com/azure/aks/cluster-autoscaler"
       }
     ],
-    "tags": ["all", "resiliency", "resource management"]
+    "tags": [
+      "all",
+      "resiliency",
+      "resource management",
+      "finops"
+    ]
   }
 ]

@@ -19,9 +19,9 @@ jobs:
         node-version: [10.x]
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
+      uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
         
@@ -36,7 +36,7 @@ jobs:
     - run: gulp build
   
     - name: Get current time
-      uses: srfrnk/current-time@master
+      uses: josStorer/get-current-time@v2.0.2
       id: current-time
       with:
         format: DD-MM-YYYY
@@ -48,7 +48,7 @@ jobs:
       env:
         BUILD_DATE: "${{ steps.current-time.outputs.formattedTime }}"
         
-    - uses: actions/upload-artifact@v1
+    - uses: actions/upload-artifact@v3
       with:
         name: CheckList
         path: dist

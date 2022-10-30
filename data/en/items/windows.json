@@ -6,14 +6,17 @@
     "documentation": [
       {
         "title": "Windows container version compatibility",
-        "url": "https://docs.microsoft.com/en-us/virtualization/windowscontainers/deploy-containers/version-compatibility?tabs=windows-server-2019%2Cwindows-10-1909"
+        "url": "https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility"
       },
       {
         "title": "Limitations of Windows containers",
         "url": "https://kubernetes.io/docs/setup/production-environment/windows/intro-windows-in-kubernetes/#supported-functionality-and-limitations"
       }
     ],
-    "tags": ["all", "windows"]
+    "tags": [
+      "all",
+      "windows"
+    ]
   },
   {
     "title": "Prepare your application for an abrupt kill",
@@ -29,7 +32,10 @@
         "url": "https://kubernetes.io/docs/setup/production-environment/windows/intro-windows-in-kubernetes/#supported-functionality-and-limitations"
       }
     ],
-    "tags": ["all", "windows"]
+    "tags": [
+      "all",
+      "windows"
+    ]
   },
   {
     "title": "Don't use privileged containers",
@@ -41,7 +47,10 @@
         "url": "https://kubernetes.io/docs/setup/production-environment/windows/intro-windows-in-kubernetes/#supported-functionality-and-limitations"
       }
     ],
-    "tags": ["all", "windows"]
+    "tags": [
+      "all",
+      "windows"
+    ]
   },
   {
     "title": "Watch for memory usage",
@@ -53,7 +62,10 @@
         "url": "https://kubernetes.io/docs/setup/production-environment/windows/intro-windows-in-kubernetes/#supported-functionality-and-limitations"
       }
     ],
-    "tags": ["all", "windows"]
+    "tags": [
+      "all",
+      "windows"
+    ]
   },
   {
     "title": "Implement CNI network mode",
@@ -62,10 +74,13 @@
     "documentation": [
       {
         "title": "What network plug-ins are supported?",
-        "url": "https://docs.microsoft.com/en-us/azure/aks/windows-node-limitations#what-network-plug-ins-are-supported"
+        "url": "https://docs.microsoft.com/azure/aks/windows-node-limitations#what-network-plug-ins-are-supported"
       }
     ],
-    "tags": ["all", "windows"]
+    "tags": [
+      "all",
+      "windows"
+    ]
   },
   {
     "title": "Patch your nodes yourself",
@@ -74,10 +89,13 @@
     "documentation": [
       {
         "title": "How do patch my Windows nodes? ",
-        "url": "https://docs.microsoft.com/en-us/azure/aks/windows-node-limitations#how-do-patch-my-windows-nodes"
+        "url": "https://docs.microsoft.com/azure/aks/windows-node-limitations#how-do-patch-my-windows-nodes"
       }
     ],
-    "tags": ["all", "windows"]
+    "tags": [
+      "all",
+      "windows"
+    ]
   },
   {
     "title": "Secure the traffic of your containers",
@@ -89,7 +107,10 @@
         "url": "https://kubernetes.io/docs/setup/production-environment/windows/intro-windows-in-kubernetes/#supported-functionality-and-limitations"
       }
     ],
-    "tags": ["all", "windows"]
+    "tags": [
+      "all",
+      "windows"
+    ]
   },
   {
     "title": "Enable Group Managed Service Accounts (GMSA) for your Windows Server nodes",
@@ -101,6 +122,10 @@
         "url": "https://docs.microsoft.com/en-gb/azure/aks/use-group-managed-service-accounts"
       }
     ],
-    "tags": ["all", "windows", "security"]
+    "tags": [
+      "all",
+      "windows",
+      "security"
+    ]
   }
 ]

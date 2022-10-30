@@ -1,280 +1,380 @@
 [
-    {
-        "title": "Maintain kubernetes version up to date",
-        "priority": "Medium",
-        "description": "To stay current on new features and bug fixes, regularly upgrade to the Kubernetes version in your AKS cluster. Support for kubernetes is current and N-2 versions only",
-        "documentation": [
-          {
-            "title": "Regularly update to the latest version of Kubernetes",
-            "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-cluster-security#regularly-update-to-the-latest-version-of-kubernetes"
-          },
-          {
-            "title": "Use the auto-upgrade feature",
-            "url": "https://docs.microsoft.com/fr-fr/azure/aks/upgrade-cluster#set-auto-upgrade-channel"
-          }
-        ],
-        "tags": ["all", "operation", "security"]
-    },
-    {
-        "title": "Keep nodes up to date and patched",
-        "priority": "High",
-        "description": "AKS supports upgrading the images on a node so you're up to date with the newest OS and runtime updates. AKS provides one new image per week with the latest updates, so it's beneficial to upgrade your node's images regularly for the latest features, including Linux or Windows patches",
-        "detail": "Using automation and this method will ensure that all your nodes are consistently up to date with last features/fixes/patchs, without having to upgrade the kubernetes version. An alternative could be to use Kured to reboot nodes with pending reboots but it will only patch the Operating System, not the AKS layer",
-        "documentation": [
-          {
-            "title": "Azure Kubernetes Service (AKS) node image upgrades",
-            "url": "https://docs.microsoft.com/en-us/azure/aks/node-image-upgrade"
-          },
-          {
-            "title": "Process Linux node updates and reboots using Kured (not recommended because it can behave incorrectly in some cluster configurations like autoscaling)",
-            "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-cluster-security#process-linux-node-updates-and-reboots-using-kured"
-          },
-          {
-            "title": "Use Event Grid to know when an upgrade is available",
-            "url": "https://docs.microsoft.com/en-us/azure/aks/quickstart-event-grid"
-          }
-        ],
-        "tools":[
-          {
-            "title": "Kured (KUbernetes REboot Daemon)",
-            "url": "https://github.com/weaveworks/kured"
-          }
-        ],
-        "tags": ["all", "operation", "security", "windows"]
-    },
-    {
+  {
+    "title": "Maintain kubernetes version up to date",
+    "priority": "Medium",
+    "description": "To stay current on new features and bug fixes, regularly upgrade to the Kubernetes version in your AKS cluster. Support for kubernetes is current and N-2 versions only",
+    "documentation": [
+      {
+        "title": "Regularly update to the latest version of Kubernetes",
+        "url": "https://docs.microsoft.com/azure/aks/operator-best-practices-cluster-security#regularly-update-to-the-latest-version-of-kubernetes"
+      },
+      {
+        "title": "Use the auto-upgrade feature",
+        "url": "https://docs.microsoft.com/fr-fr/azure/aks/upgrade-cluster#set-auto-upgrade-channel"
+      }
+    ],
+    "tags": [
+      "all",
+      "operation",
+      "security"
+    ]
+  },
+  {
+    "title": "Keep nodes up to date and patched",
+    "priority": "High",
+    "description": "AKS supports upgrading the images on a node so you're up to date with the newest OS and runtime updates. AKS provides one new image per week with the latest updates, so it's beneficial to upgrade your node's images regularly for the latest features, including Linux or Windows patches",
+    "detail": "Using automation and this method will ensure that all your nodes are consistently up to date with last features/fixes/patchs, without having to upgrade the kubernetes version. An alternative could be to use Kured to reboot nodes with pending reboots but it will only patch the Operating System, not the AKS layer",
+    "documentation": [
+      {
+        "title": "Azure Kubernetes Service (AKS) node image upgrades",
+        "url": "https://docs.microsoft.com/azure/aks/node-image-upgrade"
+      },
+      {
+        "title": "Process Linux node updates and reboots using Kured (not recommended because it can behave incorrectly in some cluster configurations like autoscaling)",
+        "url": "https://docs.microsoft.com/azure/aks/operator-best-practices-cluster-security#process-linux-node-updates-and-reboots-using-kured"
+      },
+      {
+        "title": "Use Event Grid to know when an upgrade is available",
+        "url": "https://docs.microsoft.com/azure/aks/quickstart-event-grid"
+      }
+    ],
+    "tools": [
+      {
+        "title": "Kured (KUbernetes REboot Daemon)",
+        "url": "https://github.com/weaveworks/kured"
+      }
+    ],
+    "tags": [
+      "all",
+      "operation",
+      "security",
+      "windows"
+    ]
+  },
+  {
+    "title": "Securely connect to nodes through a bastion host",
+    "priority": "Medium",
+    "description": "Don't expose remote connectivity to your AKS nodes. Create a bastion host, or jump box, in a management virtual network. Use the bastion host to securely route traffic into your AKS cluster to remote management tasks.",
+    "documentation": [
+      {
         "title": "Securely connect to nodes through a bastion host",
-        "priority": "Medium",
-        "description": "Don't expose remote connectivity to your AKS nodes. Create a bastion host, or jump box, in a management virtual network. Use the bastion host to securely route traffic into your AKS cluster to remote management tasks.",
-        "documentation": [
-          {
-            "title": "Securely connect to nodes through a bastion host",
-            "url": "https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-network#securely-connect-to-nodes-through-a-bastion-host"
-          }
-        ],
-        "tags": ["all", "operation", "security"]
-    },
-    {
-        "title": "Regularly check for cluster issues ",
-        "priority": "Medium",
-        "description": "Regularly run the latest version of cluster scanning open source tool to detect issues in your cluster. For instance, if you apply resource quotas on an existing AKS cluster, run kubestriker first to find pods that don't have resource requests and limits defined.",
-        "tools":[
-          {
-            "title": "AKS Periscope",
-            "url": "https://github.com/Azure/aks-periscope"
-          },
-          {
-            "title": "kubestriker",
-            "url": "https://www.kubestriker.io/"
-          },
-          {
-            "title": "kubebench",
-            "url": "https://github.com/aquasecurity/kube-bench"
-          }
-        ],
-        "tags": ["all", "operation"]
-    },
-    {
-      "title": "Monitor the security of your cluster with Azure Security Center",
-      "priority": "Medium",
-      "description": "Security Center brings security benefits to your AKS clusters using data already gathered by the AKS master node.",
-      "documentation": [
-        {
-          "title": "Azure Kubernetes Services integration with Security Center",
-          "url": "https://docs.microsoft.com/en-us/azure/security-center/azure-kubernetes-service-integration"
-        }
-      ],
-      "tags": ["all", "operation"]
-    },
-    {
-      "title": "Provision a log aggregation tool",
-      "priority": "High",
-      "description": "Ensure that you are always aware of what happens in your cluster. Monitor the health of the cluster (nodes, server) but also the pods",
-      "documentation": [
-        {
-          "title": "Azure Monitor for AKS",
-          "url": "https://docs.microsoft.com/en-us/azure/azure-monitor/insights/container-insights-analyze"
-        },
-        {
-          "title": "Azure Managed Grafana",
-          "url": "https://azure.microsoft.com/en-us/services/managed-grafana/"
-        }
-      ],
-      "tools":[
-        {
-          "title": "Elastic Cloud",
-          "url": "https://www.elastic.co/elastic-cloud-kubernetes"
-        },
-        {
-          "title": "Datadog",
-          "url": "https://www.datadoghq.com/"
-        }
-      ],
-      "tags": ["all", "operation"]
-    },
-    {
-      "title": "Enable master node logs",
-      "priority": "High",
-      "description": "To help troubleshoot your application and services, you may need to view the logs generated by the master components. Be aware that if you don't enable these logs, there is no way for Microsoft to retrieve them for you",
-      "documentation": [
-        {
-          "title": "Enable and review Kubernetes master node logs",
-          "url": "https://docs.microsoft.com/en-us/azure/aks/view-control-plane-logs"
-        }
-      ],
-      "tags": ["all", "operation", "security"]
-    },
-    {
-      "title": "Collect metrics",
-      "priority": "High",
-      "description": "If default integration can collect telemetry data and basic metrics (CPU/Memory), they don't collect custom metrics and more detailed information. It's often necessary to install a 3rd party software (prometheus is recommend within Kubernetes) and they store these metrics to exploit them.",
-      "detail": "Typically, to use Prometheus, you need to set up and manage a Prometheus server with a store. By integrating with Azure Monitor, a Prometheus server is not required. You just need to expose the Prometheus metrics endpoint through your exporters or pods (application), and the containerized agent for Azure Monitor for containers can scrape the metrics for you.",
-      "documentation": [
-        {
-          "title": "Configure scraping of Prometheus metrics",
-          "url": "https://docs.microsoft.com/en-us/azure/azure-monitor/insights/container-insights-prometheus-integration"
-        },
-        {
-          "title": "Deploying ELK",
-          "url": "https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-quickstart.html"
-        }
-      ],
-      "tags": ["all", "operation"]
-    },
-    {
-      "title": "Configure distributed tracing",
-      "priority": "Low",
-      "description": "Distributed tracing, also called distributed request tracing, is a method used to profile and monitor applications, especially those built using a microservices architecture. Distributed tracing helps pinpoint where failures occur and what causes poor performance.",
-      "documentation": [
-        {
-          "title": "Solution for onboarding Kubernetes/AKS workloads onto Application Insights monitoring.",
-          "url": "https://github.com/microsoft/Application-Insights-K8s-Codeless-Attach"
-        },
-        {
-          "title": "Zero instrumentation application monitoring for Kubernetes hosted applications (deprecated)",
-          "url": "https://docs.microsoft.com/en-us/azure/azure-monitor/app/kubernetes"
-        }
-      ],
-      "tags": ["all", "operation"]
-    },
-    {
-      "title": "Control the compliance with Azure Policies",
-      "priority": "Medium",
-      "description": "Azure Policy integrates with the Azure Kubernetes Service (AKS) to apply at-scale enforcements and safeguards on your clusters in a centralized, consistent manner.",
-      "documentation": [
-        {
-          "title": "Azure Policies for AKS",
-          "url": "https://docs.microsoft.com/en-us/azure/governance/policy/concepts/rego-for-aks"
-        }
-      ],
-      "tools":[
-        {
-          "title": "Gatekeeper",
-          "url": "https://github.com/open-policy-agent/gatekeeper"
-        }
-      ],
-      "tags": ["all", "operation"]
-    },
-    {
-      "title": "Read The Definitive Guide to Securing Kubernetes",
-      "priority": "High",
-      "description": "This whitepaper provides an overview of key aspects and best practices of K8s security",
-      "documentation": [
-        {
-          "title": "The Definitive Guide to Securing Kubernetes",
-          "url": "https://info.aquasec.com/securing_kubernetes"
-        }
-      ],
-      "tools":[
-        {
-          "title": "Gatekeeper",
-          "url": "https://github.com/open-policy-agent/gatekeeper"
-        }
-      ],
-      "tags": ["all", "operation"]
-    },
-    {
-      "title": "Enable Microsoft Defender for Kubernetes",
-      "priority": "High",
-      "description": "Microsoft Defender for Kubernetes provides protections for your Kubernetes clusters wherever they're running (AKS and on-premesis)",
-      "documentation": [
-        {
-          "title": "Introduction to Microsoft Defender for Kubernetes",
-          "url": "https://docs.microsoft.com/en-us/azure/defender-for-cloud/defender-for-containers-introduction"
-        }
-      ],
-      "tags": ["all", "operation"]
-    },
-    {
-      "title": "Use Azure Key Vault",
-      "priority": "High",
-      "description": "Use Azure Key Vault to store Secrets and Certificates",
-      "documentation": [
-        {
-          "title": "Tutorial: Configure and run the Azure Key Vault provider for the Secrets Store CSI driver on Kubernetes",
-          "url": "https://docs.microsoft.com/en-us/azure/key-vault/general/key-vault-integrate-kubernetes"
-        }
-      ],
-      "tags": ["all", "operation", "security"]
-    },
-    {
-      "title": "Use GitOps",
-      "priority": "High",
-      "description": "GitOps works by using Git as a single source of truth for declarative infrastructure and applications",
-      "detail": "On Azure you can for instance use Azure Arc for Kubernetes but also directly GitOps addon for AKS",
-      "documentation": [
-        {
-          "title": "Guide To GitOps",
-          "url": "https://www.weave.works/technologies/gitops"
-        },
-        {
-          "title": "What is Azure Arc enabled Kubernetes?",
-          "url": "https://docs.microsoft.com/en-us/azure/azure-arc/kubernetes/overview"
-        }
-      ],
-      "tags": ["all", "operation"]
-    },
-    {
-      "title": "Make your life easier with K8S Tools",
-      "priority": "Medium",
-      "description": "The Kubernetes ecosystem is strengthened by many tools that make operating it easier.  Here's a few",
-      "tools": [
-        {
-          "title": "Helm",
-          "url": "https://helm.sh"
-        },
-        {
-          "title": "kubectl aliases",
-          "url": "https://github.com/ahmetb/kubectl-aliases"
-        },
-        {
-          "title": "kubectx",
-          "url": "https://github.com/ahmetb/kubectx"
-        },
-        {
-          "title": "k9s",
-          "url": "https://k9scli.io/"
-        }
-      ],
-      "tags": ["all", "operation"]
-    },
-    {
-      "title": "Don't use the default namespace",
-      "priority": "Medium",
-      "description": "It's recommended to keep all applications in a namespace other than default",
-      "tags": ["all", "operation"]
-    },
-    {
-      "title": "Apply different types of labels to all resources",
-      "priority": "Low",
-      "description": "A common set of labels allows tools to work interoperably, describing objects in a common manner that all tools can understand. For instance, resources should have technical, business and security labels. ",
-      "documentation": [
-        {
-          "title": "Recommended labels",
-          "url": "https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels/"
-        }
-      ],
-      "tags": ["all", "network", "multi-tenancy"]
-    }
+        "url": "https://docs.microsoft.com/azure/aks/operator-best-practices-network#securely-connect-to-nodes-through-a-bastion-host"
+      }
+    ],
+    "tags": [
+      "all",
+      "operation",
+      "security"
+    ]
+  },
+  {
+    "title": "Regularly check for cluster issues ",
+    "priority": "Medium",
+    "description": "Regularly run the latest version of cluster scanning open source tool to detect issues in your cluster. For instance, if you apply resource quotas on an existing AKS cluster, run kubestriker first to find pods that don't have resource requests and limits defined.",
+    "tools": [
+      {
+        "title": "AKS Periscope",
+        "url": "https://github.com/Azure/aks-periscope"
+      },
+      {
+        "title": "kubestriker",
+        "url": "https://www.kubestriker.io/"
+      },
+      {
+        "title": "kubebench",
+        "url": "https://github.com/aquasecurity/kube-bench"
+      }
+    ],
+    "tags": [
+      "all",
+      "operation"
+    ]
+  },
+  {
+    "title": "Policy blocking the deployment of vulnerable image",
+    "priority": "Medium",
+    "description": "You can now protect your Kubernetes clusters and container workloads from potential threats by restricting deployment of container images with vulnerabilities in their software components.",
+    "tools": [
+      {
+        "title": "Policy blocking the deployment of vulnerable images",
+        "url": "https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/BlockVulnerableImages.json"
+      }
+    ],
+    "tags": [
+      "all",
+      "operation",
+      "security"
+    ]
+  },
+  {
+    "title": "Monitor the security of your cluster with Azure Security Center",
+    "priority": "Medium",
+    "description": "Security Center brings security benefits to your AKS clusters using data already gathered by the AKS master node.",
+    "documentation": [
+      {
+        "title": "Azure Kubernetes Services integration with Security Center",
+        "url": "https://docs.microsoft.com/azure/security-center/azure-kubernetes-service-integration"
+      }
+    ],
+    "tags": [
+      "all",
+      "operation"
+    ]
+  },
+  {
+    "title": "Provision a log aggregation tool",
+    "priority": "High",
+    "description": "Ensure that you are always aware of what happens in your cluster. Monitor the health of the cluster (nodes, server) but also the pods",
+    "documentation": [
+      {
+        "title": "Azure Monitor for AKS",
+        "url": "https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-analyze"
+      },
+      {
+        "title": "Azure Managed Grafana",
+        "url": "https://azure.microsoft.com/services/managed-grafana/"
+      }
+    ],
+    "tools": [
+      {
+        "title": "Elastic Cloud",
+        "url": "https://www.elastic.co/elastic-cloud-kubernetes"
+      },
+      {
+        "title": "Datadog",
+        "url": "https://www.datadoghq.com/"
+      }
+    ],
+    "tags": [
+      "all",
+      "operation"
+    ]
+  },
+  {
+    "title": "Enable master node logs",
+    "priority": "High",
+    "description": "To help troubleshoot your application and services, you may need to view the logs generated by the master components. Be aware that if you don't enable these logs, there is no way for Microsoft to retrieve them for you",
+    "documentation": [
+      {
+        "title": "Enable and review Kubernetes master node logs",
+        "url": "https://docs.microsoft.com/azure/aks/view-control-plane-logs"
+      }
+    ],
+    "tags": [
+      "all",
+      "operation",
+      "security"
+    ]
+  },
+  {
+    "title": "Collect metrics",
+    "priority": "High",
+    "description": "If default integration can collect telemetry data and basic metrics (CPU/Memory), they don't collect custom metrics and more detailed information. It's often necessary to install a 3rd party software (prometheus is recommend within Kubernetes) and they store these metrics to exploit them.",
+    "detail": "Typically, to use Prometheus, you need to set up and manage a Prometheus server with a store. By integrating with Azure Monitor, a Prometheus server is not required. You just need to expose the Prometheus metrics endpoint through your exporters or pods (application), and the containerized agent for Azure Monitor for containers can scrape the metrics for you.",
+    "documentation": [
+      {
+        "title": "Configure scraping of Prometheus metrics",
+        "url": "https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-prometheus-integration"
+      },
+      {
+        "title": "Deploying ELK",
+        "url": "https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-quickstart.html"
+      }
+    ],
+    "tags": [
+      "all",
+      "operation"
+    ]
+  },
+  {
+    "title": "Configure distributed tracing",
+    "priority": "Low",
+    "description": "Distributed tracing, also called distributed request tracing, is a method used to profile and monitor applications, especially those built using a microservices architecture. Distributed tracing helps pinpoint where failures occur and what causes poor performance.",
+    "documentation": [
+      {
+        "title": "Solution for onboarding Kubernetes/AKS workloads onto Application Insights monitoring.",
+        "url": "https://github.com/microsoft/Application-Insights-K8s-Codeless-Attach"
+      },
+      {
+        "title": "Zero instrumentation application monitoring for Kubernetes hosted applications (deprecated)",
+        "url": "https://docs.microsoft.com/azure/azure-monitor/app/kubernetes"
+      }
+    ],
+    "tags": [
+      "all",
+      "operation"
+    ]
+  },
+  {
+    "title": "Control the compliance with Azure Policies",
+    "priority": "Medium",
+    "description": "Azure Policy integrates with the Azure Kubernetes Service (AKS) to apply at-scale enforcements and safeguards on your clusters in a centralized, consistent manner.",
+    "documentation": [
+      {
+        "title": "Azure Policies for AKS",
+        "url": "https://docs.microsoft.com/azure/governance/policy/concepts/rego-for-aks"
+      }
+    ],
+    "tools": [
+      {
+        "title": "Gatekeeper",
+        "url": "https://github.com/open-policy-agent/gatekeeper"
+      }
+    ],
+    "tags": [
+      "all",
+      "operation"
+    ]
+  },
+  {
+    "title": "Enable Microsoft Defender for Kubernetes",
+    "priority": "High",
+    "description": "Microsoft Defender for Kubernetes provides protections for your Kubernetes clusters wherever they're running (AKS and on-premesis)",
+    "documentation": [
+      {
+        "title": "Introduction to Microsoft Defender for Kubernetes",
+        "url": "https://docs.microsoft.com/azure/defender-for-cloud/defender-for-containers-introduction"
+      }
+    ],
+    "tags": [
+      "all",
+      "operation"
+    ]
+  },
+  {
+    "title": "Use Azure Key Vault",
+    "priority": "High",
+    "description": "Use Azure Key Vault to store Secrets and Certificates",
+    "documentation": [
+      {
+        "title": "Tutorial: Configure and run the Azure Key Vault provider for the Secrets Store CSI driver on Kubernetes",
+        "url": "https://docs.microsoft.com/azure/key-vault/general/key-vault-integrate-kubernetes"
+      }
+    ],
+    "tags": [
+      "all",
+      "operation",
+      "security"
+    ]
+  },
+  {
+    "title": "Use GitOps to deploy workloads in your cluster", 
+    "priority": "High",
+    "description": "GitOps works by using Git as a single source of truth for declarative infrastructure and applications",
+    "detail": "On Azure you can for instance use Azure Arc for Kubernetes but also directly GitOps addon for AKS",
+    "documentation": [
+      {
+        "title": "Use Flux v2 addon for AKS",
+        "url":"https://learn.microsoft.com/en-us/azure/azure-arc/kubernetes/tutorial-use-gitops-flux2"
+      },
+      {
+        "title": "What is Azure Arc enabled Kubernetes?",
+        "url": "https://docs.microsoft.com/azure/azure-arc/kubernetes/overview"
+      },
+      {
+        "title": "Guide To GitOps",
+        "url": "https://www.weave.works/technologies/gitops"
+      }
+    ],
+    "tags": [
+      "all",
+      "operation"
+    ]
+  },
+  {
+    "title": "Implement CI/CD to deploy workloads in your cluster", 
+    "priority": "High",
+    "description": "Instead of GitOps (or in addition) you can use CI/CD to deploy workloads/tools in your cluster",
+    "documentation": [
+      {
+        "title": "Automated Deployments for Azure Kubernetes Service (Preview)",
+        "url":"https://learn.microsoft.com/en-gb/azure/aks/automated-deployments"
+      },
+      {
+        "title": "Build and deploy to Azure Kubernetes Service with Azure Pipelines",
+        "url": "https://learn.microsoft.com/en-gb/azure/aks/devops-pipeline?pivots=pipelines-yaml"
+      },
+      {
+        "title": "Tutorial: Deploy from GitHub to Azure Kubernetes Service using Jenkins",
+        "url": "https://learn.microsoft.com/en-gb/azure/developer/jenkins/deploy-from-github-to-aks"
+      }
+    ],
+    "tags": [
+      "all",
+      "operation"
+    ]
+  },
+  {
+    "title": "Make your life easier with K8S Tools",
+    "priority": "Medium",
+    "description": "The Kubernetes ecosystem is strengthened by many tools that make operating it easier.  Here's a few",
+    "tools": [
+      {
+        "title": "Lens",
+        "url": "https://k8slens.dev/"
+      },
+      {
+        "title": "Helm",
+        "url": "https://helm.sh"
+      },
+      {
+        "title": "kubectl aliases",
+        "url": "https://github.com/ahmetb/kubectl-aliases"
+      },
+      {
+        "title": "kubectx",
+        "url": "https://github.com/ahmetb/kubectx"
+      },
+      {
+        "title": "k9s",
+        "url": "https://k9scli.io/"
+      }
+    ],
+    "tags": [
+      "all",
+      "operation"
+    ]
+  },
+  {
+    "title": "Don't use the default namespace",
+    "priority": "Medium",
+    "description": "It's recommended to keep all applications in a namespace other than default",
+    "tags": [
+      "all",
+      "operation"
+    ]
+  },
+  {
+    "title": "Apply different types of labels to all resources",
+    "priority": "Low",
+    "description": "A common set of labels allows tools to work interoperably, describing objects in a common manner that all tools can understand. For instance, resources should have technical, business and security labels. ",
+    "documentation": [
+      {
+        "title": "Recommended labels",
+        "url": "https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels/"
+      }
+    ],
+    "tags": [
+      "all",
+      "network",
+      "multi-tenancy"
+    ]
+  },
+  {
+    "title": "Remove vulnerable images from your cluster",
+    "priority": "High",
+    "description": "With image cleaner, you can detect and automatically remove all unused and vulnerable images cached on AKS nodes keeping the nodes cleaner and safer.",
+    "detail": "It's common to use pipelines to build and deploy images on Azure Kubernetes Service (AKS) clusters. While great for image creation, this process often doesn't account for the stale images left behind and can lead to image bloat on cluster nodes. These images can present security issues as they may contain vulnerabilities. By cleaning these unreferenced images, you can remove an area of risk in your clusters. When done manually, this process can be time intensive, which ImageCleaner can mitigate via automatic image identification and removal.",
+    "documentation": [
+      {
+        "title": "Use ImageCleaner to clean up stale images on your AKS cluster",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/image-cleaner"
+      }
+    ],
+    "tags": [
+      "all",
+      "operation",
+      "security"
+    ]
+  }
 ]
-

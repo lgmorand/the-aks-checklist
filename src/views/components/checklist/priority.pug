@@ -1,10 +1,12 @@
-.c-checklist__column.c-checklist__priority
 
-  if item.priority == "High"
-    +svg-icon.icon.icon--small.icon-priority--high(aria-label="High priority item" data-icon-name='bullet')
+if item.priority == "High"
+  .c-checklist__column.c-checklist__priority(data-icon-name='bullet' data-tippy-content="High priority")
+    +svg-icon.icon.icon--small.icon-priority--high(aria-label="High priority" )
 
-  else if item.priority == "Medium"
-    +svg-icon.icon.icon--small.icon-priority--medium(aria-label="Medium priority item" data-icon-name='bullet')
+else if item.priority == "Medium"
+  .c-checklist__column.c-checklist__priority(data-icon-name='bullet' data-tippy-content="Medium priority")
+    +svg-icon.icon.icon--small.icon-priority--medium(aria-label="Medium priority")
 
-  else
-    +svg-icon.icon.icon--small.icon-priority--low(aria-label="Low priority item", data-icon-name='bullet')
+else
+  .c-checklist__column.c-checklist__priority(data-icon-name='bullet' data-tippy-content="Low priority")
+    +svg-icon.icon.icon--small.icon-priority--low(aria-label="Low priority")
