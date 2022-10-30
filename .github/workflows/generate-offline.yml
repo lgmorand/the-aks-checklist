@@ -71,7 +71,7 @@ jobs:
       - name: Azure Blob Storage Upload
         uses: bacongobbler/azure-blob-storage-upload@v2.0.0
         with:
-          cli_version: 2.35
+          cli_version: 2.41
           connection_string: ${{ secrets.BLOB_CONNECTION_STRING }}
           container_name: $web
           source_dir: './output'
@@ -79,6 +79,7 @@ jobs:
           overwrite: 'true'
 
       - name: Upload a Build Artifact
+        if: ${{ always() }}
         uses: actions/upload-artifact@v3
         with:
           name: Offline resources
