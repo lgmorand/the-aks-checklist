@@ -138,6 +138,25 @@
     ]
   },
   {
+    "title": "Refresh container when base image is updated",
+    "priority": "Low",
+    "description": "As you use base images for application images, use automation to build new images when the base image is updated. As those base images typically include security fixes, update any downstream application container images.",
+    "documentation": [
+      {
+        "title": "Automatically build new images on base image update",
+        "url": "https://docs.microsoft.com/azure/aks/operator-best-practices-container-image-management#automatically-build-new-images-on-base-image-update"
+      },
+      {
+        "title": "Azure DevOps - Trigger pipeline from Docker image update",
+        "url": "https://dev.to/larryclaman/trigger-azure-devops-build-pipeline-from-docker-image-update-5d3i"
+      }
+    ],
+    "tags": [
+      "all",
+      "resources"
+    ]
+  },
+  {
     "title": "Enable geo-replication for container images",
     "priority": "Medium",
     "description": "Companies that want a local presence, or a hot backup, choose to run services from multiple Azure regions.",

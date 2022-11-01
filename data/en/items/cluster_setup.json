@@ -29,42 +29,6 @@
     ]
   },
   {
-    "title": "IP Range authorization",
-    "priority": "High",
-    "description": "The API server is the central way to interact with your cluster. To improve cluster security and minimize attacks, the API server should only be accessible from a limited set of IP address ranges.By using a private cluster, you can ensure that network traffic between your API server and your node pools remains on the private network only. Because the API server has a private address, it means that to access it for administration or for deployment, you need to set up a private connection, like using a 'jumpbox' (i.e.: Azure Bastion)",
-    "documentation": [
-      {
-        "title": "Secure access to the API server using authorized IP address ranges",
-        "url": "https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges"
-      }
-    ],
-    "tags": [
-      "all",
-      "security",
-      "identity"
-    ]
-  },
-  {
-    "title": "Integrate authentication with AAD (using the managed integration)",
-    "priority": "High",
-    "description": "Azure Kubernetes Service (AKS) can be configured to use Azure Active Directory (Azure AD) for user authentication. In this configuration, you can sign in to an AKS cluster by using your Azure AD authentication token.",
-    "documentation": [
-      {
-        "title": "AKS-managed Azure Active Directory integration",
-        "url": "https://docs.microsoft.com/azure/aks/managed-aad"
-      },
-      {
-        "title": "Disable local accounts",
-        "url": "https://docs.microsoft.com/azure/aks/managed-aad#disable-local-accounts"
-      }
-    ],
-    "tags": [
-      "all",
-      "security",
-      "identity"
-    ]
-  },
-  {
     "title": "Use System Node Pools",
     "priority": "Medium",
     "description": "Manage system node pools in Azure Kubernetes Service (AKS)",
@@ -111,22 +75,6 @@
     ]
   },
   {
-    "title": "Use managed identities instead of Service Principals",
-    "priority": "High",
-    "description": "Each AKS cluster needs either a Managed Identity or Service Principal.  We recommend using Managed Identity in AKS",
-    "documentation": [
-      {
-        "title": "Use managed identities in Azure Kubernetes Service",
-        "url": "https://docs.microsoft.com/azure/aks/use-managed-identity"
-      }
-    ],
-    "tags": [
-      "all",
-      "security",
-      "identity"
-    ]
-  },
-  {
     "title": "VM Sizing",
     "priority": "Medium",
     "description": "Prefer fewer, larger clusters over of many, smaller clusters",
@@ -165,51 +113,7 @@
       }
     ]
   },
-  {
-    "title": "K8S RBAC + AAD Integration",
-    "priority": "High",
-    "description": "Control access to cluster resources using Kubernetes role-based access control and Azure Active Directory identities in Azure Kubernetes Service",
-    "documentation": [
-      {
-        "title": "Limit cluster access via K8S RBAC for users & workloads",
-        "url": "https://docs.microsoft.com/azure/aks/azure-ad-rbac"
-      }
-    ],
-    "tags": [
-      "all",
-      "security",
-      "identity"
-    ]
-  },
-  {
-    "title": "Private cluster",
-    "priority": "High",
-    "description": "In a private cluster, the control plane or API server has internal IP addresses and is not exposed to Internet",
-    "detail": "By using a private cluster, you can ensure that network traffic between your API server and your node pools remains on the private network only. Because the API server has a private address, it means that to access it for administration or for deployment, you need to set up private connection, like using a 'jumpbox' (i.e.: Azure Bastion)",
-    "documentation": [
-      {
-        "title": "Create a private cluster (using private link)",
-        "url": "https://docs.microsoft.com/azure/aks/private-clusters"
-      },
-      {
-        "title": "Create an Azure Kubernetes Service cluster with API Server VNet Integration (preview)",
-        "url": "https://learn.microsoft.com/en-us/azure/aks/api-server-vnet-integration"
-      },
-      {
-        "title": "Use azure CLI to run command on a private cluster",
-        "url": "https://docs.microsoft.com/azure/aks/private-clusters#options-for-connecting-to-the-private-cluster"
-      },
-      {
-        "title": "Use public DNS with a private cluster",
-        "url": "https://docs.microsoft.com/azure/aks/private-clusters#create-a-private-aks-cluster-with-a-public-dns-address"
-      }
-    ],
-    "tags": [
-      "all",
-      "security",
-      "network"
-    ]
-  },
+  
   {
     "title": "Sizing of the nodes",
     "priority": "Medium",
@@ -223,25 +127,6 @@
       {
         "title": "Choose the right storage type",
         "url": "https://docs.microsoft.com/azure/aks/operator-best-practices-storage#choose-the-appropriate-storage-type"
-      }
-    ],
-    "tags": [
-      "all",
-      "resources"
-    ]
-  },
-  {
-    "title": "Refresh container when base image is updated",
-    "priority": "Low",
-    "description": "As you use base images for application images, use automation to build new images when the base image is updated. As those base images typically include security fixes, update any downstream application container images.",
-    "documentation": [
-      {
-        "title": "Automatically build new images on base image update",
-        "url": "https://docs.microsoft.com/azure/aks/operator-best-practices-container-image-management#automatically-build-new-images-on-base-image-update"
-      },
-      {
-        "title": "Azure DevOps - Trigger pipeline from Docker image update",
-        "url": "https://dev.to/larryclaman/trigger-azure-devops-build-pipeline-from-docker-image-update-5d3i"
       }
     ],
     "tags": [
@@ -281,23 +166,6 @@
     ]
   },
   {
-    "title": "Use AKS and ACR integration without password",
-    "priority": "Medium",
-    "description": "AKS can authenticate to ACR without using any password, but by using either Service Principal or Managed Identity.",
-    "detail": "For AKS to download/pull images from Azure Container Registry (ACR), it needs the ACR credentials including the password. To avoid saving the password in the cluster, you can simply activate the ACR integration on new or existing AKS cluster using SPN or Managed Identity",
-    "documentation": [
-      {
-        "title": "Authenticate with Azure Container Registry from AKS",
-        "url": "https://docs.microsoft.com/azure/aks/cluster-container-registry-integration"
-      }
-    ],
-    "tags": [
-      "all",
-      "security",
-      "identity"
-    ]
-  },
-  {
     "title": "Use placement proximity group to improve performance",
     "priority": "Low",
     "description": "When deploying your application in Azure, spreading Virtual Machine (VM) instances across regions or availability zones creates network latency, which may impact the overall performance of your application. A proximity placement group is a logical grouping used to make sure Azure compute resources are physically located close to each other",
@@ -330,21 +198,6 @@
     "tags": [
       "all",
       "security"
-    ]
-  },
-  {
-    "title": "Fine tune your node configuration",
-    "priority": "Low",
-    "description": "Customizing your node configuration allows you to configure or tune your operating system (OS) settings or the kubelet parameters to match the needs of the workloads.",
-    "detail": "When you create an AKS cluster or add a node pool to your cluster, you can customize a subset of commonly used OS and kubelet settings.",
-    "documentation": [
-      {
-        "title": "Customize node configuration for Azure Kubernetes Service (AKS) node pools",
-        "url": "https://docs.microsoft.com/azure/aks/custom-node-configuration"
-      }
-    ],
-    "tags": [
-      "all"
     ]
   },
   {

@@ -211,6 +211,35 @@
     ]
   },
   {
+    "title": "Private cluster",
+    "priority": "High",
+    "description": "In a private cluster, the control plane or API server has internal IP addresses and is not exposed to Internet",
+    "detail": "By using a private cluster, you can ensure that network traffic between your API server and your node pools remains on the private network only. Because the API server has a private address, it means that to access it for administration or for deployment, you need to set up private connection, like using a 'jumpbox' (i.e.: Azure Bastion)",
+    "documentation": [
+      {
+        "title": "Create a private cluster (using private link)",
+        "url": "https://docs.microsoft.com/azure/aks/private-clusters"
+      },
+      {
+        "title": "Create an Azure Kubernetes Service cluster with API Server VNet Integration (preview)",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/api-server-vnet-integration"
+      },
+      {
+        "title": "Use azure CLI to run command on a private cluster",
+        "url": "https://docs.microsoft.com/azure/aks/private-clusters#options-for-connecting-to-the-private-cluster"
+      },
+      {
+        "title": "Use public DNS with a private cluster",
+        "url": "https://docs.microsoft.com/azure/aks/private-clusters#create-a-private-aks-cluster-with-a-public-dns-address"
+      }
+    ],
+    "tags": [
+      "all",
+      "security",
+      "network"
+    ]
+  },
+  {
     "title": "Enable traffic management",
     "priority": "Medium",
     "description": "Azure Traffic Manager can direct customers to their closest AKS cluster and application instance. For the best performance and redundancy, direct all application traffic through Traffic Manager before it goes to your AKS cluster.",

@@ -1,0 +1,87 @@
+[
+    {
+        "title": "Integrate authentication with AAD (using the managed integration)",
+        "priority": "High",
+        "description": "Azure Kubernetes Service (AKS) can be configured to use Azure Active Directory (Azure AD) for user authentication. In this configuration, you can sign in to an AKS cluster by using your Azure AD authentication token.",
+        "documentation": [
+            {
+                "title": "AKS-managed Azure Active Directory integration",
+                "url": "https://docs.microsoft.com/azure/aks/managed-aad"
+            },
+            {
+                "title": "Disable local accounts",
+                "url": "https://docs.microsoft.com/azure/aks/managed-aad#disable-local-accounts"
+            }
+        ],
+        "tags": [
+            "all",
+            "security",
+            "identity"
+        ]
+    },
+    {
+        "title": "K8S RBAC + AAD Integration",
+        "priority": "High",
+        "description": "Control access to cluster resources using Kubernetes role-based access control and Azure Active Directory identities in Azure Kubernetes Service",
+        "documentation": [
+            {
+                "title": "Limit cluster access via K8S RBAC for users & workloads",
+                "url": "https://docs.microsoft.com/azure/aks/azure-ad-rbac"
+            }
+        ],
+        "tags": [
+            "all",
+            "security",
+            "identity"
+        ]
+    },
+    {
+        "title": "Use AKS and ACR integration without password",
+        "priority": "Medium",
+        "description": "AKS can authenticate to ACR without using any password, but by using either Service Principal or Managed Identity.",
+        "detail": "For AKS to download/pull images from Azure Container Registry (ACR), it needs the ACR credentials including the password. To avoid saving the password in the cluster, you can simply activate the ACR integration on new or existing AKS cluster using SPN or Managed Identity",
+        "documentation": [
+            {
+                "title": "Authenticate with Azure Container Registry from AKS",
+                "url": "https://docs.microsoft.com/azure/aks/cluster-container-registry-integration"
+            }
+        ],
+        "tags": [
+            "all",
+            "security",
+            "identity"
+        ]
+    },
+    {
+      "title": "IP Range authorization",
+      "priority": "High",
+      "description": "The API server is the central way to interact with your cluster. To improve cluster security and minimize attacks, the API server should only be accessible from a limited set of IP address ranges.By using a private cluster, you can ensure that network traffic between your API server and your node pools remains on the private network only. Because the API server has a private address, it means that to access it for administration or for deployment, you need to set up a private connection, like using a 'jumpbox' (i.e.: Azure Bastion)",
+      "documentation": [
+        {
+          "title": "Secure access to the API server using authorized IP address ranges",
+          "url": "https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges"
+        }
+      ],
+      "tags": [
+        "all",
+        "security",
+        "identity"
+      ]
+    },
+    {
+        "title": "Use managed identities instead of Service Principals",
+        "priority": "High",
+        "description": "Each AKS cluster needs either a Managed Identity or Service Principal.  We recommend using Managed Identity in AKS",
+        "documentation": [
+            {
+                "title": "Use managed identities in Azure Kubernetes Service",
+                "url": "https://docs.microsoft.com/azure/aks/use-managed-identity"
+            }
+        ],
+        "tags": [
+            "all",
+            "security",
+            "identity"
+        ]
+    }
+]

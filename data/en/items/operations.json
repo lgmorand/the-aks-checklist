@@ -413,5 +413,20 @@
       "security",
       "operations"
     ]
+  },
+  {
+    "title": "Fine tune your node configuration",
+    "priority": "Low",
+    "description": "Customizing your node configuration allows you to configure or tune your operating system (OS) settings or the kubelet parameters to match the needs of the workloads.",
+    "detail": "When you create an AKS cluster or add a node pool to your cluster, you can customize a subset of commonly used OS and kubelet settings.",
+    "documentation": [
+      {
+        "title": "Customize node configuration for Azure Kubernetes Service (AKS) node pools",
+        "url": "https://docs.microsoft.com/azure/aks/custom-node-configuration"
+      }
+    ],
+    "tags": [
+      "all"
+    ]
   }
 ]
