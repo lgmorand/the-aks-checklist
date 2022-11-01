@@ -76,7 +76,7 @@
     ],
     "tags": [
       "all",
-      "operation"
+      "operations"
     ]
   },
   {
@@ -91,7 +91,7 @@
     ],
     "tags": [
       "all",
-      "operation",
+      "operations",
       "security"
     ]
   },
@@ -107,7 +107,7 @@
     ],
     "tags": [
       "all",
-      "operation"
+      "operations"
     ]
   },
   {
@@ -132,7 +132,7 @@
     "description": "Prefer fewer, larger clusters over of many, smaller clusters",
     "tags": [
       "all",
-      "operation"
+      "operations"
     ],
     "tools": [
       {
@@ -148,7 +148,7 @@
     "tags": [
       "all",
       "security",
-      "operation"
+      "operations"
     ],
     "documentation": [
       {
@@ -163,21 +163,6 @@
         "title": "AKS architecture reference for PCI-DSS 3.2.1",
         "url": "https://docs.microsoft.com/azure/architecture/reference-architectures/containers/aks-pci/aks-pci-intro"
       }
-    ]
-  },
-  {
-    "title": "Set Upgrade Channel",
-    "priority": "Medium",
-    "description": "In addition to manually upgrading a cluster, you can set an auto-upgrade channel on your cluster",
-    "documentation": [
-      {
-        "title": "Set AKS auto-upgrade channel",
-        "url": "https://docs.microsoft.com/azure/aks/upgrade-cluster#set-auto-upgrade-channel"
-      }
-    ],
-    "tags": [
-      "all",
-      "operation"
     ]
   },
   {
@@ -221,24 +206,8 @@
     ],
     "tags": [
       "all",
-      "security"
-    ]
-  },
-  {
-    "title": "Enable cluster autoscaling",
-    "priority": "Medium",
-    "description": "To keep up with application demands in Azure Kubernetes Service (AKS), you may need to adjust the number of nodes that run your workloads. The cluster autoscaler component can watch for pods in your cluster that can't be scheduled because of resource constraints.",
-    "detail": "You can enable autoscaling module per node pool but only create one mutual autoscale profile",
-    "documentation": [
-      {
-        "title": "AKS Autoscaler",
-        "url": "https://docs.microsoft.com/azure/aks/cluster-autoscaler"
-      }
-    ],
-    "tags": [
-      "all",
-      "resources",
-      "finops"
+      "security",
+      "network"
     ]
   },
   {
@@ -296,7 +265,7 @@
     ],
     "tags": [
       "all",
-      "operation",
+      "operations",
       "finops"
     ]
   },
@@ -341,7 +310,7 @@
     ],
     "tags": [
       "all",
-      "operation"
+      "operations"
     ]
   },
   {
@@ -364,24 +333,6 @@
     ]
   },
   {
-    "title": "Enable traffic management",
-    "priority": "Medium",
-    "description": "Azure Traffic Manager can direct customers to their closest AKS cluster and application instance. For the best performance and redundancy, direct all application traffic through Traffic Manager before it goes to your AKS cluster.",
-    "detail": "If you have multiple AKS clusters in different regions, use Traffic Manager to control how traffic flows to the applications that run in each cluster. Azure Traffic Manager is a DNS-based traffic load balancer that can distribute network traffic across regions. Use Traffic Manager to route users based on cluster response time or based on geography. It can be used to improve app availability with automatic failover",
-    "documentation": [
-      {
-        "title": "Use Azure Traffic Manager to route traffic",
-        "url": "https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region#use-azure-traffic-manager-to-route-traffic"
-      }
-    ],
-    "tags": [
-      "all",
-      "network",
-      "resiliency",
-      "multi-tenancy"
-    ]
-  },
-  {
     "title": "Fine tune your node configuration",
     "priority": "Low",
     "description": "Customizing your node configuration allows you to configure or tune your operating system (OS) settings or the kubelet parameters to match the needs of the workloads.",
@@ -393,8 +344,7 @@
       }
     ],
     "tags": [
-      "all",
-      "network"
+      "all"
     ]
   },
   {
@@ -410,7 +360,7 @@
     ],
     "tags": [
       "all",
-      "operation"
+      "operations"
     ]
   },
   {
@@ -426,7 +376,7 @@
     ],
     "tags": [
       "all",
-      "operation",
+      "operations",
       "finops"
     ]
   },
@@ -442,7 +392,7 @@
     ],
     "tags": [
       "all",
-      "operation",
+      "operations",
       "finops"
     ]
   },
@@ -458,7 +408,7 @@
     ],
     "tags": [
       "all",
-      "operation"
+      "operations"
     ]
   }
 ]

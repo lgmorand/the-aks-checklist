@@ -168,7 +168,8 @@
     "tags": [
       "all",
       "security",
-      "application"
+      "application",
+      "multi-tenancy"
     ]
   },
   {
@@ -188,7 +189,8 @@
     "tags": [
       "all",
       "resources",
-      "application"
+      "application",
+      "multi-tenancy"
     ]
   },
   {
@@ -204,7 +206,6 @@
     ],
     "tags": [
       "all",
-      "resources",
       "security"
     ]
   },
@@ -371,8 +372,8 @@
     "details": "If imagePullPolicy is omitted and either the image tag is :latest or it is omitted: imagePullPolicy is automatically set to Always. Prefer to set explicitly IfNotPresent",
     "tags": [
       "all",
-      "application",
-      "resiliency"
+      "resiliency",
+      "application"
     ]
   },
   {

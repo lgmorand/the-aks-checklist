@@ -1,7 +1,7 @@
 [
   {
     "title": "Maintain kubernetes version up to date",
-    "priority": "Medium",
+    "priority": "High",
     "description": "To stay current on new features and bug fixes, regularly upgrade to the Kubernetes version in your AKS cluster. Support for kubernetes is current and N-2 versions only",
     "documentation": [
       {
@@ -15,8 +15,8 @@
     ],
     "tags": [
       "all",
-      "operation",
-      "security"
+      "security",
+      "operations"
     ]
   },
   {
@@ -46,8 +46,8 @@
     ],
     "tags": [
       "all",
-      "operation",
       "security",
+      "operations",
       "windows"
     ]
   },
@@ -63,8 +63,8 @@
     ],
     "tags": [
       "all",
-      "operation",
-      "security"
+      "security",
+      "operations"
     ]
   },
   {
@@ -87,7 +87,7 @@
     ],
     "tags": [
       "all",
-      "operation"
+      "operations"
     ]
   },
   {
@@ -102,8 +102,8 @@
     ],
     "tags": [
       "all",
-      "operation",
-      "security"
+      "security",
+      "operations"
     ]
   },
   {
@@ -118,7 +118,8 @@
     ],
     "tags": [
       "all",
-      "operation"
+      "security",
+      "operations"
     ]
   },
   {
@@ -147,7 +148,8 @@
     ],
     "tags": [
       "all",
-      "operation"
+      "monitoring",
+      "operations"
     ]
   },
   {
@@ -162,8 +164,8 @@
     ],
     "tags": [
       "all",
-      "operation",
-      "security"
+      "monitoring",
+      "operations"
     ]
   },
   {
@@ -183,7 +185,8 @@
     ],
     "tags": [
       "all",
-      "operation"
+      "monitoring",
+      "operations"
     ]
   },
   {
@@ -202,7 +205,40 @@
     ],
     "tags": [
       "all",
-      "operation"
+      "monitoring",
+      "operations"
+    ]
+  },
+  {
+    "title": "Set Upgrade Channel",
+    "priority": "Medium",
+    "description": "In addition to manually upgrading a cluster, you can set an auto-upgrade channel on your cluster",
+    "documentation": [
+      {
+        "title": "Set AKS auto-upgrade channel",
+        "url": "https://docs.microsoft.com/azure/aks/upgrade-cluster#set-auto-upgrade-channel"
+      }
+    ],
+    "tags": [
+      "all",
+      "operations"
+    ]
+  },
+  {
+    "title": "Enable cluster autoscaling",
+    "priority": "Medium",
+    "description": "To keep up with application demands in Azure Kubernetes Service (AKS), you may need to adjust the number of nodes that run your workloads. The cluster autoscaler component can watch for pods in your cluster that can't be scheduled because of resource constraints.",
+    "detail": "You can enable autoscaling module per node pool but only create one mutual autoscale profile",
+    "documentation": [
+      {
+        "title": "AKS Autoscaler",
+        "url": "https://docs.microsoft.com/azure/aks/cluster-autoscaler"
+      }
+    ],
+    "tags": [
+      "all",
+      "resources",
+      "finops"
     ]
   },
   {
@@ -223,7 +259,7 @@
     ],
     "tags": [
       "all",
-      "operation"
+      "operations"
     ]
   },
   {
@@ -238,7 +274,8 @@
     ],
     "tags": [
       "all",
-      "operation"
+      "security",
+      "operations"
     ]
   },
   {
@@ -253,8 +290,8 @@
     ],
     "tags": [
       "all",
-      "operation",
-      "security"
+      "security",
+      "operations"
     ]
   },
   {
@@ -278,7 +315,7 @@
     ],
     "tags": [
       "all",
-      "operation"
+      "operations"
     ]
   },
   {
@@ -301,7 +338,7 @@
     ],
     "tags": [
       "all",
-      "operation"
+      "operations"
     ]
   },
   {
@@ -332,7 +369,7 @@
     ],
     "tags": [
       "all",
-      "operation"
+      "operations"
     ]
   },
   {
@@ -341,7 +378,7 @@
     "description": "It's recommended to keep all applications in a namespace other than default",
     "tags": [
       "all",
-      "operation"
+      "operations"
     ]
   },
   {
@@ -356,8 +393,8 @@
     ],
     "tags": [
       "all",
-      "network",
-      "multi-tenancy"
+      "multi-tenancy",
+      "operations"
     ]
   },
   {
@@ -373,8 +410,8 @@
     ],
     "tags": [
       "all",
-      "operation",
-      "security"
+      "security",
+      "operations"
     ]
   }
 ]
