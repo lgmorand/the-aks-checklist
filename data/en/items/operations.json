@@ -1,25 +1,5 @@
 [
   {
-    "title": "Maintain kubernetes version up to date",
-    "priority": "High",
-    "description": "To stay current on new features and bug fixes, regularly upgrade to the Kubernetes version in your AKS cluster. Support for kubernetes is current and N-2 versions only",
-    "documentation": [
-      {
-        "title": "Regularly update to the latest version of Kubernetes",
-        "url": "https://docs.microsoft.com/azure/aks/operator-best-practices-cluster-security#regularly-update-to-the-latest-version-of-kubernetes"
-      },
-      {
-        "title": "Use the auto-upgrade feature",
-        "url": "https://docs.microsoft.com/fr-fr/azure/aks/upgrade-cluster#set-auto-upgrade-channel"
-      }
-    ],
-    "tags": [
-      "all",
-      "security",
-      "operations"
-    ]
-  },
-  {
     "title": "Keep nodes up to date and patched",
     "priority": "High",
     "description": "AKS supports upgrading the images on a node so you're up to date with the newest OS and runtime updates. AKS provides one new image per week with the latest updates, so it's beneficial to upgrade your node's images regularly for the latest features, including Linux or Windows patches",
@@ -49,6 +29,68 @@
       "security",
       "operations",
       "windows"
+    ]
+  },
+  {
+    "title": "Use System Node Pools",
+    "priority": "Medium",
+    "description": "Manage system node pools in Azure Kubernetes Service (AKS)",
+    "documentation": [
+      {
+        "title": "AKS System Pools",
+        "url": "https://docs.microsoft.com/azure/aks/use-system-pools"
+      }
+    ],
+    "tags": [
+      "all",
+      "operations"
+    ]
+  },
+  {
+    "title": "Use placement proximity group to improve performance",
+    "priority": "Low",
+    "description": "When deploying your application in Azure, spreading Virtual Machine (VM) instances across regions or availability zones creates network latency, which may impact the overall performance of your application. A proximity placement group is a logical grouping used to make sure Azure compute resources are physically located close to each other",
+    "detail": "Be careful, by using PPG on a nodepool, you reduce the average SLA of your application since they don't rely on availability zones anymore",
+    "documentation": [
+      {
+        "title": "Reduce latency with proximity placement groups",
+        "url": "https://docs.microsoft.com/azure/aks/reduce-latency-ppg"
+      }
+    ],
+    "tags": [
+      "all",
+      "operations"
+    ]
+  },
+  {
+    "title": "Customize your clusters with extensions",
+    "priority": "Low",
+    "description": "Cluster extensions provides an Azure Resource Manager driven experience for installation and lifecycle management of services like Azure Machine Learning (ML) on an AKS cluster. ",
+    "detail": "This feature enables:Azure Resource Manager-based deployment of extensions, including at-scale deployments across AKS clusters but also lifecycle management of the extension (Update, Delete) from Azure Resource Manager.",
+    "documentation": [
+      {
+        "title": "Customize node configuration for Azure Kubernetes Service (AKS) node pools",
+        "url": "https://docs.microsoft.com/en-gb/azure/aks/cluster-extensions"
+      }
+    ],
+    "tags": [
+      "all",
+      "operations"
+    ]
+  },
+  {
+    "title": "Customize the name of the MC_ resource group",
+    "priority": "Low",
+    "description": "When creating a new AKS cluster, the MC_ resource group is created by default. You can customize the name of the MC_ resource group.",
+    "documentation": [
+      {
+        "title": "Custom resource group name",
+        "url": "https://learn.microsoft.com/en-gb/azure/aks/cluster-configuration#custom-resource-group-name"
+      }
+    ],
+    "tags": [
+      "all",
+      "operations"
     ]
   },
   {
@@ -87,38 +129,6 @@
     ],
     "tags": [
       "all",
-      "operations"
-    ]
-  },
-  {
-    "title": "Policy blocking the deployment of vulnerable image",
-    "priority": "Medium",
-    "description": "You can now protect your Kubernetes clusters and container workloads from potential threats by restricting deployment of container images with vulnerabilities in their software components.",
-    "tools": [
-      {
-        "title": "Policy blocking the deployment of vulnerable images",
-        "url": "https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/BlockVulnerableImages.json"
-      }
-    ],
-    "tags": [
-      "all",
-      "security",
-      "operations"
-    ]
-  },
-  {
-    "title": "Monitor the security of your cluster with Azure Security Center",
-    "priority": "Medium",
-    "description": "Security Center brings security benefits to your AKS clusters using data already gathered by the AKS master node.",
-    "documentation": [
-      {
-        "title": "Azure Kubernetes Services integration with Security Center",
-        "url": "https://docs.microsoft.com/azure/security-center/azure-kubernetes-service-integration"
-      }
-    ],
-    "tags": [
-      "all",
-      "security",
       "operations"
     ]
   },
@@ -263,46 +273,14 @@
     ]
   },
   {
-    "title": "Enable Microsoft Defender for Kubernetes",
-    "priority": "High",
-    "description": "Microsoft Defender for Kubernetes provides protections for your Kubernetes clusters wherever they're running (AKS and on-premesis)",
-    "documentation": [
-      {
-        "title": "Introduction to Microsoft Defender for Kubernetes",
-        "url": "https://docs.microsoft.com/azure/defender-for-cloud/defender-for-containers-introduction"
-      }
-    ],
-    "tags": [
-      "all",
-      "security",
-      "operations"
-    ]
-  },
-  {
-    "title": "Use Azure Key Vault",
-    "priority": "High",
-    "description": "Use Azure Key Vault to store Secrets and Certificates",
-    "documentation": [
-      {
-        "title": "Tutorial: Configure and run the Azure Key Vault provider for the Secrets Store CSI driver on Kubernetes",
-        "url": "https://docs.microsoft.com/azure/key-vault/general/key-vault-integrate-kubernetes"
-      }
-    ],
-    "tags": [
-      "all",
-      "security",
-      "operations"
-    ]
-  },
-  {
-    "title": "Use GitOps to deploy workloads in your cluster", 
+    "title": "Use GitOps to deploy workloads in your cluster",
     "priority": "High",
     "description": "GitOps works by using Git as a single source of truth for declarative infrastructure and applications",
     "detail": "On Azure you can for instance use Azure Arc for Kubernetes but also directly GitOps addon for AKS",
     "documentation": [
       {
         "title": "Use Flux v2 addon for AKS",
-        "url":"https://learn.microsoft.com/en-us/azure/azure-arc/kubernetes/tutorial-use-gitops-flux2"
+        "url": "https://learn.microsoft.com/en-us/azure/azure-arc/kubernetes/tutorial-use-gitops-flux2"
       },
       {
         "title": "What is Azure Arc enabled Kubernetes?",
@@ -319,13 +297,13 @@
     ]
   },
   {
-    "title": "Implement CI/CD to deploy workloads in your cluster", 
+    "title": "Implement CI/CD to deploy workloads in your cluster",
     "priority": "High",
     "description": "Instead of GitOps (or in addition) you can use CI/CD to deploy workloads/tools in your cluster",
     "documentation": [
       {
         "title": "Automated Deployments for Azure Kubernetes Service (Preview)",
-        "url":"https://learn.microsoft.com/en-gb/azure/aks/automated-deployments"
+        "url": "https://learn.microsoft.com/en-gb/azure/aks/automated-deployments"
       },
       {
         "title": "Build and deploy to Azure Kubernetes Service with Azure Pipelines",
@@ -394,23 +372,6 @@
     "tags": [
       "all",
       "multi-tenancy",
-      "operations"
-    ]
-  },
-  {
-    "title": "Remove vulnerable images from your cluster",
-    "priority": "High",
-    "description": "With image cleaner, you can detect and automatically remove all unused and vulnerable images cached on AKS nodes keeping the nodes cleaner and safer.",
-    "detail": "It's common to use pipelines to build and deploy images on Azure Kubernetes Service (AKS) clusters. While great for image creation, this process often doesn't account for the stale images left behind and can lead to image bloat on cluster nodes. These images can present security issues as they may contain vulnerabilities. By cleaning these unreferenced images, you can remove an area of risk in your clusters. When done manually, this process can be time intensive, which ImageCleaner can mitigate via automatic image identification and removal.",
-    "documentation": [
-      {
-        "title": "Use ImageCleaner to clean up stale images on your AKS cluster",
-        "url": "https://learn.microsoft.com/en-us/azure/aks/image-cleaner"
-      }
-    ],
-    "tags": [
-      "all",
-      "security",
       "operations"
     ]
   },

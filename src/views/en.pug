@@ -20,9 +20,15 @@ block main
         dataSection: _items.container,
         sectionTitle: "Image management"
       })
+
       +checklist-section({
-        dataSection: _items.cluster_setup,
-        sectionTitle: "Cluster setup"
+        dataSection: _items.cluster_security,
+        sectionTitle: "Cluster security"
+      })
+
+      +checklist-section({
+        dataSection: _items.cluster_multi,
+        sectionTitle: "Multi-Tenant / Isolation"
       })
 
       +checklist-section({

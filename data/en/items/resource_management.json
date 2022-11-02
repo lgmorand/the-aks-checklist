@@ -1,5 +1,79 @@
 [
   {
+    "title": "Burst serverless with Azure Container Instances and Virtual Nodes",
+    "priority": "Low",
+    "description": "To rapidly scale your AKS cluster, you can integrate with Azure Container Instances (ACI)",
+    "detail": "Kubernetes has built-in components to scale the replica and node count. However, if your application needs to rapidly scale, the horizontal pod autoscaler may schedule more pods than can be provided by the existing compute resources in the node pool.",
+    "documentation": [
+      {
+        "title": "Burst to Azure Container Instances",
+        "url": "https://learn.microsoft.com/en-gb/azure/aks/concepts-scale#burst-to-azure-container-instances"
+      }
+    ],
+    "tags": [
+      "all",
+      "operations",
+      "finops"
+    ]
+  },
+  {
+    "title": "Sizing of the nodes",
+    "priority": "Medium",
+    "description": "what type of worker nodes should I use, and how many of them is a critical question which requires the analysis of the workloads deployed on your cluster to get the best values of it",
+    "detail": "Choosing on one hand between easy management and big blast radius, and on the other end to focus on high replication, low impact but worse resources optimization ",
+    "documentation": [
+      {
+        "title": "Choosing a worker node size",
+        "url": "https://learnk8s.io/kubernetes-node-size"
+      },
+      {
+        "title": "Choose the right storage type",
+        "url": "https://docs.microsoft.com/azure/aks/operator-best-practices-storage#choose-the-appropriate-storage-type"
+      }
+    ],
+    "tools": [
+      {
+        "title": "Kubernetes instance calculator",
+        "url": "https://learnk8s.io/kubernetes-instance-calculator"
+      }
+    ],
+    "tags": [
+      "all",
+      "resources"
+    ]
+  },
+  {
+    "title": "Consider spot node pools for non time-sensitive workloads",
+    "priority": "Low",
+    "description": "Using Spot VMs for nodes with your AKS cluster allows you to take advantage of unutilized capacity in Azure at a significant cost savings",
+    "documentation": [
+      {
+        "title": "Add an Azure Spot node pool to an Azure Kubernetes Service (AKS) cluster",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/spot-node-pool"
+      }
+    ],
+    "tags": [
+      "all",
+      "operations",
+      "finops"
+    ]
+  },
+  {
+    "title": "Use AMD64 nodes when possible",
+    "priority": "Medium",
+    "description": "Benefit from ARM64's better price, compute performance, and lower power utilization in AKS node pools.",
+    "documentation": [
+      {
+        "title": "Add an ARM64 node pool",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/use-multiple-node-pools#add-an-arm64-node-pool"
+      }
+    ],
+    "tags": [
+      "all",
+      "operations"
+    ]
+  },
+  {
     "title": "Enforce resource quotas",
     "priority": "Low",
     "description": "Plan and apply resource quotas at the namespace level. If pods don't define resource requests and limits, reject the deployment. Monitor resource usage and adjust quotas as needed.",
@@ -45,7 +119,7 @@
     "detail": " When you specify limits for CPU and memory, each takes a different action when it reaches the specified limit. With CPU limits, the container is throttled from using more than its specified limit. With memory limits, the pod is restarted if it reaches its limit. The pod might be restarted on the same host or a different host within the cluster.",
     "documentation": [
       {
-        "title":"Define pod resource requests and limits",
+        "title": "Define pod resource requests and limits",
         "url": "https://learn.microsoft.com/en-gb/azure/aks/developer-best-practices-resource-management#define-pod-resource-requests-and-limits"
       },
       {

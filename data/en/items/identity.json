@@ -53,20 +53,20 @@
         ]
     },
     {
-      "title": "IP Range authorization",
-      "priority": "High",
-      "description": "The API server is the central way to interact with your cluster. To improve cluster security and minimize attacks, the API server should only be accessible from a limited set of IP address ranges.By using a private cluster, you can ensure that network traffic between your API server and your node pools remains on the private network only. Because the API server has a private address, it means that to access it for administration or for deployment, you need to set up a private connection, like using a 'jumpbox' (i.e.: Azure Bastion)",
-      "documentation": [
-        {
-          "title": "Secure access to the API server using authorized IP address ranges",
-          "url": "https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges"
-        }
-      ],
-      "tags": [
-        "all",
-        "security",
-        "identity"
-      ]
+        "title": "IP Range authorization",
+        "priority": "High",
+        "description": "The API server is the central way to interact with your cluster. To improve cluster security and minimize attacks, the API server should only be accessible from a limited set of IP address ranges.By using a private cluster, you can ensure that network traffic between your API server and your node pools remains on the private network only. Because the API server has a private address, it means that to access it for administration or for deployment, you need to set up a private connection, like using a 'jumpbox' (i.e.: Azure Bastion)",
+        "documentation": [
+            {
+                "title": "Secure access to the API server using authorized IP address ranges",
+                "url": "https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges"
+            }
+        ],
+        "tags": [
+            "all",
+            "security",
+            "identity"
+        ]
     },
     {
         "title": "Use managed identities instead of Service Principals",

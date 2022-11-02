@@ -1,0 +1,173 @@
+[
+    {
+        "title": "Use Mariner COS as host OS",
+        "priority": "Medium",
+        "description": "Mariner Container-Optimized OS is a first-party operating system for Azure Kubernetes Service (AKS) that is optimized for running Kubernetes workloads. Mariner is a secure, lightweight, and highly performant operating system that is based on the open source project CoreOS Container Linux. Mariner is designed to be a secure, lightweight, and highly performant operating system that is based on the open source project CoreOS Container Linux. Mariner is designed to be a secure, lightweight, and highly performant operating system that is based on the open source project CoreOS Container Linux.",
+        "documentation": [
+            {
+                "title": "Use the Mariner container host on Azure Kubernetes Service",
+                "url": "https://learn.microsoft.com/en-us/azure/aks/use-mariner"
+            }
+        ],
+        "tags": [
+            "all",
+            "operations",
+            "security"
+        ]
+    },
+    {
+        "title": "Configure your cluster for regulated industries",
+        "priority": "Medium",
+        "description": "Some industries require certified kubernetes or to implement specific configurations. AKS offers several features to meet this requirements",
+        "tags": [
+            "all",
+            "security",
+            "operations"
+        ],
+        "documentation": [
+            {
+                "title": "Use FIPS-enabled node pool",
+                "url": "https://docs.microsoft.com/azure/aks/use-multiple-node-pools#add-a-fips-enabled-node-pool"
+            },
+            {
+                "title": "AKS CIS benchmark",
+                "url": "https://docs.microsoft.com/compliance/regulatory/offering-CIS-Benchmark"
+            },
+            {
+                "title": "AKS architecture reference for PCI-DSS 3.2.1",
+                "url": "https://docs.microsoft.com/azure/architecture/reference-architectures/containers/aks-pci/aks-pci-intro"
+            }
+        ]
+    },
+    {
+        "title": "Check if you need the Kubernetes dashboard",
+        "priority": "Medium",
+        "description": "Starting with Kubernetes version 1.19, AKS will no longer allow the managed Kubernetes dashboard add-on to be installed for security reasons, and the add-on is scheduled to be deprecated. Ensure the Kubernetes dashboard is not installed on the cluster.",
+        "detail": "It can be done with the following CLI: az aks disable-addons --addons kube-dashboard --resource-group RG_NAME --name CLUSTER_NAME",
+        "documentation": [],
+        "tags": [
+            "all",
+            "security"
+        ]
+    },
+    {
+        "title": "Encrypt ETCD at rest with your own key",
+        "priority": "Low",
+        "description": "By default, ETCD is encrypted at rest with keys managed by Microsoft. It is possible to encrypt the database using your own key using a KMS plugin and store the key in Azure Key Vault.",
+        "documentation": [
+            {
+                "title": "Add KMS etcd encryption to an Azure Kubernetes Service (AKS) cluster",
+                "url": "https://docs.microsoft.com/azure/aks/use-kms-etcd-encryption"
+            },
+            {
+                "title": "Kubernetes KMS",
+                "url": "https://github.com/Azure/kubernetes-kms"
+            }
+        ],
+        "tags": [
+            "all",
+            "security"
+        ]
+    },
+    {
+        "title": "Maintain kubernetes version up to date",
+        "priority": "High",
+        "description": "To stay current on new features and bug fixes, regularly upgrade to the Kubernetes version in your AKS cluster. Support for kubernetes is current and N-2 versions only",
+        "documentation": [
+            {
+                "title": "Regularly update to the latest version of Kubernetes",
+                "url": "https://docs.microsoft.com/azure/aks/operator-best-practices-cluster-security#regularly-update-to-the-latest-version-of-kubernetes"
+            },
+            {
+                "title": "Use the auto-upgrade feature",
+                "url": "https://docs.microsoft.com/fr-fr/azure/aks/upgrade-cluster#set-auto-upgrade-channel"
+            }
+        ],
+        "tags": [
+            "all",
+            "security",
+            "operations"
+        ]
+    },
+    {
+        "title": "Policy blocking the deployment of vulnerable image",
+        "priority": "Medium",
+        "description": "You can now protect your Kubernetes clusters and container workloads from potential threats by restricting deployment of container images with vulnerabilities in their software components.",
+        "tools": [
+            {
+                "title": "Policy blocking the deployment of vulnerable images",
+                "url": "https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/BlockVulnerableImages.json"
+            }
+        ],
+        "tags": [
+            "all",
+            "security",
+            "operations"
+        ]
+    },
+    {
+        "title": "Use Azure Key Vault",
+        "priority": "High",
+        "description": "Use Azure Key Vault to store Secrets and Certificates",
+        "documentation": [
+            {
+                "title": "Tutorial: Configure and run the Azure Key Vault provider for the Secrets Store CSI driver on Kubernetes",
+                "url": "https://docs.microsoft.com/azure/key-vault/general/key-vault-integrate-kubernetes"
+            }
+        ],
+        "tags": [
+            "all",
+            "security",
+            "operations"
+        ]
+    },
+    {
+        "title": "Monitor the security of your cluster with Azure Security Center",
+        "priority": "Medium",
+        "description": "Security Center brings security benefits to your AKS clusters using data already gathered by the AKS master node.",
+        "documentation": [
+            {
+                "title": "Azure Kubernetes Services integration with Security Center",
+                "url": "https://docs.microsoft.com/azure/security-center/azure-kubernetes-service-integration"
+            }
+        ],
+        "tags": [
+            "all",
+            "security",
+            "operations"
+        ]
+    },
+    {
+        "title": "Remove vulnerable images from your cluster",
+        "priority": "High",
+        "description": "With image cleaner, you can detect and automatically remove all unused and vulnerable images cached on AKS nodes keeping the nodes cleaner and safer.",
+        "detail": "It's common to use pipelines to build and deploy images on Azure Kubernetes Service (AKS) clusters. While great for image creation, this process often doesn't account for the stale images left behind and can lead to image bloat on cluster nodes. These images can present security issues as they may contain vulnerabilities. By cleaning these unreferenced images, you can remove an area of risk in your clusters. When done manually, this process can be time intensive, which ImageCleaner can mitigate via automatic image identification and removal.",
+        "documentation": [
+            {
+                "title": "Use ImageCleaner to clean up stale images on your AKS cluster",
+                "url": "https://learn.microsoft.com/en-us/azure/aks/image-cleaner"
+            }
+        ],
+        "tags": [
+            "all",
+            "security",
+            "operations"
+        ]
+    },
+    {
+        "title": "Enable Microsoft Defender for Kubernetes",
+        "priority": "High",
+        "description": "Microsoft Defender for Kubernetes provides protections for your Kubernetes clusters wherever they're running (AKS and on-premesis)",
+        "documentation": [
+            {
+                "title": "Introduction to Microsoft Defender for Kubernetes",
+                "url": "https://docs.microsoft.com/azure/defender-for-cloud/defender-for-containers-introduction"
+            }
+        ],
+        "tags": [
+            "all",
+            "security",
+            "operations"
+        ]
+    }
+]
