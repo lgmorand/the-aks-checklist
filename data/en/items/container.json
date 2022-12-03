@@ -155,21 +155,5 @@
       "all",
       "resources"
     ]
-  },
-  {
-    "title": "Enable geo-replication for container images",
-    "priority": "Medium",
-    "description": "Companies that want a local presence, or a hot backup, choose to run services from multiple Azure regions.",
-    "detail": "As a best practice, placing a container registry in each region where images are run allows network-close operations, enabling fast, reliable image layer transfers. Geo-replication enables an Azure container registry to function as a single registry, serving multiple regions with multi-master regional registries.",
-    "documentation": [
-      {
-        "title": "Enable geo-replication for container images",
-        "url": "https://docs.microsoft.com/azure/container-registry/container-registry-geo-replication"
-      }
-    ],
-    "tags": [
-      "all",
-      "resiliency"
-    ]
   }
 ]
