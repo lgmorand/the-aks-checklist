@@ -127,5 +127,37 @@
       "windows",
       "security"
     ]
+  },
+  {
+    "title": "If required for AKS Windows workloads, HostProcess containers can be used",
+    "priority": "Medium",
+    "description": "HostProcess / Privileged containers extend the Windows container model to enable a wider range of Kubernetes cluster management scenarios.",
+    "documentation": [
+      {
+        "title": "Use Windows HostProcess containers",
+        "url": "https://learn.microsoft.com/azure/aks/use-windows-hpc"
+      }
+    ],
+    "tags": [
+      "all",
+      "application",
+      "windows"
+    ]
+  },
+  {
+    "title": "Taint Windows nodes",
+    "priority": "low",
+    "description": "Adding taints, tolerations and node selectors will help avoid having pods scheduled in the wrong OS node pool",
+    "documentation": [
+      {
+        "title": "Adapt apps for mixed-OS Kubernetes clusters using node selectors or taints and tolerations",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/hybrid/adapt-apps-mixed-os-clusters"
+      }
+    ],
+    "tags": [
+      "all",
+      "compliance",
+      "windows"
+    ]
   }
 ]

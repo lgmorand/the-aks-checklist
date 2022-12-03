@@ -5,6 +5,10 @@
     "description": "Understand the needs of your application to pick the right storage. Use high performance, SSD-backed storage for production workloads. Plan for network-based storage when there is a need for multiple concurrent connections.",
     "documentation": [
       {
+        "title": "Storage considerations for Azure Kubernetes Service",
+        "url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/scenarios/app-platform/aks/storage"
+      },
+      {
         "title": "Choose the right storage type",
         "url": "https://docs.microsoft.com/azure/aks/operator-best-practices-storage#choose-the-appropriate-storage-type"
       }
@@ -71,6 +75,73 @@
       {
         "title": "Remove service state from inside containers",
         "url": "https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region#remove-service-state-from-inside-containers"
+      }
+    ],
+    "tags": [
+      "all",
+      "storage",
+      "resiliency"
+    ]
+  },
+  {
+    "title": "Use ephemeral OS disks",
+    "priority": "High",
+    "description": " With ephemeral OS disks, you see lower read/write latency on the OS disk of AKS agent nodes since the disk is locally attached.",
+    "detail": "You will also get faster cluster operations like scale or upgrade thanks to faster re-imaging and boot times",
+    "documentation": [
+      {
+        "title": "Everything you want to know about ephemeral OS disks and AKS",
+        "url": "https://learn.microsoft.com/en-us/samples/azure-samples/aks-ephemeral-os-disk/aks-ephemeral-os-disk/"
+      }
+    ],
+    "tags": [
+      "all",
+      "storage",
+      "resiliency"
+    ]
+  },
+  {
+    "title": "For hyper performance storage option use Ultra Disks on AKS",
+    "priority": "Low",
+    "description": "Azure ultra disks offer high throughput, high IOPS, and consistent low latency disk storage for your stateful applications.",
+    "detail": "One major benefit of ultra disks is the ability to dynamically change the performance of the SSD along with your workloads without the need to restart your agent nodes. Ultra disks are suited for data-intensive workloads.",
+    "documentation": [
+      {
+        "title": "Use Azure ultra disks on AKS",
+        "url": "https://learn.microsoft.com/azure/aks/use-ultra-disks"
+      }
+    ],
+    "tags": [
+      "all",
+      "storage",
+      "resiliency"
+    ]
+  },
+  {
+    "title": "Avoid keeping state in the cluster, and store data outside (AzStorage, AzSQL, Cosmos, etc)",
+    "priority": "Medium",
+    "description": "Where possible, don't store service state inside the container. Instead, use an Azure platform as a service (PaaS) that supports multiregion replication.",
+    "detail": "Service state refers to the in-memory or on-disk data that a service requires to function. State includes the data structures and member variables that the service reads and writes. Depending on how the service is architected, the state might also include files or other resources that are stored on the disk. For example, the state might include the files a database uses to store data and transaction logs.",
+    "documentation": [
+      {
+        "title": "Remove service state from inside containers",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/operator-best-practices-multi-region#remove-service-state-from-inside-containers"
+      }
+    ],
+    "tags": [
+      "all",
+      "storage",
+      "resiliency"
+    ]
+  },
+  {
+    "title": "If using Azure Disks and AZs, consider having nodepools within a zone for LRS disk",
+    "priority": "Medium",
+    "description": "If using Azure Disks and AZs, consider having nodepools within a zone for LRS disk with VolumeBindingMode:WaitForFirstConsumer for provisioning storage in right zone or use ZRS disk for nodepools spanning multiple zones",
+    "documentation": [
+      {
+        "title": "Azure disk availability zone support",
+        "url": "https://docs.microsoft.com/azure/aks/availability-zones#azure-disk-availability-zone-support"
       }
     ],
     "tags": [

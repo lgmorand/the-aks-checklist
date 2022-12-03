@@ -12,22 +12,18 @@ block main
     if _items !== undefined
 
       +checklist-section({
-        dataSection: _items.application,
-        sectionTitle: "Application deployment"
+        dataSection: _items.idenity,
+        sectionTitle: "Identity / Authorization"
       })
 
       +checklist-section({
-        dataSection: _items.container,
-        sectionTitle: "Image management"
-      })
-      +checklist-section({
-        dataSection: _items.cluster_setup,
-        sectionTitle: "Cluster setup"
+        dataSection: _items.cluster_security,
+        sectionTitle: "Cluster security"
       })
 
       +checklist-section({
-        dataSection: _items.bc_dr,
-        sectionTitle: "Biz continuity & disaster recovery"
+        dataSection: _items.cluster_multi,
+        sectionTitle: "Multi-Tenant / Isolation"
       })
 
       +checklist-section({
@@ -46,13 +42,28 @@ block main
       })
 
       +checklist-section({
+        dataSection: _items.operations,
+        sectionTitle: "Cluster Operations"
+      })
+
+      +checklist-section({
+        dataSection: _items.bc_dr,
+        sectionTitle: "Biz continuity & disaster recovery"
+      })
+
+      +checklist-section({
         dataSection: _items.windows,
         sectionTitle: "Windows"
       })
 
       +checklist-section({
-        dataSection: _items.operations,
-        sectionTitle: "Cluster Maintenance"
+        dataSection: _items.application,
+        sectionTitle: "Application deployment"
+      })
+
+      +checklist-section({
+        dataSection: _items.container,
+        sectionTitle: "Image management"
       })
 
 
