@@ -391,5 +391,55 @@
       "application",
       "resiliency"
     ]
+  },
+  {
+    "title": "Use automation through ARM/TF to create your Azure resources",
+    "priority": "Medium",
+    "description": "If this attributes is not properly define kubernetes downloads the container image for each new instance of the containers.",
+    "documentation": [
+      {
+        "title": "Create a Kubernetes cluster with Azure Kubernetes Service using Terraform",
+        "url": "https://docs.microsoft.com/azure/developer/terraform/create-k8s-cluster-with-tf-and-aks"
+      }
+    ],
+    "tags": [
+      "all",
+      "IaC",
+      "application"
+      
+    ]
+  },
+  {
+    "title": "Use canary or blue/green deployments",
+    "priority": "Medium",
+    "description": "This will help ensure your workloads remain online during cluster upgrades.",
+    "documentation": [
+      {
+        "title": "Blue-green deployment for AKS",
+        "url": "https://learn.microsoft.com/en-us/azure/architecture/reference-architectures/containers/blue-green-deployment-for-aks/blue-green-deployment-for-aks"
+      }
+    ],
+    "tags": [
+      "all",
+      "application",
+      "IaC"
+      
+    ]
+  },
+  {
+    "title": "Use Dapr to ease microservice development",
+    "priority": "Low",
+    "description": "This will help ensure your workloads remain online during cluster upgrades.",
+    "documentation": [
+      {
+        "title": "Dapr project page",
+        "url": "https://dapr.io/"
+      }
+    ],
+    "tags": [
+      "all",
+      "application"
+      
+    ]
   }
 ]

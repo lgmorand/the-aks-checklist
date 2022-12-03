@@ -155,12 +155,12 @@
         ]
     },
     {
-        "title": "Enable Microsoft Defender for Kubernetes",
+        "title": "Enable Microsoft Defender for Containers",
         "priority": "High",
-        "description": "Microsoft Defender for Kubernetes provides protections for your Kubernetes clusters wherever they're running (AKS and on-premesis)",
+        "description": "Microsoft Defender for Containers provides protections for your Kubernetes clusters wherever they're running (AKS and on-premesis)",
         "documentation": [
             {
-                "title": "Introduction to Microsoft Defender for Kubernetes",
+                "title": "Introduction to Microsoft Defender for Containers",
                 "url": "https://docs.microsoft.com/azure/defender-for-cloud/defender-for-containers-introduction"
             }
         ],
@@ -169,5 +169,136 @@
             "security",
             "operations"
         ]
-    }
+    },
+    {
+        "title": "Use Azure Policy for Kubernetes to ensure cluster compliance",
+        "priority": "Medium",
+        "description": "Azure Policy integrates with the Azure Kubernetes Service (AKS) to apply at-scale enforcements and safeguards on your clusters in a centralized, consistent manner.",
+        "documentation": [
+          {
+            "title": "Azure Policies for AKS",
+            "url": "https://docs.microsoft.com/azure/governance/policy/concepts/rego-for-aks"
+          },
+          {
+            "title": "Azure Kubernetes Services Governance with Azure Policy",
+            "url": "https://learn.microsoft.com/training/modules/aks-governance-azure-policy"
+          }
+        ],
+        "tools": [
+          {
+            "title": "Gatekeeper",
+            "url": "https://github.com/open-policy-agent/gatekeeper"
+          }
+        ],
+        "tags": [
+          "all",
+          "operations"
+        ]
+      },
+      {
+        "title": "Separate applications from the control plane with user/system nodepools",
+        "priority": "Medium",
+        "description": "Manage system node pools in Azure Kubernetes Service (AKS) and add taint to your system nodepool to make it dedicated",
+        "documentation": [
+          {
+            "title": "AKS System Pools",
+            "url": "https://docs.microsoft.com/azure/aks/use-system-pools"
+          }
+        ],
+        "tags": [
+          "all",
+          "compliance",
+          "operations"
+        ]
+      },
+      {
+        "title": "If user Service Principals for the cluster, refresh credentials periodically (like quarterly)",
+        "priority": "High",
+        "description": "You may want to update, or rotate, the credentials as part of a defined security polic",
+        "documentation": [
+          {
+            "title": "Update or rotate the credentials for AKS",
+            "url": "https://docs.microsoft.com/azure/aks/update-credentials"
+          }
+        ],
+        "tags": [
+          "all",
+          "secrets"
+        ]
+      },
+      {
+        "title": "Use a private registry for your images, such as ACR",
+        "priority": "High",
+        "description": "Azure Container Registry allows you to build, store, and manage container images and artifacts in a private registry",
+        "documentation": [
+          {
+            "title": "Azure Container Registry documentation",
+            "url": "https://docs.microsoft.com/azure/container-registry/"
+          }
+        ],
+        "tags": [
+          "all",
+          "compliance"
+        ]
+      },
+      {
+        "title": "Use Azure Security Center to detect security posture vulnerabiities",
+        "priority": "Medium",
+        "description": "Microsoft Defender for Containers is the cloud-native solution that is used to secure your containers ",
+        "documentation": [
+          {
+            "title": "Overview of Microsoft Defender for Containers",
+            "url": "https://docs.microsoft.com/azure/security-center/container-security"
+          }
+        ],
+        "tags": [
+          "all",
+          "compliance"
+        ]
+      },
+      {
+        "title": "If required consider using Confidential Compute for AKS",
+        "priority": "Low",
+        "description": "Containers run within a Trusted Execution Environment(TEE) brings isolation from other containers, the node kernel in a hardware protected, integrity protected attestable environment.",
+        "documentation": [
+          {
+            "title": "Application enclave support on AKS",
+            "url": "https://learn.microsoft.com/en-us/azure/confidential-computing/confidential-nodes-aks-overview"
+          }
+        ],
+        "tags": [
+          "all",
+          "compliance"
+        ]
+      },
+      {
+        "title": "Define app separation requirements (namespace/nodepool/cluster)",
+        "priority": "High",
+        "description": "Plan for multi-tenant clusters and separation of resources and use logical or physical isolation in your AKS clusters",
+        "documentation": [
+          {
+            "title": "Best practices for cluster isolation in AKS",
+            "url": "https://docs.microsoft.com/azure/aks/operator-best-practices-cluster-isolation"
+          }
+        ],
+        "tags": [
+          "all",
+          "compliance"
+        ]
+      },
+      {
+        "title": "If required consider using Azure Dedicated Hosts for AKS nodes",
+        "priority": "Low",
+        "description": "Plan for multi-tenant clusters and separation of resources and use logical or physical isolation in your AKS clusters",
+        "documentation": [
+          {
+            "title": "Add Azure Dedicated Host to an AKS cluster",
+            "url": "https://learn.microsoft.com/en-us/azure/aks/use-azure-dedicated-hosts"
+          }
+        ],
+        "tags": [
+          "all",
+          "compliance"
+        ]
+      }
 ]

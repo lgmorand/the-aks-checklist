@@ -15,7 +15,7 @@
     ]
   },
   {
-    "title": "Ensure you can perform a whitespace deployment",
+    "title": "Schedule and perform DR tests regularly (whitespace deplyment)",
     "priority": "High",
     "description": "A whitespace (greenfield) deployment is the exercise to delete everything and to redeploy the whole platform in an automated way.",
     "detail": "In case of an emergency, a security flaw or datacenter failure, it's mandatory for you to be able to restore/create a new environment properly configured in a fully automated way",
@@ -32,7 +32,7 @@
     ]
   },
   {
-    "title": "Use availability zones",
+    "title": "Use Availability Zones if supported in your Azure region",
     "priority": "High",
     "description": "An Azure Kubernetes Service (AKS) cluster distributes resources such as the nodes and storage across logical sections of the underlying Azure compute infrastructure. This deployment model makes sure that the nodes run across separate update and fault domains in a single Azure datacenter.",
     "documentation": [
@@ -62,7 +62,7 @@
     ]
   },
   {
-    "title": "Use cross-region loadbalancing to route traffic",
+    "title": "Use Azure Traffic Manager or Azure Front Door as a global load balancer for region failover",
     "priority": "Low",
     "description": "Azure Traffic Manager can direct customers to their closest AKS cluster and application instance. For the best performance and redundancy, direct all application traffic through Traffic Manager before it goes to your AKS cluster.",
     "documentation": [
@@ -110,6 +110,10 @@
       {
         "title": "Azure Kubernetes Service (AKS) Uptime SLA",
         "url": "https://docs.microsoft.com/azure/aks/uptime-sla"
+      },
+      {
+        "title": "Business continuity / disaster recovery to protect and recover AKS",
+        "url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/scenarios/app-platform/aks/management#business-continuity--disaster-recovery-to-protect-and-recover-aks"
       }
     ],
     "tags": [
@@ -132,5 +136,22 @@
       "all",
       "resiliency"
     ]
+  },
+  {
+    "title": "If using a private registry, configure region replication to store images in multiple regions",
+    "priority": "Medium",
+    "description": "Companies that want a local presence, or a hot backup, choose to run services from multiple Azure regions.",
+    "detail": "As a best practice, placing a container registry in each region where images are run allows network-close operations, enabling fast, reliable image layer transfers. Geo-replication enables an Azure container registry to function as a single registry, serving multiple regions with multi-master regional registries.",
+    "documentation": [
+      {
+        "title": "Enable geo-replication for container images",
+        "url": "https://docs.microsoft.com/azure/container-registry/container-registry-geo-replication"
+      }
+    ],
+    "tags": [
+      "all",
+      "resiliency"
+    ]
   }
+
 ]
