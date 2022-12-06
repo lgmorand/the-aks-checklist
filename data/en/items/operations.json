@@ -404,6 +404,7 @@
     ],
     "tags": [
       "all",
+      "cost",
       "finops",
       "monitoring"
     ]
@@ -420,6 +421,7 @@
     ],
     "tags": [
       "all",
+      "cost",
       "finops",
       "monitoring",
       "compliance"
@@ -437,7 +439,7 @@
     ],
     "tags": [
       "all",
-      "finops",
+      "operations",
       "monitoring",
       "compliance"
     ]

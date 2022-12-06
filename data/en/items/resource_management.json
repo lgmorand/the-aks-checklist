@@ -54,6 +54,7 @@
     ],
     "tags": [
       "all",
+      "cost",
       "operations",
       "finops"
     ]
@@ -184,6 +185,7 @@
     ],
     "tags": [
       "all",
+      "cost",
       "finops",
       "resource management"
     ]
@@ -200,6 +202,7 @@
     ],
     "tags": [
       "all",
+      "cost",
       "finops",
       "resource management"
     ]
@@ -216,6 +219,24 @@
     ],
     "tags": [
       "all",
+      "cost",
+      "finops",
+      "resource management"
+    ]
+  },
+  {
+    "title": "If required scale NodePool snapshots",
+    "priority": "Low",
+    "description": "Node pool snapshots allow you to take a configuration snapshot of your node pool and then create new node pools or new clusters based of that snapshot for as long as that configuration and kubernetes version is supported.",
+    "documentation": [
+      {
+        "title": "AKS node pool snapshot",
+        "url": "https://learn.microsoft.com/azure/aks/node-pool-snapshot"
+      }
+    ],
+    "tags": [
+      "all",
+      "cost",
       "finops",
       "resource management"
     ]
