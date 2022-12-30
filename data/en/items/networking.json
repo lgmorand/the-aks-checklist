@@ -2,6 +2,9 @@
   {
     "title": "Choose the best CNI network plugin for your requirements (Azure CNI recommended)",
     "priority": "Medium",
+    "guid": "a0f61565-9de5-458f-a372-49c831112dbd",
+    "simple": 1,
+    "graph": "where type=='microsoft.containerservice/managedclusters' | extend compliant = (properties.networkProfile.networkPlugin=='azure') | distinct id,compliant",
     "description": "For integration with existing virtual networks or on-premises networks, use Azure CNI networking in AKS. This network model also allows greater separation of resources and controls in an enterprise environment but be aware of the impact on the network topology/IP ranges. In the future, you'll be able to use the CNI overlay model which gives more control and takes the benefits of both approachs.",
     "detail": "While Kubenet is the default Kubernetes network plugin, the Container Networking Interface (CNI) is a vendor-neutral protocol that lets the container runtime make requests to a network provider. The Azure CNI assigns IP addresses to pods and nodes, and provides IP address management (IPAM) features as you connect to existing Azure virtual networks. Each node and pod resource receives an IP address in the Azure virtual network, and no additional routing is needed to communicate with other resources or services.",
     "documentation": [
@@ -28,12 +31,15 @@
     ],
     "tags": [
       "all",
+      "IPAM",
       "network"
     ]
   },
   {
     "title": "If using Azure CNI, size your subnet accordingly considering the maximum number of pods per node",
     "priority": "High",
+    "guid": "7faf12e7-0943-4f63-8472-2da29c2b1cd6",
+    "scale": 1,
     "description": "The size of your virtual network and its subnet must accommodate the number of pods you plan to run and the number of nodes for the cluster.",
     "detail": "As an example, using CNI, you need one IP for each node + one spare for a new node in case of cluster upgrade, and you need an IP for each pod which can represent hundred of IP addresses",
     "documentation": [
@@ -50,6 +56,9 @@
   {
     "title": "Use an ingress controller to expose web-based apps instead of exposing them with LoadBalancer-type services",
     "priority": "Medium",
+    "guid": "b3808b9f-a1cf-4204-ad01-3a923ce474db",
+    "scale": 1,
+    "simple": -1,
     "description": "To distribute HTTP or HTTPS traffic to your applications, use ingress resources and controllers. Ingress controllers provide additional features over a regular Azure load balancer, and can be managed as native Kubernetes resources.",
     "documentation": [
       {
@@ -69,6 +78,10 @@
   {
     "title": "Secure your exposed applications with a web application firewall (WAF)",
     "priority": "Medium",
+    "guid": "a3a92c2d-e7e2-4165-a3a8-7af4a7a1f893",
+    "security": 2,
+    "cost": -1,
+    "simple": -1,
     "description": "If you plan to host exposed applications, to scan incoming traffic for potential attacks, use a web application firewall (WAF) such as Barracuda WAF for Azure or Azure Application Gateway. These more advanced network resources can also route traffic beyond just HTTP and HTTPS connections or basic SSL termination.",
     "documentation": [
       {
@@ -116,6 +129,9 @@
   {
     "title": "Control traffic flow with network policies",
     "priority": "Medium",
+    "security": 1,
+      "severity": "High",
+      "graph": "where type=='microsoft.containerservice/managedclusters' | extend compliant = isnotnull(properties.networkProfile.networkPolicy) | distinct id,compliant",
     "description": "Use network policies to allow or deny traffic to pods. By default, all traffic is allowed between pods within a cluster. For improved security, define rules that limit pod communication.",
     "detail": "Network policy is a Kubernetes feature that lets you control the traffic flow between pods. You can choose to allow or deny traffic based on settings such as assigned labels, namespace, or traffic port. The use of network policies gives a cloud-native way to control the flow of traffic. As pods are dynamically created in an AKS cluster, the required network policies can be automatically applied. Don't use Azure network security groups to control pod-to-pod traffic, use network policies.",
     "documentation": [
@@ -169,6 +185,11 @@
   {
     "title": "Filter egress traffic with AzFW/NVA if your security requirements mandate it (egress lockdown)",
     "priority": "Medium",
+    "guid": "3b365a91-7ecb-4e48-bbe5-4cd7df2e8bba",
+    "security": 2,
+    "simple": -2,
+    "severity": "High",
+    "graph": "where type=='microsoft.containerservice/managedclusters' | extend compliant = (properties.networkProfile.outboundType=='userDefinedRouting') | distinct id,compliant",
     "description": "Use Azure Firewall to secure and control all egress traffic going outside of the cluster.",
     "documentation": [
       {
@@ -264,6 +285,9 @@
   {
     "title": "If using Azure CNI, check the maximum pods/node (default 30)",
     "priority": "High",
+    "guid": "22f54b29-bade-43aa-b1e8-c38ec9366673",
+    "scale": 1,
+    "simple": -1,
     "description": "With Azure Container Networking Interface (CNI), every pod gets an IP address from the subnet and can be accessed directly.",
     "detail": "These IP addresses must be unique across your network space, and must be planned in advance. Each node has a configuration parameter for the maximum number of pods that it supports. ",
     "documentation": [
@@ -298,6 +322,9 @@
   {
     "title": "Use Azue NAT Gateway as outboundType for scaling egress traffic",
     "priority": "Medium",
+    "guid": "b3808b9f-a1cf-4204-ad01-3a923ce474db",
+    "scale": 1,
+    "simple": -1,
     "description": "Whilst AKS customers are able to route egress traffic through an Azure Load Balancer, there are limitations on the amount of outbound flows of traffic that is possible.",
 
     "documentation": [
@@ -315,6 +342,9 @@
   {
     "title": "Use Dynamic allocations of IPs in order to avoid Azure CNI IP exhaustion",
     "priority": "Medium",
+    "guid": "b3808b9f-a1cf-4204-ad01-3a923ce474db",
+    "scale": 1,
+    "simple": -1,
     "description": "A drawback with the traditional CNI is the exhaustion of pod IP addresses as the AKS cluster grows, resulting in the need to rebuild the entire cluster in a bigger subnet.",
     "detail":"The new dynamic IP allocation capability in Azure CNI solves this problem by allocating pod IPs from a subnet separate from the subnet hosting the AKS cluster.",
     "documentation": [
@@ -332,6 +362,9 @@
   {
     "title": "If using AGIC, do not share an AppGW across clusters",
     "priority": "Medium",
+    "guid": "cbd8ac2a-aebc-4a2a-94da-1dbf3dc99248",
+    "security": 1,
+    "simple": -1,
     "description": "The App Gateway Ingress Controller (AGIC) is a pod within your Kubernetes cluster. AGIC monitors the Kubernetes Ingress resources, and creates and applies App Gateway config based on these.",
      "documentation": [
       {
@@ -349,6 +382,10 @@
   {
     "title": "Use Private Endpoints (preferred) or Virtual Network Service Endpoints to access PaaS services from the cluster",
     "priority": "Medium",
+    "guid": "ecccd979-3b6b-4cda-9b50-eb2eb03dda6d",
+    "security": 1,
+    "simple": -1,
+    "graph": "where type=='microsoft.containerservice/managedclusters' | where isnotnull(properties.apiServerAccessProfile.enablePrivateCluster) | extend compliant = (properties.apiServerAccessProfile.enablePrivateCluster==true) | distinct id, compliant",
     "description": "This will help keep your cluster secure by limiting access from outside the virtual network to Azure PaaS services",
      "documentation": [
       {
@@ -365,6 +402,11 @@
   {
     "title": "If required add company HTTP Proxy",
     "priority": "Medium",
+    "guid": "9bda4776-8f24-4c11-9775-c2ea55b46a94",
+    "security": 2,
+    "cost": -2,
+    "severity": "Low",
+    "graph": "Resources | where type=~'microsoft.containerservice/managedclusters' | project resourceGroup,name,pools=properties.agentPoolProfiles | mv-expand pools | project subnetId=tostring(pools.vnetSubnetID) | where isnotempty(subnetId) | join (Resources | where type=='microsoft.network/virtualnetworks' | project id,resourceGroup,name,enableDdosProtection=tostring(properties.enableDdosProtection),subnets=properties.subnets | mv-expand subnets | project id,resourceGroup,name,enableDdosProtection,subnetId=tostring(subnets.id)) on subnetId | distinct id,resourceGroup,name,enableDdosProtection | extend compliant = (enableDdosProtection == 'true')",
     "description": "Http Proxy exposes a straightforward interface that cluster operators can use to secure AKS-required network traffic in proxy-dependent environments.",
      "documentation": [
       {
@@ -397,6 +439,9 @@
   {
     "title": "Consider using a service mesh for advanced microservice communication management",
     "priority": "Medium",
+    "guid": "e9855d04-c3c3-49c9-a6bb-2c12159a114b",
+    "security": 1,
+    "simple": -2,
     "description": "A service mesh provides capabilities like traffic management, resiliency, policy, security, strong identity, and observability to your workloads.",
      "documentation": [
       {
@@ -413,6 +458,9 @@
   {
     "title": "If required add your own CNI plugin",
     "priority": "Low",
+    "guid": "e9855d04-c3c3-49c9-a6bb-2c12159a114b",
+    "security": 1,
+    "simple": -2,
     "description": "A service mesh provides capabilities like traffic management, resiliency, policy, security, strong identity, and observability to your workloads.",
      "documentation": [
       {
@@ -422,6 +470,7 @@
     ],
     "tags": [
       "all",
+      "operations",
       "security",
       "network"
     ]
@@ -429,6 +478,9 @@
   {
     "title": "If using Azure CNI, consider using different Subnets for NodePools",
     "priority": "Medium",
+    "guid": "e9855d04-c3c3-49c9-a6bb-2c12159a114b",
+    "security": 1,
+    "simple": -2,
     "description": "This can address requirements such as having non-contiguous virtual network address space to split across node pools and other security reasons.",
      "documentation": [
       {

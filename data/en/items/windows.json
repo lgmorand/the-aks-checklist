@@ -83,10 +83,15 @@
     ]
   },
   {
-    "title": "Patch your nodes yourself",
+    "title": "Keep windows containers patch level in sync with host patch level",
     "priority": "High",
+    "guid": "67138b82-0102-4ce1-9ee3-01e6e882e52e",
     "description": "Windows Server nodes in AKS must be upgraded to get the latest patch fixes and updates. Windows Updates are not enabled on nodes in AKS. AKS releases new node pool images as soon as patches are available, it is the customers responsibility to upgrade node pools to stay current on patches and hotfix. ",
     "documentation": [
+      {
+        "title": "Windows container version compatibility",
+        "url": "https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility?tabs=windows-server-20H2%2Cwindows-10-20H2"
+      },
       {
         "title": "How do patch my Windows nodes? ",
         "url": "https://docs.microsoft.com/azure/aks/windows-node-limitations#how-do-patch-my-windows-nodes"
@@ -115,6 +120,9 @@
   {
     "title": "Enable Group Managed Service Accounts (GMSA) for your Windows Server nodes",
     "priority": "Medium",
+    "guid": "d2e0d5d7-71d4-41e3-910c-c57b4a4b1410",
+    "security": 1,
+    "simple": -1,
     "description": "Group Managed Service Accounts (GMSA) is a managed domain account for multiple servers that provides automatic password management, simplified service principal name (SPN) management and the ability to delegate the management to other administrators.",
     "documentation": [
       {
@@ -124,6 +132,7 @@
     ],
     "tags": [
       "all",
+      "identity",
       "windows",
       "security"
     ]
@@ -131,6 +140,8 @@
   {
     "title": "If required for AKS Windows workloads, HostProcess containers can be used",
     "priority": "Medium",
+    "guid": "785c2fa5-5b56-4ad4-a408-fe72734c476b",
+    "cost": 1,
     "description": "HostProcess / Privileged containers extend the Windows container model to enable a wider range of Kubernetes cluster management scenarios.",
     "documentation": [
       {
@@ -147,6 +158,9 @@
   {
     "title": "Taint Windows nodes",
     "priority": "low",
+    "guid": "c1881370-6f7c-44c0-b4e5-14648d2457ed",
+    "simple": -1,
+    "ha": 1,
     "description": "Adding taints, tolerations and node selectors will help avoid having pods scheduled in the wrong OS node pool",
     "documentation": [
       {

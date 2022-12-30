@@ -2,6 +2,9 @@
   {
     "title": "Scan the container image against vulnerabilities",
     "priority": "High",
+    "guid": "59bce65d-e8a0-43f9-9879-468d66a786d6",
+    "security": 1,
+    "cost": -1,
     "description": "Scan your container images to ensure there are no vulnerabilities in it",
     "documentation": [
       {
