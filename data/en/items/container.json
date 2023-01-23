@@ -2,9 +2,7 @@
   {
     "title": "Scan the container image against vulnerabilities",
     "priority": "High",
-    "guid": "59bce65d-e8a0-43f9-9879-468d66a786d6",
     "security": 1,
-    "cost": -1,
     "description": "Scan your container images to ensure there are no vulnerabilities in it",
     "documentation": [
       {
@@ -33,7 +31,11 @@
     "tags": [
       "all",
       "security"
-    ]
+    ],
+    "optionalFields": {
+      "guid": "59bce65d-e8a0-43f9-9879-468d66a786d6",
+      "cost": -1
+    }
   },
   {
     "title": "Allow deploying containers only from known registries",
@@ -56,7 +58,8 @@
     "tags": [
       "all",
       "security"
-    ]
+    ],
+    "optionalFields": {}
   },
   {
     "title": "Runtime Security of Applications",
@@ -75,7 +78,8 @@
     "tags": [
       "all",
       "security"
-    ]
+    ],
+    "optionalFields": {}
   },
   {
     "title": "Quarantine of Docker Images in Docker Registries that have discovered issues",
@@ -91,7 +95,8 @@
     "tags": [
       "all",
       "security"
-    ]
+    ],
+    "optionalFields": {}
   },
   {
     "title": "Role-Based Access Contol (RBAC) to Docker Registries",
@@ -106,7 +111,8 @@
     "tags": [
       "all",
       "security"
-    ]
+    ],
+    "optionalFields": {}
   },
   {
     "title": "Network Segmentation of Docker Registries",
@@ -122,13 +128,14 @@
       "all",
       "security",
       "network"
-    ]
+    ],
+    "optionalFields": {}
   },
   {
     "title": "Prefer distroless images",
     "priority": "Medium",
     "description": "When building a docker image, try to use the distroless version of the base OS image, to reduce the risk of vulnerabilities with preinstalled but unused tools. From example, use base-debian10 instead of debian10",
-    "detail": "'Distroless' images are bare-bones versions of common base images. They have the bare-minimum needed to execute a binary.The shell and other developer utilities have been removed so that if/when an attacker gains control of your container, they can’t do much of anything",
+    "detail": "'Distroless' images are bare-bones versions of common base images. They have the bare-minimum needed to execute a binary.The shell and other developer utilities have been removed so that if/when an attacker gains control of your container, they canâ€™t do much of anything",
     "documentation": [
       {
         "title": "Google distroless images",
@@ -138,7 +145,8 @@
     "tags": [
       "all",
       "security"
-    ]
+    ],
+    "optionalFields": {}
   },
   {
     "title": "Refresh container when base image is updated",
@@ -157,6 +165,7 @@
     "tags": [
       "all",
       "resources"
-    ]
+    ],
+    "optionalFields": {}
   }
 ]

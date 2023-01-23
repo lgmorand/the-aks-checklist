@@ -7,7 +7,6 @@ import json
 need_to_compare = False # variable used to identify if the checklist needs to be compared with the FTA checklist
 # get the mapping table that converts filename to the correct category name in FTA's checklist
 filename_map = pd.read_csv('filename_map.csv')
-filename_map.to_dict("list")
 
 # convert the mapping table to a mapping dictionary that can more easily be used
 filename_map_dict = {}

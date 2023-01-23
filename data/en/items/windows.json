@@ -16,7 +16,8 @@
     "tags": [
       "all",
       "windows"
-    ]
+    ],
+    "optionalFields": {}
   },
   {
     "title": "Prepare your application for an abrupt kill",
@@ -35,7 +36,8 @@
     "tags": [
       "all",
       "windows"
-    ]
+    ],
+    "optionalFields": {}
   },
   {
     "title": "Don't use privileged containers",
@@ -50,7 +52,8 @@
     "tags": [
       "all",
       "windows"
-    ]
+    ],
+    "optionalFields": {}
   },
   {
     "title": "Watch for memory usage",
@@ -65,7 +68,8 @@
     "tags": [
       "all",
       "windows"
-    ]
+    ],
+    "optionalFields": {}
   },
   {
     "title": "Implement CNI network mode",
@@ -80,12 +84,12 @@
     "tags": [
       "all",
       "windows"
-    ]
+    ],
+    "optionalFields": {}
   },
   {
     "title": "Keep windows containers patch level in sync with host patch level",
     "priority": "High",
-    "guid": "67138b82-0102-4ce1-9ee3-01e6e882e52e",
     "description": "Windows Server nodes in AKS must be upgraded to get the latest patch fixes and updates. Windows Updates are not enabled on nodes in AKS. AKS releases new node pool images as soon as patches are available, it is the customers responsibility to upgrade node pools to stay current on patches and hotfix. ",
     "documentation": [
       {
@@ -100,7 +104,10 @@
     "tags": [
       "all",
       "windows"
-    ]
+    ],
+    "optionalFields": {
+      "guid": "67138b82-0102-4ce1-9ee3-01e6e882e52e"
+    }
   },
   {
     "title": "Secure the traffic of your containers",
@@ -115,14 +122,13 @@
     "tags": [
       "all",
       "windows"
-    ]
+    ],
+    "optionalFields": {}
   },
   {
     "title": "Enable Group Managed Service Accounts (GMSA) for your Windows Server nodes",
     "priority": "Medium",
-    "guid": "d2e0d5d7-71d4-41e3-910c-c57b4a4b1410",
     "security": 1,
-    "simple": -1,
     "description": "Group Managed Service Accounts (GMSA) is a managed domain account for multiple servers that provides automatic password management, simplified service principal name (SPN) management and the ability to delegate the management to other administrators.",
     "documentation": [
       {
@@ -135,13 +141,15 @@
       "identity",
       "windows",
       "security"
-    ]
+    ],
+    "optionalFields": {
+      "guid": "d2e0d5d7-71d4-41e3-910c-c57b4a4b1410",
+      "simple": -1
+    }
   },
   {
     "title": "If required for AKS Windows workloads, HostProcess containers can be used",
     "priority": "Medium",
-    "guid": "785c2fa5-5b56-4ad4-a408-fe72734c476b",
-    "cost": 1,
     "description": "HostProcess / Privileged containers extend the Windows container model to enable a wider range of Kubernetes cluster management scenarios.",
     "documentation": [
       {
@@ -153,14 +161,15 @@
       "all",
       "application",
       "windows"
-    ]
+    ],
+    "optionalFields": {
+      "guid": "785c2fa5-5b56-4ad4-a408-fe72734c476b",
+      "cost": 1
+    }
   },
   {
     "title": "Taint Windows nodes",
     "priority": "low",
-    "guid": "c1881370-6f7c-44c0-b4e5-14648d2457ed",
-    "simple": -1,
-    "ha": 1,
     "description": "Adding taints, tolerations and node selectors will help avoid having pods scheduled in the wrong OS node pool",
     "documentation": [
       {
@@ -172,6 +181,11 @@
       "all",
       "compliance",
       "windows"
-    ]
+    ],
+    "optionalFields": {
+      "guid": "c1881370-6f7c-44c0-b4e5-14648d2457ed",
+      "simple": -1,
+      "ha": 1
+    }
   }
 ]
