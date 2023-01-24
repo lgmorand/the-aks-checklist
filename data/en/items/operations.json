@@ -52,7 +52,6 @@
   {
     "title": "Customize your clusters with extensions",
     "priority": "Low",
-    "graph": "where type=='microsoft.containerservice/managedclusters' | extend compliant = (isnotnull(properties.austoscalerProfile)) | distinct id,compliant",
     "description": "Cluster extensions provides an Azure Resource Manager driven experience for installation and lifecycle management of services like Azure Machine Learning (ML) on an AKS cluster. ",
     "detail": "This feature enables:Azure Resource Manager-based deployment of extensions, including at-scale deployments across AKS clusters but also lifecycle management of the extension (Update, Delete) from Azure Resource Manager.",
     "documentation": [
@@ -68,13 +67,13 @@
     "optionalFields": {
       "guid": "90ce65de-8e13-4f9c-abd4-69266abca264",
       "ha": 1,
-      "cost": -1
+      "cost": -1,
+      "graph": "where type=='microsoft.containerservice/managedclusters' | extend compliant = (isnotnull(properties.austoscalerProfile)) | distinct id,compliant"
     }
   },
   {
     "title": "Customize the name of the MC_ resource group",
     "priority": "Low",
-    "graph": "where type=='microsoft.containerservice/managedclusters' | extend compliant = (properties.nodeResourceGroup !startswith 'MC_') | distinct id,compliant",
     "description": "When creating a new AKS cluster, the MC_ resource group is created by default. You can customize the name of the MC_ resource group.",
     "documentation": [
       {
@@ -88,7 +87,8 @@
     ],
     "optionalFields": {
       "guid": "73b32a5a-67f7-4a9e-b5b3-1f38c3f39812",
-      "simple": 1
+      "simple": 1,
+      "graph": "where type=='microsoft.containerservice/managedclusters' | extend compliant = (properties.nodeResourceGroup !startswith 'MC_') | distinct id,compliant"
     }
   },
   {
@@ -526,7 +526,6 @@
   {
     "title": "Store and analyze your cluster logs with Container Insights (or other tools like Telegraf/ElasticSearch)",
     "priority": "High",
-    "graph": "where type=='microsoft.containerservice/managedclusters' | extend compliant = (isnotnull(properties.addonProfiles.omsagent) and properties.addonProfiles.omsagent.enabled==true) | distinct id,compliant",
     "description": "Monitoring the logs from your cluster can help prevent issues and identify areas of improvements",
     "documentation": [
       {
@@ -542,13 +541,13 @@
     "optionalFields": {
       "guid": "eaa8dc4a-2436-47b3-9697-15b1752beee0",
       "simple": -1,
-      "ha": 1
+      "ha": 1,
+      "graph": "where type=='microsoft.containerservice/managedclusters' | extend compliant = (isnotnull(properties.addonProfiles.omsagent) and properties.addonProfiles.omsagent.enabled==true) | distinct id,compliant"
     }
   },
   {
     "title": "Consider AKS virtual node for quick bursting",
     "priority": "Low",
-    "graph": "where type=='microsoft.containerservice/managedclusters' | extend compliant = (isnotnull(properties.addonProfiles.aciConnectorLinux) and properties.addonProfiles.aciConnectorLinux.enabled==true) | distinct id,compliant",
     "description": "Virtual nodes with ACI can help speed up scaling",
     "documentation": [
       {
@@ -563,7 +562,8 @@
     "optionalFields": {
       "guid": "c755562f-2b4e-4456-9b4d-874a748b662e",
       "scale": 1,
-      "simple": -1
+      "simple": -1,
+      "graph": "where type=='microsoft.containerservice/managedclusters' | extend compliant = (isnotnull(properties.addonProfiles.aciConnectorLinux) and properties.addonProfiles.aciConnectorLinux.enabled==true) | distinct id,compliant"
     }
   },
   {

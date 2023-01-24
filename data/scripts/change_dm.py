@@ -12,7 +12,7 @@ for file in os.listdir(dir_path):
         filenames.append(file)
 
 
-def move_optional(dictionary,optionals = ["guid","scale","simple","ha","cost"]):
+def move_optional(dictionary,optionals = ["guid","scale","simple","ha","cost","graph"]):
     dic = {}
     for optional in optionals:
         try:

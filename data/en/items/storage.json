@@ -95,7 +95,6 @@
   {
     "title": "Use ephemeral OS disks",
     "priority": "High",
-    "graph": "where type=='microsoft.containerservice/managedclusters' | project id,resourceGroup,name,pools=properties.agentPoolProfiles | mvexpand pools | extend compliant = (pools.osDiskType=='Ephemeral') | project id,name=strcat(name,'-',pools.name), resourceGroup, compliant",
     "description": " With ephemeral OS disks, you see lower read/write latency on the OS disk of AKS agent nodes since the disk is locally attached.",
     "detail": "You will also get faster cluster operations like scale or upgrade thanks to faster re-imaging and boot times",
     "documentation": [
@@ -112,7 +111,8 @@
     "optionalFields": {
       "guid": "24367b33-6971-45b1-952b-eee0b9b588de",
       "scale": 1,
-      "cost": -1
+      "cost": -1,
+      "graph": "where type=='microsoft.containerservice/managedclusters' | project id,resourceGroup,name,pools=properties.agentPoolProfiles | mvexpand pools | extend compliant = (pools.osDiskType=='Ephemeral') | project id,name=strcat(name,'-',pools.name), resourceGroup, compliant"
     }
   },
   {

@@ -34,7 +34,7 @@
   {
     "title": "Implement a proper Readiness probe",
     "priority": "Medium",
-    "description": "Sometimes, applications are temporarily unable to serve traffic. For example, an application might need to load large data or configuration files during startup, or depend on external services after startup. In such cases, you don't want to kill the application, but you donâ€™t want to send it requests either. Kubernetes provides readiness probes to detect and mitigate these situations. A pod with containers reporting that they are not ready does not receive traffic through Kubernetes Services.",
+    "description": "Sometimes, applications are temporarily unable to serve traffic. For example, an application might need to load large data or configuration files during startup, or depend on external services after startup. In such cases, you donâ€™t want to kill the application, but you donâ€™t want to send it requests either. Kubernetes provides readiness probes to detect and mitigate these situations. A pod with containers reporting that they are not ready does not receive traffic through Kubernetes Services.",
     "documentation": [
       {
         "title": "Configure Liveness, Readiness and Startup Probes",
@@ -119,12 +119,11 @@
       "all",
       "resiliency"
     ],
-    "others": {
+    "optionalFields": {
       "guid": "faa19bfe-9d55-4d04-a3c4-919ca1b2d121",
       "scale": 1,
       "simple": -1
-    },
-    "optionalFields": {}
+    }
   },
   {
     "title": "Store your secrets in Azure Key Vault, don't inject passwords in Docker Images",

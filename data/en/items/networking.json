@@ -2,7 +2,6 @@
   {
     "title": "Choose the best CNI network plugin for your requirements (Azure CNI recommended)",
     "priority": "Medium",
-    "graph": "where type=='microsoft.containerservice/managedclusters' | extend compliant = (properties.networkProfile.networkPlugin=='azure') | distinct id,compliant",
     "description": "For integration with existing virtual networks or on-premises networks, use Azure CNI networking in AKS. This network model also allows greater separation of resources and controls in an enterprise environment but be aware of the impact on the network topology/IP ranges. In the future, you'll be able to use the CNI overlay model which gives more control and takes the benefits of both approachs.",
     "detail": "While Kubenet is the default Kubernetes network plugin, the Container Networking Interface (CNI) is a vendor-neutral protocol that lets the container runtime make requests to a network provider. The Azure CNI assigns IP addresses to pods and nodes, and provides IP address management (IPAM) features as you connect to existing Azure virtual networks. Each node and pod resource receives an IP address in the Azure virtual network, and no additional routing is needed to communicate with other resources or services.",
     "documentation": [
@@ -34,7 +33,8 @@
     ],
     "optionalFields": {
       "guid": "a0f61565-9de5-458f-a372-49c831112dbd",
-      "simple": 1
+      "simple": 1,
+      "graph": "where type=='microsoft.containerservice/managedclusters' | extend compliant = (properties.networkProfile.networkPlugin=='azure') | distinct id,compliant"
     }
   },
   {
@@ -141,7 +141,6 @@
     "priority": "Medium",
     "security": 1,
     "severity": "High",
-    "graph": "where type=='microsoft.containerservice/managedclusters' | extend compliant = isnotnull(properties.networkProfile.networkPolicy) | distinct id,compliant",
     "description": "Use network policies to allow or deny traffic to pods. By default, all traffic is allowed between pods within a cluster. For improved security, define rules that limit pod communication.",
     "detail": "Network policy is a Kubernetes feature that lets you control the traffic flow between pods. You can choose to allow or deny traffic based on settings such as assigned labels, namespace, or traffic port. The use of network policies gives a cloud-native way to control the flow of traffic. As pods are dynamically created in an AKS cluster, the required network policies can be automatically applied. Don't use Azure network security groups to control pod-to-pod traffic, use network policies.",
     "documentation": [
@@ -170,7 +169,9 @@
       "network",
       "multi-tenancy"
     ],
-    "optionalFields": {}
+    "optionalFields": {
+      "graph": "where type=='microsoft.containerservice/managedclusters' | extend compliant = isnotnull(properties.networkProfile.networkPolicy) | distinct id,compliant"
+    }
   },
   {
     "title": "Configure default network policies in each namespace",
@@ -199,7 +200,6 @@
     "priority": "Medium",
     "security": 2,
     "severity": "High",
-    "graph": "where type=='microsoft.containerservice/managedclusters' | extend compliant = (properties.networkProfile.outboundType=='userDefinedRouting') | distinct id,compliant",
     "description": "Use Azure Firewall to secure and control all egress traffic going outside of the cluster.",
     "documentation": [
       {
@@ -214,7 +214,8 @@
     ],
     "optionalFields": {
       "guid": "3b365a91-7ecb-4e48-bbe5-4cd7df2e8bba",
-      "simple": -2
+      "simple": -2,
+      "graph": "where type=='microsoft.containerservice/managedclusters' | extend compliant = (properties.networkProfile.outboundType=='userDefinedRouting') | distinct id,compliant"
     }
   },
   {
@@ -408,7 +409,6 @@
     "title": "Use Private Endpoints (preferred) or Virtual Network Service Endpoints to access PaaS services from the cluster",
     "priority": "Medium",
     "security": 1,
-    "graph": "where type=='microsoft.containerservice/managedclusters' | where isnotnull(properties.apiServerAccessProfile.enablePrivateCluster) | extend compliant = (properties.apiServerAccessProfile.enablePrivateCluster==true) | distinct id, compliant",
     "description": "This will help keep your cluster secure by limiting access from outside the virtual network to Azure PaaS services",
     "documentation": [
       {
@@ -423,7 +423,8 @@
     ],
     "optionalFields": {
       "guid": "ecccd979-3b6b-4cda-9b50-eb2eb03dda6d",
-      "simple": -1
+      "simple": -1,
+      "graph": "where type=='microsoft.containerservice/managedclusters' | where isnotnull(properties.apiServerAccessProfile.enablePrivateCluster) | extend compliant = (properties.apiServerAccessProfile.enablePrivateCluster==true) | distinct id, compliant"
     }
   },
   {
@@ -431,7 +432,6 @@
     "priority": "Medium",
     "security": 2,
     "severity": "Low",
-    "graph": "Resources | where type=~'microsoft.containerservice/managedclusters' | project resourceGroup,name,pools=properties.agentPoolProfiles | mv-expand pools | project subnetId=tostring(pools.vnetSubnetID) | where isnotempty(subnetId) | join (Resources | where type=='microsoft.network/virtualnetworks' | project id,resourceGroup,name,enableDdosProtection=tostring(properties.enableDdosProtection),subnets=properties.subnets | mv-expand subnets | project id,resourceGroup,name,enableDdosProtection,subnetId=tostring(subnets.id)) on subnetId | distinct id,resourceGroup,name,enableDdosProtection | extend compliant = (enableDdosProtection == 'true')",
     "description": "Http Proxy exposes a straightforward interface that cluster operators can use to secure AKS-required network traffic in proxy-dependent environments.",
     "documentation": [
       {
@@ -446,7 +446,8 @@
     ],
     "optionalFields": {
       "guid": "9bda4776-8f24-4c11-9775-c2ea55b46a94",
-      "cost": -2
+      "cost": -2,
+      "graph": "Resources | where type=~'microsoft.containerservice/managedclusters' | project resourceGroup,name,pools=properties.agentPoolProfiles | mv-expand pools | project subnetId=tostring(pools.vnetSubnetID) | where isnotempty(subnetId) | join (Resources | where type=='microsoft.network/virtualnetworks' | project id,resourceGroup,name,enableDdosProtection=tostring(properties.enableDdosProtection),subnets=properties.subnets | mv-expand subnets | project id,resourceGroup,name,enableDdosProtection,subnetId=tostring(subnets.id)) on subnetId | distinct id,resourceGroup,name,enableDdosProtection | extend compliant = (enableDdosProtection == 'true')"
     }
   },
   {

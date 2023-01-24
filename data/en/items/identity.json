@@ -3,7 +3,6 @@
     "title": "Integrate authentication with AAD (using the managed integration)",
     "priority": "High",
     "severity": "Medium",
-    "graph": "where type=='microsoft.containerservice/managedclusters' | extend compliant = isnotnull(properties.aadProfile) | distinct id,compliant",
     "description": "Azure Kubernetes Service (AKS) can be configured to use Azure Active Directory (Azure AD) for user authentication. In this configuration, you can sign in to an AKS cluster by using your Azure AD authentication token.",
     "documentation": [
       {
@@ -22,7 +21,8 @@
     ],
     "optionalFields": {
       "guid": "7e42c78e-78c0-46a6-8a21-94956e698dc4",
-      "simple": 1
+      "simple": 1,
+      "graph": "where type=='microsoft.containerservice/managedclusters' | extend compliant = isnotnull(properties.aadProfile) | distinct id,compliant"
     }
   },
   {
@@ -67,7 +67,6 @@
   {
     "title": "Use managed identities instead of Service Principals",
     "priority": "High",
-    "graph": "where type=='microsoft.containerservice/managedclusters' | extend compliant = (properties.servicePrincipalProfile.clientId=='msi') | distinct id,compliant",
     "description": "Each AKS cluster needs either a Managed Identity or Service Principal.  We recommend using Managed Identity in AKS",
     "documentation": [
       {
@@ -82,7 +81,8 @@
     ],
     "optionalFields": {
       "guid": "ed127dd1-42b0-46b2-8c69-99a646f3389a",
-      "simple": 1
+      "simple": 1,
+      "graph": "where type=='microsoft.containerservice/managedclusters' | extend compliant = (properties.servicePrincipalProfile.clientId=='msi') | distinct id,compliant"
     }
   },
   {
