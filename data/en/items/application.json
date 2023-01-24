@@ -128,7 +128,6 @@
   {
     "title": "Store your secrets in Azure Key Vault, don't inject passwords in Docker Images",
     "priority": "High",
-    "security": 1,
     "description": "Secrets are not encrypted in etcd, prefer to store your secrets in a proper HSM like Azure Key Vault. You can then inject secrets using CSI provider.",
     "documentation": [
       {
@@ -146,13 +145,13 @@
     ],
     "optionalFields": {
       "guid": "5e3df584-eccc-4d97-a3b6-bcda3b50eb2e",
-      "simple": -1
+      "simple": -1,
+      "security": 1
     }
   },
   {
     "title": "Implement Azure Workload Identity",
     "priority": "Medium",
-    "security": 1,
     "description": "Don't use fixed credentials within pods or container images, as they are at risk of exposure or abuse. Instead, use workload identity federation to access Azure Active Directory (Azure AD) protected resources without needing to manage secrets ",
     "detail": "When pods need access to other Azure services, such as Cosmos DB, Key Vault, or Blob Storage, the pod needs access credentials. These access credentials could be defined with the container image or injected as a Kubernetes secret, but need to be manually created and assigned. Often, the credentials are reused across pods, and aren't regularly rotated. Managed identities for Azure resources (currently implemented as an associated AKS open source project) let you automatically request access to services through Azure AD. You don't manually define credentials for pods, instead they request an access token in real time, and can use it to access only their assigned services.",
     "documentation": [
@@ -173,7 +172,8 @@
     ],
     "optionalFields": {
       "guid": "d2e0d5d7-71d4-41e3-910c-c57b4a4b1410",
-      "simple": -1
+      "simple": -1,
+      "security": 1
     }
   },
   {

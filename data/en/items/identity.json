@@ -28,7 +28,6 @@
   {
     "title": "Integrate authorization with AAD RBAC",
     "priority": "High",
-    "security": 1,
     "description": "Control access to cluster resources using Kubernetes role-based access control and Azure Active Directory identities in Azure Kubernetes Service",
     "documentation": [
       {
@@ -43,7 +42,8 @@
     ],
     "optionalFields": {
       "guid": "eec4962c-c3bd-421b-b77f-26e5e6b3bec3",
-      "simple": -1
+      "simple": -1,
+      "security": 1
     }
   },
   {
@@ -88,7 +88,6 @@
   {
     "title": "Limit access to admin kubeconfig (get-credentials --admin)",
     "priority": "Medium",
-    "security": 1,
     "description": "To limit who can get that Kubernetes configuration (kubeconfig) information and to limit the permissions they then have, you can use Azure role-based access control (Azure RBAC).",
     "documentation": [
       {
@@ -103,13 +102,13 @@
     ],
     "optionalFields": {
       "guid": "a2fe27b2-e287-401a-8352-beedf79b488d",
-      "simple": -1
+      "simple": -1,
+      "security": 1
     }
   },
   {
     "title": "For AKS non-interactive logins use kubelogin",
     "priority": "Medium",
-    "security": 1,
     "description": " You can use kubelogin to access the cluster with non-interactive service principal sign-in.",
     "documentation": [
       {
@@ -124,13 +123,13 @@
     ],
     "optionalFields": {
       "guid": "d2e0d5d7-71d4-41e3-910c-c57b4a4b1410",
-      "simple": -1
+      "simple": -1,
+      "security": 1
     }
   },
   {
     "title": "Disable AKS local accounts",
     "priority": "Medium",
-    "security": 1,
     "description": "AKS offers users the ability to disable local accounts via a flag, disable-local-accounts",
     "documentation": [
       {
@@ -145,13 +144,13 @@
     ],
     "optionalFields": {
       "guid": "d2e0d5d7-71d4-41e3-910c-c57b4a4b1410",
-      "simple": -1
+      "simple": -1,
+      "security": 1
     }
   },
   {
     "title": "Configure if required Just-in-time cluster access",
     "priority": "Low",
-    "security": 1,
     "description": "AKS offers users the ability to enable access for a limited time",
     "documentation": [
       {
@@ -166,13 +165,13 @@
     ],
     "optionalFields": {
       "guid": "d2e0d5d7-71d4-41e3-910c-c57b4a4b1410",
-      "simple": -1
+      "simple": -1,
+      "security": 1
     }
   },
   {
     "title": "For finer control consider using a managed Kubelet Identity",
     "priority": "Low",
-    "security": 1,
     "description": "A Kubelet identity enables access granted to the existing identity prior to cluster creation.",
     "documentation": [
       {
@@ -187,7 +186,8 @@
     ],
     "optionalFields": {
       "guid": "d2e0d5d7-71d4-41e3-910c-c57b4a4b1410",
-      "simple": -1
+      "simple": -1,
+      "security": 1
     }
   }
 ]

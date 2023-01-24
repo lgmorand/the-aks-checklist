@@ -128,7 +128,6 @@
   {
     "title": "Enable Group Managed Service Accounts (GMSA) for your Windows Server nodes",
     "priority": "Medium",
-    "security": 1,
     "description": "Group Managed Service Accounts (GMSA) is a managed domain account for multiple servers that provides automatic password management, simplified service principal name (SPN) management and the ability to delegate the management to other administrators.",
     "documentation": [
       {
@@ -144,7 +143,8 @@
     ],
     "optionalFields": {
       "guid": "d2e0d5d7-71d4-41e3-910c-c57b4a4b1410",
-      "simple": -1
+      "simple": -1,
+      "security": 1
     }
   },
   {

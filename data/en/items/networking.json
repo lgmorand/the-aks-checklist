@@ -84,7 +84,6 @@
   {
     "title": "Secure your exposed applications with a web application firewall (WAF)",
     "priority": "Medium",
-    "security": 2,
     "description": "If you plan to host exposed applications, to scan incoming traffic for potential attacks, use a web application firewall (WAF) such as Barracuda WAF for Azure or Azure Application Gateway. These more advanced network resources can also route traffic beyond just HTTP and HTTPS connections or basic SSL termination.",
     "documentation": [
       {
@@ -99,7 +98,8 @@
     "optionalFields": {
       "guid": "a3a92c2d-e7e2-4165-a3a8-7af4a7a1f893",
       "simple": -1,
-      "cost": -1
+      "cost": -1,
+      "security": 2
     }
   },
   {
@@ -139,7 +139,6 @@
   {
     "title": "Control traffic flow with network policies",
     "priority": "Medium",
-    "security": 1,
     "severity": "High",
     "description": "Use network policies to allow or deny traffic to pods. By default, all traffic is allowed between pods within a cluster. For improved security, define rules that limit pod communication.",
     "detail": "Network policy is a Kubernetes feature that lets you control the traffic flow between pods. You can choose to allow or deny traffic based on settings such as assigned labels, namespace, or traffic port. The use of network policies gives a cloud-native way to control the flow of traffic. As pods are dynamically created in an AKS cluster, the required network policies can be automatically applied. Don't use Azure network security groups to control pod-to-pod traffic, use network policies.",
@@ -170,7 +169,8 @@
       "multi-tenancy"
     ],
     "optionalFields": {
-      "graph": "where type=='microsoft.containerservice/managedclusters' | extend compliant = isnotnull(properties.networkProfile.networkPolicy) | distinct id,compliant"
+      "graph": "where type=='microsoft.containerservice/managedclusters' | extend compliant = isnotnull(properties.networkProfile.networkPolicy) | distinct id,compliant",
+      "security": 1
     }
   },
   {
@@ -198,7 +198,6 @@
   {
     "title": "Filter egress traffic with AzFW/NVA if your security requirements mandate it (egress lockdown)",
     "priority": "Medium",
-    "security": 2,
     "severity": "High",
     "description": "Use Azure Firewall to secure and control all egress traffic going outside of the cluster.",
     "documentation": [
@@ -215,7 +214,8 @@
     "optionalFields": {
       "guid": "3b365a91-7ecb-4e48-bbe5-4cd7df2e8bba",
       "simple": -2,
-      "graph": "where type=='microsoft.containerservice/managedclusters' | extend compliant = (properties.networkProfile.outboundType=='userDefinedRouting') | distinct id,compliant"
+      "graph": "where type=='microsoft.containerservice/managedclusters' | extend compliant = (properties.networkProfile.outboundType=='userDefinedRouting') | distinct id,compliant",
+      "security": 2
     }
   },
   {
@@ -386,7 +386,6 @@
   {
     "title": "If using AGIC, do not share an AppGW across clusters",
     "priority": "Medium",
-    "security": 1,
     "description": "The App Gateway Ingress Controller (AGIC) is a pod within your Kubernetes cluster. AGIC monitors the Kubernetes Ingress resources, and creates and applies App Gateway config based on these.",
     "documentation": [
       {
@@ -402,13 +401,13 @@
     ],
     "optionalFields": {
       "guid": "cbd8ac2a-aebc-4a2a-94da-1dbf3dc99248",
-      "simple": -1
+      "simple": -1,
+      "security": 1
     }
   },
   {
     "title": "Use Private Endpoints (preferred) or Virtual Network Service Endpoints to access PaaS services from the cluster",
     "priority": "Medium",
-    "security": 1,
     "description": "This will help keep your cluster secure by limiting access from outside the virtual network to Azure PaaS services",
     "documentation": [
       {
@@ -424,13 +423,13 @@
     "optionalFields": {
       "guid": "ecccd979-3b6b-4cda-9b50-eb2eb03dda6d",
       "simple": -1,
-      "graph": "where type=='microsoft.containerservice/managedclusters' | where isnotnull(properties.apiServerAccessProfile.enablePrivateCluster) | extend compliant = (properties.apiServerAccessProfile.enablePrivateCluster==true) | distinct id, compliant"
+      "graph": "where type=='microsoft.containerservice/managedclusters' | where isnotnull(properties.apiServerAccessProfile.enablePrivateCluster) | extend compliant = (properties.apiServerAccessProfile.enablePrivateCluster==true) | distinct id, compliant",
+      "security": 1
     }
   },
   {
     "title": "If required add company HTTP Proxy",
     "priority": "Medium",
-    "security": 2,
     "severity": "Low",
     "description": "Http Proxy exposes a straightforward interface that cluster operators can use to secure AKS-required network traffic in proxy-dependent environments.",
     "documentation": [
@@ -447,7 +446,8 @@
     "optionalFields": {
       "guid": "9bda4776-8f24-4c11-9775-c2ea55b46a94",
       "cost": -2,
-      "graph": "Resources | where type=~'microsoft.containerservice/managedclusters' | project resourceGroup,name,pools=properties.agentPoolProfiles | mv-expand pools | project subnetId=tostring(pools.vnetSubnetID) | where isnotempty(subnetId) | join (Resources | where type=='microsoft.network/virtualnetworks' | project id,resourceGroup,name,enableDdosProtection=tostring(properties.enableDdosProtection),subnets=properties.subnets | mv-expand subnets | project id,resourceGroup,name,enableDdosProtection,subnetId=tostring(subnets.id)) on subnetId | distinct id,resourceGroup,name,enableDdosProtection | extend compliant = (enableDdosProtection == 'true')"
+      "graph": "Resources | where type=~'microsoft.containerservice/managedclusters' | project resourceGroup,name,pools=properties.agentPoolProfiles | mv-expand pools | project subnetId=tostring(pools.vnetSubnetID) | where isnotempty(subnetId) | join (Resources | where type=='microsoft.network/virtualnetworks' | project id,resourceGroup,name,enableDdosProtection=tostring(properties.enableDdosProtection),subnets=properties.subnets | mv-expand subnets | project id,resourceGroup,name,enableDdosProtection,subnetId=tostring(subnets.id)) on subnetId | distinct id,resourceGroup,name,enableDdosProtection | extend compliant = (enableDdosProtection == 'true')",
+      "security": 2
     }
   },
   {
@@ -470,7 +470,6 @@
   {
     "title": "Consider using a service mesh for advanced microservice communication management",
     "priority": "Medium",
-    "security": 1,
     "description": "A service mesh provides capabilities like traffic management, resiliency, policy, security, strong identity, and observability to your workloads.",
     "documentation": [
       {
@@ -485,13 +484,13 @@
     ],
     "optionalFields": {
       "guid": "e9855d04-c3c3-49c9-a6bb-2c12159a114b",
-      "simple": -2
+      "simple": -2,
+      "security": 1
     }
   },
   {
     "title": "If required add your own CNI plugin",
     "priority": "Low",
-    "security": 1,
     "description": "A service mesh provides capabilities like traffic management, resiliency, policy, security, strong identity, and observability to your workloads.",
     "documentation": [
       {
@@ -507,13 +506,13 @@
     ],
     "optionalFields": {
       "guid": "e9855d04-c3c3-49c9-a6bb-2c12159a114b",
-      "simple": -2
+      "simple": -2,
+      "security": 1
     }
   },
   {
     "title": "If using Azure CNI, consider using different Subnets for NodePools",
     "priority": "Medium",
-    "security": 1,
     "description": "This can address requirements such as having non-contiguous virtual network address space to split across node pools and other security reasons.",
     "documentation": [
       {
@@ -528,7 +527,8 @@
     ],
     "optionalFields": {
       "guid": "e9855d04-c3c3-49c9-a6bb-2c12159a114b",
-      "simple": -2
+      "simple": -2,
+      "security": 1
     }
   }
 ]
