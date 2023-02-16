@@ -29,8 +29,7 @@
       "security",
       "operations",
       "windows"
-    ],
-    "optionalFields": {}
+    ]
   },
   {
     "title": "Use placement proximity group to improve performance",
@@ -46,12 +45,15 @@
     "tags": [
       "all",
       "operations"
-    ],
-    "optionalFields": {}
+    ]
   },
   {
     "title": "Customize your clusters with extensions",
     "priority": "Low",
+    "guid": "90ce65de-8e13-4f9c-abd4-69266abca264",
+    "cost": -1,
+    "ha": 1,
+    "graph": "where type=='microsoft.containerservice/managedclusters' | extend compliant = (isnotnull(properties.austoscalerProfile)) | distinct id,compliant",
     "description": "Cluster extensions provides an Azure Resource Manager driven experience for installation and lifecycle management of services like Azure Machine Learning (ML) on an AKS cluster. ",
     "detail": "This feature enables:Azure Resource Manager-based deployment of extensions, including at-scale deployments across AKS clusters but also lifecycle management of the extension (Update, Delete) from Azure Resource Manager.",
     "documentation": [
@@ -63,17 +65,14 @@
     "tags": [
       "all",
       "operations"
-    ],
-    "optionalFields": {
-      "guid": "90ce65de-8e13-4f9c-abd4-69266abca264",
-      "ha": 1,
-      "cost": -1,
-      "graph": "where type=='microsoft.containerservice/managedclusters' | extend compliant = (isnotnull(properties.austoscalerProfile)) | distinct id,compliant"
-    }
+    ]
   },
   {
     "title": "Customize the name of the MC_ resource group",
     "priority": "Low",
+    "guid": "73b32a5a-67f7-4a9e-b5b3-1f38c3f39812",
+    "simple": 1,
+    "graph": "where type=='microsoft.containerservice/managedclusters' | extend compliant = (properties.nodeResourceGroup !startswith 'MC_') | distinct id,compliant",
     "description": "When creating a new AKS cluster, the MC_ resource group is created by default. You can customize the name of the MC_ resource group.",
     "documentation": [
       {
@@ -84,12 +83,7 @@
     "tags": [
       "all",
       "operations"
-    ],
-    "optionalFields": {
-      "guid": "73b32a5a-67f7-4a9e-b5b3-1f38c3f39812",
-      "simple": 1,
-      "graph": "where type=='microsoft.containerservice/managedclusters' | extend compliant = (properties.nodeResourceGroup !startswith 'MC_') | distinct id,compliant"
-    }
+    ]
   },
   {
     "title": "Securely connect to nodes through a bastion host",
@@ -105,8 +99,7 @@
       "all",
       "security",
       "operations"
-    ],
-    "optionalFields": {}
+    ]
   },
   {
     "title": "Regularly check for cluster issues ",
@@ -129,8 +122,7 @@
     "tags": [
       "all",
       "operations"
-    ],
-    "optionalFields": {}
+    ]
   },
   {
     "title": "Provision a log aggregation tool",
@@ -160,12 +152,14 @@
       "all",
       "monitoring",
       "operations"
-    ],
-    "optionalFields": {}
+    ]
   },
   {
     "title": "Monitor your cluster metrics with Container Insights (or other tools like Prometheus)",
     "priority": "High",
+    "guid": "6f8389a7-f82c-4b8e-a8c0-aa63a25a4956",
+    "simple": -1,
+    "ha": 1,
     "description": "If default integration can collect telemetry data and basic metrics (CPU/Memory), they don't collect custom metrics and more detailed information. It's often necessary to install a 3rd party software (prometheus is recommend within Kubernetes) and they store these metrics to exploit them.",
     "detail": "Typically, to use Prometheus, you need to set up and manage a Prometheus server with a store. By integrating with Azure Monitor, a Prometheus server is not required. You just need to expose the Prometheus metrics endpoint through your exporters or pods (application), and the containerized agent for Azure Monitor for containers can scrape the metrics for you.",
     "documentation": [
@@ -182,12 +176,7 @@
       "all",
       "monitoring",
       "operations"
-    ],
-    "optionalFields": {
-      "guid": "6f8389a7-f82c-4b8e-a8c0-aa63a25a4956",
-      "simple": -1,
-      "ha": 1
-    }
+    ]
   },
   {
     "title": "Configure distributed tracing",
@@ -207,8 +196,7 @@
       "all",
       "monitoring",
       "operations"
-    ],
-    "optionalFields": {}
+    ]
   },
   {
     "title": "Set Upgrade Channel",
@@ -223,12 +211,14 @@
     "tags": [
       "all",
       "operations"
-    ],
-    "optionalFields": {}
+    ]
   },
   {
     "title": "Enable cluster autoscaling",
     "priority": "Medium",
+    "guid": "90ce65de-8e13-4f9c-abd4-69266abca264",
+    "cost": -1,
+    "ha": 1,
     "description": "To keep up with application demands in Azure Kubernetes Service (AKS), you may need to adjust the number of nodes that run your workloads. The cluster autoscaler component can watch for pods in your cluster that can't be scheduled because of resource constraints.",
     "detail": "You can enable autoscaling module per node pool but only create one mutual autoscale profile",
     "documentation": [
@@ -236,7 +226,7 @@
         "title": "AKS Autoscaler",
         "url": "https://docs.microsoft.com/azure/aks/cluster-autoscaler"
       },
-      {
+      { 
         "title": "Cluster autoscaler",
         "url": "https://learn.microsoft.com/en-us/azure/aks/concepts-scale#cluster-autoscaler"
       }
@@ -245,16 +235,12 @@
       "all",
       "resources",
       "finops"
-    ],
-    "optionalFields": {
-      "guid": "90ce65de-8e13-4f9c-abd4-69266abca264",
-      "ha": 1,
-      "cost": -1
-    }
+    ]
   },
   {
     "title": "Use GitOps to deploy workloads in your cluster",
     "priority": "High",
+    "guid": "0102ce16-ee30-41e6-b882-e52e4621dd68",
     "description": "GitOps works by using Git as a single source of truth for declarative infrastructure and applications",
     "detail": "On Azure you can for instance use Azure Arc for Kubernetes but also directly GitOps addon for AKS",
     "documentation": [
@@ -274,10 +260,7 @@
     "tags": [
       "all",
       "operations"
-    ],
-    "optionalFields": {
-      "guid": "0102ce16-ee30-41e6-b882-e52e4621dd68"
-    }
+    ]
   },
   {
     "title": "Implement CI/CD to deploy workloads in your cluster",
@@ -300,8 +283,7 @@
     "tags": [
       "all",
       "operations"
-    ],
-    "optionalFields": {}
+    ]
   },
   {
     "title": "Improve efficiency with K8S Tools",
@@ -332,8 +314,7 @@
     "tags": [
       "all",
       "operations"
-    ],
-    "optionalFields": {}
+    ]
   },
   {
     "title": "Don't use the default namespace",
@@ -342,8 +323,7 @@
     "tags": [
       "all",
       "operations"
-    ],
-    "optionalFields": {}
+    ]
   },
   {
     "title": "Apply different types of labels to all resources",
@@ -359,8 +339,7 @@
       "all",
       "multi-tenancy",
       "operations"
-    ],
-    "optionalFields": {}
+    ]
   },
   {
     "title": "Fine tune your node configuration",
@@ -375,12 +354,12 @@
     ],
     "tags": [
       "all"
-    ],
-    "optionalFields": {}
+    ]
   },
   {
     "title": "Consider using AKS command invoke on private clusters",
     "priority": "Low",
+    "guid": "0102ce16-ee30-41e6-b882-e52e4621dd68",
     "description": "You can use command invoke to access private clusters without having to configure a VPN or Express Route",
     "detail": "Using command invoke allows you to remotely invoke commands like kubectl and helm on your private cluster through the Azure API without directly connecting to the cluster.",
     "documentation": [
@@ -392,17 +371,17 @@
     "tags": [
       "all",
       "compliance"
-    ],
-    "optionalFields": {
-      "guid": "0102ce16-ee30-41e6-b882-e52e4621dd68"
-    }
+    ]
   },
   {
     "title": "Monitor CPU and memory utilization of the nodes",
     "priority": "Medium",
+    "guid": "4621dd68-c5a5-4be2-bdb1-1726769ef669",
+    "simple": -1,
+    "ha": 1,
     "description": "With Container insights, you can use the performance charts and health status to monitor the workload of Kubernetes clusters hosted on AKS",
     "documentation": [
-      {
+      { 
         "title": "Monitor your Kubernetes cluster performance",
         "url": "https://learn.microsoft.com/azure/azure-monitor/containers/container-insights-analyze"
       }
@@ -410,23 +389,21 @@
     "tags": [
       "all",
       "monitoring"
-    ],
-    "optionalFields": {
-      "guid": "4621dd68-c5a5-4be2-bdb1-1726769ef669",
-      "simple": -1,
-      "ha": 1
-    }
+    ]
   },
   {
     "title": "Send master logs (aka API logs) to Azure Monitor or your preferred log management solution",
     "priority": "High",
+    "guid": "5b56ad48-408f-4e72-934c-476ba280dcf5",
+    "cost": -1,
+    "ha": 1,
     "description": "To help troubleshoot your application and services, you may need to view the logs generated by the master components. Be aware that if you don't enable these logs, there is no way for Microsoft to retrieve them for you",
     "documentation": [
       {
         "title": "Enable and review Kubernetes master node logs",
         "url": "https://docs.microsoft.com/azure/aks/view-control-plane-logs"
       },
-      {
+      { 
         "title": "Monitoring Azure Kubernetes Service (AKS) with Azure Monitor",
         "url": "https://learn.microsoft.com/en-us/azure/aks/monitor-aks"
       }
@@ -434,19 +411,16 @@
     "tags": [
       "all",
       "monitoring"
-    ],
-    "optionalFields": {
-      "guid": "5b56ad48-408f-4e72-934c-476ba280dcf5",
-      "ha": 1,
-      "cost": -1
-    }
+    ]
   },
   {
     "title": "Consider an appropriate node size, not too large or too small",
     "priority": "High",
+    "guid": "5ae124ba-34df-4585-bcdc-e9bd3bb0cdb3",
+    "cost": 1,
     "description": "Optimizing node size can lead to lots of benefits including cost optimization, optimized performance and proper resource allocation",
     "documentation": [
-      {
+      { 
         "title": "Which VM size should I choose as AKS node?",
         "url": "https://blog.cloudtrooper.net/2020/10/23/which-vm-size-should-i-choose-as-aks-node/"
       }
@@ -456,18 +430,17 @@
       "cost",
       "finops",
       "monitoring"
-    ],
-    "optionalFields": {
-      "guid": "5ae124ba-34df-4585-bcdc-e9bd3bb0cdb3",
-      "cost": 1
-    }
+    ]
   },
   {
     "title": "Regularly check Azure Advisor for recommendations on your cluster",
     "priority": "Medium",
+    "guid": "337453a3-cc63-4963-9a65-22ac19e80696",
+    "simple": -1,
+    "ha": 1,
     "description": "Azure advisor can enhance environment monitoring and can help improve the operations of your cluster by reducing costs, etc",
     "documentation": [
-      {
+      { 
         "title": "Azure advisor get started",
         "url": "https://docs.microsoft.com/azure/advisor/advisor-get-started"
       }
@@ -479,19 +452,14 @@
       "finops",
       "monitoring",
       "compliance"
-    ],
-    "optionalFields": {
-      "guid": "337453a3-cc63-4963-9a65-22ac19e80696",
-      "simple": -1,
-      "ha": 1
-    }
+    ]
   },
   {
     "title": "Write manifests following good practices using dedicated tools",
     "priority": "Low",
     "description": "There are various tools that can make creating k8s manifest files much easier and can help with operational efficiency",
     "documentation": [
-      {
+      { 
         "title": "what is prettier",
         "url": "https://prettier.io/"
       }
@@ -501,15 +469,16 @@
       "operations",
       "monitoring",
       "compliance"
-    ],
-    "optionalFields": {}
+    ]
   },
   {
     "title": "Enable AKS auto-certificate rotation",
     "priority": "Low",
+    "guid": "5388e9de-d167-4dd1-a2b0-ac241b999a64",
+    "simple": 1,
     "description": "Periodically, you may need to rotate those certificates for security or policy reasons. For example, you may have a policy to rotate all your certificates every 90 days.",
     "documentation": [
-      {
+      { 
         "title": "Certificate rotation in Azure Kubernetes Service (AKS)",
         "url": "https://learn.microsoft.com/en-us/azure/aks/certificate-rotation"
       }
@@ -517,18 +486,18 @@
     "tags": [
       "all",
       "security"
-    ],
-    "optionalFields": {
-      "guid": "5388e9de-d167-4dd1-a2b0-ac241b999a64",
-      "simple": 1
-    }
+    ]
   },
   {
     "title": "Store and analyze your cluster logs with Container Insights (or other tools like Telegraf/ElasticSearch)",
     "priority": "High",
+    "guid": "eaa8dc4a-2436-47b3-9697-15b1752beee0",
+    "simple": -1,
+    "ha": 1,
+    "graph": "where type=='microsoft.containerservice/managedclusters' | extend compliant = (isnotnull(properties.addonProfiles.omsagent) and properties.addonProfiles.omsagent.enabled==true) | distinct id,compliant",
     "description": "Monitoring the logs from your cluster can help prevent issues and identify areas of improvements",
     "documentation": [
-      {
+      { 
         "title": "Container insights overview",
         "url": "https://learn.microsoft.com/en-us/azure/azure-monitor/containers/container-insights-overview"
       }
@@ -537,20 +506,18 @@
       "all",
       "monitoring",
       "security"
-    ],
-    "optionalFields": {
-      "guid": "eaa8dc4a-2436-47b3-9697-15b1752beee0",
-      "simple": -1,
-      "ha": 1,
-      "graph": "where type=='microsoft.containerservice/managedclusters' | extend compliant = (isnotnull(properties.addonProfiles.omsagent) and properties.addonProfiles.omsagent.enabled==true) | distinct id,compliant"
-    }
+    ]
   },
   {
     "title": "Consider AKS virtual node for quick bursting",
     "priority": "Low",
+    "guid": "c755562f-2b4e-4456-9b4d-874a748b662e",
+    "scale": 1,
+    "simple": -1,
+    "graph": "where type=='microsoft.containerservice/managedclusters' | extend compliant = (isnotnull(properties.addonProfiles.aciConnectorLinux) and properties.addonProfiles.aciConnectorLinux.enabled==true) | distinct id,compliant",
     "description": "Virtual nodes with ACI can help speed up scaling",
     "documentation": [
-      {
+      { 
         "title": "Create and configure an AKS cluster to use virtual nodes",
         "url": "https://learn.microsoft.com/en-us/azure/aks/virtual-nodes"
       }
@@ -558,20 +525,15 @@
     "tags": [
       "all",
       "scalability"
-    ],
-    "optionalFields": {
-      "guid": "c755562f-2b4e-4456-9b4d-874a748b662e",
-      "scale": 1,
-      "simple": -1,
-      "graph": "where type=='microsoft.containerservice/managedclusters' | extend compliant = (isnotnull(properties.addonProfiles.aciConnectorLinux) and properties.addonProfiles.aciConnectorLinux.enabled==true) | distinct id,compliant"
-    }
+    ]
   },
   {
     "title": "Consider spot node pools for non time-sensitive workloads",
     "priority": "Low",
+    "guid": "c5a5b252-1e44-4a59-a9d2-399c4d7b68d0",
     "description": "Spot nodepools can help with cost management",
     "documentation": [
-      {
+      { 
         "title": "Add an Azure Spot node pool to an AKS cluster",
         "url": "https://docs.microsoft.com/azure/aks/spot-node-pool"
       }
@@ -581,17 +543,17 @@
       "cost",
       "operations",
       "finops"
-    ],
-    "optionalFields": {
-      "guid": "c5a5b252-1e44-4a59-a9d2-399c4d7b68d0"
-    }
+    ]
   },
   {
     "title": "Configure alerts on the most critical metrics (see Container Insights for recommendations)",
     "priority": "High",
+    "guid": "67f7a9ed-5b31-4f38-a3f3-9812b2463cff",
+    "simple": -1,
+    "ha": 1,
     "description": "Alerts can provide early warnings of issues, etc in your cluster",
     "documentation": [
-      {
+      { 
         "title": "Metric alert rules in Container insights",
         "url": "https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-metric-alerts"
       }
@@ -600,19 +562,14 @@
       "all",
       "monitoring",
       "security"
-    ],
-    "optionalFields": {
-      "guid": "67f7a9ed-5b31-4f38-a3f3-9812b2463cff",
-      "simple": -1,
-      "ha": 1
-    }
+    ]
   },
   {
     "title": "If not using egress filtering with AzFW/NVA, monitor standard ALB allocated SNAT ports",
     "priority": "Medium",
     "description": "Monitoring these ports are important for security reasons",
     "documentation": [
-      {
+      { 
         "title": "Use a public standard load balancer in Azure Kubernetes Service",
         "url": "https://docs.microsoft.com/azure/aks/load-balancer-standard"
       }
@@ -621,15 +578,16 @@
       "all",
       "monitoring",
       "security"
-    ],
-    "optionalFields": {}
+    ]
   },
   {
     "title": "Subscribe to resource health notifications for your AKS cluster",
     "priority": "High",
+    "guid": "74c2ee76-569b-4a79-a57e-dedf91b022c9",
+    "ha": 1,
     "description": "Learn how to troubleshoot resource health issues",
     "documentation": [
-      {
+      { 
         "title": "Azure Kubernetes Services troubleshooting documentation",
         "url": "https://learn.microsoft.com/en-us/troubleshoot/azure/azure-kubernetes/welcome-azure-kubernetes"
       }
@@ -638,18 +596,16 @@
       "all",
       "monitoring",
       "security"
-    ],
-    "optionalFields": {
-      "guid": "74c2ee76-569b-4a79-a57e-dedf91b022c9",
-      "ha": 1
-    }
+    ]
   },
   {
     "title": "Consider subscribing to EventGrid Events for AKS automation",
     "priority": "Low",
+    "guid": "5ae124ba-34df-4585-bcdc-e9bd3bb0cdb3",
+    "cost": 1,
     "description": "AKS emits certain events that enable it to subscribe to EventGrid which can be used for automation",
     "documentation": [
-      {
+      { 
         "title": "AKS as an Event Grid source",
         "url": "https://learn.microsoft.com/azure/event-grid/event-schema-aks"
       }
@@ -657,10 +613,6 @@
     "tags": [
       "all",
       "monitoring"
-    ],
-    "optionalFields": {
-      "guid": "5ae124ba-34df-4585-bcdc-e9bd3bb0cdb3",
-      "cost": 1
-    }
+    ]
   }
 ]

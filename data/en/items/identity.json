@@ -1,193 +1,178 @@
 [
-  {
-    "title": "Integrate authentication with AAD (using the managed integration)",
-    "priority": "High",
-    "severity": "Medium",
-    "description": "Azure Kubernetes Service (AKS) can be configured to use Azure Active Directory (Azure AD) for user authentication. In this configuration, you can sign in to an AKS cluster by using your Azure AD authentication token.",
-    "documentation": [
-      {
-        "title": "AKS-managed Azure Active Directory integration",
-        "url": "https://docs.microsoft.com/azure/aks/managed-aad"
-      },
-      {
-        "title": "Disable local accounts",
-        "url": "https://docs.microsoft.com/azure/aks/managed-aad#disable-local-accounts"
-      }
-    ],
-    "tags": [
-      "all",
-      "security",
-      "identity"
-    ],
-    "optionalFields": {
-      "guid": "7e42c78e-78c0-46a6-8a21-94956e698dc4",
-      "simple": 1,
-      "graph": "where type=='microsoft.containerservice/managedclusters' | extend compliant = isnotnull(properties.aadProfile) | distinct id,compliant"
+    {
+        "title": "Integrate authentication with AAD (using the managed integration)",
+        "priority": "High",
+        "guid": "7e42c78e-78c0-46a6-8a21-94956e698dc4",
+        "simple": 1,
+        "severity": "Medium",
+        "graph": "where type=='microsoft.containerservice/managedclusters' | extend compliant = isnotnull(properties.aadProfile) | distinct id,compliant",
+        "description": "Azure Kubernetes Service (AKS) can be configured to use Azure Active Directory (Azure AD) for user authentication. In this configuration, you can sign in to an AKS cluster by using your Azure AD authentication token.",
+        "documentation": [
+            {
+                "title": "AKS-managed Azure Active Directory integration",
+                "url": "https://docs.microsoft.com/azure/aks/managed-aad"
+            },
+            {
+                "title": "Disable local accounts",
+                "url": "https://docs.microsoft.com/azure/aks/managed-aad#disable-local-accounts"
+            }
+        ],
+        "tags": [
+            "all",
+            "security",
+            "identity"
+        ]
+    },
+    {
+        "title": "Integrate authorization with AAD RBAC",
+        "priority": "High",
+        "guid": "eec4962c-c3bd-421b-b77f-26e5e6b3bec3",
+        "security": 1,
+        "simple": -1,
+        "description": "Control access to cluster resources using Kubernetes role-based access control and Azure Active Directory identities in Azure Kubernetes Service",
+        "documentation": [
+            {
+                "title": "Limit cluster access via K8S RBAC for users & workloads",
+                "url": "https://docs.microsoft.com/azure/aks/azure-ad-rbac"
+            }
+        ],
+        "tags": [
+            "all",
+            "security",
+            "identity"
+        ]
+    },
+    {
+        "title": "Use AKS and ACR integration without password",
+        "priority": "Medium",
+        "description": "AKS can authenticate to ACR without using any password, but by using either Service Principal or Managed Identity.",
+        "detail": "For AKS to download/pull images from Azure Container Registry (ACR), it needs the ACR credentials including the password. To avoid saving the password in the cluster, you can simply activate the ACR integration on new or existing AKS cluster using SPN or Managed Identity",
+        "documentation": [
+            {
+                "title": "Authenticate with Azure Container Registry from AKS",
+                "url": "https://docs.microsoft.com/azure/aks/cluster-container-registry-integration"
+            }
+        ],
+        "tags": [
+            "all",
+            "security",
+            "identity"
+        ]
+    },
+    {
+        "title": "Use managed identities instead of Service Principals",
+        "priority": "High",
+        "guid": "ed127dd1-42b0-46b2-8c69-99a646f3389a",
+        "simple": 1,
+        "graph": "where type=='microsoft.containerservice/managedclusters' | extend compliant = (properties.servicePrincipalProfile.clientId=='msi') | distinct id,compliant",
+        "description": "Each AKS cluster needs either a Managed Identity or Service Principal.  We recommend using Managed Identity in AKS",
+        "documentation": [
+            {
+                "title": "Use managed identities in Azure Kubernetes Service",
+                "url": "https://docs.microsoft.com/azure/aks/use-managed-identity"
+            }
+        ],
+        "tags": [
+            "all",
+            "security",
+            "identity"
+        ]
+    },
+    {
+        "title": "Limit access to admin kubeconfig (get-credentials --admin)",
+        "priority": "Medium",
+        "guid": "a2fe27b2-e287-401a-8352-beedf79b488d",
+        "security": 1,
+        "simple": -1,
+        "description": "To limit who can get that Kubernetes configuration (kubeconfig) information and to limit the permissions they then have, you can use Azure role-based access control (Azure RBAC).",
+        "documentation": [
+            {
+                "title": "Use Azure RBAC to define access to the Kubernetes configuration file",
+                "url": "https://docs.microsoft.com/azure/aks/control-kubeconfig-access"
+            }
+        ],
+        "tags": [
+            "all",
+            "security",
+            "identity"
+        ]
+    },
+    {
+        "title": "For AKS non-interactive logins use kubelogin",
+        "priority": "Medium",
+        "guid": "d2e0d5d7-71d4-41e3-910c-c57b4a4b1410",
+        "security": 1,
+        "simple": -1,
+        "description": " You can use kubelogin to access the cluster with non-interactive service principal sign-in.",
+        "documentation": [
+            {
+                "title": "Non-interactive sign in with kubelogin",
+                "url": "https://learn.microsoft.com/en-us/azure/aks/managed-aad#non-interactive-sign-in-with-kubelogin"
+            }
+        ],
+        "tags": [
+            "all",
+            "identity",
+            "security"
+        ]
+    },
+    {
+        "title": "Disable AKS local accounts",
+        "priority": "Medium",
+        "guid": "d2e0d5d7-71d4-41e3-910c-c57b4a4b1410",
+        "security": 1,
+        "simple": -1,
+        "description": "AKS offers users the ability to disable local accounts via a flag, disable-local-accounts",
+        "documentation": [
+            {
+                "title": "Disable local accounts",
+                "url": "https://learn.microsoft.com/azure/aks/managed-aad#disable-local-accounts"
+            }
+        ],
+        "tags": [
+            "all",
+            "identity",
+            "security"
+
+        ]
+    },
+    {
+        "title": "Configure if required Just-in-time cluster access",
+        "priority": "Low",
+        "guid": "d2e0d5d7-71d4-41e3-910c-c57b4a4b1410",
+        "security": 1,
+        "simple": -1,
+        "description": "AKS offers users the ability to enable access for a limited time",
+        "documentation": [
+            {
+                "title": "Configure just-in-time cluster access with Azure AD and AKS",
+                "url": "https://learn.microsoft.com/azure/aks/managed-aad#configure-just-in-time-cluster-access-with-azure-ad-and-aks"
+            }
+        ],
+        "tags": [
+            "all",
+            "identity",
+            "security"
+
+        ]
+    },
+    {
+        "title": "For finer control consider using a managed Kubelet Identity",
+        "priority": "Low",
+        "guid": "d2e0d5d7-71d4-41e3-910c-c57b4a4b1410",
+        "security": 1,
+        "simple": -1,
+        "description": "A Kubelet identity enables access granted to the existing identity prior to cluster creation.",
+        "documentation": [
+            {
+                "title": "Use a pre-created kubelet managed identity",
+                "url": "https://learn.microsoft.com/azure/aks/use-managed-identity#use-a-pre-created-kubelet-managed-identity"
+            }
+        ],
+        "tags": [
+            "all",
+            "identity",
+            "security"
+        ]
     }
-  },
-  {
-    "title": "Integrate authorization with AAD RBAC",
-    "priority": "High",
-    "description": "Control access to cluster resources using Kubernetes role-based access control and Azure Active Directory identities in Azure Kubernetes Service",
-    "documentation": [
-      {
-        "title": "Limit cluster access via K8S RBAC for users & workloads",
-        "url": "https://docs.microsoft.com/azure/aks/azure-ad-rbac"
-      }
-    ],
-    "tags": [
-      "all",
-      "security",
-      "identity"
-    ],
-    "optionalFields": {
-      "guid": "eec4962c-c3bd-421b-b77f-26e5e6b3bec3",
-      "simple": -1,
-      "security": 1
-    }
-  },
-  {
-    "title": "Use AKS and ACR integration without password",
-    "priority": "Medium",
-    "description": "AKS can authenticate to ACR without using any password, but by using either Service Principal or Managed Identity.",
-    "detail": "For AKS to download/pull images from Azure Container Registry (ACR), it needs the ACR credentials including the password. To avoid saving the password in the cluster, you can simply activate the ACR integration on new or existing AKS cluster using SPN or Managed Identity",
-    "documentation": [
-      {
-        "title": "Authenticate with Azure Container Registry from AKS",
-        "url": "https://docs.microsoft.com/azure/aks/cluster-container-registry-integration"
-      }
-    ],
-    "tags": [
-      "all",
-      "security",
-      "identity"
-    ],
-    "optionalFields": {}
-  },
-  {
-    "title": "Use managed identities instead of Service Principals",
-    "priority": "High",
-    "description": "Each AKS cluster needs either a Managed Identity or Service Principal.  We recommend using Managed Identity in AKS",
-    "documentation": [
-      {
-        "title": "Use managed identities in Azure Kubernetes Service",
-        "url": "https://docs.microsoft.com/azure/aks/use-managed-identity"
-      }
-    ],
-    "tags": [
-      "all",
-      "security",
-      "identity"
-    ],
-    "optionalFields": {
-      "guid": "ed127dd1-42b0-46b2-8c69-99a646f3389a",
-      "simple": 1,
-      "graph": "where type=='microsoft.containerservice/managedclusters' | extend compliant = (properties.servicePrincipalProfile.clientId=='msi') | distinct id,compliant"
-    }
-  },
-  {
-    "title": "Limit access to admin kubeconfig (get-credentials --admin)",
-    "priority": "Medium",
-    "description": "To limit who can get that Kubernetes configuration (kubeconfig) information and to limit the permissions they then have, you can use Azure role-based access control (Azure RBAC).",
-    "documentation": [
-      {
-        "title": "Use Azure RBAC to define access to the Kubernetes configuration file",
-        "url": "https://docs.microsoft.com/azure/aks/control-kubeconfig-access"
-      }
-    ],
-    "tags": [
-      "all",
-      "security",
-      "identity"
-    ],
-    "optionalFields": {
-      "guid": "a2fe27b2-e287-401a-8352-beedf79b488d",
-      "simple": -1,
-      "security": 1
-    }
-  },
-  {
-    "title": "For AKS non-interactive logins use kubelogin",
-    "priority": "Medium",
-    "description": " You can use kubelogin to access the cluster with non-interactive service principal sign-in.",
-    "documentation": [
-      {
-        "title": "Non-interactive sign in with kubelogin",
-        "url": "https://learn.microsoft.com/en-us/azure/aks/managed-aad#non-interactive-sign-in-with-kubelogin"
-      }
-    ],
-    "tags": [
-      "all",
-      "identity",
-      "security"
-    ],
-    "optionalFields": {
-      "guid": "d2e0d5d7-71d4-41e3-910c-c57b4a4b1410",
-      "simple": -1,
-      "security": 1
-    }
-  },
-  {
-    "title": "Disable AKS local accounts",
-    "priority": "Medium",
-    "description": "AKS offers users the ability to disable local accounts via a flag, disable-local-accounts",
-    "documentation": [
-      {
-        "title": "Disable local accounts",
-        "url": "https://learn.microsoft.com/azure/aks/managed-aad#disable-local-accounts"
-      }
-    ],
-    "tags": [
-      "all",
-      "identity",
-      "security"
-    ],
-    "optionalFields": {
-      "guid": "d2e0d5d7-71d4-41e3-910c-c57b4a4b1410",
-      "simple": -1,
-      "security": 1
-    }
-  },
-  {
-    "title": "Configure if required Just-in-time cluster access",
-    "priority": "Low",
-    "description": "AKS offers users the ability to enable access for a limited time",
-    "documentation": [
-      {
-        "title": "Configure just-in-time cluster access with Azure AD and AKS",
-        "url": "https://learn.microsoft.com/azure/aks/managed-aad#configure-just-in-time-cluster-access-with-azure-ad-and-aks"
-      }
-    ],
-    "tags": [
-      "all",
-      "identity",
-      "security"
-    ],
-    "optionalFields": {
-      "guid": "d2e0d5d7-71d4-41e3-910c-c57b4a4b1410",
-      "simple": -1,
-      "security": 1
-    }
-  },
-  {
-    "title": "For finer control consider using a managed Kubelet Identity",
-    "priority": "Low",
-    "description": "A Kubelet identity enables access granted to the existing identity prior to cluster creation.",
-    "documentation": [
-      {
-        "title": "Use a pre-created kubelet managed identity",
-        "url": "https://learn.microsoft.com/azure/aks/use-managed-identity#use-a-pre-created-kubelet-managed-identity"
-      }
-    ],
-    "tags": [
-      "all",
-      "identity",
-      "security"
-    ],
-    "optionalFields": {
-      "guid": "d2e0d5d7-71d4-41e3-910c-c57b4a4b1410",
-      "simple": -1,
-      "security": 1
-    }
-  }
 ]
