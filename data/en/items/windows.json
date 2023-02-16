@@ -16,7 +16,10 @@
     "tags": [
       "all",
       "windows"
-    ]
+    ],
+    "optionalFields": {
+      "score": {}
+    }
   },
   {
     "title": "Prepare your application for an abrupt kill",
@@ -35,7 +38,10 @@
     "tags": [
       "all",
       "windows"
-    ]
+    ],
+    "optionalFields": {
+      "score": {}
+    }
   },
   {
     "title": "Don't use privileged containers",
@@ -50,7 +56,10 @@
     "tags": [
       "all",
       "windows"
-    ]
+    ],
+    "optionalFields": {
+      "score": {}
+    }
   },
   {
     "title": "Watch for memory usage",
@@ -65,7 +74,10 @@
     "tags": [
       "all",
       "windows"
-    ]
+    ],
+    "optionalFields": {
+      "score": {}
+    }
   },
   {
     "title": "Implement CNI network mode",
@@ -80,7 +92,10 @@
     "tags": [
       "all",
       "windows"
-    ]
+    ],
+    "optionalFields": {
+      "score": {}
+    }
   },
   {
     "title": "Keep windows containers patch level in sync with host patch level",
@@ -100,7 +115,10 @@
     "tags": [
       "all",
       "windows"
-    ]
+    ],
+    "optionalFields": {
+      "score": {}
+    }
   },
   {
     "title": "Secure the traffic of your containers",
@@ -115,14 +133,15 @@
     "tags": [
       "all",
       "windows"
-    ]
+    ],
+    "optionalFields": {
+      "score": {}
+    }
   },
   {
     "title": "Enable Group Managed Service Accounts (GMSA) for your Windows Server nodes",
     "priority": "Medium",
     "guid": "d2e0d5d7-71d4-41e3-910c-c57b4a4b1410",
-    "security": 1,
-    "simple": -1,
     "description": "Group Managed Service Accounts (GMSA) is a managed domain account for multiple servers that provides automatic password management, simplified service principal name (SPN) management and the ability to delegate the management to other administrators.",
     "documentation": [
       {
@@ -135,13 +154,18 @@
       "identity",
       "windows",
       "security"
-    ]
+    ],
+    "optionalFields": {
+      "score": {
+        "simple": -1,
+        "security": 1
+      }
+    }
   },
   {
     "title": "If required for AKS Windows workloads, HostProcess containers can be used",
     "priority": "Medium",
     "guid": "785c2fa5-5b56-4ad4-a408-fe72734c476b",
-    "cost": 1,
     "description": "HostProcess / Privileged containers extend the Windows container model to enable a wider range of Kubernetes cluster management scenarios.",
     "documentation": [
       {
@@ -153,14 +177,17 @@
       "all",
       "application",
       "windows"
-    ]
+    ],
+    "optionalFields": {
+      "score": {
+        "cost": 1
+      }
+    }
   },
   {
     "title": "Taint Windows nodes",
     "priority": "low",
     "guid": "c1881370-6f7c-44c0-b4e5-14648d2457ed",
-    "simple": -1,
-    "ha": 1,
     "description": "Adding taints, tolerations and node selectors will help avoid having pods scheduled in the wrong OS node pool",
     "documentation": [
       {
@@ -172,6 +199,12 @@
       "all",
       "compliance",
       "windows"
-    ]
+    ],
+    "optionalFields": {
+      "score": {
+        "simple": -1,
+        "ha": 1
+      }
+    }
   }
 ]

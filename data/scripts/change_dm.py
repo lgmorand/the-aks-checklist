@@ -12,7 +12,7 @@ for file in os.listdir(dir_path):
         filenames.append(file)
 
 
-def move_optional(dictionary,optionals = ["guid","scale","simple","ha","cost","graph","security"]):
+def move_optional(dictionary,optionals = ["scale","simple","ha","cost","graph","security"]):
     dic = {}
     for optional in optionals:
         try:
@@ -20,7 +20,7 @@ def move_optional(dictionary,optionals = ["guid","scale","simple","ha","cost","g
             dictionary.pop(optional)
         except KeyError:
             print(f'no {optional} for {dictionary["title"]}')
-    dictionary['optionalFields'] = dic
+    dictionary['optionalFields'] = {'score':dic}
     return dictionary
 
 def get_updated_content(file):

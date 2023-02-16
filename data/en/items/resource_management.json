@@ -14,7 +14,10 @@
       "all",
       "operations",
       "finops"
-    ]
+    ],
+    "optionalFields": {
+      "score": {}
+    }
   },
   {
     "title": "Sizing of the nodes",
@@ -40,7 +43,10 @@
     "tags": [
       "all",
       "resources"
-    ]
+    ],
+    "optionalFields": {
+      "score": {}
+    }
   },
   {
     "title": "Use AMD64 nodes when possible",
@@ -55,14 +61,15 @@
     "tags": [
       "all",
       "operations"
-    ]
+    ],
+    "optionalFields": {
+      "score": {}
+    }
   },
   {
     "title": "Enforce resource quotas for namespaces",
     "priority": "Low",
     "guid": "769ef669-1a48-435a-a942-223ece80b123",
-    "simple": -1,
-    "ha": 1,
     "description": "Plan and apply resource quotas at the namespace level. If pods don't define resource requests and limits, reject the deployment. Monitor resource usage and adjust quotas as needed.",
     "detail": "Resource requests and limits are placed in the pod specification. These limits are used by the Kubernetes scheduler at deployment time to find an available node in the cluster. But developers can forget them and thus impact other applications by over-consuming resources of the cluster",
     "documentation": [
@@ -80,7 +87,13 @@
       "resiliency",
       "resource management",
       "multi-tenancy"
-    ]
+    ],
+    "optionalFields": {
+      "score": {
+        "simple": -1,
+        "ha": 1
+      }
+    }
   },
   {
     "title": "Namespaces should have LimitRange",
@@ -97,7 +110,10 @@
       "resiliency",
       "resource management",
       "multi-tenancy"
-    ]
+    ],
+    "optionalFields": {
+      "score": {}
+    }
   },
   {
     "title": "Set memory limits and requests for all containers",
@@ -119,14 +135,15 @@
       "resiliency",
       "resource management",
       "multi-tenancy"
-    ]
+    ],
+    "optionalFields": {
+      "score": {}
+    }
   },
   {
     "title": "Use Disruption Budgets in your pod and deployment definitions",
     "priority": "Low",
     "guid": "3c763963-7a55-42d5-a15e-401955387e5c",
-    "cost": -1,
-    "ha": 1,
     "description": "To maintain the availability of applications, define Pod Disruption Budgets (PDBs) to make sure that a minimum number of pods are available in the cluster.",
     "detail": "At some point in time, Kubernetes might need to evict pods from a host. There are two types of evictions: voluntary and involuntary disruptions. Involuntary disruptions can be caused by hardware failure, network partitions, kernel panics, or a node being out of resources. Voluntary evictions can be caused by performing maintenance on the cluster, the Cluster Autoscaler deallocating nodes, or updating pod templates. To minimize the impact to your application, you can set a PodDisruptionBudget to ensure uptime of the application when pods need to be evicted. A PodDisruptionBudget allows you to set a policy on the minimum available and maximum unavailable pods during voluntary eviction events. An example of a voluntary eviction would be when draining a node to perform maintenance on the node.",
     "documentation": [
@@ -143,13 +160,18 @@
       "all",
       "resiliency",
       "resource management"
-    ]
+    ],
+    "optionalFields": {
+      "score": {
+        "ha": 1,
+        "cost": -1
+      }
+    }
   },
   {
     "title": "Use an external application such as kubecost to allocate costs to different users",
     "priority": "Low",
     "guid": "f82cb8eb-8c0a-4a63-a25a-4956eaa8dc4a",
-    "cost": 1,
     "description": "These tools can be very valuable for cost allocation especially in the case of multitenancy",
     "documentation": [
       {
@@ -162,12 +184,16 @@
       "cost",
       "finops",
       "resource management"
-    ]
+    ],
+    "optionalFields": {
+      "score": {
+        "cost": 1
+      }
+    }
   },
   {
     "title": "When required use multi-instance partioning GPU on AKS Clusters",
     "guid": "f82cb8eb-8c0a-4a63-a25a-4956eaa8dc4a",
-    "cost": 1,
     "priority": "Medium",
     "description": "Nvidia's A100 GPU can be divided in up to seven independent instances. Each instance has their own memory and Stream Multiprocessor (SM).",
     "documentation": [
@@ -181,13 +207,17 @@
       "cost",
       "finops",
       "resource management"
-    ]
+    ],
+    "optionalFields": {
+      "score": {
+        "cost": 1
+      }
+    }
   },
   {
     "title": "If running a Dev/Test cluster use NodePool Start/Stop",
     "priority": "Medium",
     "guid": "f82cb8eb-8c0a-4a63-a25a-4956eaa8dc4a",
-    "cost": 1,
     "description": "Your AKS workloads may not need to run continuously, for example a development cluster that has node pools running specific workloads.",
     "documentation": [
       {
@@ -200,13 +230,17 @@
       "cost",
       "finops",
       "resource management"
-    ]
+    ],
+    "optionalFields": {
+      "score": {
+        "cost": 1
+      }
+    }
   },
   {
     "title": "If required scale NodePool snapshots",
     "priority": "Low",
     "guid": "f82cb8eb-8c0a-4a63-a25a-4956eaa8dc4a",
-    "cost": 1,
     "description": "Node pool snapshots allow you to take a configuration snapshot of your node pool and then create new node pools or new clusters based of that snapshot for as long as that configuration and kubernetes version is supported.",
     "documentation": [
       {
@@ -219,13 +253,17 @@
       "cost",
       "finops",
       "resource management"
-    ]
+    ],
+    "optionalFields": {
+      "score": {
+        "cost": 1
+      }
+    }
   },
   {
     "title": "Ensure your subscription has enough quota to scale out your nodepools",
     "priority": "High",
     "guid": "081a5417-4158-433e-a3ad-3c2de733165c",
-    "cost": 1,
     "description": "Azure VMs/nodes have quotas per subscription. Ensure that you have planned for these quota and proactively prepare to request for more if needed",
     "documentation": [
       {
@@ -237,6 +275,11 @@
       "all",
       "scalability",
       "resources"
-    ]
+    ],
+    "optionalFields": {
+      "score": {
+        "cost": 1
+      }
+    }
   }
 ]
