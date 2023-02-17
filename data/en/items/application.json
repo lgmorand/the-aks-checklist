@@ -12,7 +12,10 @@
     "tags": [
       "all",
       "application"
-    ]
+    ],
+    "optionalFields": {
+      "score": {}
+    }
   },
   {
     "title": "Implement a proper Startup probe",
@@ -27,7 +30,10 @@
     "tags": [
       "all",
       "application"
-    ]
+    ],
+    "optionalFields": {
+      "score": {}
+    }
   },
   {
     "title": "Implement a proper Readiness probe",
@@ -42,7 +48,10 @@
     "tags": [
       "all",
       "application"
-    ]
+    ],
+    "optionalFields": {
+      "score": {}
+    }
   },
   {
     "title": "Implement a proper prestop hook",
@@ -57,7 +66,10 @@
     "tags": [
       "all",
       "application"
-    ]
+    ],
+    "optionalFields": {
+      "score": {}
+    }
   },
   {
     "title": "Run more than one replica for your Deployment",
@@ -72,7 +84,10 @@
     "tags": [
       "all",
       "application"
-    ]
+    ],
+    "optionalFields": {
+      "score": {}
+    }
   },
   {
     "title": "Apply tags/labels to all resources",
@@ -87,14 +102,15 @@
     "tags": [
       "all",
       "application"
-    ]
+    ],
+    "optionalFields": {
+      "score": {}
+    }
   },
   {
     "title": "Implement autoscaling of your applications (Horizontal pod autoscaler, KEDA)",
     "priority": "Low",
     "guid": "faa19bfe-9d55-4d04-a3c4-919ca1b2d121",
-    "scale": 1,
-    "simple": -1,
     "description": "Automatically scale your application to the number of pods required to handle the current load. This can be achieved by using Horizontal Pod Autoscaler for CPU & Memory or by using KEDA for scaling based on other sources",
     "documentation": [
       {
@@ -115,14 +131,18 @@
     "tags": [
       "all",
       "resiliency"
-    ]
+    ],
+    "optionalFields": {
+      "score": {
+        "scale": 1,
+        "simple": -1
+      }
+    }
   },
   {
     "title": "Store your secrets in Azure Key Vault, don't inject passwords in Docker Images",
     "priority": "High",
     "guid": "5e3df584-eccc-4d97-a3b6-bcda3b50eb2e",
-    "security": 1,
-    "simple": -1,
     "description": "Secrets are not encrypted in etcd, prefer to store your secrets in a proper HSM like Azure Key Vault. You can then inject secrets using CSI provider.",
     "documentation": [
       {
@@ -137,14 +157,18 @@
     "tags": [
       "all",
       "security"
-    ]
+    ],
+    "optionalFields": {
+      "score": {
+        "simple": -1,
+        "security": 1
+      }
+    }
   },
   {
     "title": "Implement Azure Workload Identity",
     "priority": "Medium",
     "guid": "d2e0d5d7-71d4-41e3-910c-c57b4a4b1410",
-    "security": 1,
-    "simple": -1,
     "description": "Don't use fixed credentials within pods or container images, as they are at risk of exposure or abuse. Instead, use workload identity federation to access Azure Active Directory (Azure AD) protected resources without needing to manage secrets ",
     "detail": "When pods need access to other Azure services, such as Cosmos DB, Key Vault, or Blob Storage, the pod needs access credentials. These access credentials could be defined with the container image or injected as a Kubernetes secret, but need to be manually created and assigned. Often, the credentials are reused across pods, and aren't regularly rotated. Managed identities for Azure resources (currently implemented as an associated AKS open source project) let you automatically request access to services through Azure AD. You don't manually define credentials for pods, instead they request an access token in real time, and can use it to access only their assigned services.",
     "documentation": [
@@ -162,7 +186,13 @@
       "identity",
       "security",
       "application"
-    ]
+    ],
+    "optionalFields": {
+      "score": {
+        "simple": -1,
+        "security": 1
+      }
+    }
   },
   {
     "title": "Use Kubernetes namespaces to properly isolate your Kubernetes resources",
@@ -179,14 +209,15 @@
       "security",
       "application",
       "multi-tenancy"
-    ]
+    ],
+    "optionalFields": {
+      "score": {}
+    }
   },
   {
     "title": "Set up requests and limits on your containers",
     "priority": "High",
     "guid": "b54eb2eb-03dd-4aa3-9927-18e2edb11726",
-    "simple": -1,
-    "ha": 1,
     "description": "When Containers have resource requests specified, the scheduler can make better decisions about which nodes to place Pods on. And when Containers have their limits specified, contention for resources on a node can be handled in a specified manner.",
     "documentation": [
       {
@@ -203,7 +234,13 @@
       "resources",
       "application",
       "multi-tenancy"
-    ]
+    ],
+    "optionalFields": {
+      "score": {
+        "simple": -1,
+        "ha": 1
+      }
+    }
   },
   {
     "title": "Specify the security context of your pod/container",
@@ -219,13 +256,15 @@
     "tags": [
       "all",
       "security"
-    ]
+    ],
+    "optionalFields": {
+      "score": {}
+    }
   },
   {
     "title": "Ensure your manifests respect good practices",
     "priority": "Medium",
     "guid": "5388e9de-d167-4dd1-a2b0-ac241b999a64",
-    "simple": 1,
     "description": "Best practices inside the cluster start with the configuration of your manifests. Ensure that they respect good practices",
     "documentation": [
       {
@@ -255,7 +294,12 @@
       "all",
       "resources",
       "security"
-    ]
+    ],
+    "optionalFields": {
+      "score": {
+        "simple": 1
+      }
+    }
   },
   {
     "title": "Conduct Dockerfile scanning to ensure Docker Image Security Best Practices",
@@ -284,7 +328,10 @@
     "tags": [
       "all",
       "security"
-    ]
+    ],
+    "optionalFields": {
+      "score": {}
+    }
   },
   {
     "title": "Static Analysis of Docker Images on Build",
@@ -311,7 +358,10 @@
     "tags": [
       "all",
       "security"
-    ]
+    ],
+    "optionalFields": {
+      "score": {}
+    }
   },
   {
     "title": "Threshold enforcement of Docker Image Builds that contain vulnerabilities",
@@ -327,7 +377,10 @@
     "tags": [
       "all",
       "security"
-    ]
+    ],
+    "optionalFields": {
+      "score": {}
+    }
   },
   {
     "title": "Compliance enforcement of Docker Image Builds",
@@ -347,7 +400,10 @@
     "tags": [
       "all",
       "security"
-    ]
+    ],
+    "optionalFields": {
+      "score": {}
+    }
   },
   {
     "title": "Use Azure Migrate to quick containerize your applications",
@@ -362,7 +418,10 @@
     "tags": [
       "all",
       "application"
-    ]
+    ],
+    "optionalFields": {
+      "score": {}
+    }
   },
   {
     "title": "Apply the right deployment type to your application",
@@ -377,7 +436,10 @@
     "tags": [
       "all",
       "application"
-    ]
+    ],
+    "optionalFields": {
+      "score": {}
+    }
   },
   {
     "title": "Don't use naked pods",
@@ -388,7 +450,10 @@
       "all",
       "resiliency",
       "application"
-    ]
+    ],
+    "optionalFields": {
+      "score": {}
+    }
   },
   {
     "title": "Control the usage of imagePullPolicy",
@@ -404,14 +469,15 @@
       "all",
       "application",
       "resiliency"
-    ]
+    ],
+    "optionalFields": {
+      "score": {}
+    }
   },
   {
     "title": "Use automation through ARM/TF to create your Azure resources",
     "priority": "Medium",
     "guid": "3acbe04b-be20-49d3-afda-47778424d116",
-    "simple": -1,
-    "ha": 1,
     "description": "If this attributes is not properly define kubernetes downloads the container image for each new instance of the containers.",
     "documentation": [
       {
@@ -423,13 +489,17 @@
       "all",
       "IaC",
       "application"
-      
-    ]
+    ],
+    "optionalFields": {
+      "score": {
+        "simple": -1,
+        "ha": 1
+      }
+    }
   },
   {
     "title": "Use canary or blue/green deployments",
     "priority": "Medium",
-    "cost": 1,
     "guid": "785c2fa5-5b56-4ad4-a408-fe72734c476b",
     "description": "This will help ensure your workloads remain online during cluster upgrades.",
     "documentation": [
@@ -442,14 +512,17 @@
       "all",
       "application",
       "IaC"
-      
-    ]
+    ],
+    "optionalFields": {
+      "score": {
+        "cost": 1
+      }
+    }
   },
   {
     "title": "Use Dapr to ease microservice development",
     "priority": "Low",
     "guid": "26886d20-b66c-457b-a591-19bf8e8f5c58",
-    "simple": 1,
     "description": "This will help ensure your workloads remain online during cluster upgrades.",
     "documentation": [
       {
@@ -460,7 +533,11 @@
     "tags": [
       "all",
       "application"
-      
-    ]
+    ],
+    "optionalFields": {
+      "score": {
+        "simple": 1
+      }
+    }
   }
 ]

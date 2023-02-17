@@ -16,7 +16,10 @@
     "tags": [
       "all",
       "storage"
-    ]
+    ],
+    "optionalFields": {
+      "score": {}
+    }
   },
   {
     "title": "Size the nodes for storage needs",
@@ -32,7 +35,10 @@
     "tags": [
       "all",
       "storage"
-    ]
+    ],
+    "optionalFields": {
+      "score": {}
+    }
   },
   {
     "title": "Dynamically provision volumes",
@@ -47,7 +53,10 @@
     "tags": [
       "all",
       "storage"
-    ]
+    ],
+    "optionalFields": {
+      "score": {}
+    }
   },
   {
     "title": "Secure and back up your data",
@@ -64,14 +73,15 @@
       "all",
       "storage",
       "resiliency"
-    ]
+    ],
+    "optionalFields": {
+      "score": {}
+    }
   },
   {
     "title": "Avoid keeping state in the cluster, and store data outside (AzStorage, AzSQL, Cosmos, etc)",
     "priority": "High",
     "guid": "9f7547c1-747d-4c56-868a-714435bd19dd",
-    "simple": -1,
-    "ha": 1,
     "description": "Where possible, don't store service state inside the container. Instead, use an Azure platform as a service (PaaS) that supports multiregion replication.",
     "detail": "Service state refers to the in-memory or on-disk data that a service requires to function. State includes the data structures and member variables that the service reads and writes. Depending on how the service is architected, the state might also include files or other resources that are stored on the disk. For example, the state might include the files a database uses to store data and transaction logs.",
     "documentation": [
@@ -84,16 +94,18 @@
       "all",
       "storage",
       "resiliency"
-    ]
+    ],
+    "optionalFields": {
+      "score": {
+        "simple": -1,
+        "ha": 1
+      }
+    }
   },
   {
     "title": "Use ephemeral OS disks",
     "priority": "High",
     "guid": "24367b33-6971-45b1-952b-eee0b9b588de",
-    "cost": -1,
-    "scale": 1,
-    "graph": "where type=='microsoft.containerservice/managedclusters' | project id,resourceGroup,name,pools=properties.agentPoolProfiles | mvexpand pools | extend compliant = (pools.osDiskType=='Ephemeral') | project id,name=strcat(name,'-',pools.name), resourceGroup, compliant",
- 
     "description": " With ephemeral OS disks, you see lower read/write latency on the OS disk of AKS agent nodes since the disk is locally attached.",
     "detail": "You will also get faster cluster operations like scale or upgrade thanks to faster re-imaging and boot times",
     "documentation": [
@@ -106,14 +118,19 @@
       "all",
       "storage",
       "resiliency"
-    ]
+    ],
+    "optionalFields": {
+      "score": {
+        "scale": 1,
+        "cost": -1,
+        "graph": "where type=='microsoft.containerservice/managedclusters' | project id,resourceGroup,name,pools=properties.agentPoolProfiles | mvexpand pools | extend compliant = (pools.osDiskType=='Ephemeral') | project id,name=strcat(name,'-',pools.name), resourceGroup, compliant"
+      }
+    }
   },
   {
     "title": "For hyper performance storage option use Ultra Disks on AKS",
     "priority": "Low",
     "guid": "fc4972cc-3cd2-45bf-a707-6e9eab4bed32",
-    "cost": -1,
-    "scale": 1,
     "description": "Azure ultra disks offer high throughput, high IOPS, and consistent low latency disk storage for your stateful applications.",
     "detail": "One major benefit of ultra disks is the ability to dynamically change the performance of the SSD along with your workloads without the need to restart your agent nodes. Ultra disks are suited for data-intensive workloads.",
     "documentation": [
@@ -126,7 +143,13 @@
       "all",
       "storage",
       "resiliency"
-    ]
+    ],
+    "optionalFields": {
+      "score": {
+        "scale": 1,
+        "cost": -1
+      }
+    }
   },
   {
     "title": "Avoid keeping state in the cluster, and store data outside (AzStorage, AzSQL, Cosmos, etc)",
@@ -143,14 +166,15 @@
       "all",
       "storage",
       "resiliency"
-    ]
+    ],
+    "optionalFields": {
+      "score": {}
+    }
   },
   {
     "title": "If using Azure Disks and AZs, consider having nodepools within a zone for LRS disk",
     "priority": "Medium",
     "guid": "83958a8c-2689-4b32-ab57-cfc64546135a",
-    "simple": -1,
-    "ha": 1,
     "description": "If using Azure Disks and AZs, consider having nodepools within a zone for LRS disk with VolumeBindingMode:WaitForFirstConsumer for provisioning storage in right zone or use ZRS disk for nodepools spanning multiple zones",
     "documentation": [
       {
@@ -162,6 +186,12 @@
       "all",
       "storage",
       "resiliency"
-    ]
+    ],
+    "optionalFields": {
+      "score": {
+        "simple": -1,
+        "ha": 1
+      }
+    }
   }
 ]
