@@ -99,6 +99,35 @@ for file in filenames:
         print(f'cant find {file2} in the dictionary')
         pass
 checklist = {}
+checklist["categories"] = [
+        {
+            "name": "Identity and Access Management"
+        },
+        {
+            "name": "Network Topology and Connectivity"
+        },
+        {
+            "name": "BC and DR"
+        },
+        {
+            "name": "Governance and Security"
+        },
+        {
+            "name": "Resource Organization and Cost Governance "
+        },
+        {
+            "name": "Operations"
+        },
+        {
+            "name": "Application Deployment"
+        },
+        {
+            "name": "Windows"
+        },
+        {
+            "name": "Storage"
+        },
+    ]
 checklist["status"] =  [
         {
             "name": "Not verified",

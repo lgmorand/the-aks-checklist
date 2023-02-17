@@ -1,4 +1,33 @@
 {
+  "categories": [
+    {
+      "name": "Identity and Access Management"
+    },
+    {
+      "name": "Network Topology and Connectivity"
+    },
+    {
+      "name": "BC and DR"
+    },
+    {
+      "name": "Governance and Security"
+    },
+    {
+      "name": "Resource Organization and Cost Governance "
+    },
+    {
+      "name": "Operations"
+    },
+    {
+      "name": "Application Deployment"
+    },
+    {
+      "name": "Windows"
+    },
+    {
+      "name": "Storage"
+    }
+  ],
   "status": [
     {
       "name": "Not verified",
@@ -360,7 +389,7 @@
       "description": "Use logical isolation to separate teams and projects. Try to minimize the number of physical AKS clusters you deploy to isolate teams or applications",
       "guid": "",
       "subcategory": "Multi-Tenancy",
-      "category": "Resource organization",
+      "category": "Resource Organization and Cost Governance",
       "severity": "Medium",
       "link": "https://docs.microsoft.com/azure/aks/operator-best-practices-cluster-isolation#logically-isolate-clusters"
     },
@@ -369,7 +398,7 @@
       "description": "Minimize the use of physical isolation for each separate team or application deployment",
       "guid": "",
       "subcategory": "other",
-      "category": "Resource organization",
+      "category": "Resource Organization and Cost Governance",
       "severity": "High",
       "link": "https://docs.microsoft.com/azure/aks/operator-best-practices-cluster-isolation#physically-isolate-clusters"
     },
@@ -378,7 +407,7 @@
       "description": "With Azure Kubernetes Service (AKS), you can set Azure tags on an AKS cluster and its related resources by using Azure Resource Manager, through the Azure CLI.",
       "guid": "",
       "subcategory": "Operations",
-      "category": "Resource organization",
+      "category": "Resource Organization and Cost Governance",
       "severity": "Medium",
       "link": "https://learn.microsoft.com/en-us/Azure/aks/use-tags"
     },
@@ -1314,7 +1343,7 @@
       "description": "To rapidly scale your AKS cluster, you can integrate with Azure Container Instances (ACI)",
       "guid": "",
       "subcategory": "Operations",
-      "category": "Resource organization",
+      "category": "Resource Organization and Cost Governance",
       "severity": "Low",
       "link": "https://learn.microsoft.com/en-gb/azure/aks/concepts-scale#burst-to-azure-container-instances"
     },
@@ -1323,7 +1352,7 @@
       "description": "what type of worker nodes should I use, and how many of them is a critical question which requires the analysis of the workloads deployed on your cluster to get the best values of it",
       "guid": "",
       "subcategory": "Resources",
-      "category": "Resource organization",
+      "category": "Resource Organization and Cost Governance",
       "severity": "Medium",
       "link": "https://learnk8s.io/kubernetes-node-size"
     },
@@ -1332,7 +1361,7 @@
       "description": "Benefit from ARM64's better price, compute performance, and lower power utilization in AKS node pools.",
       "guid": "",
       "subcategory": "Operations",
-      "category": "Resource organization",
+      "category": "Resource Organization and Cost Governance",
       "severity": "Medium",
       "link": "https://learn.microsoft.com/en-us/azure/aks/use-multiple-node-pools#add-an-arm64-node-pool"
     },
@@ -1341,7 +1370,7 @@
       "description": "Plan and apply resource quotas at the namespace level. If pods don't define resource requests and limits, reject the deployment. Monitor resource usage and adjust quotas as needed.",
       "guid": "769ef669-1a48-435a-a942-223ece80b123",
       "subcategory": "Resiliency",
-      "category": "Resource organization",
+      "category": "Resource Organization and Cost Governance",
       "severity": "Low",
       "link": "https://docs.microsoft.com/azure/aks/operator-best-practices-scheduler#enforce-resource-quotas",
       "simple": -1,
@@ -1352,7 +1381,7 @@
       "description": " A LimitRange is a policy to constrain resource allocations (to Pods or Containers) in a namespace. It's useful to ensure that pods don't forget to declare request limits",
       "guid": "",
       "subcategory": "Resiliency",
-      "category": "Resource organization",
+      "category": "Resource Organization and Cost Governance",
       "severity": "Low",
       "link": "https://kubernetes.io/docs/concepts/policy/limit-range/"
     },
@@ -1361,7 +1390,7 @@
       "description": "Set CPU and memory limits and requests to all the containers. It prevents memory leaks and CPU over-usage and protects the whole platform",
       "guid": "",
       "subcategory": "Resiliency",
-      "category": "Resource organization",
+      "category": "Resource Organization and Cost Governance",
       "severity": "Medium",
       "link": "https://learn.microsoft.com/en-gb/azure/aks/developer-best-practices-resource-management#define-pod-resource-requests-and-limits"
     },
@@ -1370,7 +1399,7 @@
       "description": "To maintain the availability of applications, define Pod Disruption Budgets (PDBs) to make sure that a minimum number of pods are available in the cluster.",
       "guid": "3c763963-7a55-42d5-a15e-401955387e5c",
       "subcategory": "Resiliency",
-      "category": "Resource organization",
+      "category": "Resource Organization and Cost Governance",
       "severity": "Low",
       "link": "https://docs.microsoft.com/azure/aks/operator-best-practices-scheduler#plan-for-availability-using-pod-disruption-budgets",
       "ha": 1,
@@ -1381,7 +1410,7 @@
       "description": "These tools can be very valuable for cost allocation especially in the case of multitenancy",
       "guid": "f82cb8eb-8c0a-4a63-a25a-4956eaa8dc4a",
       "subcategory": "Cost",
-      "category": "Resource organization",
+      "category": "Resource Organization and Cost Governance",
       "severity": "Low",
       "link": "https://docs.microsoft.com/azure/cloud-adoption-framework/scenarios/aks/eslz-cost-governance-with-kubecost",
       "cost": 1
@@ -1391,7 +1420,7 @@
       "description": "Nvidia's A100 GPU can be divided in up to seven independent instances. Each instance has their own memory and Stream Multiprocessor (SM).",
       "guid": "87e651ea-bc4a-4a87-a6df-c06a4b570ebc",
       "subcategory": "Cost",
-      "category": "Resource organization",
+      "category": "Resource Organization and Cost Governance",
       "severity": "Medium",
       "link": "https://learn.microsoft.com/azure/aks/gpu-multi-instance",
       "cost": 1
@@ -1401,7 +1430,7 @@
       "description": "Your AKS workloads may not need to run continuously, for example a development cluster that has node pools running specific workloads.",
       "guid": "2b72a08b-0410-4cd6-9093-e068a5cf27e8",
       "subcategory": "Cost",
-      "category": "Resource organization",
+      "category": "Resource Organization and Cost Governance",
       "severity": "Medium",
       "link": "https://learn.microsoft.com/azure/aks/start-stop-nodepools",
       "cost": 1
@@ -1411,7 +1440,7 @@
       "description": "Node pool snapshots allow you to take a configuration snapshot of your node pool and then create new node pools or new clusters based of that snapshot for as long as that configuration and kubernetes version is supported.",
       "guid": "64d1a846-e28a-4b6b-9a33-22a635c15a21",
       "subcategory": "Cost",
-      "category": "Resource organization",
+      "category": "Resource Organization and Cost Governance",
       "severity": "Low",
       "link": "https://learn.microsoft.com/azure/aks/node-pool-snapshot",
       "cost": 1
@@ -1421,7 +1450,7 @@
       "description": "Azure VMs/nodes have quotas per subscription. Ensure that you have planned for these quota and proactively prepare to request for more if needed",
       "guid": "081a5417-4158-433e-a3ad-3c2de733165c",
       "subcategory": "Scalability",
-      "category": "Resource organization",
+      "category": "Resource Organization and Cost Governance",
       "severity": "High",
       "link": "https://learn.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits",
       "cost": 1
@@ -1431,7 +1460,7 @@
       "description": " Scale-down Mode allows you to decide whether you would like to delete or deallocate the nodes in your Azure Kubernetes Service (AKS) cluster upon scaling down.",
       "guid": "4d3dfbab-9924-4831-a68d-fdf0d72f462c",
       "subcategory": "Cost",
-      "category": "Resource organization",
+      "category": "Resource Organization and Cost Governance",
       "severity": "Low",
       "link": "https://learn.microsoft.com/azure/aks/scale-down-mode",
       "cost": 1
