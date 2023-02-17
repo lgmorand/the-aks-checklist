@@ -39,17 +39,27 @@ def get_link(entry):
 
 def transform(item,filename):
     transformed_item = dict()
-    transformed_item['text'] =  item['title']
+    title = item['title']
+    transformed_item['text'] =  title
     transformed_item["description"] = item["description"]
+    try:
+        transformed_item["guid"] = item["guid"]
+    except: 
+        transformed_item["guid"] = ""
     transformed_item['subcategory'] =  get_subcategory(item['tags'])
     try:
         transformed_item['category'] = filename_map_dict[filename]
     except KeyError:
         print(f'cant find {filename} in the dictionary')
         pass
-    transformed_item['guid'] = str(uuid.uuid4())
     transformed_item['severity'] = item['priority']
     transformed_item['link'] = get_link(item)
+    optionals = ["scale","simple","ha","cost","graph","security"]
+    for optional in optionals:
+        try:
+            transformed_item[optional] = item['optionalFields']['score'][optional]
+        except KeyError:
+            print(f'cant find {optional} for {title} ')
     return transformed_item
 
 dir_path = r'../en/items/'
@@ -88,7 +98,45 @@ for file in filenames:
     else:
         print(f'cant find {file2} in the dictionary')
         pass
-
+checklist = {}
+checklist["status"] =  [
+        {
+            "name": "Not verified",
+            "description": "This check has not been looked at yet"
+        },
+        {
+            "name": "Open",
+            "description": "There is an action item associated to this check"
+        },
+        {
+            "name": "Fulfilled",
+            "description": "This check has been verified, and there are no further action items associated to it"
+        },
+        {
+            "name": "Not required",
+            "description": "Recommendation understood, but not needed by current requirements"
+        },
+        {
+            "name": "N/A",
+            "description": "Not applicable for current design"
+        }
+    ]
+checklist["severities"] = [
+        {
+            "name": "High"
+        },
+        {
+            "name": "Medium"
+        },
+        {
+            "name": "Low"
+        }
+    ]
+checklist["metadata"] =  {
+        "name": "Azure AKS Review",
+        "state": "GA"
+    }
+checklist["items"] = items
 # finally we pull the ft data and append it to the transformed data then save it in the ft file. this need only be ran once
 # with open("./ft_data.json") as f:
 #     content = json.load(f)
@@ -96,7 +144,7 @@ for file in filenames:
 #     content["items"] = combined_list
 
 with open("aks_checklist.en.json", 'w', encoding='utf-8') as f:
-    json.dump(items, f, ensure_ascii=False, indent=2)
+    json.dump(checklist, f, ensure_ascii=False, indent=2)
 
 # lets get the combined list as a csv
 if need_to_compare:
