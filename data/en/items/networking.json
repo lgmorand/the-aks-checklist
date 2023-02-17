@@ -373,7 +373,7 @@
   {
     "title": "Use Azue NAT Gateway as outboundType for scaling egress traffic",
     "priority": "Medium",
-    "guid": "b3808b9f-a1cf-4204-ad01-3a923ce474db",
+    "guid": "ccb534e7-416e-4a1d-8e93-533b53199085",
     "description": "Whilst AKS customers are able to route egress traffic through an Azure Load Balancer, there are limitations on the amount of outbound flows of traffic that is possible.",
     "documentation": [
       {
@@ -396,7 +396,7 @@
   {
     "title": "Use Dynamic allocations of IPs in order to avoid Azure CNI IP exhaustion",
     "priority": "Medium",
-    "guid": "b3808b9f-a1cf-4204-ad01-3a923ce474db",
+    "guid": "8ee9a69a-1b58-4b1e-9c61-476e110a160b",
     "description": "A drawback with the traditional CNI is the exhaustion of pod IP addresses as the AKS cluster grows, resulting in the need to rebuild the entire cluster in a bigger subnet.",
     "detail": "The new dynamic IP allocation capability in Azure CNI solves this problem by allocating pod IPs from a subnet separate from the subnet hosting the AKS cluster.",
     "documentation": [
@@ -468,7 +468,7 @@
   {
     "title": "If required add company HTTP Proxy",
     "priority": "Medium",
-    "guid": "9bda4776-8f24-4c11-9775-c2ea55b46a94",
+    "guid": "6c46b91a-1107-4485-ad66-3183e2a8c266",
     "severity": "Low",
     "description": "Http Proxy exposes a straightforward interface that cluster operators can use to secure AKS-required network traffic in proxy-dependent environments.",
     "documentation": [
@@ -488,25 +488,6 @@
         "graph": "Resources | where type=~'microsoft.containerservice/managedclusters' | project resourceGroup,name,pools=properties.agentPoolProfiles | mv-expand pools | project subnetId=tostring(pools.vnetSubnetID) | where isnotempty(subnetId) | join (Resources | where type=='microsoft.network/virtualnetworks' | project id,resourceGroup,name,enableDdosProtection=tostring(properties.enableDdosProtection),subnets=properties.subnets | mv-expand subnets | project id,resourceGroup,name,enableDdosProtection,subnetId=tostring(subnets.id)) on subnetId | distinct id,resourceGroup,name,enableDdosProtection | extend compliant = (enableDdosProtection == 'true')",
         "security": 2
       }
-    }
-  },
-  {
-    "title": "If required add company HTTP Proxy",
-    "priority": "Medium",
-    "description": "Http Proxy exposes a straightforward interface that cluster operators can use to secure AKS-required network traffic in proxy-dependent environments.",
-    "documentation": [
-      {
-        "title": "HTTP proxy support in Azure Kubernetes Service",
-        "url": "https://learn.microsoft.com/azure/aks/http-proxy"
-      }
-    ],
-    "tags": [
-      "all",
-      "security",
-      "network"
-    ],
-    "optionalFields": {
-      "score": {}
     }
   },
   {
@@ -535,7 +516,7 @@
   {
     "title": "If required add your own CNI plugin",
     "priority": "Low",
-    "guid": "e9855d04-c3c3-49c9-a6bb-2c12159a114b",
+    "guid": "57bf217f-6dc8-481c-81e2-785773e9c00f",
     "description": "A service mesh provides capabilities like traffic management, resiliency, policy, security, strong identity, and observability to your workloads.",
     "documentation": [
       {
@@ -559,7 +540,7 @@
   {
     "title": "If using Azure CNI, consider using different Subnets for NodePools",
     "priority": "Medium",
-    "guid": "e9855d04-c3c3-49c9-a6bb-2c12159a114b",
+    "guid": "22fbe8d6-9b40-47ef-9011-25bb1a555a6b",
     "description": "This can address requirements such as having non-contiguous virtual network address space to split across node pools and other security reasons.",
     "documentation": [
       {

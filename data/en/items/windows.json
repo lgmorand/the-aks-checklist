@@ -141,7 +141,7 @@
   {
     "title": "Enable Group Managed Service Accounts (GMSA) for your Windows Server nodes",
     "priority": "Medium",
-    "guid": "d2e0d5d7-71d4-41e3-910c-c57b4a4b1410",
+    "guid": "e1123a7c-a333-4eb4-a120-4ee3f293c9f3",
     "description": "Group Managed Service Accounts (GMSA) is a managed domain account for multiple servers that provides automatic password management, simplified service principal name (SPN) management and the ability to delegate the management to other administrators.",
     "documentation": [
       {
@@ -165,7 +165,7 @@
   {
     "title": "If required for AKS Windows workloads, HostProcess containers can be used",
     "priority": "Medium",
-    "guid": "785c2fa5-5b56-4ad4-a408-fe72734c476b",
+    "guid": "ab5351f6-383a-45ed-9c5e-b143b16db40a",
     "description": "HostProcess / Privileged containers extend the Windows container model to enable a wider range of Kubernetes cluster management scenarios.",
     "documentation": [
       {
@@ -204,6 +204,55 @@
       "score": {
         "simple": -1,
         "ha": 1
+      }
+    }
+  },
+  {
+    "title": "For Windows 2019 and 2022 AKS nodes Calico Network Policies can be us",
+    "priority": "Medium",
+    "guid": "ce7f2a7c-297c-47c6-adea-a6ff838db665",
+    "description": "For Windows 2019 and 2022 AKS nodes Calico Network Policies can be use",
+    "documentation": [
+      {
+        "title": "Secure traffic between pods using network policies",
+        "url": "https://learn.microsoft.com/azure/aks/use-network-policies"
+      }
+    ],
+    "tags": [
+      "all",
+      "security",
+      "compliance",
+      "windows"
+    ],
+    "optionalFields": {
+      "score": {
+        "security": 1,
+        "simple": -1,
+        "graph": "where type=='microsoft.containerservice/managedclusters' | where isnotnull(properties.apiServerAccessProfile.enablePrivateCluster) | extend compliant = (properties.apiServerAccessProfile.enablePrivateCluster==true) | distinct id, compliant"
+      }
+    }
+  },
+  {
+    "title": "For Windows workloads use Accelerated Networking",
+    "priority": "Medium",
+    "guid": "7bacd7b9-c025-4a9d-a5d2-25d6bc5439d9",
+    "description": "For Windows workloads use Accelerated Networking",
+    "documentation": [
+      {
+        "title": "What is Accelerated Networking?",
+        "url": "https://learn.microsoft.com/azure/virtual-network/accelerated-networking-overview"
+      }
+    ],
+    "tags": [
+      "all",
+      "operations",
+      "windows"
+    ],
+    "optionalFields": {
+      "score": {
+        "scale": 1,
+        "simple": -1,
+        "graph": "where type=='microsoft.containerservice/managedclusters' | extend compliant = (isnull(properties.addonProfiles.httpApplicationRouting) or properties.addonProfiles.httpApplicationRouting.enabled==false) | distinct id,compliant"
       }
     }
   }

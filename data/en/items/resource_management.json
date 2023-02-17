@@ -193,7 +193,7 @@
   },
   {
     "title": "When required use multi-instance partioning GPU on AKS Clusters",
-    "guid": "f82cb8eb-8c0a-4a63-a25a-4956eaa8dc4a",
+    "guid": "87e651ea-bc4a-4a87-a6df-c06a4b570ebc",
     "priority": "Medium",
     "description": "Nvidia's A100 GPU can be divided in up to seven independent instances. Each instance has their own memory and Stream Multiprocessor (SM).",
     "documentation": [
@@ -217,7 +217,7 @@
   {
     "title": "If running a Dev/Test cluster use NodePool Start/Stop",
     "priority": "Medium",
-    "guid": "f82cb8eb-8c0a-4a63-a25a-4956eaa8dc4a",
+    "guid": "2b72a08b-0410-4cd6-9093-e068a5cf27e8",
     "description": "Your AKS workloads may not need to run continuously, for example a development cluster that has node pools running specific workloads.",
     "documentation": [
       {
@@ -240,7 +240,7 @@
   {
     "title": "If required scale NodePool snapshots",
     "priority": "Low",
-    "guid": "f82cb8eb-8c0a-4a63-a25a-4956eaa8dc4a",
+    "guid": "64d1a846-e28a-4b6b-9a33-22a635c15a21",
     "description": "Node pool snapshots allow you to take a configuration snapshot of your node pool and then create new node pools or new clusters based of that snapshot for as long as that configuration and kubernetes version is supported.",
     "documentation": [
       {
@@ -274,6 +274,28 @@
     "tags": [
       "all",
       "scalability",
+      "resources"
+    ],
+    "optionalFields": {
+      "score": {
+        "cost": 1
+      }
+    }
+  },
+  {
+    "title": "Use scale down mode to delete/delallocate nodes",
+    "priority": "Low",
+    "guid": "4d3dfbab-9924-4831-a68d-fdf0d72f462c",
+    "description": " Scale-down Mode allows you to decide whether you would like to delete or deallocate the nodes in your Azure Kubernetes Service (AKS) cluster upon scaling down.",
+    "documentation": [
+      {
+        "title": "Use Scale-down Mode to delete/deallocate nodes",
+        "url": "https://learn.microsoft.com/azure/aks/scale-down-mode"
+      }
+    ],
+    "tags": [
+      "all",
+      "cost",
       "resources"
     ],
     "optionalFields": {

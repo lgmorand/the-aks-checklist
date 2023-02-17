@@ -396,7 +396,8 @@
   {
     "title": "Fine tune your node configuration",
     "priority": "Low",
-    "description": "Customizing your node configuration allows you to configure or tune your operating system (OS) settings or the kubelet parameters to match the needs of the workloads.",
+    "guid": "831c2872-c693-4b39-a887-a561bada49bc",
+    "description": "Customizing your node configuration allows you to configure or tune your operating system (OS) settings, node pools or the kubelet parameters to match the needs of the workloads.",
     "detail": "When you create an AKS cluster or add a node pool to your cluster, you can customize a subset of commonly used OS and kubelet settings.",
     "documentation": [
       {
@@ -408,13 +409,19 @@
       "all"
     ],
     "optionalFields": {
-      "score": {}
+      "score": {
+        "cost": -1,
+        "ha": 1,
+        "severity": "Low",
+        "graph": "where type=='microsoft.containerservice/managedclusters' | extend compliant = (isnotnull(properties.austoscalerProfile)) | distinct id,compliant"
+        
+      }
     }
   },
   {
     "title": "Consider using AKS command invoke on private clusters",
     "priority": "Low",
-    "guid": "0102ce16-ee30-41e6-b882-e52e4621dd68",
+    "guid": "d7672c26-7602-4482-85a4-14527fbe855c",
     "description": "You can use command invoke to access private clusters without having to configure a VPN or Express Route",
     "detail": "Using command invoke allows you to remotely invoke commands like kubectl and helm on your private cluster through the Azure API without directly connecting to the cluster.",
     "documentation": [
@@ -551,7 +558,7 @@
   {
     "title": "Enable AKS auto-certificate rotation",
     "priority": "Low",
-    "guid": "5388e9de-d167-4dd1-a2b0-ac241b999a64",
+    "guid": "3aa70560-e7e7-4968-be3d-628af35b2ced",
     "description": "Periodically, you may need to rotate those certificates for security or policy reasons. For example, you may have a policy to rotate all your certificates every 90 days.",
     "documentation": [
       {
@@ -719,6 +726,27 @@
     "optionalFields": {
       "score": {
         "cost": 1
+      }
+    }
+  },
+  {
+    "title": "Develop own governance practices to make sure no changes are performed by operators in the node RG (aka 'infra RG')",
+    "priority": "High",
+    "guid": "ed0fda7f-211b-47c7-8b6e-c18873fb473c",
+    "description": "Develop own governance practices to make sure no changes are performed by operators in the node RG (aka 'infra RG')",
+    "documentation": [
+      {
+        "title": "AKS FAQ",
+        "url": "https://docs.microsoft.com/azure/aks/faq"
+      }
+    ],
+    "tags": [
+      "all",
+      "monitoring"
+    ],
+    "optionalFields": {
+      "score": {
+        "security": 1
       }
     }
   }

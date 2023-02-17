@@ -394,7 +394,7 @@
     {
       "text": "Configure your cluster for regulated industries",
       "description": "Some industries require certified kubernetes or to implement specific configurations. AKS offers several features to meet this requirements",
-      "guid": "cc639637-a652-42ac-89e8-06965388e9de",
+      "guid": "42d4aefe-2383-470e-b019-c30df24996b2",
       "subcategory": "Security",
       "category": "Governance and Security",
       "severity": "Medium",
@@ -414,7 +414,7 @@
     {
       "text": "Encrypt ETCD at rest with your own key",
       "description": "By default, ETCD is encrypted at rest with keys managed by Microsoft. It is possible to encrypt the database using your own key using a KMS plugin and store the key in Azure Key Vault.",
-      "guid": "cc639637-a652-42ac-89e8-06965388e9de",
+      "guid": "e7ba73a3-0508-4f80-806f-527db30cee96",
       "subcategory": "Secrets",
       "category": "Governance and Security",
       "severity": "Low",
@@ -472,7 +472,7 @@
     {
       "text": "Enable Microsoft Defender for Containers",
       "description": "Microsoft Defender for Containers provides protections for your Kubernetes clusters wherever they're running (AKS and on-premesis)",
-      "guid": "cc639637-a652-42ac-89e8-06965388e9de",
+      "guid": "c9e95ffe-6dd1-4a17-8c5f-110389ca9b21",
       "subcategory": "Security",
       "category": "Governance and Security",
       "severity": "High",
@@ -540,7 +540,7 @@
     {
       "text": "If required consider using Confidential Compute for AKS",
       "description": "Containers run within a Trusted Execution Environment(TEE) brings isolation from other containers, the node kernel in a hardware protected, integrity protected attestable environment.",
-      "guid": "cc639637-a652-42ac-89e8-06965388e9de",
+      "guid": "ec8e4e42-0344-41b0-b865-9123e8956d31",
       "subcategory": "Compliance",
       "category": "Governance and Security",
       "severity": "Low",
@@ -698,7 +698,7 @@
     {
       "text": "For AKS non-interactive logins use kubelogin",
       "description": " You can use kubelogin to access the cluster with non-interactive service principal sign-in.",
-      "guid": "d2e0d5d7-71d4-41e3-910c-c57b4a4b1410",
+      "guid": "f4dcf690-1b30-407d-abab-6f8aa780d3a3",
       "subcategory": "Identity",
       "category": "Identity and Access Management",
       "severity": "Medium",
@@ -709,7 +709,7 @@
     {
       "text": "Disable AKS local accounts",
       "description": "AKS offers users the ability to disable local accounts via a flag, disable-local-accounts",
-      "guid": "d2e0d5d7-71d4-41e3-910c-c57b4a4b1410",
+      "guid": "b085b1f2-3119-4771-8c9a-bbf4411810ec",
       "subcategory": "Identity",
       "category": "Identity and Access Management",
       "severity": "Medium",
@@ -720,7 +720,7 @@
     {
       "text": "Configure if required Just-in-time cluster access",
       "description": "AKS offers users the ability to enable access for a limited time",
-      "guid": "d2e0d5d7-71d4-41e3-910c-c57b4a4b1410",
+      "guid": "36abb0db-c118-4f4c-9880-3f30f9a2deb6",
       "subcategory": "Identity",
       "category": "Identity and Access Management",
       "severity": "Low",
@@ -731,11 +731,22 @@
     {
       "text": "For finer control consider using a managed Kubelet Identity",
       "description": "A Kubelet identity enables access granted to the existing identity prior to cluster creation.",
-      "guid": "d2e0d5d7-71d4-41e3-910c-c57b4a4b1410",
+      "guid": "1f711a74-3672-470b-b8b8-a2148d640d79",
       "subcategory": "Identity",
       "category": "Identity and Access Management",
       "severity": "Low",
       "link": "https://learn.microsoft.com/azure/aks/use-managed-identity#use-a-pre-created-kubelet-managed-identity",
+      "simple": -1,
+      "security": 1
+    },
+    {
+      "text": "Configure if required AAD conditional access for AKS",
+      "description": "When integrating Azure AD with your AKS cluster, you can also use Conditional Access to control access to your cluster.",
+      "guid": "c4d7f4c6-79bf-45d0-aa05-ce8fc717e150",
+      "subcategory": "Identity",
+      "category": "Identity and Access Management",
+      "severity": "Low",
+      "link": "https://learn.microsoft.com/azure/aks/managed-aad#use-conditional-access-with-azure-ad-and-aks",
       "simple": -1,
       "security": 1
     },
@@ -892,7 +903,7 @@
     {
       "text": "Use Azue NAT Gateway as outboundType for scaling egress traffic",
       "description": "Whilst AKS customers are able to route egress traffic through an Azure Load Balancer, there are limitations on the amount of outbound flows of traffic that is possible.",
-      "guid": "b3808b9f-a1cf-4204-ad01-3a923ce474db",
+      "guid": "ccb534e7-416e-4a1d-8e93-533b53199085",
       "subcategory": "Scalability",
       "category": "Network Topology and Connectivity",
       "severity": "Medium",
@@ -903,7 +914,7 @@
     {
       "text": "Use Dynamic allocations of IPs in order to avoid Azure CNI IP exhaustion",
       "description": "A drawback with the traditional CNI is the exhaustion of pod IP addresses as the AKS cluster grows, resulting in the need to rebuild the entire cluster in a bigger subnet.",
-      "guid": "b3808b9f-a1cf-4204-ad01-3a923ce474db",
+      "guid": "8ee9a69a-1b58-4b1e-9c61-476e110a160b",
       "subcategory": "Scalability",
       "category": "Network Topology and Connectivity",
       "severity": "Medium",
@@ -937,7 +948,7 @@
     {
       "text": "If required add company HTTP Proxy",
       "description": "Http Proxy exposes a straightforward interface that cluster operators can use to secure AKS-required network traffic in proxy-dependent environments.",
-      "guid": "9bda4776-8f24-4c11-9775-c2ea55b46a94",
+      "guid": "6c46b91a-1107-4485-ad66-3183e2a8c266",
       "subcategory": "Security",
       "category": "Network Topology and Connectivity",
       "severity": "Medium",
@@ -945,15 +956,6 @@
       "cost": -2,
       "graph": "Resources | where type=~'microsoft.containerservice/managedclusters' | project resourceGroup,name,pools=properties.agentPoolProfiles | mv-expand pools | project subnetId=tostring(pools.vnetSubnetID) | where isnotempty(subnetId) | join (Resources | where type=='microsoft.network/virtualnetworks' | project id,resourceGroup,name,enableDdosProtection=tostring(properties.enableDdosProtection),subnets=properties.subnets | mv-expand subnets | project id,resourceGroup,name,enableDdosProtection,subnetId=tostring(subnets.id)) on subnetId | distinct id,resourceGroup,name,enableDdosProtection | extend compliant = (enableDdosProtection == 'true')",
       "security": 2
-    },
-    {
-      "text": "If required add company HTTP Proxy",
-      "description": "Http Proxy exposes a straightforward interface that cluster operators can use to secure AKS-required network traffic in proxy-dependent environments.",
-      "guid": "",
-      "subcategory": "Security",
-      "category": "Network Topology and Connectivity",
-      "severity": "Medium",
-      "link": "https://learn.microsoft.com/azure/aks/http-proxy"
     },
     {
       "text": "Consider using a service mesh for advanced microservice communication management",
@@ -969,7 +971,7 @@
     {
       "text": "If required add your own CNI plugin",
       "description": "A service mesh provides capabilities like traffic management, resiliency, policy, security, strong identity, and observability to your workloads.",
-      "guid": "e9855d04-c3c3-49c9-a6bb-2c12159a114b",
+      "guid": "57bf217f-6dc8-481c-81e2-785773e9c00f",
       "subcategory": "Operations",
       "category": "Network Topology and Connectivity",
       "severity": "Low",
@@ -980,7 +982,7 @@
     {
       "text": "If using Azure CNI, consider using different Subnets for NodePools",
       "description": "This can address requirements such as having non-contiguous virtual network address space to split across node pools and other security reasons.",
-      "guid": "e9855d04-c3c3-49c9-a6bb-2c12159a114b",
+      "guid": "22fbe8d6-9b40-47ef-9011-25bb1a555a6b",
       "subcategory": "Security",
       "category": "Network Topology and Connectivity",
       "severity": "Medium",
@@ -1143,17 +1145,20 @@
     },
     {
       "text": "Fine tune your node configuration",
-      "description": "Customizing your node configuration allows you to configure or tune your operating system (OS) settings or the kubelet parameters to match the needs of the workloads.",
-      "guid": "",
+      "description": "Customizing your node configuration allows you to configure or tune your operating system (OS) settings, node pools or the kubelet parameters to match the needs of the workloads.",
+      "guid": "831c2872-c693-4b39-a887-a561bada49bc",
       "subcategory": "other",
       "category": "Operations",
       "severity": "Low",
-      "link": "https://learn.microsoft.com/azure/aks/custom-node-configuration"
+      "link": "https://learn.microsoft.com/azure/aks/custom-node-configuration",
+      "ha": 1,
+      "cost": -1,
+      "graph": "where type=='microsoft.containerservice/managedclusters' | extend compliant = (isnotnull(properties.austoscalerProfile)) | distinct id,compliant"
     },
     {
       "text": "Consider using AKS command invoke on private clusters",
       "description": "You can use command invoke to access private clusters without having to configure a VPN or Express Route",
-      "guid": "0102ce16-ee30-41e6-b882-e52e4621dd68",
+      "guid": "d7672c26-7602-4482-85a4-14527fbe855c",
       "subcategory": "Compliance",
       "category": "Operations",
       "severity": "Low",
@@ -1214,7 +1219,7 @@
     {
       "text": "Enable AKS auto-certificate rotation",
       "description": "Periodically, you may need to rotate those certificates for security or policy reasons. For example, you may have a policy to rotate all your certificates every 90 days.",
-      "guid": "5388e9de-d167-4dd1-a2b0-ac241b999a64",
+      "guid": "3aa70560-e7e7-4968-be3d-628af35b2ced",
       "subcategory": "Security",
       "category": "Operations",
       "severity": "Low",
@@ -1293,6 +1298,16 @@
       "severity": "Low",
       "link": "https://learn.microsoft.com/azure/event-grid/event-schema-aks",
       "cost": 1
+    },
+    {
+      "text": "Develop own governance practices to make sure no changes are performed by operators in the node RG (aka 'infra RG')",
+      "description": "Develop own governance practices to make sure no changes are performed by operators in the node RG (aka 'infra RG')",
+      "guid": "ed0fda7f-211b-47c7-8b6e-c18873fb473c",
+      "subcategory": "Monitoring",
+      "category": "Operations",
+      "severity": "High",
+      "link": "https://docs.microsoft.com/azure/aks/faq",
+      "security": 1
     },
     {
       "text": "Burst serverless with Azure Container Instances and Virtual Nodes",
@@ -1374,7 +1389,7 @@
     {
       "text": "When required use multi-instance partioning GPU on AKS Clusters",
       "description": "Nvidia's A100 GPU can be divided in up to seven independent instances. Each instance has their own memory and Stream Multiprocessor (SM).",
-      "guid": "f82cb8eb-8c0a-4a63-a25a-4956eaa8dc4a",
+      "guid": "87e651ea-bc4a-4a87-a6df-c06a4b570ebc",
       "subcategory": "Cost",
       "category": "Resource organization",
       "severity": "Medium",
@@ -1384,7 +1399,7 @@
     {
       "text": "If running a Dev/Test cluster use NodePool Start/Stop",
       "description": "Your AKS workloads may not need to run continuously, for example a development cluster that has node pools running specific workloads.",
-      "guid": "f82cb8eb-8c0a-4a63-a25a-4956eaa8dc4a",
+      "guid": "2b72a08b-0410-4cd6-9093-e068a5cf27e8",
       "subcategory": "Cost",
       "category": "Resource organization",
       "severity": "Medium",
@@ -1394,7 +1409,7 @@
     {
       "text": "If required scale NodePool snapshots",
       "description": "Node pool snapshots allow you to take a configuration snapshot of your node pool and then create new node pools or new clusters based of that snapshot for as long as that configuration and kubernetes version is supported.",
-      "guid": "f82cb8eb-8c0a-4a63-a25a-4956eaa8dc4a",
+      "guid": "64d1a846-e28a-4b6b-9a33-22a635c15a21",
       "subcategory": "Cost",
       "category": "Resource organization",
       "severity": "Low",
@@ -1409,6 +1424,16 @@
       "category": "Resource organization",
       "severity": "High",
       "link": "https://learn.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits",
+      "cost": 1
+    },
+    {
+      "text": "Use scale down mode to delete/delallocate nodes",
+      "description": " Scale-down Mode allows you to decide whether you would like to delete or deallocate the nodes in your Azure Kubernetes Service (AKS) cluster upon scaling down.",
+      "guid": "4d3dfbab-9924-4831-a68d-fdf0d72f462c",
+      "subcategory": "Cost",
+      "category": "Resource organization",
+      "severity": "Low",
+      "link": "https://learn.microsoft.com/azure/aks/scale-down-mode",
       "cost": 1
     },
     {
@@ -1473,7 +1498,7 @@
     {
       "text": "For hyper performance storage option use Ultra Disks on AKS",
       "description": "Azure ultra disks offer high throughput, high IOPS, and consistent low latency disk storage for your stateful applications.",
-      "guid": "fc4972cc-3cd2-45bf-a707-6e9eab4bed32",
+      "guid": "39c486ce-d5af-4062-89d5-18bb5fd795db",
       "subcategory": "Storage",
       "category": "Storage",
       "severity": "Low",
@@ -1500,6 +1525,17 @@
       "link": "https://docs.microsoft.com/azure/aks/availability-zones#azure-disk-availability-zone-support",
       "simple": -1,
       "ha": 1
+    },
+    {
+      "text": "For non-ephemeral disks, use high IOPS and larger OS disks for the nodes when running many pods/node",
+      "description": "For non-ephemeral disks, use high IOPS and larger OS disks for the nodes when running many pods/node since it requires high performance for running multiple pods and will generate huge logs with default AKS log rotation thresholds",
+      "guid": "fc4972cc-3cd2-45bf-a707-6e9eab4bed32",
+      "subcategory": "Storage",
+      "category": "Storage",
+      "severity": "High",
+      "link": "Azure managed disk types",
+      "scale": 1,
+      "cost": -1
     },
     {
       "text": "Map the base image to node OS",
@@ -1567,7 +1603,7 @@
     {
       "text": "Enable Group Managed Service Accounts (GMSA) for your Windows Server nodes",
       "description": "Group Managed Service Accounts (GMSA) is a managed domain account for multiple servers that provides automatic password management, simplified service principal name (SPN) management and the ability to delegate the management to other administrators.",
-      "guid": "d2e0d5d7-71d4-41e3-910c-c57b4a4b1410",
+      "guid": "e1123a7c-a333-4eb4-a120-4ee3f293c9f3",
       "subcategory": "Identity",
       "category": "Windows",
       "severity": "Medium",
@@ -1578,7 +1614,7 @@
     {
       "text": "If required for AKS Windows workloads, HostProcess containers can be used",
       "description": "HostProcess / Privileged containers extend the Windows container model to enable a wider range of Kubernetes cluster management scenarios.",
-      "guid": "785c2fa5-5b56-4ad4-a408-fe72734c476b",
+      "guid": "ab5351f6-383a-45ed-9c5e-b143b16db40a",
       "subcategory": "Application",
       "category": "Windows",
       "severity": "Medium",
@@ -1595,6 +1631,30 @@
       "link": "https://learn.microsoft.com/en-us/azure/aks/hybrid/adapt-apps-mixed-os-clusters",
       "simple": -1,
       "ha": 1
+    },
+    {
+      "text": "For Windows 2019 and 2022 AKS nodes Calico Network Policies can be us",
+      "description": "For Windows 2019 and 2022 AKS nodes Calico Network Policies can be use",
+      "guid": "ce7f2a7c-297c-47c6-adea-a6ff838db665",
+      "subcategory": "Security",
+      "category": "Windows",
+      "severity": "Medium",
+      "link": "https://learn.microsoft.com/azure/aks/use-network-policies",
+      "simple": -1,
+      "graph": "where type=='microsoft.containerservice/managedclusters' | where isnotnull(properties.apiServerAccessProfile.enablePrivateCluster) | extend compliant = (properties.apiServerAccessProfile.enablePrivateCluster==true) | distinct id, compliant",
+      "security": 1
+    },
+    {
+      "text": "For Windows workloads use Accelerated Networking",
+      "description": "For Windows workloads use Accelerated Networking",
+      "guid": "7bacd7b9-c025-4a9d-a5d2-25d6bc5439d9",
+      "subcategory": "Operations",
+      "category": "Windows",
+      "severity": "Medium",
+      "link": "https://learn.microsoft.com/azure/virtual-network/accelerated-networking-overview",
+      "scale": 1,
+      "simple": -1,
+      "graph": "where type=='microsoft.containerservice/managedclusters' | extend compliant = (isnull(properties.addonProfiles.httpApplicationRouting) or properties.addonProfiles.httpApplicationRouting.enabled==false) | distinct id,compliant"
     }
   ]
 }

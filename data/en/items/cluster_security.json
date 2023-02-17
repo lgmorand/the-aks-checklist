@@ -21,7 +21,7 @@
   {
     "title": "Configure your cluster for regulated industries",
     "priority": "Medium",
-    "guid": "cc639637-a652-42ac-89e8-06965388e9de",
+    "guid": "42d4aefe-2383-470e-b019-c30df24996b2",
     "description": "Some industries require certified kubernetes or to implement specific configurations. AKS offers several features to meet this requirements",
     "tags": [
       "all",
@@ -67,7 +67,7 @@
   {
     "title": "Encrypt ETCD at rest with your own key",
     "priority": "Low",
-    "guid": "cc639637-a652-42ac-89e8-06965388e9de",
+    "guid": "e7ba73a3-0508-4f80-806f-527db30cee96",
     "description": "By default, ETCD is encrypted at rest with keys managed by Microsoft. It is possible to encrypt the database using your own key using a KMS plugin and store the key in Azure Key Vault.",
     "documentation": [
       {
@@ -198,7 +198,7 @@
   {
     "title": "Enable Microsoft Defender for Containers",
     "priority": "High",
-    "guid": "cc639637-a652-42ac-89e8-06965388e9de",
+    "guid": "c9e95ffe-6dd1-4a17-8c5f-110389ca9b21",
     "description": "Microsoft Defender for Containers provides protections for your Kubernetes clusters wherever they're running (AKS and on-premesis)",
     "documentation": [
       {
@@ -344,7 +344,7 @@
   {
     "title": "If required consider using Confidential Compute for AKS",
     "priority": "Low",
-    "guid": "cc639637-a652-42ac-89e8-06965388e9de",
+    "guid": "ec8e4e42-0344-41b0-b865-9123e8956d31",
     "description": "Containers run within a Trusted Execution Environment(TEE) brings isolation from other containers, the node kernel in a hardware protected, integrity protected attestable environment.",
     "documentation": [
       {

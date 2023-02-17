@@ -119,7 +119,7 @@
   {
     "title": "For AKS non-interactive logins use kubelogin",
     "priority": "Medium",
-    "guid": "d2e0d5d7-71d4-41e3-910c-c57b4a4b1410",
+    "guid": "f4dcf690-1b30-407d-abab-6f8aa780d3a3",
     "description": " You can use kubelogin to access the cluster with non-interactive service principal sign-in.",
     "documentation": [
       {
@@ -142,7 +142,7 @@
   {
     "title": "Disable AKS local accounts",
     "priority": "Medium",
-    "guid": "d2e0d5d7-71d4-41e3-910c-c57b4a4b1410",
+    "guid": "b085b1f2-3119-4771-8c9a-bbf4411810ec",
     "description": "AKS offers users the ability to disable local accounts via a flag, disable-local-accounts",
     "documentation": [
       {
@@ -165,7 +165,7 @@
   {
     "title": "Configure if required Just-in-time cluster access",
     "priority": "Low",
-    "guid": "d2e0d5d7-71d4-41e3-910c-c57b4a4b1410",
+    "guid": "36abb0db-c118-4f4c-9880-3f30f9a2deb6",
     "description": "AKS offers users the ability to enable access for a limited time",
     "documentation": [
       {
@@ -188,7 +188,7 @@
   {
     "title": "For finer control consider using a managed Kubelet Identity",
     "priority": "Low",
-    "guid": "d2e0d5d7-71d4-41e3-910c-c57b4a4b1410",
+    "guid": "1f711a74-3672-470b-b8b8-a2148d640d79",
     "description": "A Kubelet identity enables access granted to the existing identity prior to cluster creation.",
     "documentation": [
       {
@@ -205,6 +205,29 @@
       "score": {
         "simple": -1,
         "security": 1
+      }
+    }
+  },
+  {
+    "title": "Configure if required AAD conditional access for AKS",
+    "priority": "Low",
+    "guid": "c4d7f4c6-79bf-45d0-aa05-ce8fc717e150",
+    "description": "When integrating Azure AD with your AKS cluster, you can also use Conditional Access to control access to your cluster.",
+    "documentation": [
+      {
+        "title": "Use Conditional Access with Azure AD and AKS",
+        "url": "https://learn.microsoft.com/azure/aks/managed-aad#use-conditional-access-with-azure-ad-and-aks"
+      }
+    ],
+    "tags": [
+      "all",
+      "identity",
+      "security"
+    ],
+    "optionalFields": {
+      "score": {
+        "security": 1,
+        "simple": -1
       }
     }
   }

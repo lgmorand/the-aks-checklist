@@ -130,7 +130,7 @@
   {
     "title": "For hyper performance storage option use Ultra Disks on AKS",
     "priority": "Low",
-    "guid": "fc4972cc-3cd2-45bf-a707-6e9eab4bed32",
+    "guid": "39c486ce-d5af-4062-89d5-18bb5fd795db",
     "description": "Azure ultra disks offer high throughput, high IOPS, and consistent low latency disk storage for your stateful applications.",
     "detail": "One major benefit of ultra disks is the ability to dynamically change the performance of the SSD along with your workloads without the need to restart your agent nodes. Ultra disks are suited for data-intensive workloads.",
     "documentation": [
@@ -191,6 +191,29 @@
       "score": {
         "simple": -1,
         "ha": 1
+      }
+    }
+  },
+  {
+    "title": "For non-ephemeral disks, use high IOPS and larger OS disks for the nodes when running many pods/node",
+    "priority": "High",
+    "guid": "fc4972cc-3cd2-45bf-a707-6e9eab4bed32",
+    "description": "For non-ephemeral disks, use high IOPS and larger OS disks for the nodes when running many pods/node since it requires high performance for running multiple pods and will generate huge logs with default AKS log rotation thresholds",
+    "documentation": [
+      {
+        "title": "Azure disk availability zone support",
+        "url": "Azure managed disk types"
+      }
+    ],
+    "tags": [
+      "all",
+      "storage",
+      "resiliency"
+    ],
+    "optionalFields": {
+      "score": {
+        "cost": -1,
+        "scale": 1
       }
     }
   }
