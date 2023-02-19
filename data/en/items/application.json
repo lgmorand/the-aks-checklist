@@ -86,6 +86,7 @@
     ],
     "tags": [
       "all",
+      "sustainability",
       "application"
     ]
   },
@@ -111,6 +112,7 @@
     ],
     "tags": [
       "all",
+      "sustainability",
       "resiliency"
     ]
   },
@@ -190,6 +192,7 @@
       "all",
       "resources",
       "application",
+      "sustainability",
       "multi-tenancy"
     ]
   },
