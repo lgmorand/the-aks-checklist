@@ -13,6 +13,7 @@
     "tags": [
       "all",
       "operations",
+      "sustainability",
       "finops"
     ]
   },
@@ -39,6 +40,7 @@
     ],
     "tags": [
       "all",
+      "sustainability",
       "resources"
     ]
   },
@@ -70,6 +72,7 @@
     ],
     "tags": [
       "all",
+      "sustainability",
       "operations"
     ]
   },
@@ -92,6 +95,7 @@
       "all",
       "resiliency",
       "resource management",
+      "sustainability",
       "multi-tenancy"
     ]
   },
@@ -109,6 +113,7 @@
       "all",
       "resiliency",
       "resource management",
+      "sustainability",
       "multi-tenancy"
     ]
   },
@@ -131,6 +136,7 @@
       "all",
       "resiliency",
       "resource management",
+      "sustainability",
       "multi-tenancy"
     ]
   },
@@ -169,6 +175,7 @@
       "all",
       "resiliency",
       "resource management",
+      "sustainability",
       "finops"
     ]
   },
@@ -217,6 +224,7 @@
     "tags": [
       "all",
       "finops",
+      "sustainability",
       "resource management"
     ]
   },
