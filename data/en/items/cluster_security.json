@@ -12,6 +12,7 @@
         "tags": [
             "all",
             "operations",
+            "sustainability",
             "security"
         ]
     },
@@ -86,6 +87,7 @@
         "tags": [
             "all",
             "security",
+            "sustainability",
             "operations"
         ]
     },
@@ -101,7 +103,8 @@
         ],
         "tags": [
             "all",
-            "security",
+            "security",  
+            "sustainability",
             "operations"
         ]
     },
@@ -151,6 +154,7 @@
         "tags": [
             "all",
             "security",
+            "sustainability",
             "operations"
         ]
     },
@@ -167,6 +171,7 @@
         "tags": [
             "all",
             "security",
+            "sustainability",
             "operations"
         ]
     },
@@ -253,6 +258,7 @@
         ],
         "tags": [
           "all",
+          "sustainability",
           "compliance"
         ]
       },
@@ -283,6 +289,7 @@
         ],
         "tags": [
           "all",
+          "sustainability",
           "compliance"
         ]
       },
