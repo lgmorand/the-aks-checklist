@@ -142,6 +142,7 @@
       "all",
       "security",
       "network",
+      "sustainability",
       "multi-tenancy"
     ]
   },
@@ -407,6 +408,7 @@
     "tags": [
       "all",
       "security",
+      "sustainability",
       "network"
     ]
   },
