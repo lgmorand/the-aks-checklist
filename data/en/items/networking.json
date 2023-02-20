@@ -379,22 +379,6 @@
     ]
   },
   {
-    "title": "If required add company HTTP Proxy",
-    "priority": "Medium",
-    "description": "Http Proxy exposes a straightforward interface that cluster operators can use to secure AKS-required network traffic in proxy-dependent environments.",
-     "documentation": [
-      {
-        "title": "HTTP proxy support in Azure Kubernetes Service",
-        "url": "https://learn.microsoft.com/azure/aks/http-proxy"
-      }
-    ],
-    "tags": [
-      "all",
-      "security",
-      "network"
-    ]
-  },
-  {
     "title": "Consider using a service mesh for advanced microservice communication management",
     "priority": "Medium",
     "description": "A service mesh provides capabilities like traffic management, resiliency, policy, security, strong identity, and observability to your workloads.",
