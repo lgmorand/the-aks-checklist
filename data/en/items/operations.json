@@ -469,10 +469,25 @@
     ],
     "tags": [
       "all",
-      "monitoring",
-      "security"
+      "monitoring"
     ]
   },
+  {
+    "guid": "62f89719-db42-4cd0-824f-82ac7d62d9ac",
+    "title": "Enable ContainerLogV2 schema for logging",
+    "priority": "Medium",
+    "description": "ContainerLogV2 schema improves the data related to the container logs (such as namespace, pod name, container name, etc.) and allows you to query the logs using these fields",
+    "documentation": [
+      { 
+        "title": "Enable the ContainerLogV2 schema (preview)",
+        "url": "https://learn.microsoft.com/en-gb/azure/azure-monitor/containers/container-insights-logging-v2"
+      }
+    ],
+    "tags": [
+      "all",
+      "monitoring"
+    ]
+  }
   {
     "title": "Consider AKS virtual node for quick bursting",
     "priority": "Low",
@@ -564,6 +579,27 @@
     "tags": [
       "all",
       "monitoring"
+    ]
+  },
+  {
+    "guid": "be83f080-8e9d-4498-a41a-b038729159d6",
+    "title": "Optimize the costs of your monitoring solution",
+    "priority": "Low",
+    "description": "AKS emits a lot of metrics when monitoring is enabled. You can use Azure Monitor to collect and analyze these metrics, but if not optimized it can be costly",
+    "documentation": [
+      { 
+        "title": "AKS monitoring is too expensive ? Let's fix that !",
+        "url": "https://lgmorand.github.io/blog/aks-monitoring-too-expensive"
+      },
+      {
+        "title":"Set a table's log data plan to Basic or Analytics",
+        "url":"https://learn.microsoft.com/en-us/azure/azure-monitor/logs/basic-logs-configure"
+      }
+    ],
+    "tags": [
+      "all",
+      "monitoring",
+      "finops"
     ]
   }
 ]
