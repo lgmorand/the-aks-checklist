@@ -81,6 +81,10 @@
             {
                 "title": "Use the auto-upgrade feature",
                 "url": "https://docs.microsoft.com/fr-fr/azure/aks/upgrade-cluster#set-auto-upgrade-channel"
+            },
+            {
+              "title": "Control when upgrades are applied",
+              "url": "https://learn.microsoft.com/en-us/azure/aks/planned-maintenance"
             }
         ],
         "tags": [
