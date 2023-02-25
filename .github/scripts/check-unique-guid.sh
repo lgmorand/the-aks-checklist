@@ -23,6 +23,8 @@ do
   if [ "$all_items_count" -ne "$all_guids_count" ]; then
     echo -e "\e[0;31mERROR\e[0m: File $file has some elements without GUID ($all_guids_count GUID found)"
     hasError=1
+  else
+    echo "INFO: Alls items have a GUID"
   fi
 
   unique_guids_count=$(cat $file | jq -r "try .. | objects | select( .$key_name ) | .$key_name " | sort -u | wc -l)
@@ -35,6 +37,8 @@ do
 
     printf '%s\n' "${all_guids[@]}"|awk '!($0 in seen){seen[$0];next} 1'
     hasError=1
+  else
+    echo "INFO: All GUIDs are unique"
   fi
 
   if [[ "$hasError" == 1 ]]; then

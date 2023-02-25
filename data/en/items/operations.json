@@ -386,6 +386,7 @@
   },
   {
     "title": "Apply different types of labels to all resources",
+    "guid": "13bb9e32-6f48-4747-9531-0147f20f4b04",
     "priority": "Low",
     "description": "A common set of labels allows tools to work interoperably, describing objects in a common manner that all tools can understand. For instance, resources should have technical, business and security labels. ",
     "documentation": [
