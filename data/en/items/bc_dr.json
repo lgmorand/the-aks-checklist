@@ -67,6 +67,7 @@
   },
   {
     "title": "Plan for multiregion deployment",
+    "guid": "4e907690-4780-492f-9632-03bcc80b7a80",
     "priority": "Medium",
     "description": "When you deploy multiple AKS clusters, choose regions where AKS is available, and use paired regions.",
     "documentation": [
@@ -111,6 +112,7 @@
   },
   {
     "title": "Create a storage migration plan",
+    "guid": "8c6703c5-42e9-46ef-93f1-7f6232af25fc",
     "priority": "Low",
     "description": "Your applications might use Azure Storage for their data. Because your applications are spread across multiple AKS clusters in different regions, you need to keep the storage synchronized",
     "documentation": [
@@ -162,6 +164,7 @@
   },
   {
     "title": "Avoid Pods being placed into a single node",
+    "guid": "1eea4888-8c2a-40b2-a40b-cacdc5f55497",
     "priority": "Low",
     "description": "Even if you run several copies of your Pods, there are no guarantees that losing a node won't take down your service.",
     "detail": "Customers needing an SLA to meet compliance requirements or require extending an SLA to their end users should enable this feature. Customers with critical workloads that will benefit from a higher uptime SLA may also benefit. Using the Uptime SLA feature with Availability Zones enables a higher availability for the uptime of the Kubernetes API server.",
@@ -181,6 +184,7 @@
   },
   {
     "title": "If using a private registry, configure region replication to store images in multiple regions",
+    "guid": "b0803aed-1ca6-4330-816c-92677c6e9935",
     "priority": "Medium",
     "description": "Companies that want a local presence, or a hot backup, choose to run services from multiple Azure regions.",
     "detail": "As a best practice, placing a container registry in each region where images are run allows network-close operations, enabling fast, reliable image layer transfers. Geo-replication enables an Azure container registry to function as a single registry, serving multiple regions with multi-master regional registries.",
