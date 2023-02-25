@@ -168,6 +168,28 @@
       "monitoring",
       "operations"
     ]
+  },  
+  {
+    "title": "Optimize log collection",
+    "priority": "High",
+    "description": "Sending and storing all logs from all possible sources (workloads, services, diagnostics and platform activity) can considerably increase storage and network traffic, which would impact higher costs and carbon emissions.",
+    "documentation": [
+      {
+        "title": "Configure data collection rules for your AKS workloads",
+        "url": "https://learn.microsoft.com/en-us/azure/azure-monitor/containers/container-insights-agent-config#data-collection-settings"
+      },
+      {
+        "title": "optimize your Log Analytics costs",
+        "url": "https://learn.microsoft.com/en-us/azure/architecture/framework/services/monitoring/log-analytics/cost-optimization"
+      }
+    ],
+    "tags": [
+      "all",
+      "monitoring",
+      "finops",
+      "sustainability"
+      "operations"
+    ]
   },
   {
     "title": "Configure distributed tracing",
