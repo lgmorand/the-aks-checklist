@@ -44,6 +44,23 @@
     ],
     "tags": [
       "all",
+      "networking",
+      "sustainability",
+      "operations"
+    ]
+  },
+    {
+    "title": "Choose a region that is closest to users",
+    "priority": "Medium",
+    "description": "The distance from a data center to the users has a significant impact on energy consumption and carbon emissions.",
+    "documentation": [
+      {
+        "title": "Review your application requirements and Azure geographies to choose a region that is the closest to users.",
+        "url": "https://azure.microsoft.com/explore/global-infrastructure/geographies/#overview"
+      }
+    ],
+    "tags": [
+      "all",
       "sustainability",
       "operations"
     ]
