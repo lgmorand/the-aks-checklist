@@ -348,6 +348,27 @@
     ]
   },
   {
+    "title": "Consider terminating TLS at border gateway",
+    "priority": "Medium",
+    "description": "Terminating and re-establishing TLS increases CPU utilization and might be unnecessary in certain architectures. A balanced level of security can offer a more sustainable and energy efficient workload, while a higher level of security may increase the compute resource requirements.",
+     "documentation": [
+      {
+        "title": "Review TLS Termination using Application Gateway",
+        "url": "https://learn.microsoft.com/en-us/azure/application-gateway/ssl-overview"
+      },
+       {
+        "title": "Review TLS Termination using Azure Front Door",
+        "url": "https://learn.microsoft.com/en-us/azure/frontdoor/web-application-firewall"
+      }
+    ],
+    "tags": [
+      "all",
+      "scalability",
+      "security",
+      "network"
+    ]
+  },
+  {
     "title": "Use Private Endpoints (preferred) or Virtual Network Service Endpoints to access PaaS services from the cluster",
     "priority": "Medium",
     "description": "This will help keep your cluster secure by limiting access from outside the virtual network to Azure PaaS services",
