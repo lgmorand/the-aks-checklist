@@ -16,7 +16,10 @@
     "tags": [
       "all",
       "windows"
-    ]
+    ],
+    "optionalFields": {
+      "score": {}
+    }
   },
   {
     "title": "Prepare your application for an abrupt kill",
@@ -35,7 +38,10 @@
     "tags": [
       "all",
       "windows"
-    ]
+    ],
+    "optionalFields": {
+      "score": {}
+    }
   },
   {
     "title": "Don't use privileged containers",
@@ -50,7 +56,10 @@
     "tags": [
       "all",
       "windows"
-    ]
+    ],
+    "optionalFields": {
+      "score": {}
+    }
   },
   {
     "title": "Watch for memory usage",
@@ -65,7 +74,10 @@
     "tags": [
       "all",
       "windows"
-    ]
+    ],
+    "optionalFields": {
+      "score": {}
+    }
   },
   {
     "title": "Implement CNI network mode",
@@ -80,13 +92,21 @@
     "tags": [
       "all",
       "windows"
-    ]
+    ],
+    "optionalFields": {
+      "score": {}
+    }
   },
   {
-    "title": "Patch your nodes yourself",
+    "title": "Keep windows containers patch level in sync with host patch level",
     "priority": "High",
+    "guid": "67138b82-0102-4ce1-9ee3-01e6e882e52e",
     "description": "Windows Server nodes in AKS must be upgraded to get the latest patch fixes and updates. Windows Updates are not enabled on nodes in AKS. AKS releases new node pool images as soon as patches are available, it is the customers responsibility to upgrade node pools to stay current on patches and hotfix. ",
     "documentation": [
+      {
+        "title": "Windows container version compatibility",
+        "url": "https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility?tabs=windows-server-20H2%2Cwindows-10-20H2"
+      },
       {
         "title": "How do patch my Windows nodes? ",
         "url": "https://docs.microsoft.com/azure/aks/windows-node-limitations#how-do-patch-my-windows-nodes"
@@ -95,7 +115,10 @@
     "tags": [
       "all",
       "windows"
-    ]
+    ],
+    "optionalFields": {
+      "score": {}
+    }
   },
   {
     "title": "Secure the traffic of your containers",
@@ -110,11 +133,15 @@
     "tags": [
       "all",
       "windows"
-    ]
+    ],
+    "optionalFields": {
+      "score": {}
+    }
   },
   {
     "title": "Enable Group Managed Service Accounts (GMSA) for your Windows Server nodes",
     "priority": "Medium",
+    "guid": "e1123a7c-a333-4eb4-a120-4ee3f293c9f3",
     "description": "Group Managed Service Accounts (GMSA) is a managed domain account for multiple servers that provides automatic password management, simplified service principal name (SPN) management and the ability to delegate the management to other administrators.",
     "documentation": [
       {
@@ -124,13 +151,21 @@
     ],
     "tags": [
       "all",
+      "identity",
       "windows",
       "security"
-    ]
+    ],
+    "optionalFields": {
+      "score": {
+        "simple": -1,
+        "security": 1
+      }
+    }
   },
   {
     "title": "If required for AKS Windows workloads, HostProcess containers can be used",
     "priority": "Medium",
+    "guid": "ab5351f6-383a-45ed-9c5e-b143b16db40a",
     "description": "HostProcess / Privileged containers extend the Windows container model to enable a wider range of Kubernetes cluster management scenarios.",
     "documentation": [
       {
@@ -142,11 +177,17 @@
       "all",
       "application",
       "windows"
-    ]
+    ],
+    "optionalFields": {
+      "score": {
+        "cost": 1
+      }
+    }
   },
   {
     "title": "Taint Windows nodes",
     "priority": "low",
+    "guid": "c1881370-6f7c-44c0-b4e5-14648d2457ed",
     "description": "Adding taints, tolerations and node selectors will help avoid having pods scheduled in the wrong OS node pool",
     "documentation": [
       {
@@ -158,6 +199,61 @@
       "all",
       "compliance",
       "windows"
-    ]
+    ],
+    "optionalFields": {
+      "score": {
+        "simple": -1,
+        "ha": 1
+      }
+    }
+  },
+  {
+    "title": "For Windows 2019 and 2022 AKS nodes Calico Network Policies can be us",
+    "priority": "Medium",
+    "guid": "ce7f2a7c-297c-47c6-adea-a6ff838db665",
+    "description": "For Windows 2019 and 2022 AKS nodes Calico Network Policies can be use",
+    "documentation": [
+      {
+        "title": "Secure traffic between pods using network policies",
+        "url": "https://learn.microsoft.com/azure/aks/use-network-policies"
+      }
+    ],
+    "tags": [
+      "all",
+      "security",
+      "compliance",
+      "windows"
+    ],
+    "optionalFields": {
+      "score": {
+        "security": 1,
+        "simple": -1,
+        "graph": "where type=='microsoft.containerservice/managedclusters' | where isnotnull(properties.apiServerAccessProfile.enablePrivateCluster) | extend compliant = (properties.apiServerAccessProfile.enablePrivateCluster==true) | distinct id, compliant"
+      }
+    }
+  },
+  {
+    "title": "For Windows workloads use Accelerated Networking",
+    "priority": "Medium",
+    "guid": "7bacd7b9-c025-4a9d-a5d2-25d6bc5439d9",
+    "description": "For Windows workloads use Accelerated Networking",
+    "documentation": [
+      {
+        "title": "What is Accelerated Networking?",
+        "url": "https://learn.microsoft.com/azure/virtual-network/accelerated-networking-overview"
+      }
+    ],
+    "tags": [
+      "all",
+      "operations",
+      "windows"
+    ],
+    "optionalFields": {
+      "score": {
+        "scale": 1,
+        "simple": -1,
+        "graph": "where type=='microsoft.containerservice/managedclusters' | extend compliant = (isnull(properties.addonProfiles.httpApplicationRouting) or properties.addonProfiles.httpApplicationRouting.enabled==false) | distinct id,compliant"
+      }
+    }
   }
 ]

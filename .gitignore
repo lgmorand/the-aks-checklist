@@ -17,3 +17,4 @@ data/tooling/result.txt
 *.ntvs*
 *.njsproj
 *.sln
+*.ipynb
