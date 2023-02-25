@@ -111,6 +111,7 @@
   },
   {
     "title": "Apply control on ingress hostnames",
+    "guid": "e5684a8b-f072-43d2-83b2-234ad48f57c7",
     "priority": "Low",
     "description": "When a user creates an Ingress manifest, they can use any hostname in it. You may want to control which hostnames are allowed to use, like your company's hostnames.",
     "documentation": [
@@ -130,6 +131,7 @@
   },
   {
     "title": "Don't expose your load-balancer on Internet if not necessary",
+    "guid": "c0179fd4-470b-43c8-b7bb-80307051bc96",
     "priority": "High",
     "description": "There is almost no reason to directly expose the ingress entry point to Internet but by default AKS create a public one. Tell him to create an internal one only.",
     "documentation": [
@@ -149,6 +151,7 @@
   },
   {
     "title": "Control traffic flow with network policies",
+    "guid": "0751f099-e6f4-4250-b405-d2b26c707432",
     "priority": "Medium",
     "severity": "High",
     "description": "Use network policies to allow or deny traffic to pods. By default, all traffic is allowed between pods within a cluster. For improved security, define rules that limit pod communication.",
@@ -188,6 +191,7 @@
   },
   {
     "title": "Configure default network policies in each namespace",
+    "guid": "0bc4e0c6-97fd-411a-9eb4-1a1f85f9cdf0",
     "priority": "Medium",
     "description": "Start by creating a deny all policy in each namespace and then add specific policies.",
     "documentation": [
@@ -237,6 +241,7 @@
   },
   {
     "title": "Don't expose your container registry on Internet",
+    "guid": "e38f1680-8ddc-4c93-bf09-6b932a4935ca",
     "priority": "Low",
     "description": "When possible, use private link to only allow private network to reach your registry.",
     "documentation": [
@@ -256,6 +261,7 @@
   },
   {
     "title": "Bloc Pod access to VMSS IMDS",
+    "guid": "4fb072a7-0303-46d8-9ecf-d8aa4d69ff83",
     "priority": "Medium",
     "description": "By default, Pods have access to VMSS IMDS and can request access token from the attached Managed Identity. This access should be restriced by using Network Policy.",
     "documentation": [
@@ -275,6 +281,7 @@
   },
   {
     "title": "Use private clusters if your requirements mandate it",
+    "guid": "29fb411c-20a8-4c39-84df-aaa4227eaeb2",
     "priority": "High",
     "description": "In a private cluster, the control plane or API server has internal IP addresses and is not exposed to Internet",
     "detail": "By using a private cluster, you can ensure that network traffic between your API server and your node pools remains on the private network only. Because the API server has a private address, it means that to access it for administration or for deployment, you need to set up private connection, like using a 'jumpbox' (i.e.: Azure Bastion)",
@@ -307,6 +314,7 @@
   },
   {
     "title": "Enable traffic management",
+    "guid": "5d0bb60d-b8e0-4031-9c5b-1f0a735f771f",
     "priority": "Medium",
     "description": "Azure Traffic Manager can direct customers to their closest AKS cluster and application instance. For the best performance and redundancy, direct all application traffic through Traffic Manager before it goes to your AKS cluster.",
     "detail": "If you have multiple AKS clusters in different regions, use Traffic Manager to control how traffic flows to the applications that run in each cluster. Azure Traffic Manager is a DNS-based traffic load balancer that can distribute network traffic across regions. Use Traffic Manager to route users based on cluster response time or based on geography. It can be used to improve app availability with automatic failover",
@@ -352,6 +360,7 @@
   },
   {
     "title": "If using a public API endpoint, restrict the IP addresses that can access it",
+    "guid": "d783a3e8-264f-4dac-870f-569791d1837e",
     "priority": "Medium",
     "description": "To improve the security of your clusters and minimize the risk of attacks, we recommend limiting the IP address ranges that can access the API server.",
     "documentation": [

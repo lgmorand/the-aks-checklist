@@ -1,6 +1,7 @@
 [
   {
     "title": "Logically isolate cluster",
+    "guid": "49be78dc-6ff0-4b2c-94ef-e74002e18866",
     "priority": "Medium",
     "description": "Use logical isolation to separate teams and projects. Try to minimize the number of physical AKS clusters you deploy to isolate teams or applications",
     "documentation": [
@@ -19,6 +20,7 @@
   },
   {
     "title": "Physically isolate cluster",
+    "guid": "3b77c0ee-3f84-4a86-bb46-c6dc3070168c",
     "priority": "High",
     "description": "Minimize the use of physical isolation for each separate team or application deployment",
     "documentation": [
@@ -36,6 +38,7 @@
   },
   {
     "title": "Use Azure tags in Azure Kubernetes Service (AKS)",
+    "guid": "574bd2fe-f58b-4199-b334-f7eff3ef90c8",
     "priority": "Medium",
     "description": "With Azure Kubernetes Service (AKS), you can set Azure tags on an AKS cluster and its related resources by using Azure Resource Manager, through the Azure CLI.",
     "documentation": [

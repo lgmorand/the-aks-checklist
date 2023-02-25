@@ -1,6 +1,7 @@
 [
   {
     "title": "Map the base image to node OS",
+    "guid": "4d3e8a06-b724-43a3-b9b9-328a08325c61",
     "priority": "High",
     "description": "Windows has strict compatibility rules, where the host OS version must match the container base image OS version. Only Windows containers with a container operating system of Windows Server 2019 are supported.",
     "documentation": [
@@ -23,6 +24,7 @@
   },
   {
     "title": "Prepare your application for an abrupt kill",
+    "guid": "fce3ccf3-5f62-4ad6-b945-845362777529",
     "priority": "Medium",
     "description": "TerminationGracePeriod is not implemented on Windows containers",
     "documentation": [
@@ -45,6 +47,7 @@
   },
   {
     "title": "Don't use privileged containers",
+    "guid": "bd773172-40dc-4502-b284-137c70d77bc9",
     "priority": "Medium",
     "description": "Windows containers do not support elevation of privilege",
     "documentation": [
@@ -63,6 +66,7 @@
   },
   {
     "title": "Watch for memory usage",
+    "guid": "dea429d5-2c10-480c-85a1-9d9d0c4afc3d",
     "priority": "Medium",
     "description": "There are no OOM eviction actions taken by the kubelet. Windows always treats all user-mode memory allocations as virtual, and pagefiles are mandatory. If memory is over-provisioned and all physical memory is exhausted, then paging can slow down performance.",
     "documentation": [
@@ -81,6 +85,7 @@
   },
   {
     "title": "Implement CNI network mode",
+    "guid": "3922e5b0-fa6b-4020-a92e-2e0d76338e95",
     "priority": "High",
     "description": "AKS clusters with Windows node pools must use the Azure CNI (advanced) networking model. Kubenet (basic) networking is not supported. ",
     "documentation": [
@@ -122,6 +127,7 @@
   },
   {
     "title": "Secure the traffic of your containers",
+    "guid": "74e42965-8bbd-46fb-b027-ccad9c3933a4",
     "priority": "High",
     "description": "Network policies are currently not supported, ensure that the containerized applications have a layer of protection like authentication ",
     "documentation": [

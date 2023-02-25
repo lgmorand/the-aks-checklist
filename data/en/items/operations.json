@@ -1,6 +1,7 @@
 [
   {
     "title": "Have a regular process to upgrade the cluster node images periodically (weekly, for example), or use the AKS autoupgrade feature",
+    "guid": "945889a8-a9e9-4059-b1aa-0a0df2b8a82c",
     "priority": "High",
     "description": "AKS supports upgrading the images on a node so you're up to date with the newest OS and runtime updates. AKS provides one new image per week with the latest updates, so it's beneficial to upgrade your node's images regularly for the latest features, including Linux or Windows patches",
     "detail": "Using automation and this method will ensure that all your nodes are consistently up to date with last features/fixes/patchs, without having to upgrade the kubernetes version. An alternative could be to use Kured to reboot nodes with pending reboots but it will only patch the Operating System, not the AKS layer",
@@ -36,6 +37,7 @@
   },
   {
     "title": "Use placement proximity group to improve performance",
+    "guid": "17bd8ae4-8ee7-472d-bca5-c7e3cc9b6d82",
     "priority": "Low",
     "description": "When deploying your application in Azure, spreading Virtual Machine (VM) instances across regions or availability zones creates network latency, which may impact the overall performance of your application. A proximity placement group is a logical grouping used to make sure Azure compute resources are physically located close to each other",
     "detail": "Be careful, by using PPG on a nodepool, you reduce the average SLA of your application since they don't rely on availability zones anymore",
@@ -101,6 +103,7 @@
   },
   {
     "title": "Securely connect to nodes through a bastion host",
+    "guid": "28538587-2c1f-4390-b571-384649732c16",
     "priority": "Medium",
     "description": "Don't expose remote connectivity to your AKS nodes. Create a bastion host, or jump box, in a management virtual network. Use the bastion host to securely route traffic into your AKS cluster to remote management tasks.",
     "documentation": [
@@ -120,6 +123,7 @@
   },
   {
     "title": "Regularly check for cluster issues ",
+    "guid": "4dd8b544-5b8b-443d-8e76-cea80d9dec30",
     "priority": "Medium",
     "description": "Regularly run the latest version of cluster scanning open source tool to detect issues in your cluster. For instance, if you apply resource quotas on an existing AKS cluster, run kubestriker first to find pods that don't have resource requests and limits defined.",
     "tools": [
@@ -146,6 +150,7 @@
   },
   {
     "title": "Provision a log aggregation tool",
+    "guid": "90640e42-ce36-4c2a-b20a-bee9c572df6c",
     "priority": "High",
     "description": "Ensure that you are always aware of what happens in your cluster. Monitor the health of the cluster (nodes, server) but also the pods",
     "documentation": [
@@ -207,6 +212,7 @@
   },
   {
     "title": "Configure distributed tracing",
+    "guid": "8d33b2b2-e043-4c61-aa5d-319a8eb6c382",
     "priority": "Low",
     "description": "Distributed tracing, also called distributed request tracing, is a method used to profile and monitor applications, especially those built using a microservices architecture. Distributed tracing helps pinpoint where failures occur and what causes poor performance.",
     "documentation": [
@@ -230,6 +236,7 @@
   },
   {
     "title": "Set Upgrade Channel",
+    "guid": "01deb8ed-b6f5-40bb-8d0b-d0ee2d933f51",
     "priority": "Medium",
     "description": "In addition to manually upgrading a cluster, you can set an auto-upgrade channel on your cluster",
     "documentation": [
@@ -537,6 +544,7 @@
   },
   {
     "title": "Write manifests following good practices using dedicated tools",
+    "guid": "b78f2dec-d75e-44c3-937a-7509fd7a54f1",
     "priority": "Low",
     "description": "There are various tools that can make creating k8s manifest files much easier and can help with operational efficiency",
     "documentation": [
@@ -677,6 +685,7 @@
   },
   {
     "title": "If not using egress filtering with AzFW/NVA, monitor standard ALB allocated SNAT ports",
+    "guid": "95951d87-1a2f-4a45-833c-2fc62d23c44d",
     "priority": "Medium",
     "description": "Monitoring these ports are important for security reasons",
     "documentation": [
