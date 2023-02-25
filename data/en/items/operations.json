@@ -311,6 +311,7 @@
   },
   {
     "title": "Implement CI/CD to deploy workloads in your cluster",
+    "guid": "cd943950-e336-4906-a719-d2128c8d78e4",
     "priority": "High",
     "description": "Instead of GitOps (or in addition) you can use CI/CD to deploy workloads/tools in your cluster",
     "documentation": [
@@ -337,6 +338,7 @@
   },
   {
     "title": "Improve efficiency with K8S Tools",
+    "guid": "fd926057-60e1-4d6c-afc2-0f03b5ab3763",
     "priority": "Medium",
     "description": "The Kubernetes ecosystem is strengthened by many tools that make operating it easier.  Here's a few",
     "tools": [
@@ -371,6 +373,7 @@
   },
   {
     "title": "Don't use the default namespace",
+    "guid": "13bb9e32-6f48-4747-9531-0147f20f4b03",
     "priority": "Medium",
     "description": "It's recommended to keep all applications in a namespace other than default",
     "tags": [

@@ -52,7 +52,7 @@
   },
   {
     "title": "Use ARM64 nodes when possible",
-    "guid": "b74ea93b-598d-48e0-bb26-762b015602e1",
+    "guid": "2a5f0cab-92b2-46dc-81a6-d358f7fd062a",
     "priority": "Medium",
     "description": "Benefit from ARM64's better price, compute performance, and lower power utilization in AKS node pools.",
     "documentation": [
