@@ -589,16 +589,24 @@
     ],
     "tags": [
       "all",
-      "monitoring",
-      "security"
-    ],
-    "optionalFields": {
-      "score": {
-        "simple": -1,
-        "ha": 1,
-        "graph": "where type=='microsoft.containerservice/managedclusters' | extend compliant = (isnotnull(properties.addonProfiles.omsagent) and properties.addonProfiles.omsagent.enabled==true) | distinct id,compliant"
+      "monitoring"
+    ]
+  },
+  {
+    "guid": "62f89719-db42-4cd0-824f-82ac7d62d9ac",
+    "title": "Enable ContainerLogV2 schema for logging",
+    "priority": "Medium",
+    "description": "ContainerLogV2 schema improves the data related to the container logs (such as namespace, pod name, container name, etc.) and allows you to query the logs using these fields",
+    "documentation": [
+      { 
+        "title": "Enable the ContainerLogV2 schema (preview)",
+        "url": "https://learn.microsoft.com/en-gb/azure/azure-monitor/containers/container-insights-logging-v2"
       }
-    }
+    ],
+    "tags": [
+      "all",
+      "monitoring"
+    ]
   },
   {
     "title": "Consider AKS virtual node for quick bursting",
