@@ -38,6 +38,7 @@ do
   fi
 
   if [[ "$hasError" == 1 ]]; then
+    globalError=1
     echo -e " \e[0;31mKO\e[0m";
   else
     echo -e " \e[0;32mOK\e[0m";
@@ -46,6 +47,7 @@ do
   echo ''
 done
 
+# If there was an error, exit to fail the build
 if [[ "$globalError" == 1 ]]; then
     exit 1
 fi
