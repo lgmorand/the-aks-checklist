@@ -1,6 +1,7 @@
 [
   {
     "title": "Implement a proper Liveness probe",
+    "guid": "2e9ed573-38b2-4856-a7f9-676d9ab604e1",
     "priority": "High",
     "description": "Many applications running for long periods of time eventually transition to broken states, and cannot recover except by being restarted. Kubernetes provides liveness probes to detect and remedy such situations. The probe is here to tell Kubernetes to restart your pod when it is not responding anymore",
     "documentation": [
@@ -19,6 +20,7 @@
   },
   {
     "title": "Implement a proper Startup probe",
+    "guid": "a066989c-9dce-4712-bce3-4eef36f8c0c2",
     "priority": "Medium",
     "description": "Protect slow starting containers with startup probes. Startup probe allow to delay the initial check by liveness which could cause deadlock or wrong result",
     "documentation": [
@@ -37,6 +39,7 @@
   },
   {
     "title": "Implement a proper Readiness probe",
+    "guid": "de1b6b38-4fa9-4f6e-ab92-d824346dd20c",
     "priority": "Medium",
     "description": "Sometimes, applications are temporarily unable to serve traffic. For example, an application might need to load large data or configuration files during startup, or depend on external services after startup. In such cases, you don't want to kill the application, but you don't want to send it requests either. Kubernetes provides readiness probes to detect and mitigate these situations. A pod with containers reporting that they are not ready does not receive traffic through Kubernetes Services.",
     "documentation": [
