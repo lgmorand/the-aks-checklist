@@ -10,7 +10,7 @@ cd ./data/en/items
 
 for file in *.json
 do
-  echo -e "?? \e[4mPROCESSING ${file^^}\e[0m"
+  echo -e "\e[4mPROCESSING ${file^^}\e[0m"
  
   hasError=0
 
