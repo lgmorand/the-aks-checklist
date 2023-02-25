@@ -557,6 +557,25 @@
       "monitoring",
       "security"
     ]
+  },  {
+    "title": "Delete unused resources",
+    "priority": "Medium",
+    "description": "Unused resources such as unreferenced images and storage resources should be identified and deleted as they have a direct impact on hardware and energy efficiency",
+    "documentation": [
+      { 
+        "title": "Use Azure Advisor to identify unused resources",
+        "url": "https://learn.microsoft.com/en-us/azure/advisor/advisor-cost-recommendations"
+      },
+      { 
+        "title": "Use ImageCleaner to clean up stale images",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/image-cleaner?tabs=azure-cli"
+      }
+    ],
+    "tags": [
+      "all",
+      "sustainability",
+      "finops"
+    ]
   },
   {
     "title": "Consider subscribing to EventGrid Events for AKS automation",
