@@ -430,6 +430,16 @@
     ]
   },
   {
+    "title": "Design for independent scaling of logical components",
+    "priority": "Medium",
+    "description": "A microservice architecture may reduce the compute resources required, as it allows for independent scaling of its logical components and ensures they are scaled according to the demand.",
+    "tags": [
+      "all",
+      "application",
+      "sustainability"
+    ]
+  },
+  {
     "title": "Use Dapr to ease microservice development",
     "priority": "Low",
     "description": "This will help ensure your workloads remain online during cluster upgrades.",
@@ -442,7 +452,6 @@
     "tags": [
       "all",
       "application"
-      
     ]
   }
 ]
