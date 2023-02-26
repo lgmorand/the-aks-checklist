@@ -102,14 +102,14 @@
     ]
   },
   {
-    "title": "Use the SLA-backed AKS offering",
+    "title": "Use the standard-tier AKS offering",
     "priority": "High",
-    "description": "Uptime SLA is an optional feature to enable a financially backed, higher SLA for a cluster. It provides you a 99,95% SLA instead of the 99,5% SLO and is relevant for your production clusters",
+    "description": "standard-tier (formerly Uptime SLA) is an optional feature to enable a financially backed, higher SLA for a cluster. It provides you a 99,95% SLA instead of the 99,5% SLO and is relevant for your production (and large) clusters",
     "detail": "Customers needing an SLA to meet compliance requirements or require extending an SLA to their end users should enable this feature. Customers with critical workloads that will benefit from a higher uptime SLA may also benefit. Using the Uptime SLA feature with Availability Zones enables a higher availability for the uptime of the Kubernetes API server.",
     "documentation": [
       {
         "title": "Azure Kubernetes Service (AKS) Uptime SLA",
-        "url": "https://docs.microsoft.com/azure/aks/uptime-sla"
+        "url": "https://learn.microsoft.com/en-gb/azure/aks/free-standard-pricing-tiers"
       },
       {
         "title": "Business continuity / disaster recovery to protect and recover AKS",
