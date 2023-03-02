@@ -1,6 +1,7 @@
 [
   {
     "title": "Use Mariner COS as host OS",
+    "guid": "d34f49c0-e964-4465-9211-520479338b13",
     "priority": "Medium",
     "description": "Mariner Container-Optimized OS is a first-party operating system for Azure Kubernetes Service (AKS) that is optimized for running Kubernetes workloads. Mariner is a secure, lightweight, and highly performant operating system that is based on the open source project CoreOS Container Linux. Mariner is designed to be a secure, lightweight, and highly performant operating system that is based on the open source project CoreOS Container Linux. Mariner is designed to be a secure, lightweight, and highly performant operating system that is based on the open source project CoreOS Container Linux.",
     "documentation": [
@@ -51,6 +52,7 @@
   },
   {
     "title": "Check if you need the Kubernetes dashboard",
+    "guid": "aefbf509-a9e8-46cc-8ae9-80f07acffd7c",
     "priority": "Medium",
     "description": "Starting with Kubernetes version 1.19, AKS will no longer allow the managed Kubernetes dashboard add-on to be installed for security reasons, and the add-on is scheduled to be deprecated. Ensure the Kubernetes dashboard is not installed on the cluster.",
     "detail": "It can be done with the following CLI: az aks disable-addons --addons kube-dashboard --resource-group RG_NAME --name CLUSTER_NAME",
@@ -120,6 +122,7 @@
   },
   {
     "title": "Policy blocking the deployment of vulnerable image",
+    "guid": "1f95a465-c682-405b-84b4-966c3a619c12",
     "priority": "Medium",
     "description": "You can now protect your Kubernetes clusters and container workloads from potential threats by restricting deployment of container images with vulnerabilities in their software components.",
     "tools": [
@@ -139,6 +142,7 @@
   },
   {
     "title": "Use Azure Key Vault",
+    "guid": "fc1e68dd-ac89-4851-8e53-8fbac3461d26",
     "priority": "High",
     "description": "Use Azure Key Vault to store Secrets and Certificates",
     "documentation": [
@@ -158,6 +162,7 @@
   },
   {
     "title": "Monitor the security of your cluster with Azure Security Center",
+    "guid": "23fda718-b80b-44c8-b2e4-d46580ab6651",
     "priority": "Medium",
     "description": "Security Center brings security benefits to your AKS clusters using data already gathered by the AKS master node.",
     "documentation": [
@@ -177,6 +182,7 @@
   },
   {
     "title": "Remove vulnerable images from your cluster",
+    "guid": "ca62d835-69cc-476d-bd8e-ea8fa58fab9c",
     "priority": "High",
     "description": "With image cleaner, you can detect and automatically remove all unused and vulnerable images cached on AKS nodes keeping the nodes cleaner and safer.",
     "detail": "It's common to use pipelines to build and deploy images on Azure Kubernetes Service (AKS) clusters. While great for image creation, this process often doesn't account for the stale images left behind and can lead to image bloat on cluster nodes. These images can present security issues as they may contain vulnerabilities. By cleaning these unreferenced images, you can remove an area of risk in your clusters. When done manually, this process can be time intensive, which ImageCleaner can mitigate via automatic image identification and removal.",

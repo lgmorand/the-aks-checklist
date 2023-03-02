@@ -1,6 +1,7 @@
 [
   {
     "title": "Implement a proper Liveness probe",
+    "guid": "2e9ed573-38b2-4856-a7f9-676d9ab604e1",
     "priority": "High",
     "description": "Many applications running for long periods of time eventually transition to broken states, and cannot recover except by being restarted. Kubernetes provides liveness probes to detect and remedy such situations. The probe is here to tell Kubernetes to restart your pod when it is not responding anymore",
     "documentation": [
@@ -19,6 +20,7 @@
   },
   {
     "title": "Implement a proper Startup probe",
+    "guid": "a066989c-9dce-4712-bce3-4eef36f8c0c2",
     "priority": "Medium",
     "description": "Protect slow starting containers with startup probes. Startup probe allow to delay the initial check by liveness which could cause deadlock or wrong result",
     "documentation": [
@@ -37,6 +39,7 @@
   },
   {
     "title": "Implement a proper Readiness probe",
+    "guid": "de1b6b38-4fa9-4f6e-ab92-d824346dd20c",
     "priority": "Medium",
     "description": "Sometimes, applications are temporarily unable to serve traffic. For example, an application might need to load large data or configuration files during startup, or depend on external services after startup. In such cases, you don't want to kill the application, but you don't want to send it requests either. Kubernetes provides readiness probes to detect and mitigate these situations. A pod with containers reporting that they are not ready does not receive traffic through Kubernetes Services.",
     "documentation": [
@@ -55,6 +58,7 @@
   },
   {
     "title": "Implement a proper prestop hook",
+    "guid": "dc4828a3-fc4f-4ac5-8844-122b8482dbb1",
     "priority": "Low",
     "description": "This hook is called immediately before a container is terminated due to an API request or management event such as liveness probe failure, preemption, resource contention and others. It can be used when you have critical process you want to finish or save when your pod is destroyed for any reason",
     "documentation": [
@@ -73,6 +77,7 @@
   },
   {
     "title": "Run more than one replica for your Deployment",
+    "guid": "4f1f88f9-98a3-48f5-a37f-4d9c9aecbb11",
     "priority": "Medium",
     "description": "Ensure that your application always configure proper replicas to ensure resiliency in the event of a pod crashing or being evicted.",
     "documentation": [
@@ -91,6 +96,7 @@
   },
   {
     "title": "Apply tags/labels to all resources",
+    "guid": "7b613b26-df38-49a8-94bf-c5301a91d558",
     "priority": "Medium",
     "description": "Ensure that your components are tagged, it could be business, security or technical tags and these tags will help to assess or apply relevant policies.",
     "documentation": [
@@ -196,6 +202,7 @@
   },
   {
     "title": "Use Kubernetes namespaces to properly isolate your Kubernetes resources",
+    "guid": "0b56d03c-5fc8-42b1-943b-9e4b4d0f3de8",
     "priority": "Medium",
     "description": "Namespaces give you the ability to create logical partitions and enforce separation of your resources as well as limit the scope of user permissions. Don't forget not to use the Default namespace",
     "documentation": [
@@ -244,6 +251,7 @@
   },
   {
     "title": "Specify the security context of your pod/container",
+    "guid": "20861805-be15-48f5-b40b-5ae203ddbb67",
     "priority": "Medium",
     "description": "A security context defines privilege and access control settings for a Pod or Container. Control the capabilities and the rights your container can have. If you don't specify the security context, the pod get the 'default' one which may have more rights that it should",
     "detail": "You should also disable mounting credentials by default (automountServiceAccountToken)",
@@ -303,6 +311,7 @@
   },
   {
     "title": "Conduct Dockerfile scanning to ensure Docker Image Security Best Practices",
+    "guid": "b5222fdc-72b7-4b5f-baae-ab48a69b1d36",
     "priority": "High",
     "description": "Define a Image build security baseline for your developers to follow. You should also use scanning tools to detect Dockerfile issue",
     "documentation": [
@@ -335,6 +344,7 @@
   },
   {
     "title": "Static Analysis of Docker Images on Build",
+    "guid": "54cbc938-394e-480a-823a-51c2bcd3c66b",
     "priority": "High",
     "description": "Introduction of DevSecOps into the environment to promote a proactive security model that starts to shift the responsibility left",
     "documentation": [
@@ -365,6 +375,7 @@
   },
   {
     "title": "Threshold enforcement of Docker Image Builds that contain vulnerabilities",
+    "guid": "1a67a172-c4ca-4383-8934-a71277cb927e",
     "priority": "Medium",
     "description": "Restrict builds with identified issues.",
     "detail": "Use a tool that allows for the restriction of builds with enough granularity to not break development.  All Critical CVE's are not the same, so being able to restrict builds based on Critical or High vulnerabilities with a Vendor fix, but allowing builds to continue if that Critical vulnerability is 'Open'",
@@ -384,6 +395,7 @@
   },
   {
     "title": "Compliance enforcement of Docker Image Builds",
+    "guid": "01ede997-e0bf-454a-bd1f-114be06a9874",
     "priority": "High",
     "description": "Being able to assess and restrict the Compliance state of an image on build.",
     "detail": "Identifying an image running as 'root' before it get deployed, or opening up port 80 or 22",
@@ -407,6 +419,7 @@
   },
   {
     "title": "Use Azure Migrate to quick containerize your applications",
+    "guid": "c1c05f94-4b74-4231-9d36-aa7a56fb775e",
     "priority": "Low",
     "description": "The App Containerization tool offers a point-and-containerize approach to repackage applications as containers with minimal to no code changes by using the running state of the application. The tool currently supports containerizing ASP.NET applications and Java web applications running on Apache Tomcat.",
     "documentation": [
@@ -425,6 +438,7 @@
   },
   {
     "title": "Apply the right deployment type to your application",
+    "guid": "3abc7c0e-44c7-40fc-afce-aa4ddbf3dd81",
     "priority": "Low",
     "description": "There are a variety of techniques to deploy new applications to production so choosing the right strategy is an important decision that needs to be made to leverage the impact of change on the consumer.",
     "documentation": [
@@ -443,6 +457,7 @@
   },
   {
     "title": "Don't use naked pods",
+    "guid": "980e9f76-e20a-426a-9c01-cbae1b63c5e8",
     "priority": "Low",
     "description": "Naked pods are pods not linked to a Replicaset or a Deployment. Naked Pods will not be rescheduled in the event of a node failure.",
     "details": "If imagePullPolicy is omitted and either the image tag is :latest or it is omitted: imagePullPolicy is automatically set to Always. Prefer to set explicitly IfNotPresent",
@@ -457,6 +472,7 @@
   },
   {
     "title": "Control the usage of imagePullPolicy",
+    "guid": "d457598a-047b-4fd7-88e5-9c61dea67f6a",
     "priority": "Low",
     "description": "If this attributes is not properly define kubernetes downloads the container image for each new instance of the containers.",
     "documentation": [

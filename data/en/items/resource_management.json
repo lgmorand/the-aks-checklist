@@ -1,6 +1,7 @@
 [
   {
     "title": "Burst serverless with Azure Container Instances and Virtual Nodes",
+    "guid": "c88681ab-bb2b-46d1-9ea6-72564b75429a",
     "priority": "Low",
     "description": "To rapidly scale your AKS cluster, you can integrate with Azure Container Instances (ACI)",
     "detail": "Kubernetes has built-in components to scale the replica and node count. However, if your application needs to rapidly scale, the horizontal pod autoscaler may schedule more pods than can be provided by the existing compute resources in the node pool.",
@@ -21,6 +22,7 @@
   },
   {
     "title": "Sizing of the nodes",
+    "guid": "7f8b07c5-882b-45ba-9ec9-bcc29b4721ff",
     "priority": "Medium",
     "description": "what type of worker nodes should I use, and how many of them is a critical question which requires the analysis of the workloads deployed on your cluster to get the best values of it",
     "detail": "Choosing on one hand between easy management and big blast radius, and on the other end to focus on high replication, low impact but worse resources optimization ",
@@ -50,6 +52,7 @@
   },
   {
     "title": "Use ARM64 nodes when possible",
+    "guid": "2a5f0cab-92b2-46dc-81a6-d358f7fd062a",
     "priority": "Medium",
     "description": "Benefit from ARM64's better price, compute performance, and lower power utilization in AKS node pools.",
     "documentation": [
@@ -97,6 +100,7 @@
   },
   {
     "title": "Namespaces should have LimitRange",
+    "guid": "b74ea93b-598d-48e0-bb26-762b015602e1",
     "priority": "Low",
     "description": " A LimitRange is a policy to constrain resource allocations (to Pods or Containers) in a namespace. It's useful to ensure that pods don't forget to declare request limits",
     "documentation": [
@@ -117,6 +121,7 @@
   },
   {
     "title": "Set memory limits and requests for all containers",
+    "guid": "4868aa30-95a9-49fd-867e-57e70cb0d1d5",
     "priority": "Medium",
     "description": "Set CPU and memory limits and requests to all the containers. It prevents memory leaks and CPU over-usage and protects the whole platform",
     "detail": " When you specify limits for CPU and memory, each takes a different action when it reaches the specified limit. With CPU limits, the container is throttled from using more than its specified limit. With memory limits, the pod is restarted if it reaches its limit. The pod might be restarted on the same host or a different host within the cluster.",

@@ -5,8 +5,14 @@ on:
     branches:
       - staging
       - master
+  workflow_dispatch:
 
 jobs:
+  generateArtifact:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    
   build:
 
     runs-on: ubuntu-latest
@@ -17,6 +23,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+
+    - name: Check that data is OK
+      run: . ./.github/scripts/check-unique-guid.sh
     
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
