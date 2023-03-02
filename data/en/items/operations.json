@@ -56,7 +56,7 @@
   {
     "title": "Customize your clusters with extensions",
     "priority": "Low",
-    "guid": "90ce65de-8e13-4f9c-abd4-69266abca264",
+    "guid": "4cd9bd7a-fe6f-427b-b5dd-9ab2f50aa663",
     "description": "Cluster extensions provides an Azure Resource Manager driven experience for installation and lifecycle management of services like Azure Machine Learning (ML) on an AKS cluster. ",
     "detail": "This feature enables:Azure Resource Manager-based deployment of extensions, including at-scale deployments across AKS clusters but also lifecycle management of the extension (Update, Delete) from Azure Resource Manager.",
     "documentation": [
@@ -719,7 +719,7 @@
   {
     "title": "Consider subscribing to EventGrid Events for AKS automation",
     "priority": "Low",
-    "guid": "5ae124ba-34df-4585-bcdc-e9bd3bb0cdb3",
+    "guid": "9583c0f6-6083-43f6-aa6b-df7102c901bb",
     "description": "AKS emits certain events that enable it to subscribe to EventGrid which can be used for automation",
     "documentation": [
       {
