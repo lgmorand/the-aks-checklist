@@ -1,6 +1,7 @@
 [
   {
     "title": "Implement a proper Liveness probe",
+    "guid": "2e9ed573-38b2-4856-a7f9-676d9ab604e1",
     "priority": "High",
     "description": "Many applications running for long periods of time eventually transition to broken states, and cannot recover except by being restarted. Kubernetes provides liveness probes to detect and remedy such situations. The probe is here to tell Kubernetes to restart your pod when it is not responding anymore",
     "documentation": [
@@ -12,10 +13,14 @@
     "tags": [
       "all",
       "application"
-    ]
+    ],
+    "optionalFields": {
+      "score": {}
+    }
   },
   {
     "title": "Implement a proper Startup probe",
+    "guid": "a066989c-9dce-4712-bce3-4eef36f8c0c2",
     "priority": "Medium",
     "description": "Protect slow starting containers with startup probes. Startup probe allow to delay the initial check by liveness which could cause deadlock or wrong result",
     "documentation": [
@@ -27,12 +32,16 @@
     "tags": [
       "all",
       "application"
-    ]
+    ],
+    "optionalFields": {
+      "score": {}
+    }
   },
   {
     "title": "Implement a proper Readiness probe",
+    "guid": "de1b6b38-4fa9-4f6e-ab92-d824346dd20c",
     "priority": "Medium",
-    "description": "Sometimes, applications are temporarily unable to serve traffic. For example, an application might need to load large data or configuration files during startup, or depend on external services after startup. In such cases, you don’t want to kill the application, but you don’t want to send it requests either. Kubernetes provides readiness probes to detect and mitigate these situations. A pod with containers reporting that they are not ready does not receive traffic through Kubernetes Services.",
+    "description": "Sometimes, applications are temporarily unable to serve traffic. For example, an application might need to load large data or configuration files during startup, or depend on external services after startup. In such cases, you don't want to kill the application, but you don't want to send it requests either. Kubernetes provides readiness probes to detect and mitigate these situations. A pod with containers reporting that they are not ready does not receive traffic through Kubernetes Services.",
     "documentation": [
       {
         "title": "Configure Liveness, Readiness and Startup Probes",
@@ -42,10 +51,14 @@
     "tags": [
       "all",
       "application"
-    ]
+    ],
+    "optionalFields": {
+      "score": {}
+    }
   },
   {
     "title": "Implement a proper prestop hook",
+    "guid": "dc4828a3-fc4f-4ac5-8844-122b8482dbb1",
     "priority": "Low",
     "description": "This hook is called immediately before a container is terminated due to an API request or management event such as liveness probe failure, preemption, resource contention and others. It can be used when you have critical process you want to finish or save when your pod is destroyed for any reason",
     "documentation": [
@@ -57,10 +70,14 @@
     "tags": [
       "all",
       "application"
-    ]
+    ],
+    "optionalFields": {
+      "score": {}
+    }
   },
   {
     "title": "Run more than one replica for your Deployment",
+    "guid": "4f1f88f9-98a3-48f5-a37f-4d9c9aecbb11",
     "priority": "Medium",
     "description": "Ensure that your application always configure proper replicas to ensure resiliency in the event of a pod crashing or being evicted.",
     "documentation": [
@@ -72,10 +89,14 @@
     "tags": [
       "all",
       "application"
-    ]
+    ],
+    "optionalFields": {
+      "score": {}
+    }
   },
   {
     "title": "Apply tags/labels to all resources",
+    "guid": "7b613b26-df38-49a8-94bf-c5301a91d558",
     "priority": "Medium",
     "description": "Ensure that your components are tagged, it could be business, security or technical tags and these tags will help to assess or apply relevant policies.",
     "documentation": [
@@ -87,11 +108,15 @@
     "tags": [
       "all",
       "application"
-    ]
+    ],
+    "optionalFields": {
+      "score": {}
+    }
   },
   {
-    "title": "Implement autoscaling of your applications",
+    "title": "Implement autoscaling of your applications (Horizontal pod autoscaler, KEDA)",
     "priority": "Low",
+    "guid": "faa19bfe-9d55-4d04-a3c4-919ca1b2d121",
     "description": "Automatically scale your application to the number of pods required to handle the current load. This can be achieved by using Horizontal Pod Autoscaler for CPU & Memory or by using KEDA for scaling based on other sources",
     "documentation": [
       {
@@ -112,11 +137,18 @@
     "tags": [
       "all",
       "resiliency"
-    ]
+    ],
+    "optionalFields": {
+      "score": {
+        "scale": 1,
+        "simple": -1
+      }
+    }
   },
   {
     "title": "Store your secrets in Azure Key Vault, don't inject passwords in Docker Images",
     "priority": "High",
+    "guid": "5e3df584-eccc-4d97-a3b6-bcda3b50eb2e",
     "description": "Secrets are not encrypted in etcd, prefer to store your secrets in a proper HSM like Azure Key Vault. You can then inject secrets using CSI provider.",
     "documentation": [
       {
@@ -131,11 +163,18 @@
     "tags": [
       "all",
       "security"
-    ]
+    ],
+    "optionalFields": {
+      "score": {
+        "simple": -1,
+        "security": 1
+      }
+    }
   },
   {
     "title": "Implement Azure Workload Identity",
     "priority": "Medium",
+    "guid": "d2e0d5d7-71d4-41e3-910c-c57b4a4b1410",
     "description": "Don't use fixed credentials within pods or container images, as they are at risk of exposure or abuse. Instead, use workload identity federation to access Azure Active Directory (Azure AD) protected resources without needing to manage secrets ",
     "detail": "When pods need access to other Azure services, such as Cosmos DB, Key Vault, or Blob Storage, the pod needs access credentials. These access credentials could be defined with the container image or injected as a Kubernetes secret, but need to be manually created and assigned. Often, the credentials are reused across pods, and aren't regularly rotated. Managed identities for Azure resources (currently implemented as an associated AKS open source project) let you automatically request access to services through Azure AD. You don't manually define credentials for pods, instead they request an access token in real time, and can use it to access only their assigned services.",
     "documentation": [
@@ -150,13 +189,20 @@
     ],
     "tags": [
       "all",
+      "identity",
       "security",
-      "application",
-      "identity"
-    ]
+      "application"
+    ],
+    "optionalFields": {
+      "score": {
+        "simple": -1,
+        "security": 1
+      }
+    }
   },
   {
     "title": "Use Kubernetes namespaces to properly isolate your Kubernetes resources",
+    "guid": "0b56d03c-5fc8-42b1-943b-9e4b4d0f3de8",
     "priority": "Medium",
     "description": "Namespaces give you the ability to create logical partitions and enforce separation of your resources as well as limit the scope of user permissions. Don't forget not to use the Default namespace",
     "documentation": [
@@ -170,11 +216,15 @@
       "security",
       "application",
       "multi-tenancy"
-    ]
+    ],
+    "optionalFields": {
+      "score": {}
+    }
   },
   {
     "title": "Set up requests and limits on your containers",
     "priority": "High",
+    "guid": "b54eb2eb-03dd-4aa3-9927-18e2edb11726",
     "description": "When Containers have resource requests specified, the scheduler can make better decisions about which nodes to place Pods on. And when Containers have their limits specified, contention for resources on a node can be handled in a specified manner.",
     "documentation": [
       {
@@ -191,10 +241,17 @@
       "resources",
       "application",
       "multi-tenancy"
-    ]
+    ],
+    "optionalFields": {
+      "score": {
+        "simple": -1,
+        "ha": 1
+      }
+    }
   },
   {
     "title": "Specify the security context of your pod/container",
+    "guid": "20861805-be15-48f5-b40b-5ae203ddbb67",
     "priority": "Medium",
     "description": "A security context defines privilege and access control settings for a Pod or Container. Control the capabilities and the rights your container can have. If you don't specify the security context, the pod get the 'default' one which may have more rights that it should",
     "detail": "You should also disable mounting credentials by default (automountServiceAccountToken)",
@@ -207,11 +264,15 @@
     "tags": [
       "all",
       "security"
-    ]
+    ],
+    "optionalFields": {
+      "score": {}
+    }
   },
   {
     "title": "Ensure your manifests respect good practices",
     "priority": "Medium",
+    "guid": "5388e9de-d167-4dd1-a2b0-ac241b999a64",
     "description": "Best practices inside the cluster start with the configuration of your manifests. Ensure that they respect good practices",
     "documentation": [
       {
@@ -241,10 +302,16 @@
       "all",
       "resources",
       "security"
-    ]
+    ],
+    "optionalFields": {
+      "score": {
+        "simple": 1
+      }
+    }
   },
   {
     "title": "Conduct Dockerfile scanning to ensure Docker Image Security Best Practices",
+    "guid": "b5222fdc-72b7-4b5f-baae-ab48a69b1d36",
     "priority": "High",
     "description": "Define a Image build security baseline for your developers to follow. You should also use scanning tools to detect Dockerfile issue",
     "documentation": [
@@ -270,10 +337,14 @@
     "tags": [
       "all",
       "security"
-    ]
+    ],
+    "optionalFields": {
+      "score": {}
+    }
   },
   {
     "title": "Static Analysis of Docker Images on Build",
+    "guid": "54cbc938-394e-480a-823a-51c2bcd3c66b",
     "priority": "High",
     "description": "Introduction of DevSecOps into the environment to promote a proactive security model that starts to shift the responsibility left",
     "documentation": [
@@ -297,10 +368,14 @@
     "tags": [
       "all",
       "security"
-    ]
+    ],
+    "optionalFields": {
+      "score": {}
+    }
   },
   {
     "title": "Threshold enforcement of Docker Image Builds that contain vulnerabilities",
+    "guid": "1a67a172-c4ca-4383-8934-a71277cb927e",
     "priority": "Medium",
     "description": "Restrict builds with identified issues.",
     "detail": "Use a tool that allows for the restriction of builds with enough granularity to not break development.  All Critical CVE's are not the same, so being able to restrict builds based on Critical or High vulnerabilities with a Vendor fix, but allowing builds to continue if that Critical vulnerability is 'Open'",
@@ -313,10 +388,14 @@
     "tags": [
       "all",
       "security"
-    ]
+    ],
+    "optionalFields": {
+      "score": {}
+    }
   },
   {
     "title": "Compliance enforcement of Docker Image Builds",
+    "guid": "01ede997-e0bf-454a-bd1f-114be06a9874",
     "priority": "High",
     "description": "Being able to assess and restrict the Compliance state of an image on build.",
     "detail": "Identifying an image running as 'root' before it get deployed, or opening up port 80 or 22",
@@ -333,10 +412,14 @@
     "tags": [
       "all",
       "security"
-    ]
+    ],
+    "optionalFields": {
+      "score": {}
+    }
   },
   {
     "title": "Use Azure Migrate to quick containerize your applications",
+    "guid": "c1c05f94-4b74-4231-9d36-aa7a56fb775e",
     "priority": "Low",
     "description": "The App Containerization tool offers a point-and-containerize approach to repackage applications as containers with minimal to no code changes by using the running state of the application. The tool currently supports containerizing ASP.NET applications and Java web applications running on Apache Tomcat.",
     "documentation": [
@@ -348,10 +431,14 @@
     "tags": [
       "all",
       "application"
-    ]
+    ],
+    "optionalFields": {
+      "score": {}
+    }
   },
   {
     "title": "Apply the right deployment type to your application",
+    "guid": "3abc7c0e-44c7-40fc-afce-aa4ddbf3dd81",
     "priority": "Low",
     "description": "There are a variety of techniques to deploy new applications to production so choosing the right strategy is an important decision that needs to be made to leverage the impact of change on the consumer.",
     "documentation": [
@@ -363,10 +450,14 @@
     "tags": [
       "all",
       "application"
-    ]
+    ],
+    "optionalFields": {
+      "score": {}
+    }
   },
   {
     "title": "Don't use naked pods",
+    "guid": "980e9f76-e20a-426a-9c01-cbae1b63c5e8",
     "priority": "Low",
     "description": "Naked pods are pods not linked to a Replicaset or a Deployment. Naked Pods will not be rescheduled in the event of a node failure.",
     "details": "If imagePullPolicy is omitted and either the image tag is :latest or it is omitted: imagePullPolicy is automatically set to Always. Prefer to set explicitly IfNotPresent",
@@ -374,10 +465,14 @@
       "all",
       "resiliency",
       "application"
-    ]
+    ],
+    "optionalFields": {
+      "score": {}
+    }
   },
   {
     "title": "Control the usage of imagePullPolicy",
+    "guid": "d457598a-047b-4fd7-88e5-9c61dea67f6a",
     "priority": "Low",
     "description": "If this attributes is not properly define kubernetes downloads the container image for each new instance of the containers.",
     "documentation": [
@@ -390,11 +485,15 @@
       "all",
       "application",
       "resiliency"
-    ]
+    ],
+    "optionalFields": {
+      "score": {}
+    }
   },
   {
     "title": "Use automation through ARM/TF to create your Azure resources",
     "priority": "Medium",
+    "guid": "3acbe04b-be20-49d3-afda-47778424d116",
     "description": "If this attributes is not properly define kubernetes downloads the container image for each new instance of the containers.",
     "documentation": [
       {
@@ -406,12 +505,18 @@
       "all",
       "IaC",
       "application"
-      
-    ]
+    ],
+    "optionalFields": {
+      "score": {
+        "simple": -1,
+        "ha": 1
+      }
+    }
   },
   {
     "title": "Use canary or blue/green deployments",
     "priority": "Medium",
+    "guid": "785c2fa5-5b56-4ad4-a408-fe72734c476b",
     "description": "This will help ensure your workloads remain online during cluster upgrades.",
     "documentation": [
       {
@@ -423,12 +528,17 @@
       "all",
       "application",
       "IaC"
-      
-    ]
+    ],
+    "optionalFields": {
+      "score": {
+        "cost": 1
+      }
+    }
   },
   {
     "title": "Use Dapr to ease microservice development",
     "priority": "Low",
+    "guid": "26886d20-b66c-457b-a591-19bf8e8f5c58",
     "description": "This will help ensure your workloads remain online during cluster upgrades.",
     "documentation": [
       {
@@ -439,7 +549,11 @@
     "tags": [
       "all",
       "application"
-      
-    ]
+    ],
+    "optionalFields": {
+      "score": {
+        "simple": 1
+      }
+    }
   }
 ]
