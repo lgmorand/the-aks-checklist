@@ -48,7 +48,7 @@ jobs:
         files: '["**/*.html"]'
       env:
         BUILD_DATE: "${{ steps.current-time.outputs.formattedTime }}"
- 
+
     - uses: actions/upload-artifact@v1
       with:
         name: CheckList
