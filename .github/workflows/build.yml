@@ -57,6 +57,7 @@ jobs:
     - name: Run the Transformer
       run: |
         pushd ./data/scripts
+        pip3 install pandas
         python ./transform_to_ft.py
         popd
 
