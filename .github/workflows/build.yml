@@ -53,3 +53,14 @@ jobs:
       with:
         name: CheckList
         path: dist
+
+    - name: Run the Transformer
+      run: |
+        pushd ./data/scripts
+        python ./transform_to_ft.py
+        popd
+
+    - uses: actions/upload-artifact@v3
+      with:
+        name: DataItems
+        path: ./data/scripts/aks_checklist.en.json
