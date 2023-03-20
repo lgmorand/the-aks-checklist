@@ -48,8 +48,20 @@ jobs:
         files: '["**/*.html"]'
       env:
         BUILD_DATE: "${{ steps.current-time.outputs.formattedTime }}"
- 
-    - uses: actions/upload-artifact@v1
+
+    - name: Run the Transformer
+      run: |
+        pushd ./data/scripts
+        pip3 install pandas
+        python ./transform_to_ft.py
+        popd
+
+    - uses: actions/upload-artifact@v3
       with:
         name: CheckList
         path: dist
+
+    - uses: actions/upload-artifact@v3
+      with:
+        name: DataItems
+        path: ./data/scripts/aks_checklist.en.json

@@ -52,7 +52,19 @@ jobs:
         files: '["**/*.html"]'
       env:
         BUILD_DATE: "${{ steps.current-time.outputs.formattedTime }}"
-        
+
+    - name: Run the Transformer
+      run: |
+        pushd ./data/scripts
+        pip3 install pandas
+        python ./transform_to_ft.py
+        popd
+
+    - name: include FTA version
+      run: |
+        mkdir dist/fta
+        cp ./data/scripts/aks_checklist.en.json ./dist/fta/aks_checklist.en.json
+            
     - uses: actions/upload-artifact@v3
       with:
         name: CheckList
