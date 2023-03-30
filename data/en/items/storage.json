@@ -1,6 +1,7 @@
 [
   {
     "title": "Choose the right storage type",
+    "guid": "4c20c4bd-a7e3-449f-9597-4939a3aeafe7",
     "priority": "High",
     "description": "Understand the needs of your application to pick the right storage. Use high performance, SSD-backed storage for production workloads. Plan for network-based storage when there is a need for multiple concurrent connections.",
     "documentation": [
@@ -17,10 +18,14 @@
       "all",
       "sustainability",
       "storage"
-    ]
+    ],
+    "optionalFields": {
+      "score": {}
+    }
   },
   {
     "title": "Size the nodes for storage needs",
+    "guid": "18707174-fa23-4935-b463-8f9982629b35",
     "priority": "Medium",
     "description": "Each node size supports a maximum number of disks. Different node sizes also provide different amounts of local storage and network bandwidth. Plan for your application demands to deploy the appropriate size of nodes.",
     "detail": "Different types and sizes of nodes are available. Each node (underlying VM) size provides a different amount of core resources such as CPU and memory. These VM sizes have a maximum number of disks that can be attached. Storage performance also varies between VM sizes for the maximum local and attached disk IOPS (input/output operations per second). If your applications require Azure Disks as their storage solution, plan for and choose an appropriate node VM size. The amount of CPU and memory isn't the only factor when you choose a VM size. The storage capabilities are also important.",
@@ -34,10 +39,14 @@
       "all",
       "sustainability",
       "storage"
-    ]
+    ],
+    "optionalFields": {
+      "score": {}
+    }
   },
   {
     "title": "Dynamically provision volumes",
+    "guid": "77bda7ce-1fcf-4735-bd3d-1b3a83a9e484",
     "priority": "Low",
     "description": "To reduce management overhead and let you scale, don't statically create and assign persistent volumes. Use dynamic provisioning. In your storage classes, define the appropriate reclaim policy to minimize unneeded storage costs once pods are deleted.",
     "documentation": [
@@ -49,10 +58,14 @@
     "tags": [
       "all",
       "storage"
-    ]
+    ],
+    "optionalFields": {
+      "score": {}
+    }
   },
   {
     "title": "Secure and back up your data",
+    "guid": "13d493b9-2cdc-4632-b188-6882b81da0ed",
     "priority": "Medium",
     "description": "Back up your data using an appropriate tool for your storage type, such as Velero or Azure Site Recovery",
     "detail": "Understand the limitations of the different approaches to data backups and if you need to quiesce your data prior to snapshot. Data backups don't necessarily let you restore your application environment of cluster deployment.",
@@ -66,11 +79,15 @@
       "all",
       "storage",
       "resiliency"
-    ]
+    ],
+    "optionalFields": {
+      "score": {}
+    }
   },
   {
-    "title": "Make your storage resilient",
+    "title": "Avoid keeping state in the cluster, and store data outside (AzStorage, AzSQL, Cosmos, etc)",
     "priority": "High",
+    "guid": "9f7547c1-747d-4c56-868a-714435bd19dd",
     "description": "Where possible, don't store service state inside the container. Instead, use an Azure platform as a service (PaaS) that supports multiregion replication.",
     "detail": "Service state refers to the in-memory or on-disk data that a service requires to function. State includes the data structures and member variables that the service reads and writes. Depending on how the service is architected, the state might also include files or other resources that are stored on the disk. For example, the state might include the files a database uses to store data and transaction logs.",
     "documentation": [
@@ -83,11 +100,18 @@
       "all",
       "storage",
       "resiliency"
-    ]
+    ],
+    "optionalFields": {
+      "score": {
+        "simple": -1,
+        "ha": 1
+      }
+    }
   },
   {
     "title": "Use ephemeral OS disks",
     "priority": "High",
+    "guid": "24367b33-6971-45b1-952b-eee0b9b588de",
     "description": " With ephemeral OS disks, you see lower read/write latency on the OS disk of AKS agent nodes since the disk is locally attached.",
     "detail": "You will also get faster cluster operations like scale or upgrade thanks to faster re-imaging and boot times",
     "documentation": [
@@ -100,11 +124,19 @@
       "all",
       "storage",
       "resiliency"
-    ]
+    ],
+    "optionalFields": {
+      "score": {
+        "scale": 1,
+        "cost": -1,
+        "graph": "where type=='microsoft.containerservice/managedclusters' | project id,resourceGroup,name,pools=properties.agentPoolProfiles | mvexpand pools | extend compliant = (pools.osDiskType=='Ephemeral') | project id,name=strcat(name,'-',pools.name), resourceGroup, compliant"
+      }
+    }
   },
   {
     "title": "For hyper performance storage option use Ultra Disks on AKS",
     "priority": "Low",
+    "guid": "39c486ce-d5af-4062-89d5-18bb5fd795db",
     "description": "Azure ultra disks offer high throughput, high IOPS, and consistent low latency disk storage for your stateful applications.",
     "detail": "One major benefit of ultra disks is the ability to dynamically change the performance of the SSD along with your workloads without the need to restart your agent nodes. Ultra disks are suited for data-intensive workloads.",
     "documentation": [
@@ -117,10 +149,17 @@
       "all",
       "storage",
       "resiliency"
-    ]
+    ],
+    "optionalFields": {
+      "score": {
+        "scale": 1,
+        "cost": -1
+      }
+    }
   },
   {
     "title": "Avoid keeping state in the cluster, and store data outside (AzStorage, AzSQL, Cosmos, etc)",
+    "guid": "b5f3808d-3a6a-42a5-adde-7bb34e047169",
     "priority": "Medium",
     "description": "Where possible, don't store service state inside the container. Instead, use an Azure platform as a service (PaaS) that supports multiregion replication.",
     "detail": "Service state refers to the in-memory or on-disk data that a service requires to function. State includes the data structures and member variables that the service reads and writes. Depending on how the service is architected, the state might also include files or other resources that are stored on the disk. For example, the state might include the files a database uses to store data and transaction logs.",
@@ -134,11 +173,15 @@
       "all",
       "storage",
       "resiliency"
-    ]
+    ],
+    "optionalFields": {
+      "score": {}
+    }
   },
   {
     "title": "If using Azure Disks and AZs, consider having nodepools within a zone for LRS disk",
     "priority": "Medium",
+    "guid": "83958a8c-2689-4b32-ab57-cfc64546135a",
     "description": "If using Azure Disks and AZs, consider having nodepools within a zone for LRS disk with VolumeBindingMode:WaitForFirstConsumer for provisioning storage in right zone or use ZRS disk for nodepools spanning multiple zones",
     "documentation": [
       {
@@ -150,6 +193,35 @@
       "all",
       "storage",
       "resiliency"
-    ]
+    ],
+    "optionalFields": {
+      "score": {
+        "simple": -1,
+        "ha": 1
+      }
+    }
+  },
+  {
+    "title": "For non-ephemeral disks, use high IOPS and larger OS disks for the nodes when running many pods/node",
+    "priority": "High",
+    "guid": "fc4972cc-3cd2-45bf-a707-6e9eab4bed32",
+    "description": "For non-ephemeral disks, use high IOPS and larger OS disks for the nodes when running many pods/node since it requires high performance for running multiple pods and will generate huge logs with default AKS log rotation thresholds",
+    "documentation": [
+      {
+        "title": "Azure disk availability zone support",
+        "url": "Azure managed disk types"
+      }
+    ],
+    "tags": [
+      "all",
+      "storage",
+      "resiliency"
+    ],
+    "optionalFields": {
+      "score": {
+        "cost": -1,
+        "scale": 1
+      }
+    }
   }
 ]
