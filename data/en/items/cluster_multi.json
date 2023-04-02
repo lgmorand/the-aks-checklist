@@ -49,6 +49,10 @@
       {
         "title": "Use Azure tags in Azure Kubernetes Service (AKS)",
         "url": "https://techcommunity.microsoft.com/t5/fasttrack-for-azure/use-azure-tags-in-azure-kubernetes-service-aks/ba-p/3611583"
+      },
+      {
+        "title": "AKS sustainable patterns for operational procedures,
+        "url": "https://learn.microsoft.com/en-us/azure/aks/concepts-sustainable-software-engineering#application-design"
       }
     ],
     "tags": [
