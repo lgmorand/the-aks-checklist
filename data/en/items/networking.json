@@ -95,6 +95,10 @@
       {
         "title": "Secure traffic with a web application firewall (WAF)",
         "url": "https://docs.microsoft.com/azure/aks/operator-best-practices-network#secure-traffic-with-a-web-application-firewall-waf"
+      },
+      {
+        "title": "AKS sustainable patterns for Security design",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/concepts-sustainable-software-engineering#security"
       }
     ],
     "tags": [
@@ -143,6 +147,10 @@
        {
         "title": "Review TLS Termination using Azure Front Door",
         "url": "https://learn.microsoft.com/en-us/azure/frontdoor/web-application-firewall"
+      },
+      {
+        "title": "AKS sustainable patterns for Security design",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/concepts-sustainable-software-engineering#security"
       }
     ],
     "tags": [
@@ -187,6 +195,10 @@
       {
         "title": "Secure traffic between pods using network policies",
         "url": "https://docs.microsoft.com/azure/aks/use-network-policies"
+      },
+      {
+        "title": "AKS sustainable patterns for Security design",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/concepts-sustainable-software-engineering#security"
       }
     ],
     "tools": [
@@ -226,6 +238,10 @@
       {
         "title": "Callico global network policy",
         "url": "https://projectcalico.docs.tigera.io/reference/resources/globalnetworkpolicy"
+      },
+      {
+        "title": "AKS sustainable patterns for Security design",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/concepts-sustainable-software-engineering#security"
       }
     ],
     "tags": [
@@ -248,6 +264,10 @@
       {
         "title": "Topology Aware Hints",
         "url": "https://kubernetes.io/docs/concepts/services-networking/topology-aware-hints/"
+      },
+      {
+        "title": "AKS sustainable patterns for network design",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/concepts-sustainable-software-engineering#network-and-connectivity"
       }
     ],
     "tags": [
@@ -554,6 +574,10 @@
       {
         "title": "About service meshes",
         "url": "https://learn.microsoft.com/azure/aks/servicemesh-about"
+      },
+      {
+        "title": "AKS sustainable patterns for network design",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/concepts-sustainable-software-engineering#network-and-connectivity"
       }
     ],
     "tags": [
