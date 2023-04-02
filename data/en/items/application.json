@@ -103,6 +103,10 @@
       {
         "title": "Recommended Labels",
         "url": "https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels/"
+      },
+      {
+        "title": "AKS sustainable patterns for Applications design",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/concepts-sustainable-software-engineering#application-design"
       }
     ],
     "tags": [
@@ -133,6 +137,10 @@
       {
         "title": "KEDA as AKS addon",
         "url": "https://docs.microsoft.com/azure/aks/keda-about"
+      },
+      {
+        "title": "AKS sustainable patterns for Applications design",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/concepts-sustainable-software-engineering#application-design"
       }
     ],
     "tags": [
@@ -236,6 +244,10 @@
       {
         "title": "Take benefit of the Quality of Service",
         "url": "https://kubernetes.io/docs/tasks/configure-pod-container/quality-service-pod/"
+      },
+      {
+        "title": "AKS sustainable patterns for Applications design",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/concepts-sustainable-software-engineering#application-design"
       }
     ],
     "tags": [
@@ -547,6 +559,10 @@
       {
         "title": "Microservices architecture design",
         "url": "https://learn.microsoft.com/en-us/azure/architecture/microservices/"
+      },
+      {
+        "title": "AKS sustainable patterns for Applications design",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/concepts-sustainable-software-engineering#application-design"
       }
     ],
     "tags": [
