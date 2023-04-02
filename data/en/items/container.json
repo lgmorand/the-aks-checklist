@@ -30,6 +30,7 @@
     ],
     "tags": [
       "all",
+      "sustainability",
       "security"
     ],
     "optionalFields": {
@@ -63,6 +64,26 @@
       "security"
     ],
     "optionalFields": {
+      "score": {}
+    }
+  },
+   {
+    "title": "Configure caching for Azure Container Registry (ACR)",
+    "guid": "8deb9dfg-3623-48e3-a3b8-e926ea3fE9r3",
+    "priority": "Medium",
+    "description": "Caching for ACR allows you to cache container images from Docker Hub and Microsoft Artifact Registry in your own ACR instance. This helps you continue using the best in public content and add the speed and reliability of using it from your own networks.",
+    "documentation": [
+      {
+        "title": "Caching for ACR",
+        "url": "https://learn.microsoft.com/en-us/azure/container-registry/tutorial-registry-cache"
+      }
+    ],
+    "tags": [
+      "all",
+      "sustainability",
+      "performance"
+    ],
+     "optionalFields": {
       "score": {}
     }
   },
@@ -103,6 +124,7 @@
     ],
     "tags": [
       "all",
+      "sustainability",
       "security"
     ],
     "optionalFields": {
@@ -162,6 +184,7 @@
     ],
     "tags": [
       "all",
+      "sustainability",
       "security"
     ],
     "optionalFields": {
