@@ -139,6 +139,10 @@
       {
         "title": "Policy blocking the deployment of vulnerable images",
         "url": "https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/BlockVulnerableImages.json"
+      },
+      {
+        "title": "AKS sustainable patterns for Security design",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/concepts-sustainable-software-engineering#security"
       }
     ],
     "tags": [
