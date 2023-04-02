@@ -12,6 +12,10 @@
       {
         "title": "Identify vulnerable container images in your CI/CD workflows",
         "url": "https://docs.microsoft.com/azure/defender-for-cloud/defender-for-containers-cicd"
+      },
+      {
+        "title": "AKS sustainable patterns for Security design",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/concepts-sustainable-software-engineering#security"
       }
     ],
     "tools": [
@@ -76,6 +80,10 @@
       {
         "title": "Caching for ACR",
         "url": "https://learn.microsoft.com/en-us/azure/container-registry/tutorial-registry-cache"
+      },
+      {
+        "title": "AKS sustainable patterns for Applications design",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/concepts-sustainable-software-engineering#application-design"
       }
     ],
     "tags": [
