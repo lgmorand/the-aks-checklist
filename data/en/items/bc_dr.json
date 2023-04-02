@@ -8,6 +8,10 @@
       {
         "title": "Define the BCDR strategy",
         "url": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/enterprise-scale/business-continuity-and-disaster-recovery"
+      },
+      {
+        "title": "sustainable software engineering prerequisites,
+        "url": "https://learn.microsoft.com/en-us/azure/aks/concepts-sustainable-software-engineering#prerequisites"
       }
     ],
     "tags": [
