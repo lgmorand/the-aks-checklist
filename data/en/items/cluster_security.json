@@ -8,6 +8,10 @@
       {
         "title": "Use the Mariner container host on Azure Kubernetes Service",
         "url": "https://learn.microsoft.com/en-us/azure/aks/use-mariner"
+      },
+      {
+        "title": "AKS sustainable patterns for Security design",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/concepts-sustainable-software-engineering#security"
       }
     ],
     "tags": [
@@ -107,6 +111,10 @@
       {
         "title": "Use the auto-upgrade feature",
         "url": "https://docs.microsoft.com/fr-fr/azure/aks/upgrade-cluster#set-auto-upgrade-channel"
+      },
+      {
+        "title": "AKS sustainable patterns for Application Platform",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/concepts-sustainable-software-engineering#application-platform"
       }
     ],
     "tags": [
@@ -193,6 +201,10 @@
       {
         "title": "Use ImageCleaner to clean up stale images on your AKS cluster",
         "url": "https://learn.microsoft.com/en-us/azure/aks/image-cleaner"
+      },
+      {
+        "title": "AKS sustainable patterns for Security design",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/concepts-sustainable-software-engineering#security"
       }
     ],
     "tags": [
@@ -214,6 +226,10 @@
       {
         "title": "Introduction to Microsoft Defender for Containers",
         "url": "https://docs.microsoft.com/azure/defender-for-cloud/defender-for-containers-introduction"
+      },
+      {
+        "title": "AKS sustainable patterns for Security design",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/concepts-sustainable-software-engineering#security"
       }
     ],
     "tags": [
@@ -387,7 +403,6 @@
     ],
     "tags": [
       "all",
-      "sustainability",
       "compliance"
     ],
     "optionalFields": {
