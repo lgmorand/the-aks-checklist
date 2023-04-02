@@ -107,6 +107,7 @@
     ],
     "tags": [
       "all",
+      "sustainability",
       "application"
     ],
     "optionalFields": {
@@ -136,6 +137,7 @@
     ],
     "tags": [
       "all",
+      "sustainability",
       "resiliency"
     ],
     "optionalFields": {
@@ -240,6 +242,7 @@
       "all",
       "resources",
       "application",
+      "sustainability",
       "multi-tenancy"
     ],
     "optionalFields": {
@@ -532,6 +535,29 @@
     "optionalFields": {
       "score": {
         "cost": 1
+      }
+    }
+  },
+  {
+    "title": "Design for independent scaling of logical components",
+    "priority": "Medium",
+    "guid": "268d6dd6-b66c-4778-ayy1-1yhbdfzezere899",
+    "description": "A microservice architecture may reduce the compute resources required, as it allows for independent scaling of its logical components and ensures they are scaled according to the demand.",
+    "documentation": [
+      {
+        "title": "Microservices architecture design",
+        "url": "https://learn.microsoft.com/en-us/azure/architecture/microservices/"
+      }
+    ],
+    "tags": [
+      "all",
+      "application",
+      "finops",
+      "sustainability"
+    ],
+    "optionalFields": {
+      "score": {
+        "simple": 1
       }
     }
   },
