@@ -13,6 +13,7 @@
     "tags": [
       "all",
       "operations",
+      "sustainability",
       "security"
     ],
     "optionalFields": {
@@ -111,6 +112,7 @@
     "tags": [
       "all",
       "security",
+      "sustainability",
       "operations"
     ],
     "optionalFields": {
@@ -134,6 +136,7 @@
     "tags": [
       "all",
       "security",
+      "sustainability",
       "operations"
     ],
     "optionalFields": {
@@ -195,6 +198,7 @@
     "tags": [
       "all",
       "security",
+      "sustainability",
       "operations"
     ],
     "optionalFields": {
@@ -215,6 +219,7 @@
     "tags": [
       "all",
       "security",
+      "sustainability",
       "operations"
     ],
     "optionalFields": {
@@ -382,6 +387,7 @@
     ],
     "tags": [
       "all",
+      "sustainability",
       "compliance"
     ],
     "optionalFields": {
