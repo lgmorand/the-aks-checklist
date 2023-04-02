@@ -553,7 +553,7 @@
   {
     "title": "Design for independent scaling of logical components",
     "priority": "Medium",
-    "guid": "268d6dd6-b66c-4778-ayy1-1yhbdfzezere899",
+    "guid": "23fdfd89-dedc-72d0-5C8D-19b2Z38f5fff",
     "description": "A microservice architecture may reduce the compute resources required, as it allows for independent scaling of its logical components and ensures they are scaled according to the demand.",
     "documentation": [
       {
