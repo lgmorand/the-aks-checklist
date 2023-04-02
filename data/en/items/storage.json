@@ -12,6 +12,10 @@
       {
         "title": "Choose the right storage type",
         "url": "https://docs.microsoft.com/azure/aks/operator-best-practices-storage#choose-the-appropriate-storage-type"
+      },
+      {
+        "title": "AKS sustainable patterns for storage design",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/concepts-sustainable-software-engineering#storage"
       }
     ],
     "tags": [
@@ -33,6 +37,10 @@
       {
         "title": "Size the nodes for storage needs",
         "url": "https://docs.microsoft.com/azure/aks/operator-best-practices-storage#size-the-nodes-for-storage-needs"
+      },
+      {
+        "title": "AKS sustainable patterns for storage design",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/concepts-sustainable-software-engineering#storage"
       }
     ],
     "tags": [
@@ -53,6 +61,10 @@
       {
         "title": "Dynamically provision volumes",
         "url": "https://docs.microsoft.com/azure/aks/operator-best-practices-storage#dynamically-provision-volumes"
+      },
+      {
+        "title": "AKS sustainable patterns for storage design",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/concepts-sustainable-software-engineering#storage"
       }
     ],
     "tags": [
