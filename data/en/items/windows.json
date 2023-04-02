@@ -115,6 +115,10 @@
       {
         "title": "How do patch my Windows nodes? ",
         "url": "https://docs.microsoft.com/azure/aks/windows-node-limitations#how-do-patch-my-windows-nodes"
+      },
+      {
+        "title": "AKS sustainable patterns for Application Platform",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/concepts-sustainable-software-engineering#application-platform"
       }
     ],
     "tags": [
@@ -135,6 +139,10 @@
       {
         "title": "Limitations of Windows containers",
         "url": "https://kubernetes.io/docs/setup/production-environment/windows/intro-windows-in-kubernetes/#supported-functionality-and-limitations"
+      },
+      {
+        "title": "AKS sustainable patterns for security design",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/concepts-sustainable-software-engineering#security"
       }
     ],
     "tags": [
