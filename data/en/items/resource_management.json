@@ -14,6 +14,7 @@
     "tags": [
       "all",
       "operations",
+      "sustainability",
       "finops"
     ],
     "optionalFields": {
@@ -44,6 +45,7 @@
     ],
     "tags": [
       "all",
+      "sustainability",
       "resources"
     ],
     "optionalFields": {
@@ -63,6 +65,7 @@
     ],
     "tags": [
       "all",
+      "sustainability",
       "operations"
     ],
     "optionalFields": {
@@ -88,6 +91,7 @@
     "tags": [
       "all",
       "resiliency",
+      "sustainability",
       "resource management",
       "multi-tenancy"
     ],
@@ -112,6 +116,7 @@
     "tags": [
       "all",
       "resiliency",
+      "sustainability",
       "resource management",
       "multi-tenancy"
     ],
@@ -138,6 +143,7 @@
     "tags": [
       "all",
       "resiliency",
+      "sustainability",
       "resource management",
       "multi-tenancy"
     ],
@@ -164,6 +170,7 @@
     "tags": [
       "all",
       "resiliency",
+      "sustainability",
       "resource management"
     ],
     "optionalFields": {
@@ -234,6 +241,7 @@
       "all",
       "cost",
       "finops",
+      "sustainability",
       "resource management"
     ],
     "optionalFields": {
@@ -301,6 +309,7 @@
     "tags": [
       "all",
       "cost",
+      "sustainability",
       "resources"
     ],
     "optionalFields": {
