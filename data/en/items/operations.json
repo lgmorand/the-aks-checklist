@@ -17,6 +17,10 @@
       {
         "title": "Use Event Grid to know when an upgrade is available",
         "url": "https://docs.microsoft.com/azure/aks/quickstart-event-grid"
+      },
+      {
+        "title": "AKS sustainable patterns for Application Platform",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/concepts-sustainable-software-engineering#application-platform"
       }
     ],
     "tools": [
@@ -46,6 +50,10 @@
       {
         "title": "Reduce latency with proximity placement groups",
         "url": "https://docs.microsoft.com/azure/aks/reduce-latency-ppg"
+      },
+      {
+        "title": "AKS sustainable patterns for network design",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/concepts-sustainable-software-engineering#network-and-connectivity"
       }
     ],
     "tags": [
@@ -66,6 +74,10 @@
       {
         "title": "Review your application requirements and Azure geographies to choose a region that is the closest to users.",
         "url": "https://azure.microsoft.com/explore/global-infrastructure/geographies/#overview"
+      },
+      {
+        "title": "AKS sustainable patterns for network design",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/concepts-sustainable-software-engineering#network-and-connectivity"
       }
     ],
     "tags": [
@@ -164,7 +176,6 @@
     ],
     "tags": [
       "all",
-      "sustainability"
       "operations"
     ],
     "optionalFields": {
@@ -270,6 +281,10 @@
       {
         "title": "optimize your Log Analytics costs",
         "url": "https://learn.microsoft.com/en-us/azure/architecture/framework/services/monitoring/log-analytics/cost-optimization"
+      },
+      {
+        "title": "AKS sustainable patterns for network design",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/concepts-sustainable-software-engineering#network-and-connectivity"
       }
     ],
     "tags": [
@@ -316,6 +331,10 @@
       {
         "title": "Cluster autoscaler",
         "url": "https://learn.microsoft.com/en-us/azure/aks/concepts-scale#cluster-autoscaler"
+      },
+      {
+        "title": "AKS sustainable patterns for application platform",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/concepts-sustainable-software-engineering#application-platform"
       }
     ],
     "tags": [
@@ -508,6 +527,10 @@
       {
         "title": "Monitor your Kubernetes cluster performance",
         "url": "https://learn.microsoft.com/azure/azure-monitor/containers/container-insights-analyze"
+      },
+      {
+        "title": "AKS sustainable patterns for application platform",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/concepts-sustainable-software-engineering#application-platform"
       }
     ],
     "tags": [
@@ -557,6 +580,10 @@
       {
         "title": "Which VM size should I choose as AKS node?",
         "url": "https://blog.cloudtrooper.net/2020/10/23/which-vm-size-should-i-choose-as-aks-node/"
+      },
+      {
+        "title": "AKS sustainable patterns for application platform",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/concepts-sustainable-software-engineering#application-platform"
       }
     ],
     "tags": [
@@ -581,6 +608,10 @@
       {
         "title": "Azure advisor get started",
         "url": "https://docs.microsoft.com/azure/advisor/advisor-get-started"
+      },
+      {
+        "title": "AKS sustainable patterns for application platform",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/concepts-sustainable-software-engineering#application-platform"
       }
     ],
     "tags": [
@@ -682,6 +713,10 @@
       {
         "title": "Create and configure an AKS cluster to use virtual nodes",
         "url": "https://learn.microsoft.com/en-us/azure/aks/virtual-nodes"
+      },
+      {
+        "title": "AKS sustainable patterns for application platform",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/concepts-sustainable-software-engineering#application-platform"
       }
     ],
     "tags": [
@@ -797,6 +832,10 @@
       { 
         "title": "Use ImageCleaner to clean up stale images",
         "url": "https://learn.microsoft.com/en-us/azure/aks/image-cleaner?tabs=azure-cli"
+      },
+      {
+        "title": "AKS sustainable patterns for operational procedures",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/concepts-sustainable-software-engineering#operational-procedures"
       }
     ],
     "tags": [
