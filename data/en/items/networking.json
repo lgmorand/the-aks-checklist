@@ -542,5 +542,32 @@
         "security": 1
       }
     }
+  },
+  {
+    "title": "Verify non overlapping CIDR ranges for Service-CIDR and Pod-CIDR or Subnet-CIDR",
+    "priority": "Medium",
+    "guid": "22fbe8d6-9b40-47ef-9011-25bb1a555a6c",
+    "description": "The Service CIDR should not overlap with Pod CIDR or Subnet CIDR or even peered VNET CIDR. If not configured correctly, the cluster might have strange behavior.",
+    "documentation": [
+      {
+        "title": "Pod CIDR, Service CIDR and Subnet CIDR",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/configure-azure-cni#plan-ip-addressing-for-your-cluster"
+      },
+      {
+        "title": "Use the right CIDR ranges for networking parameters",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/configure-azure-cni#deployment-parameters"
+      }
+    ],
+    "tags": [
+      "all",
+      "security",
+      "network"
+    ],
+    "optionalFields": {
+      "score": {
+        "simple": -2,
+        "security": 1
+      }
+    }
   }
 ]

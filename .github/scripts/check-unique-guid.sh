@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Checking that all GUIDs are unique"
+echo "Checking that all GUIDs are present and unique"
 echo ''
 
 key_name="guid"
@@ -21,7 +21,7 @@ do
   all_guids_count=$(cat $file | jq -r "try .. | objects | select( .$key_name ) | .$key_name " | wc -l)
 
   if [ "$all_items_count" -ne "$all_guids_count" ]; then
-    echo -e "\e[0;31mERROR\e[0m: File $file has some elements without GUID ($all_guids_count GUID found)"
+    echo -e "\e[0;31mERROR\e[0m: File $file has some elements without GUID ($all_guids_count GUID found). Each block should have a guid property"
     hasError=1
   else
     echo "All items have a GUID"
@@ -43,9 +43,9 @@ do
 
   if [[ "$hasError" == 1 ]]; then
     globalError=1
-    echo -e " \e[0;31mKO\e[0m";
+    echo -e " \e[0;31mKO\e[0m All tests are not green";
   else
-    echo -e " \e[0;32mOK\e[0m";
+    echo -e " \e[0;32mOK\e[0m All tests are green";
   fi
    
   echo ''
@@ -55,6 +55,5 @@ done
 if [[ "$globalError" == 1 ]]; then
     exit 1
 fi
-
 
 cd ../../..
