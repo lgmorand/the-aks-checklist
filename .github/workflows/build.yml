@@ -23,6 +23,10 @@ jobs:
     - name: Check that data is OK
       run: . ./.github/scripts/check-unique-guid.sh
     
+
+    - name: Check that data is OK
+      run: . ./.github/scripts/check-unique-guid.sh
+    
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
@@ -52,12 +56,14 @@ jobs:
         python ./transform_to_ft.py
         popd
 
+    - name: Run the Transformer
+      run: |
+        pushd ./data/scripts
+        pip3 install pandas
+        python ./transform_to_ft.py
+        popd
+
     - uses: actions/upload-artifact@v3
       with:
         name: CheckList
         path: dist
-
-    - uses: actions/upload-artifact@v3
-      with:
-        name: DataItems
-        path: ./data/scripts/aks_checklist.en.json
