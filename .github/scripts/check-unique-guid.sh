@@ -3,20 +3,13 @@
 echo "Checking that all GUIDs are present and unique"
 echo ''
 
-
 key_name="guid"
 globalError=0
-globalError=0
 
-cd ./data/en/items
 cd ./data/en/items
 
 for file in *.json
 do
-  echo -e "\e[4mPROCESSING ${file^^}\e[0m"
- 
-  hasError=0
-
   echo -e "\e[4mPROCESSING ${file^^}\e[0m"
  
   hasError=0
@@ -39,16 +32,10 @@ do
   if [ "$all_guids_count" -ne "$unique_guids_count" ]; then
 
     echo -e "\e[0;31mERROR\e[0m: File $file has $all_guids_count GUIDs, but only $unique_guids_count are unique"
-  if [ "$all_guids_count" -ne "$unique_guids_count" ]; then
-
-    echo -e "\e[0;31mERROR\e[0m: File $file has $all_guids_count GUIDs, but only $unique_guids_count are unique"
     echo "Here are the duplicates:"
     all_guids=$(cat $file | jq -r "try .. | objects | select( .$key_name ) | .$key_name " )
 
     printf '%s\n' "${all_guids[@]}"|awk '!($0 in seen){seen[$0];next} 1'
-    hasError=1
-  else
-    echo "All GUIDs are unique"
     hasError=1
   else
     echo "All GUIDs are unique"
@@ -68,14 +55,5 @@ done
 if [[ "$globalError" == 1 ]]; then
     exit 1
 fi
-
-
-cd ../../..
-
-# If there was an error, exit to fail the build
-if [[ "$globalError" == 1 ]]; then
-    exit 1
-fi
-
 
 cd ../../..
