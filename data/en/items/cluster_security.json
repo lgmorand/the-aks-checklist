@@ -3,7 +3,7 @@
     "title": "Use Mariner COS as host OS",
     "guid": "d34f49c0-e964-4465-9211-520479338b13",
     "priority": "Medium",
-    "description": "Mariner Container-Optimized OS is a first-party operating system for Azure Kubernetes Service (AKS) that is optimized for running Kubernetes workloads. Mariner is a secure, lightweight, and highly performant operating system that is based on the open source project CoreOS Container Linux. Mariner is designed to be a secure, lightweight, and highly performant operating system that is based on the open source project CoreOS Container Linux. Mariner is designed to be a secure, lightweight, and highly performant operating system that is based on the open source project CoreOS Container Linux.",
+    "description": "Mariner Container-Optimized OS is a first-party operating system developed specifically for Azure Kubernetes Service (AKS). It is designed to optimize the execution of Kubernetes workloads, offering a secure, lightweight, and highly performant environment. ",
     "documentation": [
       {
         "title": "Use the Mariner container host on Azure Kubernetes Service",
