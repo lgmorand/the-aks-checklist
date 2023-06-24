@@ -376,6 +376,12 @@
     "guid": "13bb9e32-6f48-4747-9531-0147f20f4b03",
     "priority": "Medium",
     "description": "It's recommended to keep all applications in a namespace other than default",
+    "documentation":[
+      {
+        "url": "https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/?ref=www.the-aks-checklist.com#when-to-use-multiple-namespaces",
+        "title": "Using multiple namespaces"
+      }
+    ],
     "tags": [
       "all",
       "operations"
