@@ -776,5 +776,28 @@
         "security": 1
       }
     }
+  },
+  {
+    "title": "Install debuging tools on your cluster",
+    "priority": "High",
+    "guid": "f1d2d2f4-53a2-5f1b-9d1a-3a907b6844a5",
+    "description": "You are never ready when something bad happen and debugging a kubernetes cluster can be tricky. Some toolbox can be deployed to help you to find and fix the most common issues",
+    "documentation": [
+      {
+        "title": "Inspektor Gadget",
+        "url": "https://www.inspektor-gadget.io/"
+      }
+    ],
+    "tags": [
+      "all",
+      "monitoring"
+    ],
+    "optionalFields": {
+      "score": {
+        "security": 1
+      }
+    }
   }
+
+  
 ]
