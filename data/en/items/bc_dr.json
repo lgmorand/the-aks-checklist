@@ -95,7 +95,7 @@
         "url": "https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region#use-azure-traffic-manager-to-route-traffic"
       },
       {
-        "title": "Cross-region load balancer (Preview)",
+        "title": "Cross-region load balancer",
         "url": "https://learn.microsoft.com/en-us/azure/load-balancer/cross-region-overview"
       }
     ],

@@ -3,7 +3,7 @@
     "title": "Choose the best CNI network plugin for your requirements (Azure CNI recommended)",
     "priority": "Medium",
     "guid": "a0f61565-9de5-458f-a372-49c831112dbd",
-    "description": "For integration with existing virtual networks or on-premises networks, use Azure CNI networking in AKS. This network model also allows greater separation of resources and controls in an enterprise environment but be aware of the impact on the network topology/IP ranges. In the future, you'll be able to use the CNI overlay model which gives more control and takes the benefits of both approachs.",
+    "description": "For integration with existing virtual networks or on-premises networks, use Azure CNI networking in AKS. This network model also allows greater separation of resources and controls in an enterprise environment but be aware of the impact on the network topology/IP ranges. You can now use the CNI overlay model which gives more control and takes the benefits of both approachs.",
     "detail": "While Kubenet is the default Kubernetes network plugin, the Container Networking Interface (CNI) is a vendor-neutral protocol that lets the container runtime make requests to a network provider. The Azure CNI assigns IP addresses to pods and nodes, and provides IP address management (IPAM) features as you connect to existing Azure virtual networks. Each node and pod resource receives an IP address in the Azure virtual network, and no additional routing is needed to communicate with other resources or services.",
     "documentation": [
       {
@@ -66,6 +66,10 @@
     "guid": "b3808b9f-a1cf-4204-ad01-3a923ce474db",
     "description": "To distribute HTTP or HTTPS traffic to your applications, use ingress resources and controllers. Ingress controllers provide additional features over a regular Azure load balancer, and can be managed as native Kubernetes resources.",
     "documentation": [
+      {
+        "title": "Application routing add-on for Azure Kubernetes Service (AKS)",
+        "url": "https://aka.ms/aks/docs/app-routing"
+      },
       {
         "title": "Distribute ingress traffic",
         "url": "https://docs.microsoft.com/azure/aks/operator-best-practices-network#distribute-ingress-traffic"

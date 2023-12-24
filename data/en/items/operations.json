@@ -617,7 +617,7 @@
     "description": "ContainerLogV2 schema improves the data related to the container logs (such as namespace, pod name, container name, etc.) and allows you to query the logs using these fields",
     "documentation": [
       { 
-        "title": "Enable the ContainerLogV2 schema (preview)",
+        "title": "Enable the ContainerLogV2 schema",
         "url": "https://learn.microsoft.com/en-gb/azure/azure-monitor/containers/container-insights-logging-v2"
       }
     ],
