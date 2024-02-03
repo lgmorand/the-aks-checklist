@@ -18,7 +18,7 @@ jobs:
         node-version: [10.x]
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
     - name: Check that data is OK
       run: . ./.github/scripts/check-unique-guid.sh
@@ -28,7 +28,7 @@ jobs:
       run: . ./.github/scripts/check-unique-guid.sh
     
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
         
@@ -37,13 +37,13 @@ jobs:
     - run: gulp build
 
     - name: Get current time
-      uses: josStorer/get-current-time@v2.0.2
+      uses: josStorer/get-current-time@v2.1.1
       id: current-time
       with:
         format: DD-MM-YYYY
 
     - name: inject date
-      uses: cschleiden/replace-tokens@v1
+      uses: cschleiden/replace-tokens@v1.2
       with:
         files: '["**/*.html"]'
       env:
@@ -63,7 +63,7 @@ jobs:
         python ./transform_to_ft.py
         popd
 
-    - uses: actions/upload-artifact@v3
+    - uses: actions/upload-artifact@v4
       with:
         name: CheckList
         path: dist

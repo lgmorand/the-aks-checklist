@@ -343,8 +343,8 @@
     "description": "The Kubernetes ecosystem is strengthened by many tools that make operating it easier.  Here's a few",
     "tools": [
       {
-        "title": "Lens",
-        "url": "https://k8slens.dev/"
+        "title": "OpenLens",
+        "url": "https://github.com/MuhammedKalkan/OpenLens"
       },
       {
         "title": "Helm",
