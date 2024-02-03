@@ -16,6 +16,8 @@ geometry:
 fontfamily:
 - charter
 header-includes:
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
 page-background: "background5.pdf"
 titlepage: true
 titlepage-color: "1b82af"
@@ -23,5 +25,6 @@ titlepage-text-color: "FFFFFF"
 titlepage-rule-color: "FFFFFF"
 titlepage-rule-height: 2
 colorlinks: true
+
 ---
 
