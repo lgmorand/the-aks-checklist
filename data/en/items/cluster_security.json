@@ -105,7 +105,7 @@
       },
       {
         "title": "Use the auto-upgrade feature",
-        "url": "https://docs.microsoft.com/fr-fr/azure/aks/upgrade-cluster#set-auto-upgrade-channel"
+        "url": "https://docs.microsoft.com/azure/aks/upgrade-cluster#set-auto-upgrade-channel"
       }
     ],
     "tags": [
