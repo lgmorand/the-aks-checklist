@@ -1,12 +1,7 @@
 name: Generate offline version
 
 on:
-  push:
-    paths:
-    - '**/data/en/**'
-    branches:
-    - master
-    
+  push:  
  
   workflow_dispatch:
 
@@ -65,7 +60,6 @@ jobs:
         run: |
                rm -f background5.pdf
                rm -f eisvogel.latex
-               rm -f result.txt
         working-directory: ./output
         
       - name: Azure Blob Storage Upload
