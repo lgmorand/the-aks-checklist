@@ -265,6 +265,10 @@
         "url": "https://docs.microsoft.com/azure/aks/cluster-autoscaler"
       },
       {
+        "title": "Node autoprovisioning (karpenter)",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/node-autoprovision"
+      },
+      {
         "title": "Cluster autoscaler",
         "url": "https://learn.microsoft.com/en-us/azure/aks/concepts-scale#cluster-autoscaler"
       }
