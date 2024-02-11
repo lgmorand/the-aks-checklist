@@ -79,3 +79,4 @@ jobs:
           path: |
             ./output/AKS-Checklist.pdf
             ./output/AKS-Checklist.docx
+            ./output/result.txt
