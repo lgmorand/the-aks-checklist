@@ -53,6 +53,7 @@ jobs:
         working-directory: ./output
 
       - name: Build Word version
+        if: ${{ always() }}
         run: pandoc -s result.txt -o 'AKS-Checklist.docx'
         working-directory: ./output
         
