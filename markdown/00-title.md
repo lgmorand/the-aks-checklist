@@ -15,9 +15,6 @@ geometry:
 - margin=1in
 fontfamily:
 - charter
-header-includes:
-- \usepackage[T1]{fontenc}
-- \usepackage{lmodern}
 page-background: "background5.pdf"
 titlepage: true
 titlepage-color: "1b82af"
