@@ -183,7 +183,7 @@
     }
   },
   {
-    "title": "If using a private registry, configure region replication to store images in multiple regions",
+    "title": "If using a private registry (ACR), configure region replication to store images in multiple regions",
     "guid": "b0803aed-1ca6-4330-816c-92677c6e9935",
     "priority": "Medium",
     "description": "Companies that want a local presence, or a hot backup, choose to run services from multiple Azure regions.",
@@ -197,6 +197,62 @@
     "tags": [
       "all",
       "resiliency"
+    ],
+    "optionalFields": {
+      "score": {}
+    }
+  },
+  {
+    "title": "Configure your registry to use zone reduncancy",
+    "guid": "a4cefd60-f24f-4907-9723-b927300b4c42",
+    "priority": "Medium",
+    "description": "Use Azure availability zones to create a resilient and high availability Azure container registry within an Azure region.",
+    "documentation": [
+      {
+        "title": "Enable zone redundancy in Azure Container Registry for resiliency and high availability",
+        "url": "https://review.learn.microsoft.com/en-us/azure/container-registry/zone-redundancy"
+      }
+    ],
+    "tags": [
+      "all",
+      "resiliency"
+    ],
+    "optionalFields": {
+      "score": {}
+    }
+  },
+  {
+    "title": "Move Container Registry to a dedicated resource group ",
+    "guid": "7b0bb400-deb6-4914-82da-2e914c9aaa72",
+    "priority": "Low",
+    "description": "Because container registries are resources that are used across multiple container hosts, a registry should reside in its own resource group.",
+    "detail": "Although you might experiment with a specific host type, such as Azure Container Instances, you’ll likely want to delete the container instance when you’re done. However, you might also want to keep the collection of images you pushed to Azure Container Registry. By placing your registry in its own resource group, you minimize the risk of accidentally deleting the collection of images in the registry when you delete the container instance resource group.",
+    "documentation": [
+      {
+        "title": "Registry best practices - Use dedicated resource group",
+        "url": "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-best-practices#dedicated-resource-group"
+      }
+    ],
+    "tags": [
+      "all"
+    ],
+    "optionalFields": {
+      "score": {}
+    }
+  },
+  {
+    "title": "Enable soft delete policy",
+    "guid": "49919955-fd6c-40f5-9c5c-5a7273c7a935",
+    "priority": "Low",
+    "description": "Once you enable the soft delete policy, ACR manages the deleted artifacts as the soft deleted artifacts with a set retention period. Thereby you have ability to list, filter, and restore the soft deleted artifacts. Once the retention period is complete, all the soft deleted artifacts are auto-purged.",
+    "documentation": [
+      {
+        "title": "Enable soft delete policy",
+        "url": "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-soft-delete-policy"
+      }
+    ],
+    "tags": [
+      "all"
     ],
     "optionalFields": {
       "score": {}
