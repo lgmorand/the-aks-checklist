@@ -264,7 +264,7 @@
     }
   },
   {
-    "title": "Bloc Pod access to VMSS IMDS",
+    "title": "Block Pod access to VMSS IMDS",
     "guid": "4fb072a7-0303-46d8-9ecf-d8aa4d69ff83",
     "priority": "Medium",
     "description": "By default, Pods have access to VMSS IMDS and can request access token from the attached Managed Identity. This access should be restriced by using Network Policy.",
