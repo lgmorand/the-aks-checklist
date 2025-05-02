@@ -2,9 +2,7 @@
 
 ![Build and deploy on prod](https://github.com/lgmorand/aks-checklist/workflows/Build%20and%20deploy%20on%20prod/badge.svg) ![Last commit](https://img.shields.io/github/last-commit/lgmorand/aks-checklist.svg) ![License](https://img.shields.io/github/license/lgmorand/aks-checklist.svg)
 
-> Warning: The repository has been move to an Azure repo: [https://github.com/Azure/the-aks-checklist](https://github.com/Azure/the-aks-checklist)
-
-The deployed version can be found here: [www.the-aks-checklist.com](https://www.the-aks-checklist.com)
+The deployed version can be found here: [https://aka.ms/the-aks-checklist](https://aka.ms/the-aks-checklist)
 ![AKS Checklist](https://raw.githubusercontent.com/lgmorand/aks-checklist/master/src/img/social/facebook-banner.jpg)
 
 The AKS Checklist is a (tentatively) exhaustive list of all elements you need to think of when preparing a cluster for production. It is based on all common best practices agreed around Kubernetes or documented [here](https://docs.microsoft.com/azure/aks/best-practices).
