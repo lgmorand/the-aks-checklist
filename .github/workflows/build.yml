@@ -53,11 +53,5 @@ jobs:
         name: CheckList
         path: src/web
         retention-days: 3
-
-    - name: Setup tmate session
-      uses: mxschmitt/action-tmate@v3
-      timeout-minutes: 10
-      with:
-        limit-access-to-actor: false
-        
+       
 

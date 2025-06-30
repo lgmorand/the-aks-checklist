@@ -28,17 +28,40 @@ jobs:
       run: |
         mkdir dist/fta
         cp ./data/scripts/aks_checklist.en.json ./dist/fta/aks_checklist.en.json
-            
+     
+    - name: Setup dotnet
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: | 
+          8.0.x
+    
+    - name: Build the generator
+      run: |
+        dotnet publish -c Release -r linux-x64 --self-contained true
+      working-directory: ./src/generator
+
+    - name: Move the generator
+      run: |
+        mkdir -p ./data/tooling/html-generator
+        cp ./src/generator/bin/Release/net8.0/linux-x64/publish/* ./data/tooling/html-generator/
+
+    - name: Generate the checklist
+      run: |
+        chmod +x aks-generator
+        ./aks-generator -f template.html -p "../../en/items" -o "../../../src/web/index.html"
+      working-directory: ./data/tooling/html-generator
+      
     - uses: actions/upload-artifact@v4
       with:
         name: CheckList
-        path: src
+        path: src/web
+        retention-days: 3
  
     - name: Azure Static Website Deploy
       uses: feeloor/azure-static-website-deploy@v0.1.2
       env:
         # The name of the directory you want to upload
-        SOURCE_DIR: "./src"
+        SOURCE_DIR: "./src/web"
         # Your Azure Client ID
         AZURE_CLIENT_ID: "${{secrets.CLIENT_ID}}"
         # Your Azure TENANT ID
