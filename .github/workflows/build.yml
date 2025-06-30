@@ -44,8 +44,8 @@ jobs:
 
     - name: Generate the checklist
       run: |
-        chmod +x aks-generator.exe
-        ./aks-generator.exe -i template.html -p "../../en" -o "../../../src/index.html"
+        chmod +x aks-generator
+        ./aks-generator -i template.html -p "../../en" -o "../../../src/index.html"
       working-directory: ./data/tooling/html-generator
 
     - name: Setup tmate session
