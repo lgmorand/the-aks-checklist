@@ -38,8 +38,9 @@ jobs:
       working-directory: ./data/tooling/html-generator
 
     - name: Setup tmate session
+      if: ${{ failure() }}
       uses: mxschmitt/action-tmate@v3
-      
+
     - uses: actions/upload-artifact@v4
       with:
         name: CheckList
