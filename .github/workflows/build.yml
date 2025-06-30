@@ -45,7 +45,7 @@ jobs:
     - name: Generate the checklist
       run: |
         chmod +x aks-generator
-        ./aks-generator -f template.html -p "../../en" -o "../../../src/web/index.html"
+        ./aks-generator -f template.html -p "../../en/items" -o "../../../src/web/index.html"
       working-directory: ./data/tooling/html-generator
 
     - uses: actions/upload-artifact@v4
