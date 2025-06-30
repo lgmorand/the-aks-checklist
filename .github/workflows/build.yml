@@ -41,11 +41,11 @@ jobs:
       run: |
         mkdir -p ./data/tooling/html-generator
         mv ./src/generator/bin/Release/net8.0/linux-x64/publish/aks-generator ./data/tooling/html-generator/aks-generator.exe
-        
+
     - name: Generate the checklist
       run: |
         chmod +x aks-generator.exe
-        aks-generator.exe -i template.html -p "../../en" -o "../../../src/index.html"
+        ./aks-generator.exe -i template.html -p "../../en" -o "../../../src/index.html"
       working-directory: ./data/tooling/html-generator
 
     - name: Setup tmate session
