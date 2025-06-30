@@ -34,7 +34,7 @@ jobs:
     
     - name: Generate the checklist
       run: |
-        aksgenerator.exe -i template.html -p "../../en" -o "../../../src/index.html"
+        aks-generator.exe -i template.html -p "../../en" -o "../../../src/index.html"
       working-directory: ./data/tooling/html-generator
 
     - uses: actions/upload-artifact@v4
