@@ -23,8 +23,7 @@ jobs:
 
     - name: include FTA version
       run: |
-        mkdir src/web/fta
-        cp ./data/scripts/aks_checklist.en.json ./src/web/fta/aks_checklist.en.json
+        cp ./data/scripts/aks_checklist.en.json ./src/web/fta/aks_checklist.en.json  --force
 
     - name: Setup dotnet
       uses: actions/setup-dotnet@v4
