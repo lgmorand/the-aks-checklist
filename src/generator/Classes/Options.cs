@@ -7,21 +7,21 @@ namespace aks_generator
     internal class Options
     {
         [Option('p', "path", Required = true, HelpText = "Path to folder containing JSON files")]
-        public required string Path
+        public string? Path
         {
             get;set;
         }
 
         [Option('f', "filepath", Required = true, HelpText = "Path to file where to inject content")]
 
-        public required string FilePath
+        public string? FilePath
         {
             get;set;
         }
 
         [Option('o', "output", Required = true, HelpText = "Path to file generated")]
 
-        public required string OutputFile
+        public string? OutputFile
         {
             get; set;
         }

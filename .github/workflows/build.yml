@@ -52,6 +52,7 @@ jobs:
       with:
         name: CheckList
         path: src/web
+        retention-days: 3
 
     - name: Setup tmate session
       if: ${{ failure() }}
