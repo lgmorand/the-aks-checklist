@@ -14,39 +14,8 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [10.x]
-
     steps:
     - uses: actions/checkout@v4
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v4
-      with:
-        node-version: ${{ matrix.node-version }}
-        
-    # - name: Cache node modules
-    #   uses: actions/cache@v2
-    #   with:
-    #     path: '**/node_modules'
-    #     key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-    
-    - run: npm install
-     
-    - run: gulp build
-  
-    - name: Get current time
-      uses: josStorer/get-current-time@v2.1.1
-      id: current-time
-      with:
-        format: DD-MM-YYYY
-
-    - uses: cschleiden/replace-tokens@v1.2
-      name: inject date
-      with:
-        files: '["**/*.html"]'
-      env:
-        BUILD_DATE: "${{ steps.current-time.outputs.formattedTime }}"
 
     - name: Run the Transformer
       run: |
@@ -63,13 +32,13 @@ jobs:
     - uses: actions/upload-artifact@v4
       with:
         name: CheckList
-        path: dist
+        path: src
  
     - name: Azure Static Website Deploy
       uses: feeloor/azure-static-website-deploy@v0.1.2
       env:
         # The name of the directory you want to upload
-        SOURCE_DIR: "./dist"
+        SOURCE_DIR: "./src"
         # Your Azure Client ID
         AZURE_CLIENT_ID: "${{secrets.CLIENT_ID}}"
         # Your Azure TENANT ID
