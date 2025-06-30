@@ -40,7 +40,7 @@ jobs:
     - name: Move the generator
       run: |
         mkdir -p ./data/tooling/html-generator
-        mv ./src/generator/bin/Release/net8.0/linux-x64/publish/aks-generator ./data/tooling/html-generator/aks-generator.exe
+        cp ./src/generator/bin/Release/net8.0/linux-x64/publish/* ./data/tooling/html-generator/
 
     - name: Generate the checklist
       run: |
@@ -51,8 +51,10 @@ jobs:
     - name: Setup tmate session
       if: ${{ failure() }}
       uses: mxschmitt/action-tmate@v3
+      timeout-minutes: 15
       with:
         limit-access-to-actor: false
+        
 
     - uses: actions/upload-artifact@v4
       with:
