@@ -56,28 +56,26 @@ jobs:
         path: src/web
         retention-days: 3
  
-    - name: Azure Static Website Deploy
-      uses: feeloor/azure-static-website-deploy@v0.1.2
-      env:
-        # The name of the directory you want to upload
-        SOURCE_DIR: "./src/web"
-        # Your Azure Client ID
-        AZURE_CLIENT_ID: "${{vars.CLIENT_ID}}"
-        # Your Azure TENANT ID
-        AZURE_TENANT_ID: "${{vars.TENANT_ID}}"
-        # Your Azure Secret
-        AZURE_SECRET: "${{secrets.SECRET_ID}}"
-        # Your Azure Subscription ID
-        AZURE_SUBSCRIPTION_ID: "${{vars.SUBSCRIPTION_ID}}"
-        # Your Azure Storage Account Name
-        AZURE_STORAGE_ACCOUNT_NAME: "stostatheakschecklist "
-        # The index document that you specify when you enable static website hosting, appears when users open the site and dont specify a specific file.
-        AZURE_INDEX_DOCUMENT_NAME:  "index.html"
-        FORCE_OVERWRITE: "true"
+    # - name: Azure Static Website Deploy
+    #   uses: feeloor/azure-static-website-deploy@v0.1.2
+    #   env:
+    #     SOURCE_DIR: "./src/web"
+    #     AZURE_CLIENT_ID: "${{vars.CLIENT_ID}}"
+    #     AZURE_TENANT_ID: "${{vars.TENANT_ID}}"
+    #     AZURE_SECRET: "${{secrets.SECRET_ID}}"
+    #     AZURE_SUBSCRIPTION_ID: "${{vars.SUBSCRIPTION_ID}}"
+    #     AZURE_STORAGE_ACCOUNT_NAME: "stostatheakschecklist"
+    #     AZURE_INDEX_DOCUMENT_NAME:  "index.html"
+    #     FORCE_OVERWRITE: "true"
 
     - name: AZ Login
-      run: az login --service-principal -u ${{ vars.CLIENT_ID }} -p ${{ secrets.SECRET_ID }} -t ${{ vars.TENANT_ID }}
-
+      run: | 
+        az login --service-principal -u ${{ vars.CLIENT_ID }} -p ${{ secrets.SECRET_ID }} -t ${{ vars.TENANT_ID }}
+        az account set --subscription ${{ vars.SUBSCRIPTION_ID }}
+         
+    - name: upload to Azure Blob Storage
+      run: az storage blob upload-batch -s "./src/web" -d \$web --account-name "stostatheakschecklist"  --overwrite
+    
     - name: Purge CDN
       run:
         az cdn endpoint purge -n ${{ vars.CDN_ENDPOINT }} --profile-name ${{ vars.CDN_PROFILE_NAME }} --content-paths "/*" --resource-group ${{ vars.RESOURCE_GROUP }} --no-wait

@@ -56,18 +56,11 @@ jobs:
     - name: Azure Static Website Deploy
       uses: feeloor/azure-static-website-deploy@v0.1.2
       env:
-        # The name of the directory you want to upload
         SOURCE_DIR: "./src/web"
-        # Your Azure Client ID
         AZURE_CLIENT_ID: "${{vars.CLIENT_ID}}"
-        # Your Azure TENANT ID
         AZURE_TENANT_ID: "${{vars.TENANT_ID}}"
-        # Your Azure Secret
         AZURE_SECRET: "${{secrets.SECRET_ID}}"
-        # Your Azure Subscription ID
         AZURE_SUBSCRIPTION_ID: "${{vars.SUBSCRIPTION_ID}}"
-        # Your Azure Storage Account Name
         AZURE_STORAGE_ACCOUNT_NAME: "stotheakscheckliststg"
-        # The index document that you specify when you enable static website hosting, appears when users open the site and dont specify a specific file.
         AZURE_INDEX_DOCUMENT_NAME:  "index.html"
         FORCE_OVERWRITE: "true"
