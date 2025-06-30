@@ -34,7 +34,7 @@ jobs:
     
     - name: debug
       run: |
-        ls
+        ls -al
       working-directory: ./data/tooling/html-generator
 
 
