@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en" dir="ltr">
+
+<head>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              
+              gtag('config', 'G-QW4VDZJCRX');
+    </script>
+    <script src="https://buttons.github.io/buttons.js" async></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>The Azure Kubernetes Service Checklist - ✨ Be ready for production ✨</title>
+    <meta name="description" content="The AKS Checklist is a (tentatively) exhaustive list of all elements you need to think of when preparing a cluster for production. It's based on all common best practices agreed around Kubernetes. It is the best way to ensure your cluster is production-ready!">
+    <style>
+        @charset "UTF-8";ul{list-style:none}*,:after,:before{box-sizing:inherit}html{background-color:#ededed;min-width:100%;overflow-x:hidden;overflow-y:scroll;box-sizing:border-box;font-size:62.5%;text-rendering:optimizeLegibility;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;scroll-behavior:smooth}body{color:#212529;font-size:1rem;font-weight:400;line-height:1.5;font-family:BlinkMacSystemFont,-apple-system,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,Helvetica,Arial,sans-serif;margin:0}h1,h2{margin-bottom:.5rem;font-family:inherit;font-weight:500;line-height:1.2;color:inherit}h1{margin:0;padding:15px 0 0;font-weight:700;font-size:2.5rem}h2{font-size:2rem}.img-logo{width:85px;height:85px}a{text-decoration:none}a:not(:disabled){background-color:transparent;color:#d75637}p{font-size:1.2rem;line-height:1.5;margin-top:0}.icon{width:18px;height:18px;fill:#b5b5b5;display:inline-block;text-align:center;speak:none;-webkit-backface-visibility:hidden;backface-visibility:hidden;opacity:1}button .icon{margin:0 .7rem 0 -.2rem}.page-wrapper{display:grid;grid-template-columns:auto;grid-template-areas:"a" "b" "c"}.page-wrapper .page-header{grid-area:a}.page-wrapper .page-main{grid-area:b}.sub-heading{margin:5px 15px;font-family:Montserrat,sans-serif;color:hsla(0,0%,100%,.6);font-size:1.3rem;line-height:1.5}.s-header{grid-row:1;grid-column-start:2;padding:15px 0;color:#fff;font-size:1rem;text-align:center;position:relative}.s-header__media__list{display:flex;align-items:flex-start;justify-content:center;align-self:center;padding:0}.s-header__media__item{margin:0 5px}.s-header__lang__list{display:flex;flex-direction:row;align-items:flex-start;align-self:center;justify-content:center;margin-top:20px}.s-header__lang__item{margin:0 5px}.c-tag-filter{display:flex;align-items:center;justify-content:space-between;align-self:center;flex-flow:row wrap}.c-tag-filter__title{font-size:1.2rem;font-weight:700}.c-tag-filter__list{flex-direction:row;width:100%;margin:0;padding:10px;background-color:#f8f7f6}.c-tag-filter__item{display:inline-block}.c-tag-filter__item button{display:block;text-transform:uppercase;font-size:1.3rem;line-height:1;color:#121212;padding:5px 10px;border:2px solid transparent;background-color:transparent}.s-main{display:grid;grid-column-start:1;position:relative;background-color:#fff;text-align:left;padding:0 10px}.s-main__section{margin:0 0 10px}.s-main__section:first-child{order:2}.s-main__section:nth-child(2),.s-main__section:nth-child(3){order:4}.s-main__meta{display:none}.s-checklist{position:relative;min-height:1px}.s-checklist:after{content:"";position:absolute;height:2px;border-top:1px solid #e4ebf0;bottom:0;width:98%}.s-checklist__inner{display:grid}.s-checklist__header{padding:15px 0;z-index:4}.s-checklist__header__title{margin:0;text-align:left;color:#415257;font-weight:700;text-transform:uppercase;line-height:1.2;font-size:2.5rem}.c-top-alert{display:none}.no-js .c-top-alert--alert{min-height:35px;background:orange;width:100%;text-align:center;font-weight:700;color:#fff;font-size:1.3rem;padding:5px 0}.no-js .c-top-alert--alert p{margin:0}button{-moz-appearance:none;-webkit-appearance:none;align-items:center;border:1px solid transparent;border-radius:3px;box-shadow:none;display:inline-flex;font-size:1.3rem;padding:7px 10px;justify-content:flex-start;line-height:1.4;position:relative;vertical-align:top;-webkit-touch-callout:none;background-color:#fff;border-color:#999;color:#363636;justify-content:center;text-align:center;white-space:nowrap}.c-button-icon{border-color:#b5b5b5}.c-button-icon .icon{margin:0}.c-button__group{margin:0 5px}.github-corner svg{fill:#fff;color:#151513;position:absolute;top:0;border:0;right:0}.github-corner .octo-arm{-webkit-transform-origin:130px 106px;transform-origin:130px 106px}@-webkit-keyframes a{0%,to{-webkit-transform:rotate(0);transform:rotate(0)}20%,60%{-webkit-transform:rotate(-25deg);transform:rotate(-25deg)}40%,80%{-webkit-transform:rotate(10deg);transform:rotate(10deg)}}@keyframes a{0%,to{-webkit-transform:rotate(0);transform:rotate(0)}20%,60%{-webkit-transform:rotate(-25deg);transform:rotate(-25deg)}40%,80%{-webkit-transform:rotate(10deg);transform:rotate(10deg)}}.c-tools{display:flex}.c-tools .c-button__group:first-child{margin-left:0}.c-progress{position:relative;display:flex;padding:10px 0}.c-progress__counter{text-align:center;margin-left:20px}.c-progress__label{font-size:1.3rem;font-weight:600}.c-progress__text{font-size:1.3rem}.c-progress__bar{background-color:#f5f5f5;border:0;height:19px;border-radius:3px;width:120px}.c-progress__bar::-webkit-progress-value{border-radius:2px}.c-progress__bar::-webkit-progress-bar{background-color:#f5f5f5}@media screen and (min-width:500px){h1{font-size:3rem}.img-logo{width:100px;height:100px}.icon{width:15px;height:15px}.sub-heading{font-size:1.5rem;margin:15px}.s-header{padding-top:25px;padding-bottom:60px}.s-header__banner{width:795px;margin:0 auto}.c-tag-filter__title{font-size:1.3rem}.s-main{display:grid;grid-column-start:3;margin-top:-50px;width:100%;padding:10px;border-radius:5px;border:1px solid rgba(0,0,0,.1)}.s-main__section:first-child,.s-main__section:nth-child(2){padding:0 20px}.s-main__meta{display:flex;justify-content:flex-end}.s-checklist{padding:0 10px}.s-checklist__header{display:flex;align-items:center;justify-content:space-between}.s-checklist__title{display:flex;align-items:center;justify-content:center}.s-checklist__header__title{font-size:4rem;margin:0}.c-progress{padding:0;display:block}.c-progress__counter{margin:0}.c-progress__label{position:absolute;top:28%;left:50%;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%)}.c-progress__text{font-size:1.1rem;padding:0 5px}.c-progress__bar{height:20px;margin:0 20px}}@media screen and (min-width:801px){.page-wrapper{grid-template-areas:"a a a" "b b b" "c c c"}.page-wrapper .page-main{display:grid;grid-template-columns:auto 150px 960px 150px auto}.c-tag-filter{display:flex;flex-direction:row}.c-tag-filter__list{display:flex;flex-wrap:wrap}button{font-size:1.25rem;height:34px;padding:5px 9px}}@media (max-width:500px){.github-corner .octo-arm{-webkit-animation:a .56s ease-in-out;animation:a .56s ease-in-out}}
+    </style>
+    <link rel="preload" as="style" href="/styles/main.min.css" onload="this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="/styles/main.min.css">
+    </noscript>
+    <script>
+        /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+              !function(a){"use strict";var b=function(b,c,d){function j(a){if(e.body)return a();setTimeout(function(){j(a)})}function l(){f.addEventListener&&f.removeEventListener("load",l),f.media=d||"all"}var g,e=a.document,f=e.createElement("link");if(c)g=c;else{var h=(e.body||e.getElementsByTagName("head")[0]).childNodes;g=h[h.length-1]}var i=e.styleSheets;f.rel="stylesheet",f.href=b,f.media="only x",j(function(){g.parentNode.insertBefore(f,c?g:g.nextSibling)});var k=function(a){for(var b=f.href,c=i.length;c--;)if(i[c].href===b)return a();setTimeout(function(){k(a)})};return f.addEventListener&&f.addEventListener("load",l),f.onloadcssdefined=k,k(l),f};"undefined"!=typeof exports?exports.loadCSS=b:a.loadCSS=b}("undefined"!=typeof global?global:this);
+              /*! loadCSS rel=preload polyfill. [c]2017 Filament Group, Inc. MIT License */
+              !function(a){if(a.loadCSS){var b=loadCSS.relpreload={};if(b.support=function(){try{return a.document.createElement("link").relList.supports("preload")}catch(a){return!1}},b.poly=function(){for(var b=a.document.getElementsByTagName("link"),c=0;c<b.length;c++){var d=b[c];"preload"===d.rel&&"style"===d.getAttribute("as")&&(a.loadCSS(d.href,d,d.getAttribute("media")),d.rel=null)}},!b.support()){b.poly();var c=a.setInterval(b.poly,300);a.addEventListener&&a.addEventListener("load",function(){b.poly(),a.clearInterval(c)}),a.attachEvent&&a.attachEvent("onload",function(){a.clearInterval(c)})}}}(this);
+    </script>
+    <meta name="msapplication-config" content="/browserconfig.xml">
+    <meta name="theme-color" content="#2b2b2b">
+    <meta name="msapplication-TileColor" content="#2b2b2b">
+    <meta name="msapplication-TileImage" content="/icons/mstile-144x144.png">
+    <meta property="og:site_name" content="The AKS Checklist - the best way to ensure your cluster is production-ready!">
+    <meta property="og:url" content="https://aka.ms/aks-checklist">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="✨ Be ready for production ✨">
+    <meta property="og:description" content="The AKS Checklist is a (tentatively) exhaustive list of all elements you need to think of when preparing a cluster for production. It's based on all common best practices agreed around Kubernetes. It is the best way to ensure your cluster is production-ready!">
+    <meta property="og:image" content="https://raw.githubusercontent.com/lgmorand/aks-checklist/master/src/img/social/facebook-banner.jpg">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="The AKS checklist - Be ready for production!">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@lgmorand">
+    <meta name="twitter:creator" content="@lgmorand">
+    <meta name="twitter:image" content="https://raw.githubusercontent.com/lgmorand/aks-checklist/master/src/img/social/facebook-banner.jpg">
+    <script>
+        /*! modernizr 3.11.3 (Custom Build) | MIT *
+         * https://modernizr.com/download/?-flexbox-history-webworkers-domprefixes-mq-prefixedcssvalue-prefixes-setclasses-teststyles !*/
+        !function(e,n,t,r){function o(e,n){return typeof e===n}function i(){return"function"!=typeof t.createElement?t.createElement(arguments[0]):S?t.createElementNS.call(t,"http://www.w3.org/2000/svg",arguments[0]):t.createElement.apply(t,arguments)}function s(){var e=t.body;return e||(e=i(S?"svg":"body"),e.fake=!0),e}function a(e,n,r,o){var a,l,f,u,d="modernizr",c=i("div"),p=s();if(parseInt(r,10))for(;r--;)f=i("div"),f.id=o?o[r]:d+(r+1),c.appendChild(f);return a=i("style"),a.type="text/css",a.id="s"+d,(p.fake?p:c).appendChild(a),p.appendChild(c),a.styleSheet?a.styleSheet.cssText=e:a.appendChild(t.createTextNode(e)),c.id=d,p.fake&&(p.style.background="",p.style.overflow="hidden",u=w.style.overflow,w.style.overflow="hidden",w.appendChild(p)),l=n(c,e),p.fake?(p.parentNode.removeChild(p),w.style.overflow=u,w.offsetHeight):c.parentNode.removeChild(c),!!l}function l(e,t,r){var o;if("getComputedStyle"in n){o=getComputedStyle.call(n,e,t);var i=n.console;if(null!==o)r&&(o=o.getPropertyValue(r));else if(i){var s=i.error?"error":"log";i[s].call(i,"getComputedStyle returning null, its possible modernizr test results are inaccurate")}}else o=!t&&e.currentStyle&&e.currentStyle[r];return o}function f(e,n){return!!~(""+e).indexOf(n)}function u(e){return e.replace(/([A-Z])/g,function(e,n){return"-"+n.toLowerCase()}).replace(/^ms-/,"-ms-")}function d(e,t){var o=e.length;if("CSS"in n&&"supports"in n.CSS){for(;o--;)if(n.CSS.supports(u(e[o]),t))return!0;return!1}if("CSSSupportsRule"in n){for(var i=[];o--;)i.push("("+u(e[o])+":"+t+")");return i=i.join(" or "),a("@supports ("+i+") { #modernizr { position: absolute; } }",function(e){return"absolute"===l(e,null,"position")})}return r}function c(e){return e.replace(/([a-z])-([a-z])/g,function(e,n,t){return n+t.toUpperCase()}).replace(/^-/,"")}function p(e,n,t,s){function a(){u&&(delete A.style,delete A.modElem)}if(s=!o(s,"undefined")&&s,!o(t,"undefined")){var l=d(e,t);if(!o(l,"undefined"))return l}for(var u,p,m,v,h,y=["modernizr","tspan","samp"];!A.style&&y.length;)u=!0,A.modElem=i(y.shift()),A.style=A.modElem.style;for(m=e.length,p=0;p<m;p++)if(v=e[p],h=A.style[v],f(v,"-")&&(v=c(v)),A.style[v]!==r){if(s||o(t,"undefined"))return a(),"pfx"!==n||v;try{A.style[v]=t}catch(e){}if(A.style[v]!==h)return a(),"pfx"!==n||v}return a(),!1}function m(e,n){return function(){return e.apply(n,arguments)}}function v(e,n,t){var r;for(var i in e)if(e[i]in n)return!1===t?e[i]:(r=n[e[i]],o(r,"function")?m(r,t||n):r);return!1}function h(e,n,t,r,i){var s=e.charAt(0).toUpperCase()+e.slice(1),a=(e+" "+T.join(s+" ")+s).split(" ");return o(n,"string")||o(n,"undefined")?p(a,n,r,i):(a=(e+" "+b.join(s+" ")+s).split(" "),v(a,n,t))}function y(e,n,t){return h(e,r,r,n,t)}var g=[],C={_version:"3.11.3",_config:{classPrefix:"",enableClasses:!0,enableJSClass:!0,usePrefixes:!0},_q:[],on:function(e,n){var t=this;setTimeout(function(){n(t[e])},0)},addTest:function(e,n,t){g.push({name:e,fn:n,options:t})},addAsyncTest:function(e){g.push({name:null,fn:e})}},Modernizr=function(){};Modernizr.prototype=C,Modernizr=new Modernizr;var x=[],w=t.documentElement,S="svg"===w.nodeName.toLowerCase(),_="Moz O ms Webkit",b=C._config.usePrefixes?_.toLowerCase().split(" "):[];C._domPrefixes=b;var P=C._config.usePrefixes?" -webkit- -moz- -o- -ms- ".split(" "):["",""];C._prefixes=P;var z=function(){var e=n.matchMedia||n.msMatchMedia;return e?function(n){var t=e(n);return t&&t.matches||!1}:function(e){var n=!1;return a("@media "+e+" { #modernizr { position: absolute; } }",function(e){n="absolute"===l(e,null,"position")}),n}}();C.mq=z;var E=function(e,n){var t=!1,r=i("div"),o=r.style;if(e in o){var s=b.length;for(o[e]=n,t=o[e];s--&&!t;)o[e]="-"+b[s]+"-"+n,t=o[e]}return""===t&&(t=!1),t};C.prefixedCSSValue=E;C.testStyles=a;Modernizr.addTest("history",function(){var e=navigator.userAgent;return!!e&&((-1===e.indexOf("Android 2.")&&-1===e.indexOf("Android 4.0")||-1===e.indexOf("Mobile Safari")||-1!==e.indexOf("Chrome")||-1!==e.indexOf("Windows Phone")||"file:"===location.protocol)&&(n.history&&"pushState"in n.history))});var T=C._config.usePrefixes?_.split(" "):[];C._cssomPrefixes=T;var k={elem:i("modernizr")};Modernizr._q.push(function(){delete k.elem});var A={style:k.elem.style};Modernizr._q.unshift(function(){delete A.style}),C.testAllProps=h,C.testAllProps=y,Modernizr.addTest("flexbox",y("flexBasis","1px",!0)),Modernizr.addTest("webworkers","Worker"in n),function(){var e,n,t,r,i,s,a;for(var l in g)if(g.hasOwnProperty(l)){if(e=[],n=g[l],n.name&&(e.push(n.name.toLowerCase()),n.options&&n.options.aliases&&n.options.aliases.length))for(t=0;t<n.options.aliases.length;t++)e.push(n.options.aliases[t].toLowerCase());for(r=o(n.fn,"function")?n.fn():n.fn,i=0;i<e.length;i++)s=e[i],a=s.split("."),1===a.length?Modernizr[a[0]]=r:(Modernizr[a[0]]&&(!Modernizr[a[0]]||Modernizr[a[0]]instanceof Boolean)||(Modernizr[a[0]]=new Boolean(Modernizr[a[0]])),Modernizr[a[0]][a[1]]=r),x.push((r?"":"no-")+a.join("-"))}}(),function(e){var n=w.className,t=Modernizr._config.classPrefix||"";if(S&&(n=n.baseVal),Modernizr._config.enableJSClass){var r=new RegExp("(^|\\s)"+t+"no-js(\\s|$)");n=n.replace(r,"$1"+t+"js$2")}Modernizr._config.enableClasses&&(e.length>0&&(n+=" "+t+e.join(" "+t)),S?w.className.baseVal=n:w.className=n)}(x),delete C.addTest,delete C.addAsyncTest;for(var N=0;N<Modernizr._q.length;N++)Modernizr._q[N]();e.Modernizr=Modernizr}(window,window,document);
+    </script>
+</head>
+
+<body>
+    <div class="page-wrapper">
+        <div class="page-header">
+            <div class="c-top-alert">
+                <div class="c-top-alert--alert">
+                    <p>Your JavaScript seems to be deactivated. Please enable your JavaScript to use all features of the AKS Checklist.</p>
+                </div>
+            </div>
+            <header class="s-header">
+                <div class="c-github-corner">
+                    <a class="github-corner" href="http://github.com/lgmorand/aks-checklist" aria-label="View source on Github">
+                        <svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true">
+                            <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+                            <path class="octo-arm" d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor"></path>
+                            <path class="octo-body" d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+                            fill="currentColor"></path>
+                        </svg>
+                    </a>
+                </div>
+                <div class="corner-ribbon top-left sticky shadow"><a href="https://www.the-aks-checklist.com/docs/AKS-Checklist.pdf">Download PDF version</a></div>
+                <div class="s-header__banner">
+                    <div class="text-center">
+                        <picture>
+                            <source srcset="/img/logos/logo-aks-checklist.png" type="image/jpeg"><img class="img-logo" src="/img/logos/logo-aks-checklist.png" alt="AKS Checklist Logo" width="100" height="100"></picture>
+                        <h1 class="font-weight-bold">The Azure Kubernetes Service Checklist</h1>
+                        <p class="sub-heading">This checklist contains a large set of best practices and some of them may not be relevant to your context and thus the rating may be incorrect in your case. Please choose and apply them wisely.</p>
+                        <p class="sub-heading2">Last updated on: 
+
+%DATE%
+</p>
+                    </div>
+                </div>
+            </header>
+        </div>
+        <div class="page-main">
+            <main class="s-main" id="js-main">
+                <div class="s-main__section s-main__meta"></div>
+                <div class="s-main__section s-main__filter">
+                    <aside class="c-tag-filter">
+                        <h2 class="c-tag-filter__title">Filter by tags</h2>
+                        <ul class="c-tag-filter__list">
+                            <li class="c-tag-filter__item">
+                                <button class="js-filter-tag" data-tag="all">All</button>
+                            </li>
+                            <li class="c-tag-filter__item">
+                                <button class="js-filter-tag" data-tag="application">Application</button>
+                            </li>
+                            <li class="c-tag-filter__item">
+                                <button class="js-filter-tag" data-tag="resiliency">Resiliency</button>
+                            </li>
+                            <li class="c-tag-filter__item">
+                                <button class="js-filter-tag" data-tag="security">Security</button>
+                            </li>
+                            <li class="c-tag-filter__item">
+                                <button class="js-filter-tag" data-tag="identity">Identity</button>
+                            </li>
+                            <li class="c-tag-filter__item">
+                                <button class="js-filter-tag" data-tag="multi-tenancy">Multi-tenancy</button>
+                            </li>
+                            <li class="c-tag-filter__item">
+                                <button class="js-filter-tag" data-tag="resources">Resources</button>
+                            </li>
+                            <li class="c-tag-filter__item">
+                                <button class="js-filter-tag" data-tag="IaC">IaC</button>
+                            </li>
+                            <li class="c-tag-filter__item">
+                                <button class="js-filter-tag" data-tag="devops">Devops</button>
+                            </li>
+                            <li class="c-tag-filter__item">
+                                <button class="js-filter-tag" data-tag="network">Network</button>
+                            </li>
+                            <li class="c-tag-filter__item">
+                                <button class="js-filter-tag" data-tag="storage">Storage</button>
+                            </li>
+                            <li class="c-tag-filter__item">
+                                <button class="js-filter-tag" data-tag="operations">Operations</button>
+                            </li>
+                            <li class="c-tag-filter__item">
+                                <button class="js-filter-tag" data-tag="finops">Finops</button>
+                            </li>
+                            <li class="c-tag-filter__item">
+                                <button class="js-filter-tag" data-tag="compliance">Compliance</button>
+                            </li>
+                            <li class="c-tag-filter__item">
+                                <button class="js-filter-tag" data-tag="secrets">Secrets</button>
+                            </li>
+                            <li class="c-tag-filter__item">
+                                <button class="js-filter-tag" data-tag="IPAM">IPAM</button>
+                            </li>
+                            <li class="c-tag-filter__item">
+                                <button class="js-filter-tag" data-tag="scalability">Scalability</button>
+                            </li>
+                            <li class="c-tag-filter__item">
+                                <button class="js-filter-tag" data-tag="windows">Windows</button>
+                            </li>
+                            <li class="c-tag-filter__item">
+                                <button class="js-filter-tag" data-tag="monitoring">Monitoring</button>
+                            </li>
+                            <li class="c-tag-filter__item">
+                                <button class="js-filter-tag" data-tag="cost">Cost</button>
+                            </li>
+                            <li class="c-tag-filter__item">
+                                <button class="js-filter-tag" data-tag="resource-management">Resource management</button>
+                            </li>
+                        </ul>
+                    </aside>
+                </div>
+                <div class="s-main__section s-main__checklist">
+
+                    %CONTENT%
+
+
+
+    </div>
+    <div class="s-main__section s-main__newsletter"></div>
+    <header class="s-main__section s-main__header">
+        <div class="s-header__checklist">
+            <h2 class="s-header__checklist__title">Report and navigation</h2>
+            <div class="s-header__checklist__el">
+                <div class="s-form">
+                    <div class="form">
+                        <div class="form-group">
+                            <input type="text" id="project-name" name="project-name" title="Type the name of your project" required>
+                            <label for="project-name">Project Name</label>
+                        </div><span id="generated-date"></span></div>
+                </div>
+                <div class="s-meta">
+                    <button class="button btn--danger js-reset-all">
+                        <svg class="icon icon-reset" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewbox="0 0 94.073 94.072" aria-hidden="true" data-icon-name="reset">
+                            <title>Two arrows turn around</title>
+                            <path d="M91.465 5.49c-.748-.31-1.61-.138-2.18.435L80.97 14.24C72.045 5.058 60.124 0 47.4 0c-2.693 0-5.408.235-8.07.697C21.22 3.845 6.543 17.405 1.945 35.244c-.155.6-.023 1.235.355 1.724.378.49.96.775 1.58.775h12.738c.84 0 1.59-.524 1.878-1.313 3.73-10.193 12.992-17.97 23.598-19.814 1.747-.303 3.525-.456 5.288-.456 8.428 0 16.3 3.374 22.168 9.5l-8.445 8.444c-.57.572-.742 1.432-.434 2.18.312.747 1.04 1.234 1.85 1.234H90.7c1.104 0 2-.896 2-2V7.338c0-.808-.49-1.537-1.235-1.847z"></path>
+                            <path d="M90.192 56.328H77.455c-.84 0-1.59.523-1.878 1.312-3.73 10.193-12.992 17.972-23.598 19.814-1.75.303-3.526.456-5.29.456-8.427 0-16.3-3.374-22.167-9.5l8.444-8.444c.572-.572.743-1.432.434-2.18-.31-.747-1.038-1.234-1.847-1.234H3.373c-1.103 0-2 .896-2 2v28.18c0 .81.488 1.54 1.236 1.85.745.31 1.606.137 2.178-.436l8.316-8.315c8.922 9.184 20.843 14.242 33.57 14.242 2.692 0 5.407-.235 8.068-.697 18.112-3.146 32.79-16.708 37.387-34.547.154-.6.022-1.234-.355-1.725-.38-.488-.964-.775-1.583-.775z"></path>
+                        </svg>Start new checklist</button>
+                </div>
+            </div>
+            <div class="s-header__checklist__el">
+                <nav class="c-nav">
+                    <ul class="c-nav__list c-nav--inline">
+                        <li class="c-nav__item"><a class="c-button js-scroll" href="#section-identity---authorization"><span class="c-nav__status" id="js-nav-identity---authorization" data-notation="0"></span><span>identity authorization</span></a></li>
+                        <li class="c-nav__item"><a class="c-button js-scroll" href="#section-cluster-security"><span class="c-nav__status" id="js-nav-cluster-security" data-notation="0"></span><span>cluster security</span></a></li>
+                        <li class="c-nav__item"><a class="c-button js-scroll" href="#section-multi-tenant---isolation"><span class="c-nav__status" id="js-nav-multi-tenant---isolation" data-notation="0"></span><span>multi tenant isolation</span></a></li>
+                        <li class="c-nav__item"><a class="c-button js-scroll" href="#section-storage"><span class="c-nav__status" id="js-nav-storage" data-notation="0"></span><span>storage</span></a></li>
+                        <li class="c-nav__item"><a class="c-button js-scroll" href="#section-networking"><span class="c-nav__status" id="js-nav-networking" data-notation="0"></span><span>networking</span></a></li>
+                        <li class="c-nav__item"><a class="c-button js-scroll" href="#section-resource-management"><span class="c-nav__status" id="js-nav-resource-management" data-notation="0"></span><span>resource management</span></a></li>
+                        <li class="c-nav__item"><a class="c-button js-scroll" href="#section-cluster-operations"><span class="c-nav__status" id="js-nav-cluster-operations" data-notation="0"></span><span>cluster operations</span></a></li>
+                        <li class="c-nav__item"><a class="c-button js-scroll" href="#section-biz-continuity---disaster-recovery"><span class="c-nav__status" id="js-nav-biz-continuity---disaster-recovery" data-notation="0"></span><span>biz continuity disaster recovery</span></a></li>
+                        <li
+                        class="c-nav__item"><a class="c-button js-scroll" href="#section-windows"><span class="c-nav__status" id="js-nav-windows" data-notation="0"></span><span>windows</span></a></li>
+                            <li class="c-nav__item"><a class="c-button js-scroll" href="#section-application-deployment"><span class="c-nav__status" id="js-nav-application-deployment" data-notation="0"></span><span>application deployment</span></a></li>
+                            <li class="c-nav__item"><a class="c-button js-scroll" href="#section-image-management"><span class="c-nav__status" id="js-nav-image-management" data-notation="0"></span><span>image management</span></a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="s-header__checklist__el">
+                <div class="c-notation">
+                    <div class="c-notation__details">
+                        <ul class="c-notation__details__list">
+                            <li class="c-notation__details__item js-detail-high">
+                                <svg class="icon icon--small icon-priority--high" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 510 510" aria-hidden="true" data-icon-name="bullet">
+                                    <path d="M255 0C114.75 0 0 114.75 0 255s114.75 255 255 255 255-114.75 255-255S395.25 0 255 0z"></path>
+                                </svg><span class="js-notation-checked">0</span>/<span class="js-notation-total">51</span>&nbsp;✓ high priority</li>
+                            <li class="c-notation__details__item js-detail-medium">
+                                <svg class="icon icon--small icon-priority--medium" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 510 510" aria-hidden="true" data-icon-name="bullet">
+                                    <path d="M255 0C114.75 0 0 114.75 0 255s114.75 255 255 255 255-114.75 255-255S395.25 0 255 0z"></path>
+                                </svg><span class="js-notation-checked">0</span>/<span class="js-notation-total">72</span>&nbsp;✓ medium priority</li>
+                            <li class="c-notation__details__item js-detail-low">
+                                <svg class="icon icon--small icon-priority--low" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 510 510" aria-hidden="true" data-icon-name="bullet">
+                                    <path d="M255 0C114.75 0 0 114.75 0 255s114.75 255 255 255 255-114.75 255-255S395.25 0 255 0z"></path>
+                                </svg><span class="js-notation-checked">0</span>/<span class="js-notation-total">44</span>&nbsp;✓ low priority</li>
+                        </ul>
+                    </div>
+                    <div class="c-notation__box">
+                        <div class="c-notation__item" id="js-notation" data-notation="0"><span class="c-notation__letter">X</span></div>
+                    </div>
+                </div>
+                <div class="c-notation__generate">
+                    <button class="button --fill --large js-print">
+                        <svg class="icon icon-print" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewbox="0 0 94.168 94.168" aria-hidden="true" data-icon-name="print">
+                            <title>Printer</title>
+                            <path d="M93.135 27.803H79.167v6.447c0 1.104-.896 2-2 2H17c-1.103 0-2-.896-2-2v-6.447H1.034c-.57 0-1.033.462-1.033 1.033v36.497c0 .57.462 1.033 1.033 1.033H15V59.92c0-1.105.897-2 2-2h60.167c1.104 0 2 .895 2 2v6.446h13.968c.57 0 1.033-.463 1.033-1.033V28.836c0-.57-.463-1.033-1.033-1.033zM82.98 52.625c-2.425 0-4.392-1.965-4.392-4.39 0-2.424 1.967-4.39 4.39-4.39s4.39 1.966 4.39 4.39c0 2.426-1.968 4.39-4.39 4.39z"></path>
+                            <path d="M75.617 22.522c0-.55-.22-1.073-.605-1.46L61.57 7.62c-.39-.388-.913-.606-1.46-.606H20.615c-1.14 0-2.065.925-2.065 2.066v23.754h57.067V22.522zm-17.333 2.952c-.278 0-.546-.11-.742-.306-.196-.197-.308-.463-.308-.742l.002-12.498 13.546 13.546H58.284z"></path>
+                            <path d="M18.55 85.088c0 1.14.926 2.065 2.066 2.065h52.936c1.142 0 2.065-.925 2.065-2.065v-23.42H18.55v23.42z"></path>
+                        </svg>Generate report</button>
+                </div>
+            </div>
+        </div>
+    </header>
+    </main>
+    </div>
+    <div class="page-footer">
+        <footer class="page-footer">
+            <div class="s-footer">
+                <div class="footer-print"><a href="https://www.the-aks-checklist.com">Report generated using "The AKS Checklist"</a></div>
+            </div>
+        </footer>
+    </div>
+    </div>
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+    <script src="/scripts/app.bundle.js" async></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+                //- console.log('CLIENT: service worker registration in progress.');
+                navigator.serviceWorker.register('/service-worker.js').then(function() {
+                  //- console.log('CLIENT: service worker registration complete.');
+                }, function() {
+                  //- console.log('CLIENT: service worker registration failure.');
+                });
+              }
+              else {
+                //- console.log('CLIENT: service worker is not supported.');
+              }
+    </script>
+</body>
+
+</html>
