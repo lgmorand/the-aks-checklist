@@ -53,14 +53,11 @@ jobs:
         path: src/web
         retention-days: 3
  
-    - name: Azure Static Website Deploy
-      uses: feeloor/azure-static-website-deploy@v0.1.2
-      env:
-        SOURCE_DIR: "./src/web"
-        AZURE_CLIENT_ID: "${{vars.CLIENT_ID}}"
-        AZURE_TENANT_ID: "${{vars.TENANT_ID}}"
-        AZURE_SECRET: "${{secrets.SECRET_ID}}"
-        AZURE_SUBSCRIPTION_ID: "${{vars.SUBSCRIPTION_ID}}"
-        AZURE_STORAGE_ACCOUNT_NAME: "stotheakscheckliststg"
-        AZURE_INDEX_DOCUMENT_NAME:  "index.html"
-        FORCE_OVERWRITE: "true"
+    - name: AZ Login
+      run: | 
+        az login --service-principal -u ${{ vars.CLIENT_ID }} -p ${{ secrets.SECRET_ID }} -t ${{ vars.TENANT_ID }}
+        az account set --subscription ${{ vars.SUBSCRIPTION_ID }}
+         
+    - name: upload to Azure Blob Storage
+      run: az storage blob upload-batch -s "./src/web" -d \$web --account-name "stostatheakscheckliststg"  --overwrite
+    
