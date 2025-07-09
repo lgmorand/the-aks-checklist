@@ -297,12 +297,12 @@
         "url": "https://learn.microsoft.com/en-us/azure/azure-arc/kubernetes/tutorial-use-gitops-flux2"
       },
       {
-        "title": "What is Azure Arc enabled Kubernetes?",
-        "url": "https://docs.microsoft.com/azure/azure-arc/kubernetes/overview"
+        "title": "Use ArgoCD with AKS",
+        "url": "https://learn.microsoft.com/en-us/azure/azure-arc/kubernetes/tutorial-use-gitops-argocd"
       },
       {
-        "title": "Guide To GitOps",
-        "url": "https://www.weave.works/technologies/gitops"
+        "title": "What is Azure Arc enabled Kubernetes?",
+        "url": "https://docs.microsoft.com/azure/azure-arc/kubernetes/overview"
       }
     ],
     "tags": [
