@@ -480,11 +480,11 @@
     "title": "If required add your own CNI plugin",
     "priority": "Low",
     "guid": "57bf217f-6dc8-481c-81e2-785773e9c00f",
-    "description": "A service mesh provides capabilities like traffic management, resiliency, policy, security, strong identity, and observability to your workloads.",
+    "description": "Advanced AKS users might want the same CNI plugin used in on-premises Kubernetes environments or to use advanced functionalities available in other CNI plugins.",
     "documentation": [
       {
         "title": "Bring your own Container Network Interface (CNI) plugin for AKS",
-        "url": "https://learn.microsoft.com/azure/aks/servicemesh-about"
+        "url": "https://learn.microsoft.com/en-us/azure/aks/use-byo-cni"
       }
     ],
     "tags": [
