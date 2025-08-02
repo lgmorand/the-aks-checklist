@@ -1111,13 +1111,13 @@
       "graph": "where type=='microsoft.containerservice/managedclusters' | extend compliant = (isnull(properties.addonProfiles.httpApplicationRouting) or properties.addonProfiles.httpApplicationRouting.enabled==false) | distinct id,compliant"
     },
     {
-      "text": "Use Mariner COS as host OS",
-      "description": "Mariner Container-Optimized OS is a first-party operating system developed specifically for Azure Kubernetes Service (AKS). It is designed to optimize the execution of Kubernetes workloads, offering a secure, lightweight, and highly performant environment. ",
+      "text": "Use Azure Linux as host OS",
+      "description": "Azure Linux OS is a first-party operating system developed specifically for Azure Kubernetes Service (AKS). It is designed to optimize the execution of Kubernetes workloads, offering a secure, lightweight, and highly performant environment. ",
       "guid": "d34f49c0-e964-4465-9211-520479338b13",
       "subcategory": "Operations",
       "category": "Governance and Security",
       "severity": "Medium",
-      "link": "https://learn.microsoft.com/en-us/azure/aks/use-mariner"
+      "link": "https://learn.microsoft.com/en-us/azure/aks/use-azure-linux"
     },
     {
       "text": "Configure your cluster for regulated industries",
