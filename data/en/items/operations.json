@@ -380,7 +380,7 @@
     "guid": "13bb9e32-6f48-4747-9531-0147f20f4b03",
     "priority": "Medium",
     "description": "It's recommended to keep all applications in a namespace other than default",
-    "documentation":[
+    "documentation": [
       {
         "url": "https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/?ref=www.the-aks-checklist.com#when-to-use-multiple-namespaces",
         "title": "Using multiple namespaces"
@@ -435,7 +435,6 @@
         "ha": 1,
         "severity": "Low",
         "graph": "where type=='microsoft.containerservice/managedclusters' | extend compliant = (isnotnull(properties.austoscalerProfile)) | distinct id,compliant"
-        
       }
     }
   },
@@ -620,7 +619,7 @@
     "priority": "Medium",
     "description": "ContainerLogV2 schema improves the data related to the container logs (such as namespace, pod name, container name, etc.) and allows you to query the logs using these fields",
     "documentation": [
-      { 
+      {
         "title": "Enable the ContainerLogV2 schema",
         "url": "https://learn.microsoft.com/en-gb/azure/azure-monitor/containers/container-insights-logging-v2"
       }
@@ -801,7 +800,60 @@
         "security": 1
       }
     }
+  },
+  {
+    "title": "Use Azure Monitor OpenTelemetry for distributed tracing and observability",
+    "priority": "Medium",
+    "guid": "7dec85ff-e943-4b69-b4dd-79b071c87eb6",
+    "description": "Azure Monitor OpenTelemetry Distro provides vendor-neutral instrumentation for collecting traces, metrics, and logs from your applications. It offers better performance with intelligent sampling, lower overhead, and seamless integration with Azure Monitor for comprehensive observability.",
+    "detail": "OpenTelemetry is the industry standard for observability instrumentation. The Azure Monitor OpenTelemetry Distro simplifies setup and provides automatic instrumentation for popular frameworks. Use it to gain deep insights into microservices communication, performance bottlenecks, and application behavior across your AKS workloads.",
+    "documentation": [
+      {
+        "title": "Azure Monitor OpenTelemetry",
+        "url": "https://learn.microsoft.com/azure/azure-monitor/app/opentelemetry-enable"
+      },
+      {
+        "title": "Enable Azure Monitor OpenTelemetry for .NET, Node.js, Python and Java applications",
+        "url": "https://learn.microsoft.com/azure/azure-monitor/app/opentelemetry-overview"
+      }
+    ],
+    "tags": [
+      "all",
+      "operations",
+      "monitoring"
+    ],
+    "optionalFields": {
+      "score": {
+        "simple": -1
+      }
+    }
+  },
+  {
+    "title": "Consider using Long-Term Support (LTS) for Kubernetes versions",
+    "priority": "Medium",
+    "guid": "96516e10-4664-421a-992d-1271c29743ea",
+    "description": "AKS offers Long-Term Support (LTS) for Kubernetes versions, providing 24 months of support instead of the standard 12 months. This reduces the frequency of required upgrades and provides more stability for production workloads.",
+    "detail": "LTS is available for select Kubernetes versions and is ideal for organizations that require extended support periods for compliance or operational reasons. Using LTS allows you to focus on application development while minimizing cluster maintenance overhead. Note that LTS versions still receive critical security patches and bug fixes.",
+    "documentation": [
+      {
+        "title": "Long-Term Support for AKS",
+        "url": "https://learn.microsoft.com/azure/aks/long-term-support"
+      },
+      {
+        "title": "Supported Kubernetes versions in AKS",
+        "url": "https://learn.microsoft.com/azure/aks/supported-kubernetes-versions"
+      }
+    ],
+    "tags": [
+      "all",
+      "operations",
+      "security"
+    ],
+    "optionalFields": {
+      "score": {
+        "simple": 1,
+        "cost": -1
+      }
+    }
   }
-
-  
 ]

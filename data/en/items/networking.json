@@ -1,5 +1,32 @@
 [
   {
+    "title": "Use Standard Load Balancer (Basic Load Balancer is deprecated)",
+    "priority": "High",
+    "guid": "348cbeb6-96ea-4747-99c9-a3713f084fc7",
+    "description": "Starting September 2025, Azure Basic Load Balancer is retired. All AKS clusters must use Standard Load Balancer, which provides better security, reliability, and availability features including zone redundancy and higher connection limits.",
+    "documentation": [
+      {
+        "title": "Basic Load Balancer retirement",
+        "url": "https://learn.microsoft.com/azure/load-balancer/load-balancer-basic-upgrade-guidance"
+      },
+      {
+        "title": "Use Standard Load Balancer in AKS",
+        "url": "https://learn.microsoft.com/azure/aks/load-balancer-standard"
+      }
+    ],
+    "tags": [
+      "all",
+      "network",
+      "security"
+    ],
+    "optionalFields": {
+      "score": {
+        "security": 1,
+        "ha": 1
+      }
+    }
+  },
+  {
     "title": "Choose the best CNI network plugin for your requirements (Azure CNI recommended)",
     "priority": "Medium",
     "guid": "a0f61565-9de5-458f-a372-49c831112dbd",
@@ -475,7 +502,7 @@
         "security": 1
       }
     }
-  }, 
+  },
   {
     "title": "If required add your own CNI plugin",
     "priority": "Low",

@@ -410,5 +410,36 @@
         "cost": 1
       }
     }
+  },
+  {
+    "title": "Enable and enforce Pod Security Standards",
+    "priority": "High",
+    "guid": "8f4c0541-7afa-4f15-a4a3-cf6b3c20f2e7",
+    "description": "Pod Security Standards define security requirements for pods at different levels (Privileged, Baseline, and Restricted). Enforcing these standards helps prevent security vulnerabilities by controlling pod capabilities, privilege escalation, and host access.",
+    "detail": "Pod Security Standards replaced Pod Security Policies (deprecated in Kubernetes 1.21). Use Azure Policy or admission controllers to enforce these standards across your cluster. The Restricted profile provides the strongest security posture and should be used for production workloads where possible.",
+    "documentation": [
+      {
+        "title": "Pod Security Standards",
+        "url": "https://kubernetes.io/docs/concepts/security/pod-security-standards/"
+      },
+      {
+        "title": "Enforce Pod Security Standards with Azure Policy",
+        "url": "https://learn.microsoft.com/azure/aks/use-azure-policy"
+      },
+      {
+        "title": "Secure pods with Pod Security Admission",
+        "url": "https://learn.microsoft.com/azure/aks/developer-best-practices-pod-security"
+      }
+    ],
+    "tags": [
+      "all",
+      "security",
+      "compliance"
+    ],
+    "optionalFields": {
+      "score": {
+        "security": 2
+      }
+    }
   }
 ]
