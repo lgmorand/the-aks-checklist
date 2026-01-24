@@ -5,7 +5,7 @@
 The deployed version can be found here: [https://aka.ms/the-aks-checklist](https://aka.ms/the-aks-checklist)
 ![AKS Checklist](https://raw.githubusercontent.com/lgmorand/aks-checklist/master/src/img/social/facebook-banner.jpg)
 
-The AKS Checklist is a (tentatively) exhaustive list of all elements you need to think of when preparing a cluster for production. It is based on all common best practices agreed around Kubernetes or documented [here](https://docs.microsoft.com/azure/aks/best-practices).
+The AKS Checklist is a (tentatively) exhaustive list of all elements you need to think of when preparing a cluster for production. It is based on all common best practices agreed around Kubernetes or documented [here](https://learn.microsoft.com/azure/aks/best-practices).
 
 Another good reading in another format is the [AKS baseline reference architecture](https://github.com/mspnp/aks-secure-baseline)
 
@@ -30,7 +30,7 @@ Be aware that we want to keep a list as exhaustive as possible but also a list t
 ## Thanks
 
 The source code itself is a modified version of the [Front-End Checklist](https://github.com/thedaviddias/Front-End-Checklist) which was created by [David Dias](https://github.com/thedaviddias)
-Icons made by Freepik from [www.flaticon.com](www.flaticon.com) is licensed by CC 3.0 BY
+Icons made by Freepik from [www.flaticon.com](https://www.flaticon.com) is licensed by CC 3.0 BY
 
 ## License
 

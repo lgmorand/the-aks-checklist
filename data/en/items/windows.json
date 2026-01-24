@@ -7,7 +7,7 @@
     "documentation": [
       {
         "title": "Windows container version compatibility",
-        "url": "https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility"
+        "url": "https://learn.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility"
       },
       {
         "title": "Limitations of Windows containers",
@@ -91,7 +91,7 @@
     "documentation": [
       {
         "title": "What network plug-ins are supported?",
-        "url": "https://docs.microsoft.com/azure/aks/windows-node-limitations#what-network-plug-ins-are-supported"
+        "url": "https://learn.microsoft.com/azure/aks/windows-node-limitations#what-network-plug-ins-are-supported"
       }
     ],
     "tags": [
@@ -110,11 +110,11 @@
     "documentation": [
       {
         "title": "Windows container version compatibility",
-        "url": "https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility?tabs=windows-server-20H2%2Cwindows-10-20H2"
+        "url": "https://learn.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility?tabs=windows-server-20H2%2Cwindows-10-20H2"
       },
       {
         "title": "How do patch my Windows nodes? ",
-        "url": "https://docs.microsoft.com/azure/aks/windows-node-limitations#how-do-patch-my-windows-nodes"
+        "url": "https://learn.microsoft.com/azure/aks/windows-node-limitations#how-do-patch-my-windows-nodes"
       }
     ],
     "tags": [
@@ -152,7 +152,7 @@
     "documentation": [
       {
         "title": "Enable Group Managed Service Accounts (GMSA) for your Windows Server nodes",
-        "url": "https://docs.microsoft.com/en-gb/azure/aks/use-group-managed-service-accounts"
+        "url": "https://learn.microsoft.com/en-gb/azure/aks/use-group-managed-service-accounts"
       }
     ],
     "tags": [

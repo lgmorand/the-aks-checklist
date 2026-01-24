@@ -33,7 +33,7 @@
       },
       {
         "title": "Choose the right storage type",
-        "url": "https://docs.microsoft.com/azure/aks/operator-best-practices-storage#choose-the-appropriate-storage-type"
+        "url": "https://learn.microsoft.com/azure/aks/operator-best-practices-storage#choose-the-appropriate-storage-type"
       }
     ],
     "tools": [
@@ -78,7 +78,7 @@
     "documentation": [
       {
         "title": "Enforce resource quotas",
-        "url": "https://docs.microsoft.com/azure/aks/operator-best-practices-scheduler#enforce-resource-quotas"
+        "url": "https://learn.microsoft.com/azure/aks/operator-best-practices-scheduler#enforce-resource-quotas"
       },
       {
         "title": "Resources quotas",
@@ -154,7 +154,7 @@
     "documentation": [
       {
         "title": "Plan for availability using pod disruption budgets",
-        "url": "https://docs.microsoft.com/azure/aks/operator-best-practices-scheduler#plan-for-availability-using-pod-disruption-budgets"
+        "url": "https://learn.microsoft.com/azure/aks/operator-best-practices-scheduler#plan-for-availability-using-pod-disruption-budgets"
       },
       {
         "title": "Specifying a Disruption Budget for your Application",
@@ -181,7 +181,7 @@
     "documentation": [
       {
         "title": "cost governance with kubecost",
-        "url": "https://docs.microsoft.com/azure/cloud-adoption-framework/scenarios/aks/eslz-cost-governance-with-kubecost"
+        "url": "https://learn.microsoft.com/azure/cloud-adoption-framework/scenarios/aks/eslz-cost-governance-with-kubecost"
       }
     ],
     "tags": [

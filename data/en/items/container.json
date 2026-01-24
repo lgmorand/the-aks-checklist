@@ -7,11 +7,11 @@
     "documentation": [
       {
         "title": "Azure Security Center : scanning feature (Qualys)",
-        "url": "https://docs.microsoft.com/azure/security-center/azure-container-registry-integration"
+        "url": "https://learn.microsoft.com/azure/security-center/azure-container-registry-integration"
       },
       {
         "title": "Identify vulnerable container images in your CI/CD workflows",
-        "url": "https://docs.microsoft.com/azure/defender-for-cloud/defender-for-containers-cicd"
+        "url": "https://learn.microsoft.com/azure/defender-for-cloud/defender-for-containers-cicd"
       }
     ],
     "tools": [
@@ -47,7 +47,7 @@
     "documentation": [
       {
         "title": "Use the Azure Policy : Ensure only allowed container images in AKS",
-        "url": "https://docs.microsoft.com/azure/governance/policy/concepts/rego-for-aks#built-in-policies"
+        "url": "https://learn.microsoft.com/azure/governance/policy/concepts/rego-for-aks#built-in-policies"
       },
       {
         "title": "Using ImagePolicyWebhook",
@@ -55,7 +55,7 @@
       },
       {
         "title": "Using egress lockdown and authorizing only the URL of your registry",
-        "url": "https://docs.microsoft.com/azure/aks/limit-egress-traffic"
+        "url": "https://learn.microsoft.com/azure/aks/limit-egress-traffic"
       }
     ],
     "tags": [
@@ -117,7 +117,7 @@
     "documentation": [
       {
         "title": "Azure Container Registry roles and permissions",
-        "url": "https://docs.microsoft.com/azure/container-registry/container-registry-roles"
+        "url": "https://learn.microsoft.com/azure/container-registry/container-registry-roles"
       }
     ],
     "tags": [
@@ -136,7 +136,7 @@
     "documentation": [
       {
         "title": "Azure Container Registry Private Link",
-        "url": "https://docs.microsoft.com/azure/container-registry/container-registry-private-link"
+        "url": "https://learn.microsoft.com/azure/container-registry/container-registry-private-link"
       }
     ],
     "tags": [
@@ -176,7 +176,7 @@
     "documentation": [
       {
         "title": "Automatically build new images on base image update",
-        "url": "https://docs.microsoft.com/azure/aks/operator-best-practices-container-image-management#automatically-build-new-images-on-base-image-update"
+        "url": "https://learn.microsoft.com/azure/aks/operator-best-practices-container-image-management#automatically-build-new-images-on-base-image-update"
       },
       {
         "title": "Azure DevOps - Trigger pipeline from Docker image update",

@@ -8,11 +8,11 @@
     "documentation": [
       {
         "title": "AKS-managed Azure Active Directory integration",
-        "url": "https://docs.microsoft.com/azure/aks/managed-aad"
+        "url": "https://learn.microsoft.com/azure/aks/managed-aad"
       },
       {
         "title": "Disable local accounts",
-        "url": "https://docs.microsoft.com/azure/aks/managed-aad#disable-local-accounts"
+        "url": "https://learn.microsoft.com/azure/aks/managed-aad#disable-local-accounts"
       }
     ],
     "tags": [
@@ -35,7 +35,7 @@
     "documentation": [
       {
         "title": "Limit cluster access via K8S RBAC for users & workloads",
-        "url": "https://docs.microsoft.com/azure/aks/azure-ad-rbac"
+        "url": "https://learn.microsoft.com/azure/aks/azure-ad-rbac"
       }
     ],
     "tags": [
@@ -59,7 +59,7 @@
     "documentation": [
       {
         "title": "Authenticate with Azure Container Registry from AKS",
-        "url": "https://docs.microsoft.com/azure/aks/cluster-container-registry-integration"
+        "url": "https://learn.microsoft.com/azure/aks/cluster-container-registry-integration"
       }
     ],
     "tags": [
@@ -79,7 +79,7 @@
     "documentation": [
       {
         "title": "Use managed identities in Azure Kubernetes Service",
-        "url": "https://docs.microsoft.com/azure/aks/use-managed-identity"
+        "url": "https://learn.microsoft.com/azure/aks/use-managed-identity"
       }
     ],
     "tags": [
@@ -102,7 +102,7 @@
     "documentation": [
       {
         "title": "Use Azure RBAC to define access to the Kubernetes configuration file",
-        "url": "https://docs.microsoft.com/azure/aks/control-kubeconfig-access"
+        "url": "https://learn.microsoft.com/azure/aks/control-kubeconfig-access"
       }
     ],
     "tags": [

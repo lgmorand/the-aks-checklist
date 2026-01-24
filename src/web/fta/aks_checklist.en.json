@@ -100,7 +100,7 @@
       "subcategory": "Resiliency",
       "category": "Resource Organization and Cost Governance",
       "severity": "Low",
-      "link": "https://docs.microsoft.com/azure/aks/operator-best-practices-scheduler#enforce-resource-quotas",
+      "link": "https://learn.microsoft.com/azure/aks/operator-best-practices-scheduler#enforce-resource-quotas",
       "simple": -1,
       "ha": 1
     },
@@ -129,7 +129,7 @@
       "subcategory": "Resiliency",
       "category": "Resource Organization and Cost Governance",
       "severity": "Low",
-      "link": "https://docs.microsoft.com/azure/aks/operator-best-practices-scheduler#plan-for-availability-using-pod-disruption-budgets",
+      "link": "https://learn.microsoft.com/azure/aks/operator-best-practices-scheduler#plan-for-availability-using-pod-disruption-budgets",
       "ha": 1,
       "cost": -1
     },
@@ -140,7 +140,7 @@
       "subcategory": "Cost",
       "category": "Resource Organization and Cost Governance",
       "severity": "Low",
-      "link": "https://docs.microsoft.com/azure/cloud-adoption-framework/scenarios/aks/eslz-cost-governance-with-kubecost",
+      "link": "https://learn.microsoft.com/azure/cloud-adoption-framework/scenarios/aks/eslz-cost-governance-with-kubecost",
       "cost": 1
     },
     {
@@ -200,7 +200,7 @@
       "subcategory": "Security",
       "category": "Identity and Access Management",
       "severity": "High",
-      "link": "https://docs.microsoft.com/azure/aks/managed-aad",
+      "link": "https://learn.microsoft.com/azure/aks/managed-aad",
       "simple": 1,
       "graph": "where type=='microsoft.containerservice/managedclusters' | extend compliant = isnotnull(properties.aadProfile) | distinct id,compliant"
     },
@@ -211,7 +211,7 @@
       "subcategory": "Security",
       "category": "Identity and Access Management",
       "severity": "High",
-      "link": "https://docs.microsoft.com/azure/aks/azure-ad-rbac",
+      "link": "https://learn.microsoft.com/azure/aks/azure-ad-rbac",
       "simple": -1,
       "security": 1
     },
@@ -222,7 +222,7 @@
       "subcategory": "Security",
       "category": "Identity and Access Management",
       "severity": "Medium",
-      "link": "https://docs.microsoft.com/azure/aks/cluster-container-registry-integration"
+      "link": "https://learn.microsoft.com/azure/aks/cluster-container-registry-integration"
     },
     {
       "text": "Use managed identities instead of Service Principals",
@@ -231,7 +231,7 @@
       "subcategory": "Security",
       "category": "Identity and Access Management",
       "severity": "High",
-      "link": "https://docs.microsoft.com/azure/aks/use-managed-identity",
+      "link": "https://learn.microsoft.com/azure/aks/use-managed-identity",
       "simple": 1,
       "graph": "where type=='microsoft.containerservice/managedclusters' | extend compliant = (properties.servicePrincipalProfile.clientId=='msi') | distinct id,compliant"
     },
@@ -242,7 +242,7 @@
       "subcategory": "Security",
       "category": "Identity and Access Management",
       "severity": "Medium",
-      "link": "https://docs.microsoft.com/azure/aks/control-kubeconfig-access",
+      "link": "https://learn.microsoft.com/azure/aks/control-kubeconfig-access",
       "simple": -1,
       "security": 1
     },
@@ -308,7 +308,7 @@
       "subcategory": "Network",
       "category": "Network Topology and Connectivity",
       "severity": "Medium",
-      "link": "https://docs.microsoft.com/azure/aks/operator-best-practices-network#choose-the-appropriate-network-model",
+      "link": "https://learn.microsoft.com/azure/aks/operator-best-practices-network#choose-the-appropriate-network-model",
       "simple": 1,
       "graph": "where type=='microsoft.containerservice/managedclusters' | extend compliant = (properties.networkProfile.networkPlugin=='azure') | distinct id,compliant"
     },
@@ -319,7 +319,7 @@
       "subcategory": "Network",
       "category": "Network Topology and Connectivity",
       "severity": "High",
-      "link": "https://docs.microsoft.com/azure/aks/configure-azure-cni#plan-ip-addressing-for-your-cluster",
+      "link": "https://learn.microsoft.com/azure/aks/configure-azure-cni#plan-ip-addressing-for-your-cluster",
       "scale": 1
     },
     {
@@ -340,7 +340,7 @@
       "subcategory": "Network",
       "category": "Network Topology and Connectivity",
       "severity": "Medium",
-      "link": "https://docs.microsoft.com/azure/aks/operator-best-practices-network#secure-traffic-with-a-web-application-firewall-waf",
+      "link": "https://learn.microsoft.com/azure/aks/operator-best-practices-network#secure-traffic-with-a-web-application-firewall-waf",
       "simple": -1,
       "cost": -1,
       "security": 2
@@ -361,7 +361,7 @@
       "subcategory": "Security",
       "category": "Network Topology and Connectivity",
       "severity": "High",
-      "link": "https://docs.microsoft.com/azure/aks/ingress-internal-ip"
+      "link": "https://learn.microsoft.com/azure/aks/ingress-internal-ip"
     },
     {
       "text": "Control traffic flow with network policies",
@@ -370,7 +370,7 @@
       "subcategory": "Security",
       "category": "Network Topology and Connectivity",
       "severity": "Medium",
-      "link": "https://docs.microsoft.com/azure/aks/operator-best-practices-network#control-traffic-flow-with-network-policies",
+      "link": "https://learn.microsoft.com/azure/aks/operator-best-practices-network#control-traffic-flow-with-network-policies",
       "graph": "where type=='microsoft.containerservice/managedclusters' | extend compliant = isnotnull(properties.networkProfile.networkPolicy) | distinct id,compliant",
       "security": 1
     },
@@ -390,7 +390,7 @@
       "subcategory": "Security",
       "category": "Network Topology and Connectivity",
       "severity": "Medium",
-      "link": "https://docs.microsoft.com/azure/aks/limit-egress-traffic",
+      "link": "https://learn.microsoft.com/azure/aks/limit-egress-traffic",
       "simple": -2,
       "graph": "where type=='microsoft.containerservice/managedclusters' | extend compliant = (properties.networkProfile.outboundType=='userDefinedRouting') | distinct id,compliant",
       "security": 2
@@ -402,7 +402,7 @@
       "subcategory": "Security",
       "category": "Network Topology and Connectivity",
       "severity": "Low",
-      "link": "https://docs.microsoft.com/azure/container-registry/container-registry-private-link"
+      "link": "https://learn.microsoft.com/azure/container-registry/container-registry-private-link"
     },
     {
       "text": "Block Pod access to VMSS IMDS",
@@ -411,7 +411,7 @@
       "subcategory": "Security",
       "category": "Network Topology and Connectivity",
       "severity": "Medium",
-      "link": "https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-use-vm-token#get-a-token-using-curl"
+      "link": "https://learn.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-use-vm-token#get-a-token-using-curl"
     },
     {
       "text": "Use private clusters if your requirements mandate it",
@@ -420,7 +420,7 @@
       "subcategory": "Security",
       "category": "Network Topology and Connectivity",
       "severity": "High",
-      "link": "https://docs.microsoft.com/azure/aks/private-clusters"
+      "link": "https://learn.microsoft.com/azure/aks/private-clusters"
     },
     {
       "text": "Enable traffic management",
@@ -429,7 +429,7 @@
       "subcategory": "Network",
       "category": "Network Topology and Connectivity",
       "severity": "Medium",
-      "link": "https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region#use-azure-traffic-manager-to-route-traffic"
+      "link": "https://learn.microsoft.com/azure/aks/operator-best-practices-multi-region#use-azure-traffic-manager-to-route-traffic"
     },
     {
       "text": "If using Azure CNI, check the maximum pods/node (default 30)",
@@ -438,7 +438,7 @@
       "subcategory": "Ipam",
       "category": "Network Topology and Connectivity",
       "severity": "High",
-      "link": "https://docs.microsoft.com/azure/aks/configure-azure-cni",
+      "link": "https://learn.microsoft.com/azure/aks/configure-azure-cni",
       "scale": 1,
       "simple": -1
     },
@@ -449,7 +449,7 @@
       "subcategory": "Security",
       "category": "Network Topology and Connectivity",
       "severity": "Medium",
-      "link": "https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges"
+      "link": "https://learn.microsoft.com/azure/aks/api-server-authorized-ip-ranges"
     },
     {
       "text": "Use Azue NAT Gateway as outboundType for scaling egress traffic",
@@ -491,7 +491,7 @@
       "subcategory": "Security",
       "category": "Network Topology and Connectivity",
       "severity": "Medium",
-      "link": "https://docs.microsoft.com/azure/private-link/private-link-overview",
+      "link": "https://learn.microsoft.com/azure/private-link/private-link-overview",
       "simple": -1,
       "graph": "where type=='microsoft.containerservice/managedclusters' | where isnotnull(properties.apiServerAccessProfile.enablePrivateCluster) | extend compliant = (properties.apiServerAccessProfile.enablePrivateCluster==true) | distinct id, compliant",
       "security": 1
@@ -547,7 +547,7 @@
       "subcategory": "Security",
       "category": "Operations",
       "severity": "High",
-      "link": "https://docs.microsoft.com/azure/aks/node-image-upgrade"
+      "link": "https://learn.microsoft.com/azure/aks/node-image-upgrade"
     },
     {
       "text": "Use placement proximity group to improve performance",
@@ -556,7 +556,7 @@
       "subcategory": "Operations",
       "category": "Operations",
       "severity": "Low",
-      "link": "https://docs.microsoft.com/azure/aks/reduce-latency-ppg"
+      "link": "https://learn.microsoft.com/azure/aks/reduce-latency-ppg"
     },
     {
       "text": "Customize your clusters with extensions",
@@ -565,7 +565,7 @@
       "subcategory": "Operations",
       "category": "Operations",
       "severity": "Low",
-      "link": "https://docs.microsoft.com/en-gb/azure/aks/cluster-extensions",
+      "link": "https://learn.microsoft.com/en-gb/azure/aks/cluster-extensions",
       "ha": 1,
       "cost": -1,
       "graph": "where type=='microsoft.containerservice/managedclusters' | extend compliant = (isnotnull(properties.austoscalerProfile)) | distinct id,compliant"
@@ -588,7 +588,7 @@
       "subcategory": "Security",
       "category": "Operations",
       "severity": "Medium",
-      "link": "https://docs.microsoft.com/azure/aks/operator-best-practices-network#securely-connect-to-nodes-through-a-bastion-host"
+      "link": "https://learn.microsoft.com/azure/aks/operator-best-practices-network#securely-connect-to-nodes-through-a-bastion-host"
     },
     {
       "text": "Regularly check for cluster issues ",
@@ -606,7 +606,7 @@
       "subcategory": "Monitoring",
       "category": "Operations",
       "severity": "High",
-      "link": "https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-analyze"
+      "link": "https://learn.microsoft.com/azure/azure-monitor/insights/container-insights-analyze"
     },
     {
       "text": "Monitor your cluster metrics with Container Insights (or other tools like Prometheus)",
@@ -615,7 +615,7 @@
       "subcategory": "Monitoring",
       "category": "Operations",
       "severity": "High",
-      "link": "https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-prometheus-integration",
+      "link": "https://learn.microsoft.com/azure/azure-monitor/insights/container-insights-prometheus-integration",
       "simple": -1,
       "ha": 1
     },
@@ -635,7 +635,7 @@
       "subcategory": "Operations",
       "category": "Operations",
       "severity": "Medium",
-      "link": "https://docs.microsoft.com/azure/aks/upgrade-cluster#set-auto-upgrade-channel"
+      "link": "https://learn.microsoft.com/azure/aks/upgrade-cluster#set-auto-upgrade-channel"
     },
     {
       "text": "Enable cluster autoscaling",
@@ -644,7 +644,7 @@
       "subcategory": "Resources",
       "category": "Operations",
       "severity": "Medium",
-      "link": "https://docs.microsoft.com/azure/aks/cluster-autoscaler",
+      "link": "https://learn.microsoft.com/azure/aks/cluster-autoscaler",
       "ha": 1,
       "cost": -1
     },
@@ -732,7 +732,7 @@
       "subcategory": "Monitoring",
       "category": "Operations",
       "severity": "High",
-      "link": "https://docs.microsoft.com/azure/aks/view-control-plane-logs",
+      "link": "https://learn.microsoft.com/azure/aks/view-control-plane-logs",
       "ha": 1,
       "cost": -1
     },
@@ -753,7 +753,7 @@
       "subcategory": "Compliance",
       "category": "Operations",
       "severity": "Medium",
-      "link": "https://docs.microsoft.com/azure/advisor/advisor-get-started",
+      "link": "https://learn.microsoft.com/azure/advisor/advisor-get-started",
       "simple": -1,
       "ha": 1
     },
@@ -813,7 +813,7 @@
       "subcategory": "Cost",
       "category": "Operations",
       "severity": "Low",
-      "link": "https://docs.microsoft.com/azure/aks/spot-node-pool"
+      "link": "https://learn.microsoft.com/azure/aks/spot-node-pool"
     },
     {
       "text": "Configure alerts on the most critical metrics (see Container Insights for recommendations)",
@@ -822,7 +822,7 @@
       "subcategory": "Monitoring",
       "category": "Operations",
       "severity": "High",
-      "link": "https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-metric-alerts",
+      "link": "https://learn.microsoft.com/azure/azure-monitor/insights/container-insights-metric-alerts",
       "simple": -1,
       "ha": 1
     },
@@ -833,7 +833,7 @@
       "subcategory": "Monitoring",
       "category": "Operations",
       "severity": "Medium",
-      "link": "https://docs.microsoft.com/azure/aks/load-balancer-standard"
+      "link": "https://learn.microsoft.com/azure/aks/load-balancer-standard"
     },
     {
       "text": "Subscribe to resource health notifications for your AKS cluster",
@@ -862,7 +862,7 @@
       "subcategory": "Monitoring",
       "category": "Operations",
       "severity": "High",
-      "link": "https://docs.microsoft.com/azure/aks/faq",
+      "link": "https://learn.microsoft.com/azure/aks/faq",
       "security": 1
     },
     {
@@ -892,7 +892,7 @@
       "subcategory": "Resiliency",
       "category": "BC and DR",
       "severity": "High",
-      "link": "https://docs.microsoft.com/azure/cloud-adoption-framework/ready/enterprise-scale/business-continuity-and-disaster-recovery",
+      "link": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/enterprise-scale/business-continuity-and-disaster-recovery",
       "ha": 1
     },
     {
@@ -902,7 +902,7 @@
       "subcategory": "Resiliency",
       "category": "BC and DR",
       "severity": "High",
-      "link": "https://docs.microsoft.com/azure/aks/availability-zones",
+      "link": "https://learn.microsoft.com/azure/aks/availability-zones",
       "ha": 1,
       "graph": "where type=='microsoft.containerservice/managedclusters' | extend compliant= isnotnull(zones) | distinct id,compliant"
     },
@@ -913,7 +913,7 @@
       "subcategory": "Resiliency",
       "category": "BC and DR",
       "severity": "Medium",
-      "link": "https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region#plan-for-multiregion-deployment"
+      "link": "https://learn.microsoft.com/azure/aks/operator-best-practices-multi-region#plan-for-multiregion-deployment"
     },
     {
       "text": "Use Azure Traffic Manager or Azure Front Door as a global load balancer for region failover",
@@ -922,7 +922,7 @@
       "subcategory": "Resiliency",
       "category": "BC and DR",
       "severity": "Low",
-      "link": "https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region#use-azure-traffic-manager-to-route-traffic",
+      "link": "https://learn.microsoft.com/azure/aks/operator-best-practices-multi-region#use-azure-traffic-manager-to-route-traffic",
       "ha": 1
     },
     {
@@ -932,7 +932,7 @@
       "subcategory": "Resiliency",
       "category": "BC and DR",
       "severity": "Low",
-      "link": "https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region#create-a-storage-migration-plan"
+      "link": "https://learn.microsoft.com/azure/aks/operator-best-practices-multi-region#create-a-storage-migration-plan"
     },
     {
       "text": "Use the standard-tier AKS offering",
@@ -962,7 +962,7 @@
       "subcategory": "Resiliency",
       "category": "BC and DR",
       "severity": "Medium",
-      "link": "https://docs.microsoft.com/azure/container-registry/container-registry-geo-replication"
+      "link": "https://learn.microsoft.com/azure/container-registry/container-registry-geo-replication"
     },
     {
       "text": "Configure your registry to use zone reduncancy",
@@ -998,7 +998,7 @@
       "subcategory": "Windows",
       "category": "Windows",
       "severity": "High",
-      "link": "https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility"
+      "link": "https://learn.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility"
     },
     {
       "text": "Prepare your application for an abrupt kill",
@@ -1034,7 +1034,7 @@
       "subcategory": "Windows",
       "category": "Windows",
       "severity": "High",
-      "link": "https://docs.microsoft.com/azure/aks/windows-node-limitations#what-network-plug-ins-are-supported"
+      "link": "https://learn.microsoft.com/azure/aks/windows-node-limitations#what-network-plug-ins-are-supported"
     },
     {
       "text": "Keep windows containers patch level in sync with host patch level",
@@ -1043,7 +1043,7 @@
       "subcategory": "Windows",
       "category": "Windows",
       "severity": "High",
-      "link": "https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility?tabs=windows-server-20H2%2Cwindows-10-20H2"
+      "link": "https://learn.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility?tabs=windows-server-20H2%2Cwindows-10-20H2"
     },
     {
       "text": "Secure the traffic of your containers",
@@ -1061,7 +1061,7 @@
       "subcategory": "Identity",
       "category": "Windows",
       "severity": "Medium",
-      "link": "https://docs.microsoft.com/en-gb/azure/aks/use-group-managed-service-accounts",
+      "link": "https://learn.microsoft.com/en-gb/azure/aks/use-group-managed-service-accounts",
       "simple": -1,
       "security": 1
     },
@@ -1126,7 +1126,7 @@
       "subcategory": "Security",
       "category": "Governance and Security",
       "severity": "Medium",
-      "link": "https://docs.microsoft.com/azure/aks/use-multiple-node-pools#add-a-fips-enabled-node-pool",
+      "link": "https://learn.microsoft.com/azure/aks/use-multiple-node-pools#add-a-fips-enabled-node-pool",
       "cost": -1,
       "security": 1
     },
@@ -1146,7 +1146,7 @@
       "subcategory": "Secrets",
       "category": "Governance and Security",
       "severity": "Low",
-      "link": "https://docs.microsoft.com/azure/aks/use-kms-etcd-encryption",
+      "link": "https://learn.microsoft.com/azure/aks/use-kms-etcd-encryption",
       "cost": -1,
       "security": 1
     },
@@ -1157,7 +1157,7 @@
       "subcategory": "Security",
       "category": "Governance and Security",
       "severity": "High",
-      "link": "https://docs.microsoft.com/azure/aks/operator-best-practices-cluster-security#regularly-update-to-the-latest-version-of-kubernetes",
+      "link": "https://learn.microsoft.com/azure/aks/operator-best-practices-cluster-security#regularly-update-to-the-latest-version-of-kubernetes",
       "simple": -1,
       "security": 1
     },
@@ -1177,7 +1177,7 @@
       "subcategory": "Security",
       "category": "Governance and Security",
       "severity": "High",
-      "link": "https://docs.microsoft.com/azure/key-vault/general/key-vault-integrate-kubernetes"
+      "link": "https://learn.microsoft.com/azure/key-vault/general/key-vault-integrate-kubernetes"
     },
     {
       "text": "Monitor the security of your cluster with Azure Security Center",
@@ -1186,7 +1186,7 @@
       "subcategory": "Security",
       "category": "Governance and Security",
       "severity": "Medium",
-      "link": "https://docs.microsoft.com/azure/security-center/azure-kubernetes-service-integration"
+      "link": "https://learn.microsoft.com/azure/security-center/azure-kubernetes-service-integration"
     },
     {
       "text": "Remove vulnerable images from your cluster",
@@ -1204,7 +1204,7 @@
       "subcategory": "Security",
       "category": "Governance and Security",
       "severity": "High",
-      "link": "https://docs.microsoft.com/azure/defender-for-cloud/defender-for-containers-introduction",
+      "link": "https://learn.microsoft.com/azure/defender-for-cloud/defender-for-containers-introduction",
       "cost": -1,
       "security": 1
     },
@@ -1215,7 +1215,7 @@
       "subcategory": "Operations",
       "category": "Governance and Security",
       "severity": "Medium",
-      "link": "https://docs.microsoft.com/azure/governance/policy/concepts/rego-for-aks",
+      "link": "https://learn.microsoft.com/azure/governance/policy/concepts/rego-for-aks",
       "simple": -1,
       "graph": "where type=='microsoft.containerservice/managedclusters' | extend compliant = (isnotnull(properties.addonProfiles.azurepolicy) and properties.addonProfiles.azurepolicy.enabled==true) | distinct id,compliant",
       "security": 1
@@ -1227,7 +1227,7 @@
       "subcategory": "Compliance",
       "category": "Governance and Security",
       "severity": "Medium",
-      "link": "https://docs.microsoft.com/azure/aks/use-system-pools",
+      "link": "https://learn.microsoft.com/azure/aks/use-system-pools",
       "simple": -1,
       "cost": -1,
       "graph": "where type=='microsoft.containerservice/managedclusters' | project id,resourceGroup,name,pools=properties.agentPoolProfiles | project id,name,resourceGroup,poolcount=array_length(pools) | extend compliant = (poolcount > 1)",
@@ -1240,7 +1240,7 @@
       "subcategory": "Secrets",
       "category": "Governance and Security",
       "severity": "High",
-      "link": "https://docs.microsoft.com/azure/aks/update-credentials",
+      "link": "https://learn.microsoft.com/azure/aks/update-credentials",
       "security": 1
     },
     {
@@ -1250,7 +1250,7 @@
       "subcategory": "Compliance",
       "category": "Governance and Security",
       "severity": "High",
-      "link": "https://docs.microsoft.com/azure/container-registry/",
+      "link": "https://learn.microsoft.com/azure/container-registry/",
       "simple": -1,
       "security": 1
     },
@@ -1261,7 +1261,7 @@
       "subcategory": "Compliance",
       "category": "Governance and Security",
       "severity": "Medium",
-      "link": "https://docs.microsoft.com/azure/security-center/container-security",
+      "link": "https://learn.microsoft.com/azure/security-center/container-security",
       "cost": -1,
       "security": 1
     },
@@ -1283,7 +1283,7 @@
       "subcategory": "Compliance",
       "category": "Governance and Security",
       "severity": "High",
-      "link": "https://docs.microsoft.com/azure/aks/operator-best-practices-cluster-isolation",
+      "link": "https://learn.microsoft.com/azure/aks/operator-best-practices-cluster-isolation",
       "security": 1
     },
     {
@@ -1438,7 +1438,7 @@
       "subcategory": "Security",
       "category": "Application Deployment",
       "severity": "High",
-      "link": "https://docs.microsoft.com/azure/defender-for-cloud/defender-for-containers-introduction"
+      "link": "https://learn.microsoft.com/azure/defender-for-cloud/defender-for-containers-introduction"
     },
     {
       "text": "Threshold enforcement of Docker Image Builds that contain vulnerabilities",
@@ -1456,7 +1456,7 @@
       "subcategory": "Security",
       "category": "Application Deployment",
       "severity": "High",
-      "link": "https://docs.microsoft.com/azure/aks/policy-samples"
+      "link": "https://learn.microsoft.com/azure/aks/policy-samples"
     },
     {
       "text": "Use Azure Migrate to quick containerize your applications",
@@ -1501,7 +1501,7 @@
       "subcategory": "Iac",
       "category": "Application Deployment",
       "severity": "Medium",
-      "link": "https://docs.microsoft.com/azure/developer/terraform/create-k8s-cluster-with-tf-and-aks",
+      "link": "https://learn.microsoft.com/azure/developer/terraform/create-k8s-cluster-with-tf-and-aks",
       "simple": -1,
       "ha": 1
     },
@@ -1541,7 +1541,7 @@
       "subcategory": "Storage",
       "category": "Storage",
       "severity": "Medium",
-      "link": "https://docs.microsoft.com/azure/aks/operator-best-practices-storage#size-the-nodes-for-storage-needs"
+      "link": "https://learn.microsoft.com/azure/aks/operator-best-practices-storage#size-the-nodes-for-storage-needs"
     },
     {
       "text": "Dynamically provision volumes",
@@ -1550,7 +1550,7 @@
       "subcategory": "Storage",
       "category": "Storage",
       "severity": "Low",
-      "link": "https://docs.microsoft.com/azure/aks/operator-best-practices-storage#dynamically-provision-volumes"
+      "link": "https://learn.microsoft.com/azure/aks/operator-best-practices-storage#dynamically-provision-volumes"
     },
     {
       "text": "Secure and back up your data",
@@ -1559,7 +1559,7 @@
       "subcategory": "Storage",
       "category": "Storage",
       "severity": "Medium",
-      "link": "https://docs.microsoft.com/azure/aks/operator-best-practices-storage#secure-and-back-up-your-data"
+      "link": "https://learn.microsoft.com/azure/aks/operator-best-practices-storage#secure-and-back-up-your-data"
     },
     {
       "text": "Avoid keeping state in the cluster, and store data outside (AzStorage, AzSQL, Cosmos, etc)",
@@ -1568,7 +1568,7 @@
       "subcategory": "Storage",
       "category": "Storage",
       "severity": "High",
-      "link": "https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region#remove-service-state-from-inside-containers",
+      "link": "https://learn.microsoft.com/azure/aks/operator-best-practices-multi-region#remove-service-state-from-inside-containers",
       "simple": -1,
       "ha": 1
     },
@@ -1611,7 +1611,7 @@
       "subcategory": "Storage",
       "category": "Storage",
       "severity": "Medium",
-      "link": "https://docs.microsoft.com/azure/aks/availability-zones#azure-disk-availability-zone-support",
+      "link": "https://learn.microsoft.com/azure/aks/availability-zones#azure-disk-availability-zone-support",
       "simple": -1,
       "ha": 1
     },
@@ -1633,7 +1633,7 @@
       "subcategory": "Multi-Tenancy",
       "category": "Resource Organization and Cost Governance",
       "severity": "Medium",
-      "link": "https://docs.microsoft.com/azure/aks/operator-best-practices-cluster-isolation#logically-isolate-clusters"
+      "link": "https://learn.microsoft.com/azure/aks/operator-best-practices-cluster-isolation#logically-isolate-clusters"
     },
     {
       "text": "Physically isolate cluster",
@@ -1642,7 +1642,7 @@
       "subcategory": "other",
       "category": "Resource Organization and Cost Governance",
       "severity": "High",
-      "link": "https://docs.microsoft.com/azure/aks/operator-best-practices-cluster-isolation#physically-isolate-clusters"
+      "link": "https://learn.microsoft.com/azure/aks/operator-best-practices-cluster-isolation#physically-isolate-clusters"
     },
     {
       "text": "Use Azure tags in Azure Kubernetes Service (AKS)",
@@ -1660,7 +1660,7 @@
       "subcategory": "Security",
       "category": "Governance and Security",
       "severity": "High",
-      "link": "https://docs.microsoft.com/azure/security-center/azure-container-registry-integration",
+      "link": "https://learn.microsoft.com/azure/security-center/azure-container-registry-integration",
       "cost": -1,
       "security": 1
     },
@@ -1671,7 +1671,7 @@
       "subcategory": "Security",
       "category": "Governance and Security",
       "severity": "Medium",
-      "link": "https://docs.microsoft.com/azure/governance/policy/concepts/rego-for-aks#built-in-policies"
+      "link": "https://learn.microsoft.com/azure/governance/policy/concepts/rego-for-aks#built-in-policies"
     },
     {
       "text": "Runtime Security of Applications",
@@ -1698,7 +1698,7 @@
       "subcategory": "Security",
       "category": "Governance and Security",
       "severity": "High",
-      "link": "https://docs.microsoft.com/azure/container-registry/container-registry-roles"
+      "link": "https://learn.microsoft.com/azure/container-registry/container-registry-roles"
     },
     {
       "text": "Network Segmentation of Docker Registries",
@@ -1707,7 +1707,7 @@
       "subcategory": "Security",
       "category": "Governance and Security",
       "severity": "High",
-      "link": "https://docs.microsoft.com/azure/container-registry/container-registry-private-link"
+      "link": "https://learn.microsoft.com/azure/container-registry/container-registry-private-link"
     },
     {
       "text": "Prefer distroless images",
@@ -1725,7 +1725,7 @@
       "subcategory": "Resources",
       "category": "Governance and Security",
       "severity": "Low",
-      "link": "https://docs.microsoft.com/azure/aks/operator-best-practices-container-image-management#automatically-build-new-images-on-base-image-update"
+      "link": "https://learn.microsoft.com/azure/aks/operator-best-practices-container-image-management#automatically-build-new-images-on-base-image-update"
     }
   ]
 }
