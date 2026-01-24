@@ -29,7 +29,7 @@
     "documentation": [
       {
         "title": "Schedule and perform DR tests regularly",
-        "url": "https://docs.microsoft.com/azure/cloud-adoption-framework/ready/enterprise-scale/business-continuity-and-disaster-recovery"
+        "url": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/enterprise-scale/business-continuity-and-disaster-recovery"
       }
     ],
     "tags": [
@@ -51,7 +51,7 @@
     "documentation": [
       {
         "title": "Create an AKS cluster across availability zones",
-        "url": "https://docs.microsoft.com/azure/aks/availability-zones"
+        "url": "https://learn.microsoft.com/azure/aks/availability-zones"
       }
     ],
     "tags": [
@@ -73,7 +73,7 @@
     "documentation": [
       {
         "title": "Plan for multiregion deployment",
-        "url": "https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region#plan-for-multiregion-deployment"
+        "url": "https://learn.microsoft.com/azure/aks/operator-best-practices-multi-region#plan-for-multiregion-deployment"
       }
     ],
     "tags": [
@@ -92,7 +92,7 @@
     "documentation": [
       {
         "title": "Traffic Manager and AKS",
-        "url": "https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region#use-azure-traffic-manager-to-route-traffic"
+        "url": "https://learn.microsoft.com/azure/aks/operator-best-practices-multi-region#use-azure-traffic-manager-to-route-traffic"
       },
       {
         "title": "Cross-region load balancer",
@@ -118,7 +118,7 @@
     "documentation": [
       {
         "title": "Create a storage migration plan",
-        "url": "https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region#create-a-storage-migration-plan"
+        "url": "https://learn.microsoft.com/azure/aks/operator-best-practices-multi-region#create-a-storage-migration-plan"
       },
       {
         "title": "Backup, restore and migrate Kubernetes resources including state to another AKS cluster with Velero",
@@ -191,7 +191,7 @@
     "documentation": [
       {
         "title": "Enable geo-replication for container images",
-        "url": "https://docs.microsoft.com/azure/container-registry/container-registry-geo-replication"
+        "url": "https://learn.microsoft.com/azure/container-registry/container-registry-geo-replication"
       }
     ],
     "tags": [

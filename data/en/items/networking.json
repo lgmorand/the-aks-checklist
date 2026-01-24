@@ -8,11 +8,11 @@
     "documentation": [
       {
         "title": "Kubenet vs CNI",
-        "url": "https://docs.microsoft.com/azure/aks/operator-best-practices-network#choose-the-appropriate-network-model"
+        "url": "https://learn.microsoft.com/azure/aks/operator-best-practices-network#choose-the-appropriate-network-model"
       },
       {
         "title": "Dynamic IP allocation",
-        "url": "https://docs.microsoft.com/azure/aks/configure-azure-cni#dynamic-allocation-of-ips-and-enhanced-subnet-support"
+        "url": "https://learn.microsoft.com/azure/aks/configure-azure-cni#dynamic-allocation-of-ips-and-enhanced-subnet-support"
       },
       {
         "title": "Azure CNI Overlay",
@@ -20,11 +20,11 @@
       },
       {
         "title": "Bring your own CNI",
-        "url": "https://docs.microsoft.com/azure/aks/use-byo-cni"
+        "url": "https://learn.microsoft.com/azure/aks/use-byo-cni"
       },
       {
         "title": "Add a node pool with a unique subnet",
-        "url": "https://docs.microsoft.com/azure/aks/use-multiple-node-pools#add-a-node-pool-with-a-unique-subnet"
+        "url": "https://learn.microsoft.com/azure/aks/use-multiple-node-pools#add-a-node-pool-with-a-unique-subnet"
       }
     ],
     "tags": [
@@ -47,7 +47,7 @@
     "documentation": [
       {
         "title": "Plan IP addressing for your cluster",
-        "url": "https://docs.microsoft.com/azure/aks/configure-azure-cni#plan-ip-addressing-for-your-cluster"
+        "url": "https://learn.microsoft.com/azure/aks/configure-azure-cni#plan-ip-addressing-for-your-cluster"
       }
     ],
     "tags": [
@@ -72,7 +72,7 @@
       },
       {
         "title": "Distribute ingress traffic",
-        "url": "https://docs.microsoft.com/azure/aks/operator-best-practices-network#distribute-ingress-traffic"
+        "url": "https://learn.microsoft.com/azure/aks/operator-best-practices-network#distribute-ingress-traffic"
       },
       {
         "title": "Network concepts: Ingress controllers",
@@ -98,7 +98,7 @@
     "documentation": [
       {
         "title": "Secure traffic with a web application firewall (WAF)",
-        "url": "https://docs.microsoft.com/azure/aks/operator-best-practices-network#secure-traffic-with-a-web-application-firewall-waf"
+        "url": "https://learn.microsoft.com/azure/aks/operator-best-practices-network#secure-traffic-with-a-web-application-firewall-waf"
       }
     ],
     "tags": [
@@ -141,7 +141,7 @@
     "documentation": [
       {
         "title": "Create an ingress controller to an internal virtual network",
-        "url": "https://docs.microsoft.com/azure/aks/ingress-internal-ip"
+        "url": "https://learn.microsoft.com/azure/aks/ingress-internal-ip"
       }
     ],
     "tags": [
@@ -163,11 +163,11 @@
     "documentation": [
       {
         "title": "Enable a Kubernetes Network Policy option (Calico/Azure)",
-        "url": "https://docs.microsoft.com/azure/aks/operator-best-practices-network#control-traffic-flow-with-network-policies"
+        "url": "https://learn.microsoft.com/azure/aks/operator-best-practices-network#control-traffic-flow-with-network-policies"
       },
       {
         "title": "Secure traffic between pods using network policies",
-        "url": "https://docs.microsoft.com/azure/aks/use-network-policies"
+        "url": "https://learn.microsoft.com/azure/aks/use-network-policies"
       }
     ],
     "tools": [
@@ -227,7 +227,7 @@
     "documentation": [
       {
         "title": "Egress traffic requirements",
-        "url": "https://docs.microsoft.com/azure/aks/limit-egress-traffic"
+        "url": "https://learn.microsoft.com/azure/aks/limit-egress-traffic"
       }
     ],
     "tags": [
@@ -251,7 +251,7 @@
     "documentation": [
       {
         "title": "Azure Container Registry Private Link",
-        "url": "https://docs.microsoft.com/azure/container-registry/container-registry-private-link"
+        "url": "https://learn.microsoft.com/azure/container-registry/container-registry-private-link"
       }
     ],
     "tags": [
@@ -271,7 +271,7 @@
     "documentation": [
       {
         "title": "Pods requesting access to get a token",
-        "url": "https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-use-vm-token#get-a-token-using-curl"
+        "url": "https://learn.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-use-vm-token#get-a-token-using-curl"
       }
     ],
     "tags": [
@@ -292,7 +292,7 @@
     "documentation": [
       {
         "title": "Create a private cluster (using private link)",
-        "url": "https://docs.microsoft.com/azure/aks/private-clusters"
+        "url": "https://learn.microsoft.com/azure/aks/private-clusters"
       },
       {
         "title": "Create an Azure Kubernetes Service cluster with API Server VNet Integration (preview)",
@@ -300,11 +300,11 @@
       },
       {
         "title": "Use azure CLI to run command on a private cluster",
-        "url": "https://docs.microsoft.com/azure/aks/private-clusters#options-for-connecting-to-the-private-cluster"
+        "url": "https://learn.microsoft.com/azure/aks/private-clusters#options-for-connecting-to-the-private-cluster"
       },
       {
         "title": "Use public DNS with a private cluster",
-        "url": "https://docs.microsoft.com/azure/aks/private-clusters#create-a-private-aks-cluster-with-a-public-dns-address"
+        "url": "https://learn.microsoft.com/azure/aks/private-clusters#create-a-private-aks-cluster-with-a-public-dns-address"
       }
     ],
     "tags": [
@@ -325,7 +325,7 @@
     "documentation": [
       {
         "title": "Use Azure Traffic Manager to route traffic",
-        "url": "https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region#use-azure-traffic-manager-to-route-traffic"
+        "url": "https://learn.microsoft.com/azure/aks/operator-best-practices-multi-region#use-azure-traffic-manager-to-route-traffic"
       }
     ],
     "tags": [
@@ -347,7 +347,7 @@
     "documentation": [
       {
         "title": "Configure Azure CNI networking on AKS",
-        "url": "https://docs.microsoft.com/azure/aks/configure-azure-cni"
+        "url": "https://learn.microsoft.com/azure/aks/configure-azure-cni"
       }
     ],
     "tags": [
@@ -370,7 +370,7 @@
     "documentation": [
       {
         "title": "Secure access to the API server using authorized IP address ranges",
-        "url": "https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges"
+        "url": "https://learn.microsoft.com/azure/aks/api-server-authorized-ip-ranges"
       }
     ],
     "tags": [
@@ -437,7 +437,7 @@
     "documentation": [
       {
         "title": "What is Azure Private Link?",
-        "url": "https://docs.microsoft.com/azure/private-link/private-link-overview"
+        "url": "https://learn.microsoft.com/azure/private-link/private-link-overview"
       }
     ],
     "tags": [

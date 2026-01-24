@@ -131,7 +131,7 @@
       },
       {
         "title": "KEDA as AKS addon",
-        "url": "https://docs.microsoft.com/azure/aks/keda-about"
+        "url": "https://learn.microsoft.com/azure/aks/keda-about"
       }
     ],
     "tags": [
@@ -184,7 +184,7 @@
       },
       {
         "title": "Azure Active Directory Pod Identity (deprecated)",
-        "url": "https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity"
+        "url": "https://learn.microsoft.com/azure/aks/use-azure-ad-pod-identity"
       }
     ],
     "tags": [
@@ -350,7 +350,7 @@
     "documentation": [
       {
         "title": "Introduction to Microsoft Defender for container registries",
-        "url": "https://docs.microsoft.com/azure/defender-for-cloud/defender-for-containers-introduction"
+        "url": "https://learn.microsoft.com/azure/defender-for-cloud/defender-for-containers-introduction"
       },
       {
         "title": "Palo Alto CI/CD Integration (twistcli)",
@@ -402,7 +402,7 @@
     "documentation": [
       {
         "title": "Azure Built-In Policy",
-        "url": "https://docs.microsoft.com/azure/aks/policy-samples"
+        "url": "https://learn.microsoft.com/azure/aks/policy-samples"
       },
       {
         "title": "Prisma Managing Compliance",
@@ -498,7 +498,7 @@
     "documentation": [
       {
         "title": "Create a Kubernetes cluster with Azure Kubernetes Service using Terraform",
-        "url": "https://docs.microsoft.com/azure/developer/terraform/create-k8s-cluster-with-tf-and-aks"
+        "url": "https://learn.microsoft.com/azure/developer/terraform/create-k8s-cluster-with-tf-and-aks"
       }
     ],
     "tags": [

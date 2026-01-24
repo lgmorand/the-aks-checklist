@@ -8,15 +8,15 @@
     "documentation": [
       {
         "title": "Azure Kubernetes Service (AKS) node image upgrades",
-        "url": "https://docs.microsoft.com/azure/aks/node-image-upgrade"
+        "url": "https://learn.microsoft.com/azure/aks/node-image-upgrade"
       },
       {
         "title": "Process Linux node updates and reboots using Kured (not recommended because it can behave incorrectly in some cluster configurations like autoscaling)",
-        "url": "https://docs.microsoft.com/azure/aks/operator-best-practices-cluster-security#process-linux-node-updates-and-reboots-using-kured"
+        "url": "https://learn.microsoft.com/azure/aks/operator-best-practices-cluster-security#process-linux-node-updates-and-reboots-using-kured"
       },
       {
         "title": "Use Event Grid to know when an upgrade is available",
-        "url": "https://docs.microsoft.com/azure/aks/quickstart-event-grid"
+        "url": "https://learn.microsoft.com/azure/aks/quickstart-event-grid"
       }
     ],
     "tools": [
@@ -44,7 +44,7 @@
     "documentation": [
       {
         "title": "Reduce latency with proximity placement groups",
-        "url": "https://docs.microsoft.com/azure/aks/reduce-latency-ppg"
+        "url": "https://learn.microsoft.com/azure/aks/reduce-latency-ppg"
       }
     ],
     "tags": [
@@ -64,7 +64,7 @@
     "documentation": [
       {
         "title": "Customize node configuration for Azure Kubernetes Service (AKS) node pools",
-        "url": "https://docs.microsoft.com/en-gb/azure/aks/cluster-extensions"
+        "url": "https://learn.microsoft.com/en-gb/azure/aks/cluster-extensions"
       }
     ],
     "tags": [
@@ -109,7 +109,7 @@
     "documentation": [
       {
         "title": "Securely connect to nodes through a bastion host",
-        "url": "https://docs.microsoft.com/azure/aks/operator-best-practices-network#securely-connect-to-nodes-through-a-bastion-host"
+        "url": "https://learn.microsoft.com/azure/aks/operator-best-practices-network#securely-connect-to-nodes-through-a-bastion-host"
       }
     ],
     "tags": [
@@ -156,7 +156,7 @@
     "documentation": [
       {
         "title": "Azure Monitor for AKS",
-        "url": "https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-analyze"
+        "url": "https://learn.microsoft.com/azure/azure-monitor/insights/container-insights-analyze"
       },
       {
         "title": "Azure Managed Grafana",
@@ -191,7 +191,7 @@
     "documentation": [
       {
         "title": "Configure scraping of Prometheus metrics",
-        "url": "https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-prometheus-integration"
+        "url": "https://learn.microsoft.com/azure/azure-monitor/insights/container-insights-prometheus-integration"
       },
       {
         "title": "Deploying ELK",
@@ -222,7 +222,7 @@
       },
       {
         "title": "Zero instrumentation application monitoring for Kubernetes hosted applications (deprecated)",
-        "url": "https://docs.microsoft.com/azure/azure-monitor/app/kubernetes"
+        "url": "https://learn.microsoft.com/azure/azure-monitor/app/kubernetes"
       }
     ],
     "tags": [
@@ -242,7 +242,7 @@
     "documentation": [
       {
         "title": "Set AKS auto-upgrade channel",
-        "url": "https://docs.microsoft.com/azure/aks/upgrade-cluster#set-auto-upgrade-channel"
+        "url": "https://learn.microsoft.com/azure/aks/upgrade-cluster#set-auto-upgrade-channel"
       }
     ],
     "tags": [
@@ -262,7 +262,7 @@
     "documentation": [
       {
         "title": "AKS Autoscaler",
-        "url": "https://docs.microsoft.com/azure/aks/cluster-autoscaler"
+        "url": "https://learn.microsoft.com/azure/aks/cluster-autoscaler"
       },
       {
         "title": "Node autoprovisioning (karpenter)",
@@ -302,7 +302,7 @@
       },
       {
         "title": "What is Azure Arc enabled Kubernetes?",
-        "url": "https://docs.microsoft.com/azure/azure-arc/kubernetes/overview"
+        "url": "https://learn.microsoft.com/azure/azure-arc/kubernetes/overview"
       }
     ],
     "tags": [
@@ -489,7 +489,7 @@
     "documentation": [
       {
         "title": "Enable and review Kubernetes master node logs",
-        "url": "https://docs.microsoft.com/azure/aks/view-control-plane-logs"
+        "url": "https://learn.microsoft.com/azure/aks/view-control-plane-logs"
       },
       {
         "title": "Monitoring Azure Kubernetes Service (AKS) with Azure Monitor",
@@ -538,7 +538,7 @@
     "documentation": [
       {
         "title": "Azure advisor get started",
-        "url": "https://docs.microsoft.com/azure/advisor/advisor-get-started"
+        "url": "https://learn.microsoft.com/azure/advisor/advisor-get-started"
       }
     ],
     "tags": [
@@ -661,7 +661,7 @@
     "documentation": [
       {
         "title": "Add an Azure Spot node pool to an AKS cluster",
-        "url": "https://docs.microsoft.com/azure/aks/spot-node-pool"
+        "url": "https://learn.microsoft.com/azure/aks/spot-node-pool"
       }
     ],
     "tags": [
@@ -682,7 +682,7 @@
     "documentation": [
       {
         "title": "Metric alert rules in Container insights",
-        "url": "https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-metric-alerts"
+        "url": "https://learn.microsoft.com/azure/azure-monitor/insights/container-insights-metric-alerts"
       }
     ],
     "tags": [
@@ -705,7 +705,7 @@
     "documentation": [
       {
         "title": "Use a public standard load balancer in Azure Kubernetes Service",
-        "url": "https://docs.microsoft.com/azure/aks/load-balancer-standard"
+        "url": "https://learn.microsoft.com/azure/aks/load-balancer-standard"
       }
     ],
     "tags": [
@@ -768,7 +768,7 @@
     "documentation": [
       {
         "title": "AKS FAQ",
-        "url": "https://docs.microsoft.com/azure/aks/faq"
+        "url": "https://learn.microsoft.com/azure/aks/faq"
       }
     ],
     "tags": [

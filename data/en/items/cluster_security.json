@@ -32,15 +32,15 @@
     "documentation": [
       {
         "title": "Use FIPS-enabled node pool",
-        "url": "https://docs.microsoft.com/azure/aks/use-multiple-node-pools#add-a-fips-enabled-node-pool"
+        "url": "https://learn.microsoft.com/azure/aks/use-multiple-node-pools#add-a-fips-enabled-node-pool"
       },
       {
         "title": "AKS CIS benchmark",
-        "url": "https://docs.microsoft.com/compliance/regulatory/offering-CIS-Benchmark"
+        "url": "https://learn.microsoft.com/compliance/regulatory/offering-CIS-Benchmark"
       },
       {
         "title": "AKS architecture reference for PCI-DSS 3.2.1",
-        "url": "https://docs.microsoft.com/azure/architecture/reference-architectures/containers/aks-pci/aks-pci-intro"
+        "url": "https://learn.microsoft.com/azure/architecture/reference-architectures/containers/aks-pci/aks-pci-intro"
       }
     ],
     "optionalFields": {
@@ -74,7 +74,7 @@
     "documentation": [
       {
         "title": "Add KMS etcd encryption to an Azure Kubernetes Service (AKS) cluster",
-        "url": "https://docs.microsoft.com/azure/aks/use-kms-etcd-encryption"
+        "url": "https://learn.microsoft.com/azure/aks/use-kms-etcd-encryption"
       },
       {
         "title": "Kubernetes KMS",
@@ -101,11 +101,11 @@
     "documentation": [
       {
         "title": "Regularly update to the latest version of Kubernetes",
-        "url": "https://docs.microsoft.com/azure/aks/operator-best-practices-cluster-security#regularly-update-to-the-latest-version-of-kubernetes"
+        "url": "https://learn.microsoft.com/azure/aks/operator-best-practices-cluster-security#regularly-update-to-the-latest-version-of-kubernetes"
       },
       {
         "title": "Use the auto-upgrade feature",
-        "url": "https://docs.microsoft.com/azure/aks/upgrade-cluster#set-auto-upgrade-channel"
+        "url": "https://learn.microsoft.com/azure/aks/upgrade-cluster#set-auto-upgrade-channel"
       }
     ],
     "tags": [
@@ -148,7 +148,7 @@
     "documentation": [
       {
         "title": "Tutorial: Configure and run the Azure Key Vault provider for the Secrets Store CSI driver on Kubernetes",
-        "url": "https://docs.microsoft.com/azure/key-vault/general/key-vault-integrate-kubernetes"
+        "url": "https://learn.microsoft.com/azure/key-vault/general/key-vault-integrate-kubernetes"
       }
     ],
     "tags": [
@@ -168,7 +168,7 @@
     "documentation": [
       {
         "title": "Azure Kubernetes Services integration with Security Center",
-        "url": "https://docs.microsoft.com/azure/security-center/azure-kubernetes-service-integration"
+        "url": "https://learn.microsoft.com/azure/security-center/azure-kubernetes-service-integration"
       }
     ],
     "tags": [
@@ -209,7 +209,7 @@
     "documentation": [
       {
         "title": "Introduction to Microsoft Defender for Containers",
-        "url": "https://docs.microsoft.com/azure/defender-for-cloud/defender-for-containers-introduction"
+        "url": "https://learn.microsoft.com/azure/defender-for-cloud/defender-for-containers-introduction"
       }
     ],
     "tags": [
@@ -232,7 +232,7 @@
     "documentation": [
       {
         "title": "Azure Policies for AKS",
-        "url": "https://docs.microsoft.com/azure/governance/policy/concepts/rego-for-aks"
+        "url": "https://learn.microsoft.com/azure/governance/policy/concepts/rego-for-aks"
       },
       {
         "title": "Azure Kubernetes Services Governance with Azure Policy",
@@ -265,7 +265,7 @@
     "documentation": [
       {
         "title": "AKS System Pools",
-        "url": "https://docs.microsoft.com/azure/aks/use-system-pools"
+        "url": "https://learn.microsoft.com/azure/aks/use-system-pools"
       }
     ],
     "tags": [
@@ -290,7 +290,7 @@
     "documentation": [
       {
         "title": "Update or rotate the credentials for AKS",
-        "url": "https://docs.microsoft.com/azure/aks/update-credentials"
+        "url": "https://learn.microsoft.com/azure/aks/update-credentials"
       }
     ],
     "tags": [
@@ -311,7 +311,7 @@
     "documentation": [
       {
         "title": "Azure Container Registry documentation",
-        "url": "https://docs.microsoft.com/azure/container-registry/"
+        "url": "https://learn.microsoft.com/azure/container-registry/"
       }
     ],
     "tags": [
@@ -333,7 +333,7 @@
     "documentation": [
       {
         "title": "Overview of Microsoft Defender for Containers",
-        "url": "https://docs.microsoft.com/azure/security-center/container-security"
+        "url": "https://learn.microsoft.com/azure/security-center/container-security"
       }
     ],
     "tags": [
@@ -377,7 +377,7 @@
     "documentation": [
       {
         "title": "Best practices for cluster isolation in AKS",
-        "url": "https://docs.microsoft.com/azure/aks/operator-best-practices-cluster-isolation"
+        "url": "https://learn.microsoft.com/azure/aks/operator-best-practices-cluster-isolation"
       }
     ],
     "tags": [
