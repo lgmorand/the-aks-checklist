@@ -12,6 +12,12 @@ Parser.Default.ParseArguments<Options>(args)
 
 Console.WriteLine("AKS checklist HTML Generator");
 
+if (string.IsNullOrEmpty(options.Path))
+{
+    Console.Error.WriteLine("Error: Path argument is required");
+    return;
+}
+
 var Generator = new Generator();
 
 StringBuilder sb = new StringBuilder();
@@ -29,6 +35,18 @@ sb.AppendLine(Generator.ParseCategory("Image management", options.Path, "contain
 
 string textToInject = sb.ToString(); 
 string dateToInject = DateTime.Now.ToString("dd-MM-yyyy");
+
+if (string.IsNullOrEmpty(options.FilePath))
+{
+    Console.Error.WriteLine("Error: FilePath argument is required");
+    return;
+}
+
+if (string.IsNullOrEmpty(options.OutputFile))
+{
+    Console.Error.WriteLine("Error: OutputFile argument is required");
+    return;
+}
 
 // read content of file
 string fileContent = File.ReadAllText(options.FilePath);
