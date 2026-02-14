@@ -257,5 +257,33 @@
     "optionalFields": {
       "score": {}
     }
+  },
+  {
+    "title": "Use Azure Backup for AKS to protect cluster resources and persistent volumes",
+    "priority": "High",
+    "guid": "7e970492-1bed-4541-98f6-be550b17caa6",
+    "description": "Azure Backup for AKS provides a cloud-native, fully managed backup solution that protects both cluster configuration and persistent volumes. It automates backup operations and enables point-in-time recovery for disaster recovery scenarios.",
+    "detail": "Azure Backup for AKS supports scheduled backups, on-demand backups, and retention policies. It stores backups in a Backup vault and can restore to the same or different AKS clusters. This is critical for meeting RPO and RTO requirements and protecting against data loss, ransomware, or accidental deletion.",
+    "documentation": [
+      {
+        "title": "Azure Backup for AKS",
+        "url": "https://learn.microsoft.com/azure/backup/azure-kubernetes-service-backup-overview"
+      },
+      {
+        "title": "Back up Azure Kubernetes Service using Azure Backup",
+        "url": "https://learn.microsoft.com/azure/backup/azure-kubernetes-service-cluster-backup"
+      }
+    ],
+    "tags": [
+      "all",
+      "resiliency",
+      "storage"
+    ],
+    "optionalFields": {
+      "score": {
+        "ha": 1,
+        "cost": -1
+      }
+   }
   }
 ]

@@ -801,7 +801,33 @@
         "security": 1
       }
     }
+  },
+  {
+    "title": "Consider using Long-Term Support (LTS) for Kubernetes versions",
+    "priority": "Medium",
+    "guid": "96516e10-4664-421a-992d-1271c29743ea",
+    "description": "AKS offers Long-Term Support (LTS) for Kubernetes versions, providing 24 months of support instead of the standard 12 months. This reduces the frequency of required upgrades and provides more stability for production workloads.",
+    "detail": "LTS is available for select Kubernetes versions and is ideal for organizations that require extended support periods for compliance or operational reasons. Using LTS allows you to focus on application development while minimizing cluster maintenance overhead. Note that LTS versions still receive critical security patches and bug fixes.",
+    "documentation": [
+      {
+        "title": "Long-Term Support for AKS",
+        "url": "https://learn.microsoft.com/azure/aks/long-term-support"
+      },
+      {
+        "title": "Supported Kubernetes versions in AKS",
+        "url": "https://learn.microsoft.com/azure/aks/supported-kubernetes-versions"
+      }
+    ],
+    "tags": [
+      "all",
+      "operations",
+      "security"
+    ],
+    "optionalFields": {
+      "score": {
+        "simple": 1,
+        "cost": -1
+      }
+    }
   }
-
-  
 ]
