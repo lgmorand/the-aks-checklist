@@ -64,9 +64,9 @@ jobs:
     - name: upload to Azure Blob Storage
       run: az storage blob upload-batch -s "./src/web" -d \$web --account-name "stostatheakschecklist"  --overwrite
     
-    - name: Purge CDN
-      run:
-        az cdn endpoint purge -n ${{ vars.CDN_ENDPOINT }} --profile-name ${{ vars.CDN_PROFILE_NAME }} --content-paths "/*" --resource-group ${{ vars.RESOURCE_GROUP }} --no-wait
+    # - name: Purge CDN
+    #   run:
+    #     az cdn endpoint purge -n ${{ vars.CDN_ENDPOINT }} --profile-name ${{ vars.CDN_PROFILE_NAME }} --content-paths "/*" --resource-group ${{ vars.RESOURCE_GROUP }} --no-wait
         
     - name: Azure service principal logout
       run: |
