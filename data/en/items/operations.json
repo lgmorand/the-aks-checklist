@@ -510,7 +510,7 @@
   {
     "title": "Consider an appropriate node size, not too large or too small",
     "priority": "High",
-    "guid": "5ae124ba-34df-4585-bcdc-e9bd3bb0cdb3",
+    "guid": "495e0503-5fbd-4ba7-8c33-2551b1676d1e",
     "description": "Optimizing node size can lead to lots of benefits including cost optimization, optimized performance and proper resource allocation",
     "documentation": [
       {

@@ -1,7 +1,7 @@
 module.exports = {
   staticFileGlobs: [
     'index.html',
-    'mstile-144x144.png',
+    'mstile-150x150.png',
     'browserconfig.xml'
   ],
   navigateFallback: '/index.html',
