@@ -52,6 +52,9 @@ if (string.IsNullOrEmpty(options.OutputFile))
 string fileContent = File.ReadAllText(options.FilePath);
 fileContent = fileContent.Replace("%DATE%", dateToInject);
 fileContent = fileContent.Replace("%CONTENT%", textToInject);
+fileContent = fileContent.Replace("%COUNT_HIGH%", Generator.HighCount.ToString());
+fileContent = fileContent.Replace("%COUNT_MEDIUM%", Generator.MediumCount.ToString());
+fileContent = fileContent.Replace("%COUNT_LOW%", Generator.LowCount.ToString());
 
 // write content back to file
 File.WriteAllText(options.OutputFile, fileContent);

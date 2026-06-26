@@ -8,6 +8,10 @@ namespace aks_generator
     {
         private int _sectionId = 0;
 
+        public int HighCount { get; private set; }
+        public int MediumCount { get; private set; }
+        public int LowCount { get; private set; }
+
         public string ParseCategory(string category, string path, string fileName)
         {
             // parse a json file and return a list of CheckListItems
@@ -105,6 +109,13 @@ namespace aks_generator
             // Convertir la priorité en format CSS
             string priorityClass = item.Priority.ToLowerInvariant();
             string priorityText = item.Priority;
+
+            switch (priorityClass)
+            {
+                case "high": HighCount++; break;
+                case "medium": MediumCount++; break;
+                case "low": LowCount++; break;
+            }
 
             // Convertir le nom de section en format kebab-case
             string sectionSlug = identifier;
