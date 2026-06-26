@@ -1,10 +1,13 @@
-﻿using System.Text;
+using System.Net;
+using System.Text;
 using System.Text.Json;
 
 namespace aks_generator
 {
     internal class Generator
     {
+        private int _sectionId = 0;
+
         public string ParseCategory(string category, string path, string fileName)
         {
             // parse a json file and return a list of CheckListItems
@@ -25,7 +28,7 @@ namespace aks_generator
             if (items == null || items.Count == 0)
                 return string.Empty;
 
-            return CreateSection(category, 0, items);
+            return CreateSection(category, _sectionId++, items);
         }
 
         private string CreateSection(string title, int id, List<CheckListItem> items)
@@ -37,10 +40,10 @@ namespace aks_generator
             sb.AppendLine("    <div class=\"s-checklist__inner\">");
             sb.AppendLine("        <div class=\"s-checklist__header\">");
             sb.AppendLine("            <div class=\"s-checklist__title\">");
-            sb.AppendLine($"                <h2 class=\"s-checklist__header__title\">{title}</h2>");
+            sb.AppendLine($"                <h2 class=\"s-checklist__header__title\">{Enc(title)}</h2>");
             sb.AppendLine("                <div class=\"c-progress\">");
             sb.AppendLine("                    <progress class=\"c-progress__bar js-progress\" value=\"0\" max=\"100\"></progress>");
-            sb.AppendLine($"                    <div class=\"c-progress__counter\"><span class=\"c-progress__label\">0 %</span><span class=\"c-progress__text\">&nbsp;{title} items are ✓</span></div>");
+            sb.AppendLine($"                    <div class=\"c-progress__counter\"><span class=\"c-progress__label\">0 %</span><span class=\"c-progress__text\">&nbsp;{Enc(title)} items are ✓</span></div>");
             sb.AppendLine("                </div>");
             sb.AppendLine("            </div>");
             sb.AppendLine("            <div class=\"c-tools\">");
@@ -123,7 +126,7 @@ namespace aks_generator
 
             // Colonne label
             html.AppendLine("            <div class=\"c-checklist__column c-checklist__label\">");
-            html.AppendLine($"                <label for=\"c-checklist__item-{sectionSlug}-{index}\"><span class=\"label__title\">{item.Title} </span><span class=\"label__description\">{item.Description}</span></label>");
+            html.AppendLine($"                <label for=\"c-checklist__item-{sectionSlug}-{index}\"><span class=\"label__title\">{Enc(item.Title)} </span><span class=\"label__description\">{Enc(item.Description)}</span></label>");
 
             // Détails
             html.AppendLine("                <div class=\"c-checklist__details js-details\">");
@@ -131,7 +134,7 @@ namespace aks_generator
             // Ajouter le détail s'il existe
             if (!string.IsNullOrEmpty(item.Detail))
             {
-                html.AppendLine($"                    <p class=\"c-checklist__text\">{item.Detail}</p>");
+                html.AppendLine($"                    <p class=\"c-checklist__text\">{Enc(item.Detail)}</p>");
             }
 
             // Documentation
@@ -143,7 +146,7 @@ namespace aks_generator
 
                 foreach (var doc in item.Documentation)
                 {
-                    html.AppendLine($"                            <li><img class=\"c-checklist__favicon\" src=\"/img/icons/1x1.png\" data-src=\"https://www.google.com/s2/favicons?domain_url={doc.Url}\" ><a href=\"{doc.Url}\" target=\"_blank\" rel=\"noopener noreferrer\">{doc.Title}</a></li>");
+                    html.AppendLine($"                            <li><img class=\"c-checklist__favicon\" src=\"/img/icons/1x1.png\" data-src=\"https://www.google.com/s2/favicons?domain_url={Enc(doc.Url)}\" ><a href=\"{Enc(doc.Url)}\" target=\"_blank\" rel=\"noopener noreferrer\">{Enc(doc.Title)}</a></li>");
                 }
 
                 html.AppendLine("                        </ul>");
@@ -159,7 +162,7 @@ namespace aks_generator
 
                 foreach (var doc in item.Tool)
                 {
-                    html.AppendLine($"                            <li><img class=\"c-checklist__favicon\" src=\"/img/icons/1x1.png\" data-src=\"https://www.google.com/s2/favicons?domain_url={doc.Url}\" alt=\"\"><a href=\"{doc.Url}\" target=\"_blank\" rel=\"noopener noreferrer\">{doc.Title}</a></li>");
+                    html.AppendLine($"                            <li><img class=\"c-checklist__favicon\" src=\"/img/icons/1x1.png\" data-src=\"https://www.google.com/s2/favicons?domain_url={Enc(doc.Url)}\" alt=\"\"><a href=\"{Enc(doc.Url)}\" target=\"_blank\" rel=\"noopener noreferrer\">{Enc(doc.Title)}</a></li>");
                 }
 
                 html.AppendLine("                        </ul>");
@@ -174,7 +177,7 @@ namespace aks_generator
 
             foreach (var tag in item.Tags.Where(tag => tag != "all"))
             {
-                html.AppendLine($"                        <li class=\"c-tags__item\">{tag.ToUpperInvariant()}</li>");
+                html.AppendLine($"                        <li class=\"c-tags__item\">{Enc(tag.ToUpperInvariant())}</li>");
             }
 
             html.AppendLine("                    </ul>");
@@ -193,6 +196,8 @@ namespace aks_generator
 
             return html.ToString();
         }
+
+        private static string Enc(string? value) => WebUtility.HtmlEncode(value ?? string.Empty);
 
         private static string ConvertToKebabCase(string input)
         {
