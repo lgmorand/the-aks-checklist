@@ -157,7 +157,7 @@ namespace aks_generator
 
                 foreach (var doc in item.Documentation)
                 {
-                    html.AppendLine($"                            <li><img class=\"c-checklist__favicon\" src=\"/img/icons/1x1.png\" data-src=\"https://www.google.com/s2/favicons?domain_url={Enc(doc.Url)}\" ><a href=\"{Enc(doc.Url)}\" target=\"_blank\" rel=\"noopener noreferrer\">{Enc(doc.Title)}</a></li>");
+                    html.AppendLine($"                            <li><img class=\"c-checklist__favicon\" src=\"img/icons/1x1.png\" data-src=\"https://www.google.com/s2/favicons?domain_url={Enc(doc.Url)}\" ><a href=\"{Enc(doc.Url)}\" target=\"_blank\" rel=\"noopener noreferrer\">{Enc(doc.Title)}</a></li>");
                 }
 
                 html.AppendLine("                        </ul>");
@@ -173,7 +173,7 @@ namespace aks_generator
 
                 foreach (var doc in item.Tool)
                 {
-                    html.AppendLine($"                            <li><img class=\"c-checklist__favicon\" src=\"/img/icons/1x1.png\" data-src=\"https://www.google.com/s2/favicons?domain_url={Enc(doc.Url)}\" alt=\"\"><a href=\"{Enc(doc.Url)}\" target=\"_blank\" rel=\"noopener noreferrer\">{Enc(doc.Title)}</a></li>");
+                    html.AppendLine($"                            <li><img class=\"c-checklist__favicon\" src=\"img/icons/1x1.png\" data-src=\"https://www.google.com/s2/favicons?domain_url={Enc(doc.Url)}\" alt=\"\"><a href=\"{Enc(doc.Url)}\" target=\"_blank\" rel=\"noopener noreferrer\">{Enc(doc.Title)}</a></li>");
                 }
 
                 html.AppendLine("                        </ul>");
