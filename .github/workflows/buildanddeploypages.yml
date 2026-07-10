@@ -1,0 +1,82 @@
+name: Build and deploy to GitHub Pages
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+    paths-ignore:
+      - '.github/scripts/**'
+      - 'markdown/**'
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v7
+
+    - name: Run the Transformer
+      run: |
+        pushd ./data/scripts
+        pip3 install pandas
+        python ./transform_to_ft.py
+        popd
+
+    - name: include FTA version
+      run: |
+        cp -f ./data/scripts/aks_checklist.en.json ./src/web/fta/aks_checklist.en.json
+
+    - name: Setup dotnet
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: |
+          8.0.x
+
+    - name: Build the generator
+      run: |
+        dotnet publish -c Release -r linux-x64 --self-contained true
+      working-directory: ./src/generator
+
+    - name: Move the generator
+      run: |
+        mkdir -p ./data/tooling/html-generator
+        cp ./src/generator/bin/Release/net8.0/linux-x64/publish/* ./data/tooling/html-generator/ --force
+
+    - name: Generate the checklist
+      run: |
+        chmod +x aks-generator
+        ./aks-generator -f template.html -p "../../en/items" -o "../../../src/web/index.html"
+      working-directory: ./data/tooling/html-generator
+
+    - name: Setup Pages
+      uses: actions/configure-pages@v5
+
+    - name: Upload Pages artifact
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: src/web
+
+  deploy:
+    needs: build
+
+    runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4
