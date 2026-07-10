@@ -29,7 +29,7 @@ jobs:
         cp -f ./data/scripts/aks_checklist.en.json ./src/web/fta/aks_checklist.en.json
      
     - name: Setup dotnet
-      uses: actions/setup-dotnet@v4
+      uses: actions/setup-dotnet@v5
       with:
         dotnet-version: | 
           8.0.x
@@ -50,7 +50,7 @@ jobs:
         ./aks-generator -f template.html -p "../../en/items" -o "../../../src/web/index.html"
       working-directory: ./data/tooling/html-generator
 
-    - uses: actions/upload-artifact@v4
+    - uses: actions/upload-artifact@v7
       with:
         name: CheckList
         path: src/web
