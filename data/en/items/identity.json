@@ -1,18 +1,17 @@
 [
   {
-    "title": "Integrate authentication with AAD (using the managed integration)",
+    "title": "Use AKS-managed Microsoft Entra ID authentication",
     "priority": "High",
     "guid": "7e42c78e-78c0-46a6-8a21-94956e698dc4",
-    "severity": "Medium",
-    "description": "Azure Kubernetes Service (AKS) can be configured to use Azure Active Directory (Azure AD) for user authentication. In this configuration, you can sign in to an AKS cluster by using your Azure AD authentication token.",
+    "description": "Authenticate users to the Kubernetes API with AKS-managed Microsoft Entra ID integration and group-based access. Migrate legacy integration and validate administrator group access before disabling local accounts. Authentication establishes identity; configure Kubernetes or Azure RBAC separately for authorization.",
     "documentation": [
       {
-        "title": "AKS-managed Azure Active Directory integration",
-        "url": "https://learn.microsoft.com/azure/aks/managed-aad"
+        "title": "Microsoft Entra ID control plane authentication",
+        "url": "https://learn.microsoft.com/azure/aks/entra-id-control-plane-authentication"
       },
       {
         "title": "Disable local accounts",
-        "url": "https://learn.microsoft.com/azure/aks/managed-aad#disable-local-accounts"
+        "url": "https://learn.microsoft.com/azure/aks/local-accounts#disable-local-accounts"
       }
     ],
     "tags": [
@@ -23,19 +22,23 @@
     "optionalFields": {
       "score": {
         "simple": 1,
-        "graph": "where type=='microsoft.containerservice/managedclusters' | extend compliant = isnotnull(properties.aadProfile) | distinct id,compliant"
+        "graph": "where type=='microsoft.containerservice/managedclusters' | extend compliant = (properties.aadProfile.managed==true) | distinct id,compliant"
       }
     }
   },
   {
-    "title": "Integrate authorization with AAD RBAC",
+    "title": "Choose and scope Kubernetes RBAC or Azure RBAC for Kubernetes authorization",
     "priority": "High",
     "guid": "eec4962c-c3bd-421b-b77f-26e5e6b3bec3",
-    "description": "Control access to cluster resources using Kubernetes role-based access control and Azure Active Directory identities in Azure Kubernetes Service",
+    "description": "Use Microsoft Entra groups with Kubernetes Roles/RoleBindings, or Azure RBAC for Kubernetes Authorization, to grant least-privilege access at namespace scope where possible. Distinguish Kubernetes data-plane permissions from Azure management-plane roles that retrieve kubeconfig or change the cluster. Review cluster-admin bindings and privilege-escalation paths regularly.",
     "documentation": [
       {
-        "title": "Limit cluster access via K8S RBAC for users & workloads",
-        "url": "https://learn.microsoft.com/azure/aks/azure-ad-rbac"
+        "title": "Microsoft Entra ID with Kubernetes RBAC",
+        "url": "https://learn.microsoft.com/azure/aks/kubernetes-rbac-entra-id"
+      },
+      {
+        "title": "Azure RBAC for Kubernetes authorization",
+        "url": "https://learn.microsoft.com/azure/aks/entra-id-authorization"
       }
     ],
     "tags": [
@@ -54,8 +57,8 @@
     "title": "Use AKS and ACR integration without password",
     "guid": "100f8f70-3ec6-44bb-ab07-95eef965e80d",
     "priority": "Medium",
-    "description": "AKS can authenticate to ACR without using any password, but by using either Service Principal or Managed Identity.",
-    "detail": "For AKS to download/pull images from Azure Container Registry (ACR), it needs the ACR credentials including the password. To avoid saving the password in the cluster, you can simply activate the ACR integration on new or existing AKS cluster using SPN or Managed Identity",
+    "description": "Use the kubelet managed identity to pull images from Azure Container Registry instead of registry admin credentials or long-lived image pull secrets. Grant only the required registry or repository access.",
+    "detail": "For RBAC-only registries, AKS ACR integration assigns AcrPull to the kubelet identity. For registries using RBAC Registry + ABAC Repository Permissions, --attach-acr is not supported: assign Container Registry Repository Reader manually, with repository conditions where appropriate. Workload identity for application Azure API calls is separate from kubelet image-pull authentication.",
     "documentation": [
       {
         "title": "Authenticate with Azure Container Registry from AKS",
@@ -72,10 +75,11 @@
     }
   },
   {
-    "title": "Use managed identities instead of Service Principals",
+    "title": "Use least-privilege managed identities for cluster and kubelet access",
     "priority": "High",
     "guid": "ed127dd1-42b0-46b2-8c69-99a646f3389a",
-    "description": "Each AKS cluster needs either a Managed Identity or Service Principal.  We recommend using Managed Identity in AKS",
+    "detail": "Review effective Azure role assignments, scopes and inherited grants for the actual control-plane and kubelet identities, including network and registry access. Confirm representative operations succeed and unauthorized operations are denied; a managed-identity flag alone does not demonstrate least privilege.",
+    "description": "Prefer system-assigned or user-assigned managed identities over cluster service principals to avoid credential rotation. Separate control-plane resource management permissions from kubelet image-pull permissions, scope grants to required resources and do not reuse node identities for application access. During identity migration, retain necessary old grants until token refresh and validation complete.",
     "documentation": [
       {
         "title": "Use managed identities in Azure Kubernetes Service",
@@ -89,8 +93,7 @@
     ],
     "optionalFields": {
       "score": {
-        "simple": 1,
-        "graph": "where type=='microsoft.containerservice/managedclusters' | extend compliant = (properties.servicePrincipalProfile.clientId=='msi') | distinct id,compliant"
+        "simple": 1
       }
     }
   },
@@ -98,7 +101,7 @@
     "title": "Limit access to admin kubeconfig (get-credentials --admin)",
     "priority": "Medium",
     "guid": "a2fe27b2-e287-401a-8352-beedf79b488d",
-    "description": "To limit who can get that Kubernetes configuration (kubeconfig) information and to limit the permissions they then have, you can use Azure role-based access control (Azure RBAC).",
+    "description": "Restrict Azure permissions to retrieve cluster-admin credentials, update identity settings, invoke AKS Run Command or manage nodes. Prefer user kubeconfig with Microsoft Entra authentication; retrieving user kubeconfig does not itself grant Kubernetes authorization. Audit privileged management operations and keep an approved, tested emergency access procedure.",
     "documentation": [
       {
         "title": "Use Azure RBAC to define access to the Kubernetes configuration file",
@@ -121,11 +124,11 @@
     "title": "For AKS non-interactive logins use kubelogin",
     "priority": "Medium",
     "guid": "f4dcf690-1b30-407d-abab-6f8aa780d3a3",
-    "description": " You can use kubelogin to access the cluster with non-interactive service principal sign-in.",
+    "description": "Use kubelogin's supported exec authentication modes for automation. Prefer managed identity on Azure-hosted agents or federated workload identity for CI over service principal secrets. Grant the automation identity only required cluster permissions and ensure it has network access to the API server; avoid interactive/device-code flows in pipelines.",
     "documentation": [
       {
         "title": "Non-interactive sign in with kubelogin",
-        "url": "https://learn.microsoft.com/en-us/azure/aks/managed-aad#non-interactive-sign-in-with-kubelogin"
+        "url": "https://learn.microsoft.com/azure/aks/kubelogin-authentication"
       }
     ],
     "tags": [
@@ -144,11 +147,11 @@
     "title": "Disable AKS local accounts",
     "priority": "Medium",
     "guid": "b085b1f2-3119-4771-8c9a-bbf4411810ec",
-    "description": "AKS offers users the ability to disable local accounts via a flag, disable-local-accounts",
+    "description": "Disable local accounts after validating Microsoft Entra administrator and automation access so static administrator credentials cannot bypass identity controls. On existing clusters, rotate cluster certificates to revoke previously issued local credentials. Document tightly controlled emergency re-enablement, audit its use and disable local accounts again after recovery.",
     "documentation": [
       {
         "title": "Disable local accounts",
-        "url": "https://learn.microsoft.com/azure/aks/managed-aad#disable-local-accounts"
+        "url": "https://learn.microsoft.com/azure/aks/local-accounts#disable-local-accounts"
       }
     ],
     "tags": [
@@ -164,14 +167,14 @@
     }
   },
   {
-    "title": "Configure if required Just-in-time cluster access",
+    "title": "Use Privileged Identity Management for just-in-time privileged access",
     "priority": "Low",
     "guid": "36abb0db-c118-4f4c-9880-3f30f9a2deb6",
-    "description": "AKS offers users the ability to enable access for a limited time",
+    "description": "Use Microsoft Entra Privileged Identity Management for eligible, time-limited administrative role or group activation with approval and MFA as appropriate. Scope access separately for Kubernetes administration and node access, review activations and account for Microsoft Entra licensing requirements.",
     "documentation": [
       {
-        "title": "Configure just-in-time cluster access with Azure AD and AKS",
-        "url": "https://learn.microsoft.com/azure/aks/managed-aad#configure-just-in-time-cluster-access-with-azure-ad-and-aks"
+        "title": "Control AKS cluster and node access with PIM",
+        "url": "https://learn.microsoft.com/azure/aks/privileged-identity-management"
       }
     ],
     "tags": [
@@ -187,14 +190,14 @@
     }
   },
   {
-    "title": "For finer control consider using a managed Kubelet Identity",
+    "title": "Precreate a user-assigned kubelet identity when permissions are needed before provisioning",
     "priority": "Low",
     "guid": "1f711a74-3672-470b-b8b8-a2148d640d79",
-    "description": "A Kubelet identity enables access granted to the existing identity prior to cluster creation.",
+    "description": "Use a precreated user-assigned kubelet identity when registry permissions or group membership must exist before cluster creation. Grant the control-plane identity the required permission to assign it, especially outside the node resource group, and allow role propagation time. A kubelet identity is not a pod workload identity.",
     "documentation": [
       {
-        "title": "Use a pre-created kubelet managed identity",
-        "url": "https://learn.microsoft.com/azure/aks/use-managed-identity#use-a-pre-created-kubelet-managed-identity"
+        "title": "AKS managed identity types and authorization",
+        "url": "https://learn.microsoft.com/azure/aks/managed-identity-overview"
       }
     ],
     "tags": [
@@ -210,14 +213,18 @@
     }
   },
   {
-    "title": "Configure if required AAD conditional access for AKS",
+    "title": "Apply Microsoft Entra Conditional Access to human cluster sign-ins",
     "priority": "Low",
     "guid": "c4d7f4c6-79bf-45d0-aa05-ce8fc717e150",
-    "description": "When integrating Azure AD with your AKS cluster, you can also use Conditional Access to control access to your cluster.",
+    "description": "Apply appropriate MFA, device and location requirements to Microsoft Entra-authenticated administrator sign-ins. Validate kubelogin authentication flows and emergency access before enforcement, and review licensing. Do not assume user Conditional Access policies protect local certificate credentials or workload identities.",
     "documentation": [
       {
-        "title": "Use Conditional Access with Azure AD and AKS",
-        "url": "https://learn.microsoft.com/azure/aks/managed-aad#use-conditional-access-with-azure-ad-and-aks"
+        "title": "Microsoft Entra Conditional Access overview",
+        "url": "https://learn.microsoft.com/entra/identity/conditional-access/overview"
+      },
+      {
+        "title": "AKS kubelogin authentication methods",
+        "url": "https://learn.microsoft.com/azure/aks/kubelogin-authentication"
       }
     ],
     "tags": [
@@ -229,6 +236,46 @@
       "score": {
         "security": 1,
         "simple": -1
+      }
+    }
+  },
+  {
+    "title": "Use Microsoft Entra Workload ID and migrate retired pod-managed identity",
+    "priority": "High",
+    "guid": "c958d1cb-0e91-4362-9fb0-c1bff3701680",
+    "supersedes": [
+      "d2e0d5d7-71d4-41e3-910c-c57b4a4b1410"
+    ],
+    "applicability": "Applies to pods requiring supported Azure service authentication, including deployments migrating from retired pod-managed identity.",
+    "description": "Use Microsoft Entra Workload ID for pod-to-Azure authentication without stored credentials. Azure AD Pod Identity was deprecated on October 24, 2022 and its project archived in September 2023; support for the AKS managed add-on ran through September 2025. Migrate remaining bindings and applications instead of deploying it.",
+    "detail": "Enable the OIDC issuer and workload identity on AKS Standard (preconfigured on AKS Automatic). Configure dedicated Kubernetes service accounts, exact federated issuer/namespace/service-account subject/audience bindings, the azure.workload.identity/use: true pod label and supported Azure Identity SDK or MSAL versions. Grant only required Azure data-plane permissions per workload, test token renewal and remove old pod identity components and node identity grants only after successful migration.",
+    "documentation": [
+      {
+        "title": "Microsoft Entra Workload ID",
+        "url": "https://learn.microsoft.com/azure/aks/workload-identity-overview"
+      },
+      {
+        "title": "Migrate from pod-managed identity",
+        "url": "https://learn.microsoft.com/azure/aks/workload-identity-migrate-from-pod-identity"
+      },
+      {
+        "title": "Pod-managed identity deprecation and support dates",
+        "url": "https://learn.microsoft.com/azure/aks/use-azure-ad-pod-identity"
+      },
+      {
+        "title": "Deploy and configure Microsoft Entra Workload ID",
+        "url": "https://learn.microsoft.com/azure/aks/workload-identity-deploy-cluster"
+      }
+    ],
+    "tags": [
+      "all",
+      "identity",
+      "security",
+      "application"
+    ],
+    "optionalFields": {
+      "score": {
+        "security": 2
       }
     }
   }

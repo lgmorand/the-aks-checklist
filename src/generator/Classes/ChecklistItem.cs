@@ -13,6 +13,18 @@ namespace aks_generator
         [JsonPropertyName("guid")]
         public required string Guid { get; set; }
 
+        [JsonPropertyName("kind")]
+        public string Kind { get; set; } = "check";
+
+        [JsonPropertyName("applicability")]
+        public string? Applicability { get; set; }
+
+        [JsonPropertyName("supersedes")]
+        public List<string> Supersedes { get; set; } = [];
+
+        [JsonPropertyName("related")]
+        public List<string> Related { get; set; } = [];
+
         [JsonPropertyName("severity")]
         public string? Severity { get; set; }
 

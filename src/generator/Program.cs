@@ -32,6 +32,7 @@ sb.AppendLine(Generator.ParseCategory("Biz continuity - disaster recovery", opti
 sb.AppendLine(Generator.ParseCategory("Windows", options.Path, "windows.json"));
 sb.AppendLine(Generator.ParseCategory("Application deployment", options.Path, "application.json"));
 sb.AppendLine(Generator.ParseCategory("Image management", options.Path, "container.json"));
+sb.AppendLine(Generator.CreateReferenceAppendix());
 
 string textToInject = sb.ToString(); 
 string dateToInject = DateTime.Now.ToString("dd-MM-yyyy");
@@ -52,6 +53,7 @@ if (string.IsNullOrEmpty(options.OutputFile))
 string fileContent = File.ReadAllText(options.FilePath);
 fileContent = fileContent.Replace("%DATE%", dateToInject);
 fileContent = fileContent.Replace("%CONTENT%", textToInject);
+fileContent = fileContent.Replace("%CHECKLIST_MANIFEST%", Generator.CreateManifest(options.Path));
 fileContent = fileContent.Replace("%COUNT_HIGH%", Generator.HighCount.ToString());
 fileContent = fileContent.Replace("%COUNT_MEDIUM%", Generator.MediumCount.ToString());
 fileContent = fileContent.Replace("%COUNT_LOW%", Generator.LowCount.ToString());

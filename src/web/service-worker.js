@@ -1,7 +1,7 @@
 // importScripts('/cache-polyfill.js');
 'use strict';
 
-var version = 'v1::';
+var version = 'v4-navy-workspace::';
 
 self.addEventListener("install", function(event) {
   // console.log('WORKER: install event in progress.');
@@ -21,10 +21,11 @@ self.addEventListener("install", function(event) {
            after making HTTP requests for each of them.
         */
         return cache.addAll([
-          '/',
-          '/index.html',
-          '/styles/main.min.css',
-          '/scripts/app.bundle.js'
+          './',
+          './index.html',
+          './styles/checklist.css',
+          './scripts/theme.js',
+          './scripts/checklist-state.js'
         ]);
       })
       .then(function() {

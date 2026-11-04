@@ -17,20 +17,23 @@ jobs:
     - uses: actions/checkout@v7
 
     - name: Check that data is OK
-      run: . ./.github/scripts/check-unique-guid.sh
+      run: |
+        python3 data/scripts/checklist.py
+        python3 -m unittest discover -s data/scripts -p "test_*.py"
+        node data/scripts/test_link_tracking.js
+        node data/scripts/test_checklist_state.js
+        node data/scripts/test_theme.js
 
     - name: Run the Transformer
       run: |
-        pushd ./data/scripts
-        pip3 install pandas
-        python ./transform_to_ft.py
-        popd
+        python3 data/scripts/transform_to_ft.py
+        python3 data/scripts/generate_offline.py --pdf src/web/docs/AKS-Checklist.pdf
 
     - name: Setup dotnet
       uses: actions/setup-dotnet@v5
       with:
         dotnet-version: | 
-          8.0.x
+          10.0.x
     
     - name: Build the generator
       run: |
@@ -40,7 +43,7 @@ jobs:
     - name: Move the generator
       run: |
         mkdir -p ./data/tooling/html-generator
-        cp ./src/generator/bin/Release/net8.0/linux-x64/publish/* ./data/tooling/html-generator/
+        cp ./src/generator/bin/Release/net10.0/linux-x64/publish/* ./data/tooling/html-generator/
 
     - name: Generate the checklist
       run: |
@@ -48,10 +51,12 @@ jobs:
         ./aks-generator -f template.html -p "../../en/items" -o "../../../src/web/index.html"
       working-directory: ./data/tooling/html-generator
 
+    - name: Validate generated checklist markup
+      run: node data/scripts/test_checklist_state.js src/web/index.html
+
     - uses: actions/upload-artifact@v7
       with:
         name: CheckList
         path: src/web
         retention-days: 3
        
-

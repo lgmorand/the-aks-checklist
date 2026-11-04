@@ -1,14 +1,26 @@
 [
   {
-    "title": "Burst serverless with Azure Container Instances and Virtual Nodes",
+    "title": "Evaluate virtual nodes only for ACI-compatible burst workloads",
     "guid": "c88681ab-bb2b-46d1-9ea6-72564b75429a",
+    "related": [
+      "90ce65de-8e13-4f9c-abd4-69266abca264",
+      "9bb0c037-57f6-4d82-b526-5604bd2c41dc"
+    ],
+    "supersedes": [
+      "c755562f-2b4e-4456-9b4d-874a748b662e"
+    ],
     "priority": "Low",
-    "description": "To rapidly scale your AKS cluster, you can integrate with Azure Container Instances (ACI)",
-    "detail": "Kubernetes has built-in components to scale the replica and node count. However, if your application needs to rapidly scale, the horizontal pod autoscaler may schedule more pods than can be provided by the existing compute resources in the node pool.",
+    "applicability": "Only Linux burst workloads compatible with Azure Container Instances and the selected virtual-node implementation's networking, storage, identity, and Kubernetes API limitations.",
+    "description": "Virtual nodes can place compatible Linux pods on Azure Container Instances for rapid burst capacity. Record a representative burst test comparing startup latency, workload compatibility, regional capacity, and total cost with Cluster Autoscaler or node auto-provisioning. Choosing regular nodes is a valid outcome; adoption alone is not evidence of improvement.",
+    "detail": "Validate the feature matrix for the selected implementation: Virtual Nodes v2 is a preview extension, not the original add-on, and its preview support terms must be acceptable. V2 supports init containers and Azure Files PVCs but requires Azure CNI node-subnet mode and doesn't support Overlay, Cilium, NPM, Windows, BYO VNets, or daemonsets. Account for extension CPU and memory overhead and keep system components on regular AKS nodes.",
     "documentation": [
       {
         "title": "Burst to Azure Container Instances",
-        "url": "https://learn.microsoft.com/en-gb/azure/aks/concepts-scale#burst-to-azure-container-instances"
+        "url": "https://learn.microsoft.com/azure/aks/virtual-nodes"
+      },
+      {
+        "title": "Virtual Nodes v2 feature matrix (preview)",
+        "url": "https://learn.microsoft.com/azure/aks/virtual-nodes-v2"
       }
     ],
     "tags": [
@@ -21,19 +33,30 @@
     }
   },
   {
-    "title": "Sizing of the nodes",
+    "title": "Size nodes against allocatable resources and workload failure domains",
     "guid": "7f8b07c5-882b-45ba-9ec9-bcc29b4721ff",
+    "related": [
+      "4868aa30-95a9-49fd-867e-57e70cb0d1d5",
+      "b3f09641-e9cb-4ddd-8d35-f5c7f0851f86"
+    ],
+    "supersedes": [
+      "495e0503-5fbd-4ba7-8c33-2551b1676d1e"
+    ],
     "priority": "Medium",
-    "description": "what type of worker nodes should I use, and how many of them is a critical question which requires the analysis of the workloads deployed on your cluster to get the best values of it",
-    "detail": "Choosing on one hand between easy management and big blast radius, and on the other end to focus on high replication, low impact but worse resources optimization ",
+    "description": "Measure workload requests, peaks, and sustained consumption before selecting node sizes and counts. Use allocatable resources after Kubernetes reservations and daemonset overhead, not raw SKU capacity. Include pod density, disk attachment and throughput limits, network bandwidth, architecture, and VM-family quotas.",
+    "detail": "Large nodes can improve bin packing but increase the failure blast radius or drain impact; small nodes increase per-node overhead and can leave large pods unschedulable. Record capacity tests showing that large pods fit and enough headroom remains for failover and surge upgrades. Where supported, node auto-provisioning can select VM sizes dynamically, but still depends on accurate pod requests and capacity constraints.",
     "documentation": [
       {
-        "title": "Choosing a worker node size",
-        "url": "https://learnk8s.io/kubernetes-node-size"
+        "title": "AKS node resource reservations",
+        "url": "https://learn.microsoft.com/azure/aks/node-resource-reservations"
       },
       {
         "title": "Choose the right storage type",
         "url": "https://learn.microsoft.com/azure/aks/operator-best-practices-storage#choose-the-appropriate-storage-type"
+      },
+      {
+        "title": "AKS virtual machine sizes and restrictions",
+        "url": "https://learn.microsoft.com/azure/aks/quotas-skus-regions"
       }
     ],
     "tools": [
@@ -51,14 +74,16 @@
     }
   },
   {
-    "title": "Use ARM64 nodes when possible",
+    "title": "Benchmark Arm64 nodes for compatible Linux workloads",
     "guid": "2a5f0cab-92b2-46dc-81a6-d358f7fd062a",
     "priority": "Medium",
-    "description": "Benefit from ARM64's better price, compute performance, and lower power utilization in AKS node pools.",
+    "applicability": "Only compatible Linux workloads for which Arm64 VM availability and the application, agent, and security support matrix permit an architecture choice.",
+    "description": "Evaluate Arm64 price-performance using representative workloads rather than assuming universal savings. Record throughput, latency, resource use, and cost against the existing architecture; retaining x86 is a valid outcome. Build multi-architecture images and verify application binaries, agents, daemonsets, security integrations, and regional VM availability before adding an Arm64 pool.",
+    "detail": "Arm64 isn't supported for Windows node pools. Existing x86 pools can't be converted to Arm64; create a new pool and migrate compatible workloads with architecture-aware scheduling.",
     "documentation": [
       {
         "title": "Add an ARM64 node pool",
-        "url": "https://learn.microsoft.com/en-us/azure/aks/use-multiple-node-pools#add-an-arm64-node-pool"
+        "url": "https://learn.microsoft.com/azure/aks/use-arm64-vms"
       }
     ],
     "tags": [
@@ -73,8 +98,8 @@
     "title": "Enforce resource quotas for namespaces",
     "priority": "Low",
     "guid": "769ef669-1a48-435a-a942-223ece80b123",
-    "description": "Plan and apply resource quotas at the namespace level. If pods don't define resource requests and limits, reject the deployment. Monitor resource usage and adjust quotas as needed.",
-    "detail": "Resource requests and limits are placed in the pod specification. These limits are used by the Kubernetes scheduler at deployment time to find an available node in the cluster. But developers can forget them and thus impact other applications by over-consuming resources of the cluster",
+    "description": "Apply namespace ResourceQuotas appropriate to tenant needs, covering aggregate requests or limits, storage, and object counts. Pair them with reviewed LimitRange defaults or admission policy, and monitor quota-related pod creation failures.",
+    "detail": "The scheduler places pods using requests, not limits. Quotas are admission controls, not guaranteed capacity: a Deployment can be accepted while its pods are rejected for exceeding quota. Stage enforcement for existing tenants and allow headroom for rolling updates and autoscaling.",
     "documentation": [
       {
         "title": "Enforce resource quotas",
@@ -99,10 +124,10 @@
     }
   },
   {
-    "title": "Namespaces should have LimitRange",
+    "title": "Set workload-appropriate LimitRange defaults and bounds",
     "guid": "b74ea93b-598d-48e0-bb26-762b015602e1",
     "priority": "Low",
-    "description": " A LimitRange is a policy to constrain resource allocations (to Pods or Containers) in a namespace. It's useful to ensure that pods don't forget to declare request limits",
+    "description": "Use LimitRange to default or bound requests and limits within a namespace where this matches tenant policy. Defaults aren't a substitute for application profiling; overly small defaults cause throttling or OOM failures, while excessive requests waste capacity and distort autoscaling.",
     "documentation": [
       {
         "title": "LimitRange",
@@ -120,11 +145,18 @@
     }
   },
   {
-    "title": "Set memory limits and requests for all containers",
+    "title": "Profile container requests and memory limits; evaluate CPU limits contextually",
     "guid": "4868aa30-95a9-49fd-867e-57e70cb0d1d5",
-    "priority": "Medium",
-    "description": "Set CPU and memory limits and requests to all the containers. It prevents memory leaks and CPU over-usage and protects the whole platform",
-    "detail": " When you specify limits for CPU and memory, each takes a different action when it reaches the specified limit. With CPU limits, the container is throttled from using more than its specified limit. With memory limits, the pod is restarted if it reaches its limit. The pod might be restarted on the same host or a different host within the cluster.",
+    "related": [
+      "fc4972cc-3cd2-45bf-a707-6e9eab4bed32",
+      "b3f09641-e9cb-4ddd-8d35-f5c7f0851f86"
+    ],
+    "supersedes": [
+      "b54eb2eb-03dd-4aa3-9927-18e2edb11726"
+    ],
+    "priority": "High",
+    "description": "Set measured CPU and memory requests for application containers, sidecars, and init containers, and choose memory limits with adequate peak headroom. Bound local ephemeral storage with suitable requests, limits, and emptyDir size limits. Requests drive scheduling and utilization-based HPA; limits don't prevent a memory leak or provide reserved capacity.",
+    "detail": "CPU limits throttle execution and can harm latency-sensitive workloads even when the node has spare CPU; evaluate them against tenant isolation requirements. Exceeding memory limits can trigger OOM termination, with restart behavior determined by the workload and restart policy, not guaranteed pod relocation. Review CPU throttling, OOM events, memory peaks, and ephemeral-storage pressure from production telemetry or VPA recommendations, and confirm changes with representative load tests and the intended Quality of Service behavior.",
     "documentation": [
       {
         "title": "Define pod resource requests and limits",
@@ -133,6 +165,14 @@
       {
         "title": "Assign Memory Resources to container",
         "url": "https://kubernetes.io/docs/tasks/configure-pod-container/assign-memory-resource/"
+      },
+      {
+        "title": "Managing resources for containers",
+        "url": "https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/"
+      },
+      {
+        "title": "Configure Quality of Service for pods",
+        "url": "https://kubernetes.io/docs/tasks/configure-pod-container/quality-service-pod/"
       }
     ],
     "tags": [
@@ -146,42 +186,15 @@
     }
   },
   {
-    "title": "Use Disruption Budgets in your pod and deployment definitions",
-    "priority": "Low",
-    "guid": "3c763963-7a55-42d5-a15e-401955387e5c",
-    "description": "To maintain the availability of applications, define Pod Disruption Budgets (PDBs) to make sure that a minimum number of pods are available in the cluster.",
-    "detail": "At some point in time, Kubernetes might need to evict pods from a host. There are two types of evictions: voluntary and involuntary disruptions. Involuntary disruptions can be caused by hardware failure, network partitions, kernel panics, or a node being out of resources. Voluntary evictions can be caused by performing maintenance on the cluster, the Cluster Autoscaler deallocating nodes, or updating pod templates. To minimize the impact to your application, you can set a PodDisruptionBudget to ensure uptime of the application when pods need to be evicted. A PodDisruptionBudget allows you to set a policy on the minimum available and maximum unavailable pods during voluntary eviction events. An example of a voluntary eviction would be when draining a node to perform maintenance on the node.",
-    "documentation": [
-      {
-        "title": "Plan for availability using pod disruption budgets",
-        "url": "https://learn.microsoft.com/azure/aks/operator-best-practices-scheduler#plan-for-availability-using-pod-disruption-budgets"
-      },
-      {
-        "title": "Specifying a Disruption Budget for your Application",
-        "url": "https://kubernetes.io/docs/tasks/run-application/configure-pdb/"
-      }
-    ],
-    "tags": [
-      "all",
-      "resiliency",
-      "resource management"
-    ],
-    "optionalFields": {
-      "score": {
-        "ha": 1,
-        "cost": -1
-      }
-    }
-  },
-  {
-    "title": "Use an external application such as kubecost to allocate costs to different users",
+    "title": "Allocate shared cluster costs with AKS cost analysis or an equivalent",
     "priority": "Low",
     "guid": "f82cb8eb-8c0a-4a63-a25a-4956eaa8dc4a",
-    "description": "These tools can be very valuable for cost allocation especially in the case of multitenancy",
+    "description": "Evaluate the OpenCost-based AKS cost analysis add-on for namespace and cluster cost attribution in Azure Cost Management. It requires Standard or Premium tier, managed identity, the Azure Disk CSI driver, and a supported billing offer; Kubernetes cost views support Enterprise Agreement and Microsoft Customer Agreement offers.",
+    "detail": "The add-on consumes cluster resources, doesn't support virtual nodes, and has documented scale and regional limits. Use Kubecost or another solution when required allocation granularity or integrations aren't covered. Establish ownership labels and an explicit policy for idle and shared platform costs before implementing chargeback.",
     "documentation": [
       {
-        "title": "cost governance with kubecost",
-        "url": "https://learn.microsoft.com/azure/cloud-adoption-framework/scenarios/aks/eslz-cost-governance-with-kubecost"
+        "title": "AKS cost analysis",
+        "url": "https://learn.microsoft.com/azure/aks/cost-analysis"
       }
     ],
     "tags": [
@@ -197,10 +210,12 @@
     }
   },
   {
-    "title": "When required use multi-instance partioning GPU on AKS Clusters",
+    "title": "Evaluate multi-instance GPU partitioning for compatible workloads",
     "guid": "87e651ea-bc4a-4a87-a6df-c06a4b570ebc",
     "priority": "Medium",
-    "description": "Nvidia's A100 GPU can be divided in up to seven independent instances. Each instance has their own memory and Stream Multiprocessor (SM).",
+    "applicability": "Only Linux GPU workloads using supported MIG-capable NVIDIA VM sizes where sharing a GPU meets application memory, throughput, and isolation requirements.",
+    "description": "Supported NVIDIA A100, H100, and H200 VM sizes can use multi-instance GPU (MIG) partitioning to share a GPU as isolated compute and memory slices. Choose a supported profile based on workload memory and throughput; smaller slices improve utilization only when the application fits. Record representative concurrency, throughput, memory use, and total cost against an unpartitioned GPU rather than treating adoption as the outcome.",
+    "detail": "MIG isn't supported for Windows node pools. The GPU instance profile can't be changed after pool creation, so plan migration to another pool if requirements change. Validate device plugin configuration, scheduling resource names, driver compatibility, and regional GPU quota.",
     "documentation": [
       {
         "title": "Multi-instance GPU Node pool",
@@ -214,16 +229,16 @@
       "resource management"
     ],
     "optionalFields": {
-      "score": {
-        "cost": 1
-      }
+      "score": {}
     }
   },
   {
-    "title": "If running a Dev/Test cluster use NodePool Start/Stop",
+    "title": "Stop eligible idle user node pools when interruption is acceptable",
     "priority": "Medium",
     "guid": "2b72a08b-0410-4cd6-9093-e068a5cf27e8",
-    "description": "Your AKS workloads may not need to run continuously, for example a development cluster that has node pools running specific workloads.",
+    "applicability": "Only eligible development, test, or batch user node pools whose workloads can tolerate downtime or move elsewhere; not system pools or clusters using node auto-provisioning.",
+    "description": "Schedule stop/start for development or batch user pools only when workloads can tolerate downtime or move elsewhere. System pools can't be stopped individually, and node pool stop/start isn't supported on clusters with node auto-provisioning.",
+    "detail": "Stopping a pool also stops its Cluster Autoscaler until restart. Record restart and workload recovery times against the allowed downtime and verify net savings including disks, networking resources, and other services that can still incur charges. Don't modify the underlying VM scale set while stopped.",
     "documentation": [
       {
         "title": "Start and stop an Azure Kubernetes Service (AKS) node pool",
@@ -237,16 +252,15 @@
       "resource management"
     ],
     "optionalFields": {
-      "score": {
-        "cost": 1
-      }
+      "score": {}
     }
   },
   {
-    "title": "If required scale NodePool snapshots",
+    "title": "Use node pool snapshots for repeatable supported configurations, not data backup",
     "priority": "Low",
     "guid": "64d1a846-e28a-4b6b-9a33-22a635c15a21",
-    "description": "Node pool snapshots allow you to take a configuration snapshot of your node pool and then create new node pools or new clusters based of that snapshot for as long as that configuration and kubernetes version is supported.",
+    "applicability": "Only workflows that need to reproduce supported node pool configurations and images across pools or clusters; not workload-data backup or recovery.",
+    "description": "Node pool snapshots capture configuration and image information for creating consistent pools or clusters while those versions remain supported. Test pool creation from the snapshot and verify the resulting configuration, supported versions, and workload readiness. Snapshots don't back up workload state, persistent volumes, or Kubernetes objects, and don't extend Kubernetes or OS support lifecycles.",
     "documentation": [
       {
         "title": "AKS node pool snapshot",
@@ -260,16 +274,14 @@
       "resource management"
     ],
     "optionalFields": {
-      "score": {
-        "cost": 1
-      }
+      "score": {}
     }
   },
   {
     "title": "Ensure your subscription has enough quota to scale out your nodepools",
     "priority": "High",
     "guid": "081a5417-4158-433e-a3ad-3c2de733165c",
-    "description": "Azure VMs/nodes have quotas per subscription. Ensure that you have planned for these quota and proactively prepare to request for more if needed",
+    "description": "Budget regional total and VM-family vCPU quotas for maximum pool sizes, autoscaling, upgrade surge, and failover. Also check subnet IP capacity, disk and network limits, and regional SKU availability. Approved quota doesn't reserve physical capacity, so test fallback VM sizes or regions where the workload permits.",
     "documentation": [
       {
         "title": "Azure subscription and service limits, quotas, and constraints",
@@ -288,10 +300,12 @@
     }
   },
   {
-    "title": "Use scale down mode to delete/delallocate nodes",
+    "title": "Choose Delete or Deallocate scale-down mode based on startup and storage costs",
     "priority": "Low",
     "guid": "4d3dfbab-9924-4831-a68d-fdf0d72f462c",
-    "description": " Scale-down Mode allows you to decide whether you would like to delete or deallocate the nodes in your Azure Kubernetes Service (AKS) cluster upon scaling down.",
+    "applicability": "Only supported node pools with planned scale-down activity; evaluate Deallocate only for compatible managed OS disks and workloads that benefit from retained images.",
+    "description": "Delete is the default scale-down behavior. Deallocate retains managed OS disks and cached images for potentially faster restarts, while VM compute billing stops; storage charges continue. Deallocate doesn't support ephemeral OS disks.",
+    "detail": "Compare measured restart time and total retained-disk cost before choosing a mode; retaining the default Delete mode is a valid outcome. Deallocated nodes can remain registered as NotReady. Changing the mode to Delete removes previously deallocated nodes, so don't treat them as durable capacity or a backup. Use the supported AKS scale-down APIs rather than directly stopping VMs.",
     "documentation": [
       {
         "title": "Use Scale-down Mode to delete/deallocate nodes",
@@ -304,9 +318,95 @@
       "resources"
     ],
     "optionalFields": {
-      "score": {
-        "cost": 1
+      "score": {}
+    }
+  },
+  {
+    "title": "Coordinate pod autoscaling with node capacity and resource requests",
+    "guid": "b3f09641-e9cb-4ddd-8d35-f5c7f0851f86",
+    "related": [
+      "faa19bfe-9d55-4d04-a3c4-919ca1b2d121",
+      "90ce65de-8e13-4f9c-abd4-69266abca264",
+      "9bb0c037-57f6-4d82-b526-5604bd2c41dc"
+    ],
+    "supersedes": [
+      "4536365b-a82d-49dc-b68d-5b13f47d598f"
+    ],
+    "priority": "High",
+    "applicability": "Workloads with variable demand that require horizontal or vertical autoscaling, and clusters whose node capacity must respond to that demand.",
+    "description": "Use HPA for workload demand or KEDA for event-driven scaling, together with Cluster Autoscaler or node auto-provisioning for capacity. Validate metrics availability, minimum replicas, startup time, cooldowns, and downstream service capacity under load.",
+    "detail": "HPA CPU utilization depends on CPU requests. Review observed CPU, memory, throttling, OOM events, and ephemeral-storage consumption when rightsizing. Start VPA in recommendation mode and account for update-mode disruption before enabling automatic changes. Don't combine automatic VPA changes with HPA scaling on the same CPU or memory metrics; use recommendations or deliberately separate signals such as custom/external metrics. Load-test scale-out and scale-in against latency, availability, queue-drain, and recovery targets, including namespace quotas, node provisioning delays, and resource exhaustion. Scaling pods alone doesn't create nodes, and scaling nodes doesn't fix quota, topology, or admission failures.",
+    "documentation": [
+      {
+        "title": "AKS scaling overview",
+        "url": "https://learn.microsoft.com/azure/aks/concepts-scale"
+      },
+      {
+        "title": "Vertical Pod Autoscaler",
+        "url": "https://learn.microsoft.com/azure/aks/vertical-pod-autoscaler"
       }
+    ],
+    "tags": [
+      "all",
+      "resources",
+      "finops",
+      "scalability"
+    ],
+    "optionalFields": {
+      "score": {}
+    }
+  },
+  {
+    "title": "Constrain node auto-provisioning without making pods unschedulable",
+    "guid": "9bb0c037-57f6-4d82-b526-5604bd2c41dc",
+    "priority": "High",
+    "applicability": "Only clusters using or evaluating node auto-provisioning, including AKS Automatic; not a requirement to replace a suitable Cluster Autoscaler design.",
+    "description": "For NAP, define Karpenter NodePool and AKSNodeClass constraints, aggregate resource limits, allowed VM families, zones, and capacity types according to workload requirements. Keep enough SKU flexibility for allocation failures and review consolidation and disruption budgets.",
+    "detail": "NAP-managed nodes follow the control plane Kubernetes version. Windows pools and IPv6 clusters aren't supported, and NAP prevents cluster and node pool stop/start. AKS Automatic preconfigures NAP; evaluate Standard when custom platform requirements demand more control. Avoid having multiple autoscalers manage the same capacity.",
+    "documentation": [
+      {
+        "title": "Node auto-provisioning overview and limitations",
+        "url": "https://learn.microsoft.com/azure/aks/node-auto-provisioning"
+      },
+      {
+        "title": "Configure NAP node pools",
+        "url": "https://learn.microsoft.com/azure/aks/node-auto-provisioning-node-pools"
+      },
+      {
+        "title": "Configure NAP disruption policies",
+        "url": "https://learn.microsoft.com/azure/aks/node-auto-provisioning-disruption"
+      }
+    ],
+    "tags": [
+      "all",
+      "resources",
+      "finops",
+      "operations"
+    ],
+    "optionalFields": {
+      "score": {}
+    }
+  },
+  {
+    "title": "Right-size before purchasing commitments and monitor total platform cost",
+    "guid": "6291c221-3c22-4839-9db6-f377cc831368",
+    "priority": "Medium",
+    "description": "Apply reservations or Azure savings plans to measured steady-state usage only after rightsizing and autoscaling. Compare commitment scope and flexibility with expected changes in VM families, regions, architecture, and workload demand; commitments don't guarantee physical capacity.",
+    "detail": "Track cluster management, compute, disks, load balancers, public IPs, egress, observability, and security services, not only node prices. Set budgets and anomaly alerts with owners, review commitment utilization, and avoid committing to capacity intended to be stopped or replaced by interruptible Spot workloads. Budget alerts notify; they aren't automatic spending caps.",
+    "documentation": [
+      {
+        "title": "AKS cost optimization best practices",
+        "url": "https://learn.microsoft.com/azure/aks/best-practices-cost"
+      }
+    ],
+    "tags": [
+      "all",
+      "cost",
+      "finops",
+      "resource management"
+    ],
+    "optionalFields": {
+      "score": {}
     }
   }
 ]

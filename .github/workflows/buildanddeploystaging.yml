@@ -16,20 +16,14 @@ jobs:
  
     - name: Run the Transformer
       run: |
-        pushd ./data/scripts
-        pip3 install pandas
-        python ./transform_to_ft.py
-        popd
-
-    - name: include FTA version
-      run: |
-        cp ./data/scripts/aks_checklist.en.json ./src/web/fta/aks_checklist.en.json  --force
+        python3 data/scripts/transform_to_ft.py
+        python3 data/scripts/generate_offline.py --pdf src/web/docs/AKS-Checklist.pdf
 
     - name: Setup dotnet
       uses: actions/setup-dotnet@v5
       with:
         dotnet-version: | 
-          8.0.x
+          10.0.x
     
     - name: Build the generator
       run: |
@@ -39,7 +33,7 @@ jobs:
     - name: Move the generator
       run: |
         mkdir -p ./data/tooling/html-generator
-        cp ./src/generator/bin/Release/net8.0/linux-x64/publish/* ./data/tooling/html-generator/
+        cp ./src/generator/bin/Release/net10.0/linux-x64/publish/* ./data/tooling/html-generator/
 
     - name: Generate the checklist
       run: |

@@ -3,7 +3,7 @@
     "title": "Implement a proper Liveness probe",
     "guid": "2e9ed573-38b2-4856-a7f9-676d9ab604e1",
     "priority": "High",
-    "description": "Many applications running for long periods of time eventually transition to broken states, and cannot recover except by being restarted. Kubernetes provides liveness probes to detect and remedy such situations. The probe is here to tell Kubernetes to restart your pod when it is not responding anymore",
+    "description": "Use a liveness probe when restarting the container can recover an unhealthy application. Check local process health rather than shared downstream dependencies to avoid restart storms during an outage. Tune timeouts and failure thresholds under realistic load; failed liveness probes restart the container according to its restart policy, not the entire pod.",
     "documentation": [
       {
         "title": "Configure Liveness, Readiness and Startup Probes",
@@ -22,7 +22,7 @@
     "title": "Implement a proper Startup probe",
     "guid": "a066989c-9dce-4712-bce3-4eef36f8c0c2",
     "priority": "Medium",
-    "description": "Protect slow starting containers with startup probes. Startup probe allow to delay the initial check by liveness which could cause deadlock or wrong result",
+    "description": "Protect slow-starting containers with a startup probe. Liveness and readiness probes do not run until it succeeds. Set failureThreshold and periodSeconds to cover measured worst-case startup time, and test cold starts; exhausting the startup failure threshold triggers container restart according to its restart policy.",
     "documentation": [
       {
         "title": "Configure Liveness, Readiness and Startup Probes",
@@ -40,8 +40,9 @@
   {
     "title": "Implement a proper Readiness probe",
     "guid": "de1b6b38-4fa9-4f6e-ab92-d824346dd20c",
-    "priority": "Medium",
-    "description": "Sometimes, applications are temporarily unable to serve traffic. For example, an application might need to load large data or configuration files during startup, or depend on external services after startup. In such cases, you don't want to kill the application, but you don't want to send it requests either. Kubernetes provides readiness probes to detect and mitigate these situations. A pod with containers reporting that they are not ready does not receive traffic through Kubernetes Services.",
+    "priority": "High",
+    "applicability": "Applies to availability-sensitive services receiving traffic through Kubernetes Services or other readiness-aware routing.",
+    "description": "Use readiness probes to indicate whether the application can serve traffic. A failed readiness probe normally removes the pod from ready Service endpoints without restarting its containers. Test dependency failures and recovery without making every replica unready for an optional dependency; account for endpoint propagation, existing connections, and Services that publish not-ready addresses.",
     "documentation": [
       {
         "title": "Configure Liveness, Readiness and Startup Probes",
@@ -57,10 +58,11 @@
     }
   },
   {
-    "title": "Implement a proper prestop hook",
+    "title": "Implement graceful termination and use preStop hooks when needed",
     "guid": "dc4828a3-fc4f-4ac5-8844-122b8482dbb1",
-    "priority": "Low",
-    "description": "This hook is called immediately before a container is terminated due to an API request or management event such as liveness probe failure, preemption, resource contention and others. It can be used when you have critical process you want to finish or save when your pod is destroyed for any reason",
+    "priority": "High",
+    "applicability": "Applies to availability-sensitive services or workers that must drain requests or checkpoint work during planned termination.",
+    "description": "Handle termination signals, stop accepting new work, and drain in-flight requests or checkpoint work within terminationGracePeriodSeconds. Add a preStop hook only when needed and include its execution time in the grace period. Hooks and graceful shutdown are not guaranteed during node loss, force deletion, or abrupt process failure; test rolling updates and node drains.",
     "documentation": [
       {
         "title": "Container Lifecycle Hooks",
@@ -78,8 +80,9 @@
   {
     "title": "Run more than one replica for your Deployment",
     "guid": "4f1f88f9-98a3-48f5-a37f-4d9c9aecbb11",
-    "priority": "Medium",
-    "description": "Ensure that your application always configure proper replicas to ensure resiliency in the event of a pod crashing or being evicted.",
+    "priority": "High",
+    "applicability": "Applies to availability-sensitive services whose design permits concurrent replicas; singleton workloads require a separately tested recovery design.",
+    "description": "Run multiple ready replicas for services that require availability during pod failure or maintenance. Size the replica count and autoscaler minimum for the availability target and remaining capacity after a failure. Spread replicas across nodes and, where available, zones; extra replicas on one node are not sufficient.",
     "documentation": [
       {
         "title": "Pod replicas",
@@ -95,19 +98,35 @@
     }
   },
   {
-    "title": "Apply tags/labels to all resources",
+    "title": "Apply consistent Kubernetes labels and Azure resource tags",
     "guid": "7b613b26-df38-49a8-94bf-c5301a91d558",
+    "supersedes": [
+      "13bb9e32-6f48-4747-9531-0147f20f4b04",
+      "574bd2fe-f58b-4199-b334-f7eff3ef90c8"
+    ],
     "priority": "Medium",
-    "description": "Ensure that your components are tagged, it could be business, security or technical tags and these tags will help to assess or apply relevant policies.",
+    "description": "Apply recommended Kubernetes application labels and ownership/environment metadata for selectors, policy, operations, and cost allocation. Azure resource tags and Kubernetes labels are separate mechanisms and are not automatically synchronized. Keep secrets and personal data out of both.",
+    "detail": "Define technical, business and security metadata, including owner, environment, cost center and lifecycle. Apply Azure tags through supported AKS cluster and node pool APIs and review propagation and replacement behavior before updates; do not directly retag AKS-managed infrastructure to bypass those APIs. Define deliberate mappings to Kubernetes labels and validate selectors before changing labels used by controllers or policies.",
     "documentation": [
       {
         "title": "Recommended Labels",
         "url": "https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels/"
+      },
+      {
+        "title": "Use Azure tags in Azure Kubernetes Service",
+        "url": "https://learn.microsoft.com/azure/aks/use-tags"
+      },
+      {
+        "title": "Azure tags and Kubernetes labels in AKS",
+        "url": "https://techcommunity.microsoft.com/t5/fasttrack-for-azure/use-azure-tags-in-azure-kubernetes-service-aks/ba-p/3611583"
       }
     ],
     "tags": [
       "all",
-      "application"
+      "application",
+      "operations",
+      "multi-tenancy",
+      "finops"
     ],
     "optionalFields": {
       "score": {}
@@ -117,7 +136,7 @@
     "title": "Implement autoscaling of your applications (Horizontal pod autoscaler, KEDA)",
     "priority": "Low",
     "guid": "faa19bfe-9d55-4d04-a3c4-919ca1b2d121",
-    "description": "Automatically scale your application to the number of pods required to handle the current load. This can be achieved by using Horizontal Pod Autoscaler for CPU & Memory or by using KEDA for scaling based on other sources",
+    "description": "Use HPA for resource, custom, or external metrics, or the managed KEDA add-on for event-driven scaling. Configure resource requests for utilization-based targets, minimum/maximum replicas, stabilization, and metric failure behavior. Load-test startup latency and downstream capacity; coordinate pod scaling with node capacity and quotas. Do not configure independent HPA and KEDA controllers for the same workload.",
     "documentation": [
       {
         "title": "Horizontal Pod Autoscaler",
@@ -146,65 +165,14 @@
     }
   },
   {
-    "title": "Store your secrets in Azure Key Vault, don't inject passwords in Docker Images",
-    "priority": "High",
-    "guid": "5e3df584-eccc-4d97-a3b6-bcda3b50eb2e",
-    "description": "Secrets are not encrypted in etcd, prefer to store your secrets in a proper HSM like Azure Key Vault. You can then inject secrets using CSI provider.",
-    "documentation": [
-      {
-        "title": "Azure Key Vault Provider for Secret Store CSI Driver",
-        "url": "https://github.com/Azure/secrets-store-csi-driver-provider-azure"
-      },
-      {
-        "title": "AKV2K8S",
-        "url": "https://akv2k8s.io/"
-      }
-    ],
-    "tags": [
-      "all",
-      "security"
-    ],
-    "optionalFields": {
-      "score": {
-        "simple": -1,
-        "security": 1
-      }
-    }
-  },
-  {
-    "title": "Implement Azure Workload Identity",
-    "priority": "Medium",
-    "guid": "d2e0d5d7-71d4-41e3-910c-c57b4a4b1410",
-    "description": "Don't use fixed credentials within pods or container images, as they are at risk of exposure or abuse. Instead, use workload identity federation to access Azure Active Directory (Azure AD) protected resources without needing to manage secrets ",
-    "detail": "When pods need access to other Azure services, such as Cosmos DB, Key Vault, or Blob Storage, the pod needs access credentials. These access credentials could be defined with the container image or injected as a Kubernetes secret, but need to be manually created and assigned. Often, the credentials are reused across pods, and aren't regularly rotated. Managed identities for Azure resources (currently implemented as an associated AKS open source project) let you automatically request access to services through Azure AD. You don't manually define credentials for pods, instead they request an access token in real time, and can use it to access only their assigned services.",
-    "documentation": [
-      {
-        "title": "Use Azure Workload Identity",
-        "url": "https://learn.microsoft.com/azure/aks/workload-identity-overview"
-      },
-      {
-        "title": "Azure Active Directory Pod Identity (deprecated)",
-        "url": "https://learn.microsoft.com/azure/aks/use-azure-ad-pod-identity"
-      }
-    ],
-    "tags": [
-      "all",
-      "identity",
-      "security",
-      "application"
-    ],
-    "optionalFields": {
-      "score": {
-        "simple": -1,
-        "security": 1
-      }
-    }
-  },
-  {
-    "title": "Use Kubernetes namespaces to properly isolate your Kubernetes resources",
+    "title": "Use namespaces with explicit access and isolation controls",
     "guid": "0b56d03c-5fc8-42b1-943b-9e4b4d0f3de8",
+    "supersedes": [
+      "13bb9e32-6f48-4747-9531-0147f20f4b03"
+    ],
     "priority": "Medium",
-    "description": "Namespaces give you the ability to create logical partitions and enforce separation of your resources as well as limit the scope of user permissions. Don't forget not to use the Default namespace",
+    "description": "Use dedicated namespaces rather than the default namespace for managed workloads. Apply scoped RBAC, network policies, resource quotas, and admission controls to enforce boundaries. Namespaces alone do not provide network isolation or a strong security boundary against hostile tenants; use separate clusters when the threat model requires them.",
+    "detail": "Name namespaces for application and environment ownership, reserve system namespaces for platform components, and verify that access, policy enforcement and quota behavior match the intended boundary. This control implements namespace protections after the separate tenant-isolation architecture decision.",
     "documentation": [
       {
         "title": "Namespaces",
@@ -215,46 +183,19 @@
       "all",
       "security",
       "application",
-      "multi-tenancy"
+      "multi-tenancy",
+      "operations"
     ],
     "optionalFields": {
       "score": {}
     }
   },
   {
-    "title": "Set up requests and limits on your containers",
-    "priority": "High",
-    "guid": "b54eb2eb-03dd-4aa3-9927-18e2edb11726",
-    "description": "When Containers have resource requests specified, the scheduler can make better decisions about which nodes to place Pods on. And when Containers have their limits specified, contention for resources on a node can be handled in a specified manner.",
-    "documentation": [
-      {
-        "title": "Managing Compute Resources for Containers",
-        "url": "https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/"
-      },
-      {
-        "title": "Take benefit of the Quality of Service",
-        "url": "https://kubernetes.io/docs/tasks/configure-pod-container/quality-service-pod/"
-      }
-    ],
-    "tags": [
-      "all",
-      "resources",
-      "application",
-      "multi-tenancy"
-    ],
-    "optionalFields": {
-      "score": {
-        "simple": -1,
-        "ha": 1
-      }
-    }
-  },
-  {
     "title": "Specify the security context of your pod/container",
     "guid": "20861805-be15-48f5-b40b-5ae203ddbb67",
     "priority": "Medium",
-    "description": "A security context defines privilege and access control settings for a Pod or Container. Control the capabilities and the rights your container can have. If you don't specify the security context, the pod get the 'default' one which may have more rights that it should",
-    "detail": "You should also disable mounting credentials by default (automountServiceAccountToken)",
+    "description": "For Linux workloads, run as non-root, disallow privilege escalation, drop all capabilities and add back only justified exceptions, use RuntimeDefault seccomp, and make the root filesystem read-only where compatible. Avoid privileged containers, host namespaces, and hostPath mounts. Apply equivalent OS-specific controls for Windows rather than assuming Linux settings apply.",
+    "detail": "Use dedicated least-privilege service accounts and set automountServiceAccountToken: false when Kubernetes API credentials are unnecessary. This does not replace the explicit projected token used by Microsoft Entra Workload ID. Provide bounded writable volumes where the application requires them and document reviewed exceptions.",
     "documentation": [
       {
         "title": "Configure a Security Context for a Pod or Container",
@@ -273,15 +214,23 @@
     "title": "Ensure your manifests respect good practices",
     "priority": "Medium",
     "guid": "5388e9de-d167-4dd1-a2b0-ac241b999a64",
-    "description": "Best practices inside the cluster start with the configuration of your manifests. Ensure that they respect good practices",
+    "supersedes": [
+      "b78f2dec-d75e-44c3-937a-7509fd7a54f1"
+    ],
+    "description": "Render Helm or Kustomize manifests in CI, validate their schemas and supported API versions against the target AKS version, and check security, requests, probes, and deployment policies before promotion. Use server-side dry runs where safe and enforce critical requirements with admission policy rather than relying only on developer linting.",
+    "detail": "Test rendered output against a representative target cluster to catch admission, permissions and scheduling errors. A formatter improves readability but is not evidence that APIs are supported or that the deployment is safe.",
     "documentation": [
       {
-        "title": "Kubernetes YAML: Enforcing best practices and security policies",
-        "url": "https://thechief.io/c/editorial/kubernetes-yaml-enforcing-best-practices-and-security-policies-cicd-and-gitops-pipelines/"
+        "title": "Kubernetes configuration best practices",
+        "url": "https://kubernetes.io/docs/concepts/configuration/overview/"
       },
       {
-        "title": "13 Best Practices for Using Helm",
-        "url": "https://betterprogramming.pub/13-best-practices-for-using-helm-f4fc68545a2c"
+        "title": "Azure Policy for Kubernetes",
+        "url": "https://learn.microsoft.com/azure/governance/policy/concepts/policy-for-kubernetes"
+      },
+      {
+        "title": "Manage Kubernetes objects declaratively",
+        "url": "https://kubernetes.io/docs/tasks/manage-kubernetes-objects/declarative-config/"
       }
     ],
     "tools": [
@@ -301,7 +250,10 @@
     "tags": [
       "all",
       "resources",
-      "security"
+      "security",
+      "operations",
+      "monitoring",
+      "compliance"
     ],
     "optionalFields": {
       "score": {
@@ -313,15 +265,15 @@
     "title": "Conduct Dockerfile scanning to ensure Docker Image Security Best Practices",
     "guid": "b5222fdc-72b7-4b5f-baae-ab48a69b1d36",
     "priority": "High",
-    "description": "Define a Image build security baseline for your developers to follow. You should also use scanning tools to detect Dockerfile issue",
+    "description": "Define and lint a container build baseline: trusted maintained base images, non-root execution, multi-stage builds, minimal runtime contents, and no embedded credentials. Use build-time secret mounts instead of copying secrets into layers; deleting them in a later layer does not remove them from image history.",
     "documentation": [
       {
-        "title": "SNYK 10 Docker Image Security Best Practices",
-        "url": "https://snyk.io/blog/10-docker-image-security-best-practices/"
+        "title": "AKS container image management best practices",
+        "url": "https://learn.microsoft.com/azure/aks/operator-best-practices-container-image-management"
       },
       {
-        "title": "21 Best Practises in 2021 for Dockerfile",
-        "url": "https://dev.to/chrisedrego/21-best-practise-in-2021-for-dockerfile-1dji"
+        "title": "Kubernetes application security checklist",
+        "url": "https://kubernetes.io/docs/concepts/security/application-security-checklist/"
       }
     ],
     "tools": [
@@ -343,26 +295,18 @@
     }
   },
   {
-    "title": "Static Analysis of Docker Images on Build",
+    "title": "Scan built container images in CI before promotion",
     "guid": "54cbc938-394e-480a-823a-51c2bcd3c66b",
     "priority": "High",
-    "description": "Introduction of DevSecOps into the environment to promote a proactive security model that starts to shift the responsibility left",
+    "description": "Scan the final image digest, including OS and application dependencies, before promotion and retain the result with the release. Integrate scanning into CI; registry or runtime scanning alone is not a synchronous build gate and cannot establish that an image is vulnerability-free.",
     "documentation": [
       {
-        "title": "Introduction to Microsoft Defender for container registries",
+        "title": "Microsoft Defender for Containers",
         "url": "https://learn.microsoft.com/azure/defender-for-cloud/defender-for-containers-introduction"
       },
       {
-        "title": "Palo Alto CI/CD Integration (twistcli)",
-        "url": "https://docs.paloaltonetworks.com/prisma/prisma-cloud/prisma-cloud-admin-compute/tools/twistcli_scan_images"
-      },
-      {
-        "title": "Qualys CI/CD Integration",
-        "url": "https://qualysguard.qg2.apps.qualys.com/cs/help/vuln_scans/docker_images.htm"
-      },
-      {
-        "title": "Clair CI/CD Integration",
-        "url": "https://github.com/quay/clair"
+        "title": "Container security in the software supply chain",
+        "url": "https://learn.microsoft.com/azure/aks/operator-best-practices-container-image-management"
       }
     ],
     "tags": [
@@ -374,15 +318,15 @@
     }
   },
   {
-    "title": "Threshold enforcement of Docker Image Builds that contain vulnerabilities",
+    "title": "Enforce risk-based vulnerability gates for image releases",
     "guid": "1a67a172-c4ca-4383-8934-a71277cb927e",
     "priority": "Medium",
-    "description": "Restrict builds with identified issues.",
-    "detail": "Use a tool that allows for the restriction of builds with enough granularity to not break development.  All Critical CVE's are not the same, so being able to restrict builds based on Critical or High vulnerabilities with a Vendor fix, but allowing builds to continue if that Critical vulnerability is 'Open'",
+    "description": "Gate image promotion using documented vulnerability severity, exploitability, exposure, and remediation deadlines. Record time-limited exceptions with owners and compensating controls.",
+    "detail": "Do not automatically allow a critical vulnerability merely because no vendor fix exists. Require explicit risk acceptance, consider replacing or removing the vulnerable component, and rescan retained and deployed image digests as new advisories appear.",
     "documentation": [
       {
-        "title": "Prisma Threshold enforcement",
-        "url": "https://docs.paloaltonetworks.com/prisma/prisma-cloud/prisma-cloud-admin-compute/vulnerability_management/vuln_management_rules.html"
+        "title": "Container vulnerability management",
+        "url": "https://learn.microsoft.com/azure/defender-for-cloud/defender-for-containers-introduction"
       }
     ],
     "tags": [
@@ -397,16 +341,16 @@
     "title": "Compliance enforcement of Docker Image Builds",
     "guid": "01ede997-e0bf-454a-bd1f-114be06a9874",
     "priority": "High",
-    "description": "Being able to assess and restrict the Compliance state of an image on build.",
-    "detail": "Identifying an image running as 'root' before it get deployed, or opening up port 80 or 22",
+    "description": "Evaluate image configuration and rendered deployment manifests against a documented security baseline before release, and enforce critical runtime settings through admission policy.",
+    "detail": "Check non-root execution, privilege escalation, capabilities, host access, and approved image sources. An exposed port alone does not establish a compliance violation, and Azure Policy admission checks do not replace Dockerfile or build-time scanning.",
     "documentation": [
       {
         "title": "Azure Built-In Policy",
         "url": "https://learn.microsoft.com/azure/aks/policy-samples"
       },
       {
-        "title": "Prisma Managing Compliance",
-        "url": "https://docs.paloaltonetworks.com/prisma/prisma-cloud/prisma-cloud-admin-compute/compliance/manage_compliance.html"
+        "title": "Pod Security Standards",
+        "url": "https://kubernetes.io/docs/concepts/security/pod-security-standards/"
       }
     ],
     "tags": [
@@ -418,14 +362,14 @@
     }
   },
   {
-    "title": "Use Azure Migrate to quick containerize your applications",
+    "title": "Assess application readiness before containerization",
     "guid": "c1c05f94-4b74-4231-9d36-aa7a56fb775e",
     "priority": "Low",
-    "description": "The App Containerization tool offers a point-and-containerize approach to repackage applications as containers with minimal to no code changes by using the running state of the application. The tool currently supports containerizing ASP.NET applications and Java web applications running on Apache Tomcat.",
+    "description": "Assess runtime and operating-system support, external dependencies, state, licensing, health endpoints, and shutdown behavior before moving an application into containers. Select currently supported migration or build tooling for the application stack; automated repackaging does not establish production readiness or remove the need for testing.",
     "documentation": [
       {
-        "title": "Accelerate application modernization with Azure Migrate: App Containerization",
-        "url": "https://aka.ms/AppContainerizationtoAKS"
+        "title": "AKS architecture best practices",
+        "url": "https://learn.microsoft.com/azure/well-architected/service-guides/azure-kubernetes-service"
       }
     ],
     "tags": [
@@ -440,11 +384,11 @@
     "title": "Apply the right deployment type to your application",
     "guid": "3abc7c0e-44c7-40fc-afce-aa4ddbf3dd81",
     "priority": "Low",
-    "description": "There are a variety of techniques to deploy new applications to production so choosing the right strategy is an important decision that needs to be made to leverage the impact of change on the consumer.",
+    "description": "Choose Deployment for replaceable services, StatefulSet for workloads requiring stable identity and storage, and Job or CronJob for finite or scheduled work. Configure rolling update surge/unavailable settings, readiness, rollout deadlines, and rollback procedures to match the workload and available capacity.",
     "documentation": [
       {
-        "title": "Kubernetes Deployment Strategies",
-        "url": "https://blog.container-solutions.com/deployment-strategies"
+        "title": "Kubernetes workload management",
+        "url": "https://kubernetes.io/docs/concepts/workloads/controllers/"
       }
     ],
     "tags": [
@@ -459,8 +403,14 @@
     "title": "Don't use naked pods",
     "guid": "980e9f76-e20a-426a-9c01-cbae1b63c5e8",
     "priority": "Low",
-    "description": "Naked pods are pods not linked to a Replicaset or a Deployment. Naked Pods will not be rescheduled in the event of a node failure.",
-    "details": "If imagePullPolicy is omitted and either the image tag is :latest or it is omitted: imagePullPolicy is automatically set to Always. Prefer to set explicitly IfNotPresent",
+    "description": "Manage production pods with a Deployment, StatefulSet, DaemonSet, Job, or other appropriate controller. Standalone pods are not recreated on another node after node loss.",
+    "detail": "Choose the controller according to lifecycle, identity, and storage requirements; a controller recreating a pod does not by itself recover data or guarantee service availability.",
+    "documentation": [
+      {
+        "title": "Kubernetes workload controllers",
+        "url": "https://kubernetes.io/docs/concepts/workloads/controllers/"
+      }
+    ],
     "tags": [
       "all",
       "resiliency",
@@ -474,7 +424,7 @@
     "title": "Control the usage of imagePullPolicy",
     "guid": "d457598a-047b-4fd7-88e5-9c61dea67f6a",
     "priority": "Low",
-    "description": "If this attributes is not properly define kubernetes downloads the container image for each new instance of the containers.",
+    "description": "Set imagePullPolicy deliberately and deploy immutable digests rather than mutable latest tags. Always resolves the image reference on each start but can reuse cached layers; IfNotPresent can run a locally cached image. Test registry outages and new-node image pulls; digest pinning improves reproducibility but does not remove registry availability requirements.",
     "documentation": [
       {
         "title": "Updating images",
@@ -491,10 +441,10 @@
     }
   },
   {
-    "title": "Use automation through ARM/TF to create your Azure resources",
+    "title": "Use version-controlled infrastructure as code for Azure resources",
     "priority": "Medium",
     "guid": "3acbe04b-be20-49d3-afda-47778424d116",
-    "description": "If this attributes is not properly define kubernetes downloads the container image for each new instance of the containers.",
+    "description": "Provision AKS and its dependencies with reviewed, version-controlled Bicep, ARM, or Terraform. Secure state and deployment identities, pin supported providers and modules, detect drift, and test repeatable environment recreation. Keep credentials out of templates and repositories.",
     "documentation": [
       {
         "title": "Create a Kubernetes cluster with Azure Kubernetes Service using Terraform",
@@ -517,11 +467,12 @@
     "title": "Use canary or blue/green deployments",
     "priority": "Medium",
     "guid": "785c2fa5-5b56-4ad4-a408-fe72734c476b",
-    "description": "This will help ensure your workloads remain online during cluster upgrades.",
+    "applicability": "Applies when application-release risk and availability targets require progressive traffic shifting or parallel application versions.",
+    "description": "Use canary or blue/green application releases where the risk justifies additional capacity and routing complexity. Define health and business-metric gates, progressive traffic shifts, rollback, and backward-compatible database changes. These strategies reduce release risk but do not guarantee availability during cluster upgrades.",
     "documentation": [
       {
-        "title": "Blue-green deployment for AKS",
-        "url": "https://learn.microsoft.com/en-us/azure/architecture/reference-architectures/containers/blue-green-deployment-for-aks/blue-green-deployment-for-aks"
+        "title": "Safe deployment practices",
+        "url": "https://learn.microsoft.com/azure/well-architected/operational-excellence/safe-deployments"
       }
     ],
     "tags": [
@@ -530,16 +481,15 @@
       "IaC"
     ],
     "optionalFields": {
-      "score": {
-        "cost": 1
-      }
+      "score": {}
     }
   },
   {
-    "title": "Use Dapr to ease microservice development",
+    "title": "Evaluate Dapr when its building blocks fit the application",
     "priority": "Low",
     "guid": "26886d20-b66c-457b-a591-19bf8e8f5c58",
-    "description": "This will help ensure your workloads remain online during cluster upgrades.",
+    "applicability": "Applies when Dapr is installed or an assessed application requirement justifies its building blocks; Dapr adoption is not a readiness requirement.",
+    "description": "Consider Dapr for service invocation, pub/sub, state, or other supported building blocks when it reduces application complexity. Evaluate sidecar resources, component authentication, mTLS, supported versions, operations, and failure modes; adopting Dapr is optional and does not ensure uptime during cluster upgrades.",
     "documentation": [
       {
         "title": "Dapr project page",
@@ -551,9 +501,27 @@
       "application"
     ],
     "optionalFields": {
-      "score": {
-        "simple": 1
-      }
+      "score": {}
     }
-  }
+  },
+      {
+        "title": "Design retries, timeouts, and idempotency for dependency failures",
+        "guid": "36fea5cd-6ac2-484d-b99a-948292221550",
+        "priority": "Medium",
+        "description": "Set bounded request timeouts, retry budgets with exponential backoff and jitter, and circuit breakers where appropriate. Make retried operations idempotent and support graceful degradation. Test dependency throttling and outages so retries and autoscaling do not amplify failure.",
+        "documentation": [
+          {
+            "title": "Retry pattern",
+            "url": "https://learn.microsoft.com/azure/architecture/patterns/retry"
+          }
+        ],
+        "tags": [
+          "all",
+          "application",
+          "resiliency"
+        ],
+        "optionalFields": {
+          "score": {}
+        }
+      }
 ]

@@ -2,7 +2,7 @@
 title:
 - The AKS Checklist
 author:
-- www.the-aks-checklist.com
+- https://aka.ms/the-aks-checklist
 date:
 - \today
 papersize:
@@ -10,7 +10,7 @@ papersize:
 fontsize:
 - 12pt
 footer-content:
-- www.the-aks-checklist.com
+- https://aka.ms/the-aks-checklist
 geometry:
 - margin=1in
 fontfamily:
@@ -23,4 +23,3 @@ titlepage-rule-color: "FFFFFF"
 titlepage-rule-height: 2
 colorlinks: true
 ---
-

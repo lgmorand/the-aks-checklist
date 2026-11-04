@@ -3,7 +3,7 @@
     "title": "Define non-functional requirements such as SLAs, RTO (Recovery Time Objective) and RPO (Recovery Point Objective)",
     "guid": "bc14aea6-e65d-48d9-a3ad-c218e6436b06",
     "priority": "High",
-    "description": "Before going to production, it is very important to decide the target of availability and recovery time you are looking for. This will help you to decide the right backup strategy but also the architecture of your solution.",
+    "description": "Define workload availability SLOs, maximum tolerable data loss (RPO), and recovery time (RTO) before production. Cover pod, node, zone, regional, deletion, and corruption scenarios along with external dependencies. Choose architecture, replication, backup frequency, retention, and recovery capacity from these targets and validate them with measured drills rather than service SLA percentages alone.",
     "documentation": [
       {
         "title": "Define the BCDR strategy",
@@ -21,11 +21,11 @@
     }
   },
   {
-    "title": "Schedule and perform DR tests regularly (whitespace deplyment)",
+    "title": "Rehearse disaster recovery and clean-environment rebuilds regularly",
     "guid": "36cb45e5-7960-4332-9bdf-8cc23318da61",
     "priority": "High",
-    "description": "A whitespace (greenfield) deployment is the exercise to delete everything and to redeploy the whole platform in an automated way.",
-    "detail": "In case of an emergency, a security flaw or datacenter failure, it's mandatory for you to be able to restore/create a new environment properly configured in a fully automated way",
+    "description": "Rebuild into an isolated recovery environment from infrastructure as code, restore representative backups, and validate application and data integrity. Do not delete production to test recovery. Rehearse node, zone, and regional failures appropriate to the workload, and measure achieved RPO and RTO.",
+    "detail": "Keep versioned runbooks with recovery order, owners, credentials and break-glass access, DNS and traffic changes, validation gates, rollback, and failback. Test without relying on the failed region's pipelines, registry endpoints, secrets, or monitoring, and record remediation actions after drills.",
     "documentation": [
       {
         "title": "Schedule and perform DR tests regularly",
@@ -47,7 +47,8 @@
     "title": "Use Availability Zones if supported in your Azure region",
     "priority": "High",
     "guid": "578a219a-46be-4b54-9350-24922634292b",
-    "description": "An Azure Kubernetes Service (AKS) cluster distributes resources such as the nodes and storage across logical sections of the underlying Azure compute infrastructure. This deployment model makes sure that the nodes run across separate update and fault domains in a single Azure datacenter.",
+    "applicability": "Availability-sensitive workloads requiring resilience to an intra-region zone failure where the Azure region, node VM sizes, and dependencies support availability zones.",
+    "description": "Where supported by region and VM SKU, distribute application node pools across availability zones and spread replicas across nodes and zones. Zones are separate datacenter failure domains within a region, not update domains in one datacenter. Align storage redundancy, load balancing, and recovery capacity; a zone-enabled cluster does not automatically make every workload or dependency zone-resilient.",
     "documentation": [
       {
         "title": "Create an AKS cluster across availability zones",
@@ -61,7 +62,7 @@
     "optionalFields": {
       "score": {
         "ha": 1,
-        "graph": "where type=='microsoft.containerservice/managedclusters' | extend compliant= isnotnull(zones) | distinct id,compliant"
+        "graph": "where type=='microsoft.containerservice/managedclusters' | mvexpand pool=properties.agentPoolProfiles | extend compliant=coalesce(array_length(pool.availabilityZones),0)>1 | project id,name=strcat(name,'-',pool.name),resourceGroup,compliant"
       }
     }
   },
@@ -69,11 +70,12 @@
     "title": "Plan for multiregion deployment",
     "guid": "4e907690-4780-492f-9632-03bcc80b7a80",
     "priority": "Medium",
-    "description": "When you deploy multiple AKS clusters, choose regions where AKS is available, and use paired regions.",
+    "applicability": "Only workloads whose availability, RPO, RTO, or regulatory requirements require recovery in another region; multiple live regions are not required for every workload.",
+    "description": "Select active-active, warm standby, or cold recovery from workload RPO/RTO, consistency, cost, and data residency requirements. Validate AKS, VM, storage, network, and quota availability in each target region and provision failover capacity. Region pairing is not mandatory for all architectures, but specific replication and Azure Backup Cross Region Restore capabilities depend on supported paired regions.",
     "documentation": [
       {
         "title": "Plan for multiregion deployment",
-        "url": "https://learn.microsoft.com/azure/aks/operator-best-practices-multi-region#plan-for-multiregion-deployment"
+        "url": "https://learn.microsoft.com/azure/aks/reliability-multi-region-deployment-models#multi-region-deployment-model-implementations"
       }
     ],
     "tags": [
@@ -85,44 +87,19 @@
     }
   },
   {
-    "title": "Use Azure Traffic Manager or Azure Front Door as a global load balancer for region failover",
-    "priority": "Low",
-    "guid": "170265f4-bb46-4a39-9af7-f317284797b1",
-    "description": "Azure Traffic Manager can direct customers to their closest AKS cluster and application instance. For the best performance and redundancy, direct all application traffic through Traffic Manager before it goes to your AKS cluster.",
-    "documentation": [
-      {
-        "title": "Traffic Manager and AKS",
-        "url": "https://learn.microsoft.com/azure/aks/operator-best-practices-multi-region#use-azure-traffic-manager-to-route-traffic"
-      },
-      {
-        "title": "Cross-region load balancer",
-        "url": "https://learn.microsoft.com/en-us/azure/load-balancer/cross-region-overview"
-      }
-    ],
-    "tags": [
-      "all",
-      "resiliency",
-      "network"
-    ],
-    "optionalFields": {
-      "score": {
-        "ha": 1
-      }
-    }
-  },
-  {
-    "title": "Create a storage migration plan",
+    "title": "Create a data replication, recovery, and failback plan",
     "guid": "8c6703c5-42e9-46ef-93f1-7f6232af25fc",
-    "priority": "Low",
-    "description": "Your applications might use Azure Storage for their data. Because your applications are spread across multiple AKS clusters in different regions, you need to keep the storage synchronized",
+    "priority": "High",
+    "applicability": "Stateful workloads and external data dependencies whose RPO and RTO require data recovery or failover across failure domains; regional replication is needed only when regional recovery targets justify it.",
+    "description": "Inventory persistent volumes and external data services and define supported replication or backup/restore for each according to RPO and RTO. Validate consistency and replication lag against RPO, including write fencing to avoid split-brain during failover. Measure recovery and failback time in drills, including data reconciliation and application restart order. Replication can propagate deletion and corruption and is not a substitute for independently retained backups.",
     "documentation": [
       {
-        "title": "Create a storage migration plan",
-        "url": "https://learn.microsoft.com/azure/aks/operator-best-practices-multi-region#create-a-storage-migration-plan"
+        "title": "AKS multi-region deployment models",
+        "url": "https://learn.microsoft.com/azure/aks/reliability-multi-region-deployment-models"
       },
       {
-        "title": "Backup, restore and migrate Kubernetes resources including state to another AKS cluster with Velero",
-        "url": "https://pumpingco.de/blog/backup-and-restore-a-kubernetes-cluster-with-state-using-velero/"
+        "title": "AKS backup and restore support matrix",
+        "url": "https://learn.microsoft.com/azure/backup/azure-kubernetes-service-cluster-backup-support-matrix"
       }
     ],
     "tags": [
@@ -135,19 +112,19 @@
     }
   },
   {
-    "title": "Use the standard-tier AKS offering",
+    "title": "Use Standard or Premium tier for production control-plane uptime SLA",
     "priority": "High",
     "guid": "71d41e36-10cc-457b-9a4b-1410d4395898",
-    "description": "standard-tier (formerly Uptime SLA) is an optional feature to enable a financially backed, higher SLA for a cluster. It provides you a 99,95% SLA instead of the 99,5% SLO and is relevant for your production (and large) clusters",
-    "detail": "Customers needing an SLA to meet compliance requirements or require extending an SLA to their end users should enable this feature. Customers with critical workloads that will benefit from a higher uptime SLA may also benefit. Using the Uptime SLA feature with Availability Zones enables a higher availability for the uptime of the Kubernetes API server.",
+    "description": "Use Standard tier for production cluster management, or Premium when long-term Kubernetes support is required. Standard and Premium include a Kubernetes API server uptime SLA of 99.95% with availability zones or 99.9% without, subject to current service terms. Free tier has no financially backed uptime SLA.",
+    "detail": "The control-plane SLA is not an end-to-end application availability guarantee. AKS Automatic is preconfigured with Standard tier and also has qualifying pod readiness SLA coverage under separate conditions; workload replicas, topology, storage, networking, and recovery still require design and testing.",
     "documentation": [
       {
         "title": "Azure Kubernetes Service (AKS) Uptime SLA",
-        "url": "https://learn.microsoft.com/en-gb/azure/aks/free-standard-pricing-tiers"
+        "url": "https://learn.microsoft.com/azure/aks/free-standard-pricing-tiers"
       },
       {
-        "title": "Business continuity / disaster recovery to protect and recover AKS",
-        "url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/scenarios/app-platform/aks/management#business-continuity--disaster-recovery-to-protect-and-recover-aks"
+        "title": "Reliability in Azure Kubernetes Service",
+        "url": "https://learn.microsoft.com/azure/reliability/reliability-aks"
       }
     ],
     "tags": [
@@ -158,20 +135,21 @@
       "score": {
         "ha": 2,
         "cost": -2,
-        "graph": "where type=='microsoft.containerservice/managedclusters' | extend compliant = (sku.tier=='Paid') | distinct id,compliant"
+        "graph": "where type=='microsoft.containerservice/managedclusters' | extend compliant = (sku.tier in~ ('Standard','Premium')) | distinct id,compliant"
       }
     }
   },
   {
-    "title": "Avoid Pods being placed into a single node",
+    "title": "Spread workload replicas across nodes and zones",
     "guid": "1eea4888-8c2a-40b2-a40b-cacdc5f55497",
-    "priority": "Low",
-    "description": "Even if you run several copies of your Pods, there are no guarantees that losing a node won't take down your service.",
-    "detail": "Customers needing an SLA to meet compliance requirements or require extending an SLA to their end users should enable this feature. Customers with critical workloads that will benefit from a higher uptime SLA may also benefit. Using the Uptime SLA feature with Availability Zones enables a higher availability for the uptime of the Kubernetes API server.",
+    "priority": "High",
+    "applicability": "Availability-sensitive workloads that need replicated serving capacity during node or zone failure; apply zone spreading where supported and required by the workload availability target.",
+    "description": "Use topology spread constraints for kubernetes.io/hostname and topology.kubernetes.io/zone, or justified anti-affinity, to distribute replicas across failure domains. Match label selectors to the intended workload and ensure enough replicas and capacity remain after a domain failure.",
+    "detail": "Choose maxSkew and DoNotSchedule versus ScheduleAnyway deliberately. Strict rules can leave replacement pods pending when a zone or capacity is unavailable; test their interaction with volume topology, taints, autoscaling, and upgrades. Scheduling constraints do not automatically rebalance every already-running pod.",
     "documentation": [
       {
-        "title": "Inter-pod affinity and anti-affinity",
-        "url": "https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#inter-pod-affinity-and-anti-affinity"
+        "title": "Pod topology spread constraints",
+        "url": "https://kubernetes.io/docs/concepts/scheduling-eviction/topology-spread-constraints/"
       }
     ],
     "tags": [
@@ -186,8 +164,9 @@
     "title": "If using a private registry (ACR), configure region replication to store images in multiple regions",
     "guid": "b0803aed-1ca6-4330-816c-92677c6e9935",
     "priority": "Medium",
-    "description": "Companies that want a local presence, or a hot backup, choose to run services from multiple Azure regions.",
-    "detail": "As a best practice, placing a container registry in each region where images are run allows network-close operations, enabling fast, reliable image layer transfers. Geo-replication enables an Azure container registry to function as a single registry, serving multiple regions with multi-master regional registries.",
+    "applicability": "Multi-region recovery scenarios where AKS depends on a private registry and required container images must remain accessible during a regional outage.",
+    "description": "For multi-region AKS deployments, evaluate ACR Premium geo-replication or another tested image-distribution strategy so recovery nodes can pull required digests during a regional outage.",
+    "detail": "ACR geo-replication is asynchronous and is not an independent backup against deletion or compromise. Confirm required images and OCI artifacts are available before regional rollout, configure private endpoints and DNS for replicas where needed, and test cold-node pulls during failover.",
     "documentation": [
       {
         "title": "Enable geo-replication for container images",
@@ -203,14 +182,15 @@
     }
   },
   {
-    "title": "Configure your registry to use zone reduncancy",
+    "title": "Verify registry regional zone support and data-plane resilience",
     "guid": "a4cefd60-f24f-4907-9723-b927300b4c42",
     "priority": "Medium",
-    "description": "Use Azure availability zones to create a resilient and high availability Azure container registry within an Azure region.",
+    "applicability": "Deployments using Azure Container Registry where registry availability is part of the workload's zone-resilience requirements.",
+    "description": "ACR data-plane zone redundancy is enabled by default for all tiers in regions supporting availability zones, including existing registries and supported geo-replicas. Verify region support rather than requiring the legacy zoneRedundancy property to be Enabled; that property no longer controls behavior. ACR Tasks do not currently support availability zones, and zone redundancy does not protect against a region-wide outage.",
     "documentation": [
       {
-        "title": "Enable zone redundancy in Azure Container Registry for resiliency and high availability",
-        "url": "https://review.learn.microsoft.com/en-us/azure/container-registry/zone-redundancy"
+        "title": "Zone redundancy in Azure Container Registry",
+        "url": "https://learn.microsoft.com/azure/container-registry/zone-redundancy"
       }
     ],
     "tags": [
@@ -222,11 +202,12 @@
     }
   },
   {
-    "title": "Move Container Registry to a dedicated resource group ",
+    "title": "Separate the registry lifecycle from disposable compute resources",
     "guid": "7b0bb400-deb6-4914-82da-2e914c9aaa72",
     "priority": "Low",
-    "description": "Because container registries are resources that are used across multiple container hosts, a registry should reside in its own resource group.",
-    "detail": "Although you might experiment with a specific host type, such as Azure Container Instances, you’ll likely want to delete the container instance when you’re done. However, you might also want to keep the collection of images you pushed to Azure Container Registry. By placing your registry in its own resource group, you minimize the risk of accidentally deleting the collection of images in the registry when you delete the container instance resource group.",
+    "applicability": "Shared or recovery-critical registries whose artifacts must outlive disposable AKS environments.",
+    "description": "Place shared registries in a resource group whose lifecycle is independent of disposable AKS environments. Apply least-privilege management access and appropriate resource locks to reduce accidental registry deletion.",
+    "detail": "Resource groups are lifecycle and management scopes, not backup boundaries. Registry resource locks do not prevent all data-plane artifact deletion; protect repository permissions and retain recoverable copies of critical release artifacts.",
     "documentation": [
       {
         "title": "Registry best practices - Use dedicated resource group",
@@ -241,10 +222,12 @@
     }
   },
   {
-    "title": "Enable soft delete policy",
+    "title": "Evaluate ACR soft delete preview and compatible artifact recovery controls",
     "guid": "49919955-fd6c-40f5-9c5c-5a7273c7a935",
     "priority": "Low",
-    "description": "Once you enable the soft delete policy, ACR manages the deleted artifacts as the soft deleted artifacts with a set retention period. Thereby you have ability to list, filter, and restore the soft deleted artifacts. Once the retention period is complete, all the soft deleted artifacts are auto-purged.",
+    "applicability": "Azure Container Registry deployments evaluating artifact deletion recovery where preview support terms and soft-delete compatibility limitations are acceptable.",
+    "description": "Where preview use is acceptable, evaluate ACR soft delete with a tested 1-90 day retention and restore process. It currently does not support geo-replicated registries or artifact cache and cannot coexist with the retention policy. Retained artifacts incur storage charges. Use another compatible recovery strategy when these limitations conflict with regional resilience requirements.",
+    "detail": "Restore tests must include multi-architecture manifests and OCI referrers: restoring a manifest list or subject does not recursively restore child manifests or signatures. Soft delete is not an independent backup against registry deletion or compromise.",
     "documentation": [
       {
         "title": "Enable soft delete policy",
@@ -259,11 +242,12 @@
     }
   },
   {
-    "title": "Use Azure Backup for AKS to protect cluster resources and persistent volumes",
+    "title": "Select and test a supported recovery solution for cluster resources and data",
     "priority": "High",
     "guid": "7e970492-1bed-4541-98f6-be550b17caa6",
-    "description": "Azure Backup for AKS provides a cloud-native, fully managed backup solution that protects both cluster configuration and persistent volumes. It automates backup operations and enables point-in-time recovery for disaster recovery scenarios.",
-    "detail": "Azure Backup for AKS supports scheduled backups, on-demand backups, and retention policies. It stores backups in a Backup vault and can restore to the same or different AKS clusters. This is critical for meeting RPO and RTO requirements and protecting against data loss, ransomware, or accidental deletion.",
+    "applicability": "Workloads with Kubernetes resources or durable data that must be recovered after loss, deletion, or corruption. Select coverage per volume type and external data service; Azure Backup-specific requirements apply only when that implementation is selected.",
+    "description": "Select Azure Backup for AKS or another supported recovery solution that meets measured RPO, RTO, retention, and consistency requirements. Inventory Kubernetes resources, PV types, excluded data, and managed external data services; configure supported protection for each and test restores for data integrity and application readiness. Protect backup resources with a lifecycle independent of disposable clusters and source data. Document dependencies on snapshots, metadata, source accounts, and regions rather than treating replication or successful backup jobs as proof of recoverability.",
+    "detail": "When using Azure Backup, Operational backups use snapshots and extension metadata storage in your subscription; eligible Azure Disk backups can also transfer to the Vault tier, but a Backup vault does not mean all backup data is vaulted. Check the live support matrix: Azure Files SMB requires CSI driver 1.32+, is Operational-tier only with at most 30-day retention, and has network, file-count, and restore-location restrictions. NFS Files, Blob CSI, Azure Container Storage, and in-tree PVs are not covered. Enable CSI snapshots, supported managed identities, a healthy Linux backup extension, Trusted Access, and required networking/RBAC; don't co-install Velero with that extension. Snapshot backups are crash-consistent, not automatically application-consistent or atomic across volumes; use supported application hooks or database-native protection when needed. Protect excluded resources and external services separately and validate that source deletion cannot remove the only recovery copy.",
     "documentation": [
       {
         "title": "Azure Backup for AKS",
@@ -272,6 +256,10 @@
       {
         "title": "Back up Azure Kubernetes Service using Azure Backup",
         "url": "https://learn.microsoft.com/azure/backup/azure-kubernetes-service-cluster-backup"
+      },
+      {
+        "title": "AKS backup support matrix and limitations",
+        "url": "https://learn.microsoft.com/azure/backup/azure-kubernetes-service-cluster-backup-support-matrix"
       }
     ],
     "tags": [
@@ -284,6 +272,85 @@
         "ha": 1,
         "cost": -1
       }
+    }
+  },
+   {
+       "title": "Match backup tiers and cross-region restore to measured RPO and RTO",
+       "guid": "2791ada8-c9b4-4a1a-9071-f222b0ddeee2",
+       "priority": "High",
+       "applicability": "Only deployments selecting Azure Backup for AKS; assess Vault tier and Cross Region Restore only when their supported scenarios are needed to meet recovery requirements.",
+       "description": "Validate backup cadence, completion, tiering, replication lag, and restore duration against recovery targets. Operational AKS backups have a minimum scheduled interval of four hours and restore within the source region. Vault-tier recovery points are daily for eligible Azure Disks; Cross Region Restore requires supported paired regions, a geo-redundant Backup vault, and Cross Region Restore enabled.",
+       "detail": "The current matrix describes up to 24-hour primary-region and up to 36-hour secondary-region vaulted RPO, not continuous point-in-time recovery. Vaulting is region-limited and currently supports at most 100 Azure Disk PVs per backup instance with disks no larger than 1 TB, public disk network access enabled, and no Disk Encryption Set or Microsoft Entra data-access authentication. Azure Files is not eligible. Do not weaken required security controls simply to enable vaulting; choose another supported recovery strategy when necessary. Test target-cluster capacity, compatible APIs, identities, networking, recovery order, and cleanup of staged restore resources.",
+       "documentation": [
+         {
+           "title": "Vaulted backup and Cross Region Restore limitations",
+           "url": "https://learn.microsoft.com/azure/backup/azure-kubernetes-service-cluster-backup-support-matrix#supported-scenarios-and-limitations-specific-for-vaulted-backup-and-cross-region-restore"
+         }
+       ],
+       "tags": [
+         "all",
+         "resiliency",
+         "storage"
+       ],
+       "optionalFields": {
+         "score": {}
+       }
+   },
+   {
+       "title": "Protect recovery points from deletion and monitor restore readiness",
+       "guid": "ee9a106c-d68b-4dd1-82fb-5cb183b50efc",
+       "priority": "High",
+       "applicability": "Only deployments using Azure Backup for AKS. For other recovery implementations, assess equivalent deletion protection, monitoring, and restore readiness under the recovery-solution control.",
+       "description": "Separate backup administration from workload administration and evaluate supported vault immutability, enhanced soft delete, and multi-user authorization. Alert on backup failures, skipped volumes, stale recovery points, and vault-tier transfer failures. Validate restore permissions and recovery-point usability through drills.",
+       "detail": "Vault protections do not automatically protect Operational-tier snapshots or extension metadata in your subscription. Azure Files snapshots depend on the source share and account lifecycle. Confirm supported resource-lock behavior, deletion permissions, and retention for each storage type rather than treating successful configuration as ransomware protection.",
+       "documentation": [
+         {
+           "title": "AKS backup supported protection features and limitations",
+           "url": "https://learn.microsoft.com/azure/backup/azure-kubernetes-service-cluster-backup-support-matrix"
+         }
+       ],
+       "tags": [
+         "all",
+         "resiliency",
+         "storage",
+         "security"
+       ],
+       "optionalFields": {
+         "score": {}
+       }
+   },
+   {
+       "title": "Configure disruption budgets and test maintenance capacity",
+       "guid": "d695618d-6d63-471f-bc4b-a4231fe2d573",
+       "related": [
+         "de1b6b38-4fa9-4f6e-ab92-d824346dd20c",
+         "dc4828a3-fc4f-4ac5-8844-122b8482dbb1",
+         "1eea4888-8c2a-40b2-a40b-cacdc5f55497"
+       ],
+       "supersedes": [
+         "3c763963-7a55-42d5-a15e-401955387e5c"
+       ],
+       "priority": "High",
+       "applicability": "Replicated availability-sensitive workloads managed through the Eviction API during drains, upgrades, or consolidation; not a blanket requirement for restartable batch jobs or workloads that deliberately accept interruption.",
+       "description": "Create separate policy/v1 PodDisruptionBudget objects with selectors matching replicated services and tested minAvailable or maxUnavailable values. Verify healthy replicas, allowed disruptions, and spare scheduling capacity so drains and upgrades can progress within the workload availability target. Test eviction behavior with unhealthy pods and measure drain completion time; configure readiness, rollout strategy, replicas, and topology separately.",
+       "detail": "PDBs constrain voluntary Eviction API operations such as normal node drains, not hardware or zone failures, direct pod deletion, or Deployment and StatefulSet rolling updates. Involuntary disruptions can reduce the remaining disruption allowance but aren't prevented by the budget. A zero-disruption budget can block maintenance; permit at least one eviction where the workload allows it and document coordination when it doesn't. Consider unhealthyPodEvictionPolicy: AlwaysAllow when an unhealthy pod would otherwise block draining, and test that policy against application recovery behavior. A PDB isn't an uptime guarantee.",
+       "documentation": [
+         {
+           "title": "Limit disruption impact with pod disruption budgets",
+           "url": "https://learn.microsoft.com/azure/aks/operator-best-practices-scheduler#limit-disruption-impact-by-using-pod-disruption-budgets-pdbs"
+         },
+         {
+           "title": "Specifying a disruption budget for your application",
+           "url": "https://kubernetes.io/docs/tasks/run-application/configure-pdb/"
+         }
+       ],
+       "tags": [
+         "all",
+         "resiliency",
+         "application"
+       ],
+       "optionalFields": {
+         "score": {}
+       }
    }
-  }
 ]
