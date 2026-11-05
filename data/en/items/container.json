@@ -3,21 +3,21 @@
     "title": "Scan the container image against vulnerabilities",
     "priority": "High",
     "guid": "59bce65d-e8a0-43f9-9879-468d66a786d6",
-    "description": "Scan your container images to ensure there are no vulnerabilities in it",
+    "description": "Scan operating-system packages and application dependencies in container images during build and continuously after publication. Triage findings using exploitability and exposure, enforce remediation targets, and verify deployed image digests. A clean scan does not prove that an image is free of vulnerabilities.",
     "documentation": [
       {
         "title": "Azure Security Center : scanning feature (Qualys)",
-        "url": "https://learn.microsoft.com/azure/security-center/azure-container-registry-integration"
+        "url": "https://learn.microsoft.com/en-us/azure/defender-for-cloud/defender-for-container-registries-introduction"
       },
       {
         "title": "Identify vulnerable container images in your CI/CD workflows",
-        "url": "https://learn.microsoft.com/azure/defender-for-cloud/defender-for-containers-cicd"
+        "url": "https://learn.microsoft.com/en-us/azure/defender-for-cloud/defender-for-devops-introduction"
       }
     ],
     "tools": [
       {
         "title": "Prisma (ex Twistlock)",
-        "url": "https://www.twistlock.com/"
+        "url": "https://www.paloaltonetworks.com/prisma/cloud"
       },
       {
         "title": "Anchore",
@@ -47,15 +47,15 @@
     "documentation": [
       {
         "title": "Use the Azure Policy : Ensure only allowed container images in AKS",
-        "url": "https://learn.microsoft.com/azure/governance/policy/concepts/rego-for-aks#built-in-policies"
+        "url": "https://learn.microsoft.com/en-us/azure/governance/policy/concepts/policy-for-kubernetes"
       },
       {
         "title": "Using ImagePolicyWebhook",
-        "url": "https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#imagepolicywebhook"
+        "url": "https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/"
       },
       {
         "title": "Using egress lockdown and authorizing only the URL of your registry",
-        "url": "https://learn.microsoft.com/azure/aks/limit-egress-traffic"
+        "url": "https://learn.microsoft.com/en-us/azure/aks/limit-egress-traffic"
       }
     ],
     "tags": [
@@ -67,38 +67,33 @@
     }
   },
   {
-    "title": "Runtime Security of Applications",
+    "title": "Detect and respond to container runtime threats",
     "guid": "a71e024f-ac46-4d0e-86d8-fad9a86c99af",
     "priority": "High",
-    "description": "Integrate Runtime Security for your pods.  To complete the defense in depth structure, ensure Runtime protection is in place to protect from process, network, storage and system call attacks.",
-    "tools": [
-      {
-        "title": "Prisma Runtime defense",
-        "url": "https://docs.paloaltonetworks.com/prisma/prisma-cloud/prisma-cloud-admin-compute/runtime_defense.html"
-      },
-      {
-        "title": "Falco",
-        "url": "https://falco.org"
-      }
-    ],
+    "description": "Enable supported runtime threat detection, such as Microsoft Defender for Containers, and route alerts into incident response. Validate required sensors and permissions, investigate suspicious process and network activity, and rehearse containment without assuming a sensor prevents every attack.",
     "tags": [
       "all",
       "security"
     ],
     "optionalFields": {
       "score": {}
-    }
+    },
+    "documentation": [
+      {
+        "title": "Runtime threat protection",
+        "url": "https://learn.microsoft.com/en-us/azure/defender-for-cloud/defender-for-containers-introduction"
+      }
+    ]
   },
   {
-    "title": "Quarantine of Docker Images in Docker Registries that have discovered issues",
+    "title": "Prevent promotion of images that violate current policy",
     "guid": "c970cb26-a707-4bf2-9e40-5401fea3d55b",
     "priority": "High",
-    "description": "Use policy to protect images from drift while in the registry, on both push and pull.",
-    "detail": "On build, the image is secured based on the threshold set, but now while in the registry a new issue is discovered.  You need to ensure that the image can not be deployed until the issue is remediated.",
+    "description": "Continuously rescan stored images and block release promotion or admission when they violate approved risk policy. Verify that quarantine tooling is supported and enforced by every pull path; a registry scan alone does not block deployment.",
     "documentation": [
       {
-        "title": "ACR Quarantine",
-        "url": "https://github.com/Azure/acr/tree/master/docs/preview/quarantine"
+        "title": "Prevent promotion of images that violate current policy",
+        "url": "https://learn.microsoft.com/en-us/azure/defender-for-cloud/agentless-vulnerability-assessment-azure"
       }
     ],
     "tags": [
@@ -110,14 +105,14 @@
     }
   },
   {
-    "title": "Role-Based Access Contol (RBAC) to Docker Registries",
+    "title": "Scope registry roles to the required repositories and actions",
     "guid": "3f703579-9f4a-43c4-8c40-5a9e78015379",
     "priority": "High",
-    "description": "The Azure Container Registry service supports a set of built-in Azure roles that provide different levels of permissions to an Azure container registry. Use Azure role-based access control (RBAC) to assign specific permissions to users, service principals, or other identities that need to interact with a registry.",
+    "description": "Separate image push, pull, delete, signing, and administrative permissions. For ABAC-enabled registries, use supported repository roles and conditions rather than assuming AcrPull/AcrPush applies. Audit assignments and keep the registry admin user disabled.",
     "documentation": [
       {
-        "title": "Azure Container Registry roles and permissions",
-        "url": "https://learn.microsoft.com/azure/container-registry/container-registry-roles"
+        "title": "Scope registry roles to the required repositories and actions",
+        "url": "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-rbac-built-in-roles-overview"
       }
     ],
     "tags": [
@@ -136,7 +131,7 @@
     "documentation": [
       {
         "title": "Azure Container Registry Private Link",
-        "url": "https://learn.microsoft.com/azure/container-registry/container-registry-private-link"
+        "url": "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-private-endpoints"
       }
     ],
     "tags": [
@@ -149,14 +144,13 @@
     }
   },
   {
-    "title": "Prefer distroless images",
+    "title": "Use minimal, maintained base images",
     "guid": "f57ba3a5-93ae-435f-9468-80ccd6a841b9",
     "priority": "Medium",
-    "description": "When building a docker image, try to use the distroless version of the base OS image, to reduce the risk of vulnerabilities with preinstalled but unused tools. From example, use base-debian10 instead of debian10",
-    "detail": "'Distroless' images are bare-bones versions of common base images. They have the bare-minimum needed to execute a binary.The shell and other developer utilities have been removed so that if/when an attacker gains control of your container, they can't do much of anything",
+    "description": "Choose supported, regularly patched minimal or distroless images compatible with the application. Do not use end-of-life Debian 10 examples. Removing a shell reduces attack surface but does not prevent exploitation; retain a controlled debug workflow.",
     "documentation": [
       {
-        "title": "Google distroless images",
+        "title": "Use minimal, maintained base images",
         "url": "https://github.com/GoogleContainerTools/distroless"
       }
     ],
@@ -176,7 +170,7 @@
     "documentation": [
       {
         "title": "Automatically build new images on base image update",
-        "url": "https://learn.microsoft.com/azure/aks/operator-best-practices-container-image-management#automatically-build-new-images-on-base-image-update"
+        "url": "https://learn.microsoft.com/en-us/azure/aks/operator-best-practices-container-image-management"
       },
       {
         "title": "Azure DevOps - Trigger pipeline from Docker image update",
@@ -190,5 +184,39 @@
     "optionalFields": {
       "score": {}
     }
+  },
+  {
+    "title": "Generate SBOMs and verify artifact provenance",
+    "priority": "High",
+    "guid": "789abf8e-f640-4bb8-a98f-5a7583d1bc7c",
+    "description": "Generate an SBOM for each release, retain build provenance, and sign immutable artifacts using supported OCI signing tools. Verify signatures and trusted identities during release or admission; signing without verification does not establish a supply-chain control.",
+    "documentation": [
+      {
+        "title": "Generate SBOMs and verify artifact provenance",
+        "url": "https://learn.microsoft.com/en-us/azure/container-registry/overview-sign-verify-artifacts"
+      }
+    ],
+    "tags": [
+      "all",
+      "container",
+      "security"
+    ]
+  },
+  {
+    "title": "Retain and replicate the artifacts required for recovery",
+    "priority": "Medium",
+    "guid": "e2f4cce0-f4a7-4311-a5a1-713c4cef2036",
+    "description": "Keep known-good image digests, Helm charts, manifests, and signatures available for the recovery window. Test pulls from the recovery region, registry private DNS, retention rules, and access identities; avoid deleting an image still referenced by production or rollback plans.",
+    "documentation": [
+      {
+        "title": "Retain and replicate the artifacts required for recovery",
+        "url": "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-geo-replication"
+      }
+    ],
+    "tags": [
+      "all",
+      "container",
+      "resiliency"
+    ]
   }
 ]

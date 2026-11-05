@@ -1,17 +1,13 @@
 [
   {
-    "title": "Map the base image to node OS",
+    "title": "Match Windows base images to a supported node OS",
     "guid": "4d3e8a06-b724-43a3-b9b9-328a08325c61",
     "priority": "High",
-    "description": "Windows has strict compatibility rules, where the host OS version must match the container base image OS version. Only Windows containers with a container operating system of Windows Server 2019 are supported.",
+    "description": "Validate the supported Windows host/container compatibility matrix. Windows Server 2019 node-pool support ended on 1 March 2026 and images are scheduled for removal on 1 April 2027. Migrate to a supported LTSC release such as Windows Server 2022 or 2025 after compatibility testing.",
     "documentation": [
       {
-        "title": "Windows container version compatibility",
-        "url": "https://learn.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility"
-      },
-      {
-        "title": "Limitations of Windows containers",
-        "url": "https://kubernetes.io/docs/setup/production-environment/windows/intro-windows-in-kubernetes/#supported-functionality-and-limitations"
+        "title": "Match Windows base images to a supported node OS",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/windows-vs-linux-containers"
       }
     ],
     "tags": [
@@ -23,18 +19,14 @@
     }
   },
   {
-    "title": "Prepare your application for an abrupt kill",
+    "title": "Test graceful shutdown and recovery on Windows",
     "guid": "fce3ccf3-5f62-4ad6-b945-845362777529",
     "priority": "Medium",
-    "description": "TerminationGracePeriod is not implemented on Windows containers",
+    "description": "Test SIGTERM-equivalent Windows shutdown behavior, preStop hooks, terminationGracePeriodSeconds, and actual application cleanup on supported Windows images. Avoid blanket claims that graceful termination is unavailable; design for abrupt failure and verify behavior during upgrades.",
     "documentation": [
       {
-        "title": "Understand pod lifecycle",
-        "url": "https://cloud.google.com/blog/products/gcp/kubernetes-best-practices-terminating-with-grace"
-      },
-      {
-        "title": "Limitations of Windows containers",
-        "url": "https://kubernetes.io/docs/setup/production-environment/windows/intro-windows-in-kubernetes/#supported-functionality-and-limitations"
+        "title": "Test graceful shutdown and recovery on Windows",
+        "url": "https://kubernetes.io/docs/concepts/windows/intro/"
       }
     ],
     "tags": [
@@ -46,14 +38,14 @@
     }
   },
   {
-    "title": "Don't use privileged containers",
+    "title": "Restrict Windows HostProcess and administrative privileges",
     "guid": "bd773172-40dc-4502-b284-137c70d77bc9",
     "priority": "Medium",
-    "description": "Windows containers do not support elevation of privilege",
+    "description": "Run applications as a non-administrative identity where supported. Windows does not use Linux privileged-container semantics, but HostProcess containers can access the host and require tightly restricted admission, identities, and namespaces.",
     "documentation": [
       {
-        "title": "Limitations of Windows containers",
-        "url": "https://kubernetes.io/docs/setup/production-environment/windows/intro-windows-in-kubernetes/#supported-functionality-and-limitations"
+        "title": "Restrict Windows HostProcess and administrative privileges",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/use-windows-hpc"
       }
     ],
     "tags": [
@@ -65,14 +57,14 @@
     }
   },
   {
-    "title": "Watch for memory usage",
+    "title": "Set and monitor Windows memory requests and limits",
     "guid": "dea429d5-2c10-480c-85a1-9d9d0c4afc3d",
     "priority": "Medium",
-    "description": "There are no OOM eviction actions taken by the kubelet. Windows always treats all user-mode memory allocations as virtual, and pagefiles are mandatory. If memory is over-provisioned and all physical memory is exhausted, then paging can slow down performance.",
+    "description": "Size Windows nodes and container memory using measured working sets and system reservations. Validate eviction and OOM behavior for the actual Windows/runtime version, alert on pressure, and test recovery rather than assuming Linux memory-management behavior.",
     "documentation": [
       {
-        "title": "Limitations of Windows containers",
-        "url": "https://kubernetes.io/docs/setup/production-environment/windows/intro-windows-in-kubernetes/#supported-functionality-and-limitations"
+        "title": "Set and monitor Windows memory requests and limits",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/windows-vs-linux-containers"
       }
     ],
     "tags": [
@@ -84,14 +76,14 @@
     }
   },
   {
-    "title": "Implement CNI network mode",
+    "title": "Choose a supported Azure CNI model for Windows",
     "guid": "3922e5b0-fa6b-4020-a92e-2e0d76338e95",
     "priority": "High",
-    "description": "AKS clusters with Windows node pools must use the Azure CNI (advanced) networking model. Kubenet (basic) networking is not supported. ",
+    "description": "Use a Windows-supported Azure CNI configuration, including Overlay where supported for the selected versions. Kubenet and the Linux Cilium data plane are not Windows networking options. Validate policy-engine and IPAM support before provisioning.",
     "documentation": [
       {
-        "title": "What network plug-ins are supported?",
-        "url": "https://learn.microsoft.com/azure/aks/windows-node-limitations#what-network-plug-ins-are-supported"
+        "title": "Choose a supported Azure CNI model for Windows",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/azure-cni-overlay"
       }
     ],
     "tags": [
@@ -106,15 +98,15 @@
     "title": "Keep windows containers patch level in sync with host patch level",
     "priority": "High",
     "guid": "67138b82-0102-4ce1-9ee3-01e6e882e52e",
-    "description": "Windows Server nodes in AKS must be upgraded to get the latest patch fixes and updates. Windows Updates are not enabled on nodes in AKS. AKS releases new node pool images as soon as patches are available, it is the customers responsibility to upgrade node pools to stay current on patches and hotfix. ",
+    "description": "Windows Server nodes in AKS must be upgraded to get the latest patch fixes and updates. Windows Updates are not enabled on nodes in AKS. AKS releases new node pool images as soon as patches are available, it is the customers responsibility to upgrade node pools to stay current on patches and hotfix.",
     "documentation": [
       {
         "title": "Windows container version compatibility",
-        "url": "https://learn.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility?tabs=windows-server-20H2%2Cwindows-10-20H2"
+        "url": "https://learn.microsoft.com/en-us/virtualization/windowscontainers/deploy-containers/version-compatibility?tabs=windows-server-20H2%2Cwindows-10-20H2"
       },
       {
         "title": "How do patch my Windows nodes? ",
-        "url": "https://learn.microsoft.com/azure/aks/windows-node-limitations#how-do-patch-my-windows-nodes"
+        "url": "https://learn.microsoft.com/en-us/azure/aks/windows-faq"
       }
     ],
     "tags": [
@@ -126,14 +118,14 @@
     }
   },
   {
-    "title": "Secure the traffic of your containers",
+    "title": "Validate network policy enforcement on Windows",
     "guid": "74e42965-8bbd-46fb-b027-ccad9c3933a4",
     "priority": "High",
-    "description": "Network policies are currently not supported, ensure that the containerized applications have a layer of protection like authentication ",
+    "description": "Do not assume Linux and Windows share the same network policy capabilities. Azure NPM on Windows is unsupported from 30 September 2026; select a supported alternative such as Calico after validating the exact OS, network model, and version matrix.",
     "documentation": [
       {
-        "title": "Limitations of Windows containers",
-        "url": "https://kubernetes.io/docs/setup/production-environment/windows/intro-windows-in-kubernetes/#supported-functionality-and-limitations"
+        "title": "Validate network policy enforcement on Windows",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/use-network-policies"
       }
     ],
     "tags": [
@@ -152,7 +144,7 @@
     "documentation": [
       {
         "title": "Enable Group Managed Service Accounts (GMSA) for your Windows Server nodes",
-        "url": "https://learn.microsoft.com/en-gb/azure/aks/use-group-managed-service-accounts"
+        "url": "https://learn.microsoft.com/en-us/azure/aks/use-group-managed-service-accounts"
       }
     ],
     "tags": [
@@ -176,7 +168,7 @@
     "documentation": [
       {
         "title": "Use Windows HostProcess containers",
-        "url": "https://learn.microsoft.com/azure/aks/use-windows-hpc"
+        "url": "https://learn.microsoft.com/en-us/azure/aks/use-windows-hpc"
       }
     ],
     "tags": [
@@ -192,13 +184,13 @@
   },
   {
     "title": "Taint Windows nodes",
-    "priority": "low",
+    "priority": "Low",
     "guid": "c1881370-6f7c-44c0-b4e5-14648d2457ed",
     "description": "Adding taints, tolerations and node selectors will help avoid having pods scheduled in the wrong OS node pool",
     "documentation": [
       {
-        "title": "Adapt apps for mixed-OS Kubernetes clusters using node selectors or taints and tolerations",
-        "url": "https://learn.microsoft.com/en-us/azure/aks/hybrid/adapt-apps-mixed-os-clusters"
+        "title": "Scheduling Windows containers",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/windows-best-practices"
       }
     ],
     "tags": [
@@ -214,14 +206,14 @@
     }
   },
   {
-    "title": "For Windows 2019 and 2022 AKS nodes Calico Network Policies can be us",
+    "title": "Migrate Windows Azure NPM policy before relying on enforcement",
     "priority": "Medium",
     "guid": "ce7f2a7c-297c-47c6-adea-a6ff838db665",
-    "description": "For Windows 2019 and 2022 AKS nodes Calico Network Policies can be use",
+    "description": "Inventory Windows pools using Azure Network Policy Manager, whose AKS Windows support ended on 30 September 2026. Follow supported migration guidance and test positive and negative connectivity cases with the replacement engine.",
     "documentation": [
       {
-        "title": "Secure traffic between pods using network policies",
-        "url": "https://learn.microsoft.com/azure/aks/use-network-policies"
+        "title": "Migrate Windows Azure NPM policy before relying on enforcement",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/use-network-policies"
       }
     ],
     "tags": [
@@ -233,20 +225,19 @@
     "optionalFields": {
       "score": {
         "security": 1,
-        "simple": -1,
-        "graph": "where type=='microsoft.containerservice/managedclusters' | where isnotnull(properties.apiServerAccessProfile.enablePrivateCluster) | extend compliant = (properties.apiServerAccessProfile.enablePrivateCluster==true) | distinct id, compliant"
+        "simple": -1
       }
     }
   },
   {
-    "title": "For Windows workloads use Accelerated Networking",
+    "title": "Validate accelerated networking for Windows node SKUs",
     "priority": "Medium",
     "guid": "7bacd7b9-c025-4a9d-a5d2-25d6bc5439d9",
-    "description": "For Windows workloads use Accelerated Networking",
+    "description": "Select a supported Windows VM size and verify accelerated networking availability and actual enablement. Benchmark throughput and latency, and include driver and node-image compatibility in upgrade testing.",
     "documentation": [
       {
-        "title": "What is Accelerated Networking?",
-        "url": "https://learn.microsoft.com/azure/virtual-network/accelerated-networking-overview"
+        "title": "Accelerated networking overview",
+        "url": "https://learn.microsoft.com/en-us/azure/virtual-network/accelerated-networking-overview"
       }
     ],
     "tags": [
@@ -257,9 +248,25 @@
     "optionalFields": {
       "score": {
         "scale": 1,
-        "simple": -1,
-        "graph": "where type=='microsoft.containerservice/managedclusters' | extend compliant = (isnull(properties.addonProfiles.httpApplicationRouting) or properties.addonProfiles.httpApplicationRouting.enabled==false) | distinct id,compliant"
+        "simple": -1
       }
     }
+  },
+  {
+    "title": "Track Windows LTSC and Annual Channel retirement dates",
+    "priority": "High",
+    "guid": "ed48a9ab-a180-4832-ac04-cc6eddd360a2",
+    "description": "Windows Server Annual Channel preview support ended on 15 May 2026, with image removal scheduled for 15 May 2027. Windows Server 2022 AKS support is scheduled to end on 30 June 2028, with image removal on 30 June 2029. Plan LTSC migration against current version and OS support matrices.",
+    "documentation": [
+      {
+        "title": "Track Windows LTSC and Annual Channel retirement dates",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/windows-vs-linux-containers"
+      }
+    ],
+    "tags": [
+      "all",
+      "windows",
+      "lifecycle"
+    ]
   }
 ]

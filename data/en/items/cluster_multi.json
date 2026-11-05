@@ -1,13 +1,13 @@
 [
   {
-    "title": "Logically isolate cluster",
+    "title": "Use logical isolation for mutually trusted tenants",
     "guid": "49be78dc-6ff0-4b2c-94ef-e74002e18866",
     "priority": "Medium",
-    "description": "Use logical isolation to separate teams and projects. Try to minimize the number of physical AKS clusters you deploy to isolate teams or applications",
+    "description": "Combine namespaces, scoped RBAC, resource quotas, admission policy, and network policies for trusted tenants. A namespace alone is not a security boundary and does not isolate cluster-scoped resources or a shared kernel.",
     "documentation": [
       {
-        "title": "Isolating cluster",
-        "url": "https://learn.microsoft.com/azure/aks/operator-best-practices-cluster-isolation#logically-isolate-clusters"
+        "title": "Use logical isolation for mutually trusted tenants",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/operator-best-practices-cluster-isolation"
       }
     ],
     "tags": [
@@ -19,14 +19,14 @@
     }
   },
   {
-    "title": "Physically isolate cluster",
+    "title": "Use separate clusters for incompatible trust boundaries",
     "guid": "3b77c0ee-3f84-4a86-bb46-c6dc3070168c",
     "priority": "High",
-    "description": "Minimize the use of physical isolation for each separate team or application deployment",
+    "description": "Choose separate clusters or subscriptions where tenants are untrusted, compliance demands stronger isolation, or lifecycle and blast-radius requirements differ. Balance operational cost against the risk of a shared control plane and nodes.",
     "documentation": [
       {
-        "title": "Isolating cluster",
-        "url": "https://learn.microsoft.com/azure/aks/operator-best-practices-cluster-isolation#physically-isolate-clusters"
+        "title": "Use separate clusters for incompatible trust boundaries",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/operator-best-practices-cluster-isolation"
       }
     ],
     "tags": [
@@ -48,7 +48,7 @@
       },
       {
         "title": "Use Azure tags in Azure Kubernetes Service (AKS)",
-        "url": "https://techcommunity.microsoft.com/t5/fasttrack-for-azure/use-azure-tags-in-azure-kubernetes-service-aks/ba-p/3611583"
+        "url": "https://techcommunity.microsoft.com/blog/fasttrackforazureblog/use-azure-tags-in-azure-kubernetes-service-aks/3611583"
       }
     ],
     "tags": [

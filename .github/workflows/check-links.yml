@@ -1,0 +1,22 @@
+name: Documentation link audit
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '20 6 * * 1'
+permissions:
+  contents: read
+jobs:
+  links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+      - run: npm run check:links
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: documentation-link-audit
+          path: output/link-audit.json
+          retention-days: 30

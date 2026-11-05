@@ -1,0 +1,33 @@
+{
+  "reviewed": "2026-11-05",
+  "edition": "November 2026",
+  "categories": [
+    { "id": "architecture", "title": "Architecture & governance", "summary": "Start with business outcomes, shared responsibility, and a deliberate platform design.", "fta": "Architecture and Governance" },
+    { "id": "identity", "title": "Identity & access", "summary": "Use Microsoft Entra ID, least privilege, and secretless access.", "fta": "Identity and Access Management", "legacy": "identity---authorization" },
+    { "id": "cluster_security", "title": "Cluster security", "summary": "Harden the platform and enforce a measurable security baseline.", "fta": "Governance and Security", "legacy": "cluster-security" },
+    { "id": "cluster_multi", "title": "Multi-tenancy & isolation", "summary": "Match isolation boundaries to trust, ownership, and regulatory requirements.", "fta": "Resource Organization and Cost Governance", "legacy": "multi-tenant---isolation" },
+    { "id": "networking", "title": "Networking & ingress", "summary": "Design address space, private connectivity, ingress, and outbound dependencies.", "fta": "Network Topology and Connectivity", "legacy": "networking" },
+    { "id": "storage", "title": "Storage & data", "summary": "Choose durable storage deliberately and test how data survives disruption.", "fta": "Storage", "legacy": "storage" },
+    { "id": "resource_management", "title": "Resources & scaling", "summary": "Right-size workloads and scale nodes and applications without surprises.", "fta": "Resource Organization and Cost Governance", "legacy": "resource-management" },
+    { "id": "operations", "title": "Cluster operations", "summary": "Automate day-two work and make changes repeatable and recoverable.", "fta": "Operations", "legacy": "cluster-operations" },
+    { "id": "lifecycle", "title": "Lifecycle & retirements", "summary": "Stay supported. Track Kubernetes, node operating systems, APIs, and add-ons.", "fta": "Lifecycle and Support" },
+    { "id": "observability", "title": "Observability & incident response", "summary": "Connect metrics, logs, traces, and actionable alerts to service objectives.", "fta": "Observability" },
+    { "id": "bc_dr", "title": "Reliability & disaster recovery", "summary": "Validate availability, recovery objectives, backups, and regional failover.", "fta": "BC and DR", "legacy": "biz-continuity---disaster-recovery" },
+    { "id": "windows", "title": "Windows workloads", "summary": "Account for Windows-specific compatibility, identity, and operational constraints.", "fta": "Windows", "legacy": "windows" },
+    { "id": "application", "title": "Application delivery", "summary": "Ship resilient workloads with safe rollouts and explicit runtime contracts.", "fta": "Application Deployment", "legacy": "application-deployment" },
+    { "id": "container", "title": "Images & supply chain", "summary": "Build, verify, patch, and distribute trusted container artifacts.", "fta": "Governance and Security", "legacy": "image-management" },
+    { "id": "cost", "title": "Cost & sustainability", "summary": "Measure unit costs and balance efficiency with reliability and operational effort.", "fta": "Cost and Sustainability" }
+  ],
+  "notices": [
+    {
+      "title": "Ingress migration is time-sensitive",
+      "text": "Upstream Ingress NGINX maintenance ended in March 2026. AKS application routing NGINX critical-security-patch support runs through November 2026. Plan and test a supported Gateway API migration now.",
+      "url": "https://learn.microsoft.com/en-us/azure/aks/app-routing-nginx-to-gateway-api-migration"
+    },
+    {
+      "title": "Retired is not production-ready",
+      "text": "Replace Azure Linux 2.0, Windows Server 2019, and the retired pod-managed identity add-on. Upgrade Basic Load Balancer and Availability Sets. Migrate kubenet before 31 March 2028.",
+      "url": "https://learn.microsoft.com/en-us/azure/aks/concepts-network-legacy-cni"
+    }
+  ]
+}

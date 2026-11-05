@@ -1,12 +1,12 @@
 [
   {
-    "title": "Implement a proper Liveness probe",
+    "title": "Implement liveness probes that detect unrecoverable local failure",
     "guid": "2e9ed573-38b2-4856-a7f9-676d9ab604e1",
     "priority": "High",
-    "description": "Many applications running for long periods of time eventually transition to broken states, and cannot recover except by being restarted. Kubernetes provides liveness probes to detect and remedy such situations. The probe is here to tell Kubernetes to restart your pod when it is not responding anymore",
+    "description": "Use a liveness probe only when restarting the container can resolve a failure. Avoid coupling liveness to a shared downstream dependency, which can trigger restart storms during an outage. Test thresholds under load.",
     "documentation": [
       {
-        "title": "Configure Liveness, Readiness and Startup Probes",
+        "title": "Implement liveness probes that detect unrecoverable local failure",
         "url": "https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/"
       }
     ],
@@ -19,13 +19,13 @@
     }
   },
   {
-    "title": "Implement a proper Startup probe",
+    "title": "Protect slow startup with a startup probe",
     "guid": "a066989c-9dce-4712-bce3-4eef36f8c0c2",
     "priority": "Medium",
-    "description": "Protect slow starting containers with startup probes. Startup probe allow to delay the initial check by liveness which could cause deadlock or wrong result",
+    "description": "Configure a startup probe with a failure budget covering the measured worst-case startup. Liveness and readiness probes do not run until the startup probe succeeds; test image pulls and cold initialization separately.",
     "documentation": [
       {
-        "title": "Configure Liveness, Readiness and Startup Probes",
+        "title": "Protect slow startup with a startup probe",
         "url": "https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/"
       }
     ],
@@ -57,14 +57,14 @@
     }
   },
   {
-    "title": "Implement a proper prestop hook",
+    "title": "Implement graceful termination and connection draining",
     "guid": "dc4828a3-fc4f-4ac5-8844-122b8482dbb1",
     "priority": "Low",
-    "description": "This hook is called immediately before a container is terminated due to an API request or management event such as liveness probe failure, preemption, resource contention and others. It can be used when you have critical process you want to finish or save when your pod is destroyed for any reason",
+    "description": "Handle termination signals, configure terminationGracePeriodSeconds, and use preStop only where needed. Allow in-flight requests to drain and test rolling updates and node drains. Hooks are not guaranteed during every failure, so persist critical state safely.",
     "documentation": [
       {
-        "title": "Container Lifecycle Hooks",
-        "url": "https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/"
+        "title": "Implement graceful termination and connection draining",
+        "url": "https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/"
       }
     ],
     "tags": [
@@ -76,10 +76,10 @@
     }
   },
   {
-    "title": "Run more than one replica for your Deployment",
+    "title": "Run enough replicas for the availability target",
     "guid": "4f1f88f9-98a3-48f5-a37f-4d9c9aecbb11",
     "priority": "Medium",
-    "description": "Ensure that your application always configure proper replicas to ensure resiliency in the event of a pod crashing or being evicted.",
+    "description": "Use multiple replicas for services that require high availability, and spread them across nodes and zones. Test that the remaining replicas can serve peak demand during failure or maintenance; replica count alone does not establish resilience.",
     "documentation": [
       {
         "title": "Pod replicas",
@@ -114,14 +114,14 @@
     }
   },
   {
-    "title": "Implement autoscaling of your applications (Horizontal pod autoscaler, KEDA)",
+    "title": "Autoscale applications using measured demand",
     "priority": "Low",
     "guid": "faa19bfe-9d55-4d04-a3c4-919ca1b2d121",
-    "description": "Automatically scale your application to the number of pods required to handle the current load. This can be achieved by using Horizontal Pod Autoscaler for CPU & Memory or by using KEDA for scaling based on other sources",
+    "description": "Configure HPA or KEDA with appropriate metrics, requests, replica bounds, and stabilization windows. Test metric outages, burst traffic, dependency limits, and scale-down; ensure node scaling and regional capacity can satisfy demand.",
     "documentation": [
       {
         "title": "Horizontal Pod Autoscaler",
-        "url": "https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/"
+        "url": "https://kubernetes.io/docs/concepts/workloads/autoscaling/horizontal-pod-autoscale/"
       }
     ],
     "tools": [
@@ -131,7 +131,7 @@
       },
       {
         "title": "KEDA as AKS addon",
-        "url": "https://learn.microsoft.com/azure/aks/keda-about"
+        "url": "https://learn.microsoft.com/en-us/azure/aks/keda-about"
       }
     ],
     "tags": [
@@ -146,18 +146,14 @@
     }
   },
   {
-    "title": "Store your secrets in Azure Key Vault, don't inject passwords in Docker Images",
+    "title": "Keep secrets out of images and use a managed secret store",
     "priority": "High",
     "guid": "5e3df584-eccc-4d97-a3b6-bcda3b50eb2e",
-    "description": "Secrets are not encrypted in etcd, prefer to store your secrets in a proper HSM like Azure Key Vault. You can then inject secrets using CSI provider.",
+    "description": "Store application secrets in Key Vault and retrieve them with a supported integration and least-privilege identity. AKS provides encryption at rest, but Kubernetes Secrets are still accessible to authorized API clients and are not an external vault. Never commit secrets to source or bake them into images.",
     "documentation": [
       {
-        "title": "Azure Key Vault Provider for Secret Store CSI Driver",
-        "url": "https://github.com/Azure/secrets-store-csi-driver-provider-azure"
-      },
-      {
-        "title": "AKV2K8S",
-        "url": "https://akv2k8s.io/"
+        "title": "Keep secrets out of images and use a managed secret store",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/csi-secrets-store-driver"
       }
     ],
     "tags": [
@@ -172,19 +168,14 @@
     }
   },
   {
-    "title": "Implement Azure Workload Identity",
+    "title": "Use Microsoft Entra Workload ID for application access",
     "priority": "Medium",
     "guid": "d2e0d5d7-71d4-41e3-910c-c57b4a4b1410",
-    "description": "Don't use fixed credentials within pods or container images, as they are at risk of exposure or abuse. Instead, use workload identity federation to access Azure Active Directory (Azure AD) protected resources without needing to manage secrets ",
-    "detail": "When pods need access to other Azure services, such as Cosmos DB, Key Vault, or Blob Storage, the pod needs access credentials. These access credentials could be defined with the container image or injected as a Kubernetes secret, but need to be manually created and assigned. Often, the credentials are reused across pods, and aren't regularly rotated. Managed identities for Azure resources (currently implemented as an associated AKS open source project) let you automatically request access to services through Azure AD. You don't manually define credentials for pods, instead they request an access token in real time, and can use it to access only their assigned services.",
+    "description": "Enable the OIDC issuer and Workload ID, then federate a dedicated Kubernetes service account to a least-privilege managed identity. Use supported SDKs and the required workload identity label. Replace the retired pod-managed identity add-on; do not give applications node identity permissions.",
     "documentation": [
       {
-        "title": "Use Azure Workload Identity",
-        "url": "https://learn.microsoft.com/azure/aks/workload-identity-overview"
-      },
-      {
-        "title": "Azure Active Directory Pod Identity (deprecated)",
-        "url": "https://learn.microsoft.com/azure/aks/use-azure-ad-pod-identity"
+        "title": "Use Microsoft Entra Workload ID for application access",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/workload-identity-overview"
       }
     ],
     "tags": [
@@ -201,10 +192,10 @@
     }
   },
   {
-    "title": "Use Kubernetes namespaces to properly isolate your Kubernetes resources",
+    "title": "Use namespaces with explicit access and policy boundaries",
     "guid": "0b56d03c-5fc8-42b1-943b-9e4b4d0f3de8",
     "priority": "Medium",
-    "description": "Namespaces give you the ability to create logical partitions and enforce separation of your resources as well as limit the scope of user permissions. Don't forget not to use the Default namespace",
+    "description": "Use dedicated namespaces for workloads and apply scoped RBAC, quotas, and network/admission policy. Avoid deploying applications into default or system namespaces. Namespaces provide logical separation, not a complete security boundary.",
     "documentation": [
       {
         "title": "Namespaces",
@@ -229,7 +220,7 @@
     "documentation": [
       {
         "title": "Managing Compute Resources for Containers",
-        "url": "https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/"
+        "url": "https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/"
       },
       {
         "title": "Take benefit of the Quality of Service",
@@ -250,14 +241,13 @@
     }
   },
   {
-    "title": "Specify the security context of your pod/container",
+    "title": "Declare an explicit workload security context",
     "guid": "20861805-be15-48f5-b40b-5ae203ddbb67",
     "priority": "Medium",
-    "description": "A security context defines privilege and access control settings for a Pod or Container. Control the capabilities and the rights your container can have. If you don't specify the security context, the pod get the 'default' one which may have more rights that it should",
-    "detail": "You should also disable mounting credentials by default (automountServiceAccountToken)",
+    "description": "Use platform-appropriate least-privilege settings. For Linux, prefer non-root, RuntimeDefault seccomp, dropped capabilities, no privilege escalation, and a read-only root filesystem. Disable automatic service account token mounting where the workload does not need it; validate projected tokens required by Workload ID.",
     "documentation": [
       {
-        "title": "Configure a Security Context for a Pod or Container",
+        "title": "Declare an explicit workload security context",
         "url": "https://kubernetes.io/docs/tasks/configure-pod-container/security-context/"
       }
     ],
@@ -276,26 +266,8 @@
     "description": "Best practices inside the cluster start with the configuration of your manifests. Ensure that they respect good practices",
     "documentation": [
       {
-        "title": "Kubernetes YAML: Enforcing best practices and security policies",
-        "url": "https://thechief.io/c/editorial/kubernetes-yaml-enforcing-best-practices-and-security-policies-cicd-and-gitops-pipelines/"
-      },
-      {
-        "title": "13 Best Practices for Using Helm",
-        "url": "https://betterprogramming.pub/13-best-practices-for-using-helm-f4fc68545a2c"
-      }
-    ],
-    "tools": [
-      {
-        "title": "kube-score",
-        "url": "https://kube-score.com/"
-      },
-      {
-        "title": "Checkov",
-        "url": "https://www.checkov.io/"
-      },
-      {
-        "title": "kubelinter",
-        "url": "https://github.com/stackrox/kube-linter"
+        "title": "Kubernetes application security checklist",
+        "url": "https://kubernetes.io/docs/concepts/security/application-security-checklist/"
       }
     ],
     "tags": [
@@ -310,10 +282,10 @@
     }
   },
   {
-    "title": "Conduct Dockerfile scanning to ensure Docker Image Security Best Practices",
+    "title": "Lint Dockerfiles and enforce an image-build baseline",
     "guid": "b5222fdc-72b7-4b5f-baae-ab48a69b1d36",
     "priority": "High",
-    "description": "Define a Image build security baseline for your developers to follow. You should also use scanning tools to detect Dockerfile issue",
+    "description": "Validate base-image provenance, pinned versions, non-root execution where supported, build secrets, dependency installation, and unnecessary packages. Use maintained linters and policy checks without exposing build credentials in layers or logs.",
     "documentation": [
       {
         "title": "SNYK 10 Docker Image Security Best Practices",
@@ -343,26 +315,14 @@
     }
   },
   {
-    "title": "Static Analysis of Docker Images on Build",
+    "title": "Scan container images during the build",
     "guid": "54cbc938-394e-480a-823a-51c2bcd3c66b",
     "priority": "High",
-    "description": "Introduction of DevSecOps into the environment to promote a proactive security model that starts to shift the responsibility left",
+    "description": "Scan OS packages and application dependencies during image builds with maintained tools. Retain reports linked to immutable digests, define remediation targets, and rescan deployed versions as new vulnerabilities are disclosed.",
     "documentation": [
       {
-        "title": "Introduction to Microsoft Defender for container registries",
-        "url": "https://learn.microsoft.com/azure/defender-for-cloud/defender-for-containers-introduction"
-      },
-      {
-        "title": "Palo Alto CI/CD Integration (twistcli)",
-        "url": "https://docs.paloaltonetworks.com/prisma/prisma-cloud/prisma-cloud-admin-compute/tools/twistcli_scan_images"
-      },
-      {
-        "title": "Qualys CI/CD Integration",
-        "url": "https://qualysguard.qg2.apps.qualys.com/cs/help/vuln_scans/docker_images.htm"
-      },
-      {
-        "title": "Clair CI/CD Integration",
-        "url": "https://github.com/quay/clair"
+        "title": "Container vulnerability assessment",
+        "url": "https://learn.microsoft.com/en-us/azure/defender-for-cloud/agentless-vulnerability-assessment-azure"
       }
     ],
     "tags": [
@@ -374,15 +334,14 @@
     }
   },
   {
-    "title": "Threshold enforcement of Docker Image Builds that contain vulnerabilities",
+    "title": "Enforce image vulnerability thresholds and exception expiry",
     "guid": "1a67a172-c4ca-4383-8934-a71277cb927e",
     "priority": "Medium",
-    "description": "Restrict builds with identified issues.",
-    "detail": "Use a tool that allows for the restriction of builds with enough granularity to not break development.  All Critical CVE's are not the same, so being able to restrict builds based on Critical or High vulnerabilities with a Vendor fix, but allowing builds to continue if that Critical vulnerability is 'Open'",
+    "description": "Define policy using exploitability, exposure, severity, and available fixes. Block unacceptable risk, record owners and expiry for exceptions, and rescan continuously. An unfixed critical vulnerability is not automatically acceptable simply because the vendor has not published a fix.",
     "documentation": [
       {
-        "title": "Prisma Threshold enforcement",
-        "url": "https://docs.paloaltonetworks.com/prisma/prisma-cloud/prisma-cloud-admin-compute/vulnerability_management/vuln_management_rules.html"
+        "title": "Enforce image vulnerability thresholds and exception expiry",
+        "url": "https://learn.microsoft.com/en-us/azure/defender-for-cloud/agentless-vulnerability-assessment-azure"
       }
     ],
     "tags": [
@@ -394,19 +353,14 @@
     }
   },
   {
-    "title": "Compliance enforcement of Docker Image Builds",
+    "title": "Validate container build and runtime policy",
     "guid": "01ede997-e0bf-454a-bd1f-114be06a9874",
     "priority": "High",
-    "description": "Being able to assess and restrict the Compliance state of an image on build.",
-    "detail": "Identifying an image running as 'root' before it get deployed, or opening up port 80 or 22",
+    "description": "Validate approved base images, non-root execution where supported, exposed services, secret handling, and required labels. Apply rules based on the threat model; opening port 80 alone is not proof of noncompliance.",
     "documentation": [
       {
-        "title": "Azure Built-In Policy",
-        "url": "https://learn.microsoft.com/azure/aks/policy-samples"
-      },
-      {
-        "title": "Prisma Managing Compliance",
-        "url": "https://docs.paloaltonetworks.com/prisma/prisma-cloud/prisma-cloud-admin-compute/compliance/manage_compliance.html"
+        "title": "Validate container build and runtime policy",
+        "url": "https://kubernetes.io/docs/concepts/security/application-security-checklist/"
       }
     ],
     "tags": [
@@ -418,14 +372,14 @@
     }
   },
   {
-    "title": "Use Azure Migrate to quick containerize your applications",
+    "title": "Assess application modernization before containerization",
     "guid": "c1c05f94-4b74-4231-9d36-aa7a56fb775e",
     "priority": "Low",
-    "description": "The App Containerization tool offers a point-and-containerize approach to repackage applications as containers with minimal to no code changes by using the running state of the application. The tool currently supports containerizing ASP.NET applications and Java web applications running on Apache Tomcat.",
+    "description": "Validate runtime support, licensing, state, external dependencies, health probes, and operational ownership before moving an application to AKS. Choose supported migration tooling based on the workload rather than assuming a point-and-containerize conversion produces a production-ready service.",
     "documentation": [
       {
-        "title": "Accelerate application modernization with Azure Migrate: App Containerization",
-        "url": "https://aka.ms/AppContainerizationtoAKS"
+        "title": "Assess application modernization before containerization",
+        "url": "https://learn.microsoft.com/en-us/azure/architecture/guide/choose-azure-container-service"
       }
     ],
     "tags": [
@@ -456,10 +410,10 @@
     }
   },
   {
-    "title": "Don't use naked pods",
+    "title": "Use workload controllers instead of standalone pods",
     "guid": "980e9f76-e20a-426a-9c01-cbae1b63c5e8",
     "priority": "Low",
-    "description": "Naked pods are pods not linked to a Replicaset or a Deployment. Naked Pods will not be rescheduled in the event of a node failure.",
+    "description": "Manage long-running applications through Deployments or StatefulSets, and finite work through Jobs or CronJobs. A standalone pod is not recreated after node loss by a workload controller; test replacement and application recovery.",
     "details": "If imagePullPolicy is omitted and either the image tag is :latest or it is omitted: imagePullPolicy is automatically set to Always. Prefer to set explicitly IfNotPresent",
     "tags": [
       "all",
@@ -468,17 +422,23 @@
     ],
     "optionalFields": {
       "score": {}
-    }
-  },
-  {
-    "title": "Control the usage of imagePullPolicy",
-    "guid": "d457598a-047b-4fd7-88e5-9c61dea67f6a",
-    "priority": "Low",
-    "description": "If this attributes is not properly define kubernetes downloads the container image for each new instance of the containers.",
+    },
     "documentation": [
       {
-        "title": "Updating images",
-        "url": "https://kubernetes.io/docs/concepts/containers/images/#updating-images"
+        "title": "Use workload controllers instead of standalone pods",
+        "url": "https://kubernetes.io/docs/concepts/workloads/controllers/"
+      }
+    ]
+  },
+  {
+    "title": "Set image pull policy and deploy immutable image digests",
+    "guid": "d457598a-047b-4fd7-88e5-9c61dea67f6a",
+    "priority": "Low",
+    "description": "Use immutable digests for reproducible deployments and choose imagePullPolicy deliberately. Always checks registry resolution but can reuse cached layers; IfNotPresent reuses cached images. Do not rely on mutable latest tags, and test registry failure behavior.",
+    "documentation": [
+      {
+        "title": "Set image pull policy and deploy immutable image digests",
+        "url": "https://kubernetes.io/docs/concepts/containers/images/"
       }
     ],
     "tags": [
@@ -491,14 +451,14 @@
     }
   },
   {
-    "title": "Use automation through ARM/TF to create your Azure resources",
+    "title": "Provision Azure resources with reviewed infrastructure as code",
     "priority": "Medium",
     "guid": "3acbe04b-be20-49d3-afda-47778424d116",
-    "description": "If this attributes is not properly define kubernetes downloads the container image for each new instance of the containers.",
+    "description": "Use Bicep, ARM templates, or Terraform modules with pinned versions, environment-specific configuration, least-privilege deployment identities, and reviewed changes. Keep state protected, detect drift, and rehearse rebuilding the platform.",
     "documentation": [
       {
-        "title": "Create a Kubernetes cluster with Azure Kubernetes Service using Terraform",
-        "url": "https://learn.microsoft.com/azure/developer/terraform/create-k8s-cluster-with-tf-and-aks"
+        "title": "Provision Azure resources with reviewed infrastructure as code",
+        "url": "https://learn.microsoft.com/en-us/azure/devops/pipelines/architectures/devops-pipelines-baseline-architecture?view=azure-devops"
       }
     ],
     "tags": [
@@ -521,7 +481,7 @@
     "documentation": [
       {
         "title": "Blue-green deployment for AKS",
-        "url": "https://learn.microsoft.com/en-us/azure/architecture/reference-architectures/containers/blue-green-deployment-for-aks/blue-green-deployment-for-aks"
+        "url": "https://learn.microsoft.com/en-us/azure/architecture/guide/aks/blue-green-deployment-for-aks"
       }
     ],
     "tags": [
@@ -536,14 +496,14 @@
     }
   },
   {
-    "title": "Use Dapr to ease microservice development",
+    "title": "Evaluate Dapr only when its application capabilities are needed",
     "priority": "Low",
     "guid": "26886d20-b66c-457b-a591-19bf8e8f5c58",
-    "description": "This will help ensure your workloads remain online during cluster upgrades.",
+    "description": "Dapr can provide service invocation, pub/sub, state management, and other distributed application APIs. Adopt it when those capabilities justify additional sidecars, control-plane components, security configuration, and lifecycle management; it is not an upgrade-availability mechanism.",
     "documentation": [
       {
-        "title": "Dapr project page",
-        "url": "https://dapr.io/"
+        "title": "Evaluate Dapr only when its application capabilities are needed",
+        "url": "https://docs.dapr.io/"
       }
     ],
     "tags": [
@@ -555,5 +515,40 @@
         "simple": 1
       }
     }
+  },
+  {
+    "title": "Validate deprecated Kubernetes APIs before every upgrade",
+    "priority": "High",
+    "guid": "e10aad61-3625-4cec-a5e5-697e16ec4164",
+    "description": "Check release notes, API-server warnings, manifests, CRDs, Helm charts, operators, and admission webhooks for APIs removed in the target version. Upgrade dependencies first and test conversion and rollback paths in a representative environment.",
+    "documentation": [
+      {
+        "title": "Validate deprecated Kubernetes APIs before every upgrade",
+        "url": "https://kubernetes.io/docs/reference/using-api/deprecation-guide/"
+      }
+    ],
+    "tags": [
+      "all",
+      "application",
+      "lifecycle"
+    ]
+  },
+  {
+    "title": "Secure CI/CD with federation and scoped deployment permissions",
+    "priority": "High",
+    "guid": "9a59a8b9-a4d2-4a79-aaca-38343ee351ee",
+    "description": "Use OIDC federation from the CI platform to Azure, protect release environments, pin reviewed actions and build dependencies, and scope deployment identities to the required namespaces and resources. Keep production credentials and kubeconfig files out of logs and artifacts.",
+    "documentation": [
+      {
+        "title": "Secure CI/CD with federation and scoped deployment permissions",
+        "url": "https://learn.microsoft.com/en-us/azure/devops/pipelines/architectures/devops-pipelines-baseline-architecture?view=azure-devops"
+      }
+    ],
+    "tags": [
+      "all",
+      "application",
+      "identity",
+      "security"
+    ]
   }
 ]

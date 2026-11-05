@@ -1,0 +1,2450 @@
+{
+  "checkedAt": "2026-11-05T23:28:50.271Z",
+  "counts": {
+    "pass": 198,
+    "fail": 0,
+    "blocked": 0
+  },
+  "results": [
+    {
+      "url": "https://anchore.com/",
+      "status": 200,
+      "finalUrl": "https://anchore.com/",
+      "title": "SBOM-Powered Software Composition Analysis • Anchore",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "container.json: 59bce65d-e8a0-43f9-9879-468d66a786d6"
+      ]
+    },
+    {
+      "url": "https://blog.cloudtrooper.net/2020/10/23/which-vm-size-should-i-choose-as-aks-node/",
+      "status": 200,
+      "finalUrl": "https://blog.cloudtrooper.net/2020/10/23/which-vm-size-should-i-choose-as-aks-node/",
+      "title": "Which VM size should I choose as AKS node? &#8211; Cloudtrooper",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "operations.json: 495e0503-5fbd-4ba7-8c33-2551b1676d1e"
+      ]
+    },
+    {
+      "url": "https://blog.container-solutions.com/deployment-strategies",
+      "status": 200,
+      "finalUrl": "https://blog.container-solutions.com/deployment-strategies",
+      "title": "Deployment Strategies",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "application.json: 3abc7c0e-44c7-40fc-afce-aa4ddbf3dd81"
+      ]
+    },
+    {
+      "url": "https://dev.to/chrisedrego/21-best-practise-in-2021-for-dockerfile-1dji",
+      "status": 200,
+      "finalUrl": "https://dev.to/chrisedrego/21-best-practise-in-2021-for-dockerfile-1dji",
+      "title": "21 Best Practises in 2021 for Dockerfile - DEV Community",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "application.json: b5222fdc-72b7-4b5f-baae-ab48a69b1d36"
+      ]
+    },
+    {
+      "url": "https://dev.to/larryclaman/trigger-azure-devops-build-pipeline-from-docker-image-update-5d3i",
+      "status": 200,
+      "finalUrl": "https://dev.to/larryclaman/trigger-azure-devops-build-pipeline-from-docker-image-update-5d3i",
+      "title": "Trigger Azure DevOps Build pipeline from Docker image update - DEV Community",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "container.json: 22882284-a9c2-4e16-b3e3-2d4947cc24b8"
+      ]
+    },
+    {
+      "url": "https://docs.dapr.io/",
+      "status": 200,
+      "finalUrl": "https://docs.dapr.io/",
+      "title": "Dapr Docs",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "application.json: 26886d20-b66c-457b-a591-19bf8e8f5c58"
+      ]
+    },
+    {
+      "url": "https://docs.tigera.io/calico/latest/reference/resources/globalnetworkpolicy",
+      "status": 200,
+      "finalUrl": "https://docs.tigera.io/calico/latest/reference/resources/globalnetworkpolicy",
+      "title": "Global network policy | Calico Documentation",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "networking.json: 0bc4e0c6-97fd-411a-9eb4-1a1f85f9cdf0"
+      ]
+    },
+    {
+      "url": "https://gateway-api.sigs.k8s.io/docs/concepts/security/",
+      "status": 200,
+      "finalUrl": "https://gateway-api.sigs.k8s.io/docs/concepts/security/",
+      "title": "Security | Gateway API",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "networking.json: e5684a8b-f072-43d2-83b2-234ad48f57c7"
+      ]
+    },
+    {
+      "url": "https://github.com/ahmetb/kubectl-aliases",
+      "status": 200,
+      "finalUrl": "https://github.com/ahmetb/kubectl-aliases",
+      "title": "GitHub - ahmetb/kubectl-aliases: Programmatically generated handy kubectl aliases. · GitHub",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "operations.json: fd926057-60e1-4d6c-afc2-0f03b5ab3763"
+      ]
+    },
+    {
+      "url": "https://github.com/ahmetb/kubectx",
+      "status": 200,
+      "finalUrl": "https://github.com/ahmetb/kubectx",
+      "title": "GitHub - ahmetb/kubectx: Faster way to switch between clusters and namespaces in kubectl · GitHub",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "operations.json: fd926057-60e1-4d6c-afc2-0f03b5ab3763"
+      ]
+    },
+    {
+      "url": "https://github.com/ahmetb/kubernetes-network-policy-recipes",
+      "status": 200,
+      "finalUrl": "https://github.com/ahmetb/kubernetes-network-policy-recipes",
+      "title": "GitHub - ahmetb/kubernetes-network-policy-recipes: Example recipes for Kubernetes Network Policies that you can just copy paste · GitHub",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "networking.json: 0bc4e0c6-97fd-411a-9eb4-1a1f85f9cdf0"
+      ]
+    },
+    {
+      "url": "https://github.com/feranto",
+      "status": 200,
+      "finalUrl": "https://github.com/feranto",
+      "title": "feranto (Fernando Mejía) · GitHub",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "README.md"
+      ]
+    },
+    {
+      "url": "https://github.com/goodwithtech/dockle",
+      "status": 200,
+      "finalUrl": "https://github.com/goodwithtech/dockle",
+      "title": "GitHub - goodwithtech/dockle: Container Image Linter for Security, Helping build the Best-Practice Docker Image, Easy to start · GitHub",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "application.json: b5222fdc-72b7-4b5f-baae-ab48a69b1d36"
+      ]
+    },
+    {
+      "url": "https://github.com/GoogleContainerTools/distroless",
+      "status": 200,
+      "finalUrl": "https://github.com/GoogleContainerTools/distroless",
+      "title": "GitHub - GoogleContainerTools/distroless: 🥑  Language focused docker images, minus the operating system. · GitHub",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "container.json: f57ba3a5-93ae-435f-9468-80ccd6a841b9"
+      ]
+    },
+    {
+      "url": "https://github.com/hadolint/hadolint",
+      "status": 200,
+      "finalUrl": "https://github.com/hadolint/hadolint",
+      "title": "GitHub - hadolint/hadolint: Dockerfile linter, validate inline bash, written in Haskell · GitHub",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "application.json: b5222fdc-72b7-4b5f-baae-ab48a69b1d36"
+      ]
+    },
+    {
+      "url": "https://github.com/lastcoolnameleft",
+      "status": 200,
+      "finalUrl": "https://github.com/lastcoolnameleft",
+      "title": "lastcoolnameleft (Tommy Falgout) · GitHub",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "README.md"
+      ]
+    },
+    {
+      "url": "https://github.com/lgmorand",
+      "status": 200,
+      "finalUrl": "https://github.com/lgmorand",
+      "title": "lgmorand (Louis-Guillaume MORAND) · GitHub",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "README.md"
+      ]
+    },
+    {
+      "url": "https://github.com/lgmorand/the-aks-checklist",
+      "status": 200,
+      "finalUrl": "https://github.com/lgmorand/the-aks-checklist",
+      "title": "GitHub - lgmorand/the-aks-checklist: The AKS Checklist · GitHub",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "README.md"
+      ]
+    },
+    {
+      "url": "https://github.com/lgmorand/the-aks-checklist/actions/workflows/build.yml",
+      "status": 200,
+      "finalUrl": "https://github.com/lgmorand/the-aks-checklist/actions/workflows/build.yml",
+      "title": "Validation Build · GitHub",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "README.md"
+      ]
+    },
+    {
+      "url": "https://github.com/lgmorand/the-aks-checklist/actions/workflows/build.yml/badge.svg",
+      "status": 200,
+      "finalUrl": "https://github.com/lgmorand/the-aks-checklist/actions/workflows/build.yml/badge.svg",
+      "title": "Validation Build - passing",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "README.md"
+      ]
+    },
+    {
+      "url": "https://github.com/miwithro",
+      "status": 200,
+      "finalUrl": "https://github.com/miwithro",
+      "title": "miwithro · GitHub",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "README.md"
+      ]
+    },
+    {
+      "url": "https://github.com/MuhammedKalkan/OpenLens",
+      "status": 200,
+      "finalUrl": "https://github.com/MuhammedKalkan/OpenLens",
+      "title": "GitHub - MuhammedKalkan/OpenLens: OpenLens Binary Build Repository · GitHub",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "operations.json: fd926057-60e1-4d6c-afc2-0f03b5ab3763"
+      ]
+    },
+    {
+      "url": "https://github.com/open-policy-agent/gatekeeper",
+      "status": 200,
+      "finalUrl": "https://github.com/open-policy-agent/gatekeeper",
+      "title": "GitHub - open-policy-agent/gatekeeper: 🐊 Policy Controller for Kubernetes · GitHub",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "cluster_security.json: 9ca48e4a-85e2-4223-bce8-bb12307ca5f1"
+      ]
+    },
+    {
+      "url": "https://github.com/quay/clair",
+      "status": 200,
+      "finalUrl": "https://github.com/quay/clair",
+      "title": "GitHub - quay/clair: Vulnerability Static Analysis for Containers · GitHub",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "container.json: 59bce65d-e8a0-43f9-9879-468d66a786d6"
+      ]
+    },
+    {
+      "url": "https://github.com/thedaviddias/Front-End-Checklist",
+      "status": 200,
+      "finalUrl": "https://github.com/thedaviddias/Front-End-Checklist",
+      "title": "GitHub - thedaviddias/Front-End-Checklist: 🗂 The essential checklist for modern web development, for humans and AI agents · GitHub",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "README.md"
+      ]
+    },
+    {
+      "url": "https://helm.sh/",
+      "status": 200,
+      "finalUrl": "https://helm.sh/",
+      "title": "Helm",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "operations.json: fd926057-60e1-4d6c-afc2-0f03b5ab3763"
+      ]
+    },
+    {
+      "url": "https://helm.sh/docs/chart_best_practices/",
+      "status": 200,
+      "finalUrl": "https://helm.sh/docs/chart_best_practices/",
+      "title": "Best Practices | Helm",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "operations.json: b78f2dec-d75e-44c3-937a-7509fd7a54f1"
+      ]
+    },
+    {
+      "url": "https://img.shields.io/badge/license-MPL--2.0-1754c4",
+      "status": 200,
+      "finalUrl": "https://img.shields.io/badge/license-MPL--2.0-1754c4",
+      "title": "license: MPL-2.0",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "README.md"
+      ]
+    },
+    {
+      "url": "https://k9scli.io/",
+      "status": 200,
+      "finalUrl": "https://k9scli.io/",
+      "title": "K9s - Manage Your Kubernetes Clusters In Style",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "operations.json: fd926057-60e1-4d6c-afc2-0f03b5ab3763"
+      ]
+    },
+    {
+      "url": "https://keda.sh/",
+      "status": 200,
+      "finalUrl": "https://keda.sh/",
+      "title": "KEDA | Kubernetes Event-driven Autoscaling",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "application.json: faa19bfe-9d55-4d04-a3c4-919ca1b2d121"
+      ]
+    },
+    {
+      "url": "https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/",
+      "status": 200,
+      "finalUrl": "https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/",
+      "title": "Resource Management for Pods and Containers | Kubernetes",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "application.json: b54eb2eb-03dd-4aa3-9927-18e2edb11726",
+        "resource_management.json: 4868aa30-95a9-49fd-867e-57e70cb0d1d5"
+      ]
+    },
+    {
+      "url": "https://kubernetes.io/docs/concepts/containers/images/",
+      "status": 200,
+      "finalUrl": "https://kubernetes.io/docs/concepts/containers/images/",
+      "title": "Images | Kubernetes",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "application.json: d457598a-047b-4fd7-88e5-9c61dea67f6a"
+      ]
+    },
+    {
+      "url": "https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels/",
+      "status": 200,
+      "finalUrl": "https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels/",
+      "title": "Recommended Labels | Kubernetes",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "application.json: 7b613b26-df38-49a8-94bf-c5301a91d558",
+        "operations.json: 13bb9e32-6f48-4747-9531-0147f20f4b04"
+      ]
+    },
+    {
+      "url": "https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/",
+      "status": 200,
+      "finalUrl": "https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/",
+      "title": "Namespaces | Kubernetes",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "application.json: 0b56d03c-5fc8-42b1-943b-9e4b4d0f3de8",
+        "operations.json: 13bb9e32-6f48-4747-9531-0147f20f4b03"
+      ]
+    },
+    {
+      "url": "https://kubernetes.io/docs/concepts/policy/limit-range/",
+      "status": 200,
+      "finalUrl": "https://kubernetes.io/docs/concepts/policy/limit-range/",
+      "title": "Limit Ranges | Kubernetes",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "resource_management.json: b74ea93b-598d-48e0-bb26-762b015602e1"
+      ]
+    },
+    {
+      "url": "https://kubernetes.io/docs/concepts/policy/resource-quotas/",
+      "status": 200,
+      "finalUrl": "https://kubernetes.io/docs/concepts/policy/resource-quotas/",
+      "title": "Resource Quotas | Kubernetes",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "resource_management.json: 769ef669-1a48-435a-a942-223ece80b123"
+      ]
+    },
+    {
+      "url": "https://kubernetes.io/docs/concepts/scheduling-eviction/topology-spread-constraints/",
+      "status": 200,
+      "finalUrl": "https://kubernetes.io/docs/concepts/scheduling-eviction/topology-spread-constraints/",
+      "title": "Pod Topology Spread Constraints | Kubernetes",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "bc_dr.json: 1eea4888-8c2a-40b2-a40b-cacdc5f55497"
+      ]
+    },
+    {
+      "url": "https://kubernetes.io/docs/concepts/security/application-security-checklist/",
+      "status": 200,
+      "finalUrl": "https://kubernetes.io/docs/concepts/security/application-security-checklist/",
+      "title": "Application Security Checklist | Kubernetes",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "application.json: 5388e9de-d167-4dd1-a2b0-ac241b999a64",
+        "application.json: 01ede997-e0bf-454a-bd1f-114be06a9874"
+      ]
+    },
+    {
+      "url": "https://kubernetes.io/docs/concepts/security/pod-security-standards/",
+      "status": 200,
+      "finalUrl": "https://kubernetes.io/docs/concepts/security/pod-security-standards/",
+      "title": "Pod Security Standards | Kubernetes",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "cluster_security.json: 8173f672-d08a-40ae-a310-90d76eb7c9cb"
+      ]
+    },
+    {
+      "url": "https://kubernetes.io/docs/concepts/windows/intro/",
+      "status": 200,
+      "finalUrl": "https://kubernetes.io/docs/concepts/windows/intro/",
+      "title": "Windows containers in Kubernetes | Kubernetes",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "windows.json: fce3ccf3-5f62-4ad6-b945-845362777529"
+      ]
+    },
+    {
+      "url": "https://kubernetes.io/docs/concepts/workloads/autoscaling/horizontal-pod-autoscale/",
+      "status": 200,
+      "finalUrl": "https://kubernetes.io/docs/concepts/workloads/autoscaling/horizontal-pod-autoscale/",
+      "title": "Horizontal Pod Autoscaling | Kubernetes",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "application.json: faa19bfe-9d55-4d04-a3c4-919ca1b2d121"
+      ]
+    },
+    {
+      "url": "https://kubernetes.io/docs/concepts/workloads/controllers/",
+      "status": 200,
+      "finalUrl": "https://kubernetes.io/docs/concepts/workloads/controllers/",
+      "title": "Workload Management | Kubernetes",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "application.json: 980e9f76-e20a-426a-9c01-cbae1b63c5e8"
+      ]
+    },
+    {
+      "url": "https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/",
+      "status": 200,
+      "finalUrl": "https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/",
+      "title": "ReplicaSet | Kubernetes",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "application.json: 4f1f88f9-98a3-48f5-a37f-4d9c9aecbb11"
+      ]
+    },
+    {
+      "url": "https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/",
+      "status": 200,
+      "finalUrl": "https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/",
+      "title": "Pod Lifecycle | Kubernetes",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "application.json: dc4828a3-fc4f-4ac5-8844-122b8482dbb1"
+      ]
+    },
+    {
+      "url": "https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/",
+      "status": 200,
+      "finalUrl": "https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/",
+      "title": "Admission Control in Kubernetes | Kubernetes",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "container.json: 8dcb9d27-a601-48e6-aeb8-e0469aaf8921"
+      ]
+    },
+    {
+      "url": "https://kubernetes.io/docs/reference/using-api/deprecation-guide/",
+      "status": 200,
+      "finalUrl": "https://kubernetes.io/docs/reference/using-api/deprecation-guide/",
+      "title": "Deprecated API Migration Guide | Kubernetes",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "application.json: e10aad61-3625-4cec-a5e5-697e16ec4164"
+      ]
+    },
+    {
+      "url": "https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/",
+      "status": 200,
+      "finalUrl": "https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/",
+      "title": "Configure Liveness, Readiness and Startup Probes | Kubernetes",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "application.json: 2e9ed573-38b2-4856-a7f9-676d9ab604e1",
+        "application.json: a066989c-9dce-4712-bce3-4eef36f8c0c2",
+        "application.json: de1b6b38-4fa9-4f6e-ab92-d824346dd20c"
+      ]
+    },
+    {
+      "url": "https://kubernetes.io/docs/tasks/configure-pod-container/quality-service-pod/",
+      "status": 200,
+      "finalUrl": "https://kubernetes.io/docs/tasks/configure-pod-container/quality-service-pod/",
+      "title": "Configure Quality of Service for Pods | Kubernetes",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "application.json: b54eb2eb-03dd-4aa3-9927-18e2edb11726"
+      ]
+    },
+    {
+      "url": "https://kubernetes.io/docs/tasks/configure-pod-container/security-context/",
+      "status": 200,
+      "finalUrl": "https://kubernetes.io/docs/tasks/configure-pod-container/security-context/",
+      "title": "Configure a Security Context for a Pod or Container | Kubernetes",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "application.json: 20861805-be15-48f5-b40b-5ae203ddbb67"
+      ]
+    },
+    {
+      "url": "https://kubernetes.io/docs/tasks/debug/debug-application/debug-running-pod/",
+      "status": 200,
+      "finalUrl": "https://kubernetes.io/docs/tasks/debug/debug-application/debug-running-pod/",
+      "title": "Debug Running Pods | Kubernetes",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "operations.json: f1d2d2f4-53a2-5f1b-9d1a-3a907b6844a5"
+      ]
+    },
+    {
+      "url": "https://kubernetes.io/docs/tasks/run-application/configure-pdb/",
+      "status": 200,
+      "finalUrl": "https://kubernetes.io/docs/tasks/run-application/configure-pdb/",
+      "title": "Specifying a Disruption Budget for your Application | Kubernetes",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "resource_management.json: 3c763963-7a55-42d5-a15e-401955387e5c"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/advisor/advisor-get-started",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/advisor/advisor-get-started",
+      "title": "Azure Advisor portal basics - Azure Advisor | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "operations.json: 337453a3-cc63-4963-9a65-22ac19e80696"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/access-private-cluster",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/access-private-cluster",
+      "title": "Access a Private Azure Kubernetes Service (AKS) Cluster using the Command Invoke or Run Command Feature - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "operations.json: d7672c26-7602-4482-85a4-14527fbe855c"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/aks-diagnostics",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/aks-diagnostics",
+      "title": "Azure Kubernetes Service (AKS) Diagnose and Solve Problems overview - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "operations.json: 4dd8b544-5b8b-443d-8e76-cea80d9dec30"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/api-server-authorized-ip-ranges",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/api-server-authorized-ip-ranges",
+      "title": "API Server Authorized IP Ranges in Azure Kubernetes Service (AKS) - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "networking.json: d783a3e8-264f-4dac-870f-569791d1837e"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/api-server-vnet-integration",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/api-server-vnet-integration",
+      "title": "API Server VNet Integration in Azure Kubernetes Service (AKS) - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "networking.json: 29fb411c-20a8-4c39-84df-aaa4227eaeb2"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/app-routing",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/app-routing",
+      "title": "Azure Kubernetes Service (AKS) managed NGINX ingress with the application routing add-on - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "networking.json: f84777e4-a928-472d-a839-fdc64d4cc6c8"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/app-routing-gateway-api",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/app-routing-gateway-api",
+      "title": "Azure Kubernetes Service (AKS) Application Routing Add-On with the Kubernetes Gateway API - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "README.md"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/app-routing-nginx-to-gateway-api-migration",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/app-routing-nginx-to-gateway-api-migration",
+      "title": "Migrate from application routing Ingress-Nginx to the application routing Gateway API implementation on AKS - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "lifecycle.json: 8bd95d4e-46d5-4424-a7fe-c43f2ab7933f",
+        "catalog.json",
+        "README.md"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/auto-upgrade-cluster",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/auto-upgrade-cluster",
+      "title": "Automatically Upgrade an Azure Kubernetes Service (AKS) Cluster - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "lifecycle.json: 01deb8ed-b6f5-40bb-8d0b-d0ee2d933f51"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/auto-upgrade-node-os-image",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/auto-upgrade-node-os-image",
+      "title": "Autoupgrade Node OS Images in Azure Kubernetes Service (AKS) - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "lifecycle.json: 945889a8-a9e9-4059-b1aa-0a0df2b8a82c"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/automated-deployments",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/automated-deployments",
+      "title": "Automate app deployment to Azure Kubernetes Service (AKS) with CI/CD via Automated deployments Automated deployments - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "operations.json: cd943950-e336-4906-a719-d2128c8d78e4"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/azure-cni-overlay",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/azure-cni-overlay",
+      "title": "Configure Azure CNI Overlay Networking in Azure Kubernetes Service (AKS) - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "windows.json: 3922e5b0-fa6b-4020-a92e-2e0d76338e95"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/azure-cni-powered-by-cilium",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/azure-cni-powered-by-cilium",
+      "title": "Configure Azure CNI Powered by Cilium in Azure Kubernetes Service (AKS) - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "networking.json: e0ab94dd-554a-40d2-a60d-7500cbc5e4aa"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/best-practices",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/best-practices",
+      "title": "Best Practices for Azure Kubernetes Service (AKS) - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "README.md"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/best-practices-cost",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/best-practices-cost",
+      "title": "Best Practices for Cost Optimization in Azure Kubernetes Service (AKS) - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "cost.json: 62079698-08c1-4468-ab68-48215fe759d3",
+        "cost.json: ac484c18-4c23-49bc-a4b6-8a3f82fd630d"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/certificate-rotation",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/certificate-rotation",
+      "title": "Certificate Management and Rotation in Azure Kubernetes Service (AKS) Overview - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "operations.json: 3aa70560-e7e7-4968-be3d-628af35b2ced"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/cluster-autoscaler",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/cluster-autoscaler",
+      "title": "Use the Cluster Autoscaler in Azure Kubernetes Service (AKS) - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "operations.json: 90ce65de-8e13-4f9c-abd4-69266abca264"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/cluster-container-registry-integration",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/cluster-container-registry-integration",
+      "title": "Integrate Azure Container Registry with Azure Kubernetes Service (AKS) - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "identity.json: 100f8f70-3ec6-44bb-ab07-95eef965e80d",
+        "README.md"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/cluster-extensions",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/cluster-extensions",
+      "title": "Cluster extensions for Azure Kubernetes Service (AKS) - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "operations.json: 4cd9bd7a-fe6f-427b-b5dd-9ab2f50aa663"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/concepts-network-azure-cni-pod-subnet",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/concepts-network-azure-cni-pod-subnet",
+      "title": "Concepts - Azure CNI Pod Subnet networking in Azure Kubernetes Service (AKS) - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "networking.json: 8ee9a69a-1b58-4b1e-9c61-476e110a160b"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/concepts-network-cni-overview",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/concepts-network-cni-overview",
+      "title": "Concepts - CNI Networking in Azure Kubernetes Service (AKS) - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "networking.json: a0f61565-9de5-458f-a372-49c831112dbd"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/concepts-network-ingress",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/concepts-network-ingress",
+      "title": "Concepts - Ingress Networking in Azure Kubernetes Service (AKS) - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "networking.json: b3808b9f-a1cf-4204-ad01-3a923ce474db"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/concepts-network-ip-address-planning",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/concepts-network-ip-address-planning",
+      "title": "Concepts - IP address planning in Azure Kubernetes Service (AKS) - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "networking.json: 7faf12e7-0943-4f63-8472-2da29c2b1cd6",
+        "networking.json: 22f54b29-bade-43aa-b1e8-c38ec9366673"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/concepts-network-legacy-cni",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/concepts-network-legacy-cni",
+      "title": "Concepts - AKS Legacy Container Networking Interfaces (CNI) - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "lifecycle.json: a61d6c4d-e634-4e13-afaa-aa3e04c706f1",
+        "catalog.json",
+        "README.md"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/concepts-scale",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/concepts-scale",
+      "title": "AKS Scaling Overview — HPA, VPA, Cluster Autoscaler, and KEDA - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "operations.json: 90ce65de-8e13-4f9c-abd4-69266abca264",
+        "resource_management.json: c88681ab-bb2b-46d1-9ea6-72564b75429a"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/concepts-storage",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/concepts-storage",
+      "title": "Concepts - Storage in Azure Kubernetes Service (AKS) - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "storage.json: 4c20c4bd-a7e3-449f-9597-4939a3aeafe7",
+        "storage.json: 24367b33-6971-45b1-952b-eee0b9b588de"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/configure-azure-cni",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/configure-azure-cni",
+      "title": "Configure Azure CNI Networking in Azure Kubernetes Service (AKS) - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "networking.json: 22fbe8d6-9b40-47ef-9011-25bb1a555a6c"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/control-kubeconfig-access",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/control-kubeconfig-access",
+      "title": "Limit access to kubeconfig in Azure Kubernetes Service (AKS) - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "identity.json: a2fe27b2-e287-401a-8352-beedf79b488d"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/cost-analysis",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/cost-analysis",
+      "title": "Azure Kubernetes Service (AKS) cost analysis - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "cost.json: 0f396e1a-62b0-409e-a7d9-3e547ea4e64e",
+        "resource_management.json: f82cb8eb-8c0a-4a63-a25a-4956eaa8dc4a"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/create-node-pools",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/create-node-pools",
+      "title": "Create Node Pools in Azure Kubernetes Service (AKS) - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "networking.json: 22fbe8d6-9b40-47ef-9011-25bb1a555a6b"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/create-volume-azure-disk",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/create-volume-azure-disk",
+      "title": "Create and Manage Persistent Volumes with Azure Disks in Azure Kubernetes Service (AKS) - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "storage.json: 83958a8c-2689-4b32-ab57-cfc64546135a"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/csi-secrets-store-driver",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/csi-secrets-store-driver",
+      "title": "Use the Azure Key Vault Provider for Secrets Store CSI Driver for Azure Kubernetes Service (AKS) Secrets - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "application.json: 5e3df584-eccc-4d97-a3b6-bcda3b50eb2e",
+        "cluster_security.json: fc1e68dd-ac89-4851-8e53-8fbac3461d26"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/csi-storage-drivers",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/csi-storage-drivers",
+      "title": "Use Container Storage Interface (CSI) Drivers on Azure Kubernetes Service (AKS) - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "storage.json: 77bda7ce-1fcf-4735-bd3d-1b3a83a9e484",
+        "storage.json: 44ecd675-d50c-4c7f-a635-6c50ddbc344e"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/custom-node-configuration",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/custom-node-configuration",
+      "title": "Customize the Node Configuration for Azure Kubernetes Service (AKS) Node Pools - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "operations.json: 831c2872-c693-4b39-a887-a561bada49bc"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/devops-pipeline?pivots=pipelines-yaml",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/devops-pipeline?pivots=pipelines-yaml",
+      "title": "Deploy to Azure Kubernetes Service with Azure Pipelines - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "operations.json: cd943950-e336-4906-a719-d2128c8d78e4"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/dns-concepts",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/dns-concepts",
+      "title": "DNS in Azure Kubernetes Service (AKS) - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "networking.json: 4dc325aa-f8a9-49a1-a6a5-896edbeb746c"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/egress-outboundtype",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/egress-outboundtype",
+      "title": "Customize cluster egress with outbound types in Azure Kubernetes Service (AKS) - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "networking.json: ccb534e7-416e-4a1d-8e93-533b53199085"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/entra-id-authorization",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/entra-id-authorization",
+      "title": "Use Microsoft Entra ID Authorization for the Kubernetes API in Azure Kubernetes Service (AKS) - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "identity.json: eec4962c-c3bd-421b-b77f-26e5e6b3bec3"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/entra-id-control-plane-authentication",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/entra-id-control-plane-authentication",
+      "title": "Enable Microsoft Entra ID Authentication for the Azure Kubernetes Service (AKS) Control Plane - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "identity.json: 7e42c78e-78c0-46a6-8a21-94956e698dc4",
+        "identity.json: 36abb0db-c118-4f4c-9880-3f30f9a2deb6",
+        "identity.json: c4d7f4c6-79bf-45d0-aa05-ce8fc717e150"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/free-standard-pricing-tiers",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/free-standard-pricing-tiers",
+      "title": "Azure Kubernetes Service (AKS) Free, Standard, and Premium Pricing Tiers - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "bc_dr.json: 71d41e36-10cc-457b-9a4b-1410d4395898"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/gpu-multi-instance",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/gpu-multi-instance",
+      "title": "Create a multi-instance GPU node pool in Azure Kubernetes Service (AKS) - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "resource_management.json: 87e651ea-bc4a-4a87-a6df-c06a4b570ebc"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/image-cleaner",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/image-cleaner",
+      "title": "Use Image Cleaner on Azure Kubernetes Service (AKS) - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "cluster_security.json: ca62d835-69cc-476d-bd8e-ea8fa58fab9c"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/imds-restriction",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/imds-restriction",
+      "title": "Block pod access to the IMDS endpoint (preview) - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "cluster_security.json: 11149d5d-0e1a-40f4-ae35-b921e261230e",
+        "networking.json: 4fb072a7-0303-46d8-9ecf-d8aa4d69ff83"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/internal-lb",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/internal-lb",
+      "title": "Create an Internal Load Balancer in Azure Kubernetes Service (AKS) - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "networking.json: c0179fd4-470b-43c8-b7bb-80307051bc96"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/intro-aks-automatic",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/intro-aks-automatic",
+      "title": "Introduction to Azure Kubernetes Service (AKS) Automatic - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "architecture.json: 04de9192-7cbc-4f4e-ac63-15fab4aa3f23",
+        "README.md"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/keda-about",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/keda-about",
+      "title": "Kubernetes Event-Driven Autoscaling (KEDA) in Azure Kubernetes Service (AKS) - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "application.json: faa19bfe-9d55-4d04-a3c4-919ca1b2d121",
+        "resource_management.json: 5023e67c-81ec-45d2-a79c-04b4248b980b"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/kms-data-encryption-concepts",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/kms-data-encryption-concepts",
+      "title": "Data encryption at rest concepts for Azure Kubernetes Service (AKS) - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "cluster_security.json: e7ba73a3-0508-4f80-806f-527db30cee96"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/kubelogin-authentication",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/kubelogin-authentication",
+      "title": "Use kubelogin to authenticate in Azure Kubernetes Service (AKS) - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "identity.json: f4dcf690-1b30-407d-abab-6f8aa780d3a3"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/kubernetes-rbac-entra-id",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/kubernetes-rbac-entra-id",
+      "title": "Use Microsoft Entra ID and Kubernetes RBAC for clusters - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "identity.json: eec4962c-c3bd-421b-b77f-26e5e6b3bec3"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/limit-egress-traffic",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/limit-egress-traffic",
+      "title": "Limit Network Traffic with Azure Firewall in Azure Kubernetes Service (AKS) - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "container.json: 8dcb9d27-a601-48e6-aeb8-e0469aaf8921",
+        "networking.json: 3b365a91-7ecb-4e48-bbe5-4cd7df2e8bba"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/load-balancer-standard",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/load-balancer-standard",
+      "title": "Use a Public Standard Load Balancer in Azure Kubernetes Service (AKS) - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "observability.json: 95951d87-1a2f-4a45-833c-2fc62d23c44d"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/local-accounts",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/local-accounts",
+      "title": "Manage local accounts with Microsoft Entra integration - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "identity.json: b085b1f2-3119-4771-8c9a-bbf4411810ec"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/long-term-support",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/long-term-support",
+      "title": "Long-Term Support for Azure Kubernetes Service (AKS) Versions - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "lifecycle.json: 96516e10-4664-421a-992d-1271c29743ea"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/managed-identity-overview",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/managed-identity-overview",
+      "title": "Managed Identities in Azure Kubernetes Service (AKS) Overview - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "identity.json: ed127dd1-42b0-46b2-8c69-99a646f3389a",
+        "identity.json: 1f711a74-3672-470b-b8b8-a2148d640d79"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/monitor-aks",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/monitor-aks",
+      "title": "Monitor Azure Kubernetes Service (AKS) - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "observability.json: b58b7f4b-c234-4e67-a3f8-687fcf593a8e",
+        "observability.json: 2f3a41e0-12d4-4493-aa07-448b7cdcc79a"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/monitor-aks-reference",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/monitor-aks-reference",
+      "title": "Monitoring data reference for Azure Kubernetes Service - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "observability.json: 5b56ad48-408f-4e72-934c-476ba280dcf5"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/node-auto-provisioning",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/node-auto-provisioning",
+      "title": "Overview of Node Auto-Provisioning (NAP) in Azure Kubernetes Service (AKS) - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "operations.json: 90ce65de-8e13-4f9c-abd4-69266abca264",
+        "resource_management.json: 2a9ed86e-ae0d-4d2a-a9c0-00c67234a90d"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/node-pool-snapshot",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/node-pool-snapshot",
+      "title": "Snapshot Azure Kubernetes Service (AKS) node pools - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "resource_management.json: 64d1a846-e28a-4b6b-9a33-22a635c15a21"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/node-resource-group-lockdown",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/node-resource-group-lockdown",
+      "title": "Deploy a Fully Managed Resource Group with Node Resource Group Lockdown in Azure Kubernetes Service (AKS) - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "operations.json: 73b32a5a-67f7-4a9e-b5b3-1f38c3f39812",
+        "operations.json: ed0fda7f-211b-47c7-8b6e-c18873fb473c"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/operator-best-practices-cluster-isolation",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/operator-best-practices-cluster-isolation",
+      "title": "Cluster isolation best practices for Azure Kubernetes Service (AKS) - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "cluster_multi.json: 49be78dc-6ff0-4b2c-94ef-e74002e18866",
+        "cluster_multi.json: 3b77c0ee-3f84-4a86-bb46-c6dc3070168c",
+        "cluster_security.json: d167dd18-2b0a-4c24-8b99-9a646f8389a7"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/operator-best-practices-cluster-security",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/operator-best-practices-cluster-security",
+      "title": "Best Practices for Cluster Security in Azure Kubernetes Service (AKS) - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "cluster_security.json: cc639637-a652-42ac-89e8-06965388e9de"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/operator-best-practices-container-image-management",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/operator-best-practices-container-image-management",
+      "title": "Operator best practices - Container image management in Azure Kubernetes Services (AKS) - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "container.json: 22882284-a9c2-4e16-b3e3-2d4947cc24b8"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/operator-best-practices-network",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/operator-best-practices-network",
+      "title": "Best practices for network resources in Azure Kubernetes Service (AKS) - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "operations.json: 28538587-2c1f-4390-b571-384649732c16"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/operator-best-practices-scheduler",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/operator-best-practices-scheduler",
+      "title": "Operator best practices - Basic scheduler features in Azure Kubernetes Service (AKS) - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "resource_management.json: 769ef669-1a48-435a-a942-223ece80b123"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/operator-best-practices-storage",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/operator-best-practices-storage",
+      "title": "Best practices for storage and backup - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "resource_management.json: 7f8b07c5-882b-45ba-9ec9-bcc29b4721ff",
+        "storage.json: 18707174-fa23-4935-b463-8f9982629b35"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/pci-intro",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/pci-intro",
+      "title": "Introduction to AKS Regulated Cluster for PCI DSS 4.0.1 - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "cluster_security.json: 42d4aefe-2383-470e-b019-c30df24996b2"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/private-clusters",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/private-clusters",
+      "title": "Create a Private Azure Kubernetes Service (AKS) Cluster - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "networking.json: 29fb411c-20a8-4c39-84df-aaa4227eaeb2"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/reduce-latency-ppg",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/reduce-latency-ppg",
+      "title": "Use proximity placement groups to reduce latency for Azure Kubernetes Service (AKS) clusters - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "operations.json: 17bd8ae4-8ee7-472d-bca5-c7e3cc9b6d82"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/reliability-availability-zones-configure",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/reliability-availability-zones-configure",
+      "title": "Configure Availability Zones in Azure Kubernetes Service (AKS) - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "bc_dr.json: 578a219a-46be-4b54-9350-24922634292b"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/reliability-multi-region-deployment-models",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/reliability-multi-region-deployment-models",
+      "title": "Multi-region deployment models for Azure Kubernetes Service (AKS) - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "bc_dr.json: 36cb45e5-7960-4332-9bdf-8cc23318da61",
+        "bc_dr.json: 4e907690-4780-492f-9632-03bcc80b7a80",
+        "bc_dr.json: 170265f4-bb46-4a39-9af7-f317284797b1",
+        "bc_dr.json: 8c6703c5-42e9-46ef-93f1-7f6232af25fc",
+        "networking.json: 5d0bb60d-b8e0-4031-9c5b-1f0a735f771f",
+        "storage.json: 9f7547c1-747d-4c56-868a-714435bd19dd"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/scale-down-mode",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/scale-down-mode",
+      "title": "Use Scale-down Mode for your Azure Kubernetes Service (AKS) cluster - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "resource_management.json: 4d3dfbab-9924-4831-a68d-fdf0d72f462c"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/servicemesh-about",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/servicemesh-about",
+      "title": "About service meshes - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "networking.json: e9855d04-c3c3-49c9-a6bb-2c12159a114b"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/spot-node-pool",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/spot-node-pool",
+      "title": "Add an Azure Spot node pool to an Azure Kubernetes Service (AKS) cluster - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "operations.json: c5a5b252-1e44-4a59-a9d2-399c4d7b68d0"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/start-stop-cluster",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/start-stop-cluster",
+      "title": "Stop and start an Azure Kubernetes Service (AKS) cluster - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "cost.json: deaa4ade-79a6-444a-aa45-024dd3a73505"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/start-stop-nodepools",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/start-stop-nodepools",
+      "title": "Stop and start node pools in Azure Kubernetes Service (AKS) - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "resource_management.json: 2b72a08b-0410-4cd6-9093-e068a5cf27e8"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/support-policies",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/support-policies",
+      "title": "Support Policies for Azure Kubernetes Service (AKS) - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "architecture.json: 3cd6546a-0dee-4d90-aff7-5e4163312724",
+        "architecture.json: 92bdb43d-9279-406b-aa38-86fd8a2103ea",
+        "README.md"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/supported-kubernetes-versions",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/supported-kubernetes-versions",
+      "title": "Supported Kubernetes Versions in Azure Kubernetes Service (AKS) - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "lifecycle.json: e189c599-df0d-45a7-9dd4-ce32c1881370",
+        "lifecycle.json: d9565666-bd2a-481d-ac65-2aec1281e628",
+        "README.md"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/update-credentials",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/update-credentials",
+      "title": "Update or rotate the credentials for an Azure Kubernetes Service (AKS) cluster - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "cluster_security.json: b03dda6d-58d7-4c89-8ddb-107d5769ae66"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/upgrade-basic-load-balancer-on-aks",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/upgrade-basic-load-balancer-on-aks",
+      "title": "Upgrade from Basic Load Balancer on Azure Kubernetes Service (AKS) - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "lifecycle.json: a4e83003-a65d-4b13-a791-55fedd67477b",
+        "README.md"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/upgrade-options",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/upgrade-options",
+      "title": "Upgrade Options and Recommendations for Azure Kubernetes Service (AKS) Clusters - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "operations.json: 65578c52-d01d-4017-adc5-f940d5a6659e"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/use-arm64-vms",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/use-arm64-vms",
+      "title": "Use Arm64 Virtual Machines in Azure Kubernetes Service (AKS) for cost effectiveness - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "resource_management.json: 2a5f0cab-92b2-46dc-81a6-d358f7fd062a"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/use-azure-dedicated-hosts",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/use-azure-dedicated-hosts",
+      "title": "Use Azure Dedicated Hosts in Azure Kubernetes Service (AKS) - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "cluster_security.json: 5ae124ba-34df-4585-bcdc-e9bd3bb0cdb3"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/use-byo-cni",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/use-byo-cni",
+      "title": "Bring Your Own Container Network Interface (CNI) Plugin with Azure Kubernetes Service (AKS) - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "networking.json: 57bf217f-6dc8-481c-81e2-785773e9c00f"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/use-group-managed-service-accounts",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/use-group-managed-service-accounts",
+      "title": "Enable Group Managed Service Accounts (GMSA) for your Windows Server nodes on your Azure Kubernetes Service (AKS) cluster - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "windows.json: e1123a7c-a333-4eb4-a120-4ee3f293c9f3"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/use-network-policies",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/use-network-policies",
+      "title": "Secure Pod Traffic with Network Policies in Azure Kubernetes Service (AKS) - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "networking.json: 0751f099-e6f4-4250-b405-d2b26c707432",
+        "windows.json: 74e42965-8bbd-46fb-b027-ccad9c3933a4",
+        "windows.json: ce7f2a7c-297c-47c6-adea-a6ff838db665",
+        "README.md"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/use-system-pools",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/use-system-pools",
+      "title": "Use System Node Pools in Azure Kubernetes Service (AKS) - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "cluster_security.json: 6f158e3e-a3a9-42c2-be7e-2165c3a87af4"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/Azure/aks/use-tags",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/Azure/aks/use-tags",
+      "title": "Use Azure tags in Azure Kubernetes Service (AKS) - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "cluster_multi.json: 574bd2fe-f58b-4199-b334-f7eff3ef90c8"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/use-ultra-disks",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/use-ultra-disks",
+      "title": "Enable Ultra Disk support on Azure Kubernetes Service (AKS) - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "storage.json: 39c486ce-d5af-4062-89d5-18bb5fd795db"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/use-windows-hpc",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/use-windows-hpc",
+      "title": "Use Windows HostProcess containers - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "windows.json: bd773172-40dc-4502-b284-137c70d77bc9",
+        "windows.json: ab5351f6-383a-45ed-9c5e-b143b16db40a"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/virtual-nodes",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/virtual-nodes",
+      "title": "Use virtual nodes with Azure Kubernetes Service (AKS) - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "operations.json: c755562f-2b4e-4456-9b4d-874a748b662e"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/windows-best-practices",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/windows-best-practices",
+      "title": "Best Practices for Windows Containers on Azure Kubernetes Service (AKS) - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "windows.json: c1881370-6f7c-44c0-b4e5-14648d2457ed"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/windows-faq",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/windows-faq",
+      "title": "Windows Server on AKS FAQ | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "windows.json: 67138b82-0102-4ce1-9ee3-01e6e882e52e"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/windows-vs-linux-containers",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/windows-vs-linux-containers",
+      "title": "Windows Container Considerations in Azure Kubernetes Service (AKS) - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "windows.json: 4d3e8a06-b724-43a3-b9b9-328a08325c61",
+        "windows.json: dea429d5-2c10-480c-85a1-9d9d0c4afc3d",
+        "windows.json: ed48a9ab-a180-4832-ac04-cc6eddd360a2",
+        "README.md"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/workload-identity-migrate-from-pod-identity",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/workload-identity-migrate-from-pod-identity",
+      "title": "Migrate Azure Kubernetes Service (AKS) Pods to Microsoft Entra Workload ID - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "lifecycle.json: 8369d531-bbb9-4c6d-ab7d-4e123df60b7b",
+        "README.md"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/aks/workload-identity-overview",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/aks/workload-identity-overview",
+      "title": "Use a Microsoft Entra Workload ID on Azure Kubernetes Service (AKS) - Azure Kubernetes Service | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "application.json: d2e0d5d7-71d4-41e3-910c-c57b4a4b1410"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/architecture/guide/aks/blue-green-deployment-for-aks",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/architecture/guide/aks/blue-green-deployment-for-aks",
+      "title": "Blue-green deployment of AKS clusters - Azure Architecture Center | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "application.json: 785c2fa5-5b56-4ad4-a408-fe72734c476b"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/architecture/guide/choose-azure-container-service",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/architecture/guide/choose-azure-container-service",
+      "title": "Choose an Azure Container Service - Azure Architecture Center | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "application.json: c1c05f94-4b74-4231-9d36-aa7a56fb775e",
+        "architecture.json: 1d82a4d2-05da-4235-a18f-aa5802d6c20a"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/architecture/reference-architectures/containers/aks-start-here",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/architecture/reference-architectures/containers/aks-start-here",
+      "title": "Azure Kubernetes Service (AKS) - Planning - Azure Architecture Center | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "architecture.json: 325d59e7-a4a8-42b1-aa05-0543ef39ff24"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/architecture/reference-architectures/containers/aks/baseline-aks",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/architecture/reference-architectures/containers/aks/baseline-aks",
+      "title": "Baseline Architecture for an AKS Cluster - Azure Architecture Center | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "architecture.json: 5c03211e-95c6-42f1-ae3c-5a034d2e4d4b",
+        "README.md"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/azure-arc/kubernetes/overview",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/azure-arc/kubernetes/overview",
+      "title": "Overview of Azure Arc-enabled Kubernetes - Azure Arc | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "operations.json: 0102ce16-ee30-41e6-b882-e52e4621dd68"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/azure-arc/kubernetes/tutorial-use-gitops-argocd",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/azure-arc/kubernetes/tutorial-use-gitops-argocd",
+      "title": "Tutorial: Deploy applications using GitOps with Argo CD - Azure Arc | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "operations.json: 0102ce16-ee30-41e6-b882-e52e4621dd68"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/azure-arc/kubernetes/tutorial-use-gitops-flux2",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/azure-arc/kubernetes/tutorial-use-gitops-flux2",
+      "title": "Tutorial: Deploy applications using GitOps with Flux v2 - Azure Arc | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "operations.json: 0102ce16-ee30-41e6-b882-e52e4621dd68"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/azure-linux/aks-support-cycle",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/azure-linux/aks-support-cycle",
+      "title": "Azure Linux Container Host Support Lifecycle for Azure Kubernetes Service (AKS) | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "lifecycle.json: d34f49c0-e964-4465-9211-520479338b13",
+        "README.md"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/azure-monitor/app/app-insights-overview",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/azure-monitor/app/app-insights-overview",
+      "title": "Application Insights OpenTelemetry observability overview - Azure Monitor | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "observability.json: 8d33b2b2-e043-4c61-aa5d-319a8eb6c382",
+        "observability.json: 1ede9e95-2888-478b-aee8-2188572848eb"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/azure-monitor/containers/container-insights-analyze",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/azure-monitor/containers/container-insights-analyze",
+      "title": "Analyze the health and status of your Kubernetes cluster with Azure Monitor - Azure Monitor | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "observability.json: 4621dd68-c5a5-4be2-bdb1-1726769ef669"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/azure-monitor/containers/container-insights-logs-schema",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/azure-monitor/containers/container-insights-logs-schema",
+      "title": "Configure the ContainerLogV2 schema for Container insights - Azure Monitor | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "observability.json: 62f89719-db42-4cd0-824f-82ac7d62d9ac"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/azure-monitor/containers/kubernetes-metric-alerts",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/azure-monitor/containers/kubernetes-metric-alerts",
+      "title": "Recommended alert rules for Kubernetes clusters - Azure Monitor | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "observability.json: 67f7a9ed-5b31-4f38-a3f3-9812b2463cff"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/azure-monitor/containers/kubernetes-monitoring-overview",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/azure-monitor/containers/kubernetes-monitoring-overview",
+      "title": "Kubernetes monitoring in Azure Monitor - Azure Monitor | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "observability.json: 90640e42-ce36-4c2a-b20a-bee9c572df6c",
+        "observability.json: eaa8dc4a-2436-47b3-9697-15b1752beee0"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/azure-monitor/metrics/prometheus-metrics-overview",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/azure-monitor/metrics/prometheus-metrics-overview",
+      "title": "Overview of Azure Monitor with Prometheus - Azure Monitor | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "observability.json: 6f8389a7-f82c-4b8e-a8c0-aa63a25a4956"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/azure-subscription-service-limits",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/azure-subscription-service-limits",
+      "title": "Azure subscription and service limits, quotas, and constraints - Azure Resource Manager | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "resource_management.json: 081a5417-4158-433e-a3ad-3c2de733165c"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/backup/azure-kubernetes-service-cluster-backup-concept",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/backup/azure-kubernetes-service-cluster-backup-concept",
+      "title": "Azure Kubernetes Service (AKS) backup using Azure Backup prerequisites - Azure Backup | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "bc_dr.json: 7e970492-1bed-4541-98f6-be550b17caa6",
+        "storage.json: 13d493b9-2cdc-4632-b188-6882b81da0ed"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/management-business-continuity-disaster-recovery",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/management-business-continuity-disaster-recovery",
+      "title": "Business continuity and disaster recovery - Cloud Adoption Framework | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "bc_dr.json: bc14aea6-e65d-48d9-a3ad-c218e6436b06"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/confidential-computing/confidential-nodes-aks-overview",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/confidential-computing/confidential-nodes-aks-overview",
+      "title": "Confidential computing application enclave nodes on Azure Kubernetes Service (AKS) (specialized) | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "cluster_security.json: ec8e4e42-0344-41b0-b865-9123e8956d31"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/container-registry/",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/container-registry/",
+      "title": "Azure Container Registry documentation | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "cluster_security.json: 55b46a94-8008-4ae7-b7e4-b475b6c8bdbf"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-best-practices",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-best-practices",
+      "title": "Best Practices for Using Azure Container Registry - Azure Container Registry | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "bc_dr.json: 7b0bb400-deb6-4914-82da-2e914c9aaa72"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-geo-replication",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-geo-replication",
+      "title": "Geo-replication in Azure Container Registry - Azure Container Registry | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "bc_dr.json: b0803aed-1ca6-4330-816c-92677c6e9935",
+        "container.json: e2f4cce0-f4a7-4311-a5a1-713c4cef2036"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-private-endpoints",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-private-endpoints",
+      "title": "Set Up Private Endpoint with Private Link for ACR - Azure Container Registry | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "container.json: 6ae51d09-8142-4979-95ed-7ec3451de81c",
+        "networking.json: e38f1680-8ddc-4c93-bf09-6b932a4935ca"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-rbac-built-in-roles-overview",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-rbac-built-in-roles-overview",
+      "title": "Azure Container Registry Entra permissions and role assignments overview - Azure Container Registry | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "container.json: 3f703579-9f4a-43c4-8c40-5a9e78015379"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-soft-delete-policy",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-soft-delete-policy",
+      "title": "Recover deleted artifacts with the soft delete policy in Azure Container Registry (preview) - Azure Container Registry | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "bc_dr.json: 49919955-fd6c-40f5-9c5c-5a7273c7a935"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/container-registry/overview-sign-verify-artifacts",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/container-registry/overview-sign-verify-artifacts",
+      "title": "Overview of Signing and Verifying OCI Artifacts - Azure Container Registry | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "container.json: 789abf8e-f640-4bb8-a98f-5a7583d1bc7c"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/container-registry/zone-redundancy",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/container-registry/zone-redundancy",
+      "title": "Zone redundancy in Azure Container Registry - Azure Container Registry | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "bc_dr.json: a4cefd60-f24f-4907-9723-b927300b4c42"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/defender-for-cloud/agentless-vulnerability-assessment-azure",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/defender-for-cloud/agentless-vulnerability-assessment-azure",
+      "title": "Vulnerability management for containers - Microsoft Defender for Cloud | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "application.json: 54cbc938-394e-480a-823a-51c2bcd3c66b",
+        "application.json: 1a67a172-c4ca-4383-8934-a71277cb927e",
+        "container.json: c970cb26-a707-4bf2-9e40-5401fea3d55b"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/defender-for-cloud/concept-cloud-security-posture-management",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/defender-for-cloud/concept-cloud-security-posture-management",
+      "title": "What is Cloud Security Posture Management (CSPM) - Microsoft Defender for Cloud | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "cluster_security.json: 23fda718-b80b-44c8-b2e4-d46580ab6651"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/defender-for-cloud/defender-for-container-registries-introduction",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/defender-for-cloud/defender-for-container-registries-introduction",
+      "title": "Microsoft Defender for container registries - the benefits and features - Microsoft Defender for Cloud | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "container.json: 59bce65d-e8a0-43f9-9879-468d66a786d6"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/defender-for-cloud/defender-for-containers-introduction",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/defender-for-cloud/defender-for-containers-introduction",
+      "title": "Introduction to Microsoft Defender for Containers - Microsoft Defender for Cloud | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "cluster_security.json: 1f95a465-c682-405b-84b4-966c3a619c12",
+        "cluster_security.json: c9e95ffe-6dd1-4a17-8c5f-110389ca9b21",
+        "container.json: a71e024f-ac46-4d0e-86d8-fad9a86c99af"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/defender-for-cloud/defender-for-devops-introduction",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/defender-for-cloud/defender-for-devops-introduction",
+      "title": "Microsoft Defender for Cloud DevOps Security Benefits - Microsoft Defender for Cloud | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "container.json: 59bce65d-e8a0-43f9-9879-468d66a786d6"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/developer/jenkins/deploy-from-github-to-aks",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/developer/jenkins/deploy-from-github-to-aks",
+      "title": "Tutorial - Deploy from GitHub to Azure Kubernetes Service using Jenkins | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "operations.json: cd943950-e336-4906-a719-d2128c8d78e4"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/devops/pipelines/architectures/devops-pipelines-baseline-architecture?view=azure-devops",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/devops/pipelines/architectures/devops-pipelines-baseline-architecture?view=azure-devops",
+      "title": "Azure Pipelines baseline architecture - Azure Pipelines | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "application.json: 3acbe04b-be20-49d3-afda-47778424d116",
+        "application.json: 9a59a8b9-a4d2-4a79-aaca-38343ee351ee",
+        "operations.json: 40e1aeb1-9b5a-41ac-a9e3-1a457fe9bd74"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/event-grid/event-schema-aks",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/event-grid/event-schema-aks",
+      "title": "Azure Kubernetes Service as Event Grid source - Azure Event Grid | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "operations.json: 9583c0f6-6083-43f6-aa6b-df7102c901bb"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/governance/policy/concepts/policy-for-kubernetes",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/governance/policy/concepts/policy-for-kubernetes",
+      "title": "Learn Azure Policy for Kubernetes - Azure Policy | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "cluster_security.json: 9ca48e4a-85e2-4223-bce8-bb12307ca5f1",
+        "container.json: 8dcb9d27-a601-48e6-aeb8-e0469aaf8921"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/private-link/private-link-overview",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/private-link/private-link-overview",
+      "title": "What is Azure Private Link? | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "networking.json: ecccd979-3b6b-4cda-9b50-eb2eb03dda6d"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/reliability/availability-zones-service-support",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/reliability/availability-zones-service-support",
+      "title": "Azure Services That Support Availability Zones | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "storage.json: fc4972cc-3cd2-45bf-a707-6e9eab4bed32"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/virtual-network/accelerated-networking-overview",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/virtual-network/accelerated-networking-overview",
+      "title": "Azure Accelerated Networking Overview and Benefits | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "windows.json: 7bacd7b9-c025-4a9d-a5d2-25d6bc5439d9"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/web-application-firewall/overview",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/web-application-firewall/overview",
+      "title": "Introduction to Azure Web Application Firewall | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "networking.json: a3a92c2d-e7e2-4165-a3a8-7af4a7a1f893"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/well-architected/reliability/reliability-test",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/well-architected/reliability/reliability-test",
+      "title": "Architecture strategies for designing a reliability testing strategy - Microsoft Azure Well-Architected Framework | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "bc_dr.json: 23592e5e-4f9d-434a-afd3-6691b26c0d98"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/well-architected/sustainability/overview",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/well-architected/sustainability/overview",
+      "title": "Sustainable workloads on Azure - Microsoft Azure Well-Architected Framework | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "cost.json: 80f55ea3-2cf6-49ee-a74f-0513af1f846a"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/well-architected/what-is-well-architected-framework",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/azure/well-architected/what-is-well-architected-framework",
+      "title": "How to Use the Azure Well-Architected Framework Documentation - Microsoft Azure Well-Architected Framework | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "architecture.json: 41d13d9b-98ad-4be7-af3b-2a179e378290"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/training/modules/aks-governance-azure-policy/",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/training/modules/aks-governance-azure-policy/",
+      "title": "Azure Kubernetes Service Governance with Azure Policy - Training | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "cluster_security.json: 9ca48e4a-85e2-4223-bce8-bb12307ca5f1"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/troubleshoot/azure/azure-kubernetes/welcome-azure-kubernetes",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/troubleshoot/azure/azure-kubernetes/welcome-azure-kubernetes",
+      "title": "Troubleshoot Azure Kubernetes Service (AKS) issues | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "observability.json: 74c2ee76-569b-4a79-a57e-dedf91b022c9"
+      ]
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/virtualization/windowscontainers/deploy-containers/version-compatibility?tabs=windows-server-20H2%2Cwindows-10-20H2",
+      "status": 200,
+      "finalUrl": "https://learn.microsoft.com/en-us/virtualization/windowscontainers/deploy-containers/version-compatibility?tabs=windows-server-20H2%2Cwindows-10-20H2",
+      "title": "Windows container version compatibility | Microsoft Learn",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "windows.json: 67138b82-0102-4ce1-9ee3-01e6e882e52e"
+      ]
+    },
+    {
+      "url": "https://learnkube.com/kubernetes-instance-calculator",
+      "status": 200,
+      "finalUrl": "https://learnkube.com/kubernetes-instance-calculator",
+      "title": "Kubernetes Instance Calculator - Find Best Cloud Instances",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "resource_management.json: 7f8b07c5-882b-45ba-9ec9-bcc29b4721ff"
+      ]
+    },
+    {
+      "url": "https://learnkube.com/kubernetes-node-size",
+      "status": 200,
+      "finalUrl": "https://learnkube.com/kubernetes-node-size",
+      "title": "Architecting Kubernetes clusters — choosing a worker node size",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "resource_management.json: 7f8b07c5-882b-45ba-9ec9-bcc29b4721ff"
+      ]
+    },
+    {
+      "url": "https://lgmorand.github.io/the-aks-checklist/",
+      "status": 200,
+      "finalUrl": "https://lgmorand.github.io/the-aks-checklist/",
+      "title": "The Azure Kubernetes Service Checklist - ✨ Be ready for production ✨",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "README.md"
+      ]
+    },
+    {
+      "url": "https://pumpingco.de/blog/backup-and-restore-a-kubernetes-cluster-with-state-using-velero/",
+      "status": 200,
+      "finalUrl": "https://pumpingco.de/blog/backup-and-restore-a-kubernetes-cluster-with-state-using-velero/",
+      "title": "Backup, restore and migrate Kubernetes resources including state to another AKS cluster with Velero",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "bc_dr.json: 8c6703c5-42e9-46ef-93f1-7f6232af25fc"
+      ]
+    },
+    {
+      "url": "https://snyk.io/blog/10-docker-image-security-best-practices/",
+      "status": 200,
+      "finalUrl": "https://snyk.io/blog/10-docker-image-security-best-practices/",
+      "title": "10 Docker Security Best Practices | Docker Security Cheat Sheet | Snyk",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "application.json: b5222fdc-72b7-4b5f-baae-ab48a69b1d36"
+      ]
+    },
+    {
+      "url": "https://techcommunity.microsoft.com/blog/fasttrackforazureblog/use-azure-tags-in-azure-kubernetes-service-aks/3611583",
+      "status": 200,
+      "finalUrl": "https://techcommunity.microsoft.com/blog/fasttrackforazureblog/use-azure-tags-in-azure-kubernetes-service-aks/3611583",
+      "title": "Use Azure tags in Azure Kubernetes Service (AKS)",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "cluster_multi.json: 574bd2fe-f58b-4199-b334-f7eff3ef90c8"
+      ]
+    },
+    {
+      "url": "https://www.paloaltonetworks.com/prisma/cloud",
+      "status": 200,
+      "finalUrl": "https://www.paloaltonetworks.com/prisma/cloud",
+      "title": "Prisma Cloud | Comprehensive Cloud Security - Palo Alto Networks",
+      "fragmentChecked": false,
+      "fragmentFound": true,
+      "outcome": "pass",
+      "sources": [
+        "container.json: 59bce65d-e8a0-43f9-9879-468d66a786d6"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,92 @@
+:root { color-scheme: light; font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, sans-serif; color: #233754; background: #eaf0f8; line-height: 1.65; }
+* { box-sizing: border-box; }
+body { max-width: 1050px; background: white; margin: 30px auto; box-shadow: 0 15px 70px #0e2e5920; }
+a { color: #1754b0; overflow-wrap: anywhere; }
+a:hover { color: #073476; }
+:focus-visible { outline: 3px solid #007fa5; outline-offset: 3px; }
+h1, h2, h3 { line-height: 1.2; margin-top: 0; color: #0c3476; }
+p { margin: 0 0 12px; }
+.guide-cover { position: relative; overflow: hidden; min-height: 820px; background: radial-gradient(ellipse at 100% 10%, #277ee35c, transparent 60%), linear-gradient(135deg, #061d48, #103d80); color: #d7e7ff; padding: 66px 64px; }
+.guide-cover::after { content: ""; width: 470px; height: 470px; border: 1px solid #a2d8ff28; border-radius: 50%; position: absolute; right: -210px; top: 220px; box-shadow: 0 0 0 50px #ffffff03, 0 0 0 100px #ffffff02; pointer-events: none; }
+.cover-kicker { color: #94c8fb; font-size: 11px; font-weight: 700; letter-spacing: 2px; }
+.cover-mark { font-size: 65px; color: #78dce9; margin: 30px 0 15px; line-height: 1; }
+.guide-cover h1 { font-size: 66px; color: white; line-height: 1.05; letter-spacing: -2.7px; margin: 28px 0; }
+.guide-cover h1 span { color: #81d8f3; }
+.cover-lead { color: #fff; font-size: 25px; font-weight: 600; margin-bottom: 12px; }
+.cover-description { font-size: 16px; max-width: 580px; color: #bed4f3; }
+.cover-stats { display: flex; gap: 42px; margin: 38px 0; font-size: 11px; }
+.cover-stats strong { display: block; font-size: 31px; color: #7de1ed; }
+.cover-edition { border-top: 1px solid #ffffff36; padding-top: 22px; font-size: 12px; color: #d4e4ff; margin-top: 30px; }
+.cover-credit { font-size: 10px; color: #a7c7ed; margin-top: 25px; }
+.guide-main { padding: 55px 64px; }
+.kicker { font-size: 10px; font-weight: 800; letter-spacing: 1.6px; color: #2672bd; margin-bottom: 10px; }
+.guide-intro h2, .guide-section h2, .guide-colophon h2 { font-size: 30px; letter-spacing: -.8px; }
+.guide-intro { font-size: 13px; }
+.guide-intro h3 { font-size: 17px; margin-top: 28px; }
+.guide-notice { padding: 22px; border-left: 4px solid #287bd6; background: #edf4ff; border-radius: 0 10px 10px 0; margin: 25px 0; font-size: 12px; }
+.guide-notice strong { color: #103c79; }
+.guide-notice p { margin: 12px 0 0; }
+.guide-toc { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px 18px; margin: 20px 0 35px; }
+.guide-toc a { display: flex; align-items: center; gap: 10px; text-decoration: none; padding: 10px 0; border-bottom: 1px solid #dde7f3; font-size: 11px; }
+.guide-toc span { color: #2672bd; font-size: 10px; font-weight: 700; }
+.guide-toc b { color: #566a82; font-weight: 400; font-size: 9px; margin-left: auto; white-space: nowrap; }
+.guide-section { margin: 42px 0; }
+.guide-section-heading { padding: 26px 0 20px; border-top: 3px solid #1e62bc; margin-bottom: 22px; }
+.guide-section-heading h2 { margin-bottom: 10px; }
+.guide-section-heading > p:last-child { color: #536780; font-size: 13px; }
+.guide-item { border: 1px solid #dfe7f3; border-left: 3px solid #377ecb; border-radius: 8px; padding: 20px; margin: 0 0 16px; background: linear-gradient(110deg, #f8faff, #fff 60%); }
+.guide-item-heading { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px; }
+.guide-item-heading h3 { font-size: 15px; margin: 0; flex: 1; line-height: 1.4; }
+.guide-item-number { font-size: 10px; color: #326eaf; font-weight: 700; padding-top: 3px; }
+.guide-priority { font-size: 9px; background: #e8f0fd; color: #184a8c; font-weight: 700; padding: 2px 7px; border-radius: 4px; white-space: nowrap; }
+.guide-item p { font-size: 12px; line-height: 1.75; }
+.guide-references { font-size: 10px; border-top: 1px solid #e3eaf4; padding-top: 10px; }
+.guide-references strong { font-size: 8px; letter-spacing: 1.2px; color: #56708e; }
+.guide-references ul { margin: 6px 0 0; padding: 0; list-style: none; }
+.guide-references li { margin-bottom: 4px; }
+.guide-references a { text-decoration: none; }
+.guide-colophon { margin-top: 60px; padding-top: 30px; border-top: 3px solid #1e62bc; font-size: 12px; }
+.guide-footer { background: #f0f5fc; color: #526782; padding: 20px 64px; font-size: 10px; letter-spacing: .5px; }
+@media screen and (max-width: 700px) {
+  body { margin: 0; }
+  .guide-cover { padding: 42px 26px; min-height: 750px; }
+  .guide-cover h1 { font-size: 45px; }
+  .cover-stats { gap: 22px; }
+  .guide-main { padding: 35px 22px; }
+  .guide-toc { grid-template-columns: 1fr; }
+  .guide-item { padding: 16px; }
+  .guide-item-heading { flex-wrap: wrap; gap: 7px; }
+  .guide-item-heading h3 { min-width: 70%; }
+  .guide-footer { padding: 20px 26px; }
+}
+@media print {
+  @page { size: A4; margin: 18mm 16mm 20mm; }
+  @page :first { margin: 0; }
+  :root { background: white; }
+  body { margin: 0; max-width: none; box-shadow: none; }
+  .guide-cover { height: 297mm; min-height: 0; padding: 30mm 22mm 20mm; break-after: page; }
+  .guide-cover h1 { font-size: 49pt; margin-top: 12mm; }
+  .cover-kicker { font-size: 8pt; }
+  .cover-lead { font-size: 22pt; }
+  .cover-description { font-size: 12pt; }
+  .cover-stats { margin: 15mm 0; }
+  .cover-edition { margin-top: 18mm; }
+  .guide-main { padding: 0; }
+  .guide-intro { font-size: 10pt; }
+  .guide-intro h2, .guide-section h2 { font-size: 25pt; }
+  .guide-intro h3 { break-after: avoid; }
+  .guide-notice { font-size: 9pt; break-inside: avoid; }
+  .guide-intro h3:last-of-type { font-size: 24pt; }
+  .guide-toc { grid-template-columns: 1fr; gap: 0; break-inside: avoid; }
+  .guide-toc a { font-size: 10pt; padding: 9px 0; }
+  .guide-section { break-before: page; margin: 0; }
+  .guide-section-heading { padding: 20px 0 12px; break-after: avoid; }
+  .guide-section-heading > p:last-child { font-size: 10pt; }
+  .guide-item { padding: 13px 15px; margin-bottom: 12px; break-inside: avoid; }
+  .guide-item h3 { font-size: 11pt; }
+  .guide-item p { font-size: 9pt; line-height: 1.65; }
+  .guide-references { font-size: 8pt; line-height: 1.6; }
+  .guide-colophon { break-before: page; padding-top: 30px; }
+  .guide-footer { display: none; }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}

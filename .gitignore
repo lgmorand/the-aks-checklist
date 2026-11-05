@@ -9,6 +9,8 @@ selenium-debug.log
 dist/
 .tmp/
 data/tooling/result.txt
+.playwright/
+test-results/
 
 # Editor directories and files
 .idea

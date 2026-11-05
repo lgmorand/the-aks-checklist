@@ -1,0 +1,82 @@
+[
+  {
+    "title": "Allocate costs to teams and workloads",
+    "priority": "High",
+    "guid": "0f396e1a-62b0-409e-a7d9-3e547ea4e64e",
+    "description": "Use AKS cost analysis where supported or a maintained allocation tool. Combine Azure tags and Kubernetes labels with ownership, budgets, and chargeback rules. Include idle capacity, monitoring ingestion, network egress, storage, licenses, and managed add-ons.",
+    "documentation": [
+      {
+        "title": "Allocate costs to teams and workloads",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/cost-analysis"
+      }
+    ],
+    "tags": [
+      "all",
+      "cost"
+    ]
+  },
+  {
+    "title": "Right-size from measured demand and unit economics",
+    "priority": "Medium",
+    "guid": "62079698-08c1-4468-ab68-48215fe759d3",
+    "description": "Review requests, limits, node utilization, autoscaler behavior, and cost per business transaction. Reduce waste without removing failure headroom, disrupting latency objectives, or creating unschedulable workloads.",
+    "documentation": [
+      {
+        "title": "Right-size from measured demand and unit economics",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/best-practices-cost"
+      }
+    ],
+    "tags": [
+      "all",
+      "cost"
+    ]
+  },
+  {
+    "title": "Use reservations and savings plans only for stable baseline demand",
+    "priority": "Medium",
+    "guid": "ac484c18-4c23-49bc-a4b6-8a3f82fd630d",
+    "description": "Model measured compute commitments against expected VM families, regions, and utilization. Use Spot capacity only for interruption-tolerant workloads with checkpointing and fallback; never rely on Spot for essential system components.",
+    "documentation": [
+      {
+        "title": "Use reservations and savings plans only for stable baseline demand",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/best-practices-cost"
+      }
+    ],
+    "tags": [
+      "all",
+      "cost"
+    ]
+  },
+  {
+    "title": "Stop disposable environments and clean orphaned resources safely",
+    "priority": "Medium",
+    "guid": "deaa4ade-79a6-444a-aa45-024dd3a73505",
+    "description": "Schedule nonproduction shutdown or scale-down when supported and acceptable. Review unused disks, public IPs, snapshots, images, and workspaces with owners and retention policies before deletion; never treat an unattached disk as automatically disposable.",
+    "documentation": [
+      {
+        "title": "Stop disposable environments and clean orphaned resources safely",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/start-stop-cluster"
+      }
+    ],
+    "tags": [
+      "all",
+      "cost"
+    ]
+  },
+  {
+    "title": "Evaluate sustainability without compromising service objectives",
+    "priority": "Low",
+    "guid": "80f55ea3-2cf6-49ee-a74f-0513af1f846a",
+    "description": "Measure utilization and workload efficiency, evaluate compatible Arm64 compute, and select regions within latency and residency constraints. Consider the total operational footprint rather than assuming one VM architecture is always cheaper or lower-carbon.",
+    "documentation": [
+      {
+        "title": "Evaluate sustainability without compromising service objectives",
+        "url": "https://learn.microsoft.com/en-us/azure/well-architected/sustainability/overview"
+      }
+    ],
+    "tags": [
+      "all",
+      "cost"
+    ]
+  }
+]

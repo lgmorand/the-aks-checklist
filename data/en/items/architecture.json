@@ -1,0 +1,114 @@
+[
+  {
+    "title": "Choose AKS only when Kubernetes fits the workload",
+    "priority": "High",
+    "guid": "1d82a4d2-05da-4235-a18f-aa5802d6c20a",
+    "description": "Compare AKS with Azure Container Apps, App Service, and other managed platforms against portability, orchestration, networking, team skills, operational cost, and compliance needs. Record the decision and the workload owner before provisioning a cluster.",
+    "documentation": [
+      {
+        "title": "Choose AKS only when Kubernetes fits the workload",
+        "url": "https://learn.microsoft.com/en-us/azure/architecture/guide/choose-azure-container-service"
+      }
+    ],
+    "tags": [
+      "all",
+      "architecture"
+    ]
+  },
+  {
+    "title": "Choose AKS Automatic or Standard deliberately",
+    "priority": "High",
+    "guid": "04de9192-7cbc-4f4e-ac63-15fab4aa3f23",
+    "description": "Evaluate AKS Automatic for managed production defaults and Standard for infrastructure customization. Verify feature, region, networking, Windows, and operational constraints. Validate service-managed defaults rather than assuming either mode makes applications production-ready.",
+    "documentation": [
+      {
+        "title": "Choose AKS Automatic or Standard deliberately",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/intro-aks-automatic"
+      }
+    ],
+    "tags": [
+      "all",
+      "architecture"
+    ]
+  },
+  {
+    "title": "Review the platform against the AKS Well-Architected baseline",
+    "priority": "High",
+    "guid": "5c03211e-95c6-42f1-ae3c-5a034d2e4d4b",
+    "description": "Review reliability, security, cost optimization, operational excellence, and performance efficiency using the AKS baseline architecture and Well-Architected guidance. Record design trade-offs, owners, residual risks, and evidence for each applicable control.",
+    "documentation": [
+      {
+        "title": "Review the platform against the AKS Well-Architected baseline",
+        "url": "https://learn.microsoft.com/en-us/azure/architecture/reference-architectures/containers/aks/baseline-aks"
+      }
+    ],
+    "tags": [
+      "all",
+      "architecture"
+    ]
+  },
+  {
+    "title": "Document shared responsibility and operational ownership",
+    "priority": "High",
+    "guid": "3cd6546a-0dee-4d90-aff7-5e4163312724",
+    "description": "Define ownership for cluster configuration, workload patching, identities, data protection, upgrades, monitoring, incident response, and costs. AKS manages the control plane; customers still own application resilience, workload configuration, and service dependencies.",
+    "documentation": [
+      {
+        "title": "Document shared responsibility and operational ownership",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/support-policies"
+      }
+    ],
+    "tags": [
+      "all",
+      "architecture"
+    ]
+  },
+  {
+    "title": "Use landing-zone governance and explicit environment boundaries",
+    "priority": "Medium",
+    "guid": "325d59e7-a4a8-42b1-aa05-0543ef39ff24",
+    "description": "Place clusters in the intended management group, subscription, and network architecture. Define Azure Policy, resource naming and tags, budget ownership, data residency, and separation of production from nonproduction access and change paths.",
+    "documentation": [
+      {
+        "title": "Use landing-zone governance and explicit environment boundaries",
+        "url": "https://learn.microsoft.com/en-us/azure/architecture/reference-architectures/containers/aks-start-here"
+      }
+    ],
+    "tags": [
+      "all",
+      "architecture"
+    ]
+  },
+  {
+    "title": "Define evidence-based review outcomes and exceptions",
+    "priority": "High",
+    "guid": "41d13d9b-98ad-4be7-af3b-2a179e378290",
+    "description": "For each applicable check, record an owner, evidence, status, and a time-bound remediation or risk acceptance. Priorities are review guidance, not a universal risk score. Explicitly mark nonapplicable items and revisit the assessment after major changes.",
+    "documentation": [
+      {
+        "title": "Define evidence-based review outcomes and exceptions",
+        "url": "https://learn.microsoft.com/en-us/azure/well-architected/what-is-well-architected-framework"
+      }
+    ],
+    "tags": [
+      "all",
+      "architecture"
+    ]
+  },
+  {
+    "title": "Gate preview features and verify regional availability",
+    "priority": "High",
+    "guid": "92bdb43d-9279-406b-aa38-86fd8a2103ea",
+    "description": "Prefer generally available supported features for production. Review preview terms, SLA exclusions, region and cloud availability, Kubernetes minimums, and exit plans before any approved exception. Feature names alone do not establish production support.",
+    "documentation": [
+      {
+        "title": "Gate preview features and verify regional availability",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/support-policies"
+      }
+    ],
+    "tags": [
+      "all",
+      "architecture"
+    ]
+  }
+]

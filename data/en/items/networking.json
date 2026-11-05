@@ -1,30 +1,13 @@
 [
   {
-    "title": "Choose the best CNI network plugin for your requirements (Azure CNI recommended)",
+    "title": "Choose Azure CNI Overlay or Pod Subnet deliberately",
     "priority": "Medium",
     "guid": "a0f61565-9de5-458f-a372-49c831112dbd",
-    "description": "For integration with existing virtual networks or on-premises networks, use Azure CNI networking in AKS. This network model also allows greater separation of resources and controls in an enterprise environment but be aware of the impact on the network topology/IP ranges. You can now use the CNI overlay model which gives more control and takes the benefits of both approachs.",
-    "detail": "While Kubenet is the default Kubernetes network plugin, the Container Networking Interface (CNI) is a vendor-neutral protocol that lets the container runtime make requests to a network provider. The Azure CNI assigns IP addresses to pods and nodes, and provides IP address management (IPAM) features as you connect to existing Azure virtual networks. Each node and pod resource receives an IP address in the Azure virtual network, and no additional routing is needed to communicate with other resources or services.",
+    "description": "Prefer Azure CNI Overlay for efficient address use, or Azure CNI Pod Subnet when directly routable pod addresses are required. Validate OS and policy-engine compatibility. Kubenet is a legacy model retiring on 31 March 2028; do not select it for new deployments.",
     "documentation": [
       {
-        "title": "Kubenet vs CNI",
-        "url": "https://learn.microsoft.com/azure/aks/operator-best-practices-network#choose-the-appropriate-network-model"
-      },
-      {
-        "title": "Dynamic IP allocation",
-        "url": "https://learn.microsoft.com/azure/aks/configure-azure-cni#dynamic-allocation-of-ips-and-enhanced-subnet-support"
-      },
-      {
-        "title": "Azure CNI Overlay",
-        "url": "https://learn.microsoft.com/azure/aks/azure-cni-overlay"
-      },
-      {
-        "title": "Bring your own CNI",
-        "url": "https://learn.microsoft.com/azure/aks/use-byo-cni"
-      },
-      {
-        "title": "Add a node pool with a unique subnet",
-        "url": "https://learn.microsoft.com/azure/aks/use-multiple-node-pools#add-a-node-pool-with-a-unique-subnet"
+        "title": "Choose Azure CNI Overlay or Pod Subnet deliberately",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/concepts-network-cni-overview"
       }
     ],
     "tags": [
@@ -33,21 +16,19 @@
     ],
     "optionalFields": {
       "score": {
-        "simple": 1,
-        "graph": "where type=='microsoft.containerservice/managedclusters' | extend compliant = (properties.networkProfile.networkPlugin=='azure') | distinct id,compliant"
+        "simple": 1
       }
     }
   },
   {
-    "title": "If using Azure CNI, size your subnet accordingly considering the maximum number of pods per node",
+    "title": "Plan node and pod address capacity including upgrade surge",
     "priority": "High",
     "guid": "7faf12e7-0943-4f63-8472-2da29c2b1cd6",
-    "description": "The size of your virtual network and its subnet must accommodate the number of pods you plan to run and the number of nodes for the cluster.",
-    "detail": "As an example, using CNI, you need one IP for each node + one spare for a new node in case of cluster upgrade, and you need an IP for each pod which can represent hundred of IP addresses",
+    "description": "Size address space for the actual network model, maximum nodes, maxPods, scale-out, and concurrent surge upgrades. Overlay separates pod and node address space; flat networking consumes VNet pod addresses. Include private endpoints, load balancers, peering, and future growth.",
     "documentation": [
       {
-        "title": "Plan IP addressing for your cluster",
-        "url": "https://learn.microsoft.com/azure/aks/configure-azure-cni#plan-ip-addressing-for-your-cluster"
+        "title": "Plan node and pod address capacity including upgrade surge",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/concepts-network-ip-address-planning"
       }
     ],
     "tags": [
@@ -61,22 +42,14 @@
     }
   },
   {
-    "title": "Use an ingress controller to expose web-based apps instead of exposing them with LoadBalancer-type services",
+    "title": "Choose supported L7 ingress and plan Gateway API migration",
     "priority": "Medium",
     "guid": "b3808b9f-a1cf-4204-ad01-3a923ce474db",
-    "description": "To distribute HTTP or HTTPS traffic to your applications, use ingress resources and controllers. Ingress controllers provide additional features over a regular Azure load balancer, and can be managed as native Kubernetes resources.",
+    "description": "Use a supported ingress or Gateway API implementation for HTTP routing, TLS, and policy. Upstream Ingress NGINX maintenance ended in March 2026; AKS application routing NGINX critical-security-patch support runs through November 2026. Evaluate application routing Gateway API, Application Gateway for Containers, or Istio ingress against feature and support requirements.",
     "documentation": [
       {
-        "title": "Application routing add-on for Azure Kubernetes Service (AKS)",
-        "url": "https://aka.ms/aks/docs/app-routing"
-      },
-      {
-        "title": "Distribute ingress traffic",
-        "url": "https://learn.microsoft.com/azure/aks/operator-best-practices-network#distribute-ingress-traffic"
-      },
-      {
-        "title": "Network concepts: Ingress controllers",
-        "url": "https://learn.microsoft.com/en-us/azure/aks/concepts-network#ingress-controllers"
+        "title": "Choose supported L7 ingress and plan Gateway API migration",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/concepts-network-ingress"
       }
     ],
     "tags": [
@@ -91,14 +64,14 @@
     }
   },
   {
-    "title": "Secure your exposed applications with a web application firewall (WAF)",
+    "title": "Protect internet-facing HTTP applications with an appropriate WAF",
     "priority": "Medium",
     "guid": "a3a92c2d-e7e2-4165-a3a8-7af4a7a1f893",
-    "description": "If you plan to host exposed applications, to scan incoming traffic for potential attacks, use a web application firewall (WAF) such as Barracuda WAF for Azure or Azure Application Gateway. These more advanced network resources can also route traffic beyond just HTTP and HTTPS connections or basic SSL termination.",
+    "description": "Choose a supported WAF architecture, such as Azure Front Door Premium or Application Gateway WAF, when required by the threat model. Tune managed rules, restrict origin access, validate TLS and health probes, and test that the origin cannot bypass the WAF.",
     "documentation": [
       {
-        "title": "Secure traffic with a web application firewall (WAF)",
-        "url": "https://learn.microsoft.com/azure/aks/operator-best-practices-network#secure-traffic-with-a-web-application-firewall-waf"
+        "title": "Protect internet-facing HTTP applications with an appropriate WAF",
+        "url": "https://learn.microsoft.com/en-us/azure/web-application-firewall/overview"
       }
     ],
     "tags": [
@@ -114,14 +87,14 @@
     }
   },
   {
-    "title": "Apply control on ingress hostnames",
+    "title": "Restrict ingress hostnames and Gateway API delegation",
     "guid": "e5684a8b-f072-43d2-83b2-234ad48f57c7",
     "priority": "Low",
-    "description": "When a user creates an Ingress manifest, they can use any hostname in it. You may want to control which hostnames are allowed to use, like your company's hostnames.",
+    "description": "Constrain approved hostnames, cross-namespace references, and who can attach routes to shared gateways. Use admission controls and Gateway API allowedRoutes/ReferenceGrant rules as appropriate; test that tenants cannot claim another application hostname.",
     "documentation": [
       {
-        "title": "Tutorial: only allow approved domain names as ingress hostnames",
-        "url": "https://www.openpolicyagent.org/docs/latest/kubernetes-tutorial/#4-define-a-policy-and-load-it-into-opa-via-kubernetes"
+        "title": "Restrict ingress hostnames and Gateway API delegation",
+        "url": "https://gateway-api.sigs.k8s.io/docs/concepts/security/"
       }
     ],
     "tags": [
@@ -134,14 +107,14 @@
     }
   },
   {
-    "title": "Don't expose your load-balancer on Internet if not necessary",
+    "title": "Expose only the load balancers that need public access",
     "guid": "c0179fd4-470b-43c8-b7bb-80307051bc96",
     "priority": "High",
-    "description": "There is almost no reason to directly expose the ingress entry point to Internet but by default AKS create a public one. Tell him to create an internal one only.",
+    "description": "Use internal load balancers for private services and public endpoints only for intentional internet-facing applications. An internal load balancer still needs authentication, network controls, DNS, and a tested access path.",
     "documentation": [
       {
-        "title": "Create an ingress controller to an internal virtual network",
-        "url": "https://learn.microsoft.com/azure/aks/ingress-internal-ip"
+        "title": "Expose only the load balancers that need public access",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/internal-lb"
       }
     ],
     "tags": [
@@ -154,30 +127,15 @@
     }
   },
   {
-    "title": "Control traffic flow with network policies",
+    "title": "Enforce pod network policy using a supported engine",
     "guid": "0751f099-e6f4-4250-b405-d2b26c707432",
     "priority": "Medium",
     "severity": "High",
-    "description": "Use network policies to allow or deny traffic to pods. By default, all traffic is allowed between pods within a cluster. For improved security, define rules that limit pod communication.",
-    "detail": "Network policy is a Kubernetes feature that lets you control the traffic flow between pods. You can choose to allow or deny traffic based on settings such as assigned labels, namespace, or traffic port. The use of network policies gives a cloud-native way to control the flow of traffic. As pods are dynamically created in an AKS cluster, the required network policies can be automatically applied. Don't use Azure network security groups to control pod-to-pod traffic, use network policies.",
+    "description": "Apply and test ingress and egress policies with explicit DNS and dependency allowances. Azure CNI Powered by Cilium is recommended for supported Linux configurations; validate Windows support separately. A configured policy engine without effective policies does not isolate workloads.",
     "documentation": [
       {
-        "title": "Enable a Kubernetes Network Policy option (Calico/Azure)",
-        "url": "https://learn.microsoft.com/azure/aks/operator-best-practices-network#control-traffic-flow-with-network-policies"
-      },
-      {
-        "title": "Secure traffic between pods using network policies",
-        "url": "https://learn.microsoft.com/azure/aks/use-network-policies"
-      }
-    ],
-    "tools": [
-      {
-        "title": "Calico",
-        "url": "https://docs.projectcalico.org/reference/resources/networkpolicy"
-      },
-      {
-        "title": "Cillium",
-        "url": "https://cilium.io/"
+        "title": "Enforce pod network policy using a supported engine",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/use-network-policies"
       }
     ],
     "tags": [
@@ -188,7 +146,6 @@
     ],
     "optionalFields": {
       "score": {
-        "graph": "where type=='microsoft.containerservice/managedclusters' | extend compliant = isnotnull(properties.networkProfile.networkPolicy) | distinct id,compliant",
         "security": 1
       }
     }
@@ -204,8 +161,8 @@
         "url": "https://github.com/ahmetb/kubernetes-network-policy-recipes"
       },
       {
-        "title": "Callico global network policy",
-        "url": "https://projectcalico.docs.tigera.io/reference/resources/globalnetworkpolicy"
+        "title": "Calico global network policy",
+        "url": "https://docs.tigera.io/calico/latest/reference/resources/globalnetworkpolicy"
       }
     ],
     "tags": [
@@ -227,7 +184,7 @@
     "documentation": [
       {
         "title": "Egress traffic requirements",
-        "url": "https://learn.microsoft.com/azure/aks/limit-egress-traffic"
+        "url": "https://learn.microsoft.com/en-us/azure/aks/limit-egress-traffic"
       }
     ],
     "tags": [
@@ -251,7 +208,7 @@
     "documentation": [
       {
         "title": "Azure Container Registry Private Link",
-        "url": "https://learn.microsoft.com/azure/container-registry/container-registry-private-link"
+        "url": "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-private-endpoints"
       }
     ],
     "tags": [
@@ -264,14 +221,14 @@
     }
   },
   {
-    "title": "Block Pod access to VMSS IMDS",
+    "title": "Test workload access to metadata and host-network services",
     "guid": "4fb072a7-0303-46d8-9ecf-d8aa4d69ff83",
     "priority": "Medium",
-    "description": "By default, Pods have access to VMSS IMDS and can request access token from the attached Managed Identity. This access should be restriced by using Network Policy.",
+    "description": "Explicitly test access to 169.254.169.254 and host-network workloads from ordinary application pods. Network policy behavior depends on the data plane and host-network semantics. AKS IMDS restriction is documented as preview and does not restrict host-network pods; assess support terms before adoption and minimize node identity permissions.",
     "documentation": [
       {
-        "title": "Pods requesting access to get a token",
-        "url": "https://learn.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-use-vm-token#get-a-token-using-curl"
+        "title": "Test workload access to metadata and host-network services",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/imds-restriction"
       }
     ],
     "tags": [
@@ -288,23 +245,23 @@
     "guid": "29fb411c-20a8-4c39-84df-aaa4227eaeb2",
     "priority": "High",
     "description": "In a private cluster, the control plane or API server has internal IP addresses and is not exposed to Internet",
-    "detail": "By using a private cluster, you can ensure that network traffic between your API server and your node pools remains on the private network only. Because the API server has a private address, it means that to access it for administration or for deployment, you need to set up private connection, like using a 'jumpbox' (i.e.: Azure Bastion)",
+    "detail": "Plan private DNS and an approved network path for administrators and deployment runners, such as a connected management host, VPN, or ExpressRoute. Azure Bastion provides access to a management VM rather than acting as a direct Kubernetes API proxy. Review command invoke permissions separately because that management-plane path can reach a private cluster without direct client network connectivity.",
     "documentation": [
       {
         "title": "Create a private cluster (using private link)",
-        "url": "https://learn.microsoft.com/azure/aks/private-clusters"
+        "url": "https://learn.microsoft.com/en-us/azure/aks/private-clusters"
       },
       {
-        "title": "Create an Azure Kubernetes Service cluster with API Server VNet Integration (preview)",
+        "title": "API Server VNet Integration",
         "url": "https://learn.microsoft.com/en-us/azure/aks/api-server-vnet-integration"
       },
       {
         "title": "Use azure CLI to run command on a private cluster",
-        "url": "https://learn.microsoft.com/azure/aks/private-clusters#options-for-connecting-to-the-private-cluster"
+        "url": "https://learn.microsoft.com/en-us/azure/aks/private-clusters"
       },
       {
         "title": "Use public DNS with a private cluster",
-        "url": "https://learn.microsoft.com/azure/aks/private-clusters#create-a-private-aks-cluster-with-a-public-dns-address"
+        "url": "https://learn.microsoft.com/en-us/azure/aks/private-clusters"
       }
     ],
     "tags": [
@@ -317,15 +274,14 @@
     }
   },
   {
-    "title": "Enable traffic management",
+    "title": "Choose global routing based on protocol and failover requirements",
     "guid": "5d0bb60d-b8e0-4031-9c5b-1f0a735f771f",
     "priority": "Medium",
-    "description": "Azure Traffic Manager can direct customers to their closest AKS cluster and application instance. For the best performance and redundancy, direct all application traffic through Traffic Manager before it goes to your AKS cluster.",
-    "detail": "If you have multiple AKS clusters in different regions, use Traffic Manager to control how traffic flows to the applications that run in each cluster. Azure Traffic Manager is a DNS-based traffic load balancer that can distribute network traffic across regions. Use Traffic Manager to route users based on cluster response time or based on geography. It can be used to improve app availability with automatic failover",
+    "description": "Use Azure Front Door for global HTTP(S) edge routing and WAF integration, or Traffic Manager for DNS-based routing of supported endpoints. Configure health checks, TLS, DNS TTLs, origin restrictions, and failover tests; neither service automatically replicates application state.",
     "documentation": [
       {
-        "title": "Use Azure Traffic Manager to route traffic",
-        "url": "https://learn.microsoft.com/azure/aks/operator-best-practices-multi-region#use-azure-traffic-manager-to-route-traffic"
+        "title": "Choose global routing based on protocol and failover requirements",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/reliability-multi-region-deployment-models"
       }
     ],
     "tags": [
@@ -339,15 +295,14 @@
     }
   },
   {
-    "title": "If using Azure CNI, check the maximum pods/node (default 30)",
+    "title": "Set maxPods explicitly for the chosen networking model",
     "priority": "High",
     "guid": "22f54b29-bade-43aa-b1e8-c38ec9366673",
-    "description": "With Azure Container Networking Interface (CNI), every pod gets an IP address from the subnet and can be accessed directly.",
-    "detail": "These IP addresses must be unique across your network space, and must be planned in advance. Each node has a configuration parameter for the maximum number of pods that it supports. ",
+    "description": "Check the default and supported maximum pod density for the actual OS, network model, VM size, and provisioning method. Do not assume a universal default of 30. Account for DaemonSets, system reservations, IP capacity, and storage attachment limits.",
     "documentation": [
       {
-        "title": "Configure Azure CNI networking on AKS",
-        "url": "https://learn.microsoft.com/azure/aks/configure-azure-cni"
+        "title": "Set maxPods explicitly for the chosen networking model",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/concepts-network-ip-address-planning"
       }
     ],
     "tags": [
@@ -370,7 +325,7 @@
     "documentation": [
       {
         "title": "Secure access to the API server using authorized IP address ranges",
-        "url": "https://learn.microsoft.com/azure/aks/api-server-authorized-ip-ranges"
+        "url": "https://learn.microsoft.com/en-us/azure/aks/api-server-authorized-ip-ranges"
       }
     ],
     "tags": [
@@ -383,14 +338,14 @@
     }
   },
   {
-    "title": "Use Azue NAT Gateway as outboundType for scaling egress traffic",
+    "title": "Choose and monitor an explicit outbound connectivity design",
     "priority": "Medium",
     "guid": "ccb534e7-416e-4a1d-8e93-533b53199085",
-    "description": "Whilst AKS customers are able to route egress traffic through an Azure Load Balancer, there are limitations on the amount of outbound flows of traffic that is possible.",
+    "description": "Choose a supported outboundType such as NAT gateway, load balancer, or user-defined routing based on throughput and inspection requirements. Size SNAT capacity and allow AKS dependencies. NAT Gateway is not a firewall; private clusters still need an explicit egress plan.",
     "documentation": [
       {
-        "title": "Managed NAT Gateway",
-        "url": "https://learn.microsoft.com/azure/aks/nat-gateway"
+        "title": "Choose and monitor an explicit outbound connectivity design",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/egress-outboundtype"
       }
     ],
     "tags": [
@@ -406,15 +361,14 @@
     }
   },
   {
-    "title": "Use Dynamic allocations of IPs in order to avoid Azure CNI IP exhaustion",
+    "title": "Evaluate Pod Subnet allocation when flat pod routing is needed",
     "priority": "Medium",
     "guid": "8ee9a69a-1b58-4b1e-9c61-476e110a160b",
-    "description": "A drawback with the traditional CNI is the exhaustion of pod IP addresses as the AKS cluster grows, resulting in the need to rebuild the entire cluster in a bigger subnet.",
-    "detail": "The new dynamic IP allocation capability in Azure CNI solves this problem by allocating pod IPs from a subnet separate from the subnet hosting the AKS cluster.",
+    "description": "For VNet-routable pod IPs, evaluate Azure CNI Pod Subnet dynamic or static block allocation against supported features and scale limits. Plan separate node and pod subnet capacity; use Overlay when direct pod reachability is not required.",
     "documentation": [
       {
-        "title": "Dynamic allocation of IPs and enhanced subnet support",
-        "url": "https://learn.microsoft.com/azure/aks/configure-azure-cni#dynamic-allocation-of-ips-and-enhanced-subnet-support"
+        "title": "Evaluate Pod Subnet allocation when flat pod routing is needed",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/concepts-network-azure-cni-pod-subnet"
       }
     ],
     "tags": [
@@ -430,14 +384,14 @@
     }
   },
   {
-    "title": "Use Private Endpoints (preferred) or Virtual Network Service Endpoints to access PaaS services from the cluster",
+    "title": "Use private endpoints or service endpoints where appropriate",
     "priority": "Medium",
     "guid": "ecccd979-3b6b-4cda-9b50-eb2eb03dda6d",
-    "description": "This will help keep your cluster secure by limiting access from outside the virtual network to Azure PaaS services",
+    "description": "For PaaS dependencies, select private endpoints or supported service endpoints based on service capability and trust boundaries. Configure private DNS and public-access restrictions explicitly; a private AKS API endpoint does not make workload dependencies private.",
     "documentation": [
       {
-        "title": "What is Azure Private Link?",
-        "url": "https://learn.microsoft.com/azure/private-link/private-link-overview"
+        "title": "Use private endpoints or service endpoints where appropriate",
+        "url": "https://learn.microsoft.com/en-us/azure/private-link/private-link-overview"
       }
     ],
     "tags": [
@@ -448,20 +402,19 @@
     "optionalFields": {
       "score": {
         "simple": -1,
-        "graph": "where type=='microsoft.containerservice/managedclusters' | where isnotnull(properties.apiServerAccessProfile.enablePrivateCluster) | extend compliant = (properties.apiServerAccessProfile.enablePrivateCluster==true) | distinct id, compliant",
         "security": 1
       }
     }
   },
   {
-    "title": "Consider using a service mesh for advanced microservice communication management",
+    "title": "Adopt a service mesh only for explicit application requirements",
     "priority": "Medium",
     "guid": "e9855d04-c3c3-49c9-a6bb-2c12159a114b",
-    "description": "A service mesh provides capabilities like traffic management, resiliency, policy, security, strong identity, and observability to your workloads.",
+    "description": "Evaluate a supported mesh, such as the AKS Istio add-on, when service identity, mutual TLS, traffic policy, or detailed telemetry justify its operational cost. Validate supported revisions, upgrades, resource overhead, and failure behavior; a mesh is not a prerequisite for every microservice application.",
     "documentation": [
       {
         "title": "About service meshes",
-        "url": "https://learn.microsoft.com/azure/aks/servicemesh-about"
+        "url": "https://learn.microsoft.com/en-us/azure/aks/servicemesh-about"
       }
     ],
     "tags": [
@@ -475,12 +428,12 @@
         "security": 1
       }
     }
-  }, 
+  },
   {
-    "title": "If required add your own CNI plugin",
+    "title": "Use a bring-your-own CNI only with clear support ownership",
     "priority": "Low",
     "guid": "57bf217f-6dc8-481c-81e2-785773e9c00f",
-    "description": "Advanced AKS users might want the same CNI plugin used in on-premises Kubernetes environments or to use advanced functionalities available in other CNI plugins.",
+    "description": "Use bring-your-own CNI only when its capabilities are necessary and the team can operate and support it. Review AKS support boundaries, Kubernetes and OS compatibility, IPAM, policy enforcement, upgrades, and recovery; Azure does not operate a third-party CNI on your behalf.",
     "documentation": [
       {
         "title": "Bring your own Container Network Interface (CNI) plugin for AKS",
@@ -501,14 +454,14 @@
     }
   },
   {
-    "title": "If using Azure CNI, consider using different Subnets for NodePools",
+    "title": "Use per-node-pool subnets when the network design requires them",
     "priority": "Medium",
     "guid": "22fbe8d6-9b40-47ef-9011-25bb1a555a6b",
-    "description": "This can address requirements such as having non-contiguous virtual network address space to split across node pools and other security reasons.",
+    "description": "Evaluate separate node-pool subnets for address-space organization, routing, or security requirements. Validate support for the selected Azure CNI mode and subnet delegation, private DNS, and policy behavior; subnet separation alone is not tenant isolation.",
     "documentation": [
       {
         "title": "Add a node pool with a unique subnet",
-        "url": "https://learn.microsoft.com/en-us/azure/aks/use-multiple-node-pools#add-a-node-pool-with-a-unique-subnet"
+        "url": "https://learn.microsoft.com/en-us/azure/aks/create-node-pools"
       }
     ],
     "tags": [
@@ -524,18 +477,18 @@
     }
   },
   {
-    "title": "Verify non overlapping CIDR ranges for Service-CIDR and Pod-CIDR or Subnet-CIDR",
+    "title": "Reserve nonoverlapping service, pod, node, and connected-network ranges",
     "priority": "Medium",
     "guid": "22fbe8d6-9b40-47ef-9011-25bb1a555a6c",
-    "description": "The Service CIDR should not overlap with Pod CIDR or Subnet CIDR or even peered VNET CIDR. If not configured correctly, the cluster might have strange behavior.",
+    "description": "Validate service, pod, node-subnet, peered-VNet, VPN, and on-premises address ranges before deployment. Apply the rules of the selected network model, including Overlay routing and masquerading behavior, and test reachability to all dependencies. Address conflicts can make destinations unreachable.",
     "documentation": [
       {
         "title": "Pod CIDR, Service CIDR and Subnet CIDR",
-        "url": "https://learn.microsoft.com/en-us/azure/aks/configure-azure-cni#plan-ip-addressing-for-your-cluster"
+        "url": "https://learn.microsoft.com/en-us/azure/aks/configure-azure-cni"
       },
       {
         "title": "Use the right CIDR ranges for networking parameters",
-        "url": "https://learn.microsoft.com/en-us/azure/aks/configure-azure-cni#deployment-parameters"
+        "url": "https://learn.microsoft.com/en-us/azure/aks/configure-azure-cni"
       }
     ],
     "tags": [
@@ -549,5 +502,58 @@
         "security": 1
       }
     }
+  },
+  {
+    "title": "Validate DNS resolution and private-zone ownership",
+    "priority": "High",
+    "guid": "4dc325aa-f8a9-49a1-a6a5-896edbeb746c",
+    "description": "Test cluster DNS, upstream DNS, private endpoints, and cross-network name resolution from pods and deployment runners. Monitor DNS latency and failures, scale CoreDNS when needed, and evaluate LocalDNS only against current feature availability and workload requirements.",
+    "documentation": [
+      {
+        "title": "Validate DNS resolution and private-zone ownership",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/dns-concepts"
+      }
+    ],
+    "tags": [
+      "all",
+      "networking",
+      "network"
+    ]
+  },
+  {
+    "title": "Evaluate Azure CNI Powered by Cilium for Linux data planes",
+    "priority": "Medium",
+    "guid": "e0ab94dd-554a-40d2-a60d-7500cbc5e4aa",
+    "description": "Use the supported managed Cilium data plane for compatible Linux workloads. Validate NetworkPolicy behavior and migration constraints; advanced L7, FQDN, and observability features can require Advanced Container Networking Services and additional cost.",
+    "documentation": [
+      {
+        "title": "Evaluate Azure CNI Powered by Cilium for Linux data planes",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/azure-cni-powered-by-cilium"
+      }
+    ],
+    "tags": [
+      "all",
+      "networking",
+      "network",
+      "security"
+    ]
+  },
+  {
+    "title": "Manage TLS certificate issuance and renewal",
+    "priority": "High",
+    "guid": "f84777e4-a928-472d-a839-fdc64d4cc6c8",
+    "description": "Inventory external and internal certificates, automate issuance and renewal through a supported integration, and alert before expiry. Validate trust chains, TLS policy, secret rotation, and application reload behavior without relying on manual certificate replacement.",
+    "documentation": [
+      {
+        "title": "Manage TLS certificate issuance and renewal",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/app-routing"
+      }
+    ],
+    "tags": [
+      "all",
+      "networking",
+      "network",
+      "security"
+    ]
   }
 ]

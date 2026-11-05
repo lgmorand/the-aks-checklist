@@ -1,8 +1,0 @@
-{
-  "profiles": {
-    "aks-generator": {
-      "commandName": "Project",
-      "commandLineArgs": "-f template.html -p docs -o index.html"
-    }
-  }
-}

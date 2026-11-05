@@ -1,63 +1,35 @@
 name: Build and deploy on staging
-
 on:
   workflow_dispatch:
   push:
-    branches:
-      - staging
-
+    branches: [staging]
+permissions:
+  contents: read
+concurrency:
+  group: azure-staging
+  cancel-in-progress: false
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v7
- 
-    - name: Run the Transformer
-      run: |
-        pushd ./data/scripts
-        pip3 install pandas
-        python ./transform_to_ft.py
-        popd
-
-    - name: include FTA version
-      run: |
-        cp ./data/scripts/aks_checklist.en.json ./src/web/fta/aks_checklist.en.json  --force
-
-    - name: Setup dotnet
-      uses: actions/setup-dotnet@v5
-      with:
-        dotnet-version: | 
-          8.0.x
-    
-    - name: Build the generator
-      run: |
-        dotnet publish -c Release -r linux-x64 --self-contained true
-      working-directory: ./src/generator
-
-    - name: Move the generator
-      run: |
-        mkdir -p ./data/tooling/html-generator
-        cp ./src/generator/bin/Release/net8.0/linux-x64/publish/* ./data/tooling/html-generator/
-
-    - name: Generate the checklist
-      run: |
-        chmod +x aks-generator
-        ./aks-generator -f template.html -p "../../en/items" -o "../../../src/web/index.html"
-      working-directory: ./data/tooling/html-generator
-
-    - uses: actions/upload-artifact@v7
-      with:
-        name: CheckList
-        path: src/web
-        retention-days: 3
- 
-    - name: AZ Login
-      run: | 
-        az login --service-principal -u ${{ vars.CLIENT_ID }} -p ${{ secrets.SECRET_ID }} -t ${{ vars.TENANT_ID }}
-        az account set --subscription ${{ vars.SUBSCRIPTION_ID }}
-         
-    - name: upload to Azure Blob Storage
-      run: az storage blob upload-batch -s "./src/web" -d \$web --account-name "stostatheakscheckliststg"  --overwrite
-    
+      - uses: actions/checkout@v7
+      - uses: ./.github/actions/build-checklist
+      - uses: actions/upload-artifact@v7
+        with:
+          name: CheckList
+          path: src/web
+          retention-days: 7
+      - name: Azure login
+        env:
+          CLIENT_ID: ${{ vars.CLIENT_ID }}
+          CLIENT_SECRET: ${{ secrets.SECRET_ID }}
+          TENANT_ID: ${{ vars.TENANT_ID }}
+          SUBSCRIPTION_ID: ${{ vars.SUBSCRIPTION_ID }}
+        run: |
+          az login --service-principal --username "$CLIENT_ID" --password "$CLIENT_SECRET" --tenant "$TENANT_ID" --output none
+          az account set --subscription "$SUBSCRIPTION_ID"
+      - name: Publish site and offline guides
+        run: az storage blob upload-batch --source src/web --destination '$web' --account-name stostatheakscheckliststg --overwrite
+      - name: Azure logout
+        if: always()
+        run: az logout

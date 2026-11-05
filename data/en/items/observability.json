@@ -1,0 +1,254 @@
+[
+  {
+    "title": "Collect and govern workload logs",
+    "guid": "90640e42-ce36-4c2a-b20a-bee9c572df6c",
+    "priority": "High",
+    "description": "Enable Container insights or a supported log platform with an explicit data collection rule. Define namespace filters, sensitive-data handling, retention, access control, and a cost budget. Confirm that logs are queryable during node and application failure.",
+    "documentation": [
+      {
+        "title": "Collect and govern workload logs",
+        "url": "https://learn.microsoft.com/en-us/azure/azure-monitor/containers/kubernetes-monitoring-overview"
+      }
+    ],
+    "tags": [
+      "all",
+      "monitoring",
+      "operations"
+    ],
+    "optionalFields": {
+      "score": {}
+    }
+  },
+  {
+    "title": "Collect Prometheus metrics with a supported monitoring stack",
+    "priority": "High",
+    "guid": "6f8389a7-f82c-4b8e-a8c0-aa63a25a4956",
+    "description": "Use Azure Monitor managed service for Prometheus or an operated Prometheus deployment. Configure scraping, recording and alerting rules, cardinality limits, retention, and Grafana dashboards. Container log collection is separate from Prometheus metric ingestion.",
+    "documentation": [
+      {
+        "title": "Collect Prometheus metrics with a supported monitoring stack",
+        "url": "https://learn.microsoft.com/en-us/azure/azure-monitor/metrics/prometheus-metrics-overview"
+      }
+    ],
+    "tags": [
+      "all",
+      "monitoring",
+      "operations"
+    ],
+    "optionalFields": {
+      "score": {
+        "simple": -1,
+        "ha": 1
+      }
+    }
+  },
+  {
+    "title": "Define a distributed tracing strategy",
+    "guid": "8d33b2b2-e043-4c61-aa5d-319a8eb6c382",
+    "priority": "Low",
+    "description": "Choose propagation standards, instrumentation ownership, sampling, retention, and sensitive-data controls for distributed traces. Verify that representative requests can be correlated across services and dependencies before relying on tracing in an incident.",
+    "documentation": [
+      {
+        "title": "Application Insights OpenTelemetry overview",
+        "url": "https://learn.microsoft.com/en-us/azure/azure-monitor/app/app-insights-overview"
+      }
+    ],
+    "tags": [
+      "all",
+      "monitoring",
+      "operations"
+    ],
+    "optionalFields": {
+      "score": {}
+    }
+  },
+  {
+    "title": "Monitor CPU and memory utilization of the nodes",
+    "priority": "Medium",
+    "guid": "4621dd68-c5a5-4be2-bdb1-1726769ef669",
+    "description": "With Container insights, you can use the performance charts and health status to monitor the workload of Kubernetes clusters hosted on AKS",
+    "documentation": [
+      {
+        "title": "Monitor your Kubernetes cluster performance",
+        "url": "https://learn.microsoft.com/en-us/azure/azure-monitor/containers/container-insights-analyze"
+      }
+    ],
+    "tags": [
+      "all",
+      "monitoring"
+    ],
+    "optionalFields": {
+      "score": {
+        "simple": -1,
+        "ha": 1
+      }
+    }
+  },
+  {
+    "title": "Enable control-plane diagnostic and audit logs",
+    "priority": "High",
+    "guid": "5b56ad48-408f-4e72-934c-476ba280dcf5",
+    "description": "Configure AKS diagnostic settings for the required control-plane and audit categories. Choose audit versus audit-admin deliberately, route logs to an approved destination, and validate access, retention, query availability, and collection costs.",
+    "documentation": [
+      {
+        "title": "AKS monitoring reference",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/monitor-aks-reference"
+      }
+    ],
+    "tags": [
+      "all",
+      "monitoring"
+    ],
+    "optionalFields": {
+      "score": {
+        "ha": 1,
+        "cost": -1
+      }
+    }
+  },
+  {
+    "title": "Query workload logs through a governed log platform",
+    "priority": "High",
+    "guid": "eaa8dc4a-2436-47b3-9697-15b1752beee0",
+    "description": "Provide documented queries and dashboards for application failures, restarts, and dependency issues. Use supported Container insights or another operated platform, define retention and access controls, and verify diagnostic data is available during an incident.",
+    "documentation": [
+      {
+        "title": "Container insights overview",
+        "url": "https://learn.microsoft.com/en-us/azure/azure-monitor/containers/kubernetes-monitoring-overview"
+      }
+    ],
+    "tags": [
+      "all",
+      "monitoring"
+    ]
+  },
+  {
+    "guid": "62f89719-db42-4cd0-824f-82ac7d62d9ac",
+    "title": "Use ContainerLogV2 and supported Azure Monitor agents",
+    "priority": "Medium",
+    "description": "Migrate legacy ContainerLog collection and the retired Log Analytics agent to supported Container insights collection using Azure Monitor Agent and ContainerLogV2. Validate queries, alerts, data collection rules, multiline logging, retention, and ingestion costs.",
+    "documentation": [
+      {
+        "title": "Use ContainerLogV2 and supported Azure Monitor agents",
+        "url": "https://learn.microsoft.com/en-us/azure/azure-monitor/containers/container-insights-logs-schema"
+      }
+    ],
+    "tags": [
+      "all",
+      "monitoring"
+    ]
+  },
+  {
+    "title": "Configure alerts on the most critical metrics (see Container Insights for recommendations)",
+    "priority": "High",
+    "guid": "67f7a9ed-5b31-4f38-a3f3-9812b2463cff",
+    "description": "Alerts can provide early warnings of issues, etc in your cluster",
+    "documentation": [
+      {
+        "title": "Metric alert rules in Container insights",
+        "url": "https://learn.microsoft.com/en-us/azure/azure-monitor/containers/kubernetes-metric-alerts"
+      }
+    ],
+    "tags": [
+      "all",
+      "monitoring",
+      "security"
+    ],
+    "optionalFields": {
+      "score": {
+        "simple": -1,
+        "ha": 1
+      }
+    }
+  },
+  {
+    "title": "Monitor outbound SNAT capacity and connection failures",
+    "guid": "95951d87-1a2f-4a45-833c-2fc62d23c44d",
+    "priority": "Medium",
+    "description": "Monitor SNAT utilization, dropped connections, and outbound failure rates for the actual egress path. Tune connection reuse, idle timeouts, outbound IPs, and NAT gateway capacity; SNAT monitoring is primarily an availability and capacity control, not a replacement for egress filtering.",
+    "documentation": [
+      {
+        "title": "Monitor outbound SNAT capacity and connection failures",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/load-balancer-standard"
+      }
+    ],
+    "tags": [
+      "all",
+      "monitoring",
+      "security"
+    ],
+    "optionalFields": {
+      "score": {}
+    }
+  },
+  {
+    "title": "Subscribe to resource health notifications for your AKS cluster",
+    "priority": "High",
+    "guid": "74c2ee76-569b-4a79-a57e-dedf91b022c9",
+    "description": "Learn how to troubleshoot resource health issues",
+    "documentation": [
+      {
+        "title": "Azure Kubernetes Services troubleshooting documentation",
+        "url": "https://learn.microsoft.com/en-us/troubleshoot/azure/azure-kubernetes/welcome-azure-kubernetes"
+      }
+    ],
+    "tags": [
+      "all",
+      "monitoring",
+      "security"
+    ],
+    "optionalFields": {
+      "score": {
+        "ha": 1
+      }
+    }
+  },
+  {
+    "title": "Define SLIs, SLOs, and actionable error-budget alerts",
+    "priority": "High",
+    "guid": "b58b7f4b-c234-4e67-a3f8-687fcf593a8e",
+    "description": "Measure user-visible availability and latency, set service objectives, and page on actionable symptoms or error-budget burn. Include pending pods, failed scheduling, persistent-volume attachment, DNS, certificate expiry, and failed upgrades in platform alerts.",
+    "documentation": [
+      {
+        "title": "Define SLIs, SLOs, and actionable error-budget alerts",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/monitor-aks"
+      }
+    ],
+    "tags": [
+      "all",
+      "observability"
+    ]
+  },
+  {
+    "title": "Test incident response and diagnostic-data retention",
+    "priority": "High",
+    "guid": "2f3a41e0-12d4-4493-aa07-448b7cdcc79a",
+    "description": "Maintain dashboards, runbooks, escalation paths, audit-log access, and diagnostic retention for the investigation window. Run an incident exercise and verify alerts reach an accountable responder. Protect logs from leaking secrets and excessive collection costs.",
+    "documentation": [
+      {
+        "title": "Test incident response and diagnostic-data retention",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/monitor-aks"
+      }
+    ],
+    "tags": [
+      "all",
+      "observability"
+    ]
+  },
+  {
+    "title": "Correlate OpenTelemetry traces with workload metrics and logs",
+    "priority": "Medium",
+    "guid": "1ede9e95-2888-478b-aee8-2188572848eb",
+    "description": "Instrument application request paths with OpenTelemetry or a supported Application Insights integration. Preserve correlation IDs, control sampling and cardinality, and validate that dependency failures can be traced across service boundaries without exposing sensitive data.",
+    "documentation": [
+      {
+        "title": "Correlate OpenTelemetry traces with workload metrics and logs",
+        "url": "https://learn.microsoft.com/en-us/azure/azure-monitor/app/app-insights-overview"
+      }
+    ],
+    "tags": [
+      "all",
+      "observability"
+    ]
+  }
+]

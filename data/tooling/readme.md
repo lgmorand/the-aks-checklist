@@ -1,36 +1,21 @@
-# Tooling for localization
+# Checklist publishing tools
 
-This small script is made to help to see if a difference exists between the different languages, like a missing best practice
+The website shell is maintained in [html-generator/template.html](html-generator/template.html). The canonical content lives in [the English item files](../en/items/) and [the section catalogue](../en/project/catalog.json).
 
-## How to run it ?
+Run commands from the repository root:
 
-```console
-. ./localization-checker.sh
+```shell
+npm ci
+npx playwright install chromium
+npm run documents
+npm test
+npm run test:documents
+npm run test:ui
+npm run check:links
 ```
 
-## Expected result
+The shared Node pipeline in [scripts/](../../scripts/) validates every registered section and generates the website, Azure Review Checklist JSON, standalone HTML, editable Word document, and tagged PDF. The legacy .NET generator, Python transformation, and append-only shell/LaTeX export paths have been replaced so new sections cannot be silently omitted from an output.
 
-```bash
-###############################
-#   Localization checker      #
-###############################
-Installing required tools: jq for parsing JSON
+English is currently the only maintained content language. The previous localization-count script referenced translations that are not present and did not verify semantic equivalence. If translations are introduced, retain canonical GUIDs and add language-aware validation before exposing a language selector.
 
-Comparing 'en' to 'fr'
------------------------
-
-Same number of files between 'en' and 'fr'
-Checking if files content are the same:
-Files ../en/items/clustersetup.json(10) and fr (8) do not have the same number of elements
-Files ../en/items/development.json(11) and fr (10) do not have the same number of elements
-Files ../en/items/operations.json(9) and fr (6) do not have the same number of elements
-
-Comparing 'en' to 'es'
------------------------
-
-Folders 'en' and 'es' do not have the same number of files
-../es/items/windows.json does not exist
-Please fix missing files and rerun the tool to search for missing content
-
-Comparison done. Open result.txt
-```
+See the [main README](../../README.md) for the architecture, exact commands, generated outputs, and contribution requirements.

@@ -1,0 +1,188 @@
+[
+  {
+    "title": "Use a supported and workload-compatible node operating system",
+    "guid": "d34f49c0-e964-4465-9211-520479338b13",
+    "priority": "Medium",
+    "description": "Select a supported Ubuntu or Azure Linux release after testing drivers, agents, and application dependencies. Azure Linux 2.0 support ended on 30 November 2025 and its node images were removed starting 31 March 2026; migrate to Azure Linux 3.0 or another supported OS.",
+    "documentation": [
+      {
+        "title": "Use a supported and workload-compatible node operating system",
+        "url": "https://learn.microsoft.com/en-us/azure/azure-linux/aks-support-cycle"
+      }
+    ],
+    "tags": [
+      "all",
+      "operations",
+      "security"
+    ],
+    "optionalFields": {
+      "score": {}
+    }
+  },
+  {
+    "title": "Keep Kubernetes within its supported lifecycle",
+    "priority": "High",
+    "guid": "e189c599-df0d-45a7-9dd4-ce32c1881370",
+    "description": "Track the AKS release calendar and the versions available in each deployment region with az aks get-versions. Standard support follows the supported minor-version window; eligible LTS versions require the Premium tier. Platform support is reduced support, not a substitute for an upgrade plan.",
+    "documentation": [
+      {
+        "title": "Keep Kubernetes within its supported lifecycle",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/supported-kubernetes-versions"
+      }
+    ],
+    "tags": [
+      "all",
+      "security",
+      "operations"
+    ],
+    "optionalFields": {
+      "score": {
+        "simple": -1,
+        "security": 1
+      }
+    }
+  },
+  {
+    "title": "Configure node OS upgrades separately from Kubernetes upgrades",
+    "guid": "945889a8-a9e9-4059-b1aa-0a0df2b8a82c",
+    "priority": "High",
+    "description": "Choose a supported node OS upgrade channel, such as NodeImage, and test it with a dedicated maintenance window. Node OS upgrades and cluster version upgrades are separate controls. Track image rollout availability, disruption budgets, surge capacity, and completion.",
+    "documentation": [
+      {
+        "title": "Configure node OS upgrades separately from Kubernetes upgrades",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/auto-upgrade-node-os-image"
+      }
+    ],
+    "tags": [
+      "all",
+      "security",
+      "operations",
+      "windows"
+    ],
+    "optionalFields": {
+      "score": {}
+    }
+  },
+  {
+    "title": "Configure automatic Kubernetes upgrades and maintenance windows",
+    "guid": "01deb8ed-b6f5-40bb-8d0b-d0ee2d933f51",
+    "priority": "Medium",
+    "description": "Select a supported cluster auto-upgrade channel and planned maintenance windows with enough duration. Validate application compatibility in lower environments first. Maintenance windows are not an absolute guarantee that every emergency platform action is deferred.",
+    "documentation": [
+      {
+        "title": "Configure automatic Kubernetes upgrades and maintenance windows",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/auto-upgrade-cluster"
+      }
+    ],
+    "tags": [
+      "all",
+      "operations"
+    ],
+    "optionalFields": {
+      "score": {}
+    }
+  },
+  {
+    "title": "Evaluate Premium tier and LTS against the actual release calendar",
+    "priority": "Medium",
+    "guid": "96516e10-4664-421a-992d-1271c29743ea",
+    "description": "Use AKS Premium tier with the AKSLongTermSupport plan for eligible versions when extended support is required. Check the published support end date and OS/add-on compatibility; LTS does not extend an independently retired node OS or remove the need for patches and upgrades.",
+    "documentation": [
+      {
+        "title": "Evaluate Premium tier and LTS against the actual release calendar",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/long-term-support"
+      }
+    ],
+    "tags": [
+      "all",
+      "operations",
+      "security"
+    ],
+    "optionalFields": {
+      "score": {
+        "simple": 1,
+        "cost": -1
+      }
+    }
+  },
+  {
+    "title": "Replace retired pod-managed identity with Workload ID",
+    "priority": "High",
+    "guid": "8369d531-bbb9-4c6d-ab7d-4e123df60b7b",
+    "description": "The open-source pod-managed identity project was deprecated in 2022 and archived in 2023; AKS managed add-on patch support ended in September 2025. Migrate applications and SDKs to Microsoft Entra Workload ID, test token refresh, then remove obsolete identity bindings and components.",
+    "documentation": [
+      {
+        "title": "Replace retired pod-managed identity with Workload ID",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/workload-identity-migrate-from-pod-identity"
+      }
+    ],
+    "tags": [
+      "all",
+      "lifecycle"
+    ]
+  },
+  {
+    "title": "Upgrade retired Basic Load Balancer and Availability Sets",
+    "priority": "High",
+    "guid": "a4e83003-a65d-4b13-a791-55fedd67477b",
+    "description": "AKS support for Basic Load Balancer and Availability Sets ended on 30 September 2025. Follow the documented migration paths to Standard Load Balancer and supported node-pool infrastructure; validate public IPs, DNS, routes, downtime, and recovery.",
+    "documentation": [
+      {
+        "title": "Upgrade retired Basic Load Balancer and Availability Sets",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/upgrade-basic-load-balancer-on-aks"
+      }
+    ],
+    "tags": [
+      "all",
+      "lifecycle"
+    ]
+  },
+  {
+    "title": "Migrate kubenet before its retirement",
+    "priority": "High",
+    "guid": "a61d6c4d-e634-4e13-afaa-aa3e04c706f1",
+    "description": "AKS kubenet retirement is scheduled for 31 March 2028. Inventory affected clusters, validate the supported migration path to Azure CNI Overlay, and rehearse changes to pod addressing, network policies, routes, and external dependencies.",
+    "documentation": [
+      {
+        "title": "Migrate kubenet before its retirement",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/concepts-network-legacy-cni"
+      }
+    ],
+    "tags": [
+      "all",
+      "lifecycle"
+    ]
+  },
+  {
+    "title": "Complete the Ingress NGINX migration before support ends",
+    "priority": "High",
+    "guid": "8bd95d4e-46d5-4424-a7fe-c43f2ab7933f",
+    "description": "Upstream Ingress NGINX maintenance ended in March 2026, and AKS application routing NGINX critical-security-patch support runs through November 2026. Test a supported Gateway API replacement in parallel, translate annotations and policy, validate TLS and traffic behavior, and plan DNS cutover and rollback.",
+    "documentation": [
+      {
+        "title": "Complete the Ingress NGINX migration before support ends",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/app-routing-nginx-to-gateway-api-migration"
+      }
+    ],
+    "tags": [
+      "all",
+      "lifecycle"
+    ]
+  },
+  {
+    "title": "Track release notes and future platform-initiated upgrades",
+    "priority": "High",
+    "guid": "d9565666-bd2a-481d-ac65-2aec1281e628",
+    "description": "Subscribe to AKS releases, retirement notices, Service Health, and the regional release tracker. Microsoft documents platform-initiated upgrades beginning 1 June 2027 after the unsupported-version grace period; these do not follow your maintenance window. Keep clusters supported rather than relying on that safeguard.",
+    "documentation": [
+      {
+        "title": "Track release notes and future platform-initiated upgrades",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/supported-kubernetes-versions"
+      }
+    ],
+    "tags": [
+      "all",
+      "lifecycle"
+    ]
+  }
+]

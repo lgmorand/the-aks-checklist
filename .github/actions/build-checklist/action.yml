@@ -1,0 +1,21 @@
+name: Build and validate AKS Checklist
+description: Generate and verify the website, FTA data, and all offline guides from the same source.
+runs:
+  using: composite
+  steps:
+    - uses: actions/setup-node@v6
+      with:
+        node-version: '24'
+        cache: npm
+    - run: npm ci
+      shell: bash
+    - run: npx playwright install --with-deps chromium
+      shell: bash
+    - run: npm test
+      shell: bash
+    - run: npm run documents
+      shell: bash
+    - run: npm run test:documents
+      shell: bash
+    - run: npm run test:ui
+      shell: bash

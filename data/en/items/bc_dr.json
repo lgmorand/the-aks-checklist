@@ -7,7 +7,7 @@
     "documentation": [
       {
         "title": "Define the BCDR strategy",
-        "url": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/enterprise-scale/business-continuity-and-disaster-recovery"
+        "url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-area/management-business-continuity-disaster-recovery"
       }
     ],
     "tags": [
@@ -21,15 +21,14 @@
     }
   },
   {
-    "title": "Schedule and perform DR tests regularly (whitespace deplyment)",
+    "title": "Rehearse recovery into a clean, isolated environment",
     "guid": "36cb45e5-7960-4332-9bdf-8cc23318da61",
     "priority": "High",
-    "description": "A whitespace (greenfield) deployment is the exercise to delete everything and to redeploy the whole platform in an automated way.",
-    "detail": "In case of an emergency, a security flaw or datacenter failure, it's mandatory for you to be able to restore/create a new environment properly configured in a fully automated way",
+    "description": "Regularly rebuild the platform from infrastructure as code in an isolated recovery environment. Restore application configuration and data, measure RTO/RPO, and test dependencies and access. Never delete production merely to conduct a recovery rehearsal.",
     "documentation": [
       {
-        "title": "Schedule and perform DR tests regularly",
-        "url": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/enterprise-scale/business-continuity-and-disaster-recovery"
+        "title": "Rehearse recovery into a clean, isolated environment",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/reliability-multi-region-deployment-models"
       }
     ],
     "tags": [
@@ -44,14 +43,14 @@
     }
   },
   {
-    "title": "Use Availability Zones if supported in your Azure region",
+    "title": "Distribute production workloads across availability zones",
     "priority": "High",
     "guid": "578a219a-46be-4b54-9350-24922634292b",
-    "description": "An Azure Kubernetes Service (AKS) cluster distributes resources such as the nodes and storage across logical sections of the underlying Azure compute infrastructure. This deployment model makes sure that the nodes run across separate update and fault domains in a single Azure datacenter.",
+    "description": "Use supported zonal node pools and topology spread constraints to separate replicas across nodes and zones. Validate sufficient surviving capacity, zonal storage behavior, load balancing, and failure recovery; availability zones are separate datacenter failure domains within a region.",
     "documentation": [
       {
-        "title": "Create an AKS cluster across availability zones",
-        "url": "https://learn.microsoft.com/azure/aks/availability-zones"
+        "title": "Distribute production workloads across availability zones",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/reliability-availability-zones-configure"
       }
     ],
     "tags": [
@@ -60,20 +59,19 @@
     ],
     "optionalFields": {
       "score": {
-        "ha": 1,
-        "graph": "where type=='microsoft.containerservice/managedclusters' | extend compliant= isnotnull(zones) | distinct id,compliant"
+        "ha": 1
       }
     }
   },
   {
-    "title": "Plan for multiregion deployment",
+    "title": "Design multiregion recovery around business requirements",
     "guid": "4e907690-4780-492f-9632-03bcc80b7a80",
     "priority": "Medium",
-    "description": "When you deploy multiple AKS clusters, choose regions where AKS is available, and use paired regions.",
+    "description": "Choose active-active or active-passive regions based on RTO/RPO, data residency, latency, dependencies, and available capacity. Regions need not be an Azure region pair; validate service support, replication, quota, and independence explicitly.",
     "documentation": [
       {
-        "title": "Plan for multiregion deployment",
-        "url": "https://learn.microsoft.com/azure/aks/operator-best-practices-multi-region#plan-for-multiregion-deployment"
+        "title": "Design multiregion recovery around business requirements",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/reliability-multi-region-deployment-models"
       }
     ],
     "tags": [
@@ -85,18 +83,14 @@
     }
   },
   {
-    "title": "Use Azure Traffic Manager or Azure Front Door as a global load balancer for region failover",
+    "title": "Test global traffic failover and failback",
     "priority": "Low",
     "guid": "170265f4-bb46-4a39-9af7-f317284797b1",
-    "description": "Azure Traffic Manager can direct customers to their closest AKS cluster and application instance. For the best performance and redundancy, direct all application traffic through Traffic Manager before it goes to your AKS cluster.",
+    "description": "Select Front Door or Traffic Manager according to protocol and routing needs. Test health probes, DNS caching, TLS, session behavior, regional dependencies, and failback. Routing changes do not recover or synchronize application data.",
     "documentation": [
       {
-        "title": "Traffic Manager and AKS",
-        "url": "https://learn.microsoft.com/azure/aks/operator-best-practices-multi-region#use-azure-traffic-manager-to-route-traffic"
-      },
-      {
-        "title": "Cross-region load balancer",
-        "url": "https://learn.microsoft.com/en-us/azure/load-balancer/cross-region-overview"
+        "title": "Test global traffic failover and failback",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/reliability-multi-region-deployment-models"
       }
     ],
     "tags": [
@@ -118,7 +112,7 @@
     "documentation": [
       {
         "title": "Create a storage migration plan",
-        "url": "https://learn.microsoft.com/azure/aks/operator-best-practices-multi-region#create-a-storage-migration-plan"
+        "url": "https://learn.microsoft.com/en-us/azure/aks/reliability-multi-region-deployment-models"
       },
       {
         "title": "Backup, restore and migrate Kubernetes resources including state to another AKS cluster with Velero",
@@ -135,19 +129,14 @@
     }
   },
   {
-    "title": "Use the standard-tier AKS offering",
+    "title": "Select an AKS tier with the required control-plane SLA",
     "priority": "High",
     "guid": "71d41e36-10cc-457b-9a4b-1410d4395898",
-    "description": "standard-tier (formerly Uptime SLA) is an optional feature to enable a financially backed, higher SLA for a cluster. It provides you a 99,95% SLA instead of the 99,5% SLO and is relevant for your production (and large) clusters",
-    "detail": "Customers needing an SLA to meet compliance requirements or require extending an SLA to their end users should enable this feature. Customers with critical workloads that will benefit from a higher uptime SLA may also benefit. Using the Uptime SLA feature with Availability Zones enables a higher availability for the uptime of the Kubernetes API server.",
+    "description": "Use Standard or Premium tier for the financially backed Kubernetes API-server uptime SLA. Microsoft documents 99.95% with availability zones and 99.9% without; Free tier has no financially backed SLA. These are control-plane commitments, not an end-to-end application SLA; verify current contractual terms.",
     "documentation": [
       {
-        "title": "Azure Kubernetes Service (AKS) Uptime SLA",
-        "url": "https://learn.microsoft.com/en-gb/azure/aks/free-standard-pricing-tiers"
-      },
-      {
-        "title": "Business continuity / disaster recovery to protect and recover AKS",
-        "url": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/scenarios/app-platform/aks/management#business-continuity--disaster-recovery-to-protect-and-recover-aks"
+        "title": "Select an AKS tier with the required control-plane SLA",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/free-standard-pricing-tiers"
       }
     ],
     "tags": [
@@ -157,21 +146,19 @@
     "optionalFields": {
       "score": {
         "ha": 2,
-        "cost": -2,
-        "graph": "where type=='microsoft.containerservice/managedclusters' | extend compliant = (sku.tier=='Paid') | distinct id,compliant"
+        "cost": -2
       }
     }
   },
   {
-    "title": "Avoid Pods being placed into a single node",
+    "title": "Spread replicas across nodes and zones",
     "guid": "1eea4888-8c2a-40b2-a40b-cacdc5f55497",
     "priority": "Low",
-    "description": "Even if you run several copies of your Pods, there are no guarantees that losing a node won't take down your service.",
-    "detail": "Customers needing an SLA to meet compliance requirements or require extending an SLA to their end users should enable this feature. Customers with critical workloads that will benefit from a higher uptime SLA may also benefit. Using the Uptime SLA feature with Availability Zones enables a higher availability for the uptime of the Kubernetes API server.",
+    "description": "Use topology spread constraints or appropriate anti-affinity to keep replicas in separate failure domains. Balance strict scheduling rules against available recovery capacity, and test both node loss and zone loss under representative load.",
     "documentation": [
       {
-        "title": "Inter-pod affinity and anti-affinity",
-        "url": "https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#inter-pod-affinity-and-anti-affinity"
+        "title": "Spread replicas across nodes and zones",
+        "url": "https://kubernetes.io/docs/concepts/scheduling-eviction/topology-spread-constraints/"
       }
     ],
     "tags": [
@@ -191,7 +178,7 @@
     "documentation": [
       {
         "title": "Enable geo-replication for container images",
-        "url": "https://learn.microsoft.com/azure/container-registry/container-registry-geo-replication"
+        "url": "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-geo-replication"
       }
     ],
     "tags": [
@@ -203,14 +190,14 @@
     }
   },
   {
-    "title": "Configure your registry to use zone reduncancy",
+    "title": "Configure your registry to use zone redundancy",
     "guid": "a4cefd60-f24f-4907-9723-b927300b4c42",
     "priority": "Medium",
     "description": "Use Azure availability zones to create a resilient and high availability Azure container registry within an Azure region.",
     "documentation": [
       {
         "title": "Enable zone redundancy in Azure Container Registry for resiliency and high availability",
-        "url": "https://review.learn.microsoft.com/en-us/azure/container-registry/zone-redundancy"
+        "url": "https://learn.microsoft.com/en-us/azure/container-registry/zone-redundancy"
       }
     ],
     "tags": [
@@ -222,7 +209,7 @@
     }
   },
   {
-    "title": "Move Container Registry to a dedicated resource group ",
+    "title": "Move Container Registry to a dedicated resource group",
     "guid": "7b0bb400-deb6-4914-82da-2e914c9aaa72",
     "priority": "Low",
     "description": "Because container registries are resources that are used across multiple container hosts, a registry should reside in its own resource group.",
@@ -230,7 +217,7 @@
     "documentation": [
       {
         "title": "Registry best practices - Use dedicated resource group",
-        "url": "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-best-practices#dedicated-resource-group"
+        "url": "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-best-practices"
       }
     ],
     "tags": [
@@ -241,10 +228,10 @@
     }
   },
   {
-    "title": "Enable soft delete policy",
+    "title": "Evaluate ACR soft delete against support and retention requirements",
     "guid": "49919955-fd6c-40f5-9c5c-5a7273c7a935",
     "priority": "Low",
-    "description": "Once you enable the soft delete policy, ACR manages the deleted artifacts as the soft deleted artifacts with a set retention period. Thereby you have ability to list, filter, and restore the soft deleted artifacts. Once the retention period is complete, all the soft deleted artifacts are auto-purged.",
+    "description": "Where supported, evaluate ACR soft delete to recover accidentally deleted artifacts within the configured retention period. Check current feature status, limitations, and costs; soft delete does not replace immutable release retention, replication, or tested disaster recovery.",
     "documentation": [
       {
         "title": "Enable soft delete policy",
@@ -259,19 +246,14 @@
     }
   },
   {
-    "title": "Use Azure Backup for AKS to protect cluster resources and persistent volumes",
+    "title": "Back up supported cluster resources and persistent volumes",
     "priority": "High",
     "guid": "7e970492-1bed-4541-98f6-be550b17caa6",
-    "description": "Azure Backup for AKS provides a cloud-native, fully managed backup solution that protects both cluster configuration and persistent volumes. It automates backup operations and enables point-in-time recovery for disaster recovery scenarios.",
-    "detail": "Azure Backup for AKS supports scheduled backups, on-demand backups, and retention policies. It stores backups in a Backup vault and can restore to the same or different AKS clusters. This is critical for meeting RPO and RTO requirements and protecting against data loss, ransomware, or accidental deletion.",
+    "description": "Configure Azure Backup for AKS or a supported alternative with explicit scope, retention, and recovery objectives. Check the current support matrix for Azure Disk/Azure Files, snapshot versus vaulted backup, regions, and cross-region restore. Back up external databases separately.",
     "documentation": [
       {
-        "title": "Azure Backup for AKS",
-        "url": "https://learn.microsoft.com/azure/backup/azure-kubernetes-service-backup-overview"
-      },
-      {
-        "title": "Back up Azure Kubernetes Service using Azure Backup",
-        "url": "https://learn.microsoft.com/azure/backup/azure-kubernetes-service-cluster-backup"
+        "title": "Back up supported cluster resources and persistent volumes",
+        "url": "https://learn.microsoft.com/en-us/azure/backup/azure-kubernetes-service-cluster-backup-concept"
       }
     ],
     "tags": [
@@ -284,6 +266,24 @@
         "ha": 1,
         "cost": -1
       }
-   }
+    },
+    "detail": "Perform full restore drills, including identities, CRDs, secrets, application dependencies, and data consistency. A successful backup job does not prove that the application can be recovered."
+  },
+  {
+    "title": "Exercise failure scenarios under representative load",
+    "priority": "High",
+    "guid": "23592e5e-4f9d-434a-afd3-6691b26c0d98",
+    "description": "Rehearse pod, node, zone, DNS, registry, egress, and dependency failures in a controlled environment. Use fault injection only with explicit scope and safety controls, verify service objectives, and track remediation actions from each exercise.",
+    "documentation": [
+      {
+        "title": "Exercise failure scenarios under representative load",
+        "url": "https://learn.microsoft.com/en-us/azure/well-architected/reliability/reliability-test"
+      }
+    ],
+    "tags": [
+      "all",
+      "bc_dr",
+      "resiliency"
+    ]
   }
 ]

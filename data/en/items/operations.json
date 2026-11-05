@@ -1,50 +1,13 @@
 [
   {
-    "title": "Have a regular process to upgrade the cluster node images periodically (weekly, for example), or use the AKS autoupgrade feature",
-    "guid": "945889a8-a9e9-4059-b1aa-0a0df2b8a82c",
-    "priority": "High",
-    "description": "AKS supports upgrading the images on a node so you're up to date with the newest OS and runtime updates. AKS provides one new image per week with the latest updates, so it's beneficial to upgrade your node's images regularly for the latest features, including Linux or Windows patches",
-    "detail": "Using automation and this method will ensure that all your nodes are consistently up to date with last features/fixes/patchs, without having to upgrade the kubernetes version. An alternative could be to use Kured to reboot nodes with pending reboots but it will only patch the Operating System, not the AKS layer",
-    "documentation": [
-      {
-        "title": "Azure Kubernetes Service (AKS) node image upgrades",
-        "url": "https://learn.microsoft.com/azure/aks/node-image-upgrade"
-      },
-      {
-        "title": "Process Linux node updates and reboots using Kured (not recommended because it can behave incorrectly in some cluster configurations like autoscaling)",
-        "url": "https://learn.microsoft.com/azure/aks/operator-best-practices-cluster-security#process-linux-node-updates-and-reboots-using-kured"
-      },
-      {
-        "title": "Use Event Grid to know when an upgrade is available",
-        "url": "https://learn.microsoft.com/azure/aks/quickstart-event-grid"
-      }
-    ],
-    "tools": [
-      {
-        "title": "Kured (KUbernetes REboot Daemon)",
-        "url": "https://github.com/weaveworks/kured"
-      }
-    ],
-    "tags": [
-      "all",
-      "security",
-      "operations",
-      "windows"
-    ],
-    "optionalFields": {
-      "score": {}
-    }
-  },
-  {
-    "title": "Use placement proximity group to improve performance",
+    "title": "Use proximity placement only for measured latency requirements",
     "guid": "17bd8ae4-8ee7-472d-bca5-c7e3cc9b6d82",
     "priority": "Low",
-    "description": "When deploying your application in Azure, spreading Virtual Machine (VM) instances across regions or availability zones creates network latency, which may impact the overall performance of your application. A proximity placement group is a logical grouping used to make sure Azure compute resources are physically located close to each other",
-    "detail": "Be careful, by using PPG on a nodepool, you reduce the average SLA of your application since they don't rely on availability zones anymore",
+    "description": "Benchmark before using proximity placement groups. Review compatibility with availability zones, capacity, and node-pool constraints; tighter placement can reduce placement flexibility and resilience. Do not trade away failure-domain separation without a documented reason.",
     "documentation": [
       {
-        "title": "Reduce latency with proximity placement groups",
-        "url": "https://learn.microsoft.com/azure/aks/reduce-latency-ppg"
+        "title": "Use proximity placement only for measured latency requirements",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/reduce-latency-ppg"
       }
     ],
     "tags": [
@@ -56,15 +19,14 @@
     }
   },
   {
-    "title": "Customize your clusters with extensions",
+    "title": "Govern cluster extensions and managed add-ons",
     "priority": "Low",
     "guid": "4cd9bd7a-fe6f-427b-b5dd-9ab2f50aa663",
-    "description": "Cluster extensions provides an Azure Resource Manager driven experience for installation and lifecycle management of services like Azure Machine Learning (ML) on an AKS cluster. ",
-    "detail": "This feature enables:Azure Resource Manager-based deployment of extensions, including at-scale deployments across AKS clusters but also lifecycle management of the extension (Update, Delete) from Azure Resource Manager.",
+    "description": "Inventory installed extensions and add-ons, their supported Kubernetes versions, permissions, upgrade policies, costs, and operational owners. Remove unused components and validate lifecycle compatibility before upgrades.",
     "documentation": [
       {
-        "title": "Customize node configuration for Azure Kubernetes Service (AKS) node pools",
-        "url": "https://learn.microsoft.com/en-gb/azure/aks/cluster-extensions"
+        "title": "Govern cluster extensions and managed add-ons",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/cluster-extensions"
       }
     ],
     "tags": [
@@ -74,20 +36,19 @@
     "optionalFields": {
       "score": {
         "ha": 1,
-        "cost": -1,
-        "graph": "where type=='microsoft.containerservice/managedclusters' | extend compliant = (isnotnull(properties.austoscalerProfile)) | distinct id,compliant"
+        "cost": -1
       }
     }
   },
   {
-    "title": "Customize the name of the MC_ resource group",
+    "title": "Choose a governed node resource group name at creation",
     "priority": "Low",
     "guid": "73b32a5a-67f7-4a9e-b5b3-1f38c3f39812",
-    "description": "When creating a new AKS cluster, the MC_ resource group is created by default. You can customize the name of the MC_ resource group.",
+    "description": "Set a node resource group name if required by naming policy, and document AKS ownership. Its name is not a security control; protect access and avoid manually modifying AKS-managed infrastructure.",
     "documentation": [
       {
-        "title": "Custom resource group name",
-        "url": "https://learn.microsoft.com/en-gb/azure/aks/cluster-configuration#custom-resource-group-name"
+        "title": "AKS node resource group",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/node-resource-group-lockdown"
       }
     ],
     "tags": [
@@ -102,14 +63,14 @@
     }
   },
   {
-    "title": "Securely connect to nodes through a bastion host",
+    "title": "Use approved private paths for node troubleshooting",
     "guid": "28538587-2c1f-4390-b571-384649732c16",
     "priority": "Medium",
-    "description": "Don't expose remote connectivity to your AKS nodes. Create a bastion host, or jump box, in a management virtual network. Use the bastion host to securely route traffic into your AKS cluster to remote management tasks.",
+    "description": "Keep node SSH/RDP endpoints off the public internet. Use supported AKS debug access or approved private management connectivity with time-bound permissions, audit logs, and incident ownership. Do not expose nodes merely to make troubleshooting easier.",
     "documentation": [
       {
         "title": "Securely connect to nodes through a bastion host",
-        "url": "https://learn.microsoft.com/azure/aks/operator-best-practices-network#securely-connect-to-nodes-through-a-bastion-host"
+        "url": "https://learn.microsoft.com/en-us/azure/aks/operator-best-practices-network"
       }
     ],
     "tags": [
@@ -122,136 +83,23 @@
     }
   },
   {
-    "title": "Regularly check for cluster issues ",
+    "title": "Run supported diagnostics and configuration checks",
     "guid": "4dd8b544-5b8b-443d-8e76-cea80d9dec30",
     "priority": "Medium",
-    "description": "Regularly run the latest version of cluster scanning open source tool to detect issues in your cluster. For instance, if you apply resource quotas on an existing AKS cluster, run kubestriker first to find pods that don't have resource requests and limits defined.",
-    "tools": [
-      {
-        "title": "AKS Periscope",
-        "url": "https://github.com/Azure/aks-periscope"
-      },
-      {
-        "title": "kubestriker",
-        "url": "https://www.kubestriker.io/"
-      },
-      {
-        "title": "kubebench",
-        "url": "https://github.com/aquasecurity/kube-bench"
-      }
-    ],
+    "description": "Use AKS diagnostics, Azure Monitor, and maintained troubleshooting tools. Validate tool provenance and permissions before execution. Use policy and manifest validation to detect missing requests and limits; do not install an unmaintained scanner as a production prerequisite.",
     "tags": [
       "all",
       "operations"
     ],
     "optionalFields": {
       "score": {}
-    }
-  },
-  {
-    "title": "Provision a log aggregation tool",
-    "guid": "90640e42-ce36-4c2a-b20a-bee9c572df6c",
-    "priority": "High",
-    "description": "Ensure that you are always aware of what happens in your cluster. Monitor the health of the cluster (nodes, server) but also the pods",
+    },
     "documentation": [
       {
-        "title": "Azure Monitor for AKS",
-        "url": "https://learn.microsoft.com/azure/azure-monitor/insights/container-insights-analyze"
-      },
-      {
-        "title": "Azure Managed Grafana",
-        "url": "https://azure.microsoft.com/services/managed-grafana/"
+        "title": "Run supported diagnostics and configuration checks",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/aks-diagnostics"
       }
-    ],
-    "tools": [
-      {
-        "title": "Elastic Cloud",
-        "url": "https://www.elastic.co/elastic-cloud-kubernetes"
-      },
-      {
-        "title": "Datadog",
-        "url": "https://www.datadoghq.com/"
-      }
-    ],
-    "tags": [
-      "all",
-      "monitoring",
-      "operations"
-    ],
-    "optionalFields": {
-      "score": {}
-    }
-  },
-  {
-    "title": "Monitor your cluster metrics with Container Insights (or other tools like Prometheus)",
-    "priority": "High",
-    "guid": "6f8389a7-f82c-4b8e-a8c0-aa63a25a4956",
-    "description": "If default integration can collect telemetry data and basic metrics (CPU/Memory), they don't collect custom metrics and more detailed information. It's often necessary to install a 3rd party software (prometheus is recommend within Kubernetes) and they store these metrics to exploit them.",
-    "detail": "Typically, to use Prometheus, you need to set up and manage a Prometheus server with a store. By integrating with Azure Monitor, a Prometheus server is not required. You just need to expose the Prometheus metrics endpoint through your exporters or pods (application), and the containerized agent for Azure Monitor for containers can scrape the metrics for you.",
-    "documentation": [
-      {
-        "title": "Configure scraping of Prometheus metrics",
-        "url": "https://learn.microsoft.com/azure/azure-monitor/insights/container-insights-prometheus-integration"
-      },
-      {
-        "title": "Deploying ELK",
-        "url": "https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-quickstart.html"
-      }
-    ],
-    "tags": [
-      "all",
-      "monitoring",
-      "operations"
-    ],
-    "optionalFields": {
-      "score": {
-        "simple": -1,
-        "ha": 1
-      }
-    }
-  },
-  {
-    "title": "Configure distributed tracing",
-    "guid": "8d33b2b2-e043-4c61-aa5d-319a8eb6c382",
-    "priority": "Low",
-    "description": "Distributed tracing, also called distributed request tracing, is a method used to profile and monitor applications, especially those built using a microservices architecture. Distributed tracing helps pinpoint where failures occur and what causes poor performance.",
-    "documentation": [
-      {
-        "title": "Solution for onboarding Kubernetes/AKS workloads onto Application Insights monitoring.",
-        "url": "https://github.com/microsoft/Application-Insights-K8s-Codeless-Attach"
-      },
-      {
-        "title": "Zero instrumentation application monitoring for Kubernetes hosted applications (deprecated)",
-        "url": "https://learn.microsoft.com/azure/azure-monitor/app/kubernetes"
-      }
-    ],
-    "tags": [
-      "all",
-      "monitoring",
-      "operations"
-    ],
-    "optionalFields": {
-      "score": {}
-    }
-  },
-  {
-    "title": "Set Upgrade Channel",
-    "guid": "01deb8ed-b6f5-40bb-8d0b-d0ee2d933f51",
-    "priority": "Medium",
-    "description": "In addition to manually upgrading a cluster, you can set an auto-upgrade channel on your cluster",
-    "documentation": [
-      {
-        "title": "Set AKS auto-upgrade channel",
-        "url": "https://learn.microsoft.com/azure/aks/upgrade-cluster#set-auto-upgrade-channel"
-      }
-    ],
-    "tags": [
-      "all",
-      "operations"
-    ],
-    "optionalFields": {
-      "score": {}
-    }
+    ]
   },
   {
     "title": "Enable cluster autoscaling",
@@ -262,15 +110,15 @@
     "documentation": [
       {
         "title": "AKS Autoscaler",
-        "url": "https://learn.microsoft.com/azure/aks/cluster-autoscaler"
+        "url": "https://learn.microsoft.com/en-us/azure/aks/cluster-autoscaler"
       },
       {
         "title": "Node autoprovisioning (karpenter)",
-        "url": "https://learn.microsoft.com/en-us/azure/aks/node-autoprovision"
+        "url": "https://learn.microsoft.com/en-us/azure/aks/node-auto-provisioning"
       },
       {
         "title": "Cluster autoscaler",
-        "url": "https://learn.microsoft.com/en-us/azure/aks/concepts-scale#cluster-autoscaler"
+        "url": "https://learn.microsoft.com/en-us/azure/aks/concepts-scale"
       }
     ],
     "tags": [
@@ -302,7 +150,7 @@
       },
       {
         "title": "What is Azure Arc enabled Kubernetes?",
-        "url": "https://learn.microsoft.com/azure/azure-arc/kubernetes/overview"
+        "url": "https://learn.microsoft.com/en-us/azure/azure-arc/kubernetes/overview"
       }
     ],
     "tags": [
@@ -321,15 +169,15 @@
     "documentation": [
       {
         "title": "Automated Deployments for Azure Kubernetes Service (Preview)",
-        "url": "https://learn.microsoft.com/en-gb/azure/aks/automated-deployments"
+        "url": "https://learn.microsoft.com/en-us/azure/aks/automated-deployments"
       },
       {
         "title": "Build and deploy to Azure Kubernetes Service with Azure Pipelines",
-        "url": "https://learn.microsoft.com/en-gb/azure/aks/devops-pipeline?pivots=pipelines-yaml"
+        "url": "https://learn.microsoft.com/en-us/azure/aks/devops-pipeline?pivots=pipelines-yaml"
       },
       {
         "title": "Tutorial: Deploy from GitHub to Azure Kubernetes Service using Jenkins",
-        "url": "https://learn.microsoft.com/en-gb/azure/developer/jenkins/deploy-from-github-to-aks"
+        "url": "https://learn.microsoft.com/en-us/azure/developer/jenkins/deploy-from-github-to-aks"
       }
     ],
     "tags": [
@@ -352,7 +200,7 @@
       },
       {
         "title": "Helm",
-        "url": "https://helm.sh"
+        "url": "https://helm.sh/"
       },
       {
         "title": "kubectl aliases",
@@ -373,16 +221,22 @@
     ],
     "optionalFields": {
       "score": {}
-    }
+    },
+    "documentation": [
+      {
+        "title": "OpenLens",
+        "url": "https://github.com/MuhammedKalkan/OpenLens"
+      }
+    ]
   },
   {
     "title": "Don't use the default namespace",
     "guid": "13bb9e32-6f48-4747-9531-0147f20f4b03",
     "priority": "Medium",
     "description": "It's recommended to keep all applications in a namespace other than default",
-    "documentation":[
+    "documentation": [
       {
-        "url": "https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/?ref=www.the-aks-checklist.com#when-to-use-multiple-namespaces",
+        "url": "https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/",
         "title": "Using multiple namespaces"
       }
     ],
@@ -398,7 +252,7 @@
     "title": "Apply different types of labels to all resources",
     "guid": "13bb9e32-6f48-4747-9531-0147f20f4b04",
     "priority": "Low",
-    "description": "A common set of labels allows tools to work interoperably, describing objects in a common manner that all tools can understand. For instance, resources should have technical, business and security labels. ",
+    "description": "A common set of labels allows tools to work interoperably, describing objects in a common manner that all tools can understand. For instance, resources should have technical, business and security labels.",
     "documentation": [
       {
         "title": "Recommended labels",
@@ -423,7 +277,7 @@
     "documentation": [
       {
         "title": "Customize node configuration for Azure Kubernetes Service (AKS) node pools",
-        "url": "https://learn.microsoft.com/azure/aks/custom-node-configuration"
+        "url": "https://learn.microsoft.com/en-us/azure/aks/custom-node-configuration"
       }
     ],
     "tags": [
@@ -435,20 +289,18 @@
         "ha": 1,
         "severity": "Low",
         "graph": "where type=='microsoft.containerservice/managedclusters' | extend compliant = (isnotnull(properties.austoscalerProfile)) | distinct id,compliant"
-        
       }
     }
   },
   {
-    "title": "Consider using AKS command invoke on private clusters",
+    "title": "Restrict command invoke on private clusters",
     "priority": "Low",
     "guid": "d7672c26-7602-4482-85a4-14527fbe855c",
-    "description": "You can use command invoke to access private clusters without having to configure a VPN or Express Route",
-    "detail": "Using command invoke allows you to remotely invoke commands like kubectl and helm on your private cluster through the Azure API without directly connecting to the cluster.",
+    "description": "AKS command invoke runs through the Azure management API and can reach a private cluster without direct network connectivity. Restrict its Azure RBAC actions, audit use, and disable it when policy requires all administration through approved private paths.",
     "documentation": [
       {
-        "title": "Use command invoke to access a private AKS",
-        "url": "https://learn.microsoft.com/azure/aks/command-invoke"
+        "title": "Restrict command invoke on private clusters",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/access-private-cluster"
       }
     ],
     "tags": [
@@ -457,54 +309,6 @@
     ],
     "optionalFields": {
       "score": {}
-    }
-  },
-  {
-    "title": "Monitor CPU and memory utilization of the nodes",
-    "priority": "Medium",
-    "guid": "4621dd68-c5a5-4be2-bdb1-1726769ef669",
-    "description": "With Container insights, you can use the performance charts and health status to monitor the workload of Kubernetes clusters hosted on AKS",
-    "documentation": [
-      {
-        "title": "Monitor your Kubernetes cluster performance",
-        "url": "https://learn.microsoft.com/azure/azure-monitor/containers/container-insights-analyze"
-      }
-    ],
-    "tags": [
-      "all",
-      "monitoring"
-    ],
-    "optionalFields": {
-      "score": {
-        "simple": -1,
-        "ha": 1
-      }
-    }
-  },
-  {
-    "title": "Send master logs (aka API logs) to Azure Monitor or your preferred log management solution",
-    "priority": "High",
-    "guid": "5b56ad48-408f-4e72-934c-476ba280dcf5",
-    "description": "To help troubleshoot your application and services, you may need to view the logs generated by the master components. Be aware that if you don't enable these logs, there is no way for Microsoft to retrieve them for you",
-    "documentation": [
-      {
-        "title": "Enable and review Kubernetes master node logs",
-        "url": "https://learn.microsoft.com/azure/aks/view-control-plane-logs"
-      },
-      {
-        "title": "Monitoring Azure Kubernetes Service (AKS) with Azure Monitor",
-        "url": "https://learn.microsoft.com/en-us/azure/aks/monitor-aks"
-      }
-    ],
-    "tags": [
-      "all",
-      "monitoring"
-    ],
-    "optionalFields": {
-      "score": {
-        "ha": 1,
-        "cost": -1
-      }
     }
   },
   {
@@ -538,7 +342,7 @@
     "documentation": [
       {
         "title": "Azure advisor get started",
-        "url": "https://learn.microsoft.com/azure/advisor/advisor-get-started"
+        "url": "https://learn.microsoft.com/en-us/azure/advisor/advisor-get-started"
       }
     ],
     "tags": [
@@ -563,8 +367,8 @@
     "description": "There are various tools that can make creating k8s manifest files much easier and can help with operational efficiency",
     "documentation": [
       {
-        "title": "what is prettier",
-        "url": "https://prettier.io/"
+        "title": "Helm chart best practices",
+        "url": "https://helm.sh/docs/chart_best_practices/"
       }
     ],
     "tags": [
@@ -578,13 +382,13 @@
     }
   },
   {
-    "title": "Enable AKS auto-certificate rotation",
+    "title": "Monitor cluster certificates and verify supported rotation",
     "priority": "Low",
     "guid": "3aa70560-e7e7-4968-be3d-628af35b2ced",
-    "description": "Periodically, you may need to rotate those certificates for security or policy reasons. For example, you may have a policy to rotate all your certificates every 90 days.",
+    "description": "Understand AKS-managed certificate rotation and monitor cluster health and certificate expiry. Use the documented certificate rotation procedure when necessary and assess its disruption. Workload ingress certificates need a separate renewal process.",
     "documentation": [
       {
-        "title": "Certificate rotation in Azure Kubernetes Service (AKS)",
+        "title": "Monitor cluster certificates and verify supported rotation",
         "url": "https://learn.microsoft.com/en-us/azure/aks/certificate-rotation"
       }
     ],
@@ -599,42 +403,10 @@
     }
   },
   {
-    "title": "Store and analyze your cluster logs with Container Insights (or other tools like Telegraf/ElasticSearch)",
-    "priority": "High",
-    "guid": "eaa8dc4a-2436-47b3-9697-15b1752beee0",
-    "description": "Monitoring the logs from your cluster can help prevent issues and identify areas of improvements",
-    "documentation": [
-      {
-        "title": "Container insights overview",
-        "url": "https://learn.microsoft.com/en-us/azure/azure-monitor/containers/container-insights-overview"
-      }
-    ],
-    "tags": [
-      "all",
-      "monitoring"
-    ]
-  },
-  {
-    "guid": "62f89719-db42-4cd0-824f-82ac7d62d9ac",
-    "title": "Enable ContainerLogV2 schema for logging",
-    "priority": "Medium",
-    "description": "ContainerLogV2 schema improves the data related to the container logs (such as namespace, pod name, container name, etc.) and allows you to query the logs using these fields",
-    "documentation": [
-      { 
-        "title": "Enable the ContainerLogV2 schema",
-        "url": "https://learn.microsoft.com/en-gb/azure/azure-monitor/containers/container-insights-logging-v2"
-      }
-    ],
-    "tags": [
-      "all",
-      "monitoring"
-    ]
-  },
-  {
-    "title": "Consider AKS virtual node for quick bursting",
+    "title": "Test operational constraints before using virtual nodes",
     "priority": "Low",
     "guid": "c755562f-2b4e-4456-9b4d-874a748b662e",
-    "description": "Virtual nodes with ACI can help speed up scaling",
+    "description": "If using ACI-backed virtual nodes, validate monitoring, security policy, service connectivity, storage, scheduling, and application recovery end to end. Do not assume virtual nodes are equivalent to ordinary VM-backed node pools.",
     "documentation": [
       {
         "title": "Create and configure an AKS cluster to use virtual nodes",
@@ -661,7 +433,7 @@
     "documentation": [
       {
         "title": "Add an Azure Spot node pool to an AKS cluster",
-        "url": "https://learn.microsoft.com/azure/aks/spot-node-pool"
+        "url": "https://learn.microsoft.com/en-us/azure/aks/spot-node-pool"
       }
     ],
     "tags": [
@@ -675,71 +447,6 @@
     }
   },
   {
-    "title": "Configure alerts on the most critical metrics (see Container Insights for recommendations)",
-    "priority": "High",
-    "guid": "67f7a9ed-5b31-4f38-a3f3-9812b2463cff",
-    "description": "Alerts can provide early warnings of issues, etc in your cluster",
-    "documentation": [
-      {
-        "title": "Metric alert rules in Container insights",
-        "url": "https://learn.microsoft.com/azure/azure-monitor/insights/container-insights-metric-alerts"
-      }
-    ],
-    "tags": [
-      "all",
-      "monitoring",
-      "security"
-    ],
-    "optionalFields": {
-      "score": {
-        "simple": -1,
-        "ha": 1
-      }
-    }
-  },
-  {
-    "title": "If not using egress filtering with AzFW/NVA, monitor standard ALB allocated SNAT ports",
-    "guid": "95951d87-1a2f-4a45-833c-2fc62d23c44d",
-    "priority": "Medium",
-    "description": "Monitoring these ports are important for security reasons",
-    "documentation": [
-      {
-        "title": "Use a public standard load balancer in Azure Kubernetes Service",
-        "url": "https://learn.microsoft.com/azure/aks/load-balancer-standard"
-      }
-    ],
-    "tags": [
-      "all",
-      "monitoring",
-      "security"
-    ],
-    "optionalFields": {
-      "score": {}
-    }
-  },
-  {
-    "title": "Subscribe to resource health notifications for your AKS cluster",
-    "priority": "High",
-    "guid": "74c2ee76-569b-4a79-a57e-dedf91b022c9",
-    "description": "Learn how to troubleshoot resource health issues",
-    "documentation": [
-      {
-        "title": "Azure Kubernetes Services troubleshooting documentation",
-        "url": "https://learn.microsoft.com/en-us/troubleshoot/azure/azure-kubernetes/welcome-azure-kubernetes"
-      }
-    ],
-    "tags": [
-      "all",
-      "monitoring",
-      "security"
-    ],
-    "optionalFields": {
-      "score": {
-        "ha": 1
-      }
-    }
-  },
-  {
     "title": "Consider subscribing to EventGrid Events for AKS automation",
     "priority": "Low",
     "guid": "9583c0f6-6083-43f6-aa6b-df7102c901bb",
@@ -747,7 +454,7 @@
     "documentation": [
       {
         "title": "AKS as an Event Grid source",
-        "url": "https://learn.microsoft.com/azure/event-grid/event-schema-aks"
+        "url": "https://learn.microsoft.com/en-us/azure/event-grid/event-schema-aks"
       }
     ],
     "tags": [
@@ -761,14 +468,14 @@
     }
   },
   {
-    "title": "Develop own governance practices to make sure no changes are performed by operators in the node RG (aka 'infra RG')",
+    "title": "Protect the AKS-managed node resource group",
     "priority": "High",
     "guid": "ed0fda7f-211b-47c7-8b6e-c18873fb473c",
-    "description": "Develop own governance practices to make sure no changes are performed by operators in the node RG (aka 'infra RG')",
+    "description": "Manage nodes through supported AKS APIs and infrastructure as code, not by manually editing VM scale sets, load balancers, or networking in the node resource group. Evaluate node resource group lockdown and restrict unnecessary write access.",
     "documentation": [
       {
-        "title": "AKS FAQ",
-        "url": "https://learn.microsoft.com/azure/aks/faq"
+        "title": "Protect the AKS-managed node resource group",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/node-resource-group-lockdown"
       }
     ],
     "tags": [
@@ -782,14 +489,14 @@
     }
   },
   {
-    "title": "Install debuging tools on your cluster",
+    "title": "Prepare a least-privilege incident troubleshooting workflow",
     "priority": "High",
     "guid": "f1d2d2f4-53a2-5f1b-9d1a-3a907b6844a5",
-    "description": "You are never ready when something bad happen and debugging a kubernetes cluster can be tricky. Some toolbox can be deployed to help you to find and fix the most common issues",
+    "description": "Document diagnostics, ephemeral debug containers, log access, escalation contacts, and time-bound privileged access. Use approved images and audit actions; do not permanently install privileged debugging toolboxes across production nodes.",
     "documentation": [
       {
-        "title": "Inspektor Gadget",
-        "url": "https://www.inspektor-gadget.io/"
+        "title": "Prepare a least-privilege incident troubleshooting workflow",
+        "url": "https://kubernetes.io/docs/tasks/debug/debug-application/debug-running-pod/"
       }
     ],
     "tags": [
@@ -803,31 +510,36 @@
     }
   },
   {
-    "title": "Consider using Long-Term Support (LTS) for Kubernetes versions",
-    "priority": "Medium",
-    "guid": "96516e10-4664-421a-992d-1271c29743ea",
-    "description": "AKS offers Long-Term Support (LTS) for Kubernetes versions, providing 24 months of support instead of the standard 12 months. This reduces the frequency of required upgrades and provides more stability for production workloads.",
-    "detail": "LTS is available for select Kubernetes versions and is ideal for organizations that require extended support periods for compliance or operational reasons. Using LTS allows you to focus on application development while minimizing cluster maintenance overhead. Note that LTS versions still receive critical security patches and bug fixes.",
+    "title": "Test upgrade surge, drain timeouts, and rollback procedures",
+    "priority": "High",
+    "guid": "65578c52-d01d-4017-adc5-f940d5a6659e",
+    "description": "Before upgrading, validate regional VM quota, subnet IP space, maxSurge, PDBs, drain timeout, soak time, and deprecated APIs. Rehearse workload rollback or cluster replacement; Kubernetes control-plane downgrades are not a supported rollback strategy.",
     "documentation": [
       {
-        "title": "Long-Term Support for AKS",
-        "url": "https://learn.microsoft.com/azure/aks/long-term-support"
-      },
-      {
-        "title": "Supported Kubernetes versions in AKS",
-        "url": "https://learn.microsoft.com/azure/aks/supported-kubernetes-versions"
+        "title": "Test upgrade surge, drain timeouts, and rollback procedures",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/upgrade-options"
       }
     ],
     "tags": [
       "all",
       "operations",
-      "security"
-    ],
-    "optionalFields": {
-      "score": {
-        "simple": 1,
-        "cost": -1
+      "resiliency"
+    ]
+  },
+  {
+    "title": "Use supported declarative APIs and validate infrastructure drift",
+    "priority": "Medium",
+    "guid": "40e1aeb1-9b5a-41ac-a9e3-1a457fe9bd74",
+    "description": "Pin supported resource-provider API versions and provider/module versions. Review plan or what-if output, apply changes through code review, and detect drift. Use deployment identities scoped to the environment rather than persistent cluster-admin credentials.",
+    "documentation": [
+      {
+        "title": "Use supported declarative APIs and validate infrastructure drift",
+        "url": "https://learn.microsoft.com/en-us/azure/devops/pipelines/architectures/devops-pipelines-baseline-architecture?view=azure-devops"
       }
-    }
+    ],
+    "tags": [
+      "all",
+      "operations"
+    ]
   }
 ]

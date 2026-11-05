@@ -1,0 +1,23 @@
+{
+  "name": "the-aks-checklist",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "description": "A source-driven Azure Kubernetes Service production-readiness checklist.",
+  "engines": { "node": ">=24" },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "documents": "node scripts/documents.mjs",
+    "test": "node --test test/*.test.mjs",
+    "test:ui": "node scripts/test-ui.mjs",
+    "test:documents": "node scripts/test-documents.mjs",
+    "check:links": "node scripts/check-links.mjs",
+    "preview": "node scripts/preview.mjs",
+    "screenshot": "node scripts/screenshot.mjs"
+  },
+  "devDependencies": {
+    "docx": "^9.5.1",
+    "pdfjs-dist": "^6.2.108",
+    "playwright": "^1.56.1"
+  }
+}

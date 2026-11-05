@@ -1,29 +1,9 @@
 [
   {
-    "title": "Use Azure Linux as host OS",
-    "guid": "d34f49c0-e964-4465-9211-520479338b13",
-    "priority": "Medium",
-    "description": "Azure Linux OS is a first-party operating system developed specifically for Azure Kubernetes Service (AKS). It is designed to optimize the execution of Kubernetes workloads, offering a secure, lightweight, and highly performant environment. ",
-    "documentation": [
-      {
-        "title": "Use the Azure Linux host on Azure Kubernetes Service",
-        "url": "https://learn.microsoft.com/en-us/azure/aks/use-azure-linux"
-      }
-    ],
-    "tags": [
-      "all",
-      "operations",
-      "security"
-    ],
-    "optionalFields": {
-      "score": {}
-    }
-  },
-  {
-    "title": "Configure your cluster for regulated industries",
+    "title": "Map regulated workloads to current compliance requirements",
     "priority": "Medium",
     "guid": "42d4aefe-2383-470e-b019-c30df24996b2",
-    "description": "Some industries require certified kubernetes or to implement specific configurations. AKS offers several features to meet this requirements",
+    "description": "Map controls to the current regulatory standard, such as PCI DSS 4.x, and validate the AKS shared-responsibility model. Use supported FIPS-enabled images where mandated; an architecture example or Azure certification does not itself make an application compliant.",
     "tags": [
       "all",
       "security",
@@ -31,16 +11,8 @@
     ],
     "documentation": [
       {
-        "title": "Use FIPS-enabled node pool",
-        "url": "https://learn.microsoft.com/azure/aks/use-multiple-node-pools#add-a-fips-enabled-node-pool"
-      },
-      {
-        "title": "AKS CIS benchmark",
-        "url": "https://learn.microsoft.com/compliance/regulatory/offering-CIS-Benchmark"
-      },
-      {
-        "title": "AKS architecture reference for PCI-DSS 3.2.1",
-        "url": "https://learn.microsoft.com/azure/architecture/reference-architectures/containers/aks-pci/aks-pci-intro"
+        "title": "Map regulated workloads to current compliance requirements",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/pci-intro"
       }
     ],
     "optionalFields": {
@@ -51,34 +23,14 @@
     }
   },
   {
-    "title": "Check if you need the Kubernetes dashboard",
-    "guid": "aefbf509-a9e8-46cc-8ae9-80f07acffd7c",
-    "priority": "Medium",
-    "description": "Starting with Kubernetes version 1.19, AKS will no longer allow the managed Kubernetes dashboard add-on to be installed for security reasons, and the add-on is scheduled to be deprecated. Ensure the Kubernetes dashboard is not installed on the cluster.",
-    "detail": "It can be done with the following CLI: az aks disable-addons --addons kube-dashboard --resource-group RG_NAME --name CLUSTER_NAME",
-    "documentation": [],
-    "tags": [
-      "all",
-      "compliance",
-      "security"
-    ],
-    "optionalFields": {
-      "score": {}
-    }
-  },
-  {
-    "title": "Encrypt ETCD at rest with your own key",
+    "title": "Assess customer-managed encryption keys and their lifecycle",
     "priority": "Low",
     "guid": "e7ba73a3-0508-4f80-806f-527db30cee96",
-    "description": "By default, ETCD is encrypted at rest with keys managed by Microsoft. It is possible to encrypt the database using your own key using a KMS plugin and store the key in Azure Key Vault.",
+    "description": "AKS encrypts data at rest using platform protection. If customer-managed keys are required, assess supported KMS options and Key Vault availability, permissions, purge protection, rotation, and recovery. The newer KMS data-encryption experience is documented as preview; do not treat it as a production default.",
     "documentation": [
       {
-        "title": "Add KMS etcd encryption to an Azure Kubernetes Service (AKS) cluster",
-        "url": "https://learn.microsoft.com/azure/aks/use-kms-etcd-encryption"
-      },
-      {
-        "title": "Kubernetes KMS",
-        "url": "https://github.com/Azure/kubernetes-kms"
+        "title": "Assess customer-managed encryption keys and their lifecycle",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/kms-data-encryption-concepts"
       }
     ],
     "tags": [
@@ -91,46 +43,14 @@
         "cost": -1,
         "security": 1
       }
-    }
+    },
+    "detail": "Distinguish legacy etcd KMS from the newer KMS data-encryption configuration. Check Kubernetes version, regional availability, and support status before enabling either; loss of a required key can make encrypted secrets unrecoverable."
   },
   {
-    "title": "Maintain kubernetes version up to date",
-    "priority": "High",
-    "guid": "e189c599-df0d-45a7-9dd4-ce32c1881370",
-    "description": "To stay current on new features and bug fixes, regularly upgrade to the Kubernetes version in your AKS cluster. Support for kubernetes is current and N-2 versions only",
-    "documentation": [
-      {
-        "title": "Regularly update to the latest version of Kubernetes",
-        "url": "https://learn.microsoft.com/azure/aks/operator-best-practices-cluster-security#regularly-update-to-the-latest-version-of-kubernetes"
-      },
-      {
-        "title": "Use the auto-upgrade feature",
-        "url": "https://learn.microsoft.com/azure/aks/upgrade-cluster#set-auto-upgrade-channel"
-      }
-    ],
-    "tags": [
-      "all",
-      "security",
-      "operations"
-    ],
-    "optionalFields": {
-      "score": {
-        "simple": -1,
-        "security": 1
-      }
-    }
-  },
-  {
-    "title": "Policy blocking the deployment of vulnerable image",
+    "title": "Enforce risk-based image admission controls",
     "guid": "1f95a465-c682-405b-84b4-966c3a619c12",
     "priority": "Medium",
-    "description": "You can now protect your Kubernetes clusters and container workloads from potential threats by restricting deployment of container images with vulnerabilities in their software components.",
-    "tools": [
-      {
-        "title": "Policy blocking the deployment of vulnerable images",
-        "url": "https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/BlockVulnerableImages.json"
-      }
-    ],
+    "description": "Scan images in CI and continuously in the registry. Enforce approved registries, digest-based releases, and risk policy through supported admission controls. Verify the support status and actual enforcement of any vulnerability-aware integration, define time-bound exceptions with owners, and do not assume that registry scanning alone blocks deployment.",
     "tags": [
       "all",
       "security",
@@ -138,17 +58,23 @@
     ],
     "optionalFields": {
       "score": {}
-    }
+    },
+    "documentation": [
+      {
+        "title": "Enforce risk-based image admission controls",
+        "url": "https://learn.microsoft.com/en-us/azure/defender-for-cloud/defender-for-containers-introduction"
+      }
+    ]
   },
   {
-    "title": "Use Azure Key Vault",
+    "title": "Integrate Key Vault using the Secrets Store CSI driver",
     "guid": "fc1e68dd-ac89-4851-8e53-8fbac3461d26",
     "priority": "High",
-    "description": "Use Azure Key Vault to store Secrets and Certificates",
+    "description": "Use the AKS Azure Key Vault provider with Microsoft Entra Workload ID. Enable rotation where required and test that applications reload mounted secrets. Environment variables do not automatically refresh; synchronizing to a Kubernetes Secret creates an additional stored copy.",
     "documentation": [
       {
-        "title": "Tutorial: Configure and run the Azure Key Vault provider for the Secrets Store CSI driver on Kubernetes",
-        "url": "https://learn.microsoft.com/azure/key-vault/general/key-vault-integrate-kubernetes"
+        "title": "Integrate Key Vault using the Secrets Store CSI driver",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/csi-secrets-store-driver"
       }
     ],
     "tags": [
@@ -161,14 +87,14 @@
     }
   },
   {
-    "title": "Monitor the security of your cluster with Azure Security Center",
+    "title": "Monitor cloud security posture with Microsoft Defender for Cloud",
     "guid": "23fda718-b80b-44c8-b2e4-d46580ab6651",
     "priority": "Medium",
-    "description": "Security Center brings security benefits to your AKS clusters using data already gathered by the AKS master node.",
+    "description": "Review Defender for Cloud recommendations and assign remediation owners. Connect security posture to Azure Policy and your incident workflow; distinguish posture assessment from the paid Defender for Containers runtime protection plan.",
     "documentation": [
       {
-        "title": "Azure Kubernetes Services integration with Security Center",
-        "url": "https://learn.microsoft.com/azure/security-center/azure-kubernetes-service-integration"
+        "title": "Monitor cloud security posture with Microsoft Defender for Cloud",
+        "url": "https://learn.microsoft.com/en-us/azure/defender-for-cloud/concept-cloud-security-posture-management"
       }
     ],
     "tags": [
@@ -181,14 +107,13 @@
     }
   },
   {
-    "title": "Remove vulnerable images from your cluster",
+    "title": "Clean unused cached images without confusing cleanup with remediation",
     "guid": "ca62d835-69cc-476d-bd8e-ea8fa58fab9c",
     "priority": "High",
-    "description": "With image cleaner, you can detect and automatically remove all unused and vulnerable images cached on AKS nodes keeping the nodes cleaner and safer.",
-    "detail": "It's common to use pipelines to build and deploy images on Azure Kubernetes Service (AKS) clusters. While great for image creation, this process often doesn't account for the stale images left behind and can lead to image bloat on cluster nodes. These images can present security issues as they may contain vulnerabilities. By cleaning these unreferenced images, you can remove an area of risk in your clusters. When done manually, this process can be time intensive, which ImageCleaner can mitigate via automatic image identification and removal.",
+    "description": "Evaluate AKS Image Cleaner for unused images on nodes. It does not patch images or remove vulnerable containers that are currently running: rebuild the image and redeploy affected workloads to remediate those risks.",
     "documentation": [
       {
-        "title": "Use ImageCleaner to clean up stale images on your AKS cluster",
+        "title": "Clean unused cached images without confusing cleanup with remediation",
         "url": "https://learn.microsoft.com/en-us/azure/aks/image-cleaner"
       }
     ],
@@ -205,11 +130,11 @@
     "title": "Enable Microsoft Defender for Containers",
     "priority": "High",
     "guid": "c9e95ffe-6dd1-4a17-8c5f-110389ca9b21",
-    "description": "Microsoft Defender for Containers provides protections for your Kubernetes clusters wherever they're running (AKS and on-premesis)",
+    "description": "Microsoft Defender for Containers provides protections for your Kubernetes clusters wherever they're running (AKS and on-premises)",
     "documentation": [
       {
         "title": "Introduction to Microsoft Defender for Containers",
-        "url": "https://learn.microsoft.com/azure/defender-for-cloud/defender-for-containers-introduction"
+        "url": "https://learn.microsoft.com/en-us/azure/defender-for-cloud/defender-for-containers-introduction"
       }
     ],
     "tags": [
@@ -232,11 +157,11 @@
     "documentation": [
       {
         "title": "Azure Policies for AKS",
-        "url": "https://learn.microsoft.com/azure/governance/policy/concepts/rego-for-aks"
+        "url": "https://learn.microsoft.com/en-us/azure/governance/policy/concepts/policy-for-kubernetes"
       },
       {
         "title": "Azure Kubernetes Services Governance with Azure Policy",
-        "url": "https://learn.microsoft.com/training/modules/aks-governance-azure-policy"
+        "url": "https://learn.microsoft.com/en-us/training/modules/aks-governance-azure-policy/"
       }
     ],
     "tools": [
@@ -258,14 +183,14 @@
     }
   },
   {
-    "title": "Separate applications from the control plane with user/system nodepools",
+    "title": "Separate system and application node pools",
     "priority": "Medium",
     "guid": "6f158e3e-a3a9-42c2-be7e-2165c3a87af4",
-    "description": "Manage system node pools in Azure Kubernetes Service (AKS) and add taint to your system nodepool to make it dedicated",
+    "description": "In AKS Standard, dedicate appropriately sized Linux system pools to critical cluster components and run applications on user pools. Use the CriticalAddonsOnly taint where appropriate and provide production redundancy. System pools are not the managed control plane.",
     "documentation": [
       {
-        "title": "AKS System Pools",
-        "url": "https://learn.microsoft.com/azure/aks/use-system-pools"
+        "title": "Separate system and application node pools",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/use-system-pools"
       }
     ],
     "tags": [
@@ -277,20 +202,19 @@
       "score": {
         "simple": -1,
         "cost": -1,
-        "graph": "where type=='microsoft.containerservice/managedclusters' | project id,resourceGroup,name,pools=properties.agentPoolProfiles | project id,name,resourceGroup,poolcount=array_length(pools) | extend compliant = (poolcount > 1)",
         "security": 1
       }
     }
   },
   {
-    "title": "If user Service Principals for the cluster, refresh credentials periodically (like quarterly)",
+    "title": "Migrate legacy service principals and rotate remaining credentials",
     "priority": "High",
     "guid": "b03dda6d-58d7-4c89-8ddb-107d5769ae66",
-    "description": "You may want to update, or rotate, the credentials as part of a defined security polic",
+    "description": "Migrate cluster infrastructure to managed identities. Where a legacy service principal remains, rotate credentials before expiry under an audited policy and test the change; a fixed quarterly interval alone does not manage credential risk.",
     "documentation": [
       {
-        "title": "Update or rotate the credentials for AKS",
-        "url": "https://learn.microsoft.com/azure/aks/update-credentials"
+        "title": "Migrate legacy service principals and rotate remaining credentials",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/update-credentials"
       }
     ],
     "tags": [
@@ -311,7 +235,7 @@
     "documentation": [
       {
         "title": "Azure Container Registry documentation",
-        "url": "https://learn.microsoft.com/azure/container-registry/"
+        "url": "https://learn.microsoft.com/en-us/azure/container-registry/"
       }
     ],
     "tags": [
@@ -326,14 +250,14 @@
     }
   },
   {
-    "title": "Use Azure Security Center to detect security posture vulnerabiities",
+    "title": "Continuously assess cluster security configuration",
     "priority": "Medium",
     "guid": "cc639637-a652-42ac-89e8-06965388e9de",
-    "description": "Microsoft Defender for Containers is the cloud-native solution that is used to secure your containers ",
+    "description": "Run supported CIS-aligned configuration assessments and review drift in RBAC, network exposure, admission policy, and workload permissions. Record accepted risks and remediation dates rather than treating an assessment score as proof of compliance.",
     "documentation": [
       {
-        "title": "Overview of Microsoft Defender for Containers",
-        "url": "https://learn.microsoft.com/azure/security-center/container-security"
+        "title": "Continuously assess cluster security configuration",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/operator-best-practices-cluster-security"
       }
     ],
     "tags": [
@@ -348,10 +272,10 @@
     }
   },
   {
-    "title": "If required consider using Confidential Compute for AKS",
+    "title": "Evaluate confidential computing for specific threat models",
     "priority": "Low",
     "guid": "ec8e4e42-0344-41b0-b865-9123e8956d31",
-    "description": "Containers run within a Trusted Execution Environment(TEE) brings isolation from other containers, the node kernel in a hardware protected, integrity protected attestable environment.",
+    "description": "Evaluate the supported AKS confidential-computing options against your workload and compliance needs. Distinguish application enclaves from confidential virtual machines and confidential containers; verify SKU, region, attestation, OS, and feature support rather than assuming every container automatically runs inside an enclave.",
     "documentation": [
       {
         "title": "Application enclave support on AKS",
@@ -377,7 +301,7 @@
     "documentation": [
       {
         "title": "Best practices for cluster isolation in AKS",
-        "url": "https://learn.microsoft.com/azure/aks/operator-best-practices-cluster-isolation"
+        "url": "https://learn.microsoft.com/en-us/azure/aks/operator-best-practices-cluster-isolation"
       }
     ],
     "tags": [
@@ -391,13 +315,13 @@
     }
   },
   {
-    "title": "If required consider using Azure Dedicated Hosts for AKS nodes",
+    "title": "Evaluate Dedicated Hosts only for explicit isolation requirements",
     "priority": "Low",
     "guid": "5ae124ba-34df-4585-bcdc-e9bd3bb0cdb3",
-    "description": "Plan for multi-tenant clusters and separation of resources and use logical or physical isolation in your AKS clusters",
+    "description": "Use Azure Dedicated Hosts when dedicated physical capacity is required and supported for the node configuration. Plan host capacity, failure domains, maintenance, and additional cost; this does not remove application-level security responsibilities.",
     "documentation": [
       {
-        "title": "Add Azure Dedicated Host to an AKS cluster",
+        "title": "Evaluate Dedicated Hosts only for explicit isolation requirements",
         "url": "https://learn.microsoft.com/en-us/azure/aks/use-azure-dedicated-hosts"
       }
     ],
@@ -410,5 +334,39 @@
         "cost": 1
       }
     }
+  },
+  {
+    "title": "Enforce Pod Security Standards and least-privilege containers",
+    "priority": "High",
+    "guid": "8173f672-d08a-40ae-a310-90d76eb7c9cb",
+    "description": "Apply Pod Security Admission or equivalent Azure Policy controls. Progress from audit to enforcement; for Linux workloads prefer restricted settings, non-root users, seccomp RuntimeDefault, dropped capabilities, read-only filesystems, and no privilege escalation. Document narrowly scoped exceptions.",
+    "documentation": [
+      {
+        "title": "Enforce Pod Security Standards and least-privilege containers",
+        "url": "https://kubernetes.io/docs/concepts/security/pod-security-standards/"
+      }
+    ],
+    "tags": [
+      "all",
+      "cluster_security",
+      "security"
+    ]
+  },
+  {
+    "title": "Protect node metadata and minimize node identity permissions",
+    "priority": "High",
+    "guid": "11149d5d-0e1a-40f4-ae35-b921e261230e",
+    "description": "Minimize node managed-identity permissions and use federated workload identities. AKS IMDS restriction is documented as preview, applies to non-host-network pods, and requires assessment of support terms and compatibility. Do not assume a generic NetworkPolicy blocks all metadata or host-network access.",
+    "documentation": [
+      {
+        "title": "Protect node metadata and minimize node identity permissions",
+        "url": "https://learn.microsoft.com/en-us/azure/aks/imds-restriction"
+      }
+    ],
+    "tags": [
+      "all",
+      "cluster_security",
+      "security"
+    ]
   }
 ]
