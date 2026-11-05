@@ -13,57 +13,50 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [10.x]
-
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v7
 
     - name: Check that data is OK
-      run: . ./.github/scripts/check-unique-guid.sh
-    
-
-    - name: Check that data is OK
-      run: . ./.github/scripts/check-unique-guid.sh
-    
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v4
-      with:
-        node-version: ${{ matrix.node-version }}
-        
-    - run: npm install
-
-    - run: gulp build
-
-    - name: Get current time
-      uses: josStorer/get-current-time@v2.1.1
-      id: current-time
-      with:
-        format: DD-MM-YYYY
-
-    - name: inject date
-      uses: cschleiden/replace-tokens@v1.2
-      with:
-        files: '["**/*.html"]'
-      env:
-        BUILD_DATE: "${{ steps.current-time.outputs.formattedTime }}"
+      run: |
+        python3 data/scripts/checklist.py
+        python3 -m unittest discover -s data/scripts -p "test_*.py"
+        node data/scripts/test_link_tracking.js
+        node data/scripts/test_checklist_state.js
+        node data/scripts/test_theme.js
 
     - name: Run the Transformer
       run: |
-        pushd ./data/scripts
-        pip3 install pandas
-        python ./transform_to_ft.py
-        popd
+        python3 data/scripts/transform_to_ft.py
+        python3 data/scripts/generate_offline.py --pdf src/web/docs/AKS-Checklist.pdf
 
-    - name: Run the Transformer
+    - name: Setup dotnet
+      uses: actions/setup-dotnet@v5
+      with:
+        dotnet-version: | 
+          10.0.x
+    
+    - name: Build the generator
       run: |
-        pushd ./data/scripts
-        pip3 install pandas
-        python ./transform_to_ft.py
-        popd
+        dotnet publish -c Release -r linux-x64 --self-contained true
+      working-directory: ./src/generator
 
-    - uses: actions/upload-artifact@v4
+    - name: Move the generator
+      run: |
+        mkdir -p ./data/tooling/html-generator
+        cp ./src/generator/bin/Release/net10.0/linux-x64/publish/* ./data/tooling/html-generator/
+
+    - name: Generate the checklist
+      run: |
+        chmod +x aks-generator
+        ./aks-generator -f template.html -p "../../en/items" -o "../../../src/web/index.html"
+      working-directory: ./data/tooling/html-generator
+
+    - name: Validate generated checklist markup
+      run: node data/scripts/test_checklist_state.js src/web/index.html
+
+    - uses: actions/upload-artifact@v7
       with:
         name: CheckList
-        path: dist
+        path: src/web
+        retention-days: 3
+       

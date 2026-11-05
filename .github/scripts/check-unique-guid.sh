@@ -51,6 +51,27 @@ do
   echo ''
 done
 
+# Global uniqueness check across ALL files (the per-file loop above only
+# detects duplicates within a single file, not across different files)
+echo -e "\e[4mGLOBAL UNIQUENESS CHECK (across all files)\e[0m"
+
+global_guids=$(jq -r "try .. | objects | select( .$key_name ) | .$key_name" *.json)
+global_total=$(printf '%s\n' "$global_guids" | wc -l)
+global_unique=$(printf '%s\n' "$global_guids" | sort -u | wc -l)
+
+if [ "$global_total" -ne "$global_unique" ]; then
+  echo -e "\e[0;31mERROR\e[0m: $global_total GUIDs found across all files, but only $global_unique are unique"
+  echo "Here are the duplicates:"
+  printf '%s\n' "$global_guids" | sort | uniq -d
+  globalError=1
+  echo -e " \e[0;31mKO\e[0m All tests are not green"
+else
+  echo "All GUIDs are unique across all files"
+  echo -e " \e[0;32mOK\e[0m All tests are green"
+fi
+
+echo ''
+
 # If there was an error, exit to fail the build
 if [[ "$globalError" == 1 ]]; then
     exit 1

@@ -3,7 +3,7 @@
     "title": "Choose the right storage type",
     "guid": "4c20c4bd-a7e3-449f-9597-4939a3aeafe7",
     "priority": "High",
-    "description": "Understand the needs of your application to pick the right storage. Use high performance, SSD-backed storage for production workloads. Plan for network-based storage when there is a need for multiple concurrent connections.",
+    "description": "Choose storage from measured latency, IOPS, throughput, durability, protocol, access mode, and cost requirements. Azure Disk normally provides single-node read/write access; Azure Files provides shared file access. Validate filesystem semantics and driver/OS support, especially for Blob CSI mounts, rather than treating object storage as a fully POSIX-compatible filesystem.",
     "documentation": [
       {
         "title": "Storage considerations for Azure Kubernetes Service",
@@ -11,7 +11,7 @@
       },
       {
         "title": "Choose the right storage type",
-        "url": "https://docs.microsoft.com/azure/aks/operator-best-practices-storage#choose-the-appropriate-storage-type"
+        "url": "https://learn.microsoft.com/azure/aks/operator-best-practices-storage#choose-the-appropriate-storage-type"
       }
     ],
     "tags": [
@@ -26,12 +26,12 @@
     "title": "Size the nodes for storage needs",
     "guid": "18707174-fa23-4935-b463-8f9982629b35",
     "priority": "Medium",
-    "description": "Each node size supports a maximum number of disks. Different node sizes also provide different amounts of local storage and network bandwidth. Plan for your application demands to deploy the appropriate size of nodes.",
+    "description": "Size nodes for disk attachment limits, aggregate IOPS and throughput, network bandwidth, and local ephemeral capacity as well as CPU and memory. Include failover, scale-out, and upgrade surge demands; a disk's advertised performance can be constrained by the VM or storage account.",
     "detail": "Different types and sizes of nodes are available. Each node (underlying VM) size provides a different amount of core resources such as CPU and memory. These VM sizes have a maximum number of disks that can be attached. Storage performance also varies between VM sizes for the maximum local and attached disk IOPS (input/output operations per second). If your applications require Azure Disks as their storage solution, plan for and choose an appropriate node VM size. The amount of CPU and memory isn't the only factor when you choose a VM size. The storage capabilities are also important.",
     "documentation": [
       {
         "title": "Size the nodes for storage needs",
-        "url": "https://docs.microsoft.com/azure/aks/operator-best-practices-storage#size-the-nodes-for-storage-needs"
+        "url": "https://learn.microsoft.com/azure/aks/operator-best-practices-storage#size-the-nodes-for-storage-needs"
       }
     ],
     "tags": [
@@ -46,11 +46,11 @@
     "title": "Dynamically provision volumes",
     "guid": "77bda7ce-1fcf-4735-bd3d-1b3a83a9e484",
     "priority": "Low",
-    "description": "To reduce management overhead and let you scale, don't statically create and assign persistent volumes. Use dynamic provisioning. In your storage classes, define the appropriate reclaim policy to minimize unneeded storage costs once pods are deleted.",
+    "description": "Prefer dynamic provisioning through explicit CSI StorageClasses and PVCs, while retaining static provisioning for existing volumes or controlled recovery when appropriate. Set reclaimPolicy deliberately: Delete can remove underlying storage after PVC deletion, whereas Retain requires manual lifecycle management. Deleting a pod alone does not normally delete its PVC or volume.",
     "documentation": [
       {
         "title": "Dynamically provision volumes",
-        "url": "https://docs.microsoft.com/azure/aks/operator-best-practices-storage#dynamically-provision-volumes"
+        "url": "https://learn.microsoft.com/azure/aks/operator-best-practices-storage#dynamically-provision-volumes"
       }
     ],
     "tags": [
@@ -64,13 +64,16 @@
   {
     "title": "Secure and back up your data",
     "guid": "13d493b9-2cdc-4632-b188-6882b81da0ed",
+    "related": [
+      "7e970492-1bed-4541-98f6-be550b17caa6"
+    ],
     "priority": "Medium",
-    "description": "Back up your data using an appropriate tool for your storage type, such as Velero or Azure Site Recovery",
-    "detail": "Understand the limitations of the different approaches to data backups and if you need to quiesce your data prior to snapshot. Data backups don't necessarily let you restore your application environment of cluster deployment.",
+    "description": "Encrypt data at rest and in transit where supported, restrict storage access, and use Azure Backup for AKS or another supported solution appropriate to each volume type. Azure Site Recovery is not an AKS cluster backup mechanism. Monitor backup failures and test restores of data and required Kubernetes resources.",
+    "detail": "Snapshots are generally crash-consistent, not automatically application-consistent or atomic across volumes. Use supported application hooks or database-native backup and recovery to meet consistency needs. Inventory skipped or unsupported volumes, protect external data services separately, and do not install the AKS Backup extension alongside Velero.",
     "documentation": [
       {
         "title": "Secure and back up your data",
-        "url": "https://docs.microsoft.com/azure/aks/operator-best-practices-storage#secure-and-back-up-your-data"
+        "url": "https://learn.microsoft.com/azure/backup/azure-kubernetes-service-cluster-backup-support-matrix"
       }
     ],
     "tags": [
@@ -83,15 +86,15 @@
     }
   },
   {
-    "title": "Avoid keeping state in the cluster, and store data outside (AzStorage, AzSQL, Cosmos, etc)",
+    "title": "Evaluate managed data services for durable application state",
     "priority": "High",
     "guid": "9f7547c1-747d-4c56-868a-714435bd19dd",
-    "description": "Where possible, don't store service state inside the container. Instead, use an Azure platform as a service (PaaS) that supports multiregion replication.",
-    "detail": "Service state refers to the in-memory or on-disk data that a service requires to function. State includes the data structures and member variables that the service reads and writes. Depending on how the service is architected, the state might also include files or other resources that are stored on the disk. For example, the state might include the files a database uses to store data and transaction logs.",
+    "description": "Where appropriate, use managed data services such as Azure SQL, Azure Storage, or Azure Cosmos DB instead of operating stateful infrastructure in AKS. Evaluate consistency, latency, connectivity, cost, data residency, backup, and regional failover requirements before choosing.",
+    "detail": "Externalizing state reduces cluster recovery coupling but does not automatically configure replication or protect against deletion and corruption. Set and test each service's backup and failover policies. Stateful workloads can also run on AKS when their storage and operational requirements are explicitly managed.",
     "documentation": [
       {
-        "title": "Remove service state from inside containers",
-        "url": "https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region#remove-service-state-from-inside-containers"
+        "title": "AKS microservices architecture and external data services",
+        "url": "https://learn.microsoft.com/azure/architecture/reference-architectures/containers/aks-microservices/aks-microservices-advanced"
       }
     ],
     "tags": [
@@ -107,15 +110,16 @@
     }
   },
   {
-    "title": "Use ephemeral OS disks",
-    "priority": "High",
+    "title": "Evaluate and select a suitable node OS disk type",
+    "priority": "Medium",
     "guid": "24367b33-6971-45b1-952b-eee0b9b588de",
-    "description": " With ephemeral OS disks, you see lower read/write latency on the OS disk of AKS agent nodes since the disk is locally attached.",
-    "detail": "You will also get faster cluster operations like scale or upgrade thanks to faster re-imaging and boot times",
+    "applicability": "Node pools where the VM SKU supports ephemeral OS disks and local placement, capacity, and lifecycle requirements are compatible; managed OS disks remain valid when they better meet requirements.",
+    "description": "Compare supported ephemeral and managed OS disks against measured OS, container image, log, and local workload capacity, I/O, provisioning-time, and cost requirements. Ephemeral OS disks can reduce OS disk latency and node provisioning time, but their contents are not durable. Record the selected disk type and test evidence instead of requiring every pool to use ephemeral disks.",
+    "detail": "Verify SKU placement and capacity requirements and explicitly plan OS disk sizing at node-pool creation. Check compatibility with planned stop/start and scale-down behavior before choosing a disk type. Keep durable application data on suitable persistent storage or managed services; node replacement, reimage, or failure can lose local contents.",
     "documentation": [
       {
-        "title": "Everything you want to know about ephemeral OS disks and AKS",
-        "url": "https://learn.microsoft.com/en-us/samples/azure-samples/aks-ephemeral-os-disk/aks-ephemeral-os-disk/"
+        "title": "Ephemeral OS disks in AKS",
+        "url": "https://learn.microsoft.com/azure/aks/concepts-storage#ephemeral-os-disks-in-aks"
       }
     ],
     "tags": [
@@ -124,19 +128,16 @@
       "resiliency"
     ],
     "optionalFields": {
-      "score": {
-        "scale": 1,
-        "cost": -1,
-        "graph": "where type=='microsoft.containerservice/managedclusters' | project id,resourceGroup,name,pools=properties.agentPoolProfiles | mvexpand pools | extend compliant = (pools.osDiskType=='Ephemeral') | project id,name=strcat(name,'-',pools.name), resourceGroup, compliant"
-      }
+      "score": {}
     }
   },
   {
-    "title": "For hyper performance storage option use Ultra Disks on AKS",
+    "title": "Evaluate Ultra Disk or Premium SSD v2 for demanding storage workloads",
     "priority": "Low",
     "guid": "39c486ce-d5af-4062-89d5-18bb5fd795db",
-    "description": "Azure ultra disks offer high throughput, high IOPS, and consistent low latency disk storage for your stateful applications.",
-    "detail": "One major benefit of ultra disks is the ability to dynamically change the performance of the SSD along with your workloads without the need to restart your agent nodes. Ultra disks are suited for data-intensive workloads.",
+    "applicability": "Only workloads whose measured storage performance requirements justify evaluating Ultra Disk or Premium SSD v2 on supported VM sizes and regions.",
+    "description": "Benchmark Ultra Disk and Premium SSD v2 when standard disk tiers cannot meet latency, IOPS, or throughput requirements. Record achieved performance and total cost under representative load; retaining another supported tier is a valid outcome. Validate AKS CSI, VM size, region/zone, caching, encryption, and backup compatibility before selecting a tier.",
+    "detail": "Provision only justified performance and verify both disk and VM limits. These disk types have availability and configuration restrictions; do not assume ZRS support or that snapshot, restore, and performance changes complete instantly.",
     "documentation": [
       {
         "title": "Use Azure ultra disks on AKS",
@@ -149,22 +150,19 @@
       "resiliency"
     ],
     "optionalFields": {
-      "score": {
-        "scale": 1,
-        "cost": -1
-      }
+      "score": {}
     }
   },
   {
-    "title": "Avoid keeping state in the cluster, and store data outside (AzStorage, AzSQL, Cosmos, etc)",
+    "title": "Keep durable data off container writable layers and node-local storage",
     "guid": "b5f3808d-3a6a-42a5-adde-7bb34e047169",
     "priority": "Medium",
-    "description": "Where possible, don't store service state inside the container. Instead, use an Azure platform as a service (PaaS) that supports multiregion replication.",
-    "detail": "Service state refers to the in-memory or on-disk data that a service requires to function. State includes the data structures and member variables that the service reads and writes. Depending on how the service is architected, the state might also include files or other resources that are stored on the disk. For example, the state might include the files a database uses to store data and transaction logs.",
+    "description": "Persist data that must survive container, pod, or node replacement on suitable persistent volumes or external services. Treat writable container layers, emptyDir, hostPath, and local NVMe storage as disposable unless application-level replication and recovery explicitly cover their loss.",
+    "detail": "emptyDir survives a container restart within a pod but is deleted with the pod. A PersistentVolume object alone does not establish durability: local volumes remain tied to a node. Define recovery behavior for caches, checkpoints, and write-ahead logs and test abrupt node loss.",
     "documentation": [
       {
-        "title": "Remove service state from inside containers",
-        "url": "https://learn.microsoft.com/en-us/azure/aks/operator-best-practices-multi-region#remove-service-state-from-inside-containers"
+        "title": "Kubernetes volumes",
+        "url": "https://kubernetes.io/docs/concepts/storage/volumes/"
       }
     ],
     "tags": [
@@ -177,14 +175,18 @@
     }
   },
   {
-    "title": "If using Azure Disks and AZs, consider having nodepools within a zone for LRS disk",
+    "title": "Align disk redundancy, volume binding, and pod topology",
     "priority": "Medium",
     "guid": "83958a8c-2689-4b32-ab57-cfc64546135a",
-    "description": "If using Azure Disks and AZs, consider having nodepools within a zone for LRS disk with VolumeBindingMode:WaitForFirstConsumer for provisioning storage in right zone or use ZRS disk for nodepools spanning multiple zones",
+    "description": "For zonal LRS disks, use WaitForFirstConsumer so provisioning respects pod scheduling topology and ensure sufficient nodes can run the pod in the disk's zone. Consider supported ZRS disk SKUs when cross-zone attachment is required. Validate the actual StorageClass and region capabilities rather than assuming defaults; ZRS does not provide simultaneous multi-node writes or automatic application failover.",
     "documentation": [
       {
-        "title": "Azure disk availability zone support",
-        "url": "https://docs.microsoft.com/azure/aks/availability-zones#azure-disk-availability-zone-support"
+        "title": "Azure Disk CSI topology and ZRS support",
+        "url": "https://learn.microsoft.com/azure/aks/csi-storage-drivers#features-of-azure-disks-csi-driver"
+      },
+      {
+        "title": "StorageClass volume binding mode",
+        "url": "https://kubernetes.io/docs/concepts/storage/storage-classes/#volume-binding-mode"
       }
     ],
     "tags": [
@@ -200,14 +202,18 @@
     }
   },
   {
-    "title": "For non-ephemeral disks, use high IOPS and larger OS disks for the nodes when running many pods/node",
+    "title": "Size node OS disks and bound local ephemeral-storage consumption",
     "priority": "High",
     "guid": "fc4972cc-3cd2-45bf-a707-6e9eab4bed32",
-    "description": "For non-ephemeral disks, use high IOPS and larger OS disks for the nodes when running many pods/node since it requires high performance for running multiple pods and will generate huge logs with default AKS log rotation thresholds",
+    "description": "Size node OS disks from measured image cache, writable layers, logs, pod density, and I/O needs rather than assuming a larger disk alone fixes performance. Set container ephemeral-storage requests and limits, bound emptyDir volumes, configure supported log rotation, and alert on disk pressure and inode exhaustion. OS disk size changes require a replacement node pool.",
     "documentation": [
       {
-        "title": "Azure disk availability zone support",
-        "url": "Azure managed disk types"
+        "title": "Default OS disk sizing in AKS",
+        "url": "https://learn.microsoft.com/azure/aks/concepts-storage#default-os-disk-sizing-in-aks"
+      },
+      {
+        "title": "Local ephemeral storage resource management",
+        "url": "https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#local-ephemeral-storage"
       }
     ],
     "tags": [
@@ -221,5 +227,48 @@
         "scale": 1
       }
     }
-  }
+  },
+      {
+        "title": "Use supported CSI drivers and migrate legacy in-tree volumes",
+        "guid": "fd164a29-bbec-4fa7-8981-49cdf8ed18de",
+        "priority": "High",
+        "description": "Use supported AKS CSI drivers for Azure Disk, Files, or Blob storage. Inventory legacy in-tree StorageClasses and PVs and follow the documented migration process, including backups and restore tests. Automatic CSI migration does not make an in-tree PV definition eligible for Azure Backup for AKS; verify explicit CSI volume definitions and supported snapshot configuration.",
+        "documentation": [
+          {
+            "title": "Use CSI storage drivers on AKS",
+            "url": "https://learn.microsoft.com/azure/aks/csi-storage-drivers"
+          },
+          {
+            "title": "Migrate in-tree volumes to CSI",
+            "url": "https://learn.microsoft.com/azure/aks/csi-migrate-in-tree-volumes"
+          }
+        ],
+        "tags": [
+          "all",
+          "storage",
+          "resiliency"
+        ],
+        "optionalFields": {
+          "score": {}
+        }
+      },
+      {
+        "title": "Test volume expansion, retention, and recovery lifecycle",
+        "guid": "c465a672-d31f-4646-aefc-58e4a8189bdd",
+        "priority": "Medium",
+        "description": "Alert on persistent-volume capacity and performance, enable allowVolumeExpansion where supported, and test the driver's filesystem expansion and restart requirements. Do not assume volumes can shrink. Review PVC, PV, snapshot, and StorageClass retention together, and test restore and reattachment without deleting the only durable copy.",
+        "documentation": [
+          {
+            "title": "Expanding persistent volume claims",
+            "url": "https://kubernetes.io/docs/concepts/storage/persistent-volumes/#expanding-persistent-volumes-claims"
+          }
+        ],
+        "tags": [
+          "all",
+          "storage"
+        ],
+        "optionalFields": {
+          "score": {}
+        }
+      }
 ]

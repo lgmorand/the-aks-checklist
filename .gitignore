@@ -9,6 +9,11 @@ selenium-debug.log
 dist/
 .tmp/
 data/tooling/result.txt
+output/
+__pycache__/
+src/generator/bin/
+src/generator/obj/
+data/scripts/aks_checklist.en.json
 
 # Editor directories and files
 .idea

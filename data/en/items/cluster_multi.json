@@ -1,13 +1,19 @@
 [
   {
-    "title": "Logically isolate cluster",
+    "title": "Use logical isolation for mutually trusted tenants with explicit controls",
     "guid": "49be78dc-6ff0-4b2c-94ef-e74002e18866",
+    "related": [
+      "0b56d03c-5fc8-42b1-943b-9e4b4d0f3de8",
+      "3b77c0ee-3f84-4a86-bb46-c6dc3070168c"
+    ],
     "priority": "Medium",
-    "description": "Use logical isolation to separate teams and projects. Try to minimize the number of physical AKS clusters you deploy to isolate teams or applications",
+    "applicability": "Shared-cluster deployments with compatible, mutually trusted tenants whose trust, regulatory, lifecycle, and availability requirements permit logical isolation.",
+    "description": "Consolidate compatible, mutually trusted teams with namespaces, scoped RBAC, network policies, quotas, and admission controls when shared-cluster economics justify the shared failure domain. Namespaces alone don't isolate tenants securely.",
+    "detail": "Document cluster-scoped resources, operator permissions, noisy-neighbor limits, and platform change ownership. Don't treat separate node pools as a hard security boundary or use logical isolation alone for hostile tenants.",
     "documentation": [
       {
         "title": "Isolating cluster",
-        "url": "https://docs.microsoft.com/azure/aks/operator-best-practices-cluster-isolation#logically-isolate-clusters"
+        "url": "https://learn.microsoft.com/azure/aks/operator-best-practices-cluster-isolation#logically-isolated-clusters"
       }
     ],
     "tags": [
@@ -19,14 +25,21 @@
     }
   },
   {
-    "title": "Physically isolate cluster",
+    "title": "Use separate clusters where security, lifecycle, or failure boundaries require them",
     "guid": "3b77c0ee-3f84-4a86-bb46-c6dc3070168c",
+    "related": [
+      "0b56d03c-5fc8-42b1-943b-9e4b4d0f3de8"
+    ],
+    "supersedes": [
+      "d167dd18-2b0a-4c24-8b99-9a646f8389a7"
+    ],
     "priority": "High",
-    "description": "Minimize the use of physical isolation for each separate team or application deployment",
+    "description": "Document application and tenant trust, regulatory, lifecycle, platform dependency, availability, and upgrade boundaries before choosing namespace, node pool, or cluster separation. Use separate clusters for mutually untrusted tenants or requirements that need a stronger boundary. Record the decision and balance duplicated system capacity, operational overhead, and cost against the required isolation.",
+    "detail": "Namespaces require scoped RBAC, network policy, admission controls, and quotas; implement those controls separately when logical isolation is appropriate. Node pools share the Kubernetes API and are not a hard security boundary. Separate clusters still need independent identity, network, policy, and data-access controls. Regional resilience also requires application traffic routing, data replication, and tested failover; deploying a second cluster alone doesn't provide disaster recovery.",
     "documentation": [
       {
         "title": "Isolating cluster",
-        "url": "https://docs.microsoft.com/azure/aks/operator-best-practices-cluster-isolation#physically-isolate-clusters"
+        "url": "https://learn.microsoft.com/azure/aks/operator-best-practices-cluster-isolation#physically-isolated-clusters"
       }
     ],
     "tags": [
@@ -37,24 +50,56 @@
     }
   },
   {
-    "title": "Use Azure tags in Azure Kubernetes Service (AKS)",
-    "guid": "574bd2fe-f58b-4199-b334-f7eff3ef90c8",
-    "priority": "Medium",
-    "description": "With Azure Kubernetes Service (AKS), you can set Azure tags on an AKS cluster and its related resources by using Azure Resource Manager, through the Azure CLI.",
+    "title": "Stage multi-cluster upgrades with Azure Kubernetes Fleet Manager",
+    "guid": "b65121af-481e-4e51-98eb-d73737f589ec",
+    "priority": "High",
+    "applicability": "Only estates with multiple AKS clusters that require coordinated update promotion; Fleet is an implementation choice, not a requirement for every cluster.",
+    "description": "For multiple AKS clusters, evaluate Fleet update runs and reusable strategies to promote Kubernetes or node image updates through test, canary, and production stages. Use auto-upgrade profiles when automatic creation of update runs fits the operating model.",
+    "detail": "Fleet update runs honor member maintenance windows. Choose Latest images for freshness or Consistent images available across participating regions for repeatable testing. Coordinate Fleet with cluster auto-upgrade policies so independent updates don't bypass your intended rollout order. Approval gates, label-based groups, concurrency and failure thresholds, and the SecurityPatch channel are preview features in the current documentation; don't assume all orchestration controls have the same support status.",
     "documentation": [
       {
-        "title": "Use Azure tags in Azure Kubernetes Service ",
-        "url": "https://learn.microsoft.com/en-us/Azure/aks/use-tags"
+        "title": "Fleet update orchestration concepts and preview controls",
+        "url": "https://learn.microsoft.com/azure/kubernetes-fleet/concepts-update-orchestration"
       },
       {
-        "title": "Use Azure tags in Azure Kubernetes Service (AKS)",
-        "url": "https://techcommunity.microsoft.com/t5/fasttrack-for-azure/use-azure-tags-in-azure-kubernetes-service-aks/ba-p/3611583"
+        "title": "Configure Fleet update runs",
+        "url": "https://learn.microsoft.com/azure/kubernetes-fleet/update-orchestration"
       }
     ],
     "tags": [
       "all",
       "operations",
-      "finops"
+      "resiliency"
+    ],
+    "optionalFields": {
+      "score": {}
+    }
+  },
+  {
+    "title": "Choose Fleet capabilities and hub architecture for the actual multi-cluster need",
+    "guid": "2c4fa234-c9ea-4dcf-aa2f-41957a9345bb",
+    "priority": "Medium",
+    "applicability": "Only multi-cluster estates evaluating Fleet for a defined update, placement, or governance need; single-cluster deployments and estates without that need are excluded.",
+    "description": "Fleet can coordinate AKS updates without a hub cluster; Kubernetes resource placement requires a hub. Evaluate whether centralized placement and governance justify the additional control plane, permissions, and operating model instead of adding a hub solely to orchestrate upgrades.",
+    "detail": "Use cluster labels and placement policies deliberately and separate resource deployment from traffic routing and state replication. Supported operations differ by member cluster type. Fleet automated deployments, DNS-based load balancing, and cross-cluster networking are documented as preview; assess their support terms independently rather than treating Fleet as one uniformly GA feature.",
+    "documentation": [
+      {
+        "title": "Azure Kubernetes Fleet Manager overview",
+        "url": "https://learn.microsoft.com/azure/kubernetes-fleet/overview"
+      },
+      {
+        "title": "Fleet member cluster types and supported capabilities",
+        "url": "https://learn.microsoft.com/azure/kubernetes-fleet/concepts-member-cluster-types"
+      },
+      {
+        "title": "Fleet resource placement",
+        "url": "https://learn.microsoft.com/azure/kubernetes-fleet/concepts-resource-placement"
+      }
+    ],
+    "tags": [
+      "all",
+      "operations",
+      "multi-tenancy"
     ],
     "optionalFields": {
       "score": {}

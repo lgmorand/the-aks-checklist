@@ -1,0 +1,1823 @@
+{
+  "categories": [
+    {
+      "name": "Identity and Access Management"
+    },
+    {
+      "name": "Governance and Security"
+    },
+    {
+      "name": "Resource Organization and Cost Governance"
+    },
+    {
+      "name": "Storage"
+    },
+    {
+      "name": "Network Topology and Connectivity"
+    },
+    {
+      "name": "Operations"
+    },
+    {
+      "name": "BC and DR"
+    },
+    {
+      "name": "Windows"
+    },
+    {
+      "name": "Application Deployment"
+    }
+  ],
+  "status": [
+    {
+      "name": "Not verified",
+      "description": "This check has not been looked at yet"
+    },
+    {
+      "name": "Open",
+      "description": "There is an action item associated to this check"
+    },
+    {
+      "name": "Fulfilled",
+      "description": "This check has been verified, and there are no further action items associated to it"
+    },
+    {
+      "name": "Not required",
+      "description": "Recommendation understood, but not needed by current requirements"
+    },
+    {
+      "name": "N/A",
+      "description": "Not applicable for current design"
+    }
+  ],
+  "severities": [
+    {
+      "name": "High"
+    },
+    {
+      "name": "Medium"
+    },
+    {
+      "name": "Low"
+    }
+  ],
+  "metadata": {
+    "name": "Azure AKS Review",
+    "state": "GA"
+  },
+  "items": [
+    {
+      "text": "Use AKS-managed Microsoft Entra ID authentication",
+      "description": "Authenticate users to the Kubernetes API with AKS-managed Microsoft Entra ID integration and group-based access. Migrate legacy integration and validate administrator group access before disabling local accounts. Authentication establishes identity; configure Kubernetes or Azure RBAC separately for authorization.",
+      "guid": "7e42c78e-78c0-46a6-8a21-94956e698dc4",
+      "subcategory": "Security",
+      "category": "Identity and Access Management",
+      "severity": "High",
+      "link": "https://learn.microsoft.com/azure/aks/entra-id-control-plane-authentication",
+      "simple": 1,
+      "graph": "where type=='microsoft.containerservice/managedclusters' | extend compliant = (properties.aadProfile.managed==true) | distinct id,compliant"
+    },
+    {
+      "text": "Choose and scope Kubernetes RBAC or Azure RBAC for Kubernetes authorization",
+      "description": "Use Microsoft Entra groups with Kubernetes Roles/RoleBindings, or Azure RBAC for Kubernetes Authorization, to grant least-privilege access at namespace scope where possible. Distinguish Kubernetes data-plane permissions from Azure management-plane roles that retrieve kubeconfig or change the cluster. Review cluster-admin bindings and privilege-escalation paths regularly.",
+      "guid": "eec4962c-c3bd-421b-b77f-26e5e6b3bec3",
+      "subcategory": "Security",
+      "category": "Identity and Access Management",
+      "severity": "High",
+      "link": "https://learn.microsoft.com/azure/aks/kubernetes-rbac-entra-id",
+      "simple": -1,
+      "security": 1
+    },
+    {
+      "text": "Use AKS and ACR integration without password",
+      "description": "Use the kubelet managed identity to pull images from Azure Container Registry instead of registry admin credentials or long-lived image pull secrets. Grant only the required registry or repository access.\n\nFor RBAC-only registries, AKS ACR integration assigns AcrPull to the kubelet identity. For registries using RBAC Registry + ABAC Repository Permissions, --attach-acr is not supported: assign Container Registry Repository Reader manually, with repository conditions where appropriate. Workload identity for application Azure API calls is separate from kubelet image-pull authentication.",
+      "guid": "100f8f70-3ec6-44bb-ab07-95eef965e80d",
+      "subcategory": "Security",
+      "category": "Identity and Access Management",
+      "severity": "Medium",
+      "link": "https://learn.microsoft.com/azure/aks/cluster-container-registry-integration"
+    },
+    {
+      "text": "Use least-privilege managed identities for cluster and kubelet access",
+      "description": "Prefer system-assigned or user-assigned managed identities over cluster service principals to avoid credential rotation. Separate control-plane resource management permissions from kubelet image-pull permissions, scope grants to required resources and do not reuse node identities for application access. During identity migration, retain necessary old grants until token refresh and validation complete.\n\nReview effective Azure role assignments, scopes and inherited grants for the actual control-plane and kubelet identities, including network and registry access. Confirm representative operations succeed and unauthorized operations are denied; a managed-identity flag alone does not demonstrate least privilege.",
+      "guid": "ed127dd1-42b0-46b2-8c69-99a646f3389a",
+      "subcategory": "Security",
+      "category": "Identity and Access Management",
+      "severity": "High",
+      "link": "https://learn.microsoft.com/azure/aks/use-managed-identity",
+      "simple": 1
+    },
+    {
+      "text": "Limit access to admin kubeconfig (get-credentials --admin)",
+      "description": "Restrict Azure permissions to retrieve cluster-admin credentials, update identity settings, invoke AKS Run Command or manage nodes. Prefer user kubeconfig with Microsoft Entra authentication; retrieving user kubeconfig does not itself grant Kubernetes authorization. Audit privileged management operations and keep an approved, tested emergency access procedure.",
+      "guid": "a2fe27b2-e287-401a-8352-beedf79b488d",
+      "subcategory": "Security",
+      "category": "Identity and Access Management",
+      "severity": "Medium",
+      "link": "https://learn.microsoft.com/azure/aks/control-kubeconfig-access",
+      "simple": -1,
+      "security": 1
+    },
+    {
+      "text": "For AKS non-interactive logins use kubelogin",
+      "description": "Use kubelogin's supported exec authentication modes for automation. Prefer managed identity on Azure-hosted agents or federated workload identity for CI over service principal secrets. Grant the automation identity only required cluster permissions and ensure it has network access to the API server; avoid interactive/device-code flows in pipelines.",
+      "guid": "f4dcf690-1b30-407d-abab-6f8aa780d3a3",
+      "subcategory": "Identity",
+      "category": "Identity and Access Management",
+      "severity": "Medium",
+      "link": "https://learn.microsoft.com/azure/aks/kubelogin-authentication",
+      "simple": -1,
+      "security": 1
+    },
+    {
+      "text": "Disable AKS local accounts",
+      "description": "Disable local accounts after validating Microsoft Entra administrator and automation access so static administrator credentials cannot bypass identity controls. On existing clusters, rotate cluster certificates to revoke previously issued local credentials. Document tightly controlled emergency re-enablement, audit its use and disable local accounts again after recovery.",
+      "guid": "b085b1f2-3119-4771-8c9a-bbf4411810ec",
+      "subcategory": "Identity",
+      "category": "Identity and Access Management",
+      "severity": "Medium",
+      "link": "https://learn.microsoft.com/azure/aks/local-accounts#disable-local-accounts",
+      "simple": -1,
+      "security": 1
+    },
+    {
+      "text": "Use Privileged Identity Management for just-in-time privileged access",
+      "description": "Use Microsoft Entra Privileged Identity Management for eligible, time-limited administrative role or group activation with approval and MFA as appropriate. Scope access separately for Kubernetes administration and node access, review activations and account for Microsoft Entra licensing requirements.",
+      "guid": "36abb0db-c118-4f4c-9880-3f30f9a2deb6",
+      "subcategory": "Identity",
+      "category": "Identity and Access Management",
+      "severity": "Low",
+      "link": "https://learn.microsoft.com/azure/aks/privileged-identity-management",
+      "simple": -1,
+      "security": 1
+    },
+    {
+      "text": "Precreate a user-assigned kubelet identity when permissions are needed before provisioning",
+      "description": "Use a precreated user-assigned kubelet identity when registry permissions or group membership must exist before cluster creation. Grant the control-plane identity the required permission to assign it, especially outside the node resource group, and allow role propagation time. A kubelet identity is not a pod workload identity.",
+      "guid": "1f711a74-3672-470b-b8b8-a2148d640d79",
+      "subcategory": "Identity",
+      "category": "Identity and Access Management",
+      "severity": "Low",
+      "link": "https://learn.microsoft.com/azure/aks/managed-identity-overview",
+      "simple": -1,
+      "security": 1
+    },
+    {
+      "text": "Apply Microsoft Entra Conditional Access to human cluster sign-ins",
+      "description": "Apply appropriate MFA, device and location requirements to Microsoft Entra-authenticated administrator sign-ins. Validate kubelogin authentication flows and emergency access before enforcement, and review licensing. Do not assume user Conditional Access policies protect local certificate credentials or workload identities.",
+      "guid": "c4d7f4c6-79bf-45d0-aa05-ce8fc717e150",
+      "subcategory": "Identity",
+      "category": "Identity and Access Management",
+      "severity": "Low",
+      "link": "https://learn.microsoft.com/entra/identity/conditional-access/overview",
+      "simple": -1,
+      "security": 1
+    },
+    {
+      "text": "Use Microsoft Entra Workload ID and migrate retired pod-managed identity",
+      "description": "Applicability: Applies to pods requiring supported Azure service authentication, including deployments migrating from retired pod-managed identity.\n\nUse Microsoft Entra Workload ID for pod-to-Azure authentication without stored credentials. Azure AD Pod Identity was deprecated on October 24, 2022 and its project archived in September 2023; support for the AKS managed add-on ran through September 2025. Migrate remaining bindings and applications instead of deploying it.\n\nEnable the OIDC issuer and workload identity on AKS Standard (preconfigured on AKS Automatic). Configure dedicated Kubernetes service accounts, exact federated issuer/namespace/service-account subject/audience bindings, the azure.workload.identity/use: true pod label and supported Azure Identity SDK or MSAL versions. Grant only required Azure data-plane permissions per workload, test token renewal and remove old pod identity components and node identity grants only after successful migration.",
+      "guid": "c958d1cb-0e91-4362-9fb0-c1bff3701680",
+      "subcategory": "Identity",
+      "category": "Identity and Access Management",
+      "severity": "High",
+      "link": "https://learn.microsoft.com/azure/aks/workload-identity-overview",
+      "supersedes": [
+        "d2e0d5d7-71d4-41e3-910c-c57b4a4b1410"
+      ],
+      "security": 2
+    },
+    {
+      "text": "Configure your cluster for regulated industries",
+      "description": "Applicability: Applies to workloads subject to specific regulatory or cryptographic compliance requirements.\n\nMap applicable regulatory requirements to AKS controls and evidence, including supported FIPS-enabled node images, encryption, identity, network isolation and audit retention. Validate OS/Kubernetes/region compatibility and the actual cryptographic module certification; enabling FIPS or selecting an architecture does not automatically make the workload compliant.",
+      "guid": "42d4aefe-2383-470e-b019-c30df24996b2",
+      "subcategory": "Security",
+      "category": "Governance and Security",
+      "severity": "Medium",
+      "link": "https://learn.microsoft.com/azure/aks/enable-fips-nodes",
+      "cost": -1,
+      "security": 1
+    },
+    {
+      "text": "Remove unnecessary dashboard deployments and restrict administration UIs",
+      "description": "Applicability: Applies when legacy dashboard resources or other cluster administration UIs are installed.\n\nThe historical AKS-managed Kubernetes dashboard add-on is no longer a supported administration path. Inventory and remove unnecessary legacy or self-installed dashboard resources, service accounts and privileged bindings. For required administration UIs, use supported tooling with authenticated, least-privilege access and no anonymous public endpoint.\n\nUse the Azure portal Kubernetes resource views or kubectl with Microsoft Entra authentication and the required network connectivity. Do not rely on obsolete kube-dashboard add-on commands to remove independently installed dashboards.",
+      "guid": "aefbf509-a9e8-46cc-8ae9-80f07acffd7c",
+      "subcategory": "Compliance",
+      "category": "Governance and Security",
+      "severity": "Medium",
+      "link": "https://learn.microsoft.com/azure/aks/kubernetes-portal"
+    },
+    {
+      "text": "Select Kubernetes secret encryption and key lifecycle controls",
+      "description": "Applicability: Applies when requirements mandate customer-controlled keys for Kubernetes secrets in etcd, or an existing KMS configuration must be maintained.\n\nAKS encrypts stored data at rest with Microsoft-managed keys by default. Where requirements mandate customer-controlled keys for Kubernetes secrets in etcd, evaluate the supported Azure Key Vault KMS configuration and its version, identity and network prerequisites. This is separate from node disk and application persistent-volume encryption.\n\nThe newer KMS data encryption experience for Kubernetes 1.33 or later is currently documented as preview; do not treat it as an unconditional production baseline or assume migration from legacy KMS is automatic. For the selected experience, protect keys with soft delete/purge protection, least-privilege access and tested rotation/recovery. Loss of required keys can make secrets unreadable.",
+      "guid": "e7ba73a3-0508-4f80-806f-527db30cee96",
+      "subcategory": "Secrets",
+      "category": "Governance and Security",
+      "severity": "Low",
+      "link": "https://learn.microsoft.com/azure/aks/use-kms-etcd-encryption"
+    },
+    {
+      "text": "Validate Kubernetes API and version compatibility before support expires",
+      "description": "Inventory Kubernetes API versions, deprecated or removed APIs, add-ons, CRDs, admission webhooks and client compatibility against the current and target AKS versions. Track the release calendar, regional upgrade targets, supported patches and control-plane/node version skew so compatibility validation and minor-version upgrades complete before support expires.\n\nStandard community support generally covers three minor versions; Premium LTS has separate eligibility and patch requirements. Retain rendered-manifest validation and representative upgrade-test evidence, including controller reconciliation after API changes. This control establishes Kubernetes compatibility; configure the upgrade mechanism and node-image or OS lifecycle controls separately.",
+      "guid": "e189c599-df0d-45a7-9dd4-ce32c1881370",
+      "subcategory": "Security",
+      "category": "Governance and Security",
+      "severity": "High",
+      "link": "https://learn.microsoft.com/azure/aks/operator-best-practices-cluster-security#regularly-update-to-the-latest-version-of-kubernetes",
+      "simple": -1,
+      "security": 1
+    },
+    {
+      "text": "Gate image deployment on vulnerability findings",
+      "description": "Scan images in CI and supported registries, define vulnerability thresholds and enforce them at admission using a supported policy or Defender for Containers gated deployment. Validate prerequisites and support for the target cloud, cluster and registry. Begin with audit, then enable deny with controlled exemptions and defined behavior for missing or stale scan findings.",
+      "guid": "1f95a465-c682-405b-84b4-966c3a619c12",
+      "subcategory": "Security",
+      "category": "Governance and Security",
+      "severity": "Medium",
+      "link": "https://learn.microsoft.com/azure/defender-for-cloud/runtime-gated-overview"
+    },
+    {
+      "text": "Manage application secrets with least-privilege access and tested rotation",
+      "description": "Keep credentials out of images, manifests, build arguments and source control. Manage application secrets, keys and certificates with Azure Key Vault using Microsoft Entra Workload ID and least-privilege access through the supported Secrets Store CSI Driver or application SDK. Demonstrate rotation and application reload without exposing secret contents.\n\nKubernetes secrets are encrypted at rest by AKS, but base64 encoding is not encryption and authorized API access can reveal values. Limit synchronization into Kubernetes, restrict secret-read permissions and avoid logging contents. Environment variables require a pod restart to pick up changes and subPath mounts do not receive automatic updates. Key Vault is a secrets management service, not synonymous with a dedicated HSM.",
+      "guid": "fc1e68dd-ac89-4851-8e53-8fbac3461d26",
+      "subcategory": "Security",
+      "category": "Governance and Security",
+      "severity": "High",
+      "link": "https://learn.microsoft.com/azure/aks/csi-secrets-store-driver",
+      "supersedes": [
+        "5e3df584-eccc-4d97-a3b6-bcda3b50eb2e"
+      ]
+    },
+    {
+      "text": "Clean unused vulnerable node images and remediate running workloads separately",
+      "description": "Use Image Cleaner to remove unused images with vulnerabilities from supported AKS Linux nodes. It does not patch images, remove images in use, or clean the registry; rebuild and redeploy vulnerable workloads separately.\n\nImage Cleaner is preconfigured on AKS Automatic and optional on AKS Standard. Set an appropriate cleanup interval, monitor cleanup failures and required scanner connectivity, and account for its lack of support for Windows node pools and virtual nodes.",
+      "guid": "ca62d835-69cc-476d-bd8e-ea8fa58fab9c",
+      "subcategory": "Security",
+      "category": "Governance and Security",
+      "severity": "High",
+      "link": "https://learn.microsoft.com/en-us/azure/aks/image-cleaner"
+    },
+    {
+      "text": "Detect runtime threats and exercise incident response",
+      "description": "Operate supported runtime threat detection for Kubernetes, nodes and applications, such as Microsoft Defender for Containers or a maintained equivalent. Verify sensor health and alert ingestion, route actionable alerts to owned responders, and exercise triage, containment and recovery. Subscription enablement or sensor installation alone is not evidence of effective detection and response.\n\nFor the chosen implementation, validate plan/components, pricing and coverage for the cloud, region, OS, architecture and private-network dependencies. Tune detections and use safe test events to confirm delivery and response runbooks. Runtime detection complements preventive hardening, image scanning, admission enforcement and posture review; it does not guarantee that attacks are blocked.",
+      "guid": "c9e95ffe-6dd1-4a17-8c5f-110389ca9b21",
+      "subcategory": "Security",
+      "category": "Governance and Security",
+      "severity": "High",
+      "link": "https://learn.microsoft.com/azure/defender-for-cloud/defender-for-containers-introduction",
+      "supersedes": [
+        "23fda718-b80b-44c8-b2e4-d46580ab6651",
+        "a71e024f-ac46-4d0e-86d8-fad9a86c99af"
+      ]
+    },
+    {
+      "text": "Verify centralized Kubernetes policy enforcement and exception ownership",
+      "description": "Use the supported Azure Policy add-on and Kubernetes policy initiatives for centralized audit and admission enforcement. Roll policies out in audit before deny, validate system/add-on compatibility and document narrowly scoped exceptions. Monitor policy health and compliance; assigning an initiative does not automatically remediate existing workloads.\n\nRetain effective assignments, constraint status, compliance results and exception owners/expiry as evidence. Verify enforcement with safe allowed and denied test manifests in a representative namespace, and track remediation of existing violations. An enabled add-on or assigned initiative alone cannot prove that the intended workloads are covered or that admission denial works.",
+      "guid": "9ca48e4a-85e2-4223-bce8-bb12307ca5f1",
+      "subcategory": "Operations",
+      "category": "Governance and Security",
+      "severity": "Medium",
+      "link": "https://learn.microsoft.com/azure/aks/use-azure-policy",
+      "simple": -1,
+      "security": 1
+    },
+    {
+      "text": "Separate application workloads from system components with dedicated node pools",
+      "description": "Run cluster-critical system components on appropriately sized system pools and application workloads on user pools. Where supported, use CriticalAddonsOnly=true:NoSchedule to keep ordinary workloads off system pools and ensure system replicas have sufficient capacity. The AKS control plane is already Microsoft-managed and does not run on these node pools; pool separation is not a hard tenant security boundary.\n\nA production cluster with a single system pool requires at least two nodes; prefer at least three, distributed across supported availability zones. System pools require Linux and VM SKUs with at least 4 vCPUs and 4 GB of memory; B-series and Spot aren't supported. Size above these minima for add-ons, DNS load, failover and surge upgrades, and test that critical pods can reschedule during disruption. Verify actual pod placement, taints and tolerations; the existence of system and user pools alone does not prove separation.",
+      "guid": "6f158e3e-a3a9-42c2-be7e-2165c3a87af4",
+      "subcategory": "Compliance",
+      "category": "Governance and Security",
+      "severity": "Medium",
+      "link": "https://learn.microsoft.com/azure/aks/use-system-pools",
+      "simple": -1,
+      "cost": -1,
+      "security": 1
+    },
+    {
+      "text": "Rotate credentials for remaining service-principal-based clusters",
+      "description": "Applicability: Applies only to existing clusters still using a service principal; managed-identity clusters do not need service-principal credential rotation.\n\nPrefer migrating cluster service principals to managed identities. Until migration, inventory credential expiry, alert before expiration and rotate using the supported AKS procedure at the organization's required interval. Validate permissions and cluster operations after rotation; do not embed credentials in manifests or pipelines.",
+      "guid": "b03dda6d-58d7-4c89-8ddb-107d5769ae66",
+      "subcategory": "Secrets",
+      "category": "Governance and Security",
+      "severity": "High",
+      "link": "https://learn.microsoft.com/azure/aks/update-credentials",
+      "security": 1
+    },
+    {
+      "text": "Use a private registry for your images, such as ACR",
+      "description": "Use an authenticated registry such as Azure Container Registry for approved images and artifacts. Restrict pull/push permissions separately, disable unnecessary admin credentials, scan and patch images, and use immutable digests for deployments. A private registry requires authentication but does not automatically have private network connectivity.",
+      "guid": "55b46a94-8008-4ae7-b7e4-b475b6c8bdbf",
+      "subcategory": "Compliance",
+      "category": "Governance and Security",
+      "severity": "High",
+      "link": "https://learn.microsoft.com/azure/container-registry/",
+      "simple": -1,
+      "security": 1
+    },
+    {
+      "text": "Review Microsoft Defender for Cloud posture and vulnerability recommendations",
+      "description": "Review Defender for Cloud recommendations for AKS configuration risks and container vulnerabilities, prioritize exploitable findings, and track remediation owners and deadlines. Validate posture coverage for the enabled plan and target environment; posture assessment complements rather than replaces runtime detection and admission enforcement.",
+      "guid": "cc639637-a652-42ac-89e8-06965388e9de",
+      "subcategory": "Compliance",
+      "category": "Governance and Security",
+      "severity": "Medium",
+      "link": "https://learn.microsoft.com/azure/defender-for-cloud/defender-for-containers-introduction",
+      "cost": -1,
+      "security": 1
+    },
+    {
+      "text": "If required consider using Confidential Compute for AKS",
+      "description": "Applicability: Applies when a documented threat model requires confidential computing or existing confidential workloads must be operated.\n\nSelect the confidential computing model that matches the threat model: application enclaves, confidential VM node pools and confidential containers have different isolation and attestation boundaries. Ordinary containers on a confidential VM still share its guest kernel. Validate supported regions, VM sizes, OS, Kubernetes versions and preview status for the specific feature before committing to it.",
+      "guid": "ec8e4e42-0344-41b0-b865-9123e8956d31",
+      "subcategory": "Compliance",
+      "category": "Governance and Security",
+      "severity": "Low",
+      "link": "https://learn.microsoft.com/en-us/azure/confidential-computing/confidential-nodes-aks-overview"
+    },
+    {
+      "text": "If required consider using Azure Dedicated Hosts for AKS nodes",
+      "description": "Applicability: Applies when physical server isolation or licensing requirements justify Dedicated Hosts, or existing AKS node pools use them.\n\nEvaluate Azure Dedicated Host only when physical server isolation or licensing requirements justify it. Check supported VM families, host capacity, zone placement and AKS restrictions. Dedicated Hosts isolate the underlying hardware from other Azure customers; they do not isolate applications within your cluster.",
+      "guid": "5ae124ba-34df-4585-bcdc-e9bd3bb0cdb3",
+      "subcategory": "Compliance",
+      "category": "Governance and Security",
+      "severity": "Low",
+      "link": "https://learn.microsoft.com/en-us/azure/aks/use-azure-dedicated-hosts"
+    },
+    {
+      "text": "Enforce Pod Security Standards with controlled namespace exceptions",
+      "description": "Use Pod Security Admission or equivalent Azure Policy controls to enforce an appropriate baseline, preferably Restricted for compatible application namespaces. PSA is enabled in AKS, but namespace enforcement labels must be configured; enabled admission alone is not proof of enforcement.\n\nStart with audit/warn, test compatibility, then enforce and pin policy versions deliberately. Restrict who can change namespace security labels. Document exceptions for system components and workloads requiring host access; deny unnecessary privileged containers, host namespaces and privilege escalation, and apply non-root and seccomp controls where supported.",
+      "guid": "9e89373e-8f02-4c52-9901-a3bd98606b66",
+      "subcategory": "Security",
+      "category": "Governance and Security",
+      "severity": "High",
+      "link": "https://learn.microsoft.com/azure/aks/use-psa",
+      "supersedes": [
+        "af4dc5bd-f37e-44df-a4c9-d6a00e64a61a"
+      ],
+      "security": 2
+    },
+    {
+      "text": "Collect and protect Kubernetes audit and Azure management logs",
+      "description": "Configure AKS diagnostic settings to retain the required control-plane logs, including kube-audit or kube-audit-admin as appropriate, and retain Azure Activity Logs for cluster management operations. Container stdout logs alone do not provide a Kubernetes audit trail.\n\nSelect audit and operational control-plane categories deliberately to balance read-event coverage, investigation needs, sensitive data exposure and cost. Configure approved destinations, resource-specific tables, retention and access controls; diagnostic settings do not backfill historical logs. Evaluate kube-audit-admin's reduced scope and table-plan query/alert limitations before filtering. Alert on privileged role changes, secret access, local-account re-enablement and diagnostic-setting changes, and validate ingestion and incident queries regularly.",
+      "guid": "dbb1cf7f-dbf5-44bc-94cc-515c77aac07f",
+      "subcategory": "Security",
+      "category": "Governance and Security",
+      "severity": "High",
+      "link": "https://learn.microsoft.com/azure/aks/monitor-aks",
+      "supersedes": [
+        "5b56ad48-408f-4e72-934c-476ba280dcf5"
+      ],
+      "cost": -1,
+      "security": 2
+    },
+    {
+      "text": "Enable Trusted Launch for compatible node pools",
+      "description": "Use Trusted Launch with Secure Boot and vTPM where the selected generation 2 VM, OS and workload support it. Validate custom drivers, GPU and other feature compatibility before enforcement, and monitor boot-integrity alerts. Trusted Launch protects the boot chain; it does not replace workload isolation or patching.",
+      "guid": "03b3c2a8-7932-4c94-ad01-56563b296a98",
+      "subcategory": "Security",
+      "category": "Governance and Security",
+      "severity": "Medium",
+      "link": "https://learn.microsoft.com/azure/aks/use-trusted-launch",
+      "security": 1
+    },
+    {
+      "text": "Use logical isolation for mutually trusted tenants with explicit controls",
+      "description": "Applicability: Shared-cluster deployments with compatible, mutually trusted tenants whose trust, regulatory, lifecycle, and availability requirements permit logical isolation.\n\nConsolidate compatible, mutually trusted teams with namespaces, scoped RBAC, network policies, quotas, and admission controls when shared-cluster economics justify the shared failure domain. Namespaces alone don't isolate tenants securely.\n\nDocument cluster-scoped resources, operator permissions, noisy-neighbor limits, and platform change ownership. Don't treat separate node pools as a hard security boundary or use logical isolation alone for hostile tenants.\n\nRelated controls: Use namespaces with explicit access and isolation controls (0b56d03c-5fc8-42b1-943b-9e4b4d0f3de8); Use separate clusters where security, lifecycle, or failure boundaries require them (3b77c0ee-3f84-4a86-bb46-c6dc3070168c)",
+      "guid": "49be78dc-6ff0-4b2c-94ef-e74002e18866",
+      "subcategory": "Multi-Tenancy",
+      "category": "Resource Organization and Cost Governance",
+      "severity": "Medium",
+      "link": "https://learn.microsoft.com/azure/aks/operator-best-practices-cluster-isolation#logically-isolated-clusters"
+    },
+    {
+      "text": "Use separate clusters where security, lifecycle, or failure boundaries require them",
+      "description": "Document application and tenant trust, regulatory, lifecycle, platform dependency, availability, and upgrade boundaries before choosing namespace, node pool, or cluster separation. Use separate clusters for mutually untrusted tenants or requirements that need a stronger boundary. Record the decision and balance duplicated system capacity, operational overhead, and cost against the required isolation.\n\nNamespaces require scoped RBAC, network policy, admission controls, and quotas; implement those controls separately when logical isolation is appropriate. Node pools share the Kubernetes API and are not a hard security boundary. Separate clusters still need independent identity, network, policy, and data-access controls. Regional resilience also requires application traffic routing, data replication, and tested failover; deploying a second cluster alone doesn't provide disaster recovery.\n\nRelated controls: Use namespaces with explicit access and isolation controls (0b56d03c-5fc8-42b1-943b-9e4b4d0f3de8)",
+      "guid": "3b77c0ee-3f84-4a86-bb46-c6dc3070168c",
+      "subcategory": "Other",
+      "category": "Resource Organization and Cost Governance",
+      "severity": "High",
+      "link": "https://learn.microsoft.com/azure/aks/operator-best-practices-cluster-isolation#physically-isolated-clusters",
+      "supersedes": [
+        "d167dd18-2b0a-4c24-8b99-9a646f8389a7"
+      ]
+    },
+    {
+      "text": "Stage multi-cluster upgrades with Azure Kubernetes Fleet Manager",
+      "description": "Applicability: Only estates with multiple AKS clusters that require coordinated update promotion; Fleet is an implementation choice, not a requirement for every cluster.\n\nFor multiple AKS clusters, evaluate Fleet update runs and reusable strategies to promote Kubernetes or node image updates through test, canary, and production stages. Use auto-upgrade profiles when automatic creation of update runs fits the operating model.\n\nFleet update runs honor member maintenance windows. Choose Latest images for freshness or Consistent images available across participating regions for repeatable testing. Coordinate Fleet with cluster auto-upgrade policies so independent updates don't bypass your intended rollout order. Approval gates, label-based groups, concurrency and failure thresholds, and the SecurityPatch channel are preview features in the current documentation; don't assume all orchestration controls have the same support status.",
+      "guid": "b65121af-481e-4e51-98eb-d73737f589ec",
+      "subcategory": "Operations",
+      "category": "Resource Organization and Cost Governance",
+      "severity": "High",
+      "link": "https://learn.microsoft.com/azure/kubernetes-fleet/concepts-update-orchestration"
+    },
+    {
+      "text": "Choose Fleet capabilities and hub architecture for the actual multi-cluster need",
+      "description": "Applicability: Only multi-cluster estates evaluating Fleet for a defined update, placement, or governance need; single-cluster deployments and estates without that need are excluded.\n\nFleet can coordinate AKS updates without a hub cluster; Kubernetes resource placement requires a hub. Evaluate whether centralized placement and governance justify the additional control plane, permissions, and operating model instead of adding a hub solely to orchestrate upgrades.\n\nUse cluster labels and placement policies deliberately and separate resource deployment from traffic routing and state replication. Supported operations differ by member cluster type. Fleet automated deployments, DNS-based load balancing, and cross-cluster networking are documented as preview; assess their support terms independently rather than treating Fleet as one uniformly GA feature.",
+      "guid": "2c4fa234-c9ea-4dcf-aa2f-41957a9345bb",
+      "subcategory": "Operations",
+      "category": "Resource Organization and Cost Governance",
+      "severity": "Medium",
+      "link": "https://learn.microsoft.com/azure/kubernetes-fleet/overview"
+    },
+    {
+      "text": "Choose the right storage type",
+      "description": "Choose storage from measured latency, IOPS, throughput, durability, protocol, access mode, and cost requirements. Azure Disk normally provides single-node read/write access; Azure Files provides shared file access. Validate filesystem semantics and driver/OS support, especially for Blob CSI mounts, rather than treating object storage as a fully POSIX-compatible filesystem.",
+      "guid": "4c20c4bd-a7e3-449f-9597-4939a3aeafe7",
+      "subcategory": "Storage",
+      "category": "Storage",
+      "severity": "High",
+      "link": "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/scenarios/app-platform/aks/storage"
+    },
+    {
+      "text": "Size the nodes for storage needs",
+      "description": "Size nodes for disk attachment limits, aggregate IOPS and throughput, network bandwidth, and local ephemeral capacity as well as CPU and memory. Include failover, scale-out, and upgrade surge demands; a disk's advertised performance can be constrained by the VM or storage account.\n\nDifferent types and sizes of nodes are available. Each node (underlying VM) size provides a different amount of core resources such as CPU and memory. These VM sizes have a maximum number of disks that can be attached. Storage performance also varies between VM sizes for the maximum local and attached disk IOPS (input/output operations per second). If your applications require Azure Disks as their storage solution, plan for and choose an appropriate node VM size. The amount of CPU and memory isn't the only factor when you choose a VM size. The storage capabilities are also important.",
+      "guid": "18707174-fa23-4935-b463-8f9982629b35",
+      "subcategory": "Storage",
+      "category": "Storage",
+      "severity": "Medium",
+      "link": "https://learn.microsoft.com/azure/aks/operator-best-practices-storage#size-the-nodes-for-storage-needs"
+    },
+    {
+      "text": "Dynamically provision volumes",
+      "description": "Prefer dynamic provisioning through explicit CSI StorageClasses and PVCs, while retaining static provisioning for existing volumes or controlled recovery when appropriate. Set reclaimPolicy deliberately: Delete can remove underlying storage after PVC deletion, whereas Retain requires manual lifecycle management. Deleting a pod alone does not normally delete its PVC or volume.",
+      "guid": "77bda7ce-1fcf-4735-bd3d-1b3a83a9e484",
+      "subcategory": "Storage",
+      "category": "Storage",
+      "severity": "Low",
+      "link": "https://learn.microsoft.com/azure/aks/operator-best-practices-storage#dynamically-provision-volumes"
+    },
+    {
+      "text": "Secure and back up your data",
+      "description": "Encrypt data at rest and in transit where supported, restrict storage access, and use Azure Backup for AKS or another supported solution appropriate to each volume type. Azure Site Recovery is not an AKS cluster backup mechanism. Monitor backup failures and test restores of data and required Kubernetes resources.\n\nSnapshots are generally crash-consistent, not automatically application-consistent or atomic across volumes. Use supported application hooks or database-native backup and recovery to meet consistency needs. Inventory skipped or unsupported volumes, protect external data services separately, and do not install the AKS Backup extension alongside Velero.\n\nRelated controls: Select and test a supported recovery solution for cluster resources and data (7e970492-1bed-4541-98f6-be550b17caa6)",
+      "guid": "13d493b9-2cdc-4632-b188-6882b81da0ed",
+      "subcategory": "Storage",
+      "category": "Storage",
+      "severity": "Medium",
+      "link": "https://learn.microsoft.com/azure/backup/azure-kubernetes-service-cluster-backup-support-matrix"
+    },
+    {
+      "text": "Evaluate managed data services for durable application state",
+      "description": "Where appropriate, use managed data services such as Azure SQL, Azure Storage, or Azure Cosmos DB instead of operating stateful infrastructure in AKS. Evaluate consistency, latency, connectivity, cost, data residency, backup, and regional failover requirements before choosing.\n\nExternalizing state reduces cluster recovery coupling but does not automatically configure replication or protect against deletion and corruption. Set and test each service's backup and failover policies. Stateful workloads can also run on AKS when their storage and operational requirements are explicitly managed.",
+      "guid": "9f7547c1-747d-4c56-868a-714435bd19dd",
+      "subcategory": "Storage",
+      "category": "Storage",
+      "severity": "High",
+      "link": "https://learn.microsoft.com/azure/architecture/reference-architectures/containers/aks-microservices/aks-microservices-advanced",
+      "simple": -1,
+      "ha": 1
+    },
+    {
+      "text": "Evaluate and select a suitable node OS disk type",
+      "description": "Applicability: Node pools where the VM SKU supports ephemeral OS disks and local placement, capacity, and lifecycle requirements are compatible; managed OS disks remain valid when they better meet requirements.\n\nCompare supported ephemeral and managed OS disks against measured OS, container image, log, and local workload capacity, I/O, provisioning-time, and cost requirements. Ephemeral OS disks can reduce OS disk latency and node provisioning time, but their contents are not durable. Record the selected disk type and test evidence instead of requiring every pool to use ephemeral disks.\n\nVerify SKU placement and capacity requirements and explicitly plan OS disk sizing at node-pool creation. Check compatibility with planned stop/start and scale-down behavior before choosing a disk type. Keep durable application data on suitable persistent storage or managed services; node replacement, reimage, or failure can lose local contents.",
+      "guid": "24367b33-6971-45b1-952b-eee0b9b588de",
+      "subcategory": "Storage",
+      "category": "Storage",
+      "severity": "Medium",
+      "link": "https://learn.microsoft.com/azure/aks/concepts-storage#ephemeral-os-disks-in-aks"
+    },
+    {
+      "text": "Evaluate Ultra Disk or Premium SSD v2 for demanding storage workloads",
+      "description": "Applicability: Only workloads whose measured storage performance requirements justify evaluating Ultra Disk or Premium SSD v2 on supported VM sizes and regions.\n\nBenchmark Ultra Disk and Premium SSD v2 when standard disk tiers cannot meet latency, IOPS, or throughput requirements. Record achieved performance and total cost under representative load; retaining another supported tier is a valid outcome. Validate AKS CSI, VM size, region/zone, caching, encryption, and backup compatibility before selecting a tier.\n\nProvision only justified performance and verify both disk and VM limits. These disk types have availability and configuration restrictions; do not assume ZRS support or that snapshot, restore, and performance changes complete instantly.",
+      "guid": "39c486ce-d5af-4062-89d5-18bb5fd795db",
+      "subcategory": "Storage",
+      "category": "Storage",
+      "severity": "Low",
+      "link": "https://learn.microsoft.com/azure/aks/use-ultra-disks"
+    },
+    {
+      "text": "Keep durable data off container writable layers and node-local storage",
+      "description": "Persist data that must survive container, pod, or node replacement on suitable persistent volumes or external services. Treat writable container layers, emptyDir, hostPath, and local NVMe storage as disposable unless application-level replication and recovery explicitly cover their loss.\n\nemptyDir survives a container restart within a pod but is deleted with the pod. A PersistentVolume object alone does not establish durability: local volumes remain tied to a node. Define recovery behavior for caches, checkpoints, and write-ahead logs and test abrupt node loss.",
+      "guid": "b5f3808d-3a6a-42a5-adde-7bb34e047169",
+      "subcategory": "Storage",
+      "category": "Storage",
+      "severity": "Medium",
+      "link": "https://kubernetes.io/docs/concepts/storage/volumes/"
+    },
+    {
+      "text": "Align disk redundancy, volume binding, and pod topology",
+      "description": "For zonal LRS disks, use WaitForFirstConsumer so provisioning respects pod scheduling topology and ensure sufficient nodes can run the pod in the disk's zone. Consider supported ZRS disk SKUs when cross-zone attachment is required. Validate the actual StorageClass and region capabilities rather than assuming defaults; ZRS does not provide simultaneous multi-node writes or automatic application failover.",
+      "guid": "83958a8c-2689-4b32-ab57-cfc64546135a",
+      "subcategory": "Storage",
+      "category": "Storage",
+      "severity": "Medium",
+      "link": "https://learn.microsoft.com/azure/aks/csi-storage-drivers#features-of-azure-disks-csi-driver",
+      "simple": -1,
+      "ha": 1
+    },
+    {
+      "text": "Size node OS disks and bound local ephemeral-storage consumption",
+      "description": "Size node OS disks from measured image cache, writable layers, logs, pod density, and I/O needs rather than assuming a larger disk alone fixes performance. Set container ephemeral-storage requests and limits, bound emptyDir volumes, configure supported log rotation, and alert on disk pressure and inode exhaustion. OS disk size changes require a replacement node pool.",
+      "guid": "fc4972cc-3cd2-45bf-a707-6e9eab4bed32",
+      "subcategory": "Storage",
+      "category": "Storage",
+      "severity": "High",
+      "link": "https://learn.microsoft.com/azure/aks/concepts-storage#default-os-disk-sizing-in-aks",
+      "scale": 1,
+      "cost": -1
+    },
+    {
+      "text": "Use supported CSI drivers and migrate legacy in-tree volumes",
+      "description": "Use supported AKS CSI drivers for Azure Disk, Files, or Blob storage. Inventory legacy in-tree StorageClasses and PVs and follow the documented migration process, including backups and restore tests. Automatic CSI migration does not make an in-tree PV definition eligible for Azure Backup for AKS; verify explicit CSI volume definitions and supported snapshot configuration.",
+      "guid": "fd164a29-bbec-4fa7-8981-49cdf8ed18de",
+      "subcategory": "Storage",
+      "category": "Storage",
+      "severity": "High",
+      "link": "https://learn.microsoft.com/azure/aks/csi-storage-drivers"
+    },
+    {
+      "text": "Test volume expansion, retention, and recovery lifecycle",
+      "description": "Alert on persistent-volume capacity and performance, enable allowVolumeExpansion where supported, and test the driver's filesystem expansion and restart requirements. Do not assume volumes can shrink. Review PVC, PV, snapshot, and StorageClass retention together, and test restore and reattachment without deleting the only durable copy.",
+      "guid": "c465a672-d31f-4646-aefc-58e4a8189bdd",
+      "subcategory": "Storage",
+      "category": "Storage",
+      "severity": "Medium",
+      "link": "https://kubernetes.io/docs/concepts/storage/persistent-volumes/#expanding-persistent-volumes-claims"
+    },
+    {
+      "text": "Choose Azure CNI IPAM and a supported data plane; migrate kubenet",
+      "description": "Prefer Azure CNI Overlay for most workloads to conserve VNet addresses. Use Azure CNI Pod Subnet when pods need directly routable VNet addresses. Choose the IP address management model separately from the data plane, and consider Azure CNI Powered by Cilium for supported Linux workloads.\n\nOverlay pods use a separate pod CIDR, and traffic leaving the cluster is translated to node addresses; they are not directly reachable from connected networks. Flat networking uses VNet pod addresses and needs larger subnets. Kubenet retires on March 31, 2028: inventory existing clusters and validate the supported migration to Azure CNI Overlay, including policies, IP ranges, node reimaging and workload disruption, before that date.",
+      "guid": "a0f61565-9de5-458f-a372-49c831112dbd",
+      "subcategory": "Network",
+      "category": "Network Topology and Connectivity",
+      "severity": "Medium",
+      "link": "https://learn.microsoft.com/azure/aks/concepts-network-cni-overview",
+      "simple": 1
+    },
+    {
+      "text": "Size node subnets and pod address ranges for scale and upgrades",
+      "description": "Plan for maximum autoscaler capacity, upgrade surge across node pools, internal load balancer frontends and Azure-reserved addresses. Size pod address space according to the selected Azure CNI IPAM mode, not a single formula for all CNI configurations.\n\nAzure CNI Overlay allocates a /24 pod block per node, even when maxPods is smaller. Flat Node Subnet networking reserves pod addresses based on maxPods; Pod Subnet dynamic and static block allocation have different reservation rules. Include simultaneous upgrades and future pools, and monitor address utilization.",
+      "guid": "7faf12e7-0943-4f63-8472-2da29c2b1cd6",
+      "subcategory": "Network",
+      "category": "Network Topology and Connectivity",
+      "severity": "High",
+      "link": "https://learn.microsoft.com/azure/aks/concepts-network-ip-address-planning",
+      "scale": 1
+    },
+    {
+      "text": "Use supported HTTP/HTTPS ingress and migrate retired ingress-nginx",
+      "description": "Applicability: Applies to workloads using HTTP/HTTPS ingress, including deployments migrating existing ingress-nginx or managed NGINX controllers.\n\nUse a supported Gateway API implementation or ingress controller for shared HTTP/HTTPS routing and TLS; LoadBalancer services remain appropriate for L4 traffic. Upstream ingress-nginx maintenance ended in March 2026. Microsoft's critical security patch support for application routing add-on NGINX ends in November 2026: migrate before support ends.\n\nEvaluate the application routing Gateway API implementation, Application Gateway for Containers, or Gateway API ingress with the Istio add-on against feature and regional requirements. Inventory NGINX annotations, snippets, DNS, certificates and private frontend settings; test equivalents and staged cutover. The application routing Gateway API implementation does not support all NGINX capabilities and cannot coexist with the Istio service mesh add-on.",
+      "guid": "b3808b9f-a1cf-4204-ad01-3a923ce474db",
+      "subcategory": "Network",
+      "category": "Network Topology and Connectivity",
+      "severity": "Medium",
+      "link": "https://learn.microsoft.com/azure/aks/app-routing-gateway-api",
+      "scale": 1,
+      "simple": -1
+    },
+    {
+      "text": "Secure your exposed applications with a web application firewall (WAF)",
+      "description": "Applicability: Applies to internet-facing HTTP/HTTPS applications whose threat model requires a web application firewall.\n\nFor internet-facing HTTP/HTTPS applications, evaluate Azure Application Gateway WAF or Azure Front Door WAF. Enable appropriate managed and custom rules, tune false positives, move to prevention after validation, and monitor alerts. A WAF protects supported web protocols, not arbitrary TCP/UDP traffic; prevent clients from bypassing it by restricting direct access to origins.",
+      "guid": "a3a92c2d-e7e2-4165-a3a8-7af4a7a1f893",
+      "subcategory": "Network",
+      "category": "Network Topology and Connectivity",
+      "severity": "Medium",
+      "link": "https://learn.microsoft.com/azure/aks/operator-best-practices-network#secure-traffic-with-a-web-application-firewall-waf",
+      "simple": -1,
+      "cost": -1,
+      "security": 2
+    },
+    {
+      "text": "Restrict ingress and Gateway API hostnames and cross-namespace references",
+      "description": "Authorize which teams can create or change Ingress, Gateway and Route resources. Enforce approved hostnames and controller classes through admission policy. Scope Gateway listeners and allowedRoutes, and approve cross-namespace ReferenceGrants explicitly to prevent route or certificate hijacking.",
+      "guid": "e5684a8b-f072-43d2-83b2-234ad48f57c7",
+      "subcategory": "Security",
+      "category": "Network Topology and Connectivity",
+      "severity": "Low",
+      "link": "https://learn.microsoft.com/azure/aks/app-routing-gateway-api"
+    },
+    {
+      "text": "Use internal load balancers for private applications",
+      "description": "Choose public or internal frontends deliberately. Use an internal load balancer for private applications and restrict access through connected networks. For internet-facing applications, expose only required ports and route through the chosen edge/WAF design. Configure private DNS and validate the controller's internal frontend settings.",
+      "guid": "c0179fd4-470b-43c8-b7bb-80307051bc96",
+      "subcategory": "Security",
+      "category": "Network Topology and Connectivity",
+      "severity": "High",
+      "link": "https://learn.microsoft.com/azure/aks/internal-lb"
+    },
+    {
+      "text": "Control traffic flow with network policies",
+      "description": "Enforce intended pod communication boundaries with deployed network policies and a compatible enforcement engine. Verify required connections succeed and prohibited connections fail from representative pods and namespaces; an engine setting alone is not proof of isolation.\n\nPrefer Azure CNI Powered by Cilium for supported Linux configurations. For existing Azure NPM Linux deployments, plan and test migration before its September 30, 2028 retirement. Retain the effective policy inventory, pod/namespace selector coverage and repeatable allowed/denied connectivity tests, including after upgrades and policy changes. Network policies govern pod traffic while NSGs protect subnet boundaries; enabling an engine without applicable policies does not restrict traffic.",
+      "guid": "0751f099-e6f4-4250-b405-d2b26c707432",
+      "subcategory": "Security",
+      "category": "Network Topology and Connectivity",
+      "severity": "Medium",
+      "link": "https://learn.microsoft.com/azure/aks/operator-best-practices-network#control-traffic-flow-with-network-policies",
+      "security": 1
+    },
+    {
+      "text": "Configure default network policies in each namespace",
+      "description": "Apply default-deny ingress and egress policies to application namespaces, then allow required flows explicitly. Include DNS, identity/token endpoints, monitoring, ingress health checks and application dependencies. Validate policies with the actual data plane; do not blindly deny system namespace traffic.",
+      "guid": "0bc4e0c6-97fd-411a-9eb4-1a1f85f9cdf0",
+      "subcategory": "Security",
+      "category": "Network Topology and Connectivity",
+      "severity": "Medium",
+      "link": "https://github.com/ahmetb/kubernetes-network-policy-recipes"
+    },
+    {
+      "text": "Filter egress traffic with AzFW/NVA if your security requirements mandate it (egress lockdown)",
+      "description": "Applicability: Applies when workload or organizational requirements mandate inspected or allowlisted outbound traffic.\n\nWhere egress inspection is required, use user-defined routing with Azure Firewall or an approved NVA and allow the documented AKS platform dependencies as well as workload destinations. Validate DNS, private endpoints, identity and upgrade traffic. A UDR alone does not prove that egress is filtered; configure and monitor firewall rules and prevent bypass paths.\n\nRetain effective routes, firewall policy/rule ownership and enforcement logs. Test required destinations and explicitly prohibited destinations from representative node pools and pods, including alternative public/private paths and behavior during firewall failure. Revalidate platform/bootstrap and upgrade dependencies after routing or policy changes.",
+      "guid": "3b365a91-7ecb-4e48-bbe5-4cd7df2e8bba",
+      "subcategory": "Security",
+      "category": "Network Topology and Connectivity",
+      "severity": "Medium",
+      "link": "https://learn.microsoft.com/azure/aks/limit-egress-traffic",
+      "simple": -2,
+      "security": 2
+    },
+    {
+      "text": "Restrict pod access to node IMDS and managed identity tokens",
+      "description": "Restrict application pod egress to 169.254.169.254 using policies supported by the selected data plane, and verify enforcement. Use Microsoft Entra Workload ID rather than node identities for Azure access. Keep node identity permissions minimal and restrict privileged and hostNetwork pods, which can bypass ordinary pod isolation.\n\nAKS IMDS restriction is documented as preview and blocks non-host-network pods only. Evaluate its add-on compatibility and preview support limitations before enabling it; it is not a universal production substitute for least-privilege identities and workload isolation.",
+      "guid": "4fb072a7-0303-46d8-9ecf-d8aa4d69ff83",
+      "subcategory": "Security",
+      "category": "Network Topology and Connectivity",
+      "severity": "Medium",
+      "link": "https://learn.microsoft.com/azure/aks/operator-best-practices-cluster-security#restrict-access-to-instance-metadata-api"
+    },
+    {
+      "text": "Use private clusters if your requirements mandate it",
+      "description": "Applicability: Applies when requirements mandate a private Kubernetes API endpoint or the cluster already uses private API connectivity.\n\nIn a private cluster, the control plane or API server has internal IP addresses and is not exposed to Internet\n\nPlan private DNS resolution, VPN/ExpressRoute or peered-network connectivity, deployment agents and emergency administration before disabling public API access. API Server VNet Integration supports public and private clusters and is not itself proof that public access is disabled. Check regional availability (currently excluding Qatar Central in the public cloud) and subnet requirements. Govern AKS Run Command permissions because it can provide management access without direct private network connectivity.",
+      "guid": "29fb411c-20a8-4c39-84df-aaa4227eaeb2",
+      "subcategory": "Security",
+      "category": "Network Topology and Connectivity",
+      "severity": "High",
+      "link": "https://learn.microsoft.com/azure/aks/private-clusters"
+    },
+    {
+      "text": "Choose global traffic routing for multi-region applications",
+      "description": "Applicability: Applies to multi-region applications requiring global traffic distribution or regional failover.\n\nFor multi-region applications, choose Azure Front Door for global HTTP/HTTPS proxying and edge/WAF capabilities, or Azure Traffic Manager for DNS-based routing across supported protocols. Global routing is not necessary for every single-region cluster.\n\nConfigure application-aware health probes and regional origin priorities; measure failover and recovery against RTO under realistic traffic. Traffic Manager answers DNS queries rather than proxying application traffic, so test DNS TTLs and client caching. Front Door provides an HTTP/HTTPS data path; test TLS, private-origin connectivity and connection draining for the chosen design. Consider supported cross-region L4 routing separately when required by protocol. Align routing with data replication and regional capacity: traffic failover neither replicates data nor eliminates detection and recovery delays.",
+      "guid": "5d0bb60d-b8e0-4031-9c5b-1f0a735f771f",
+      "subcategory": "Network",
+      "category": "Network Topology and Connectivity",
+      "severity": "Medium",
+      "link": "https://learn.microsoft.com/azure/aks/operator-best-practices-multi-region",
+      "supersedes": [
+        "170265f4-bb46-4a39-9af7-f317284797b1"
+      ]
+    },
+    {
+      "text": "Set maxPods explicitly for the selected IPAM mode and workload density",
+      "description": "Do not assume a universal default of 30 pods per node: defaults and limits depend on networking mode and configuration. Choose maxPods using application density, system DaemonSets, node resources and IP capacity.\n\nOverlay pod addresses are not VNet-routable, while flat networking allocates VNet addresses. Verify documented limits for the chosen IPAM mode and OS. Changing maxPods can require a replacement node pool; validate it before production deployment.",
+      "guid": "22f54b29-bade-43aa-b1e8-c38ec9366673",
+      "subcategory": "Ipam",
+      "category": "Network Topology and Connectivity",
+      "severity": "High",
+      "link": "https://learn.microsoft.com/azure/aks/configure-azure-cni",
+      "scale": 1,
+      "simple": -1
+    },
+    {
+      "text": "If using a public API endpoint, restrict the IP addresses that can access it",
+      "description": "Applicability: Applies when the Kubernetes API server has a public endpoint.\n\nTo improve the security of your clusters and minimize the risk of attacks, we recommend limiting the IP address ranges that can access the API server.",
+      "guid": "d783a3e8-264f-4dac-870f-569791d1837e",
+      "subcategory": "Security",
+      "category": "Network Topology and Connectivity",
+      "severity": "Medium",
+      "link": "https://learn.microsoft.com/azure/aks/api-server-authorized-ip-ranges"
+    },
+    {
+      "text": "Choose an explicit outbound method and size SNAT capacity",
+      "description": "Choose load balancer, managed/user-assigned NAT Gateway, or user-defined routing according to egress scale and inspection needs; evaluate network-isolated mode when cluster bootstrapping must not depend on public egress. NAT Gateway provides scalable SNAT and predictable public egress IPs, but is not a firewall. Monitor connection and SNAT utilization, plan public IP capacity and zone resilience, and test IP allowlists when changing outboundType.",
+      "guid": "ccb534e7-416e-4a1d-8e93-533b53199085",
+      "subcategory": "Scalability",
+      "category": "Network Topology and Connectivity",
+      "severity": "Medium",
+      "link": "https://learn.microsoft.com/azure/aks/nat-gateway",
+      "scale": 1,
+      "simple": -1
+    },
+    {
+      "text": "Use Azure CNI Pod Subnet allocation when VNet-routable pods are required",
+      "description": "Applicability: Applies when pods require directly routable VNet addresses or an existing deployment uses Azure CNI Pod Subnet.\n\nPrefer Overlay when directly routable pod addresses are unnecessary. For flat networking, separate pod and node subnets with Azure CNI Pod Subnet and choose dynamic or static block allocation based on supported scale and workload requirements.\n\nDynamic allocation allocates pod IPs on demand in batches; it reduces preallocation but does not eliminate subnet exhaustion. Static block allocation has different capacity and migration constraints. Monitor available addresses and plan pool/subnet migration rather than assuming a full cluster rebuild is always required.",
+      "guid": "8ee9a69a-1b58-4b1e-9c61-476e110a160b",
+      "subcategory": "Scalability",
+      "category": "Network Topology and Connectivity",
+      "severity": "Medium",
+      "link": "https://learn.microsoft.com/azure/aks/concepts-network-azure-cni-pod-subnet"
+    },
+    {
+      "text": "Use Private Endpoints (preferred) or Virtual Network Service Endpoints to access PaaS services from the cluster",
+      "description": "Choose Private Endpoints where private IP connectivity and disabling public service access are required. Service Endpoints instead secure access to a service's public endpoint from selected subnets; they are not equivalent to Private Link. Configure service-side access controls and private DNS, and validate workload and deployment-agent resolution.",
+      "guid": "ecccd979-3b6b-4cda-9b50-eb2eb03dda6d",
+      "subcategory": "Security",
+      "category": "Network Topology and Connectivity",
+      "severity": "Medium",
+      "link": "https://learn.microsoft.com/azure/private-link/private-link-overview",
+      "simple": -1,
+      "security": 1
+    },
+    {
+      "text": "Consider using a service mesh for advanced microservice communication management",
+      "description": "Applicability: Applies when a service mesh is installed or documented workload mTLS, identity or traffic-management requirements justify one; adoption is not required.\n\nUse a service mesh only when requirements justify its resource and operational overhead, for example workload mTLS, service identity or advanced traffic management. Evaluate the supported Istio add-on, compatibility, revision upgrades and explicit authorization policies; installing a mesh alone does not enforce zero trust. The managed Open Service Mesh add-on ends support on September 30, 2027: migrate affected clusters to Istio before then.",
+      "guid": "e9855d04-c3c3-49c9-a6bb-2c12159a114b",
+      "subcategory": "Security",
+      "category": "Network Topology and Connectivity",
+      "severity": "Medium",
+      "link": "https://learn.microsoft.com/azure/aks/istio-about"
+    },
+    {
+      "text": "If required add your own CNI plugin",
+      "description": "Applicability: Applies to existing BYO CNI deployments or documented requirements that supported Azure CNI options cannot satisfy.\n\nUse bring-your-own CNI only when supported Azure CNI options cannot meet requirements. Review AKS feature compatibility and support boundaries: installation, configuration, upgrades and troubleshooting of the custom CNI are your responsibility. Validate networking before deploying workloads.",
+      "guid": "57bf217f-6dc8-481c-81e2-785773e9c00f",
+      "subcategory": "Operations",
+      "category": "Network Topology and Connectivity",
+      "severity": "Low",
+      "link": "https://learn.microsoft.com/en-us/azure/aks/use-byo-cni"
+    },
+    {
+      "text": "If using Azure CNI, consider using different Subnets for NodePools",
+      "description": "Applicability: Applies when existing node pools use separate subnets or address-space and network-boundary requirements justify distinct node-pool subnets.\n\nThis can address requirements such as having non-contiguous virtual network address space to split across node pools and other security reasons.",
+      "guid": "22fbe8d6-9b40-47ef-9011-25bb1a555a6b",
+      "subcategory": "Security",
+      "category": "Network Topology and Connectivity",
+      "severity": "Medium",
+      "link": "https://learn.microsoft.com/azure/aks/node-pool-unique-subnet"
+    },
+    {
+      "text": "Verify non overlapping CIDR ranges for Service-CIDR and Pod-CIDR or Subnet-CIDR",
+      "description": "Ensure service, pod and node subnet ranges do not overlap one another or connected VNet, peered, VPN and on-premises networks. Reserve DNS service addresses correctly and account for future connectivity. Overlay address overlap with external destinations can prevent pods from reaching those destinations.",
+      "guid": "22fbe8d6-9b40-47ef-9011-25bb1a555a6c",
+      "subcategory": "Security",
+      "category": "Network Topology and Connectivity",
+      "severity": "Medium",
+      "link": "https://learn.microsoft.com/azure/aks/concepts-network-ip-address-planning",
+      "simple": -2,
+      "security": 1
+    },
+    {
+      "text": "Validate resilient DNS resolution for cluster and private dependencies",
+      "description": "Ensure nodes and pods can resolve Kubernetes services, the API server, private endpoints and external dependencies using the intended DNS path. Link private DNS zones to the correct VNets and configure conditional forwarding or Azure DNS Private Resolver for connected networks.\n\nAllow both UDP and TCP port 53 through NSGs, firewalls and network policies; test large responses and failover. Monitor DNS latency and failures, scale CoreDNS appropriately and use supported ConfigMap customization rather than editing the managed Corefile. Evaluate LocalDNS only after checking current OS, Kubernetes and networking compatibility.",
+      "guid": "6a1a4567-bd34-442b-8e38-5023f577c69c",
+      "subcategory": "Network",
+      "category": "Network Topology and Connectivity",
+      "severity": "High",
+      "link": "https://learn.microsoft.com/azure/aks/private-clusters#prerequisites-for-private-aks-clusters"
+    },
+    {
+      "text": "Use Standard Load Balancer and migrate unsupported Basic deployments",
+      "description": "Applicability: Applies to clusters using Azure Load Balancer, including remaining unsupported Basic deployments.\n\nAKS stopped supporting Basic Load Balancer on September 30, 2025. Use Standard for new clusters and urgently migrate remaining Basic deployments through the documented AKS upgrade or a replacement cluster.\n\nThe documented upgrade causes downtime and cannot be rolled back. Review Kubernetes/CLI prerequisites, admission webhooks and private Key Vault KMS dependencies, then validate services, health probes and new outbound public IP allowlists. Availability Set clusters have a separate combined migration path.",
+      "guid": "84b06212-3374-4669-957f-cde9ce957c32",
+      "subcategory": "Network",
+      "category": "Network Topology and Connectivity",
+      "severity": "High",
+      "link": "https://learn.microsoft.com/azure/aks/upgrade-basic-load-balancer-on-aks",
+      "security": 1
+    },
+    {
+      "text": "Evaluate network-isolated bootstrap and explicitly permit required dependencies",
+      "description": "Applicability: Applies when network-isolated AKS is required or already configured; this mode is not required for every production cluster.\n\nFor workloads requiring network-isolated AKS, configure a private API path and bootstrap-artifact-source Cache with supported AKS-managed or bring-your-own ACR connectivity. Outbound type none is generally available but does not itself block every possible egress path; block is preview and has different network support. Validate private DNS, registry permissions and application access before removing outbound connectivity.\n\nWindows pools and kubenet aren't supported. Use supported node image upgrade channels rather than assuming SecurityPatch is available. Review every add-on's outbound dependencies and support matrix; Dapr, Azure Machine Learning and Flux extensions are not currently supported in this mode. For existing clusters, follow the documented cache transition and node reimage sequence while preserving required outbound access until reimaging completes.",
+      "guid": "e0418dd2-2b9f-45bf-91ab-a7214fcf6ada",
+      "subcategory": "Network",
+      "category": "Network Topology and Connectivity",
+      "severity": "High",
+      "link": "https://learn.microsoft.com/azure/aks/concepts-network-isolated"
+    },
+    {
+      "text": "Validate application TLS issuance, rotation and end-to-end trust",
+      "description": "Applicability: Applies to application TLS endpoints, including Gateway/ingress listeners, private application endpoints and encrypted backend connections.\n\nOwn application certificate issuance, renewal and revocation, with expiry and failed-renewal alerts. Use a supported controller and secrets integration, and verify that a renewed certificate reaches the listener and is served without an availability regression. Certificate storage or secret rotation alone does not demonstrate listener reload.\n\nFor supported application routing Gateway API integration, use an unversioned Key Vault certificate URI, a correctly federated service account and least-privilege Key Vault access; use the documented integration for the chosen controller rather than legacy NGINX flags. Test issuance, rotation propagation and listener reload, SAN/hostname matching, certificate chain and client trust, plus backend certificate validation wherever TLS is re-encrypted. Retain externally observed TLS handshake and renewal evidence for the entire intended encrypted path. Application certificate lifecycle is separate from AKS node and cluster CA rotation.",
+      "guid": "42689121-5132-44d1-a447-ec3c462af74c",
+      "subcategory": "Network",
+      "category": "Network Topology and Connectivity",
+      "severity": "High",
+      "link": "https://learn.microsoft.com/azure/aks/app-routing-gateway-api-dns-tls"
+    },
+    {
+      "text": "Evaluate virtual nodes only for ACI-compatible burst workloads",
+      "description": "Applicability: Only Linux burst workloads compatible with Azure Container Instances and the selected virtual-node implementation's networking, storage, identity, and Kubernetes API limitations.\n\nVirtual nodes can place compatible Linux pods on Azure Container Instances for rapid burst capacity. Record a representative burst test comparing startup latency, workload compatibility, regional capacity, and total cost with Cluster Autoscaler or node auto-provisioning. Choosing regular nodes is a valid outcome; adoption alone is not evidence of improvement.\n\nValidate the feature matrix for the selected implementation: Virtual Nodes v2 is a preview extension, not the original add-on, and its preview support terms must be acceptable. V2 supports init containers and Azure Files PVCs but requires Azure CNI node-subnet mode and doesn't support Overlay, Cilium, NPM, Windows, BYO VNets, or daemonsets. Account for extension CPU and memory overhead and keep system components on regular AKS nodes.\n\nRelated controls: Enable cluster autoscaling (90ce65de-8e13-4f9c-abd4-69266abca264); Constrain node auto-provisioning without making pods unschedulable (9bb0c037-57f6-4d82-b526-5604bd2c41dc)",
+      "guid": "c88681ab-bb2b-46d1-9ea6-72564b75429a",
+      "subcategory": "Operations",
+      "category": "Resource Organization and Cost Governance",
+      "severity": "Low",
+      "link": "https://learn.microsoft.com/azure/aks/virtual-nodes",
+      "supersedes": [
+        "c755562f-2b4e-4456-9b4d-874a748b662e"
+      ]
+    },
+    {
+      "text": "Size nodes against allocatable resources and workload failure domains",
+      "description": "Measure workload requests, peaks, and sustained consumption before selecting node sizes and counts. Use allocatable resources after Kubernetes reservations and daemonset overhead, not raw SKU capacity. Include pod density, disk attachment and throughput limits, network bandwidth, architecture, and VM-family quotas.\n\nLarge nodes can improve bin packing but increase the failure blast radius or drain impact; small nodes increase per-node overhead and can leave large pods unschedulable. Record capacity tests showing that large pods fit and enough headroom remains for failover and surge upgrades. Where supported, node auto-provisioning can select VM sizes dynamically, but still depends on accurate pod requests and capacity constraints.\n\nRelated controls: Profile container requests and memory limits; evaluate CPU limits contextually (4868aa30-95a9-49fd-867e-57e70cb0d1d5); Coordinate pod autoscaling with node capacity and resource requests (b3f09641-e9cb-4ddd-8d35-f5c7f0851f86)",
+      "guid": "7f8b07c5-882b-45ba-9ec9-bcc29b4721ff",
+      "subcategory": "Resources",
+      "category": "Resource Organization and Cost Governance",
+      "severity": "Medium",
+      "link": "https://learn.microsoft.com/azure/aks/node-resource-reservations",
+      "supersedes": [
+        "495e0503-5fbd-4ba7-8c33-2551b1676d1e"
+      ]
+    },
+    {
+      "text": "Benchmark Arm64 nodes for compatible Linux workloads",
+      "description": "Applicability: Only compatible Linux workloads for which Arm64 VM availability and the application, agent, and security support matrix permit an architecture choice.\n\nEvaluate Arm64 price-performance using representative workloads rather than assuming universal savings. Record throughput, latency, resource use, and cost against the existing architecture; retaining x86 is a valid outcome. Build multi-architecture images and verify application binaries, agents, daemonsets, security integrations, and regional VM availability before adding an Arm64 pool.\n\nArm64 isn't supported for Windows node pools. Existing x86 pools can't be converted to Arm64; create a new pool and migrate compatible workloads with architecture-aware scheduling.",
+      "guid": "2a5f0cab-92b2-46dc-81a6-d358f7fd062a",
+      "subcategory": "Operations",
+      "category": "Resource Organization and Cost Governance",
+      "severity": "Medium",
+      "link": "https://learn.microsoft.com/azure/aks/use-arm64-vms"
+    },
+    {
+      "text": "Enforce resource quotas for namespaces",
+      "description": "Apply namespace ResourceQuotas appropriate to tenant needs, covering aggregate requests or limits, storage, and object counts. Pair them with reviewed LimitRange defaults or admission policy, and monitor quota-related pod creation failures.\n\nThe scheduler places pods using requests, not limits. Quotas are admission controls, not guaranteed capacity: a Deployment can be accepted while its pods are rejected for exceeding quota. Stage enforcement for existing tenants and allow headroom for rolling updates and autoscaling.",
+      "guid": "769ef669-1a48-435a-a942-223ece80b123",
+      "subcategory": "Resiliency",
+      "category": "Resource Organization and Cost Governance",
+      "severity": "Low",
+      "link": "https://learn.microsoft.com/azure/aks/operator-best-practices-scheduler#enforce-resource-quotas",
+      "simple": -1,
+      "ha": 1
+    },
+    {
+      "text": "Set workload-appropriate LimitRange defaults and bounds",
+      "description": "Use LimitRange to default or bound requests and limits within a namespace where this matches tenant policy. Defaults aren't a substitute for application profiling; overly small defaults cause throttling or OOM failures, while excessive requests waste capacity and distort autoscaling.",
+      "guid": "b74ea93b-598d-48e0-bb26-762b015602e1",
+      "subcategory": "Resiliency",
+      "category": "Resource Organization and Cost Governance",
+      "severity": "Low",
+      "link": "https://kubernetes.io/docs/concepts/policy/limit-range/"
+    },
+    {
+      "text": "Profile container requests and memory limits; evaluate CPU limits contextually",
+      "description": "Set measured CPU and memory requests for application containers, sidecars, and init containers, and choose memory limits with adequate peak headroom. Bound local ephemeral storage with suitable requests, limits, and emptyDir size limits. Requests drive scheduling and utilization-based HPA; limits don't prevent a memory leak or provide reserved capacity.\n\nCPU limits throttle execution and can harm latency-sensitive workloads even when the node has spare CPU; evaluate them against tenant isolation requirements. Exceeding memory limits can trigger OOM termination, with restart behavior determined by the workload and restart policy, not guaranteed pod relocation. Review CPU throttling, OOM events, memory peaks, and ephemeral-storage pressure from production telemetry or VPA recommendations, and confirm changes with representative load tests and the intended Quality of Service behavior.\n\nRelated controls: Size node OS disks and bound local ephemeral-storage consumption (fc4972cc-3cd2-45bf-a707-6e9eab4bed32); Coordinate pod autoscaling with node capacity and resource requests (b3f09641-e9cb-4ddd-8d35-f5c7f0851f86)",
+      "guid": "4868aa30-95a9-49fd-867e-57e70cb0d1d5",
+      "subcategory": "Resiliency",
+      "category": "Resource Organization and Cost Governance",
+      "severity": "High",
+      "link": "https://learn.microsoft.com/en-gb/azure/aks/developer-best-practices-resource-management#define-pod-resource-requests-and-limits",
+      "supersedes": [
+        "b54eb2eb-03dd-4aa3-9927-18e2edb11726"
+      ]
+    },
+    {
+      "text": "Allocate shared cluster costs with AKS cost analysis or an equivalent",
+      "description": "Evaluate the OpenCost-based AKS cost analysis add-on for namespace and cluster cost attribution in Azure Cost Management. It requires Standard or Premium tier, managed identity, the Azure Disk CSI driver, and a supported billing offer; Kubernetes cost views support Enterprise Agreement and Microsoft Customer Agreement offers.\n\nThe add-on consumes cluster resources, doesn't support virtual nodes, and has documented scale and regional limits. Use Kubecost or another solution when required allocation granularity or integrations aren't covered. Establish ownership labels and an explicit policy for idle and shared platform costs before implementing chargeback.",
+      "guid": "f82cb8eb-8c0a-4a63-a25a-4956eaa8dc4a",
+      "subcategory": "Cost",
+      "category": "Resource Organization and Cost Governance",
+      "severity": "Low",
+      "link": "https://learn.microsoft.com/azure/aks/cost-analysis",
+      "cost": 1
+    },
+    {
+      "text": "Evaluate multi-instance GPU partitioning for compatible workloads",
+      "description": "Applicability: Only Linux GPU workloads using supported MIG-capable NVIDIA VM sizes where sharing a GPU meets application memory, throughput, and isolation requirements.\n\nSupported NVIDIA A100, H100, and H200 VM sizes can use multi-instance GPU (MIG) partitioning to share a GPU as isolated compute and memory slices. Choose a supported profile based on workload memory and throughput; smaller slices improve utilization only when the application fits. Record representative concurrency, throughput, memory use, and total cost against an unpartitioned GPU rather than treating adoption as the outcome.\n\nMIG isn't supported for Windows node pools. The GPU instance profile can't be changed after pool creation, so plan migration to another pool if requirements change. Validate device plugin configuration, scheduling resource names, driver compatibility, and regional GPU quota.",
+      "guid": "87e651ea-bc4a-4a87-a6df-c06a4b570ebc",
+      "subcategory": "Cost",
+      "category": "Resource Organization and Cost Governance",
+      "severity": "Medium",
+      "link": "https://learn.microsoft.com/azure/aks/gpu-multi-instance"
+    },
+    {
+      "text": "Stop eligible idle user node pools when interruption is acceptable",
+      "description": "Applicability: Only eligible development, test, or batch user node pools whose workloads can tolerate downtime or move elsewhere; not system pools or clusters using node auto-provisioning.\n\nSchedule stop/start for development or batch user pools only when workloads can tolerate downtime or move elsewhere. System pools can't be stopped individually, and node pool stop/start isn't supported on clusters with node auto-provisioning.\n\nStopping a pool also stops its Cluster Autoscaler until restart. Record restart and workload recovery times against the allowed downtime and verify net savings including disks, networking resources, and other services that can still incur charges. Don't modify the underlying VM scale set while stopped.",
+      "guid": "2b72a08b-0410-4cd6-9093-e068a5cf27e8",
+      "subcategory": "Cost",
+      "category": "Resource Organization and Cost Governance",
+      "severity": "Medium",
+      "link": "https://learn.microsoft.com/azure/aks/start-stop-nodepools"
+    },
+    {
+      "text": "Use node pool snapshots for repeatable supported configurations, not data backup",
+      "description": "Applicability: Only workflows that need to reproduce supported node pool configurations and images across pools or clusters; not workload-data backup or recovery.\n\nNode pool snapshots capture configuration and image information for creating consistent pools or clusters while those versions remain supported. Test pool creation from the snapshot and verify the resulting configuration, supported versions, and workload readiness. Snapshots don't back up workload state, persistent volumes, or Kubernetes objects, and don't extend Kubernetes or OS support lifecycles.",
+      "guid": "64d1a846-e28a-4b6b-9a33-22a635c15a21",
+      "subcategory": "Cost",
+      "category": "Resource Organization and Cost Governance",
+      "severity": "Low",
+      "link": "https://learn.microsoft.com/azure/aks/node-pool-snapshot"
+    },
+    {
+      "text": "Ensure your subscription has enough quota to scale out your nodepools",
+      "description": "Budget regional total and VM-family vCPU quotas for maximum pool sizes, autoscaling, upgrade surge, and failover. Also check subnet IP capacity, disk and network limits, and regional SKU availability. Approved quota doesn't reserve physical capacity, so test fallback VM sizes or regions where the workload permits.",
+      "guid": "081a5417-4158-433e-a3ad-3c2de733165c",
+      "subcategory": "Scalability",
+      "category": "Resource Organization and Cost Governance",
+      "severity": "High",
+      "link": "https://learn.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits",
+      "cost": 1
+    },
+    {
+      "text": "Choose Delete or Deallocate scale-down mode based on startup and storage costs",
+      "description": "Applicability: Only supported node pools with planned scale-down activity; evaluate Deallocate only for compatible managed OS disks and workloads that benefit from retained images.\n\nDelete is the default scale-down behavior. Deallocate retains managed OS disks and cached images for potentially faster restarts, while VM compute billing stops; storage charges continue. Deallocate doesn't support ephemeral OS disks.\n\nCompare measured restart time and total retained-disk cost before choosing a mode; retaining the default Delete mode is a valid outcome. Deallocated nodes can remain registered as NotReady. Changing the mode to Delete removes previously deallocated nodes, so don't treat them as durable capacity or a backup. Use the supported AKS scale-down APIs rather than directly stopping VMs.",
+      "guid": "4d3dfbab-9924-4831-a68d-fdf0d72f462c",
+      "subcategory": "Cost",
+      "category": "Resource Organization and Cost Governance",
+      "severity": "Low",
+      "link": "https://learn.microsoft.com/azure/aks/scale-down-mode"
+    },
+    {
+      "text": "Coordinate pod autoscaling with node capacity and resource requests",
+      "description": "Applicability: Workloads with variable demand that require horizontal or vertical autoscaling, and clusters whose node capacity must respond to that demand.\n\nUse HPA for workload demand or KEDA for event-driven scaling, together with Cluster Autoscaler or node auto-provisioning for capacity. Validate metrics availability, minimum replicas, startup time, cooldowns, and downstream service capacity under load.\n\nHPA CPU utilization depends on CPU requests. Review observed CPU, memory, throttling, OOM events, and ephemeral-storage consumption when rightsizing. Start VPA in recommendation mode and account for update-mode disruption before enabling automatic changes. Don't combine automatic VPA changes with HPA scaling on the same CPU or memory metrics; use recommendations or deliberately separate signals such as custom/external metrics. Load-test scale-out and scale-in against latency, availability, queue-drain, and recovery targets, including namespace quotas, node provisioning delays, and resource exhaustion. Scaling pods alone doesn't create nodes, and scaling nodes doesn't fix quota, topology, or admission failures.\n\nRelated controls: Implement autoscaling of your applications (Horizontal pod autoscaler, KEDA) (faa19bfe-9d55-4d04-a3c4-919ca1b2d121); Enable cluster autoscaling (90ce65de-8e13-4f9c-abd4-69266abca264); Constrain node auto-provisioning without making pods unschedulable (9bb0c037-57f6-4d82-b526-5604bd2c41dc)",
+      "guid": "b3f09641-e9cb-4ddd-8d35-f5c7f0851f86",
+      "subcategory": "Resources",
+      "category": "Resource Organization and Cost Governance",
+      "severity": "High",
+      "link": "https://learn.microsoft.com/azure/aks/concepts-scale",
+      "supersedes": [
+        "4536365b-a82d-49dc-b68d-5b13f47d598f"
+      ]
+    },
+    {
+      "text": "Constrain node auto-provisioning without making pods unschedulable",
+      "description": "Applicability: Only clusters using or evaluating node auto-provisioning, including AKS Automatic; not a requirement to replace a suitable Cluster Autoscaler design.\n\nFor NAP, define Karpenter NodePool and AKSNodeClass constraints, aggregate resource limits, allowed VM families, zones, and capacity types according to workload requirements. Keep enough SKU flexibility for allocation failures and review consolidation and disruption budgets.\n\nNAP-managed nodes follow the control plane Kubernetes version. Windows pools and IPv6 clusters aren't supported, and NAP prevents cluster and node pool stop/start. AKS Automatic preconfigures NAP; evaluate Standard when custom platform requirements demand more control. Avoid having multiple autoscalers manage the same capacity.",
+      "guid": "9bb0c037-57f6-4d82-b526-5604bd2c41dc",
+      "subcategory": "Resources",
+      "category": "Resource Organization and Cost Governance",
+      "severity": "High",
+      "link": "https://learn.microsoft.com/azure/aks/node-auto-provisioning"
+    },
+    {
+      "text": "Right-size before purchasing commitments and monitor total platform cost",
+      "description": "Apply reservations or Azure savings plans to measured steady-state usage only after rightsizing and autoscaling. Compare commitment scope and flexibility with expected changes in VM families, regions, architecture, and workload demand; commitments don't guarantee physical capacity.\n\nTrack cluster management, compute, disks, load balancers, public IPs, egress, observability, and security services, not only node prices. Set budgets and anomaly alerts with owners, review commitment utilization, and avoid committing to capacity intended to be stopped or replaced by interruptible Spot workloads. Budget alerts notify; they aren't automatic spending caps.",
+      "guid": "6291c221-3c22-4839-9db6-f377cc831368",
+      "subcategory": "Cost",
+      "category": "Resource Organization and Cost Governance",
+      "severity": "Medium",
+      "link": "https://learn.microsoft.com/azure/aks/best-practices-cost"
+    },
+    {
+      "text": "Keep node images current with a tested node OS upgrade policy",
+      "description": "AKS releases Linux node images weekly and Windows images monthly; regional rollout can take up to two weeks. Configure node OS automatic upgrades or an equivalent monitored process to apply OS, runtime, and AKS component fixes without necessarily changing the Kubernetes version.\n\nChoose NodeImage for complete image updates, or evaluate SecurityPatch for supported Linux configurations when reducing disruption is important. SecurityPatch isn't supported for Windows. Configure the separate node OS maintenance schedule, test drains and PodDisruptionBudgets, and monitor failed upgrades. AKS Automatic preconfigures NodeImage. Kured only coordinates Linux reboots and isn't a substitute for AKS image lifecycle management.",
+      "guid": "945889a8-a9e9-4059-b1aa-0a0df2b8a82c",
+      "subcategory": "Security",
+      "category": "Operations",
+      "severity": "High",
+      "link": "https://learn.microsoft.com/azure/aks/node-image-upgrade"
+    },
+    {
+      "text": "Consider proximity placement groups for latency-sensitive workloads",
+      "description": "Applicability: Applies when measured latency requirements justify proximity placement groups or existing node pools already use them.\n\nUse proximity placement groups only when measured inter-node latency requirements justify physical colocation. Retain before/after workload measurements and verify that capacity constraints and shared failure exposure remain acceptable; adopting a placement group is not itself a readiness improvement.\n\nA proximity placement group maps to one availability zone and can constrain capacity allocation; it doesn't change control plane placement or its SLA. If measured latency justifies colocation, use separate zonal user pools and placement groups while keeping system pools and application replicas distributed across zones.",
+      "guid": "17bd8ae4-8ee7-472d-bca5-c7e3cc9b6d82",
+      "subcategory": "Operations",
+      "category": "Operations",
+      "severity": "Low",
+      "link": "https://learn.microsoft.com/azure/aks/reduce-latency-ppg"
+    },
+    {
+      "text": "Own the lifecycle and health of installed cluster extensions",
+      "description": "Applicability: Applies when cluster extensions are installed or an approved workload dependency requires an extension.\n\nInventory installed cluster extensions and assign owners for supported versions, health, permissions, upgrades and removal. Verify compatibility with the cluster's Kubernetes version, OS and networking before rollout; do not install extensions solely to satisfy this check.\n\nDocument support status, resource overhead, network dependencies, upgrade policy and rollback or recovery for each extension. Monitor unhealthy installations and reconcile configuration drift. Extension lifecycle support can end independently from Kubernetes support, so include extensions in platform upgrade rehearsals.",
+      "guid": "4cd9bd7a-fe6f-427b-b5dd-9ab2f50aa663",
+      "subcategory": "Operations",
+      "category": "Operations",
+      "severity": "Low",
+      "link": "https://learn.microsoft.com/azure/aks/cluster-extensions"
+    },
+    {
+      "text": "Securely connect to nodes through a bastion host",
+      "description": "Avoid public SSH or RDP exposure on AKS nodes. Prefer Kubernetes-native debugging for routine diagnosis; where direct node access is necessary, use a controlled private path such as Azure Bastion with least-privilege, audited, time-limited access.",
+      "guid": "28538587-2c1f-4390-b571-384649732c16",
+      "subcategory": "Security",
+      "category": "Operations",
+      "severity": "Medium",
+      "link": "https://learn.microsoft.com/azure/aks/node-access"
+    },
+    {
+      "text": "Regularly assess cluster health and configuration",
+      "description": "Combine AKS diagnostics, Azure Advisor, policy compliance, and maintained Kubernetes assessment tools. Before enforcing resource quotas or admission policies, inventory existing workloads and test the policy in audit mode to avoid blocking deployments.",
+      "guid": "4dd8b544-5b8b-443d-8e76-cea80d9dec30",
+      "subcategory": "Operations",
+      "category": "Operations",
+      "severity": "Medium",
+      "link": "https://learn.microsoft.com/azure/aks/aks-diagnostics"
+    },
+    {
+      "text": "Define an observability architecture for logs, metrics, and traces",
+      "description": "Monitor control plane, nodes, workloads, and application health. Azure Monitor Container insights collects logs into a Log Analytics workspace; managed Prometheus stores metrics in an Azure Monitor workspace; application instrumentation provides traces. These are complementary signals, not interchangeable stores.\n\nChoose managed or self-managed backends based on operational ownership, compliance, retention, and cost. Verify network access and managed identity authentication, and avoid collecting the same telemetry through multiple agents. AKS Automatic onboarding defaults don't remove the need to verify collection and alerting.",
+      "guid": "90640e42-ce36-4c2a-b20a-bee9c572df6c",
+      "subcategory": "Monitoring",
+      "category": "Operations",
+      "severity": "High",
+      "link": "https://learn.microsoft.com/azure/aks/monitor-aks"
+    },
+    {
+      "text": "Collect Kubernetes and application metrics with managed Prometheus or an equivalent",
+      "description": "Azure Monitor managed service for Prometheus provides Prometheus-compatible collection and storage without operating a Prometheus server. Enable default Kubernetes scraping and configure application exporters or scrape targets where needed.\n\nUse Grafana dashboards and Prometheus recording and alert rules to track availability, saturation, and workload SLOs. Limit metric cardinality and scrape scope to control cost. The older Container insights Prometheus-to-Log-Analytics integration isn't the same as managed Prometheus.",
+      "guid": "6f8389a7-f82c-4b8e-a8c0-aa63a25a4956",
+      "subcategory": "Monitoring",
+      "category": "Operations",
+      "severity": "High",
+      "link": "https://learn.microsoft.com/azure/azure-monitor/metrics/prometheus-metrics-overview",
+      "simple": -1,
+      "ha": 1
+    },
+    {
+      "text": "Configure distributed tracing",
+      "description": "Instrument supported application runtimes with OpenTelemetry and export traces to Application Insights or another compatible backend. Propagate trace context across services, correlate traces with logs, and choose sampling and sensitive-data filtering appropriate to the workload.",
+      "guid": "8d33b2b2-e043-4c61-aa5d-319a8eb6c382",
+      "subcategory": "Monitoring",
+      "category": "Operations",
+      "severity": "Low",
+      "link": "https://learn.microsoft.com/azure/azure-monitor/app/opentelemetry-enable"
+    },
+    {
+      "text": "Operate a controlled Kubernetes upgrade mechanism",
+      "description": "Configure patch, stable or rapid according to validation lead time, or operate an equivalent owned and monitored upgrade schedule. Verify that upgrades start, complete and recover from failure; channel configuration alone is not evidence that the cluster remains supported. Patch remains on a minor version, so schedule validated minor-version transitions explicitly.\n\nKubernetes auto-upgrade and node OS image channels are separate. AKS Automatic preconfigures upgrades; AKS Standard requires an explicit policy. Stage changes in nonproduction and monitor completion. Starting June 1, 2027, AKS documents platform-initiated upgrades after unsupported versions exhaust the 60-day grace period; these can bypass maintenance windows and blocking PDBs.",
+      "guid": "01deb8ed-b6f5-40bb-8d0b-d0ee2d933f51",
+      "subcategory": "Operations",
+      "category": "Operations",
+      "severity": "Medium",
+      "link": "https://learn.microsoft.com/azure/aks/auto-upgrade-cluster"
+    },
+    {
+      "text": "Enable cluster autoscaling",
+      "description": "To keep up with application demands in Azure Kubernetes Service (AKS), you may need to adjust the number of nodes that run your workloads. The cluster autoscaler component can watch for pods in your cluster that can't be scheduled because of resource constraints.\n\nFor fixed VM-size pools, configure Cluster Autoscaler minimum and maximum counts per pool and a shared cluster autoscaler profile. Alternatively evaluate managed Karpenter-based node auto-provisioning (NAP), which selects capacity from pending pod requirements. AKS Automatic preconfigures NAP; use AKS Standard for supported custom configurations. Validate resource requests, placement constraints, quotas, and disruption settings before expecting either approach to scale successfully.",
+      "guid": "90ce65de-8e13-4f9c-abd4-69266abca264",
+      "subcategory": "Resources",
+      "category": "Operations",
+      "severity": "Medium",
+      "link": "https://learn.microsoft.com/azure/aks/cluster-autoscaler",
+      "ha": 1,
+      "cost": -1
+    },
+    {
+      "text": "Control versioned desired state and configuration drift",
+      "description": "Keep approved desired state in version control and verify deployed configuration against it, with owned drift detection, reconciliation and rollback. GitOps is one implementation choice, not a mandatory product or a separate substitute for CI build, test and artifact-promotion gates.\n\nUse a supported Flux extension, a maintained Argo CD deployment, or a controlled pipeline with equivalent reviewable state and drift handling. Microsoft.Flux supports AKS without Azure Arc onboarding. Define reconciliation ownership, secret handling, environment promotion, emergency changes and rollback, and ensure CI/CD and controllers do not continually overwrite the same resources. Retain evidence that unauthorized drift is detected and resolved.",
+      "guid": "0102ce16-ee30-41e6-b882-e52e4621dd68",
+      "subcategory": "Operations",
+      "category": "Operations",
+      "severity": "Medium",
+      "link": "https://learn.microsoft.com/en-us/azure/azure-arc/kubernetes/tutorial-use-gitops-flux2"
+    },
+    {
+      "text": "Implement CI/CD to deploy workloads in your cluster",
+      "description": "Use CI/CD to build, test, scan, and promote immutable container images and manifests. Prefer federated identity and scoped deployment permissions over stored cluster-admin credentials; private clusters also require a deliberate runner network path.",
+      "guid": "cd943950-e336-4906-a719-d2128c8d78e4",
+      "subcategory": "Operations",
+      "category": "Operations",
+      "severity": "High",
+      "link": "https://learn.microsoft.com/en-gb/azure/aks/automated-deployments"
+    },
+    {
+      "text": "Validate justified node tuning with measurements and rollback",
+      "description": "Applicability: Applies when measured workload performance requires nondefault OS or kubelet settings, or existing custom node settings need lifecycle validation.\n\nTune OS or kubelet settings only for a documented workload need. Capture baseline and post-change performance, saturation and error measurements under realistic load, test in nonproduction first, and define acceptance thresholds and a supported rollback or replacement-pool plan.\n\nUse only supported AKS configuration interfaces and validate settings against the node OS, Kubernetes version and cluster mode. Windows does not support the Linux OS configuration surface. Avoid direct VM edits that can be lost during reimage and fall outside AKS support; version custom settings and revalidate them after image or Kubernetes upgrades.",
+      "guid": "831c2872-c693-4b39-a887-a561bada49bc",
+      "subcategory": "Operations",
+      "category": "Operations",
+      "severity": "Low",
+      "link": "https://learn.microsoft.com/azure/aks/custom-node-configuration"
+    },
+    {
+      "text": "Consider using AKS command invoke on private clusters",
+      "description": "You can use command invoke to access private clusters without having to configure a VPN or Express Route\n\nCommand invoke runs kubectl and helm through the Azure API and can bypass the usual private network access path. Restrict its Azure RBAC permissions and audit use; disable it when policy requires all access through private connectivity. It has execution and pod-scheduling constraints and isn't a replacement for a reliable deployment runner or emergency access design.",
+      "guid": "d7672c26-7602-4482-85a4-14527fbe855c",
+      "subcategory": "Compliance",
+      "category": "Operations",
+      "severity": "Low",
+      "link": "https://learn.microsoft.com/azure/aks/command-invoke"
+    },
+    {
+      "text": "Monitor CPU and memory utilization of the nodes",
+      "description": "Monitor allocatable versus requested and consumed CPU and memory, CPU throttling, memory pressure, OOM kills, pending pods, and disk pressure. Use sustained trends and application latency rather than average node utilization alone when rightsizing.",
+      "guid": "4621dd68-c5a5-4be2-bdb1-1726769ef669",
+      "subcategory": "Monitoring",
+      "category": "Operations",
+      "severity": "Medium",
+      "link": "https://learn.microsoft.com/azure/azure-monitor/containers/container-insights-analyze",
+      "simple": -1,
+      "ha": 1
+    },
+    {
+      "text": "Regularly check Azure Advisor for recommendations on your cluster",
+      "description": "Review Azure Advisor recommendations for reliability, security, performance, operational excellence, and cost. Assign owners and validate recommendations against workload SLOs and measured demand rather than applying every recommendation automatically.",
+      "guid": "337453a3-cc63-4963-9a65-22ac19e80696",
+      "subcategory": "Compliance",
+      "category": "Operations",
+      "severity": "Medium",
+      "link": "https://learn.microsoft.com/azure/advisor/advisor-get-started",
+      "simple": -1,
+      "ha": 1
+    },
+    {
+      "text": "Verify certificate rotation and rehearse manual CA rotation",
+      "description": "Node client and serving certificate autorotation is enabled by default on RBAC-enabled clusters. Cluster CA rotation is a separate manual operation that can disrupt access and requires refreshed kubeconfigs. Inventory certificate dependencies and test the recovery procedure instead of assuming every certificate rotates automatically.\n\nThe opt-out tag for kubelet serving certificate rotation stops being honored on April 1, 2027. Update agents and workloads to trust the correct certificate path before their next reimage; manage application ingress certificates independently.",
+      "guid": "3aa70560-e7e7-4968-be3d-628af35b2ced",
+      "subcategory": "Security",
+      "category": "Operations",
+      "severity": "Low",
+      "link": "https://learn.microsoft.com/en-us/azure/aks/certificate-rotation",
+      "simple": 1
+    },
+    {
+      "text": "Store and analyze your cluster logs with Container Insights (or other tools like Telegraf/ElasticSearch)",
+      "description": "Collect application stdout/stderr and relevant Kubernetes events with Container insights or an equivalent backend. Define namespace and container exclusions, retention, access controls, and sensitive-data handling; verify ingestion and queries during incidents.",
+      "guid": "eaa8dc4a-2436-47b3-9697-15b1752beee0",
+      "subcategory": "Monitoring",
+      "category": "Operations",
+      "severity": "High",
+      "link": "https://learn.microsoft.com/en-us/azure/azure-monitor/containers/container-insights-overview"
+    },
+    {
+      "text": "Migrate legacy ContainerLog collection and queries to ContainerLogV2",
+      "description": "Applicability: Applies to deployments that still collect legacy ContainerLog data or have queries, alerts, workbooks or exports using its schema.\n\nSupport for the legacy ContainerLog table retired on September 30, 2026. Use ContainerLogV2 and update alert rules, workbooks, exports, and saved queries to its schema. Any temporary acceptance of legacy data after retirement isn't a supported migration strategy.\n\nContainerLogV2 includes pod and namespace metadata and supports multiline logging and Basic Logs. Evaluate query and alert limitations before choosing a cheaper table plan; verify DCR and ConfigMap settings because the ConfigMap takes precedence.",
+      "guid": "62f89719-db42-4cd0-824f-82ac7d62d9ac",
+      "subcategory": "Monitoring",
+      "category": "Operations",
+      "severity": "Medium",
+      "link": "https://learn.microsoft.com/azure/azure-monitor/containers/container-insights-logs-schema"
+    },
+    {
+      "text": "Consider spot node pools for non time-sensitive workloads",
+      "description": "Applicability: Applies when existing workloads use Spot or restartable, eviction-tolerant workloads justify Spot capacity; regular capacity is valid otherwise.\n\nUse Spot capacity for restartable batch jobs and other eviction-tolerant workloads, with checkpointing, taints, and explicit scheduling. There is no capacity guarantee; keep system and availability-critical workloads on regular capacity and design fallback when Spot allocation fails.",
+      "guid": "c5a5b252-1e44-4a59-a9d2-399c4d7b68d0",
+      "subcategory": "Cost",
+      "category": "Operations",
+      "severity": "Low",
+      "link": "https://learn.microsoft.com/azure/aks/spot-node-pool"
+    },
+    {
+      "text": "Configure alerts on the most critical metrics (see Container Insights for recommendations)",
+      "description": "Configure actionable Prometheus, platform metric, and log alerts for workload availability, node readiness, pending pods, resource saturation, and failed upgrades. Route to owned action groups, test delivery and runbooks, and tune thresholds to SLOs and expected scaling behavior.",
+      "guid": "67f7a9ed-5b31-4f38-a3f3-9812b2463cff",
+      "subcategory": "Monitoring",
+      "category": "Operations",
+      "severity": "High",
+      "link": "https://learn.microsoft.com/azure/azure-monitor/containers/kubernetes-metric-alerts",
+      "simple": -1,
+      "ha": 1
+    },
+    {
+      "text": "Monitor SNAT capacity on the actual outbound path",
+      "description": "SNAT exhaustion causes intermittent outbound connection failures. Monitor used and allocated SNAT ports and failed connections on the component providing outbound access: Standard Load Balancer, NAT Gateway, Azure Firewall, or another NVA. Using a firewall doesn't remove the need to monitor SNAT.",
+      "guid": "95951d87-1a2f-4a45-833c-2fc62d23c44d",
+      "subcategory": "Monitoring",
+      "category": "Operations",
+      "severity": "Medium",
+      "link": "https://learn.microsoft.com/azure/aks/load-balancer-standard"
+    },
+    {
+      "text": "Subscribe to resource health notifications for your AKS cluster",
+      "description": "Configure Azure Resource Health and Service Health alerts for relevant resources and regions, with owned action groups. Correlate platform incidents with workload telemetry; platform health notifications don't replace application availability checks.",
+      "guid": "74c2ee76-569b-4a79-a57e-dedf91b022c9",
+      "subcategory": "Monitoring",
+      "category": "Operations",
+      "severity": "High",
+      "link": "https://learn.microsoft.com/azure/service-health/resource-health-alert-arm-template-guide",
+      "ha": 1
+    },
+    {
+      "text": "Consider subscribing to EventGrid Events for AKS automation",
+      "description": "Subscribe to AKS Event Grid notifications for supported lifecycle events such as available upgrades. Make handlers idempotent and monitor delivery failures; an event is a trigger to evaluate readiness, not authorization to upgrade production immediately.",
+      "guid": "9583c0f6-6083-43f6-aa6b-df7102c901bb",
+      "subcategory": "Monitoring",
+      "category": "Operations",
+      "severity": "Low",
+      "link": "https://learn.microsoft.com/azure/event-grid/event-schema-aks",
+      "cost": 1
+    },
+    {
+      "text": "Protect the AKS-managed node resource group from direct changes",
+      "description": "Manage nodes and related infrastructure through supported AKS APIs, not by editing their VM scale sets, network interfaces, or disks directly. Evaluate node resource group lockdown to enforce read-only access and avoid accidental changes; AKS Automatic preconfigures a fully managed node resource group.",
+      "guid": "ed0fda7f-211b-47c7-8b6e-c18873fb473c",
+      "subcategory": "Monitoring",
+      "category": "Operations",
+      "severity": "High",
+      "link": "https://learn.microsoft.com/azure/aks/node-resource-group-lockdown",
+      "security": 1
+    },
+    {
+      "text": "Prepare a least-privilege, on-demand debugging runbook",
+      "description": "Prepare approved diagnostic images, kubectl debug procedures, and AKS diagnostic collection before an incident. Prefer short-lived debugging sessions over permanently installed privileged toolboxes; restrict permissions, audit use, and redact secrets before sharing diagnostic bundles.",
+      "guid": "f1d2d2f4-53a2-5f1b-9d1a-3a907b6844a5",
+      "subcategory": "Monitoring",
+      "category": "Operations",
+      "severity": "High",
+      "link": "https://learn.microsoft.com/azure/aks/node-access",
+      "security": 1
+    },
+    {
+      "text": "Consider using Long-Term Support (LTS) for Kubernetes versions",
+      "description": "Applicability: Applies when extended Kubernetes validation cycles justify Premium LTS or the cluster is already enrolled; standard support remains valid when upgrades meet its lifecycle.\n\nEvaluate Premium tier with the explicitly enabled AKSLongTermSupport plan when extended validation cycles justify the extra cost. AKS provides approximately one year of community support plus one year of LTS, totaling approximately 24 months from that Kubernetes version's GA, not 24 months from enrollment.\n\nAll supported Kubernetes versions are eligible; check the current release calendar and offered regional upgrade targets. LTS supports only the two latest patch versions, so retain patch upgrades and plan the next minor-version migration. OS images, add-ons, and extensions have separate lifecycles; LTS doesn't extend retired OS support. AKS Automatic's Standard tier defaults aren't equivalent to Premium LTS.",
+      "guid": "96516e10-4664-421a-992d-1271c29743ea",
+      "subcategory": "Operations",
+      "category": "Operations",
+      "severity": "Medium",
+      "link": "https://learn.microsoft.com/azure/aks/long-term-support"
+    },
+    {
+      "text": "Rehearse platform upgrades with maintenance and replacement strategies",
+      "description": "Configure aksManagedAutoUpgradeSchedule for Kubernetes auto-upgrades and aksManagedNodeOSUpgradeSchedule for node OS updates. The default maintenance configuration controls weekly AKS component releases, not both upgrade channels. Allow at least four hours for automatic upgrades.\n\nA maintenance schedule does not enable auto-upgrade and is not an absolute downtime boundary: urgent repairs and platform-initiated upgrades can occur outside it. Test readiness probes, replica placement, PDB drainability, surge capacity, subnet IPs, quota, drain timeout and soak time. For high-risk platform changes where in-place upgrade risk exceeds tolerance, evaluate a parallel-cluster blue/green replacement: validate state and data migration, external dependencies, DNS and traffic cutover, temporary double capacity/quota/cost, rollback criteria and a safe rollback window before decommissioning the old cluster. Kubernetes upgrades normally move between supported minor versions; parallel replacement is not a requirement for a presumed Kubernetes major upgrade. This is platform replacement, distinct from canary or blue/green application releases. Avoid promising zero disruption.",
+      "guid": "ce5731c5-a19f-4bfb-adc8-4086c764b3c9",
+      "subcategory": "Operations",
+      "category": "Operations",
+      "severity": "High",
+      "link": "https://learn.microsoft.com/azure/aks/planned-maintenance"
+    },
+    {
+      "text": "Inventory node OS lifecycles independently from Kubernetes support",
+      "description": "Migrate Azure Linux 2.0 pools to a supported OS immediately: security support ended November 30, 2025 and node image removal began October 31, 2026, preventing scaling. Track each pool's actual OS image and OS SKU rather than assuming an LTS Kubernetes plan extends OS support.\n\nChoose a supported Azure Linux, Ubuntu or other supported OS SKU from workload, driver and compliance needs; Azure Linux is not mandatory. Plan Ubuntu 20.04 migration before support and image removal on March 17, 2027, and Ubuntu 22.04 migration before support ends June 30, 2027 and image removal April 30, 2028. Azure Linux with OS Guard preview support ends December 10, 2026 with images removed March 10, 2027. Validate target OS, Kubernetes version, architecture, agents, drivers and security features, plus replacement-pool drains; generic versus versioned OS SKUs can have different upgrade behavior. For immutable nodes, evaluate Azure Container Linux against current compatibility requirements rather than assuming it supports every Azure Linux feature.",
+      "guid": "126c7653-e87f-44f1-b622-9ad72dd66a6a",
+      "subcategory": "Operations",
+      "category": "Operations",
+      "severity": "High",
+      "link": "https://learn.microsoft.com/azure/aks/node-images",
+      "supersedes": [
+        "d34f49c0-e964-4465-9211-520479338b13"
+      ]
+    },
+    {
+      "text": "Choose AKS Automatic or Standard separately from the support pricing tier",
+      "description": "Evaluate AKS Automatic for supported workloads that benefit from managed node provisioning, upgrades, safeguards, and reduced platform operations. Choose AKS Standard when Windows, unsupported networking combinations, or platform customization require customer-managed configuration.\n\nAutomatic versus Standard describes the operating model, not the Free, Standard, or Premium cluster management pricing tier. Automatic preconfigures Standard tier, an API server uptime SLA, and a qualifying pod readiness SLA; neither guarantees application availability. Premium with the LTS plan is a separate choice for eligible Standard-mode clusters. Review fixed, default, and optional settings before selecting a mode, including the inability to stop NAP-enabled clusters.",
+      "guid": "84f536c0-b00d-4c22-8c43-724b410d9387",
+      "subcategory": "Operations",
+      "category": "Operations",
+      "severity": "High",
+      "link": "https://learn.microsoft.com/azure/aks/intro-aks-automatic"
+    },
+    {
+      "text": "Budget and tune observability collection without losing incident evidence",
+      "description": "Set telemetry budgets and review log ingestion, retention, Prometheus cardinality, scrape frequency, and duplicate collection. Use data collection rules, ConfigMap filters, and supported metric profiles to retain the signals needed for security, SLOs, and investigations.\n\nChoose log table plans and retention based on query, alerting, export, and compliance needs, not ingestion price alone. Validate dashboards and alerts after every collection change. Dropping audit records or verbose application logs can reduce cost but also remove evidence that can't be recreated later.",
+      "guid": "390ab6b7-7664-4aeb-8994-5c0bea1864b7",
+      "subcategory": "Monitoring",
+      "category": "Operations",
+      "severity": "Medium",
+      "link": "https://learn.microsoft.com/azure/azure-monitor/containers/container-insights-cost"
+    },
+    {
+      "text": "Keep admission webhooks available and rehearse safe recovery",
+      "description": "Applicability: Applies when mutating or validating admission webhooks are installed, including policy, service mesh and extension webhooks.\n\nInventory admission webhook dependencies and operate highly available backends with tested API-server reachability, healthy endpoints and valid serving certificates/CA trust. Monitor admission latency and errors and verify that backend loss cannot unexpectedly block cluster recovery or silently bypass required policy.\n\nReview timeoutSeconds and failurePolicy for each webhook: Fail protects enforcement but can block writes during an outage, while Ignore preserves availability at the cost of bypass risk. Scope namespace/object selectors and resource rules narrowly, especially for system components and the webhook's own recovery dependencies; document reviewed exclusions rather than broadly disabling controls. Test node drains, certificate rotation, network restrictions and Kubernetes upgrades, and rehearse a tightly authorized, audited emergency recovery procedure with restoration of enforcement.",
+      "guid": "78da55fc-af7c-421a-ad1f-1d9099374e8e",
+      "subcategory": "Operations",
+      "category": "Operations",
+      "severity": "High",
+      "link": "https://learn.microsoft.com/azure/architecture/operator-guides/aks/aks-triage-controllers"
+    },
+    {
+      "text": "Validate resilience with controlled fault injection under load",
+      "description": "Applicability: Applies to workloads with availability or recovery targets that require evidence of behavior during component and dependency failures.\n\nRun hypothesis-driven resilience tests under representative load, beginning in an isolated nonproduction environment. Measure availability, latency, recovery time and data integrity against workload SLOs while injecting bounded pod, node, network and dependency faults. Record failures and verify remediation.\n\nDefine an approved blast radius, steady-state metrics, abort thresholds, rollback/recovery steps, owners and observation coverage before each experiment. Include saturation, timeouts, retry amplification, scaling and dependency throttling where relevant. Production fault injection is optional and requires separate risk approval and proven safety controls; never require destructive production chaos or delete production to satisfy this check. Operational fault testing complements disaster-recovery rebuild and restore drills.",
+      "guid": "45b7d644-309f-467a-a88d-b39340e99e2e",
+      "subcategory": "Operations",
+      "category": "Operations",
+      "severity": "High",
+      "link": "https://learn.microsoft.com/azure/well-architected/reliability/testing-strategy"
+    },
+    {
+      "text": "Define non-functional requirements such as SLAs, RTO (Recovery Time Objective) and RPO (Recovery Point Objective)",
+      "description": "Define workload availability SLOs, maximum tolerable data loss (RPO), and recovery time (RTO) before production. Cover pod, node, zone, regional, deletion, and corruption scenarios along with external dependencies. Choose architecture, replication, backup frequency, retention, and recovery capacity from these targets and validate them with measured drills rather than service SLA percentages alone.",
+      "guid": "bc14aea6-e65d-48d9-a3ad-c218e6436b06",
+      "subcategory": "Resiliency",
+      "category": "BC and DR",
+      "severity": "High",
+      "link": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/enterprise-scale/business-continuity-and-disaster-recovery",
+      "ha": 1
+    },
+    {
+      "text": "Rehearse disaster recovery and clean-environment rebuilds regularly",
+      "description": "Rebuild into an isolated recovery environment from infrastructure as code, restore representative backups, and validate application and data integrity. Do not delete production to test recovery. Rehearse node, zone, and regional failures appropriate to the workload, and measure achieved RPO and RTO.\n\nKeep versioned runbooks with recovery order, owners, credentials and break-glass access, DNS and traffic changes, validation gates, rollback, and failback. Test without relying on the failed region's pipelines, registry endpoints, secrets, or monitoring, and record remediation actions after drills.",
+      "guid": "36cb45e5-7960-4332-9bdf-8cc23318da61",
+      "subcategory": "Resiliency",
+      "category": "BC and DR",
+      "severity": "High",
+      "link": "https://learn.microsoft.com/azure/cloud-adoption-framework/ready/enterprise-scale/business-continuity-and-disaster-recovery",
+      "ha": 1
+    },
+    {
+      "text": "Use Availability Zones if supported in your Azure region",
+      "description": "Applicability: Availability-sensitive workloads requiring resilience to an intra-region zone failure where the Azure region, node VM sizes, and dependencies support availability zones.\n\nWhere supported by region and VM SKU, distribute application node pools across availability zones and spread replicas across nodes and zones. Zones are separate datacenter failure domains within a region, not update domains in one datacenter. Align storage redundancy, load balancing, and recovery capacity; a zone-enabled cluster does not automatically make every workload or dependency zone-resilient.",
+      "guid": "578a219a-46be-4b54-9350-24922634292b",
+      "subcategory": "Resiliency",
+      "category": "BC and DR",
+      "severity": "High",
+      "link": "https://learn.microsoft.com/azure/aks/availability-zones",
+      "ha": 1,
+      "graph": "where type=='microsoft.containerservice/managedclusters' | mvexpand pool=properties.agentPoolProfiles | extend compliant=coalesce(array_length(pool.availabilityZones),0)>1 | project id,name=strcat(name,'-',pool.name),resourceGroup,compliant"
+    },
+    {
+      "text": "Plan for multiregion deployment",
+      "description": "Applicability: Only workloads whose availability, RPO, RTO, or regulatory requirements require recovery in another region; multiple live regions are not required for every workload.\n\nSelect active-active, warm standby, or cold recovery from workload RPO/RTO, consistency, cost, and data residency requirements. Validate AKS, VM, storage, network, and quota availability in each target region and provision failover capacity. Region pairing is not mandatory for all architectures, but specific replication and Azure Backup Cross Region Restore capabilities depend on supported paired regions.",
+      "guid": "4e907690-4780-492f-9632-03bcc80b7a80",
+      "subcategory": "Resiliency",
+      "category": "BC and DR",
+      "severity": "Medium",
+      "link": "https://learn.microsoft.com/azure/aks/reliability-multi-region-deployment-models#multi-region-deployment-model-implementations"
+    },
+    {
+      "text": "Create a data replication, recovery, and failback plan",
+      "description": "Applicability: Stateful workloads and external data dependencies whose RPO and RTO require data recovery or failover across failure domains; regional replication is needed only when regional recovery targets justify it.\n\nInventory persistent volumes and external data services and define supported replication or backup/restore for each according to RPO and RTO. Validate consistency and replication lag against RPO, including write fencing to avoid split-brain during failover. Measure recovery and failback time in drills, including data reconciliation and application restart order. Replication can propagate deletion and corruption and is not a substitute for independently retained backups.",
+      "guid": "8c6703c5-42e9-46ef-93f1-7f6232af25fc",
+      "subcategory": "Resiliency",
+      "category": "BC and DR",
+      "severity": "High",
+      "link": "https://learn.microsoft.com/azure/aks/reliability-multi-region-deployment-models"
+    },
+    {
+      "text": "Use Standard or Premium tier for production control-plane uptime SLA",
+      "description": "Use Standard tier for production cluster management, or Premium when long-term Kubernetes support is required. Standard and Premium include a Kubernetes API server uptime SLA of 99.95% with availability zones or 99.9% without, subject to current service terms. Free tier has no financially backed uptime SLA.\n\nThe control-plane SLA is not an end-to-end application availability guarantee. AKS Automatic is preconfigured with Standard tier and also has qualifying pod readiness SLA coverage under separate conditions; workload replicas, topology, storage, networking, and recovery still require design and testing.",
+      "guid": "71d41e36-10cc-457b-9a4b-1410d4395898",
+      "subcategory": "Resiliency",
+      "category": "BC and DR",
+      "severity": "High",
+      "link": "https://learn.microsoft.com/azure/aks/free-standard-pricing-tiers",
+      "ha": 2,
+      "cost": -2,
+      "graph": "where type=='microsoft.containerservice/managedclusters' | extend compliant = (sku.tier in~ ('Standard','Premium')) | distinct id,compliant"
+    },
+    {
+      "text": "Spread workload replicas across nodes and zones",
+      "description": "Applicability: Availability-sensitive workloads that need replicated serving capacity during node or zone failure; apply zone spreading where supported and required by the workload availability target.\n\nUse topology spread constraints for kubernetes.io/hostname and topology.kubernetes.io/zone, or justified anti-affinity, to distribute replicas across failure domains. Match label selectors to the intended workload and ensure enough replicas and capacity remain after a domain failure.\n\nChoose maxSkew and DoNotSchedule versus ScheduleAnyway deliberately. Strict rules can leave replacement pods pending when a zone or capacity is unavailable; test their interaction with volume topology, taints, autoscaling, and upgrades. Scheduling constraints do not automatically rebalance every already-running pod.",
+      "guid": "1eea4888-8c2a-40b2-a40b-cacdc5f55497",
+      "subcategory": "Resiliency",
+      "category": "BC and DR",
+      "severity": "High",
+      "link": "https://kubernetes.io/docs/concepts/scheduling-eviction/topology-spread-constraints/"
+    },
+    {
+      "text": "If using a private registry (ACR), configure region replication to store images in multiple regions",
+      "description": "Applicability: Multi-region recovery scenarios where AKS depends on a private registry and required container images must remain accessible during a regional outage.\n\nFor multi-region AKS deployments, evaluate ACR Premium geo-replication or another tested image-distribution strategy so recovery nodes can pull required digests during a regional outage.\n\nACR geo-replication is asynchronous and is not an independent backup against deletion or compromise. Confirm required images and OCI artifacts are available before regional rollout, configure private endpoints and DNS for replicas where needed, and test cold-node pulls during failover.",
+      "guid": "b0803aed-1ca6-4330-816c-92677c6e9935",
+      "subcategory": "Resiliency",
+      "category": "BC and DR",
+      "severity": "Medium",
+      "link": "https://learn.microsoft.com/azure/container-registry/container-registry-geo-replication"
+    },
+    {
+      "text": "Verify registry regional zone support and data-plane resilience",
+      "description": "Applicability: Deployments using Azure Container Registry where registry availability is part of the workload's zone-resilience requirements.\n\nACR data-plane zone redundancy is enabled by default for all tiers in regions supporting availability zones, including existing registries and supported geo-replicas. Verify region support rather than requiring the legacy zoneRedundancy property to be Enabled; that property no longer controls behavior. ACR Tasks do not currently support availability zones, and zone redundancy does not protect against a region-wide outage.",
+      "guid": "a4cefd60-f24f-4907-9723-b927300b4c42",
+      "subcategory": "Resiliency",
+      "category": "BC and DR",
+      "severity": "Medium",
+      "link": "https://learn.microsoft.com/azure/container-registry/zone-redundancy"
+    },
+    {
+      "text": "Separate the registry lifecycle from disposable compute resources",
+      "description": "Applicability: Shared or recovery-critical registries whose artifacts must outlive disposable AKS environments.\n\nPlace shared registries in a resource group whose lifecycle is independent of disposable AKS environments. Apply least-privilege management access and appropriate resource locks to reduce accidental registry deletion.\n\nResource groups are lifecycle and management scopes, not backup boundaries. Registry resource locks do not prevent all data-plane artifact deletion; protect repository permissions and retain recoverable copies of critical release artifacts.",
+      "guid": "7b0bb400-deb6-4914-82da-2e914c9aaa72",
+      "subcategory": "Other",
+      "category": "BC and DR",
+      "severity": "Low",
+      "link": "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-best-practices#dedicated-resource-group"
+    },
+    {
+      "text": "Evaluate ACR soft delete preview and compatible artifact recovery controls",
+      "description": "Applicability: Azure Container Registry deployments evaluating artifact deletion recovery where preview support terms and soft-delete compatibility limitations are acceptable.\n\nWhere preview use is acceptable, evaluate ACR soft delete with a tested 1-90 day retention and restore process. It currently does not support geo-replicated registries or artifact cache and cannot coexist with the retention policy. Retained artifacts incur storage charges. Use another compatible recovery strategy when these limitations conflict with regional resilience requirements.\n\nRestore tests must include multi-architecture manifests and OCI referrers: restoring a manifest list or subject does not recursively restore child manifests or signatures. Soft delete is not an independent backup against registry deletion or compromise.",
+      "guid": "49919955-fd6c-40f5-9c5c-5a7273c7a935",
+      "subcategory": "Other",
+      "category": "BC and DR",
+      "severity": "Low",
+      "link": "https://learn.microsoft.com/en-us/azure/container-registry/container-registry-soft-delete-policy"
+    },
+    {
+      "text": "Select and test a supported recovery solution for cluster resources and data",
+      "description": "Applicability: Workloads with Kubernetes resources or durable data that must be recovered after loss, deletion, or corruption. Select coverage per volume type and external data service; Azure Backup-specific requirements apply only when that implementation is selected.\n\nSelect Azure Backup for AKS or another supported recovery solution that meets measured RPO, RTO, retention, and consistency requirements. Inventory Kubernetes resources, PV types, excluded data, and managed external data services; configure supported protection for each and test restores for data integrity and application readiness. Protect backup resources with a lifecycle independent of disposable clusters and source data. Document dependencies on snapshots, metadata, source accounts, and regions rather than treating replication or successful backup jobs as proof of recoverability.\n\nWhen using Azure Backup, Operational backups use snapshots and extension metadata storage in your subscription; eligible Azure Disk backups can also transfer to the Vault tier, but a Backup vault does not mean all backup data is vaulted. Check the live support matrix: Azure Files SMB requires CSI driver 1.32+, is Operational-tier only with at most 30-day retention, and has network, file-count, and restore-location restrictions. NFS Files, Blob CSI, Azure Container Storage, and in-tree PVs are not covered. Enable CSI snapshots, supported managed identities, a healthy Linux backup extension, Trusted Access, and required networking/RBAC; don't co-install Velero with that extension. Snapshot backups are crash-consistent, not automatically application-consistent or atomic across volumes; use supported application hooks or database-native protection when needed. Protect excluded resources and external services separately and validate that source deletion cannot remove the only recovery copy.",
+      "guid": "7e970492-1bed-4541-98f6-be550b17caa6",
+      "subcategory": "Resiliency",
+      "category": "BC and DR",
+      "severity": "High",
+      "link": "https://learn.microsoft.com/azure/backup/azure-kubernetes-service-backup-overview",
+      "ha": 1,
+      "cost": -1
+    },
+    {
+      "text": "Match backup tiers and cross-region restore to measured RPO and RTO",
+      "description": "Applicability: Only deployments selecting Azure Backup for AKS; assess Vault tier and Cross Region Restore only when their supported scenarios are needed to meet recovery requirements.\n\nValidate backup cadence, completion, tiering, replication lag, and restore duration against recovery targets. Operational AKS backups have a minimum scheduled interval of four hours and restore within the source region. Vault-tier recovery points are daily for eligible Azure Disks; Cross Region Restore requires supported paired regions, a geo-redundant Backup vault, and Cross Region Restore enabled.\n\nThe current matrix describes up to 24-hour primary-region and up to 36-hour secondary-region vaulted RPO, not continuous point-in-time recovery. Vaulting is region-limited and currently supports at most 100 Azure Disk PVs per backup instance with disks no larger than 1 TB, public disk network access enabled, and no Disk Encryption Set or Microsoft Entra data-access authentication. Azure Files is not eligible. Do not weaken required security controls simply to enable vaulting; choose another supported recovery strategy when necessary. Test target-cluster capacity, compatible APIs, identities, networking, recovery order, and cleanup of staged restore resources.",
+      "guid": "2791ada8-c9b4-4a1a-9071-f222b0ddeee2",
+      "subcategory": "Resiliency",
+      "category": "BC and DR",
+      "severity": "High",
+      "link": "https://learn.microsoft.com/azure/backup/azure-kubernetes-service-cluster-backup-support-matrix#supported-scenarios-and-limitations-specific-for-vaulted-backup-and-cross-region-restore"
+    },
+    {
+      "text": "Protect recovery points from deletion and monitor restore readiness",
+      "description": "Applicability: Only deployments using Azure Backup for AKS. For other recovery implementations, assess equivalent deletion protection, monitoring, and restore readiness under the recovery-solution control.\n\nSeparate backup administration from workload administration and evaluate supported vault immutability, enhanced soft delete, and multi-user authorization. Alert on backup failures, skipped volumes, stale recovery points, and vault-tier transfer failures. Validate restore permissions and recovery-point usability through drills.\n\nVault protections do not automatically protect Operational-tier snapshots or extension metadata in your subscription. Azure Files snapshots depend on the source share and account lifecycle. Confirm supported resource-lock behavior, deletion permissions, and retention for each storage type rather than treating successful configuration as ransomware protection.",
+      "guid": "ee9a106c-d68b-4dd1-82fb-5cb183b50efc",
+      "subcategory": "Resiliency",
+      "category": "BC and DR",
+      "severity": "High",
+      "link": "https://learn.microsoft.com/azure/backup/azure-kubernetes-service-cluster-backup-support-matrix"
+    },
+    {
+      "text": "Configure disruption budgets and test maintenance capacity",
+      "description": "Applicability: Replicated availability-sensitive workloads managed through the Eviction API during drains, upgrades, or consolidation; not a blanket requirement for restartable batch jobs or workloads that deliberately accept interruption.\n\nCreate separate policy/v1 PodDisruptionBudget objects with selectors matching replicated services and tested minAvailable or maxUnavailable values. Verify healthy replicas, allowed disruptions, and spare scheduling capacity so drains and upgrades can progress within the workload availability target. Test eviction behavior with unhealthy pods and measure drain completion time; configure readiness, rollout strategy, replicas, and topology separately.\n\nPDBs constrain voluntary Eviction API operations such as normal node drains, not hardware or zone failures, direct pod deletion, or Deployment and StatefulSet rolling updates. Involuntary disruptions can reduce the remaining disruption allowance but aren't prevented by the budget. A zero-disruption budget can block maintenance; permit at least one eviction where the workload allows it and document coordination when it doesn't. Consider unhealthyPodEvictionPolicy: AlwaysAllow when an unhealthy pod would otherwise block draining, and test that policy against application recovery behavior. A PDB isn't an uptime guarantee.\n\nRelated controls: Implement a proper Readiness probe (de1b6b38-4fa9-4f6e-ab92-d824346dd20c); Implement graceful termination and use preStop hooks when needed (dc4828a3-fc4f-4ac5-8844-122b8482dbb1); Spread workload replicas across nodes and zones (1eea4888-8c2a-40b2-a40b-cacdc5f55497)",
+      "guid": "d695618d-6d63-471f-bc4b-a4231fe2d573",
+      "subcategory": "Resiliency",
+      "category": "BC and DR",
+      "severity": "High",
+      "link": "https://learn.microsoft.com/azure/aks/operator-best-practices-scheduler#limit-disruption-impact-by-using-pod-disruption-budgets-pdbs",
+      "supersedes": [
+        "3c763963-7a55-42d5-a15e-401955387e5c"
+      ]
+    },
+    {
+      "text": "Map the base image to node OS",
+      "description": "Applicability: Only deployments running or planning Windows container workloads on Windows node pools.\n\nUse supported Windows Server 2022 or 2025 node images and validate the official host/container compatibility matrix. AKS supports process isolation, not Hyper-V isolation; don't assume all container image versions can run on every Windows host.\n\nWindows Server 2019 support ended March 1, 2026 and it isn't supported on Kubernetes 1.33 or later. Select compatible node OS, Kubernetes, and container base image versions together, and use OS/build-aware scheduling when multiple Windows versions coexist.",
+      "guid": "4d3e8a06-b724-43a3-b9b9-328a08325c61",
+      "subcategory": "Windows",
+      "category": "Windows",
+      "severity": "High",
+      "link": "https://learn.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility"
+    },
+    {
+      "text": "Test Windows application shutdown and interrupted-work recovery",
+      "description": "Applicability: Only Windows container workloads whose shutdown and interrupted-work recovery must be validated during drains or termination.\n\nDon't assume Linux signal-handling behavior applies to Windows. Test how the Windows runtime and application respond to termination, lifecycle hooks, and terminationGracePeriodSeconds during a real node drain. Choose sufficient shutdown time, stop accepting new requests, and make interrupted work recoverable.",
+      "guid": "fce3ccf3-5f62-4ad6-b945-845362777529",
+      "subcategory": "Windows",
+      "category": "Windows",
+      "severity": "Medium",
+      "link": "https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/"
+    },
+    {
+      "text": "Don't use privileged containers",
+      "description": "Applicability: Only deployments running ordinary Windows application containers; assess trusted host-level administration separately under the HostProcess control.\n\nOrdinary Windows containers don't support Linux privileged-container mode. Use ContainerUser where the application permits and restrict host access. Windows HostProcess containers are a separate, highly privileged mechanism for trusted node administration, not a way to run ordinary application workloads.",
+      "guid": "bd773172-40dc-4502-b284-137c70d77bc9",
+      "subcategory": "Windows",
+      "category": "Windows",
+      "severity": "Medium",
+      "link": "https://kubernetes.io/docs/setup/production-environment/windows/intro-windows-in-kubernetes/#supported-functionality-and-limitations"
+    },
+    {
+      "text": "Watch for memory usage",
+      "description": "Applicability: Only deployments running Windows nodes and container workloads.\n\nWindows memory accounting, paging, and node-pressure behavior differ from Linux; don't rely on Linux OOM and eviction assumptions. Set measured memory requests and limits, monitor committed memory and paging as well as working set, and retain headroom for the OS and system services.",
+      "guid": "dea429d5-2c10-480c-85a1-9d9d0c4afc3d",
+      "subcategory": "Windows",
+      "category": "Windows",
+      "severity": "Medium",
+      "link": "https://kubernetes.io/docs/setup/production-environment/windows/intro-windows-in-kubernetes/#supported-functionality-and-limitations"
+    },
+    {
+      "text": "Choose a Windows-compatible Azure CNI network model",
+      "description": "Applicability: Only clusters with Windows node pools or a planned migration to Windows workloads.\n\nWindows node pools require Azure CNI; kubenet and bring-your-own CNI aren't supported. Evaluate Azure CNI Overlay for address-space efficiency or a supported VNet-routable mode when direct pod addressing is required.\n\nCheck the Windows OS, Kubernetes version, and network policy engine compatibility together. Azure CNI powered by Cilium doesn't support Windows; a Linux-only networking recommendation must not be applied blindly to mixed-OS clusters.",
+      "guid": "3922e5b0-fa6b-4020-a92e-2e0d76338e95",
+      "subcategory": "Windows",
+      "category": "Windows",
+      "severity": "High",
+      "link": "https://learn.microsoft.com/azure/aks/windows-best-practices#networking-modes"
+    },
+    {
+      "text": "Patch Windows hosts and rebuild container base images independently",
+      "description": "Applicability: Only deployments maintaining Windows node images or Windows container base images.\n\nAKS publishes Windows node images monthly; Windows Update doesn't automatically patch these hosts. Apply node image upgrades through NodeImage automation or a monitored manual process, and separately rebuild and redeploy application images from patched Windows base images.\n\nNode image upgrades don't update your application images. Test host/base-image compatibility and rolling drains before production, and don't assume matching monthly revision numbers are universally required across supported Windows versions. SecurityPatch isn't supported for Windows; Unmanaged behaves like None.",
+      "guid": "67138b82-0102-4ce1-9ee3-01e6e882e52e",
+      "subcategory": "Windows",
+      "category": "Windows",
+      "severity": "High",
+      "link": "https://learn.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility"
+    },
+    {
+      "text": "Secure the traffic of your containers",
+      "description": "Applicability: Only deployments running Windows workloads that require pod network isolation; affected Windows Network Policy Manager deployments must migrate to a supported implementation.\n\nApply least-privilege pod network policies with an engine supported for the exact Windows OS and network model, and verify enforcement with connectivity tests. Use application authentication and TLS as additional controls, not substitutes for network isolation.\n\nAzure Network Policy Manager on Windows became unsupported on September 30, 2026. Cilium isn't supported on Windows; use the current AKS policy support matrix to evaluate Calico and validate any OS-version gaps before migration.",
+      "guid": "74e42965-8bbd-46fb-b027-ccad9c3933a4",
+      "subcategory": "Windows",
+      "category": "Windows",
+      "severity": "High",
+      "link": "https://learn.microsoft.com/azure/aks/use-network-policies"
+    },
+    {
+      "text": "Use gMSA when Windows workloads require Active Directory authentication",
+      "description": "Applicability: Only Windows workloads requiring Active Directory domain authentication through a supported gMSA integration; workloads without this dependency do not need gMSA.\n\nUse group Managed Service Accounts for applications that require Active Directory domain authentication. Configure the supported AKS integration, credential specifications, Key Vault access, and domain-controller connectivity with least privilege; don't enable gMSA for workloads that don't need it.",
+      "guid": "e1123a7c-a333-4eb4-a120-4ee3f293c9f3",
+      "subcategory": "Identity",
+      "category": "Windows",
+      "severity": "Medium",
+      "link": "https://learn.microsoft.com/en-gb/azure/aks/use-group-managed-service-accounts"
+    },
+    {
+      "text": "If required for AKS Windows workloads, HostProcess containers can be used",
+      "description": "Applicability: Only Windows deployments with a justified host-level administration or node-agent requirement that needs HostProcess access; not ordinary application containers.\n\nUse Windows HostProcess containers only for trusted host-level administration such as node agents. They run in the host context with access beyond ordinary container isolation; constrain who can deploy them, use approved images, and audit their permissions and activity.",
+      "guid": "ab5351f6-383a-45ed-9c5e-b143b16db40a",
+      "subcategory": "Application",
+      "category": "Windows",
+      "severity": "Medium",
+      "link": "https://learn.microsoft.com/azure/aks/use-windows-hpc"
+    },
+    {
+      "text": "Taint Windows nodes",
+      "description": "Applicability: Only clusters containing Windows pools, including mixed-OS deployments where workloads must be scheduled onto compatible hosts.\n\nSet kubernetes.io/os: windows selectors for Windows workloads and Linux selectors for Linux workloads; use Windows build labels or RuntimeClasses when container compatibility requires a specific host build. Taint Windows pools and grant tolerations only to intended workloads; a toleration alone doesn't select a Windows node.",
+      "guid": "c1881370-6f7c-44c0-b4e5-14648d2457ed",
+      "subcategory": "Compliance",
+      "category": "Windows",
+      "severity": "Low",
+      "link": "https://learn.microsoft.com/azure/aks/windows-best-practices",
+      "simple": -1,
+      "ha": 1
+    },
+    {
+      "text": "Validate Calico policy support before migrating Windows network enforcement",
+      "description": "Applicability: Only Windows deployments using or evaluating AKS-managed Calico, including migrations from retired Windows Network Policy Manager; not a requirement to adopt Calico on other clusters.\n\nAKS-managed Calico supports Kubernetes networking.k8s.io policies on documented Windows configurations. Validate the current OS/network compatibility matrix and test ingress, egress, DNS, and service traffic before replacing an existing policy engine.\n\nThe current network policy matrix lists Windows Server 2019 and 2022 for Calico; that doesn't restore support for retired Windows Server 2019 or establish support for Windows Server 2025. Verify the latter before migrating. AKS-managed Calico doesn't support projectcalico.org policies or running alongside Calico Cloud or Enterprise.",
+      "guid": "ce7f2a7c-297c-47c6-adea-a6ff838db665",
+      "subcategory": "Security",
+      "category": "Windows",
+      "severity": "Medium",
+      "link": "https://learn.microsoft.com/azure/aks/use-network-policies"
+    },
+    {
+      "text": "Verify Accelerated Networking on supported Windows VM sizes",
+      "description": "Applicability: Only Windows node pools using VM sizes, images, and drivers that support Accelerated Networking.\n\nAKS enables Accelerated Networking on supported VM sizes. Verify VM, image, and driver support and benchmark network throughput and latency; don't modify AKS-managed NICs directly to force enablement on unsupported configurations.",
+      "guid": "7bacd7b9-c025-4a9d-a5d2-25d6bc5439d9",
+      "subcategory": "Operations",
+      "category": "Windows",
+      "severity": "Medium",
+      "link": "https://learn.microsoft.com/azure/virtual-network/accelerated-networking-overview"
+    },
+    {
+      "text": "Migrate retired Windows OS channels and plan supported LTSC upgrades",
+      "description": "Applicability: Only Windows deployments using retired OS channels or planning an LTSC migration before the documented support and image-removal deadlines.\n\nMigrate Windows Server 2019, unsupported since March 1, 2026, before image removal on April 1, 2027. Windows Annual Channel preview support ended May 15, 2026, with image removal on May 15, 2027. Retired images eventually prevent scaling and remediation, not just security updates.\n\nEvaluate Windows Server 2025 LTSC on Kubernetes 1.32 or later and test host/container compatibility, agents, gMSA, storage, and network policy first. Windows Server 2025 pools require FIPS-enabled images. Windows Server 2022 support ends June 30, 2028 and isn't available for Kubernetes 1.37 or later; images are removed June 30, 2029. A new-pool migration permits staged validation. The in-place 2022-to-2025 migration uses aks-preview and requires Kubernetes 1.32 to 1.36; assess its preview support terms before use.",
+      "guid": "82f0c32f-a9f2-4c62-9c2c-cab4f0e2d805",
+      "subcategory": "Windows",
+      "category": "Windows",
+      "severity": "High",
+      "link": "https://learn.microsoft.com/azure/aks/windows-vs-linux-containers"
+    },
+    {
+      "text": "Include Windows-specific capacity and observability in the operating model",
+      "description": "Applicability: Only clusters operating Windows user pools and their supporting Linux system pool, capacity, and monitoring integrations.\n\nMaintain a Linux system pool alongside Windows user pools and include Windows startup, image-pull, patching, and drain times in capacity and maintenance tests. Windows pools aren't supported by NAP or AKS Automatic, so select a supported AKS Standard configuration.\n\nFor managed Prometheus, enable Windows recording rules and confirm Windows exporter metrics and Windows dashboards are populated. Monitor memory commitment, paging, storage, network errors, and application availability rather than relying only on Linux dashboards.",
+      "guid": "9af6097e-6ae5-4219-a8df-e63068d39020",
+      "subcategory": "Windows",
+      "category": "Windows",
+      "severity": "High",
+      "link": "https://learn.microsoft.com/azure/aks/windows-best-practices#monitoring"
+    },
+    {
+      "text": "Implement a proper Liveness probe",
+      "description": "Use a liveness probe when restarting the container can recover an unhealthy application. Check local process health rather than shared downstream dependencies to avoid restart storms during an outage. Tune timeouts and failure thresholds under realistic load; failed liveness probes restart the container according to its restart policy, not the entire pod.",
+      "guid": "2e9ed573-38b2-4856-a7f9-676d9ab604e1",
+      "subcategory": "Application",
+      "category": "Application Deployment",
+      "severity": "High",
+      "link": "https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/"
+    },
+    {
+      "text": "Implement a proper Startup probe",
+      "description": "Protect slow-starting containers with a startup probe. Liveness and readiness probes do not run until it succeeds. Set failureThreshold and periodSeconds to cover measured worst-case startup time, and test cold starts; exhausting the startup failure threshold triggers container restart according to its restart policy.",
+      "guid": "a066989c-9dce-4712-bce3-4eef36f8c0c2",
+      "subcategory": "Application",
+      "category": "Application Deployment",
+      "severity": "Medium",
+      "link": "https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/"
+    },
+    {
+      "text": "Implement a proper Readiness probe",
+      "description": "Applicability: Applies to availability-sensitive services receiving traffic through Kubernetes Services or other readiness-aware routing.\n\nUse readiness probes to indicate whether the application can serve traffic. A failed readiness probe normally removes the pod from ready Service endpoints without restarting its containers. Test dependency failures and recovery without making every replica unready for an optional dependency; account for endpoint propagation, existing connections, and Services that publish not-ready addresses.",
+      "guid": "de1b6b38-4fa9-4f6e-ab92-d824346dd20c",
+      "subcategory": "Application",
+      "category": "Application Deployment",
+      "severity": "High",
+      "link": "https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/"
+    },
+    {
+      "text": "Implement graceful termination and use preStop hooks when needed",
+      "description": "Applicability: Applies to availability-sensitive services or workers that must drain requests or checkpoint work during planned termination.\n\nHandle termination signals, stop accepting new work, and drain in-flight requests or checkpoint work within terminationGracePeriodSeconds. Add a preStop hook only when needed and include its execution time in the grace period. Hooks and graceful shutdown are not guaranteed during node loss, force deletion, or abrupt process failure; test rolling updates and node drains.",
+      "guid": "dc4828a3-fc4f-4ac5-8844-122b8482dbb1",
+      "subcategory": "Application",
+      "category": "Application Deployment",
+      "severity": "High",
+      "link": "https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/"
+    },
+    {
+      "text": "Run more than one replica for your Deployment",
+      "description": "Applicability: Applies to availability-sensitive services whose design permits concurrent replicas; singleton workloads require a separately tested recovery design.\n\nRun multiple ready replicas for services that require availability during pod failure or maintenance. Size the replica count and autoscaler minimum for the availability target and remaining capacity after a failure. Spread replicas across nodes and, where available, zones; extra replicas on one node are not sufficient.",
+      "guid": "4f1f88f9-98a3-48f5-a37f-4d9c9aecbb11",
+      "subcategory": "Application",
+      "category": "Application Deployment",
+      "severity": "High",
+      "link": "https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/"
+    },
+    {
+      "text": "Apply consistent Kubernetes labels and Azure resource tags",
+      "description": "Apply recommended Kubernetes application labels and ownership/environment metadata for selectors, policy, operations, and cost allocation. Azure resource tags and Kubernetes labels are separate mechanisms and are not automatically synchronized. Keep secrets and personal data out of both.\n\nDefine technical, business and security metadata, including owner, environment, cost center and lifecycle. Apply Azure tags through supported AKS cluster and node pool APIs and review propagation and replacement behavior before updates; do not directly retag AKS-managed infrastructure to bypass those APIs. Define deliberate mappings to Kubernetes labels and validate selectors before changing labels used by controllers or policies.",
+      "guid": "7b613b26-df38-49a8-94bf-c5301a91d558",
+      "subcategory": "Application",
+      "category": "Application Deployment",
+      "severity": "Medium",
+      "link": "https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels/",
+      "supersedes": [
+        "13bb9e32-6f48-4747-9531-0147f20f4b04",
+        "574bd2fe-f58b-4199-b334-f7eff3ef90c8"
+      ]
+    },
+    {
+      "text": "Implement autoscaling of your applications (Horizontal pod autoscaler, KEDA)",
+      "description": "Use HPA for resource, custom, or external metrics, or the managed KEDA add-on for event-driven scaling. Configure resource requests for utilization-based targets, minimum/maximum replicas, stabilization, and metric failure behavior. Load-test startup latency and downstream capacity; coordinate pod scaling with node capacity and quotas. Do not configure independent HPA and KEDA controllers for the same workload.",
+      "guid": "faa19bfe-9d55-4d04-a3c4-919ca1b2d121",
+      "subcategory": "Resiliency",
+      "category": "Application Deployment",
+      "severity": "Low",
+      "link": "https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/",
+      "scale": 1,
+      "simple": -1
+    },
+    {
+      "text": "Use namespaces with explicit access and isolation controls",
+      "description": "Use dedicated namespaces rather than the default namespace for managed workloads. Apply scoped RBAC, network policies, resource quotas, and admission controls to enforce boundaries. Namespaces alone do not provide network isolation or a strong security boundary against hostile tenants; use separate clusters when the threat model requires them.\n\nName namespaces for application and environment ownership, reserve system namespaces for platform components, and verify that access, policy enforcement and quota behavior match the intended boundary. This control implements namespace protections after the separate tenant-isolation architecture decision.",
+      "guid": "0b56d03c-5fc8-42b1-943b-9e4b4d0f3de8",
+      "subcategory": "Security",
+      "category": "Application Deployment",
+      "severity": "Medium",
+      "link": "https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/",
+      "supersedes": [
+        "13bb9e32-6f48-4747-9531-0147f20f4b03"
+      ]
+    },
+    {
+      "text": "Specify the security context of your pod/container",
+      "description": "For Linux workloads, run as non-root, disallow privilege escalation, drop all capabilities and add back only justified exceptions, use RuntimeDefault seccomp, and make the root filesystem read-only where compatible. Avoid privileged containers, host namespaces, and hostPath mounts. Apply equivalent OS-specific controls for Windows rather than assuming Linux settings apply.\n\nUse dedicated least-privilege service accounts and set automountServiceAccountToken: false when Kubernetes API credentials are unnecessary. This does not replace the explicit projected token used by Microsoft Entra Workload ID. Provide bounded writable volumes where the application requires them and document reviewed exceptions.",
+      "guid": "20861805-be15-48f5-b40b-5ae203ddbb67",
+      "subcategory": "Security",
+      "category": "Application Deployment",
+      "severity": "Medium",
+      "link": "https://kubernetes.io/docs/tasks/configure-pod-container/security-context/"
+    },
+    {
+      "text": "Ensure your manifests respect good practices",
+      "description": "Render Helm or Kustomize manifests in CI, validate their schemas and supported API versions against the target AKS version, and check security, requests, probes, and deployment policies before promotion. Use server-side dry runs where safe and enforce critical requirements with admission policy rather than relying only on developer linting.\n\nTest rendered output against a representative target cluster to catch admission, permissions and scheduling errors. A formatter improves readability but is not evidence that APIs are supported or that the deployment is safe.",
+      "guid": "5388e9de-d167-4dd1-a2b0-ac241b999a64",
+      "subcategory": "Resources",
+      "category": "Application Deployment",
+      "severity": "Medium",
+      "link": "https://kubernetes.io/docs/concepts/configuration/overview/",
+      "supersedes": [
+        "b78f2dec-d75e-44c3-937a-7509fd7a54f1"
+      ],
+      "simple": 1
+    },
+    {
+      "text": "Conduct Dockerfile scanning to ensure Docker Image Security Best Practices",
+      "description": "Define and lint a container build baseline: trusted maintained base images, non-root execution, multi-stage builds, minimal runtime contents, and no embedded credentials. Use build-time secret mounts instead of copying secrets into layers; deleting them in a later layer does not remove them from image history.",
+      "guid": "b5222fdc-72b7-4b5f-baae-ab48a69b1d36",
+      "subcategory": "Security",
+      "category": "Application Deployment",
+      "severity": "High",
+      "link": "https://learn.microsoft.com/azure/aks/operator-best-practices-container-image-management"
+    },
+    {
+      "text": "Scan built container images in CI before promotion",
+      "description": "Scan the final image digest, including OS and application dependencies, before promotion and retain the result with the release. Integrate scanning into CI; registry or runtime scanning alone is not a synchronous build gate and cannot establish that an image is vulnerability-free.",
+      "guid": "54cbc938-394e-480a-823a-51c2bcd3c66b",
+      "subcategory": "Security",
+      "category": "Application Deployment",
+      "severity": "High",
+      "link": "https://learn.microsoft.com/azure/defender-for-cloud/defender-for-containers-introduction"
+    },
+    {
+      "text": "Enforce risk-based vulnerability gates for image releases",
+      "description": "Gate image promotion using documented vulnerability severity, exploitability, exposure, and remediation deadlines. Record time-limited exceptions with owners and compensating controls.\n\nDo not automatically allow a critical vulnerability merely because no vendor fix exists. Require explicit risk acceptance, consider replacing or removing the vulnerable component, and rescan retained and deployed image digests as new advisories appear.",
+      "guid": "1a67a172-c4ca-4383-8934-a71277cb927e",
+      "subcategory": "Security",
+      "category": "Application Deployment",
+      "severity": "Medium",
+      "link": "https://learn.microsoft.com/azure/defender-for-cloud/defender-for-containers-introduction"
+    },
+    {
+      "text": "Compliance enforcement of Docker Image Builds",
+      "description": "Evaluate image configuration and rendered deployment manifests against a documented security baseline before release, and enforce critical runtime settings through admission policy.\n\nCheck non-root execution, privilege escalation, capabilities, host access, and approved image sources. An exposed port alone does not establish a compliance violation, and Azure Policy admission checks do not replace Dockerfile or build-time scanning.",
+      "guid": "01ede997-e0bf-454a-bd1f-114be06a9874",
+      "subcategory": "Security",
+      "category": "Application Deployment",
+      "severity": "High",
+      "link": "https://learn.microsoft.com/azure/aks/policy-samples"
+    },
+    {
+      "text": "Assess application readiness before containerization",
+      "description": "Assess runtime and operating-system support, external dependencies, state, licensing, health endpoints, and shutdown behavior before moving an application into containers. Select currently supported migration or build tooling for the application stack; automated repackaging does not establish production readiness or remove the need for testing.",
+      "guid": "c1c05f94-4b74-4231-9d36-aa7a56fb775e",
+      "subcategory": "Application",
+      "category": "Application Deployment",
+      "severity": "Low",
+      "link": "https://learn.microsoft.com/azure/well-architected/service-guides/azure-kubernetes-service"
+    },
+    {
+      "text": "Apply the right deployment type to your application",
+      "description": "Choose Deployment for replaceable services, StatefulSet for workloads requiring stable identity and storage, and Job or CronJob for finite or scheduled work. Configure rolling update surge/unavailable settings, readiness, rollout deadlines, and rollback procedures to match the workload and available capacity.",
+      "guid": "3abc7c0e-44c7-40fc-afce-aa4ddbf3dd81",
+      "subcategory": "Application",
+      "category": "Application Deployment",
+      "severity": "Low",
+      "link": "https://kubernetes.io/docs/concepts/workloads/controllers/"
+    },
+    {
+      "text": "Don't use naked pods",
+      "description": "Manage production pods with a Deployment, StatefulSet, DaemonSet, Job, or other appropriate controller. Standalone pods are not recreated on another node after node loss.\n\nChoose the controller according to lifecycle, identity, and storage requirements; a controller recreating a pod does not by itself recover data or guarantee service availability.",
+      "guid": "980e9f76-e20a-426a-9c01-cbae1b63c5e8",
+      "subcategory": "Resiliency",
+      "category": "Application Deployment",
+      "severity": "Low",
+      "link": "https://kubernetes.io/docs/concepts/workloads/controllers/"
+    },
+    {
+      "text": "Control the usage of imagePullPolicy",
+      "description": "Set imagePullPolicy deliberately and deploy immutable digests rather than mutable latest tags. Always resolves the image reference on each start but can reuse cached layers; IfNotPresent can run a locally cached image. Test registry outages and new-node image pulls; digest pinning improves reproducibility but does not remove registry availability requirements.",
+      "guid": "d457598a-047b-4fd7-88e5-9c61dea67f6a",
+      "subcategory": "Application",
+      "category": "Application Deployment",
+      "severity": "Low",
+      "link": "https://kubernetes.io/docs/concepts/containers/images/#updating-images"
+    },
+    {
+      "text": "Use version-controlled infrastructure as code for Azure resources",
+      "description": "Provision AKS and its dependencies with reviewed, version-controlled Bicep, ARM, or Terraform. Secure state and deployment identities, pin supported providers and modules, detect drift, and test repeatable environment recreation. Keep credentials out of templates and repositories.",
+      "guid": "3acbe04b-be20-49d3-afda-47778424d116",
+      "subcategory": "Iac",
+      "category": "Application Deployment",
+      "severity": "Medium",
+      "link": "https://learn.microsoft.com/azure/developer/terraform/create-k8s-cluster-with-tf-and-aks",
+      "simple": -1,
+      "ha": 1
+    },
+    {
+      "text": "Use canary or blue/green deployments",
+      "description": "Applicability: Applies when application-release risk and availability targets require progressive traffic shifting or parallel application versions.\n\nUse canary or blue/green application releases where the risk justifies additional capacity and routing complexity. Define health and business-metric gates, progressive traffic shifts, rollback, and backward-compatible database changes. These strategies reduce release risk but do not guarantee availability during cluster upgrades.",
+      "guid": "785c2fa5-5b56-4ad4-a408-fe72734c476b",
+      "subcategory": "Application",
+      "category": "Application Deployment",
+      "severity": "Medium",
+      "link": "https://learn.microsoft.com/azure/well-architected/operational-excellence/safe-deployments"
+    },
+    {
+      "text": "Evaluate Dapr when its building blocks fit the application",
+      "description": "Applicability: Applies when Dapr is installed or an assessed application requirement justifies its building blocks; Dapr adoption is not a readiness requirement.\n\nConsider Dapr for service invocation, pub/sub, state, or other supported building blocks when it reduces application complexity. Evaluate sidecar resources, component authentication, mTLS, supported versions, operations, and failure modes; adopting Dapr is optional and does not ensure uptime during cluster upgrades.",
+      "guid": "26886d20-b66c-457b-a591-19bf8e8f5c58",
+      "subcategory": "Application",
+      "category": "Application Deployment",
+      "severity": "Low",
+      "link": "https://dapr.io/"
+    },
+    {
+      "text": "Design retries, timeouts, and idempotency for dependency failures",
+      "description": "Set bounded request timeouts, retry budgets with exponential backoff and jitter, and circuit breakers where appropriate. Make retried operations idempotent and support graceful degradation. Test dependency throttling and outages so retries and autoscaling do not amplify failure.",
+      "guid": "36fea5cd-6ac2-484d-b99a-948292221550",
+      "subcategory": "Application",
+      "category": "Application Deployment",
+      "severity": "Medium",
+      "link": "https://learn.microsoft.com/azure/architecture/patterns/retry"
+    },
+    {
+      "text": "Scan the container image against vulnerabilities",
+      "description": "Scan OS packages and application dependencies in built, stored, and deployed image digests, and rescan as vulnerability intelligence changes. Assign remediation owners and deadlines and rebuild affected images. Scanning identifies known issues; a clean result is not proof that an image is secure.",
+      "guid": "59bce65d-e8a0-43f9-9879-468d66a786d6",
+      "subcategory": "Security",
+      "category": "Governance and Security",
+      "severity": "High",
+      "link": "https://learn.microsoft.com/azure/defender-for-cloud/defender-for-containers-introduction",
+      "cost": -1,
+      "security": 1
+    },
+    {
+      "text": "Allow deploying containers only from known registries",
+      "description": "Enforce approved registry and repository paths with admission policy, including init and ephemeral containers. Restrict who can push or import into those repositories and combine source allowlists with digest and signature verification. Egress filtering is defense in depth, not a substitute for admission enforcement because cached images can run without a pull.",
+      "guid": "8dcb9d27-a601-48e6-aeb8-e0469aaf8921",
+      "subcategory": "Security",
+      "category": "Governance and Security",
+      "severity": "Medium",
+      "link": "https://learn.microsoft.com/azure/aks/policy-reference"
+    },
+    {
+      "text": "Block promotion and redeployment of images with newly discovered issues",
+      "description": "Continuously reassess image digests after publication and block promotion or new deployment when they violate policy. Use a supported admission and registry-access workflow rather than assuming a registry scan automatically quarantines images.\n\nTrack affected running workloads and cached images, rebuild and redeploy fixed digests, and document emergency exceptions. Blocking new image pulls does not stop existing containers or prevent cached images from being reused; coordinate containment with incident response.",
+      "guid": "c970cb26-a707-4bf2-9e40-5401fea3d55b",
+      "subcategory": "Security",
+      "category": "Governance and Security",
+      "severity": "High",
+      "link": "https://learn.microsoft.com/azure/aks/operator-best-practices-container-image-management"
+    },
+    {
+      "text": "Use least-privilege identity-based access to container registries",
+      "description": "Use separate identities for image publishing and pulling; disable the ACR admin account unless explicitly required. Grant the AKS kubelet managed identity pull-only permissions, not the application workload identity. Use AcrPull for registry RBAC mode; ABAC-enabled registries require Container Registry Repository Reader and do not support az aks --attach-acr. Scope repository permissions where supported.",
+      "guid": "3f703579-9f4a-43c4-8c40-5a9e78015379",
+      "subcategory": "Security",
+      "category": "Governance and Security",
+      "severity": "High",
+      "link": "https://learn.microsoft.com/azure/aks/cluster-container-registry-integration"
+    },
+    {
+      "text": "Enforce the required container registry network access boundary",
+      "description": "Applicability: Applies when the registry threat model or network policy requires private connectivity or restricted public endpoints; private endpoint adoption alone is not a readiness requirement.\n\nEnforce the registry access boundary required by the threat model. For private access, use ACR Premium Private Link, configure private DNS and connectivity to registry and regional data endpoints, and disable public network access after validation. If private connectivity is not required, select an appropriate SKU with explicitly authorized public access rather than requiring Premium solely to pass this check.\n\nTest image pulls from every node pool and DR region, plus CI builds and imports. Verify permitted and denied paths and that no public bypass remains where public access is prohibited. A private endpoint alone neither disables public access nor replaces identity-based authorization.",
+      "guid": "6ae51d09-8142-4979-95ed-7ec3451de81c",
+      "subcategory": "Security",
+      "category": "Governance and Security",
+      "severity": "High",
+      "link": "https://learn.microsoft.com/azure/container-registry/container-registry-private-link",
+      "supersedes": [
+        "e38f1680-8ddc-4c93-bf09-6b932a4935ca"
+      ]
+    },
+    {
+      "text": "Use minimal, maintained runtime images",
+      "description": "Use a supported minimal or distroless runtime image appropriate for the application, architecture, and OS. Remove build tools and unused packages, run as non-root, and rebuild regularly from maintained bases.\n\nDistroless images reduce attack surface but do not prevent exploitation or container escape. Validate certificates, runtime dependencies, patch availability, and a controlled debugging workflow rather than adding a shell to the production image.",
+      "guid": "f57ba3a5-93ae-435f-9468-80ccd6a841b9",
+      "subcategory": "Security",
+      "category": "Governance and Security",
+      "severity": "Medium",
+      "link": "https://github.com/GoogleContainerTools/distroless"
+    },
+    {
+      "text": "Refresh container when base image is updated",
+      "description": "Track base-image and dependency updates, including digest-pinned bases, and automate rebuilds followed by tests, scanning, signing, and staged redeployment. Updating a base image or rebuilding an application does not patch already-running containers; promote and deploy the new digest and retain a tested rollback image.",
+      "guid": "22882284-a9c2-4e16-b3e3-2d4947cc24b8",
+      "subcategory": "Resources",
+      "category": "Governance and Security",
+      "severity": "Low",
+      "link": "https://learn.microsoft.com/azure/aks/operator-best-practices-container-image-management#automatically-build-new-images-on-base-image-update"
+    },
+    {
+      "text": "Sign OCI artifacts and verify trusted publishers before deployment",
+      "description": "Sign released image digests and other OCI artifacts using supported tooling such as Notation. Verify integrity and trusted publisher identity in build and deployment workflows, and enforce verification at admission where supported. Define trust policies, certificate rotation, revocation response, and narrowly scoped exceptions; merely storing a signature in ACR does not enforce trust.",
+      "guid": "152e5d2a-9819-4939-a7a8-19c459f00514",
+      "subcategory": "Security",
+      "category": "Governance and Security",
+      "severity": "High",
+      "link": "https://learn.microsoft.com/azure/container-registry/overview-sign-verify-artifacts"
+    },
+    {
+      "text": "Retain SBOMs and build provenance linked to immutable image digests",
+      "description": "Generate software bills of materials and build provenance for releases, associate them with the exact OCI image digest, and retain them with signatures and scan evidence. Record source revision, builder identity, and dependencies for incident investigation. Protect build identities and verify evidence before promotion; an SBOM alone does not establish image integrity or absence of vulnerabilities.",
+      "guid": "6f35d8e6-2a6a-4b79-9ec8-04385c635aee",
+      "subcategory": "Security",
+      "category": "Governance and Security",
+      "severity": "Medium",
+      "link": "https://learn.microsoft.com/azure/container-registry/overview-sign-verify-artifacts"
+    }
+  ]
+}

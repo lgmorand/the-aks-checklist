@@ -1,0 +1,22 @@
+name: Audit documentation links
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 7 * * 1'
+
+permissions:
+  contents: read
+
+jobs:
+  links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Check links, redirects and documentation fragments
+        run: python3 data/scripts/check_links.py
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: Documentation link report
+          path: output/link-report.json

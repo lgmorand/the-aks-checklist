@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <script>
+        (() => {
+            const param = new URLSearchParams(window.location.search).get("scoutTheme");
+            const theme =
+                param || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+            document.documentElement.setAttribute("data-theme", theme);
+        })();
+    </script>
+    <script src="scripts/theme.js"></script>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>The AKS Checklist | Architecture review workspace</title>
+    <meta name="description" content="An evidence-led Azure Kubernetes Service architecture review. Explore production controls, assess applicability and track your progress locally.">
+    <meta name="theme-color" content="#102a43">
+    <meta name="msapplication-config" content="browserconfig.xml">
+    <meta property="og:site_name" content="The AKS Checklist">
+    <meta property="og:url" content="https://aka.ms/the-aks-checklist">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="The AKS Checklist | Architecture review workspace">
+    <meta property="og:description" content="Make deliberate AKS architecture decisions. Review controls, capture evidence and track outcomes.">
+    <meta property="og:image" content="https://raw.githubusercontent.com/lgmorand/the-aks-checklist/master/src/web/img/social/facebook-banner.jpg">
+    <meta property="og:image:alt" content="The Azure Kubernetes Service Checklist">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" href="favicon.ico">
+    <link rel="stylesheet" href="styles/checklist.css">
+</head>
+<body>
+    <a class="skip-link" href="#js-main">Skip to checklist</a>
+    <div class="page-wrapper">
+        <div class="page-header">
+            <header class="s-header">
+                <div class="site-toolbar">
+                    <a class="site-brand" href="#top" aria-label="The AKS Checklist home">
+                        <img src="img/logos/logo-aks-checklist.png" alt="" width="42" height="42">
+                        <span>AKS<span class="brand-divider"> / </span>Checklist</span>
+                    </a>
+                    <div class="toolbar-actions">
+                        <a class="source-link" href="https://github.com/lgmorand/the-aks-checklist" target="_blank" rel="noopener noreferrer" aria-label="View source on GitHub">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 .7a11.5 11.5 0 0 0-3.6 22.4c.6.1.8-.2.8-.5v-2.1c-3.3.7-4-1.4-4-1.4-.5-1.4-1.3-1.7-1.3-1.7-1.1-.8.1-.8.1-.8 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.5-2.8 5.5-5.5 5.8.4.4.8 1.1.8 2.2v3.2c0 .3.2.6.8.5A11.5 11.5 0 0 0 12 .7Z"/></svg>
+                            <span>View source</span>
+                        </a>
+                        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Switch to dark mode" aria-pressed="false">
+                            <svg class="theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+                            <svg class="theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20.9 13A9 9 0 0 1 11 3.1 9 9 0 1 0 20.9 13Z"/></svg>
+                            <span class="theme-label">Theme</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="s-header__banner" id="top">
+                    <div class="hero-copy">
+                        <p class="eyebrow"><span class="live-dot"></span>Your architecture. Reviewed with intent.</p>
+                        <h1>Better foundations.<br><span class="gradient-text">Production confidence.</span></h1>
+                        <p class="hero-description">The Azure Kubernetes Service Checklist. Turn best practices into deliberate decisions, review what matters and build your next action plan.</p>
+                        <div class="hero-actions">
+                            <a class="button button-primary" href="#section-identity---authorization">Start your review <span aria-hidden="true">&rarr;</span></a>
+                            <a class="button button-secondary" href="docs/AKS-Checklist.pdf">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5"/></svg>
+                                Download field guide
+                            </a>
+                        </div>
+                        <p class="hero-edition">Edition generated <time>%DATE%</time><span aria-hidden="true"> / </span>Progress stays in your browser</p>
+                    </div>
+                    <aside class="hero-note" aria-label="Review principles">
+                        <div class="hero-note-icon" aria-hidden="true">
+                            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><path d="m24 3 18 10v22L24 45 6 35V13L24 3Z"/><path d="m6 13 18 11 18-11M24 24v21"/><path d="m15 19 9-5 9 5-9 5-9-5Z"/></svg>
+                        </div>
+                        <p class="eyebrow">Built for thoughtful reviews</p>
+                        <h2>Outcomes.<br>Not checkboxes.</h2>
+                        <p>Assess applicability. Capture evidence. Keep exceptions visible.</p>
+                        <div class="hero-note-footer"><span class="live-dot"></span>Open source. Workload aware.</div>
+                    </aside>
+                </div>
+            </header>
+        </div>
+        <div class="page-main">
+            <main class="s-main" id="js-main">
+                <noscript><p class="checklist-state-notice">Enable JavaScript to save progress and use review controls. The checklist and field guide remain readable.</p></noscript>
+                <p id="theme-status" class="theme-status" role="status" hidden></p>
+                <section class="s-main__header" aria-labelledby="review-dashboard-title">
+                    <div class="dashboard-heading">
+                        <div><p class="eyebrow">Your review workspace</p><h2 id="review-dashboard-title">A clear view of what matters.</h2></div>
+                        <span class="local-badge"><span class="live-dot"></span>Saved on this device</span>
+                    </div>
+                    <div class="review-dashboard">
+                        <div class="project-panel">
+                            <label for="project-name">Give your review a name</label>
+                            <input type="text" id="project-name" name="project-name" placeholder="e.g. Production platform review" title="Name of your project" autocomplete="off">
+                            <p>Review applicable controls. N/A is excluded, never counted as fulfilled.</p>
+                            <div class="dashboard-actions">
+                                <button type="button" class="button button-primary js-print">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 9V3h12v6M6 17H3V9h18v8h-3M6 14h12v7H6Z"/><path d="M17 12h1"/></svg>
+                                    Generate report
+                                </button>
+                                <button type="button" class="button button-quiet js-reset-all">Start new checklist</button>
+                            </div>
+                            <span id="generated-date"></span>
+                        </div>
+                        <div class="review-summary">
+                            <p class="eyebrow">Completion overview</p>
+                            <p id="checklist-overall-status" aria-live="polite"></p>
+                            <div class="c-notation">
+                                <ul class="c-notation__details__list">
+                                    <li class="c-notation__details__item js-detail-high"><span class="priority-dot priority-dot-high"></span><span class="js-notation-checked">0</span>/<span class="js-notation-total">%COUNT_HIGH%</span> high priority</li>
+                                    <li class="c-notation__details__item js-detail-medium"><span class="priority-dot priority-dot-medium"></span><span class="js-notation-checked">0</span>/<span class="js-notation-total">%COUNT_MEDIUM%</span> medium priority</li>
+                                    <li class="c-notation__details__item js-detail-low"><span class="priority-dot priority-dot-low"></span><span class="js-notation-checked">0</span>/<span class="js-notation-total">%COUNT_LOW%</span> low priority</li>
+                                </ul>
+                                <div class="c-notation__item" id="js-notation" data-notation="0" aria-label="Completion grade"><span class="c-notation__letter">F</span><span class="grade-caption">Review grade</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <nav class="c-nav" aria-label="Architecture domains">
+                        <p class="eyebrow">Jump to a domain</p>
+                        <ul class="c-nav__list">
+                            <li><a href="#section-identity---authorization"><span class="c-nav__status" id="js-nav-identity---authorization"></span>Identity &amp; access</a></li>
+                            <li><a href="#section-cluster-security"><span class="c-nav__status" id="js-nav-cluster-security"></span>Cluster security</a></li>
+                            <li><a href="#section-multi-tenant---isolation"><span class="c-nav__status" id="js-nav-multi-tenant---isolation"></span>Tenant isolation</a></li>
+                            <li><a href="#section-storage"><span class="c-nav__status" id="js-nav-storage"></span>Storage</a></li>
+                            <li><a href="#section-networking"><span class="c-nav__status" id="js-nav-networking"></span>Networking</a></li>
+                            <li><a href="#section-resource-management"><span class="c-nav__status" id="js-nav-resource-management"></span>Resources &amp; cost</a></li>
+                            <li><a href="#section-cluster-operations"><span class="c-nav__status" id="js-nav-cluster-operations"></span>Operations</a></li>
+                            <li><a href="#section-biz-continuity---disaster-recovery"><span class="c-nav__status" id="js-nav-biz-continuity---disaster-recovery"></span>Business continuity</a></li>
+                            <li><a href="#section-windows"><span class="c-nav__status" id="js-nav-windows"></span>Windows</a></li>
+                            <li><a href="#section-application-deployment"><span class="c-nav__status" id="js-nav-application-deployment"></span>Applications</a></li>
+                            <li><a href="#section-image-management"><span class="c-nav__status" id="js-nav-image-management"></span>Image supply chain</a></li>
+                            <li><a href="#reference-appendix"><span class="reference-nav-mark" aria-hidden="true">+</span>Reference library</a></li>
+                        </ul>
+                    </nav>
+                </section>
+                <section class="s-main__filter" aria-label="Filter checklist">
+                    <aside class="c-tag-filter">
+                        <div class="filter-heading"><h2>Focus your review</h2><p>Filter controls by topic. Progress always reflects the full review.</p></div>
+                        <ul class="c-tag-filter__list">
+                            <li><button type="button" class="js-filter-tag" data-tag="all">All topics</button></li>
+                            <li><button type="button" class="js-filter-tag" data-tag="application">Application</button></li>
+                            <li><button type="button" class="js-filter-tag" data-tag="resiliency">Resiliency</button></li>
+                            <li><button type="button" class="js-filter-tag" data-tag="security">Security</button></li>
+                            <li><button type="button" class="js-filter-tag" data-tag="identity">Identity</button></li>
+                            <li><button type="button" class="js-filter-tag" data-tag="multi-tenancy">Multi-tenancy</button></li>
+                            <li><button type="button" class="js-filter-tag" data-tag="resources">Resources</button></li>
+                            <li><button type="button" class="js-filter-tag" data-tag="IaC">IaC</button></li>
+                            <li><button type="button" class="js-filter-tag" data-tag="devops">DevOps</button></li>
+                            <li><button type="button" class="js-filter-tag" data-tag="network">Network</button></li>
+                            <li><button type="button" class="js-filter-tag" data-tag="storage">Storage</button></li>
+                            <li><button type="button" class="js-filter-tag" data-tag="operations">Operations</button></li>
+                            <li><button type="button" class="js-filter-tag" data-tag="finops">FinOps</button></li>
+                            <li><button type="button" class="js-filter-tag" data-tag="compliance">Compliance</button></li>
+                            <li><button type="button" class="js-filter-tag" data-tag="secrets">Secrets</button></li>
+                            <li><button type="button" class="js-filter-tag" data-tag="IPAM">IPAM</button></li>
+                            <li><button type="button" class="js-filter-tag" data-tag="scalability">Scalability</button></li>
+                            <li><button type="button" class="js-filter-tag" data-tag="windows">Windows</button></li>
+                            <li><button type="button" class="js-filter-tag" data-tag="monitoring">Monitoring</button></li>
+                            <li><button type="button" class="js-filter-tag" data-tag="cost">Cost</button></li>
+                            <li><button type="button" class="js-filter-tag" data-tag="resource management">Resource management</button></li>
+                        </ul>
+                    </aside>
+                </section>
+                <p id="checklist-state-notice" class="checklist-state-notice" role="status" hidden></p>
+                <div class="checklist-content">
+%CONTENT%
+                </div>
+            </main>
+        </div>
+        <footer class="page-footer">
+            <a class="footer-brand" href="#top">The AKS Checklist</a>
+            <p>An architecture review aid, not a certification. Validate current support and document exceptions.</p>
+            <a href="https://aka.ms/the-aks-checklist">Open source. Built for better architecture decisions.</a>
+        </footer>
+    </div>
+    <script type="application/json" id="checklist-manifest">%CHECKLIST_MANIFEST%</script>
+    <script src="scripts/checklist-state.js"></script>
+    <script>AksChecklistState.mount();</script>
+    <script>AksChecklistTheme.mount();</script>
+    <script>
+        document.documentElement.classList.replace("no-js", "js");
+        if ("serviceWorker" in navigator) {
+            navigator.serviceWorker.register("service-worker.js").catch((error) => {
+                console.warn("Offline asset caching is unavailable:", error);
+            });
+        }
+    </script>
+</body>
+</html>

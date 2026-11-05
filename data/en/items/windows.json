@@ -3,11 +3,13 @@
     "title": "Map the base image to node OS",
     "guid": "4d3e8a06-b724-43a3-b9b9-328a08325c61",
     "priority": "High",
-    "description": "Windows has strict compatibility rules, where the host OS version must match the container base image OS version. Only Windows containers with a container operating system of Windows Server 2019 are supported.",
+    "applicability": "Only deployments running or planning Windows container workloads on Windows node pools.",
+    "description": "Use supported Windows Server 2022 or 2025 node images and validate the official host/container compatibility matrix. AKS supports process isolation, not Hyper-V isolation; don't assume all container image versions can run on every Windows host.",
+    "detail": "Windows Server 2019 support ended March 1, 2026 and it isn't supported on Kubernetes 1.33 or later. Select compatible node OS, Kubernetes, and container base image versions together, and use OS/build-aware scheduling when multiple Windows versions coexist.",
     "documentation": [
       {
         "title": "Windows container version compatibility",
-        "url": "https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility"
+        "url": "https://learn.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility"
       },
       {
         "title": "Limitations of Windows containers",
@@ -23,14 +25,15 @@
     }
   },
   {
-    "title": "Prepare your application for an abrupt kill",
+    "title": "Test Windows application shutdown and interrupted-work recovery",
     "guid": "fce3ccf3-5f62-4ad6-b945-845362777529",
     "priority": "Medium",
-    "description": "TerminationGracePeriod is not implemented on Windows containers",
+    "applicability": "Only Windows container workloads whose shutdown and interrupted-work recovery must be validated during drains or termination.",
+    "description": "Don't assume Linux signal-handling behavior applies to Windows. Test how the Windows runtime and application respond to termination, lifecycle hooks, and terminationGracePeriodSeconds during a real node drain. Choose sufficient shutdown time, stop accepting new requests, and make interrupted work recoverable.",
     "documentation": [
       {
         "title": "Understand pod lifecycle",
-        "url": "https://cloud.google.com/blog/products/gcp/kubernetes-best-practices-terminating-with-grace"
+        "url": "https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/"
       },
       {
         "title": "Limitations of Windows containers",
@@ -49,7 +52,8 @@
     "title": "Don't use privileged containers",
     "guid": "bd773172-40dc-4502-b284-137c70d77bc9",
     "priority": "Medium",
-    "description": "Windows containers do not support elevation of privilege",
+    "applicability": "Only deployments running ordinary Windows application containers; assess trusted host-level administration separately under the HostProcess control.",
+    "description": "Ordinary Windows containers don't support Linux privileged-container mode. Use ContainerUser where the application permits and restrict host access. Windows HostProcess containers are a separate, highly privileged mechanism for trusted node administration, not a way to run ordinary application workloads.",
     "documentation": [
       {
         "title": "Limitations of Windows containers",
@@ -68,7 +72,8 @@
     "title": "Watch for memory usage",
     "guid": "dea429d5-2c10-480c-85a1-9d9d0c4afc3d",
     "priority": "Medium",
-    "description": "There are no OOM eviction actions taken by the kubelet. Windows always treats all user-mode memory allocations as virtual, and pagefiles are mandatory. If memory is over-provisioned and all physical memory is exhausted, then paging can slow down performance.",
+    "applicability": "Only deployments running Windows nodes and container workloads.",
+    "description": "Windows memory accounting, paging, and node-pressure behavior differ from Linux; don't rely on Linux OOM and eviction assumptions. Set measured memory requests and limits, monitor committed memory and paging as well as working set, and retain headroom for the OS and system services.",
     "documentation": [
       {
         "title": "Limitations of Windows containers",
@@ -84,14 +89,16 @@
     }
   },
   {
-    "title": "Implement CNI network mode",
+    "title": "Choose a Windows-compatible Azure CNI network model",
     "guid": "3922e5b0-fa6b-4020-a92e-2e0d76338e95",
     "priority": "High",
-    "description": "AKS clusters with Windows node pools must use the Azure CNI (advanced) networking model. Kubenet (basic) networking is not supported. ",
+    "applicability": "Only clusters with Windows node pools or a planned migration to Windows workloads.",
+    "description": "Windows node pools require Azure CNI; kubenet and bring-your-own CNI aren't supported. Evaluate Azure CNI Overlay for address-space efficiency or a supported VNet-routable mode when direct pod addressing is required.",
+    "detail": "Check the Windows OS, Kubernetes version, and network policy engine compatibility together. Azure CNI powered by Cilium doesn't support Windows; a Linux-only networking recommendation must not be applied blindly to mixed-OS clusters.",
     "documentation": [
       {
         "title": "What network plug-ins are supported?",
-        "url": "https://docs.microsoft.com/azure/aks/windows-node-limitations#what-network-plug-ins-are-supported"
+        "url": "https://learn.microsoft.com/azure/aks/windows-best-practices#networking-modes"
       }
     ],
     "tags": [
@@ -103,18 +110,20 @@
     }
   },
   {
-    "title": "Keep windows containers patch level in sync with host patch level",
+    "title": "Patch Windows hosts and rebuild container base images independently",
     "priority": "High",
     "guid": "67138b82-0102-4ce1-9ee3-01e6e882e52e",
-    "description": "Windows Server nodes in AKS must be upgraded to get the latest patch fixes and updates. Windows Updates are not enabled on nodes in AKS. AKS releases new node pool images as soon as patches are available, it is the customers responsibility to upgrade node pools to stay current on patches and hotfix. ",
+    "applicability": "Only deployments maintaining Windows node images or Windows container base images.",
+    "description": "AKS publishes Windows node images monthly; Windows Update doesn't automatically patch these hosts. Apply node image upgrades through NodeImage automation or a monitored manual process, and separately rebuild and redeploy application images from patched Windows base images.",
+    "detail": "Node image upgrades don't update your application images. Test host/base-image compatibility and rolling drains before production, and don't assume matching monthly revision numbers are universally required across supported Windows versions. SecurityPatch isn't supported for Windows; Unmanaged behaves like None.",
     "documentation": [
       {
         "title": "Windows container version compatibility",
-        "url": "https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility?tabs=windows-server-20H2%2Cwindows-10-20H2"
+        "url": "https://learn.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility"
       },
       {
-        "title": "How do patch my Windows nodes? ",
-        "url": "https://docs.microsoft.com/azure/aks/windows-node-limitations#how-do-patch-my-windows-nodes"
+        "title": "Windows node monthly updates",
+        "url": "https://learn.microsoft.com/azure/aks/windows-best-practices#windows-node-monthly-updates"
       }
     ],
     "tags": [
@@ -129,11 +138,13 @@
     "title": "Secure the traffic of your containers",
     "guid": "74e42965-8bbd-46fb-b027-ccad9c3933a4",
     "priority": "High",
-    "description": "Network policies are currently not supported, ensure that the containerized applications have a layer of protection like authentication ",
+    "applicability": "Only deployments running Windows workloads that require pod network isolation; affected Windows Network Policy Manager deployments must migrate to a supported implementation.",
+    "description": "Apply least-privilege pod network policies with an engine supported for the exact Windows OS and network model, and verify enforcement with connectivity tests. Use application authentication and TLS as additional controls, not substitutes for network isolation.",
+    "detail": "Azure Network Policy Manager on Windows became unsupported on September 30, 2026. Cilium isn't supported on Windows; use the current AKS policy support matrix to evaluate Calico and validate any OS-version gaps before migration.",
     "documentation": [
       {
-        "title": "Limitations of Windows containers",
-        "url": "https://kubernetes.io/docs/setup/production-environment/windows/intro-windows-in-kubernetes/#supported-functionality-and-limitations"
+        "title": "AKS network policy engine support and limitations",
+        "url": "https://learn.microsoft.com/azure/aks/use-network-policies"
       }
     ],
     "tags": [
@@ -145,14 +156,15 @@
     }
   },
   {
-    "title": "Enable Group Managed Service Accounts (GMSA) for your Windows Server nodes",
+    "title": "Use gMSA when Windows workloads require Active Directory authentication",
     "priority": "Medium",
     "guid": "e1123a7c-a333-4eb4-a120-4ee3f293c9f3",
-    "description": "Group Managed Service Accounts (GMSA) is a managed domain account for multiple servers that provides automatic password management, simplified service principal name (SPN) management and the ability to delegate the management to other administrators.",
+    "applicability": "Only Windows workloads requiring Active Directory domain authentication through a supported gMSA integration; workloads without this dependency do not need gMSA.",
+    "description": "Use group Managed Service Accounts for applications that require Active Directory domain authentication. Configure the supported AKS integration, credential specifications, Key Vault access, and domain-controller connectivity with least privilege; don't enable gMSA for workloads that don't need it.",
     "documentation": [
       {
         "title": "Enable Group Managed Service Accounts (GMSA) for your Windows Server nodes",
-        "url": "https://docs.microsoft.com/en-gb/azure/aks/use-group-managed-service-accounts"
+        "url": "https://learn.microsoft.com/en-gb/azure/aks/use-group-managed-service-accounts"
       }
     ],
     "tags": [
@@ -162,17 +174,15 @@
       "security"
     ],
     "optionalFields": {
-      "score": {
-        "simple": -1,
-        "security": 1
-      }
+      "score": {}
     }
   },
   {
     "title": "If required for AKS Windows workloads, HostProcess containers can be used",
     "priority": "Medium",
     "guid": "ab5351f6-383a-45ed-9c5e-b143b16db40a",
-    "description": "HostProcess / Privileged containers extend the Windows container model to enable a wider range of Kubernetes cluster management scenarios.",
+    "applicability": "Only Windows deployments with a justified host-level administration or node-agent requirement that needs HostProcess access; not ordinary application containers.",
+    "description": "Use Windows HostProcess containers only for trusted host-level administration such as node agents. They run in the host context with access beyond ordinary container isolation; constrain who can deploy them, use approved images, and audit their permissions and activity.",
     "documentation": [
       {
         "title": "Use Windows HostProcess containers",
@@ -185,20 +195,19 @@
       "windows"
     ],
     "optionalFields": {
-      "score": {
-        "cost": 1
-      }
+      "score": {}
     }
   },
   {
     "title": "Taint Windows nodes",
-    "priority": "low",
+    "priority": "Low",
     "guid": "c1881370-6f7c-44c0-b4e5-14648d2457ed",
-    "description": "Adding taints, tolerations and node selectors will help avoid having pods scheduled in the wrong OS node pool",
+    "applicability": "Only clusters containing Windows pools, including mixed-OS deployments where workloads must be scheduled onto compatible hosts.",
+    "description": "Set kubernetes.io/os: windows selectors for Windows workloads and Linux selectors for Linux workloads; use Windows build labels or RuntimeClasses when container compatibility requires a specific host build. Taint Windows pools and grant tolerations only to intended workloads; a toleration alone doesn't select a Windows node.",
     "documentation": [
       {
         "title": "Adapt apps for mixed-OS Kubernetes clusters using node selectors or taints and tolerations",
-        "url": "https://learn.microsoft.com/en-us/azure/aks/hybrid/adapt-apps-mixed-os-clusters"
+        "url": "https://learn.microsoft.com/azure/aks/windows-best-practices"
       }
     ],
     "tags": [
@@ -214,10 +223,12 @@
     }
   },
   {
-    "title": "For Windows 2019 and 2022 AKS nodes Calico Network Policies can be us",
+    "title": "Validate Calico policy support before migrating Windows network enforcement",
     "priority": "Medium",
     "guid": "ce7f2a7c-297c-47c6-adea-a6ff838db665",
-    "description": "For Windows 2019 and 2022 AKS nodes Calico Network Policies can be use",
+    "applicability": "Only Windows deployments using or evaluating AKS-managed Calico, including migrations from retired Windows Network Policy Manager; not a requirement to adopt Calico on other clusters.",
+    "description": "AKS-managed Calico supports Kubernetes networking.k8s.io policies on documented Windows configurations. Validate the current OS/network compatibility matrix and test ingress, egress, DNS, and service traffic before replacing an existing policy engine.",
+    "detail": "The current network policy matrix lists Windows Server 2019 and 2022 for Calico; that doesn't restore support for retired Windows Server 2019 or establish support for Windows Server 2025. Verify the latter before migrating. AKS-managed Calico doesn't support projectcalico.org policies or running alongside Calico Cloud or Enterprise.",
     "documentation": [
       {
         "title": "Secure traffic between pods using network policies",
@@ -231,18 +242,15 @@
       "windows"
     ],
     "optionalFields": {
-      "score": {
-        "security": 1,
-        "simple": -1,
-        "graph": "where type=='microsoft.containerservice/managedclusters' | where isnotnull(properties.apiServerAccessProfile.enablePrivateCluster) | extend compliant = (properties.apiServerAccessProfile.enablePrivateCluster==true) | distinct id, compliant"
-      }
+      "score": {}
     }
   },
   {
-    "title": "For Windows workloads use Accelerated Networking",
+    "title": "Verify Accelerated Networking on supported Windows VM sizes",
     "priority": "Medium",
     "guid": "7bacd7b9-c025-4a9d-a5d2-25d6bc5439d9",
-    "description": "For Windows workloads use Accelerated Networking",
+    "applicability": "Only Windows node pools using VM sizes, images, and drivers that support Accelerated Networking.",
+    "description": "AKS enables Accelerated Networking on supported VM sizes. Verify VM, image, and driver support and benchmark network throughput and latency; don't modify AKS-managed NICs directly to force enablement on unsupported configurations.",
     "documentation": [
       {
         "title": "What is Accelerated Networking?",
@@ -255,11 +263,61 @@
       "windows"
     ],
     "optionalFields": {
-      "score": {
-        "scale": 1,
-        "simple": -1,
-        "graph": "where type=='microsoft.containerservice/managedclusters' | extend compliant = (isnull(properties.addonProfiles.httpApplicationRouting) or properties.addonProfiles.httpApplicationRouting.enabled==false) | distinct id,compliant"
+      "score": {}
+    }
+  },
+  {
+    "title": "Migrate retired Windows OS channels and plan supported LTSC upgrades",
+    "guid": "82f0c32f-a9f2-4c62-9c2c-cab4f0e2d805",
+    "priority": "High",
+    "applicability": "Only Windows deployments using retired OS channels or planning an LTSC migration before the documented support and image-removal deadlines.",
+    "description": "Migrate Windows Server 2019, unsupported since March 1, 2026, before image removal on April 1, 2027. Windows Annual Channel preview support ended May 15, 2026, with image removal on May 15, 2027. Retired images eventually prevent scaling and remediation, not just security updates.",
+    "detail": "Evaluate Windows Server 2025 LTSC on Kubernetes 1.32 or later and test host/container compatibility, agents, gMSA, storage, and network policy first. Windows Server 2025 pools require FIPS-enabled images. Windows Server 2022 support ends June 30, 2028 and isn't available for Kubernetes 1.37 or later; images are removed June 30, 2029. A new-pool migration permits staged validation. The in-place 2022-to-2025 migration uses aks-preview and requires Kubernetes 1.32 to 1.36; assess its preview support terms before use.",
+    "documentation": [
+      {
+        "title": "Windows container considerations and retirement dates",
+        "url": "https://learn.microsoft.com/azure/aks/windows-vs-linux-containers"
+      },
+      {
+        "title": "Upgrade Windows OS versions",
+        "url": "https://learn.microsoft.com/azure/aks/upgrade-windows-os"
       }
+    ],
+    "tags": [
+      "all",
+      "windows",
+      "operations",
+      "security"
+    ],
+    "optionalFields": {
+      "score": {}
+    }
+  },
+  {
+    "title": "Include Windows-specific capacity and observability in the operating model",
+    "guid": "9af6097e-6ae5-4219-a8df-e63068d39020",
+    "priority": "High",
+    "applicability": "Only clusters operating Windows user pools and their supporting Linux system pool, capacity, and monitoring integrations.",
+    "description": "Maintain a Linux system pool alongside Windows user pools and include Windows startup, image-pull, patching, and drain times in capacity and maintenance tests. Windows pools aren't supported by NAP or AKS Automatic, so select a supported AKS Standard configuration.",
+    "detail": "For managed Prometheus, enable Windows recording rules and confirm Windows exporter metrics and Windows dashboards are populated. Monitor memory commitment, paging, storage, network errors, and application availability rather than relying only on Linux dashboards.",
+    "documentation": [
+      {
+        "title": "Windows monitoring best practices",
+        "url": "https://learn.microsoft.com/azure/aks/windows-best-practices#monitoring"
+      },
+      {
+        "title": "Node auto-provisioning limitations",
+        "url": "https://learn.microsoft.com/azure/aks/node-auto-provisioning#limitations-and-unsupported-features"
+      }
+    ],
+    "tags": [
+      "all",
+      "windows",
+      "operations",
+      "monitoring"
+    ],
+    "optionalFields": {
+      "score": {}
     }
   }
 ]
